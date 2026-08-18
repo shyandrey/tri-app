@@ -1,13 +1,4 @@
-type Athlete = {
-  id: number
-  name: string
-  country: string
-  flag: string
-  discipline: string
-  bio: string
-  achievements: string[]
-}
-
+import type { Athlete } from '../types/Athlete'
 type AthletesPageProps = {
   athletes: Athlete[]
   onBack: () => void

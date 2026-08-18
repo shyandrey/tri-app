@@ -1,12 +1,4 @@
-type Athlete = {
-  id: number
-  name: string
-  country: string
-  flag: string
-  discipline: string
-  bio: string
-  achievements: string[]
-}
+import type { Athlete } from '../types/Athlete'
 
 type AthleteDetailPageProps = {
   athlete: Athlete
@@ -28,11 +20,16 @@ function AthleteDetailPage({
         </button>
 
         <div className="athlete-detail">
-          <div className="athlete-detail__flag">
-            {athlete.flag}
-          </div>
-
-          <h1>{athlete.name}</h1>
+            {athlete.image && (
+  <img
+    className="athlete-detail__image"
+    src={athlete.image}
+    alt={athlete.name}
+  />
+)}
+          <h1>
+             {athlete.name} <span className="athlete-detail__flag-inline">{athlete.flag}</span>
+          </h1>
 
           <p className="athlete-detail__meta">
             {athlete.country} · {athlete.discipline}

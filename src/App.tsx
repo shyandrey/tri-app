@@ -1,3 +1,6 @@
+import { races } from './data/races'
+import { athletes } from './data/athletes'
+import type { Athlete } from './types/Athlete'
 import AthleteDetailPage from './pages/AthleteDetailPage'
 import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
@@ -6,90 +9,6 @@ import { useState } from 'react'
 import './App.css'
 import triLogo from './assets/300w_5.png'
 import RaceCard from './components/RaceCard'
-const races = [
-  {
-    id: 1,
-    tag: '70.3',
-    name: 'IRONMAN 70.3 Kraichgau',
-    date: '2 июня',
-    location: 'Германия',
-    city: 'Крайгхау',
-    swim: '1.9 км',
-    bike: '90 км',
-    run: '21.1 км',
-    description:
-      'Полужелезная дистанция IRONMAN, 1.9 / 90 / 21.1',
-  },
-  {
-    id: 2,
-    tag: 'IRONMAN',
-    name: 'IRONMAN Tallinn',
-    date: '18 августа',
-    location: 'Эстония',
-    city: 'Таллин',
-    swim: '3.8 км',
-    bike: '180 км',
-    run: '42.2 км',
-    description:
-      'Полная дистанция IRONMAN в Таллине с плаванием, велоэтапом и марафоном.',
-  },
-  {
-    id: 3,
-    tag: 'T100',
-    name: 'T100 London',
-    date: '9 августа',
-    location: 'Великобритания',
-    city: 'Лондон',
-    swim: '2 км',
-    bike: '80 км',
-    run: '18 км',
-    description:
-      '2 км плавание, велоэтап 80 км, 18 км бег',
-  },
-]
-
-const athletes = [
-  {
-    id: 1,
-    name: 'Кристиан Блюмменфельт',
-    country: 'Норвегия',
-    flag: '🇳🇴',
-    discipline: 'IRONMAN / T100',
-    bio:
-      'Норвежский триатлет, выступающий на олимпийской, средней и полной дистанциях.',
-    achievements: [
-      'Олимпийский чемпион',
-      'Чемпион мира IRONMAN',
-      'Чемпион мира IRONMAN 70.3',
-    ],
-  },
-  {
-    id: 2,
-    name: 'Мартен ван Рил',
-    country: 'Бельгия',
-    flag: '🇧🇪',
-    discipline: 'T100',
-    bio:
-      'Бельгийский профессиональный триатлет, специализирующийся на коротких и средних дистанциях.',
-    achievements: [
-      'Победитель международных стартов',
-      'Один из ведущих атлетов серии T100',
-    ],
-  },
-  {
-    id: 3,
-    name: 'Хейден Уайлд',
-    country: 'Новая Зеландия',
-    flag: '🇳🇿',
-    discipline: 'T100',
-    bio:
-      'Новозеландский триатлет, один из сильнейших спортсменов своего поколения на коротких и средних дистанциях.',
-    achievements: [
-      'Олимпийский призёр',
-      'Победитель крупных международных стартов',
-    ],
-  },
-]
 
 function App() {
   const [page, setPage] = useState<
@@ -97,7 +16,7 @@ function App() {
 >('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar'>('home')
   const [selectedRace, setSelectedRace] = useState<(typeof races)[number] | null>(null)
-  const [selectedAthlete, setSelectedAthlete] = useState<(typeof athletes)[number] | null>(null)
+  const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
   if (page === 'calendar') {
   return (
     <CalendarPage

@@ -532,7 +532,23 @@
     font-size: 27px;
   }
 
-  .athlete-detail__flag {
+  .athlete-detail__image {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 18px;
+  display: block;
+  border-radius: 24px;
+  border: 1px solid #343434;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.athlete-detail__flag-inline {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.athlete-detail__flag {
     width: 64px;
     height: 64px;
     font-size: 34px;
