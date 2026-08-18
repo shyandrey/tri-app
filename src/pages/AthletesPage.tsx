@@ -1,14 +1,19 @@
 import type { Athlete } from '../types/Athlete'
+import BottomNav from '../components/BottomNav'
 type AthletesPageProps = {
   athletes: Athlete[]
   onBack: () => void
   onAthleteClick: (athlete: Athlete) => void
+  onNavigate: (
+  page: 'home' | 'calendar' | 'race' | 'athletes' | 'athlete' | 'top'
+) => void
 }
 
 function AthletesPage({
   athletes,
   onBack,
   onAthleteClick,
+  onNavigate,
 }: AthletesPageProps) {
   return (
     <main className="app">
@@ -44,6 +49,10 @@ function AthletesPage({
           ))}
         </div>
       </section>
+    <BottomNav
+  currentPage="athletes"
+  onNavigate={onNavigate}
+/>
     </main>
   )
 }

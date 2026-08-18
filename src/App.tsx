@@ -11,6 +11,7 @@ import { useState } from 'react'
 import './App.css'
 import triLogo from './assets/300w_5.png'
 import RaceCard from './components/RaceCard'
+import BottomNav from './components/BottomNav'
 
 function App() {
   const [page, setPage] = useState<
@@ -24,6 +25,7 @@ function App() {
     <CalendarPage
   races={races}
   onBack={() => setPage('home')}
+  onNavigate={setPage}
   onRaceClick={(race) => {
     setSelectedRace(race)
     setPreviousPage('calendar')
@@ -45,6 +47,7 @@ if (page === 'athletes') {
     <AthletesPage
   athletes={athletes}
   onBack={() => setPage('home')}
+  onNavigate={setPage}
   onAthleteClick={(athlete) => {
     setSelectedAthlete(athlete)
     setPage('athlete')
@@ -65,6 +68,7 @@ if (page === 'top') {
     <TopAthletesPage
       athletes={athletes}
       onBack={() => setPage('home')}
+      onNavigate={setPage}
       onAthleteClick={(athlete) => {
         setSelectedAthlete(athlete)
         setPage('athlete')
@@ -124,33 +128,36 @@ if (page === 'top') {
   }}
 />
 ))}
-      </section>
+</section>
 
       <section className="features">
-        <article
-          className="feature-card"
-          onClick={() => setPage('calendar')}
-        >
-          <div className="feature-card__icon">〰️</div>
-          <h3>Календарь стартов</h3>
-          <p>Соревнования по триатлону</p>
-        </article>
+  <article
+    className="feature-card"
+    onClick={() => setPage('calendar')}
+  >
+    <div className="feature-card__icon">〰️</div>
+    <h3>Календарь стартов</h3>
+    <p>Соревнования по триатлону</p>
+  </article>
 
-        <article
-          className="feature-card"
-          onClick={() => setPage('top')}
-        >
-          <div className="feature-card__icon">🏆</div>
-          <h3>Топ атлетов</h3>
-          <p>Рейтинг и лучшие результаты</p>
-        </article>
+  <article
+    className="feature-card"
+    onClick={() => setPage('athletes')}
+  >
+    <div className="feature-card__icon">⚡</div>
+    <h3>Профили атлетов</h3>
+    <p>Результаты и достижения</p>
+  </article>
 
-        <article className="feature-card">
-          <div className="feature-card__icon">🏆</div>
-          <h3>Топ атлетов</h3>
-          <p>Рейтинг и лучшие результаты</p>
-        </article>
-      </section>
+  <article
+    className="feature-card"
+    onClick={() => setPage('top')}
+  >
+    <div className="feature-card__icon">🏆</div>
+    <h3>Топ атлетов</h3>
+    <p>Рейтинг и лучшие результаты</p>
+  </article>
+</section>
 
       <section className="section">
         <div className="section__header">
@@ -168,13 +175,10 @@ if (page === 'top') {
         </article>
       </section>
 
-      <nav className="bottom-nav">
-        <button className="bottom-nav__active">⌂</button>
-        <button>▦</button>
-        <button>♙</button>
-        <button>🏆</button>
-        <button>•••</button>
-      </nav>
+      <BottomNav
+        currentPage={page}
+        onNavigate={setPage}
+      />
     </main>
   )
 }

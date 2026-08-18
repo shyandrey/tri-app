@@ -1,14 +1,23 @@
 import { useState } from 'react'
 import RaceCard from '../components/RaceCard'
 import type { Race } from '../types/Race'
+import BottomNav from '../components/BottomNav'
 
 type CalendarPageProps = {
   races: Race[]
   onBack: () => void
   onRaceClick: (race: Race) => void
+  onNavigate: (
+  page: 'home' | 'calendar' | 'race' | 'athletes' | 'athlete' | 'top'
+) => void
 }
 
-function CalendarPage({ races, onBack, onRaceClick }: CalendarPageProps) {
+function CalendarPage({
+  races,
+  onBack,
+  onRaceClick,
+  onNavigate,
+}: CalendarPageProps) {
     const [search, setSearch] = useState('')
     const [filter, setFilter] = useState('Все')
     const filteredRaces = races.filter((race) => {
@@ -64,6 +73,10 @@ function CalendarPage({ races, onBack, onRaceClick }: CalendarPageProps) {
           />
         ))}
       </section>
+    <BottomNav
+  currentPage="calendar"
+  onNavigate={onNavigate}
+/>
     </main>
   )
 }
