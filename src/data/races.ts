@@ -1,4 +1,5 @@
-export const races = [
+import type { Race } from '../types/Race'
+export const races: Race[] = [
   {
     id: 1,
     tag: '70.3',

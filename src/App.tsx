@@ -1,4 +1,5 @@
 import { races } from './data/races'
+import type { Race } from './types/Race'
 import { athletes } from './data/athletes'
 import type { Athlete } from './types/Athlete'
 import AthleteDetailPage from './pages/AthleteDetailPage'
@@ -15,7 +16,7 @@ function App() {
   'home' | 'calendar' | 'race' | 'athletes' | 'athlete'
 >('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar'>('home')
-  const [selectedRace, setSelectedRace] = useState<(typeof races)[number] | null>(null)
+  const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
   if (page === 'calendar') {
   return (

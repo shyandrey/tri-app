@@ -1,18 +1,6 @@
 import { useState } from 'react'
 import RaceCard from '../components/RaceCard'
-
-type Race = {
-  id: number
-  tag: string
-  name: string
-  date: string
-  location: string
-  city: string
-  swim: string
-  bike: string
-  run: string
-  description: string
-}
+import type { Race } from '../types/Race'
 
 type CalendarPageProps = {
   races: Race[]
