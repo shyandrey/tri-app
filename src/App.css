@@ -558,4 +558,52 @@
   .athlete-detail__achievements {
     padding: 18px;
   }
+.top-athletes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top-athlete-card {
+  padding: 18px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.top-athlete-card__position {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #f3b72b;
+  color: #171717;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.top-athlete-card__info {
+  flex: 1;
+}
+
+.top-athlete-card__info h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.top-athlete-card__info p {
+  margin: 0;
+  color: #8e8e8e;
+  font-size: 13px;
+}
+
+.top-athlete-card__arrow {
+  color: #8e8e8e;
+  font-size: 30px;
+}
 }

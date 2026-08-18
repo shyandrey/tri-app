@@ -6,6 +6,7 @@ import AthleteDetailPage from './pages/AthleteDetailPage'
 import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
 import CalendarPage from './pages/CalendarPage'
+import TopAthletesPage from './pages/TopAthletesPage'
 import { useState } from 'react'
 import './App.css'
 import triLogo from './assets/300w_5.png'
@@ -13,8 +14,8 @@ import RaceCard from './components/RaceCard'
 
 function App() {
   const [page, setPage] = useState<
-  'home' | 'calendar' | 'race' | 'athletes' | 'athlete'
->('home')
+    'home' | 'calendar' | 'race' | 'athletes' | 'athlete' | 'top'
+    >('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar'>('home')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
@@ -56,6 +57,18 @@ if (page === 'athlete' && selectedAthlete) {
     <AthleteDetailPage
       athlete={selectedAthlete}
       onBack={() => setPage('athletes')}
+    />
+  )
+}
+if (page === 'top') {
+  return (
+    <TopAthletesPage
+      athletes={athletes}
+      onBack={() => setPage('home')}
+      onAthleteClick={(athlete) => {
+        setSelectedAthlete(athlete)
+        setPage('athlete')
+      }}
     />
   )
 }
@@ -125,11 +138,11 @@ if (page === 'athlete' && selectedAthlete) {
 
         <article
           className="feature-card"
-          onClick={() => setPage('athletes')}
+          onClick={() => setPage('top')}
         >
-          <div className="feature-card__icon">⚡</div>
-          <h3>Профили атлетов</h3>
-          <p>Результаты и достижения</p>
+          <div className="feature-card__icon">🏆</div>
+          <h3>Топ атлетов</h3>
+          <p>Рейтинг и лучшие результаты</p>
         </article>
 
         <article className="feature-card">
