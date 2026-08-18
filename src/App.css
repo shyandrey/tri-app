@@ -1,0 +1,545 @@
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(255, 190, 50, 0.08), transparent 35%),
+    #171717;
+  color: #ffffff;
+  padding: 20px;
+  padding-bottom: 110px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 360px;
+  padding: 28px;
+  border: 1px solid #343434;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent),
+    #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero__logo-image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.hero__brand p {
+  margin: 4px 0 0;
+  color: #a8a8a8;
+}
+
+.hero__text h2 {
+  margin: 0;
+  font-size: clamp(38px, 7vw, 64px);
+  line-height: 0.95;
+}
+
+.hero__text h2 span {
+  color: #f3b72b;
+}
+
+.hero__text p {
+  margin: 18px 0 0;
+  color: #a8a8a8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* SECTIONS */
+
+.section {
+  margin-top: 32px;
+}
+
+.section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.section__header h2 {
+  margin: 0;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.section__header button {
+  border: 0;
+  background: transparent;
+  color: #f3b72b;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* RACE CARDS */
+
+.race-card,
+.news-card {
+  margin-bottom: 14px;
+  padding: 22px;
+  border: 1px solid #333333;
+  border-radius: 22px;
+  background: #202020;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.race-card {
+  cursor: pointer;
+}
+
+.race-card h3,
+.news-card h3 {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.race-card p,
+.news-card p {
+  margin: 0;
+  color: #a8a8a8;
+}
+
+.race-card__tag {
+  display: inline-block;
+  padding: 5px 9px;
+  border: 1px solid #f3b72b;
+  border-radius: 7px;
+  color: #f3b72b;
+  font-size: 13px;
+}
+
+.race-card__tag--blue {
+  border-color: #21b7c8;
+  color: #21b7c8;
+}
+
+.race-card__arrow {
+  font-size: 34px;
+  color: #8e8e8e;
+}
+
+/* FEATURE CARDS */
+
+.features {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.feature-card {
+  padding: 24px 18px;
+  min-height: 200px;
+  border-radius: 24px;
+  border: 1px solid #343434;
+  background: #202020;
+  text-align: center;
+  cursor: pointer;
+}
+
+.feature-card__icon {
+  font-size: 34px;
+  margin-bottom: 18px;
+}
+
+.feature-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #a8a8a8;
+  line-height: 1.4;
+}
+
+/* NEWS */
+
+.news-card__telegram {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #229ed9;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  padding: 12px;
+  border: 1px solid #343434;
+  border-radius: 24px;
+  background: rgba(28, 28, 28, 0.94);
+  backdrop-filter: blur(18px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.bottom-nav button {
+  min-height: 50px;
+  border: 0;
+  background: transparent;
+  color: #a8a8a8;
+  font-size: 24px;
+}
+
+.bottom-nav__active {
+  color: #f3b72b !important;
+}
+
+/* CALENDAR */
+
+.calendar-search {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+  padding: 16px 18px;
+  border: 1px solid #343434;
+  border-radius: 16px;
+  outline: none;
+  background: #202020;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.calendar-search::placeholder {
+  color: #777777;
+}
+
+.calendar-search:focus {
+  border-color: #f3b72b;
+}
+
+.calendar-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.calendar-filters button {
+  padding: 9px 14px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  color: #a8a8a8;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.calendar-filters button.filter-active {
+  border-color: #f3b72b;
+  background: #f3b72b;
+  color: #171717;
+}
+
+.calendar-results {
+  margin-top: 4px;
+}
+
+/* RACE DETAIL */
+
+.race-detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.race-detail-back {
+  margin-bottom: 20px;
+  border: 0;
+  background: transparent;
+  color: #f3b72b;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.race-detail {
+  text-align: center;
+}
+
+.race-detail h1 {
+  margin: 14px 0 8px;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.race-detail-meta {
+  margin: 0;
+  color: #a8a8a8;
+  font-size: 15px;
+}
+
+.race-detail-distances {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.race-detail-distance {
+  padding: 18px 8px;
+  border: 1px solid #343434;
+  border-radius: 18px;
+  background: #202020;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.race-detail-distance span {
+  font-size: 28px;
+}
+
+.race-detail-distance strong {
+  font-size: 18px;
+}
+
+.race-detail-distance small {
+  color: #8d8d8d;
+  font-size: 12px;
+}
+
+.race-detail-about {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  text-align: left;
+}
+
+.race-detail-about h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.race-detail-about p {
+  margin: 0;
+  color: #b8b8b8;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ATHLETES LIST */
+
+.athletes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.athlete-card {
+  padding: 18px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.athlete-card__flag {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #292929;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+}
+
+.athlete-card__info {
+  flex: 1;
+}
+
+.athlete-card__info h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.athlete-card__info p {
+  margin: 0;
+  color: #8e8e8e;
+  font-size: 13px;
+}
+
+.athlete-card__arrow {
+  color: #8e8e8e;
+  font-size: 30px;
+}
+
+/* ATHLETE DETAIL */
+
+.athlete-detail-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.athlete-detail {
+  text-align: center;
+}
+
+.athlete-detail__flag {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  border-radius: 20px;
+  background: #202020;
+  border: 1px solid #343434;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+}
+
+.athlete-detail h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.athlete-detail__meta {
+  margin: 10px 0 0;
+  color: #a8a8a8;
+  font-size: 14px;
+}
+
+.athlete-detail__about,
+.athlete-detail__achievements {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  text-align: left;
+}
+
+.athlete-detail__about h2,
+.athlete-detail__achievements h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.athlete-detail__about p {
+  margin: 0;
+  color: #b8b8b8;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.athlete-detail__achievements ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.athlete-detail__achievements li {
+  margin-bottom: 10px;
+  color: #d0d0d0;
+  line-height: 1.4;
+}
+
+.athlete-detail__achievements li:last-child {
+  margin-bottom: 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .app {
+    padding: 12px;
+    padding-bottom: 100px;
+  }
+
+  .hero {
+    min-height: 320px;
+    padding: 22px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    min-height: auto;
+  }
+
+  .bottom-nav {
+    left: 12px;
+    right: 12px;
+  }
+
+  .race-detail-page {
+    margin-top: 8px;
+  }
+
+  .race-detail h1 {
+    font-size: 28px;
+  }
+
+  .race-detail-distances {
+    gap: 8px;
+  }
+
+  .race-detail-distance {
+    padding: 14px 6px;
+  }
+
+  .race-detail-distance strong {
+    font-size: 16px;
+  }
+
+  .race-detail-about {
+    padding: 18px;
+  }
+
+  .athlete-detail-page {
+    margin-top: 8px;
+  }
+
+  .athlete-detail h1 {
+    font-size: 27px;
+  }
+
+  .athlete-detail__flag {
+    width: 64px;
+    height: 64px;
+    font-size: 34px;
+  }
+
+  .athlete-detail__about,
+  .athlete-detail__achievements {
+    padding: 18px;
+  }
+}

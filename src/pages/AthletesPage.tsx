@@ -1,0 +1,60 @@
+type Athlete = {
+  id: number
+  name: string
+  country: string
+  flag: string
+  discipline: string
+  bio: string
+  achievements: string[]
+}
+
+type AthletesPageProps = {
+  athletes: Athlete[]
+  onBack: () => void
+  onAthleteClick: (athlete: Athlete) => void
+}
+
+function AthletesPage({
+  athletes,
+  onBack,
+  onAthleteClick,
+}: AthletesPageProps) {
+  return (
+    <main className="app">
+      <section className="section">
+        <div className="section__header">
+          <h1>Профили атлетов</h1>
+
+          <button onClick={onBack}>
+            ← Назад
+          </button>
+        </div>
+
+        <div className="athletes-list">
+          {athletes.map((athlete) => (
+            <article
+              className="athlete-card"
+              key={athlete.id}
+              onClick={() => onAthleteClick(athlete)}
+            >
+              <div className="athlete-card__flag">
+                {athlete.flag}
+              </div>
+
+              <div className="athlete-card__info">
+                <h3>{athlete.name}</h3>
+                <p>
+                  {athlete.country} · {athlete.discipline}
+                </p>
+              </div>
+
+              <span className="athlete-card__arrow">›</span>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+export default AthletesPage
