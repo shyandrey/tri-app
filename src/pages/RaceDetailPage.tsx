@@ -21,12 +21,12 @@ function RaceDetailPage({
       </button>
 
       <div className="race-detail">
-        <span className="race-card__tag">{race.tag}</span>
+        <span className="race-card__tag">{race.distance}</span>
 
         <h1>{race.name}</h1>
 
         <p className="race-detail-meta">
-          {race.date} · {race.city}, {race.location}
+          {race.date} · {race.city}, {race.country}
         </p>
 
         <div className="race-detail-distances">

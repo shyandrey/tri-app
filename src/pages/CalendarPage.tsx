@@ -3,6 +3,7 @@ import RaceCard from '../components/RaceCard'
 import type { Race } from '../types/Race'
 import type { Page } from '../types/Page'
 import BottomNav from '../components/BottomNav'
+import { isRaceFinished, isRaceUpcoming } from '../utils/raceDate'
 
 type CalendarPageProps = {
   races: Race[]
@@ -19,16 +20,25 @@ function CalendarPage({
 }: CalendarPageProps) {
     const [search, setSearch] = useState('')
     const [filter, setFilter] = useState('Все')
+    const [timeFilter, setTimeFilter] = useState<
+        'upcoming' | 'finished' | 'all'
+        >('upcoming')
     const filteredRaces = races.filter((race) => {
-        const matchesSearch =
-            race.name.toLowerCase().includes(search.toLowerCase()) ||
-            race.location.toLowerCase().includes(search.toLowerCase())
+  const matchesSearch =
+    race.name.toLowerCase().includes(search.toLowerCase()) ||
+    race.city.toLowerCase().includes(search.toLowerCase()) ||
+    race.country.toLowerCase().includes(search.toLowerCase())
 
-        const matchesFilter =
-            filter === 'Все' || race.tag === filter
+  const matchesFilter =
+    filter === 'Все' || race.distance === filter
 
-        return matchesSearch && matchesFilter
-  })
+  const matchesTime =
+    timeFilter === 'all' ||
+    (timeFilter === 'upcoming' && isRaceUpcoming(race)) ||
+    (timeFilter === 'finished' && isRaceFinished(race))
+
+  return matchesSearch && matchesFilter && matchesTime
+})
   return (
     <main className="app">
       <section className="section">
@@ -47,6 +57,28 @@ function CalendarPage({
   onChange={(event) => setSearch(event.target.value)}
 />
 
+<div className="calendar-time-filters">
+  <button
+    className={timeFilter === 'upcoming' ? 'filter-active' : ''}
+    onClick={() => setTimeFilter('upcoming')}
+  >
+    Предстоящие
+  </button>
+
+  <button
+    className={timeFilter === 'finished' ? 'filter-active' : ''}
+    onClick={() => setTimeFilter('finished')}
+  >
+    Прошедшие
+  </button>
+
+  <button
+    className={timeFilter === 'all' ? 'filter-active' : ''}
+    onClick={() => setTimeFilter('all')}
+  >
+    Все
+  </button>
+</div>
 <div className="calendar-filters">
   {['Все', '70.3', 'IRONMAN', 'T100'].map((item) => (
     <button
@@ -61,15 +93,17 @@ function CalendarPage({
 
         {filteredRaces.map((race) => (
           <RaceCard
-            key={race.id}
-            tag={race.tag}
-            name={race.name}
-            date={race.date}
-            location={race.location}
-            onClick={() => {
-  onRaceClick(race)
-}}
-          />
+  key={race.id}
+  distance={race.distance}
+  series={race.series}
+  name={race.name}
+  date={race.date}
+  city={race.city}
+  country={race.country}
+  onClick={() => {
+    onRaceClick(race)
+  }}
+/>
         ))}
       </section>
     <BottomNav

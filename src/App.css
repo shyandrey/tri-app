@@ -642,4 +642,43 @@
   color: #8e8e8e;
   font-size: 30px;
 }
+
+.race-card__series {
+  margin-top: 8px !important;
+  color: #f3b72b !important;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}  
+.calendar-time-filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+
+  margin: 14px 0 12px;
+  padding: 4px;
+
+  background: #202020;
+  border: 1px solid #343434;
+  border-radius: 12px;
+}
+
+.calendar-time-filters button {
+  padding: 9px 6px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+  color: #9a9a9a;
+
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.calendar-time-filters button.filter-active {
+  background: #f3b72b;
+  color: #171717;
+  font-weight: 600;
+}
 }

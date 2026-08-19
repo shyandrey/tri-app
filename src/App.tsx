@@ -15,12 +15,22 @@ import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
 
+import { isRaceUpcoming } from './utils/raceDate'
+
 
 function App() {
   const [page, setPage] = useState<Page>('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar'>('home')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
+  const upcomingRaces = races
+  .filter(isRaceUpcoming)
+  .sort(
+    (a, b) =>
+      new Date(a.dateISO).getTime() -
+      new Date(b.dateISO).getTime()
+  )
+  .slice(0, 2)
   if (page === 'calendar') {
   return (
     <CalendarPage
@@ -124,13 +134,15 @@ return (
             Смотреть все
           </button>
         </div>
-        {races.map((race) => (
+        {upcomingRaces.map((race) => (
   <RaceCard
   key={race.id}
-  tag={race.tag}
+  distance={race.distance}
+  series={race.series}
   name={race.name}
   date={race.date}
-  location={race.location}
+  city={race.city}
+  country={race.country}
   onClick={() => {
     setSelectedRace(race)
     setPreviousPage('home')

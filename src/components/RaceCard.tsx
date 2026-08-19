@@ -1,16 +1,20 @@
 type RaceCardProps = {
-  tag: string
+  distance: string
+  series: string
   name: string
   date: string
-  location: string
+  city: string
+  country: string
   onClick?: () => void
 }
 
 function RaceCard({
-  tag,
+  distance,
+  series,
   name,
   date,
-  location,
+  city,
+  country,
   onClick,
 }: RaceCardProps) {
   return (
@@ -19,9 +23,19 @@ function RaceCard({
       onClick={onClick}
     >
       <div>
-        <span className="race-card__tag">{tag}</span>
+        <span className="race-card__tag">
+          {distance}
+        </span>
+
         <h3>{name}</h3>
-        <p>{date} · {location}</p>
+
+        <p>
+          {date} · {city}, {country}
+        </p>
+
+        <p className="race-card__series">
+          {series}
+        </p>
       </div>
 
       <span className="race-card__arrow">›</span>
