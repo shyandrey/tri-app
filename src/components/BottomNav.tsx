@@ -1,10 +1,4 @@
-type Page =
-  | 'home'
-  | 'calendar'
-  | 'race'
-  | 'athletes'
-  | 'athlete'
-  | 'top'
+import type { Page } from '../types/Page'
 
 type BottomNavProps = {
   currentPage: Page
@@ -42,12 +36,15 @@ function BottomNav({
         className={currentPage === 'top' ? 'bottom-nav__active' : ''}
         onClick={() => onNavigate('top')}
       >
-        🏆
+        ★
       </button>
 
-      <button>
+      <button
+        className={currentPage === 'more' ? 'bottom-nav__active' : ''}
+        onClick={() => onNavigate('more')}
+        >
         •••
-      </button>
+       </button>
     </nav>
   )
 }

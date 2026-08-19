@@ -2,6 +2,7 @@ import { races } from './data/races'
 import type { Race } from './types/Race'
 import { athletes } from './data/athletes'
 import type { Athlete } from './types/Athlete'
+import type { Page } from './types/Page'
 import AthleteDetailPage from './pages/AthleteDetailPage'
 import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
@@ -12,11 +13,11 @@ import './App.css'
 import triLogo from './assets/300w_5.png'
 import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
+import MorePage from './pages/MorePage'
+
 
 function App() {
-  const [page, setPage] = useState<
-    'home' | 'calendar' | 'race' | 'athletes' | 'athlete' | 'top'
-    >('home')
+  const [page, setPage] = useState<Page>('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar'>('home')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
@@ -39,6 +40,7 @@ if (page === 'race' && selectedRace) {
     <RaceDetailPage
       race={selectedRace}
       onBack={() => setPage(previousPage)}
+      onNavigate={setPage}
     />
   )
 }
@@ -58,8 +60,9 @@ if (page === 'athletes') {
 if (page === 'athlete' && selectedAthlete) {
   return (
     <AthleteDetailPage
-      athlete={selectedAthlete}
-      onBack={() => setPage('athletes')}
+  athlete={selectedAthlete}
+  onBack={() => setPage('athletes')}
+  onNavigate={setPage}
     />
   )
 }
@@ -76,7 +79,14 @@ if (page === 'top') {
     />
   )
 }
+if (page === 'more') {
   return (
+    <MorePage
+      onNavigate={setPage}
+    />
+  )
+}  
+return (
     <main className="app">
       <header className="hero">
         <div className="hero__brand">

@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import RaceCard from '../components/RaceCard'
 import type { Race } from '../types/Race'
+import type { Page } from '../types/Page'
 import BottomNav from '../components/BottomNav'
 
 type CalendarPageProps = {
   races: Race[]
   onBack: () => void
   onRaceClick: (race: Race) => void
-  onNavigate: (
-  page: 'home' | 'calendar' | 'race' | 'athletes' | 'athlete' | 'top'
-) => void
+  onNavigate: (page: Page) => void
 }
 
 function CalendarPage({

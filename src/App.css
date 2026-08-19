@@ -558,7 +558,8 @@
   .athlete-detail__achievements {
     padding: 18px;
   }
-.top-athletes {
+
+  .top-athletes {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -603,6 +604,41 @@
 }
 
 .top-athlete-card__arrow {
+  color: #8e8e8e;
+  font-size: 30px;
+}
+.more-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.more-card {
+  position: relative;
+  padding: 20px;
+  padding-right: 50px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  cursor: pointer;
+}
+
+.more-card h3 {
+  margin: 0 0 7px;
+  font-size: 18px;
+}
+
+.more-card p {
+  margin: 0;
+  color: #8e8e8e;
+  font-size: 13px;
+}
+
+.more-card span {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #8e8e8e;
   font-size: 30px;
 }

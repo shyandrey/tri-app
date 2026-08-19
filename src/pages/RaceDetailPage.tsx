@@ -1,11 +1,18 @@
 import type { Race } from '../types/Race'
+import BottomNav from '../components/BottomNav'
+import type { Page } from '../types/Page'
 
 type RaceDetailPageProps = {
   race: Race
   onBack: () => void
+  onNavigate: (page: Page) => void
 }
 
-function RaceDetailPage({ race, onBack }: RaceDetailPageProps) {
+function RaceDetailPage({
+  race,
+  onBack,
+  onNavigate,
+}: RaceDetailPageProps) {
   return (
   <main className="app">
     <section className="section race-detail-page">
@@ -48,6 +55,10 @@ function RaceDetailPage({ race, onBack }: RaceDetailPageProps) {
         </div>
       </div>
     </section>
+  <BottomNav
+  currentPage="calendar"
+  onNavigate={onNavigate}
+/>
   </main>
 )
 }
