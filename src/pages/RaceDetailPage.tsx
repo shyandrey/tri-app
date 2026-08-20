@@ -1,15 +1,18 @@
 import type { Race } from '../types/Race'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
+import type { RaceResult } from '../types/RaceResult'
 
 type RaceDetailPageProps = {
   race: Race
+  results: RaceResult[]
   onBack: () => void
   onNavigate: (page: Page) => void
 }
 
 function RaceDetailPage({
   race,
+  results,
   onBack,
   onNavigate,
 }: RaceDetailPageProps) {
@@ -53,6 +56,44 @@ function RaceDetailPage({
           <h2>О гонке</h2>
           <p>{race.description}</p>
         </div>
+        {results.length > 0 && (
+  <div className="race-results">
+    <h2>Результаты</h2>
+
+    <div className="race-results__list">
+      {results.map((result) => (
+        <article
+          className="race-result-card"
+          key={result.id}
+        >
+          <div className="race-result-card__top">
+            <span className="race-result-card__position">
+              {result.position}
+            </span>
+
+            <div className="race-result-card__athlete">
+              <strong>{result.athleteName}</strong>
+
+              {result.country && (
+                <small>{result.country}</small>
+              )}
+            </div>
+
+            <strong className="race-result-card__time">
+              {result.totalTime ?? '—'}
+            </strong>
+          </div>
+
+          <div className="race-result-card__splits">
+            <span>🏊 {result.swimTime ?? '—'}</span>
+            <span>🚴 {result.bikeTime ?? '—'}</span>
+            <span>🏃 {result.runTime ?? '—'}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+)}
       </div>
     </section>
   <BottomNav

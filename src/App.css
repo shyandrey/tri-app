@@ -623,6 +623,74 @@
   font-weight: 600;
 }
 
+/* RACE RESULTS */
+
+.race-results {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.race-results h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.race-results__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.race-result-card {
+  padding: 16px;
+  border: 1px solid #343434;
+  border-radius: 18px;
+  background: #202020;
+}
+
+.race-result-card__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.race-result-card__position {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #f3b72b;
+  color: #171717;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.race-result-card__athlete {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.race-result-card__athlete small {
+  color: #8e8e8e;
+  font-size: 12px;
+}
+
+.race-result-card__time {
+  font-size: 15px;
+}
+
+.race-result-card__splits {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #a8a8a8;
+  font-size: 12px;
+}
+
 /* MOBILE */
 
 @media (max-width: 640px) {
