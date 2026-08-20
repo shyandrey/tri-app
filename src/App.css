@@ -476,6 +476,157 @@
 
 /* MOBILE */
 
+/* ATHLETE IMAGE */
+
+.athlete-detail__image {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 18px;
+  display: block;
+  border-radius: 24px;
+  border: 1px solid #343434;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.athlete-detail__flag-inline {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+/* TOP ATHLETES */
+
+.top-athletes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top-athlete-card {
+  padding: 18px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.top-athlete-card__position {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #f3b72b;
+  color: #171717;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.top-athlete-card__info {
+  flex: 1;
+}
+
+.top-athlete-card__info h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.top-athlete-card__info p {
+  margin: 0;
+  color: #8e8e8e;
+  font-size: 13px;
+}
+
+.top-athlete-card__arrow {
+  color: #8e8e8e;
+  font-size: 30px;
+}
+
+/* MORE */
+
+.more-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.more-card {
+  position: relative;
+  padding: 20px;
+  padding-right: 50px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  cursor: pointer;
+}
+
+.more-card h3 {
+  margin: 0 0 7px;
+  font-size: 18px;
+}
+
+.more-card p {
+  margin: 0;
+  color: #8e8e8e;
+  font-size: 13px;
+}
+
+.more-card span {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8e8e8e;
+  font-size: 30px;
+}
+
+/* RACE SERIES */
+
+.race-card__series {
+  margin-top: 8px !important;
+  color: #f3b72b !important;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CALENDAR TIME FILTERS */
+
+.calendar-time-filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 14px 0 12px;
+  padding: 4px;
+  background: #202020;
+  border: 1px solid #343434;
+  border-radius: 14px;
+}
+
+.calendar-time-filters button {
+  min-height: 42px;
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #a8a8a8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.calendar-time-filters button.filter-active {
+  background: #f3b72b;
+  color: #171717;
+  font-weight: 600;
+}
+
+/* MOBILE */
+
 @media (max-width: 640px) {
   .app {
     padding: 12px;
@@ -532,23 +683,7 @@
     font-size: 27px;
   }
 
-  .athlete-detail__image {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 18px;
-  display: block;
-  border-radius: 24px;
-  border: 1px solid #343434;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.athlete-detail__flag-inline {
-  font-size: 20px;
-  vertical-align: middle;
-}
-
-.athlete-detail__flag {
+  .athlete-detail__flag {
     width: 64px;
     height: 64px;
     font-size: 34px;
@@ -558,127 +693,4 @@
   .athlete-detail__achievements {
     padding: 18px;
   }
-
-  .top-athletes {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.top-athlete-card {
-  padding: 18px;
-  border: 1px solid #343434;
-  border-radius: 20px;
-  background: #202020;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-}
-
-.top-athlete-card__position {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  background: #f3b72b;
-  color: #171717;
-  display: grid;
-  place-items: center;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.top-athlete-card__info {
-  flex: 1;
-}
-
-.top-athlete-card__info h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-}
-
-.top-athlete-card__info p {
-  margin: 0;
-  color: #8e8e8e;
-  font-size: 13px;
-}
-
-.top-athlete-card__arrow {
-  color: #8e8e8e;
-  font-size: 30px;
-}
-.more-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.more-card {
-  position: relative;
-  padding: 20px;
-  padding-right: 50px;
-  border: 1px solid #343434;
-  border-radius: 20px;
-  background: #202020;
-  cursor: pointer;
-}
-
-.more-card h3 {
-  margin: 0 0 7px;
-  font-size: 18px;
-}
-
-.more-card p {
-  margin: 0;
-  color: #8e8e8e;
-  font-size: 13px;
-}
-
-.more-card span {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #8e8e8e;
-  font-size: 30px;
-}
-
-.race-card__series {
-  margin-top: 8px !important;
-  color: #f3b72b !important;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}  
-.calendar-time-filters {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-
-  margin: 14px 0 12px;
-  padding: 4px;
-
-  background: #202020;
-  border: 1px solid #343434;
-  border-radius: 12px;
-}
-
-.calendar-time-filters button {
-  padding: 9px 6px;
-
-  border: none;
-  border-radius: 9px;
-
-  background: transparent;
-  color: #9a9a9a;
-
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.calendar-time-filters button.filter-active {
-  background: #f3b72b;
-  color: #171717;
-  font-weight: 600;
-}
 }
