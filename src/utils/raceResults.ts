@@ -6,7 +6,12 @@ export function getResultsByRace(
 ) {
   return results
     .filter((result) => result.raceId === raceId)
-    .sort((a, b) => a.position - b.position)
+    .sort((a, b) => {
+      if (typeof a.position !== 'number') return 1
+      if (typeof b.position !== 'number') return -1
+
+      return a.position - b.position
+    })
 }
 
 export function getResultsByAthlete(

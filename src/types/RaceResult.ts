@@ -1,16 +1,20 @@
 export type RaceResult = {
   id: number
-
   raceId: number
-  athleteId: number
 
-  position: number
+  athleteId?: number
+  athleteName: string
+  country?: string
 
-  totalTime: string
+  position: number | 'DNF' | 'DNS' | 'DSQ'
 
   swimTime?: string
+  t1Time?: string
   bikeTime?: string
+  t2Time?: string
   runTime?: string
+  totalTime?: string
 
-  points?: number
+  seriesPoints?: number
+  ptoPoints?: number
 }
