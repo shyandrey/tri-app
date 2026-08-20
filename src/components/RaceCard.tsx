@@ -1,6 +1,8 @@
+import type { RaceDistance, RaceSeries } from '../types/Race'
+
 type RaceCardProps = {
-  distance: string
-  series: string
+  distance: RaceDistance
+  series: RaceSeries
   name: string
   date: string
   city: string

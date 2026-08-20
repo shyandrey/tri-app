@@ -1,10 +1,18 @@
 import type { Race } from '../types/Race'
 
-export function isRaceFinished(race: Race) {
-  const today = new Date()
-  const raceDate = new Date(`${race.dateISO}T23:59:59`)
+function getMoscowDateISO() {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Moscow',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+}
 
-  return raceDate < today
+export function isRaceFinished(race: Race) {
+  const today = getMoscowDateISO()
+
+  return race.dateISO < today
 }
 
 export function isRaceUpcoming(race: Race) {
