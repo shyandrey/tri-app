@@ -3,6 +3,7 @@ import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 import type { RaceResult } from '../types/RaceResult'
 import type { Athlete } from '../types/Athlete'
+import { countryCodeToFlag } from '../utils/countryFlag'
 
 type RaceDetailPageProps = {
   race: Race
@@ -90,7 +91,10 @@ function RaceDetailPage({
         </span>
 
         <div className="race-result-card__athlete">
-          <strong>{result.athleteName}</strong>
+            <strong>
+            {result.athleteName}{' '}
+            {countryCodeToFlag(result.countryCode)}
+            </strong>
 
           {result.country && (
             <small>{result.country}</small>

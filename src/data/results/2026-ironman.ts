@@ -8,6 +8,7 @@ export const results2026Ironman: RaceResult[] = [
     athleteId: 1,
     athleteName: 'Kristian Blummenfelt',
     country: 'Норвегия',
+    countryCode: 'NO',
 
     position: 1,
 

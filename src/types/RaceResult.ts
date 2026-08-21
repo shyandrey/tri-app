@@ -5,6 +5,7 @@ export type RaceResult = {
   athleteId?: number
   athleteName: string
   country?: string
+  countryCode?: string
 
   position: number | 'DNF' | 'DNS' | 'DSQ'
 
