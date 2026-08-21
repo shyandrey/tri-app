@@ -17,7 +17,7 @@ import MorePage from './pages/MorePage'
 
 import { isRaceUpcoming } from './utils/raceDate'
 
-import { raceResults } from './data/raceResults'
+import { raceResults } from './data/results'
 import { getResultsByAthlete, getResultsByRace } from './utils/raceResults'
 
 

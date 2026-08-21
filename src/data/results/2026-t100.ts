@@ -1,6 +1,6 @@
-import type { RaceResult } from '../types/RaceResult'
+import type { RaceResult } from '../../types/RaceResult'
 
-export const raceResults: RaceResult[] = [
+export const results2026T100: RaceResult[] = [
   {
     id: 1,
     raceId: 20,
