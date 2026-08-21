@@ -102,7 +102,9 @@ function RaceDetailPage({
         </div>
 
         <strong className="race-result-card__time">
-          {result.totalTime ?? '—'}
+        {typeof result.position === 'string'
+            ? result.position
+            : result.totalTime ?? '—'}
         </strong>
       </div>
 
