@@ -18,7 +18,7 @@ import MorePage from './pages/MorePage'
 import { isRaceUpcoming } from './utils/raceDate'
 
 import { raceResults } from './data/raceResults'
-import { getResultsByRace } from './utils/raceResults'
+import { getResultsByAthlete, getResultsByRace } from './utils/raceResults'
 
 
 function App() {
@@ -75,15 +75,24 @@ if (page === 'athletes') {
 />
   )
 }
+
 if (page === 'athlete' && selectedAthlete) {
+  const results = getResultsByAthlete(
+    raceResults,
+    selectedAthlete.id
+  )
+
   return (
     <AthleteDetailPage
-  athlete={selectedAthlete}
-  onBack={() => setPage('athletes')}
-  onNavigate={setPage}
+      athlete={selectedAthlete}
+      results={results}
+      races={races}
+      onBack={() => setPage('athletes')}
+      onNavigate={setPage}
     />
   )
 }
+
 if (page === 'top') {
   return (
     <TopAthletesPage

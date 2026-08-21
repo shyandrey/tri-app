@@ -691,6 +691,68 @@
   font-size: 12px;
 }
 
+/* ATHLETE RECENT RESULTS */
+
+.athlete-detail__results {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #343434;
+  border-radius: 20px;
+  background: #202020;
+  text-align: left;
+}
+
+.athlete-detail__results h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.athlete-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.athlete-result-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #343434;
+}
+
+.athlete-result-card:last-child {
+  border-bottom: 0;
+}
+
+.athlete-result-card__place {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #f3b72b;
+  color: #171717;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.athlete-result-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.athlete-result-card__info span {
+  color: #8e8e8e;
+  font-size: 12px;
+}
+
+.athlete-result-card__time {
+  font-size: 14px;
+}
+
 /* MOBILE */
 
 @media (max-width: 640px) {
