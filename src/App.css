@@ -719,6 +719,11 @@
   gap: 12px;
   padding: 14px 0;
   border-bottom: 1px solid #343434;
+  cursor: pointer;
+}
+
+.athlete-result-card:hover {
+  background: #252525;
 }
 
 .athlete-result-card:last-child {

@@ -10,6 +10,7 @@ type AthleteDetailPageProps = {
   races: Race[]
   onBack: () => void
   onNavigate: (page: Page) => void
+  onRaceClick: (race: Race) => void
 }
 
 function AthleteDetailPage({
@@ -18,6 +19,7 @@ function AthleteDetailPage({
   races,
   onBack,
   onNavigate,
+  onRaceClick,
 }: AthleteDetailPageProps) {
   
   const recentResults = results
@@ -83,6 +85,7 @@ function AthleteDetailPage({
         <article
           className="athlete-result-card"
           key={result.id}
+          onClick={() => onRaceClick(result.race!)}
         >
           <div className="athlete-result-card__place">
             {result.position}

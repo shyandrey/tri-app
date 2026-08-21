@@ -17,13 +17,15 @@ import MorePage from './pages/MorePage'
 
 import { isRaceUpcoming } from './utils/raceDate'
 
-import { raceResults } from './data/results'
+import { raceResults } from './data/results/index'
 import { getResultsByAthlete, getResultsByRace } from './utils/raceResults'
 
 
 function App() {
   const [page, setPage] = useState<Page>('home')
-  const [previousPage, setPreviousPage] = useState<'home' | 'calendar'>('home')
+  const [previousPage, setPreviousPage] = useState<
+  'home' | 'calendar' | 'athlete'
+>('home')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
   const upcomingRaces = races
@@ -84,12 +86,17 @@ if (page === 'athlete' && selectedAthlete) {
 
   return (
     <AthleteDetailPage
-      athlete={selectedAthlete}
-      results={results}
-      races={races}
-      onBack={() => setPage('athletes')}
-      onNavigate={setPage}
-    />
+  athlete={selectedAthlete}
+  results={results}
+  races={races}
+  onBack={() => setPage('athletes')}
+  onNavigate={setPage}
+  onRaceClick={(race) => {
+    setSelectedRace(race)
+    setPreviousPage('athlete')
+    setPage('race')
+  }}
+/>
   )
 }
 
