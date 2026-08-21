@@ -59,9 +59,14 @@ if (page === 'race' && selectedRace) {
     <RaceDetailPage
   race={selectedRace}
   results={results}
+  athletes={athletes}
   onBack={() => setPage(previousPage)}
   onNavigate={setPage}
-  />
+  onAthleteClick={(athlete) => {
+    setSelectedAthlete(athlete)
+    setPage('athlete')
+  }}
+/>
   )
 }
 if (page === 'athletes') {

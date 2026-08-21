@@ -826,4 +826,12 @@
   .athlete-detail__achievements {
     padding: 18px;
   }
+
+  .race-result-card--clickable {
+  cursor: pointer;
+}
+
+.race-result-card--clickable:hover {
+  background: #252525;
+}
 }

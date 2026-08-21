@@ -2,20 +2,26 @@ import type { Race } from '../types/Race'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 import type { RaceResult } from '../types/RaceResult'
+import type { Athlete } from '../types/Athlete'
 
 type RaceDetailPageProps = {
   race: Race
   results: RaceResult[]
+  athletes: Athlete[]
   onBack: () => void
   onNavigate: (page: Page) => void
+  onAthleteClick: (athlete: Athlete) => void
 }
 
 function RaceDetailPage({
   race,
   results,
+  athletes,
   onBack,
   onNavigate,
+  onAthleteClick,
 }: RaceDetailPageProps) {
+
   return (
   <main className="app">
     <section className="section race-detail-page">
@@ -61,36 +67,49 @@ function RaceDetailPage({
     <h2>Результаты</h2>
 
     <div className="race-results__list">
-      {results.map((result) => (
-        <article
-          className="race-result-card"
-          key={result.id}
-        >
-          <div className="race-result-card__top">
-            <span className="race-result-card__position">
-              {result.position}
-            </span>
+     {results.map((result) => {
+  const athlete = result.athleteId
+    ? athletes.find((athlete) => athlete.id === result.athleteId)
+    : undefined
 
-            <div className="race-result-card__athlete">
-              <strong>{result.athleteName}</strong>
+  return (
+    <article
+      className={`race-result-card ${
+        athlete ? 'race-result-card--clickable' : ''
+      }`}
+      key={result.id}
+      onClick={() => {
+        if (athlete) {
+          onAthleteClick(athlete)
+        }
+      }}
+    >
+      <div className="race-result-card__top">
+        <span className="race-result-card__position">
+          {result.position}
+        </span>
 
-              {result.country && (
-                <small>{result.country}</small>
-              )}
-            </div>
+        <div className="race-result-card__athlete">
+          <strong>{result.athleteName}</strong>
 
-            <strong className="race-result-card__time">
-              {result.totalTime ?? '—'}
-            </strong>
-          </div>
+          {result.country && (
+            <small>{result.country}</small>
+          )}
+        </div>
 
-          <div className="race-result-card__splits">
-            <span>🏊 {result.swimTime ?? '—'}</span>
-            <span>🚴 {result.bikeTime ?? '—'}</span>
-            <span>🏃 {result.runTime ?? '—'}</span>
-          </div>
-        </article>
-      ))}
+        <strong className="race-result-card__time">
+          {result.totalTime ?? '—'}
+        </strong>
+      </div>
+
+      <div className="race-result-card__splits">
+        <span>🏊 {result.swimTime ?? '—'}</span>
+        <span>🚴 {result.bikeTime ?? '—'}</span>
+        <span>🏃 {result.runTime ?? '—'}</span>
+      </div>
+    </article>
+  )
+})}
     </div>
   </div>
 )}
