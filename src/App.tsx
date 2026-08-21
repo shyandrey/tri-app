@@ -26,6 +26,9 @@ function App() {
   const [previousPage, setPreviousPage] = useState<
   'home' | 'calendar' | 'athlete'
 >('home')
+const [previousAthletePage, setPreviousAthletePage] = useState<
+  'athletes' | 'top' | 'race'
+>('athletes')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
   const upcomingRaces = races
@@ -56,6 +59,7 @@ if (page === 'race' && selectedRace) {
   selectedRace.id
 )
   return (
+  
     <RaceDetailPage
   race={selectedRace}
   results={results}
@@ -64,6 +68,7 @@ if (page === 'race' && selectedRace) {
   onNavigate={setPage}
   onAthleteClick={(athlete) => {
     setSelectedAthlete(athlete)
+    setPreviousAthletePage('race')
     setPage('athlete')
   }}
 />
@@ -71,14 +76,16 @@ if (page === 'race' && selectedRace) {
 }
 if (page === 'athletes') {
   return (
+  
     <AthletesPage
   athletes={athletes}
   onBack={() => setPage('home')}
   onNavigate={setPage}
   onAthleteClick={(athlete) => {
-    setSelectedAthlete(athlete)
-    setPage('athlete')
-  }}
+  setSelectedAthlete(athlete)
+  setPreviousAthletePage('athletes')
+  setPage('athlete')
+}}
 />
   )
 }
@@ -90,11 +97,12 @@ if (page === 'athlete' && selectedAthlete) {
   )
 
   return (
+ 
     <AthleteDetailPage
   athlete={selectedAthlete}
   results={results}
   races={races}
-  onBack={() => setPage('athletes')}
+  onBack={() => setPage(previousAthletePage)}
   onNavigate={setPage}
   onRaceClick={(race) => {
     setSelectedRace(race)
@@ -107,12 +115,14 @@ if (page === 'athlete' && selectedAthlete) {
 
 if (page === 'top') {
   return (
+  
     <TopAthletesPage
       athletes={athletes}
       onBack={() => setPage('home')}
       onNavigate={setPage}
       onAthleteClick={(athlete) => {
         setSelectedAthlete(athlete)
+        setPreviousAthletePage('top')
         setPage('athlete')
       }}
     />
