@@ -1,7 +1,11 @@
-import { results2026Ironman } from './2026-ironman'
-import { results2026T100 } from './2026-t100'
+import { texas2026Results } from './2026/ironman/texas'
+import { spain2026Results } from './2026/t100/spain'
+import { sanFrancisco2026Results } from './2026/t100/san-francisco'
+import { vancouver2026Results } from './2026/t100/vancouver'
 
 export const raceResults = [
-  ...results2026Ironman,
-  ...results2026T100,
+  ...texas2026Results,
+  ...spain2026Results,
+  ...sanFrancisco2026Results,
+  ...vancouver2026Results,
 ]
