@@ -63,12 +63,40 @@ function RaceResultsTable({
             <tr>
               <th>Pos</th>
               <th>Athlete</th>
-              <th><button onClick={() => setSortKey('swim')}>Swim</button></th>
+              <th>
+                <button
+                  className={sortKey === 'swim' ? 'is-active-sort' : ''}
+                  onClick={() => setSortKey('swim')}
+                >
+                  Swim
+                </button>
+              </th>
               <th>T1</th>
-              <th><button onClick={() => setSortKey('bike')}>Bike</button></th>
+              <th>
+                <button
+                  className={sortKey === 'bike' ? 'is-active-sort' : ''}
+                  onClick={() => setSortKey('bike')}
+                >
+                  Bike
+                </button>
+              </th>
               <th>T2</th>
-              <th><button onClick={() => setSortKey('run')}>Run</button></th>
-              <th><button onClick={() => setSortKey('overall')}>Total</button></th>
+              <th>
+                <button
+                  className={sortKey === 'run' ? 'is-active-sort' : ''}
+                  onClick={() => setSortKey('run')}
+                >
+                  Run
+                </button>
+              </th>
+              <th>
+                <button
+                  className={sortKey === 'overall' ? 'is-active-sort' : ''}
+                  onClick={() => setSortKey('overall')}
+                >
+                  Total
+                </button>
+              </th>
             </tr>
           </thead>
 
