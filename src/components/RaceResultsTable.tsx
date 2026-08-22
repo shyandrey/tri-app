@@ -101,7 +101,7 @@ function RaceResultsTable({
           </thead>
 
           <tbody>
-            {sortedResults.map((result) => {
+            {sortedResults.map((result, index) => {
               const athlete = result.athleteId
                 ? athletes.find((item) => item.id === result.athleteId)
                 : undefined
@@ -112,7 +112,12 @@ function RaceResultsTable({
                   className={athlete ? 'is-clickable' : ''}
                   onClick={() => athlete && onAthleteClick(athlete)}
                 >
-                  <td className="results-table__position">{result.position}</td>
+                  <td className="results-table__position">
+                    <span>{result.position}</span>
+                    {sortKey !== 'overall' && (
+                      <small>({index + 1})</small>
+                    )}
+                  </td>
                   <td>
                     <div className="results-table__athlete">
                       {athlete?.image ? (
@@ -176,7 +181,10 @@ function RaceResultsTable({
               onClick={() => athlete && onAthleteClick(athlete)}
             >
               <span className="results-table__mobile-rank">
-                {sortKey === 'overall' ? result.position : index + 1}
+                <span>{result.position}</span>
+                {sortKey !== 'overall' && (
+                  <small>({index + 1})</small>
+                )}
               </span>
 
               <span className="results-table__mobile-athlete">
