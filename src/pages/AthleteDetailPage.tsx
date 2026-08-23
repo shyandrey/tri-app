@@ -21,23 +21,27 @@ function AthleteDetailPage({
   onNavigate,
   onRaceClick,
 }: AthleteDetailPageProps) {
-  const recentResults = results
-    .map((result) => {
-      const race = races.find((race) => race.id === result.raceId)
-
-      return {
-        ...result,
-        race,
-      }
-    })
+  const athleteResults = results
+    .filter((result) => result.athleteId === athlete.id)
+    .map((result) => ({
+      ...result,
+      race: races.find((race) => race.id === result.raceId),
+    }))
     .filter((result) => result.race)
-    .sort((a, b) => {
-      return (
+    .sort(
+      (a, b) =>
         new Date(b.race!.dateISO).getTime() -
-        new Date(a.race!.dateISO).getTime()
-      )
-    })
-    .slice(0, 3)
+        new Date(a.race!.dateISO).getTime(),
+    )
+
+  const resultsByYear = athleteResults.reduce<Record<string, typeof athleteResults>>(
+    (groups, result) => {
+      const year = result.race!.dateISO.slice(0, 4)
+      groups[year] = [...(groups[year] ?? []), result]
+      return groups
+    },
+    {},
+  )
 
   return (
     <main className="app">
@@ -72,46 +76,52 @@ function AthleteDetailPage({
           </div>
 
           <div className="athlete-detail__achievements">
-            <h2>Основные достижения</h2>
-
-            {recentResults.length > 0 && (
-              <div className="athlete-detail__results">
-                <h2>Недавние результаты</h2>
-
-                <div className="athlete-results-list">
-                  {recentResults.map((result) => (
-                    <article
-                      className="athlete-result-card"
-                      key={result.id}
-                      onClick={() => onRaceClick(result.race!)}
-                    >
-                      <div className="athlete-result-card__place">
-                        {result.position}
-                      </div>
-
-                      <div className="athlete-result-card__info">
-                        <strong>{result.race!.name}</strong>
-
-                        <span>
-                          {result.race!.date} · {result.race!.city}
-                        </span>
-                      </div>
-
-                      <strong className="athlete-result-card__time">
-                        {result.totalTime ?? '—'}
-                      </strong>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            )}
-
+            <h2>Ключевые достижения</h2>
             <ul>
               {athlete.achievements.map((achievement) => (
                 <li key={achievement}>{achievement}</li>
               ))}
             </ul>
           </div>
+
+          {athleteResults.length > 0 && (
+            <div className="athlete-detail__results">
+              <h2>Результаты</h2>
+
+              {Object.entries(resultsByYear)
+                .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+                .map(([year, yearResults]) => (
+                  <div className="athlete-results-season" key={year}>
+                    <h3>{year}</h3>
+
+                    <div className="athlete-results-list">
+                      {yearResults.map((result) => (
+                        <article
+                          className="athlete-result-card"
+                          key={result.id}
+                          onClick={() => onRaceClick(result.race!)}
+                        >
+                          <div className="athlete-result-card__place">
+                            {result.position}
+                          </div>
+
+                          <div className="athlete-result-card__info">
+                            <strong>{result.race!.name}</strong>
+                            <span>
+                              {result.race!.date} · {result.race!.city}
+                            </span>
+                          </div>
+
+                          <strong className="athlete-result-card__time">
+                            {result.totalTime ?? '—'}
+                          </strong>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
       </section>
 
