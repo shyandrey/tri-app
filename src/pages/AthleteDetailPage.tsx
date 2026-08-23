@@ -61,13 +61,9 @@ function AthleteDetailPage({
           </h1>
 
           <p className="athlete-detail__meta">
-            {athlete.nameEn && (
-              <>
-                {athlete.nameEn}
-                <br />
-              </>
-            )}
-            {athlete.country}
+            {athlete.nameEn}
+            {athlete.nameEn && athlete.countryEn && ' · '}
+            {athlete.countryEn}
           </p>
 
           <div className="athlete-detail__about">
