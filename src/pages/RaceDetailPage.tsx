@@ -19,11 +19,11 @@ function RaceDetailPage({ race, results, athletes, onBack, onNavigate, onAthlete
 
   return (
     <main className="app">
+      <span className="race-detail-page__distance-tag race-card__tag">{race.distance}</span>
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
         <div className="race-detail">
-          <span className="race-card__tag">{race.distance}</span>
           <h1>{race.name}</h1>
           <p className="race-detail-meta">{race.date} · {race.city}, {race.country}</p>
 
