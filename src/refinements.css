@@ -19,6 +19,13 @@
   cursor: pointer;
 }
 
+.race-detail-page__distance-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 30;
+}
+
 .page-back-button:hover {
   background: #242018;
 }
@@ -118,6 +125,11 @@
     right: 12px;
     padding: 9px 12px;
     font-size: 14px;
+  }
+
+  .race-detail-page__distance-tag {
+    top: 12px;
+    left: 12px;
   }
 
   .athlete-card {
