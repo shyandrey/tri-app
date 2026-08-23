@@ -39,9 +39,7 @@ function AthletesPage({
 
               <div className="athlete-card__info">
                 <h3>{athlete.name}</h3>
-                <p>
-                  {athlete.country} · {athlete.discipline}
-                </p>
+                <p>{athlete.country}</p>
               </div>
 
               <span className="athlete-card__arrow">›</span>
@@ -49,10 +47,11 @@ function AthletesPage({
           ))}
         </div>
       </section>
-    <BottomNav
-  currentPage="athletes"
-  onNavigate={onNavigate}
-/>
+
+      <BottomNav
+        currentPage="athletes"
+        onNavigate={onNavigate}
+      />
     </main>
   )
 }
