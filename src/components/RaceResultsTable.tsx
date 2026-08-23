@@ -17,10 +17,10 @@ type RaceResultsTableProps = {
 }
 
 const sortOptions: { key: ResultSortKey; label: string }[] = [
-  { key: 'overall', label: 'Total' },
   { key: 'swim', label: 'Swim' },
   { key: 'bike', label: 'Bike' },
   { key: 'run', label: 'Run' },
+  { key: 'overall', label: 'Total' },
 ]
 
 function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTableProps) {
