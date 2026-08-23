@@ -57,9 +57,15 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
           <tbody>
             {sortedResults.map((result, index) => {
               const athlete = result.athleteId ? athletes.find((item) => item.id === result.athleteId) : undefined
+              const selectedTime = getResultTime(result, sortKey)
+              const splitRank = sortKey !== 'overall' && selectedTime ? index + 1 : undefined
+
               return (
                 <tr key={result.id} className={athlete ? 'is-clickable' : ''} onClick={() => athlete && onAthleteClick(athlete)}>
-                  <td className="results-table__position"><span>{result.position}</span>{sortKey !== 'overall' && <small>({index + 1})</small>}</td>
+                  <td className="results-table__position">
+                    <span>{result.position}</span>
+                    {sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}
+                  </td>
                   <td><div className="results-table__athlete">
                     {athlete?.image ? <img src={athlete.image} alt="" /> : <span className="results-table__avatar">{result.athleteName.charAt(0)}</span>}
                     <div><strong>{result.athleteName} {countryCodeToFlag(result.countryCode)}</strong>{result.country && <small>{result.country}</small>}</div>
@@ -82,6 +88,7 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
         {sortedResults.map((result, index) => {
           const athlete = result.athleteId ? athletes.find((item) => item.id === result.athleteId) : undefined
           const selectedTime = getResultTime(result, sortKey)
+          const splitRank = sortKey !== 'overall' && selectedTime ? index + 1 : undefined
           const isBestSelectedSplit =
             (sortKey === 'swim' && selectedTime === bestSwim) ||
             (sortKey === 'bike' && selectedTime === bestBike) ||
@@ -89,7 +96,10 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
 
           return (
             <button type="button" className={`results-table__mobile-row ${athlete ? 'is-clickable' : ''}`} key={result.id} onClick={() => athlete && onAthleteClick(athlete)}>
-              <span className="results-table__mobile-rank"><span>{result.position}</span>{sortKey !== 'overall' && <small>({index + 1})</small>}</span>
+              <span className="results-table__mobile-rank">
+                <span>{result.position}</span>
+                {sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}
+              </span>
               <span className="results-table__mobile-athlete">
                 {athlete?.image ? <img src={athlete.image} alt="" /> : <span className="results-table__avatar">{result.athleteName.charAt(0)}</span>}
                 <span><strong>{result.athleteName} {countryCodeToFlag(result.countryCode)}</strong>{result.country && <small>{result.country}</small>}</span>
