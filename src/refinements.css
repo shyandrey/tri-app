@@ -1,0 +1,152 @@
+/* Shared refinements */
+.section__header button,
+.race-detail-back {
+  padding: 9px 14px;
+  border: 1px solid #f3b72b;
+  border-radius: 10px;
+  background: transparent;
+  color: #f3b72b;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.race-detail-back {
+  display: block;
+  width: fit-content;
+  margin: 0 0 20px auto;
+}
+
+.section__header button:hover,
+.race-detail-back:hover {
+  background: rgba(243, 183, 43, 0.08);
+}
+
+/* Race cards: shared by Home and Calendar */
+.race-card {
+  gap: 18px;
+}
+
+.race-card > div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.race-card h3 {
+  line-height: 1.25;
+}
+
+.race-card__arrow {
+  flex: 0 0 28px;
+  text-align: center;
+}
+
+/* Athlete profile list */
+.athlete-card {
+  text-align: left;
+}
+
+.athlete-card__flag {
+  flex: 0 0 48px;
+}
+
+.athlete-card__image {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  border: 1px solid #343434;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.athlete-card__image--placeholder {
+  display: grid;
+  place-items: center;
+  background: #303030;
+  color: #a8a8a8;
+  font-weight: 700;
+}
+
+.athlete-card__info {
+  min-width: 0;
+  text-align: left;
+}
+
+/* Athlete recent results */
+.athlete-results-year + .athlete-results-year {
+  margin-top: 22px;
+}
+
+.athlete-results-year h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.athlete-result-card {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 78px;
+  align-items: center;
+  gap: 16px;
+  min-height: 62px;
+  padding: 14px 0;
+}
+
+.athlete-result-card__place {
+  justify-self: start;
+}
+
+.athlete-result-card__info {
+  min-width: 0;
+  text-align: left;
+}
+
+.athlete-result-card__info strong {
+  line-height: 1.3;
+}
+
+.athlete-result-card__time {
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .section__header {
+    align-items: center;
+  }
+
+  .section__header button,
+  .race-detail-back {
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+
+  .athlete-card {
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .athlete-card__flag {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    font-size: 22px;
+  }
+
+  .athlete-card__image {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .athlete-card__info h3 {
+    font-size: 16px;
+  }
+
+  .athlete-result-card {
+    grid-template-columns: 38px minmax(0, 1fr) 68px;
+    gap: 10px;
+  }
+}
