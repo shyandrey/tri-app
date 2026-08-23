@@ -23,6 +23,8 @@ const sortOptions: { key: ResultSortKey; label: string }[] = [
   { key: 'overall', label: 'Total' },
 ]
 
+const genderLabels = { M: 'MEN', W: 'WOMEN' } as const
+
 function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTableProps) {
   const [sortKey, setSortKey] = useState<ResultSortKey>('overall')
   const genders = useMemo(() => {
@@ -61,7 +63,7 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
                     setSortKey('overall')
                   }}
                 >
-                  {gender}
+                  {genderLabels[gender]}
                 </button>
               ))}
             </div>
