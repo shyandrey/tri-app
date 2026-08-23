@@ -3,6 +3,7 @@ export type Athlete = {
   name: string
   nameEn?: string
   country: string
+  countryEn?: string
   flag: string
   discipline: string
   image?: string
