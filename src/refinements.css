@@ -132,6 +132,10 @@
     left: 12px;
   }
 
+  .race-detail-page {
+    margin-top: 56px;
+  }
+
   .athlete-card {
     gap: 10px;
     padding: 14px;
