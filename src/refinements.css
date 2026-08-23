@@ -119,6 +119,31 @@
   white-space: nowrap;
 }
 
+@media (min-width: 701px) {
+  .race-detail-page.race-detail-page--table {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .race-detail-page--table .race-detail,
+  .race-detail-page--table .race-detail__summary,
+  .race-detail-page--table .race-detail-about,
+  .race-detail-page--table .results-table,
+  .race-detail-page--table .results-table__toolbar,
+  .race-detail-page--table .results-table__desktop-wrap {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+  }
+
+  .race-detail-page--table .race-detail__summary {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
 @media (max-width: 640px) {
   .page-back-button {
     top: 12px;
