@@ -14,51 +14,24 @@ type RaceDetailPageProps = {
   onAthleteClick: (athlete: Athlete) => void
 }
 
-function RaceDetailPage({
-  race,
-  results,
-  athletes,
-  onBack,
-  onNavigate,
-  onAthleteClick,
-}: RaceDetailPageProps) {
+function RaceDetailPage({ race, results, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
   const hasResults = results.length > 0
 
   return (
     <main className="app">
-      <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
-        <button className="race-detail-back" onClick={onBack}>
-          ← Назад
-        </button>
+      <button className="page-back-button" onClick={onBack}>← Назад</button>
 
+      <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
         <div className="race-detail">
           <span className="race-card__tag">{race.distance}</span>
-
           <h1>{race.name}</h1>
-
-          <p className="race-detail-meta">
-            {race.date} · {race.city}, {race.country}
-          </p>
+          <p className="race-detail-meta">{race.date} · {race.city}, {race.country}</p>
 
           <div className="race-detail__summary">
             <div className="race-detail-distances">
-              <div className="race-detail-distance">
-                <span>🏊</span>
-                <strong>{race.swim}</strong>
-                <small>Плавание</small>
-              </div>
-
-              <div className="race-detail-distance">
-                <span>🚴</span>
-                <strong>{race.bike}</strong>
-                <small>Велосипед</small>
-              </div>
-
-              <div className="race-detail-distance">
-                <span>🏃</span>
-                <strong>{race.run}</strong>
-                <small>Бег</small>
-              </div>
+              <div className="race-detail-distance"><span>🏊</span><strong>{race.swim}</strong><small>Плавание</small></div>
+              <div className="race-detail-distance"><span>🚴</span><strong>{race.bike}</strong><small>Велосипед</small></div>
+              <div className="race-detail-distance"><span>🏃</span><strong>{race.run}</strong><small>Бег</small></div>
             </div>
 
             <div className="race-detail-about">
@@ -67,13 +40,7 @@ function RaceDetailPage({
             </div>
           </div>
 
-          {hasResults && (
-            <RaceResultsTable
-              results={results}
-              athletes={athletes}
-              onAthleteClick={onAthleteClick}
-            />
-          )}
+          {hasResults && <RaceResultsTable results={results} athletes={athletes} onAthleteClick={onAthleteClick} />}
         </div>
       </section>
 
