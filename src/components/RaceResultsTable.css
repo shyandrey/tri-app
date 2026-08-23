@@ -30,6 +30,56 @@
 .results-table__total { color: #fff !important; font-weight: 800; }
 .best-split-badge { display: inline-block; padding: 3px 6px; margin: -4px -7px; border: 1px solid #f3b72b; border-radius: 7px; color: #f3b72b; font-weight: 800; line-height: 1.2; }
 .results-table__mobile { display: none; }
+
+@media (min-width: 701px) {
+  .race-detail-page--table {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  .race-detail-page--table .race-detail__summary {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .results-table {
+    width: 100%;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  .results-table__desktop {
+    min-width: 0;
+  }
+
+  .results-table__desktop th,
+  .results-table__desktop td {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .results-table__position {
+    width: 40px;
+  }
+
+  .results-table__athlete {
+    min-width: 145px;
+    gap: 6px;
+  }
+
+  .results-table__athlete img,
+  .results-table__avatar {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+}
+
 @media (max-width: 700px) and (orientation: portrait) {
  .results-table__desktop-wrap { display: none; }
  .results-table__mobile { display: block; border: 1px solid #343434; border-radius: 18px; overflow: hidden; background: #202020; }
