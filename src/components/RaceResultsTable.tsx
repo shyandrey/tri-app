@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { Athlete } from '../types/Athlete'
 import type { RaceResult } from '../types/RaceResult'
 import { countryCodeToFlag } from '../utils/countryFlag'
@@ -25,15 +25,48 @@ const sortOptions: { key: ResultSortKey; label: string }[] = [
 
 function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTableProps) {
   const [sortKey, setSortKey] = useState<ResultSortKey>('overall')
-  const sortedResults = useMemo(() => sortRaceResults(results, sortKey), [results, sortKey])
-  const bestSwim = useMemo(() => getBestSplit(results, 'swim'), [results])
-  const bestBike = useMemo(() => getBestSplit(results, 'bike'), [results])
-  const bestRun = useMemo(() => getBestSplit(results, 'run'), [results])
+  const genders = useMemo(() => {
+    const present = new Set(results.map((result) => result.gender).filter(Boolean))
+    return (['M', 'W'] as const).filter((gender) => present.has(gender))
+  }, [results])
+  const [selectedGender, setSelectedGender] = useState<'M' | 'W' | undefined>(genders[0])
+
+  useEffect(() => {
+    setSelectedGender(genders[0])
+    setSortKey('overall')
+  }, [results, genders])
+
+  const visibleResults = useMemo(
+    () => selectedGender ? results.filter((result) => result.gender === selectedGender) : results,
+    [results, selectedGender],
+  )
+  const sortedResults = useMemo(() => sortRaceResults(visibleResults, sortKey), [visibleResults, sortKey])
+  const bestSwim = useMemo(() => getBestSplit(visibleResults, 'swim'), [visibleResults])
+  const bestBike = useMemo(() => getBestSplit(visibleResults, 'bike'), [visibleResults])
+  const bestRun = useMemo(() => getBestSplit(visibleResults, 'run'), [visibleResults])
 
   return (
     <div className="results-table">
       <div className="results-table__toolbar">
-        <h2>Результаты</h2>
+        <div className="results-table__title-row">
+          <h2>Результаты</h2>
+          {genders.length > 1 && (
+            <div className="results-table__gender-tabs" aria-label="Категория результатов">
+              {genders.map((gender) => (
+                <button
+                  key={gender}
+                  className={selectedGender === gender ? 'is-active' : ''}
+                  onClick={() => {
+                    setSelectedGender(gender)
+                    setSortKey('overall')
+                  }}
+                >
+                  {gender}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
         <div className="results-table__sort-tabs">
           {sortOptions.map((option) => (
             <button key={option.key} className={sortKey === option.key ? 'is-active' : ''} onClick={() => setSortKey(option.key)}>
@@ -59,13 +92,9 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
               const athlete = result.athleteId ? athletes.find((item) => item.id === result.athleteId) : undefined
               const selectedTime = getResultTime(result, sortKey)
               const splitRank = sortKey !== 'overall' && selectedTime ? index + 1 : undefined
-
               return (
                 <tr key={result.id} className={athlete ? 'is-clickable' : ''} onClick={() => athlete && onAthleteClick(athlete)}>
-                  <td className="results-table__position">
-                    <span>{result.position}</span>
-                    {sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}
-                  </td>
+                  <td className="results-table__position"><span>{result.position}</span>{sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}</td>
                   <td><div className="results-table__athlete">
                     {athlete?.image ? <img src={athlete.image} alt="" /> : <span className="results-table__avatar">{result.athleteName.charAt(0)}</span>}
                     <div><strong>{result.athleteName} {countryCodeToFlag(result.countryCode)}</strong>{result.country && <small>{result.country}</small>}</div>
@@ -89,26 +118,15 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
           const athlete = result.athleteId ? athletes.find((item) => item.id === result.athleteId) : undefined
           const selectedTime = getResultTime(result, sortKey)
           const splitRank = sortKey !== 'overall' && selectedTime ? index + 1 : undefined
-          const isBestSelectedSplit =
-            (sortKey === 'swim' && selectedTime === bestSwim) ||
-            (sortKey === 'bike' && selectedTime === bestBike) ||
-            (sortKey === 'run' && selectedTime === bestRun)
-
+          const isBestSelectedSplit = (sortKey === 'swim' && selectedTime === bestSwim) || (sortKey === 'bike' && selectedTime === bestBike) || (sortKey === 'run' && selectedTime === bestRun)
           return (
             <button type="button" className={`results-table__mobile-row ${athlete ? 'is-clickable' : ''}`} key={result.id} onClick={() => athlete && onAthleteClick(athlete)}>
-              <span className="results-table__mobile-rank">
-                <span>{result.position}</span>
-                {sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}
-              </span>
+              <span className="results-table__mobile-rank"><span>{result.position}</span>{sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}</span>
               <span className="results-table__mobile-athlete">
                 {athlete?.image ? <img src={athlete.image} alt="" /> : <span className="results-table__avatar">{result.athleteName.charAt(0)}</span>}
                 <span><strong>{result.athleteName} {countryCodeToFlag(result.countryCode)}</strong>{result.country && <small>{result.country}</small>}</span>
               </span>
-              <strong className="results-table__mobile-time">
-                <span className={isBestSelectedSplit ? 'best-split-badge' : ''}>
-                  {sortKey === 'overall' && typeof result.position === 'string' ? result.position : selectedTime ?? '—'}
-                </span>
-              </strong>
+              <strong className="results-table__mobile-time"><span className={isBestSelectedSplit ? 'best-split-badge' : ''}>{sortKey === 'overall' && typeof result.position === 'string' ? result.position : selectedTime ?? '—'}</span></strong>
             </button>
           )
         })}
