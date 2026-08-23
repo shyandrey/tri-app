@@ -28,12 +28,6 @@ function RaceDetailPage({ race, results, athletes, onBack, onNavigate, onAthlete
           <p className="race-detail-meta">{race.date} · {race.city}, {race.country}</p>
 
           <div className="race-detail__summary">
-            <div className="race-detail-distances">
-              <div className="race-detail-distance"><span>🏊</span><strong>{race.swim}</strong><small>Плавание</small></div>
-              <div className="race-detail-distance"><span>🚴</span><strong>{race.bike}</strong><small>Велосипед</small></div>
-              <div className="race-detail-distance"><span>🏃</span><strong>{race.run}</strong><small>Бег</small></div>
-            </div>
-
             <div className="race-detail-about">
               <h2>О гонке</h2>
               <p>{race.description}</p>
