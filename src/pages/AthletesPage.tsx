@@ -12,10 +12,11 @@ type AthletesPageProps = {
 function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: AthletesPageProps) {
   return (
     <main className="app">
+      <button className="page-back-button" onClick={onBack}>← Назад</button>
+
       <section className="section">
         <div className="section__header">
           <h1>Профили атлетов</h1>
-          <button onClick={onBack}>← Назад</button>
         </div>
 
         <div className="athletes-list">
@@ -36,6 +37,7 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
           ))}
         </div>
       </section>
+
       <BottomNav currentPage="athletes" onNavigate={onNavigate} />
     </main>
   )
