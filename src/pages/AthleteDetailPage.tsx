@@ -27,9 +27,9 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
 
   return (
     <main className="app">
-      <section className="section athlete-detail-page">
-        <button className="race-detail-back" onClick={onBack}>← Назад</button>
+      <button className="page-back-button" onClick={onBack}>← Назад</button>
 
+      <section className="section athlete-detail-page">
         <div className="athlete-detail">
           {athlete.image && <img className="athlete-detail__image" src={athlete.image} alt={athlete.name} />}
           <h1>{athlete.name} <span className="athlete-detail__flag-inline">{athlete.flag}</span></h1>
@@ -69,6 +69,7 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
           )}
         </div>
       </section>
+
       <BottomNav currentPage="athletes" onNavigate={onNavigate} />
     </main>
   )
