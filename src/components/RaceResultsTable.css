@@ -11,22 +11,31 @@
 .results-table__sort-tabs button { border: 0; border-radius: 8px; padding: 8px 11px; background: transparent; color: #999; cursor: pointer; }
 .results-table__sort-tabs button.is-active { background: #f3b72b; color: #171717; font-weight: 700; }
 .results-table__desktop-wrap { width: 100%; overflow-x: auto; border: 1px solid #343434; border-radius: 18px; background: #202020; box-sizing: border-box; }
-.results-table__desktop { width: 100%; min-width: 740px; table-layout: auto; border-collapse: collapse; }
+.results-table__desktop { width: 100%; min-width: 740px; table-layout: fixed; border-collapse: collapse; }
 .results-table__desktop th { padding: 13px 7px; color: #858585; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; text-align: left; border-bottom: 1px solid #3a3a3a; }
 .results-table__desktop th button { border: 0; border-radius: 7px; padding: 5px 7px; margin: -5px -7px; background: transparent; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; transition: background 160ms ease,color 160ms ease; }
 .results-table__desktop th button:hover { color: #f3b72b; }
 .results-table__desktop th button.is-active-sort { background: #f3b72b; color: #171717; font-weight: 800; }
-.results-table__desktop td { padding: 12px 7px; border-bottom: 1px solid #303030; color: #d7d7d7; font-size: 12px; white-space: nowrap; }
+.results-table__desktop td { padding: 12px 7px; border-bottom: 1px solid #303030; color: #d7d7d7; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.results-table__desktop th:nth-child(1), .results-table__desktop td:nth-child(1) { width: 6%; }
+.results-table__desktop th:nth-child(2), .results-table__desktop td:nth-child(2) { width: 31%; }
+.results-table__desktop th:nth-child(3), .results-table__desktop td:nth-child(3) { width: 11%; }
+.results-table__desktop th:nth-child(4), .results-table__desktop td:nth-child(4) { width: 7%; }
+.results-table__desktop th:nth-child(5), .results-table__desktop td:nth-child(5) { width: 11%; }
+.results-table__desktop th:nth-child(6), .results-table__desktop td:nth-child(6) { width: 7%; }
+.results-table__desktop th:nth-child(7), .results-table__desktop td:nth-child(7) { width: 11%; }
+.results-table__desktop th:nth-child(8), .results-table__desktop td:nth-child(8) { width: 16%; }
 .results-table__desktop tbody tr:last-child td { border-bottom: 0; }
 .results-table__desktop tbody tr.is-clickable { cursor: pointer; }
 .results-table__desktop tbody tr.is-clickable:hover { background: #262626; }
-.results-table__position { width: 46px; font-weight: 800; color: #f3b72b !important; }
+.results-table__position { font-weight: 800; color: #f3b72b !important; }
 .results-table__position small,.results-table__mobile-rank small { margin-left: 4px; color: #777; font-size: 10px; font-weight: 600; }
-.results-table__athlete { display: flex; align-items: center; gap: 8px; min-width: 165px; }
+.results-table__athlete { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .results-table__athlete img,.results-table__mobile-athlete img,.results-table__avatar { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; object-fit: cover; }
 .results-table__avatar { display: grid; place-items: center; background: #303030; color: #b8b8b8; font-weight: 700; }
-.results-table__athlete div { display: flex; flex-direction: column; gap: 3px; }
-.results-table__athlete small,.results-table__mobile-athlete small { display: block; margin-top: 3px; color: #777; font-size: 10px; }
+.results-table__athlete div { display: flex; flex-direction: column; gap: 3px; min-width: 0; overflow: hidden; }
+.results-table__athlete strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.results-table__athlete small,.results-table__mobile-athlete small { display: block; margin-top: 3px; color: #777; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .results-table__total { color: #fff !important; font-weight: 800; }
 .best-split-badge { display: inline-block; padding: 3px 6px; margin: -4px -7px; border: 1px solid #f3b72b; border-radius: 7px; color: #f3b72b; font-weight: 800; line-height: 1.2; }
 .results-table__mobile { display: none; }
@@ -63,12 +72,7 @@
     padding-right: 5px;
   }
 
-  .results-table__position {
-    width: 40px;
-  }
-
   .results-table__athlete {
-    min-width: 145px;
     gap: 6px;
   }
 
