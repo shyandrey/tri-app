@@ -67,7 +67,7 @@ function AthleteDetailPage({
                 <br />
               </>
             )}
-            {athlete.country} · {athlete.discipline}
+            {athlete.country}
           </p>
 
           <div className="athlete-detail__about">
