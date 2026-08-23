@@ -5,6 +5,7 @@ export const athletes: Athlete[] = [
   {
     id: 1,
     name: 'Кристиан Блюмменфельт',
+    nameEn: 'Kristian Blummenfelt',
     country: 'Норвегия',
     flag: '🇳🇴',
     discipline: 'IRONMAN / T100',
@@ -20,6 +21,7 @@ export const athletes: Athlete[] = [
   {
     id: 2,
     name: 'Мартен ван Рил',
+    nameEn: 'Marten Van Riel',
     country: 'Бельгия',
     flag: '🇧🇪',
     discipline: 'T100',
@@ -33,6 +35,7 @@ export const athletes: Athlete[] = [
   {
     id: 3,
     name: 'Хайден Уайлд',
+    nameEn: 'Hayden Wilde',
     country: 'Новая Зеландия',
     flag: '🇳🇿',
     discipline: 'T100',
