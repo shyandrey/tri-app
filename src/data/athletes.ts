@@ -7,6 +7,7 @@ export const athletes: Athlete[] = [
     name: 'Кристиан Блюмменфельт',
     nameEn: 'Kristian Blummenfelt',
     country: 'Норвегия',
+    countryEn: 'Norway',
     flag: '🇳🇴',
     discipline: 'IRONMAN / T100',
     image: blummenfeltImage,
@@ -23,6 +24,7 @@ export const athletes: Athlete[] = [
     name: 'Мартен ван Рил',
     nameEn: 'Marten Van Riel',
     country: 'Бельгия',
+    countryEn: 'Belgium',
     flag: '🇧🇪',
     discipline: 'T100',
     bio:
@@ -37,6 +39,7 @@ export const athletes: Athlete[] = [
     name: 'Хайден Уайлд',
     nameEn: 'Hayden Wilde',
     country: 'Новая Зеландия',
+    countryEn: 'New Zealand',
     flag: '🇳🇿',
     discipline: 'T100',
     bio:
