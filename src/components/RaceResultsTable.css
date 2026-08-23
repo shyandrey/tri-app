@@ -2,27 +2,27 @@
 .race-detail-page--table .race-detail__summary { max-width: 720px; margin: 0 auto; }
 .results-table { margin-top: 30px; text-align: left; }
 .results-table__toolbar { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 12px; }
-.results-table__title-row { display: flex; align-items: center; gap: 14px; }
+.results-table__title-row { display: flex; align-items: center; gap: 14px; width: 100%; }
 .results-table__toolbar h2 { margin: 0; font-size: 22px; }
-.results-table__gender-tabs { display: flex; gap: 4px; padding: 4px; border: 1px solid #343434; border-radius: 12px; background: #202020; }
+.results-table__gender-tabs { display: flex; gap: 4px; padding: 4px; margin-left: auto; border: 1px solid #343434; border-radius: 12px; background: #202020; }
 .results-table__gender-tabs button { min-width: 76px; border: 0; border-radius: 8px; padding: 8px 14px; background: transparent; color: #999; font-size: 12px; font-weight: 700; cursor: pointer; }
 .results-table__gender-tabs button.is-active { background: #f3b72b; color: #171717; }
 .results-table__sort-tabs { display: none; gap: 4px; padding: 4px; border: 1px solid #343434; border-radius: 12px; background: #202020; }
 .results-table__sort-tabs button { border: 0; border-radius: 8px; padding: 8px 11px; background: transparent; color: #999; cursor: pointer; }
 .results-table__sort-tabs button.is-active { background: #f3b72b; color: #171717; font-weight: 700; }
-.results-table__desktop-wrap { overflow-x: auto; border: 1px solid #343434; border-radius: 18px; background: #202020; }
-.results-table__desktop { width: 100%; min-width: 920px; border-collapse: collapse; }
-.results-table__desktop th { padding: 13px 12px; color: #858585; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; text-align: left; border-bottom: 1px solid #3a3a3a; }
+.results-table__desktop-wrap { width: 100%; overflow-x: auto; border: 1px solid #343434; border-radius: 18px; background: #202020; box-sizing: border-box; }
+.results-table__desktop { width: 100%; min-width: 820px; table-layout: auto; border-collapse: collapse; }
+.results-table__desktop th { padding: 13px 9px; color: #858585; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; text-align: left; border-bottom: 1px solid #3a3a3a; }
 .results-table__desktop th button { border: 0; border-radius: 7px; padding: 5px 8px; margin: -5px -8px; background: transparent; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; transition: background 160ms ease,color 160ms ease; }
 .results-table__desktop th button:hover { color: #f3b72b; }
 .results-table__desktop th button.is-active-sort { background: #f3b72b; color: #171717; font-weight: 800; }
-.results-table__desktop td { padding: 12px; border-bottom: 1px solid #303030; color: #d7d7d7; font-size: 13px; white-space: nowrap; }
+.results-table__desktop td { padding: 12px 9px; border-bottom: 1px solid #303030; color: #d7d7d7; font-size: 13px; white-space: nowrap; }
 .results-table__desktop tbody tr:last-child td { border-bottom: 0; }
 .results-table__desktop tbody tr.is-clickable { cursor: pointer; }
 .results-table__desktop tbody tr.is-clickable:hover { background: #262626; }
-.results-table__position { width: 58px; font-weight: 800; color: #f3b72b !important; }
+.results-table__position { width: 52px; font-weight: 800; color: #f3b72b !important; }
 .results-table__position small,.results-table__mobile-rank small { margin-left: 4px; color: #777; font-size: 10px; font-weight: 600; }
-.results-table__athlete { display: flex; align-items: center; gap: 10px; min-width: 230px; }
+.results-table__athlete { display: flex; align-items: center; gap: 10px; min-width: 190px; }
 .results-table__athlete img,.results-table__mobile-athlete img,.results-table__avatar { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; object-fit: cover; }
 .results-table__avatar { display: grid; place-items: center; background: #303030; color: #b8b8b8; font-weight: 700; }
 .results-table__athlete div { display: flex; flex-direction: column; gap: 3px; }
@@ -35,6 +35,7 @@
  .results-table__mobile { display: block; border: 1px solid #343434; border-radius: 18px; overflow: hidden; background: #202020; }
  .results-table__toolbar { align-items: stretch; flex-direction: column; }
  .results-table__title-row { justify-content: space-between; }
+ .results-table__gender-tabs { margin-left: auto; }
  .results-table__gender-tabs button { min-width: 72px; padding: 9px 12px; }
  .results-table__sort-tabs { width: 100%; box-sizing: border-box; display: grid; grid-template-columns: repeat(4,1fr); }
  .results-table__sort-tabs button { padding: 9px 4px; font-size: 12px; }
