@@ -1,10 +1,17 @@
 /* Shared refinements */
-.section__header button,
-.race-detail-back {
+.app {
+  position: relative;
+}
+
+.page-back-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 30;
   padding: 9px 14px;
   border: 1px solid #f3b72b;
   border-radius: 10px;
-  background: transparent;
+  background: #171717;
   color: #f3b72b;
   font-size: 15px;
   font-weight: 600;
@@ -12,15 +19,8 @@
   cursor: pointer;
 }
 
-.race-detail-back {
-  display: block;
-  width: fit-content;
-  margin: 0 0 20px auto;
-}
-
-.section__header button:hover,
-.race-detail-back:hover {
-  background: rgba(243, 183, 43, 0.08);
+.page-back-button:hover {
+  background: #242018;
 }
 
 /* Race cards: shared by Home and Calendar */
@@ -113,12 +113,9 @@
 }
 
 @media (max-width: 640px) {
-  .section__header {
-    align-items: center;
-  }
-
-  .section__header button,
-  .race-detail-back {
+  .page-back-button {
+    top: 12px;
+    right: 12px;
     padding: 9px 12px;
     font-size: 14px;
   }
