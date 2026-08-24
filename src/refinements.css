@@ -49,6 +49,14 @@
   text-align: center;
 }
 
+/* Calendar filters */
+.calendar-filters button {
+  min-height: 42px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
 /* Athlete profile list */
 .athlete-card {
   text-align: left;
