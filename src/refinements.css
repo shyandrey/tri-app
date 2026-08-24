@@ -31,17 +31,65 @@
 }
 
 /* Race cards: shared by Home and Calendar */
-.race-card {
-  gap: 18px;
+.race-card--compact {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
 }
 
-.race-card > div:first-child {
-  flex: 1;
+.race-card__date-block {
+  align-self: center;
+  text-align: center;
+  color: #f3b72b;
+  line-height: 1;
+}
+
+.race-card__date-block strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.race-card__date-block span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.race-card__content {
+  min-width: 0;
+  text-align: left;
+}
+
+.race-card--compact h3 {
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+
+.race-card__location {
+  margin: 0 !important;
+}
+
+.race-card__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
   min-width: 0;
 }
 
-.race-card h3 {
-  line-height: 1.25;
+.race-card__meta-row .race-card__tag {
+  flex: 0 0 auto;
+}
+
+.race-card__meta-row .race-card__series {
+  margin: 0 !important;
+  min-width: 0;
 }
 
 .race-card__arrow {
@@ -167,6 +215,33 @@
 
   .race-detail-page {
     margin-top: 56px;
+  }
+
+  .race-card--compact {
+    grid-template-columns: 50px minmax(0, 1fr) 22px;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .race-card__date-block strong {
+    font-size: 25px;
+  }
+
+  .race-card__date-block span {
+    font-size: 11px;
+  }
+
+  .race-card--compact h3 {
+    font-size: 17px;
+  }
+
+  .race-card__meta-row {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .race-card__meta-row .race-card__series {
+    font-size: 10px;
   }
 
   .athlete-card {
