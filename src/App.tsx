@@ -71,7 +71,7 @@ function App() {
 
       <section className="section">
         <div className="section__header"><h2>⚡ Ближайшие старты</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
-        {upcomingRaces.map((race) => <RaceCard key={race.id} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
+        {upcomingRaces.map((race) => <RaceCard key={race.id} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
       </section>
 
       <section className="features">

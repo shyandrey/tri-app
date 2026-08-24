@@ -271,4 +271,12 @@
     grid-template-columns: 38px minmax(0, 1fr) 68px;
     gap: 10px;
   }
+  
+  .race-card__gender {
+  color: #f3b72b;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
 }

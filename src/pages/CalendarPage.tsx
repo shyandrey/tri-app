@@ -70,6 +70,7 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
             date={race.date}
             city={race.city}
             country={race.country}
+            gender={race.gender}
             onClick={() => onRaceClick(race)}
           />
         ))}

@@ -7,6 +7,7 @@ type RaceCardProps = {
   date: string
   city: string
   country: string
+  gender?: 'WPRO' | 'MPRO' | 'WPRO & MPRO'
   onClick?: () => void
 }
 
@@ -41,9 +42,17 @@ function RaceCard({
   date,
   city,
   country,
+  gender,
   onClick,
 }: RaceCardProps) {
   const compactDate = getCompactDate(date)
+
+const genderLabel =
+  gender === 'WPRO'
+    ? 'WOMEN'
+    : gender === 'MPRO'
+      ? 'MEN'
+      : null
 
   return (
     <article className="race-card race-card--compact" onClick={onClick}>
@@ -62,6 +71,11 @@ function RaceCard({
         <div className="race-card__meta-row">
           <span className="race-card__tag">{distance}</span>
           <p className="race-card__series">{series}</p>
+          {genderLabel && (
+          <span className="race-card__gender">
+            · {genderLabel}
+          </span>
+        )}
         </div>
       </div>
 
