@@ -10,6 +10,30 @@ type RaceCardProps = {
   onClick?: () => void
 }
 
+const monthAbbreviations: Record<string, string> = {
+  января: 'ЯНВ',
+  февраля: 'ФЕВ',
+  марта: 'МАР',
+  апреля: 'АПР',
+  мая: 'МАЙ',
+  июня: 'ИЮН',
+  июля: 'ИЮЛ',
+  августа: 'АВГ',
+  сентября: 'СЕН',
+  октября: 'ОКТ',
+  ноября: 'НОЯ',
+  декабря: 'ДЕК',
+}
+
+function getCompactDate(date: string) {
+  const [day = '', month = ''] = date.trim().split(/\s+/)
+
+  return {
+    day,
+    month: monthAbbreviations[month.toLowerCase()] ?? month.slice(0, 3).toUpperCase(),
+  }
+}
+
 function RaceCard({
   distance,
   series,
@@ -19,25 +43,26 @@ function RaceCard({
   country,
   onClick,
 }: RaceCardProps) {
-  return (
-    <article
-      className="race-card"
-      onClick={onClick}
-    >
-      <div>
-        <span className="race-card__tag">
-          {distance}
-        </span>
+  const compactDate = getCompactDate(date)
 
+  return (
+    <article className="race-card race-card--compact" onClick={onClick}>
+      <div className="race-card__date-block" aria-label={date}>
+        <strong>{compactDate.day}</strong>
+        <span>{compactDate.month}</span>
+      </div>
+
+      <div className="race-card__content">
         <h3>{name}</h3>
 
-        <p>
-          {date} · {city}, {country}
+        <p className="race-card__location">
+          {city}, {country}
         </p>
 
-        <p className="race-card__series">
-          {series}
-        </p>
+        <div className="race-card__meta-row">
+          <span className="race-card__tag">{distance}</span>
+          <p className="race-card__series">{series}</p>
+        </div>
       </div>
 
       <span className="race-card__arrow">›</span>
