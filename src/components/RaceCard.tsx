@@ -56,7 +56,7 @@ function RaceCard({
         <h3>{name}</h3>
 
         <p className="race-card__location">
-          {city}, {country}
+          {city ? `${city}, ${country}` : country}
         </p>
 
         <div className="race-card__meta-row">

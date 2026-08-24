@@ -1,6 +1,6 @@
 export type RaceSeries =
   | 'IRONMAN Pro Series'
-  | 'T100'
+  | 'Triathlon World Tour'
   | 'Challenge'
 
 export type RaceDistance =

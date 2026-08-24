@@ -23,7 +23,7 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
       race.city.toLowerCase().includes(search.toLowerCase()) ||
       race.country.toLowerCase().includes(search.toLowerCase())
 
-    const matchesFilter = filter === 'Все' || race.distance === filter
+    const matchesFilter = filter === 'Все' || race.series === filter
     const matchesTime =
       timeFilter === 'all' ||
       (timeFilter === 'upcoming' && isRaceUpcoming(race)) ||
@@ -56,7 +56,7 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
         </div>
 
         <div className="calendar-filters">
-          {['Все', '70.3', 'IRONMAN', 'T100'].map((item) => (
+          {['Все', 'IRONMAN Pro Series', 'Triathlon World Tour'].map((item) => (
             <button key={item} className={filter === item ? 'filter-active' : ''} onClick={() => setFilter(item)}>{item}</button>
           ))}
         </div>

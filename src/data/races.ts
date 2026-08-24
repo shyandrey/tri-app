@@ -255,7 +255,7 @@ export const races: Race[] = [
   },
   {
     id: 15,
-    name: 'IRONMAN 70.3 World Championship — Women',
+    name: 'IRONMAN 70.3 World Championship (Women)',
     series: 'IRONMAN Pro Series',
     distance: '70.3',
     date: '12 сентября',
@@ -273,7 +273,7 @@ export const races: Race[] = [
   },
   {
     id: 16,
-    name: 'IRONMAN 70.3 World Championship — Men',
+    name: 'IRONMAN 70.3 World Championship (Men)',
     series: 'IRONMAN Pro Series',
     distance: '70.3',
     date: '13 сентября',
@@ -310,7 +310,7 @@ export const races: Race[] = [
   {
     id: 18,
     name: 'Gold Coast T100 (Women)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '21 марта',
     dateISO: '2026-03-21',
@@ -328,7 +328,7 @@ export const races: Race[] = [
   {
     id: 19,
     name: 'Singapore T100 (Men)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '25 апреля',
     dateISO: '2026-04-25',
@@ -346,7 +346,7 @@ export const races: Race[] = [
   {
     id: 20,
     name: 'Spain T100 (Women)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '23 мая',
     dateISO: '2026-05-23',
@@ -364,7 +364,7 @@ export const races: Race[] = [
   {
     id: 21,
     name: 'Sokin T100 San Francisco (Men)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '6 июня',
     dateISO: '2026-06-06',
@@ -382,7 +382,7 @@ export const races: Race[] = [
   {
     id: 22,
     name: 'Vancouver T100 (Women)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '15 августа',
     dateISO: '2026-08-15',
@@ -400,7 +400,7 @@ export const races: Race[] = [
   {
     id: 23,
     name: 'EKOÏ French Riviera T100 (Men)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '19 сентября',
     dateISO: '2026-09-19',
@@ -418,7 +418,7 @@ export const races: Race[] = [
   {
     id: 24,
     name: 'Dubai T100 (Women)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '14 ноября',
     dateISO: '2026-11-14',
@@ -436,12 +436,12 @@ export const races: Race[] = [
   {
     id: 25,
     name: 'Saudi Arabia T100 (Men)',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '27 ноября',
     dateISO: '2026-11-27',
     country: 'Саудовская Аравия',
-    city: 'Саудовская Аравия',
+    city: '',
     swim: '2 км',
     bike: '80 км',
     run: '18 км',
@@ -454,7 +454,7 @@ export const races: Race[] = [
   {
     id: 26,
     name: 'Qatar T100 Final',
-    series: 'T100',
+    series: 'Triathlon World Tour',
     distance: 'T100',
     date: '11 декабря',
     dateISO: '2026-12-11',
