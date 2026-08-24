@@ -29,7 +29,11 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
       (timeFilter === 'upcoming' && isRaceUpcoming(race)) ||
       (timeFilter === 'finished' && isRaceFinished(race))
 
-    return matchesSearch && matchesFilter && matchesTime
+    const isSearching = search.trim().length > 0
+
+    return isSearching
+      ? matchesSearch
+      : matchesFilter && matchesTime
   })
 
   return (
