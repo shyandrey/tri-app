@@ -186,7 +186,8 @@
 }
 
 @media (min-width: 701px) {
-  .race-detail-page.race-detail-page--table {
+  .race-detail-page.race-detail-page--table,
+  .athlete-detail-page {
     width: 100% !important;
     max-width: none !important;
     margin-left: 0 !important;
@@ -198,7 +199,8 @@
   .race-detail-page--table .race-detail-about,
   .race-detail-page--table .results-table,
   .race-detail-page--table .results-table__toolbar,
-  .race-detail-page--table .results-table__desktop-wrap {
+  .race-detail-page--table .results-table__desktop-wrap,
+  .athlete-detail-page .athlete-detail {
     width: 100% !important;
     max-width: none !important;
     box-sizing: border-box;
