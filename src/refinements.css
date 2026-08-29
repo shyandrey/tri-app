@@ -93,11 +93,20 @@
 }
 
 .race-card__gender {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: #f3b72b;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
+}
+
+.race-card__gender-symbol {
+  font-size: 1.25em;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .race-card__arrow {
