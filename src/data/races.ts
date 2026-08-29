@@ -333,7 +333,7 @@ export const races: Race[] = [
     date: '25 апреля',
     dateISO: '2026-04-25',
     country: 'Сингапур',
-    city: 'Сингапур',
+    city: '',
     swim: '2 км',
     bike: '80 км',
     run: '18 км',
