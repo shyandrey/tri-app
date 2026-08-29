@@ -24,7 +24,8 @@
 .results-table__desktop th:nth-child(5), .results-table__desktop td:nth-child(5) { width: 11%; }
 .results-table__desktop th:nth-child(6), .results-table__desktop td:nth-child(6) { width: 7%; }
 .results-table__desktop th:nth-child(7), .results-table__desktop td:nth-child(7) { width: 11%; }
-.results-table__desktop th:nth-child(8), .results-table__desktop td:nth-child(8) { width: 16%; }
+.results-table__desktop th:nth-child(8), .results-table__desktop td:nth-child(8) { width: 16%; text-align: right; }
+.results-table__desktop th:nth-child(8) button { margin-right: -7px; }
 .results-table__desktop tbody tr:last-child td { border-bottom: 0; }
 .results-table__desktop tbody tr.is-clickable { cursor: pointer; }
 .results-table__desktop tbody tr.is-clickable:hover { background: #262626; }
@@ -70,6 +71,10 @@
   .results-table__desktop td {
     padding-left: 5px;
     padding-right: 5px;
+  }
+
+  .results-table__desktop th:nth-child(8) button {
+    margin-right: -5px;
   }
 
   .results-table__athlete {
