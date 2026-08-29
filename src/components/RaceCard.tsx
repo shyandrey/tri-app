@@ -47,12 +47,12 @@ function RaceCard({
 }: RaceCardProps) {
   const compactDate = getCompactDate(date)
 
-const genderLabel =
-  gender === 'WPRO'
-    ? 'WOMEN'
-    : gender === 'MPRO'
-      ? 'MEN'
-      : null
+  const genderLabel =
+    gender === 'WPRO'
+      ? { symbol: '♀︎', label: 'WOMEN' }
+      : gender === 'MPRO'
+        ? { symbol: '♂︎', label: 'MEN' }
+        : null
 
   return (
     <article className="race-card race-card--compact" onClick={onClick}>
@@ -72,10 +72,11 @@ const genderLabel =
           <span className="race-card__tag">{distance}</span>
           <p className="race-card__series">{series}</p>
           {genderLabel && (
-          <span className="race-card__gender">
-            · {genderLabel}
-          </span>
-        )}
+            <span className="race-card__gender">
+              <span className="race-card__gender-symbol" aria-hidden="true">{genderLabel.symbol}</span>
+              {genderLabel.label}
+            </span>
+          )}
         </div>
       </div>
 
