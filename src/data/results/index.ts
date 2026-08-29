@@ -3,6 +3,7 @@ import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
 import { texas2026Results } from './2026/ironman/texas'
 import { aixEnProvence2026Results } from './2026/ironman/aix-en-provence'
+import { hamburg2026Results } from './2026/ironman/hamburg'
 import { goldCoast2026Results } from './2026/t100/gold-coast'
 import { singapore2026Results } from './2026/t100/singapore'
 import { spainT1002026Results } from './2026/t100/spain'
@@ -15,6 +16,7 @@ export const raceResults = [
   ...oceanside2026Results,
   ...texas2026Results,
   ...aixEnProvence2026Results,
+  ...hamburg2026Results,
   ...goldCoast2026Results,
   ...singapore2026Results,
   ...spainT1002026Results,
