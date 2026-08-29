@@ -105,8 +105,10 @@
 
 .race-card__gender-symbol {
   font-size: 1.25em;
+  font-weight: 900;
   line-height: 1;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-text-stroke: 0.35px currentColor;
 }
 
 .race-card__arrow {
