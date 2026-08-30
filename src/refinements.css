@@ -3,6 +3,34 @@
   position: relative;
 }
 
+/* Home hero: tighter vertical rhythm */
+.hero {
+  min-height: 300px;
+  padding: 24px 28px;
+  justify-content: flex-start;
+  gap: 64px;
+}
+
+.hero__brand {
+  gap: 14px;
+}
+
+.hero__brand p {
+  margin-top: 2px;
+}
+
+.hero__text {
+  margin: 0;
+}
+
+.hero__text h2 {
+  line-height: 0.98;
+}
+
+.hero__text p {
+  margin-top: 14px;
+}
+
 .page-back-button {
   position: absolute;
   top: 20px;
@@ -306,6 +334,21 @@
 }
 
 @media (max-width: 640px) {
+  .hero {
+    min-height: 270px;
+    padding: 20px;
+    gap: 50px;
+  }
+
+  .hero__logo-image {
+    width: 58px;
+    height: 58px;
+  }
+
+  .hero__text p {
+    margin-top: 12px;
+  }
+
   .page-back-button { top: 12px; right: 12px; padding: 9px 12px; font-size: 14px; }
   .race-detail-page__distance-tag { top: 12px; left: 12px; }
   .race-detail-page { margin-top: 56px; }
