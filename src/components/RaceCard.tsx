@@ -11,28 +11,22 @@ type RaceCardProps = {
   onClick?: () => void
 }
 
-const monthAbbreviations: Record<string, string> = {
-  января: 'ЯНВ',
-  февраля: 'ФЕВ',
-  марта: 'МАР',
-  апреля: 'АПР',
-  мая: 'МАЙ',
-  июня: 'ИЮН',
-  июля: 'ИЮЛ',
-  августа: 'АВГ',
-  сентября: 'СЕН',
-  октября: 'ОКТ',
-  ноября: 'НОЯ',
-  декабря: 'ДЕК',
+function CalendarIcon() {
+  return (
+    <svg className="race-card__info-icon race-card__info-icon--calendar" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 3v3M17 3v3M4.5 8.5h15M5.5 5h13a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+      <path d="M7.5 12h1M11.5 12h1M15.5 12h1M7.5 16h1M11.5 16h1M15.5 16h1" />
+    </svg>
+  )
 }
 
-function getCompactDate(date: string) {
-  const [day = '', month = ''] = date.trim().split(/\s+/)
-
-  return {
-    day,
-    month: monthAbbreviations[month.toLowerCase()] ?? month.slice(0, 3).toUpperCase(),
-  }
+function LocationIcon() {
+  return (
+    <svg className="race-card__info-icon race-card__info-icon--location" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
+      <circle cx="12" cy="10" r="2.2" />
+    </svg>
+  )
 }
 
 function RaceCard({
@@ -45,8 +39,6 @@ function RaceCard({
   gender,
   onClick,
 }: RaceCardProps) {
-  const compactDate = getCompactDate(date)
-
   const genderLabel =
     gender === 'WPRO'
       ? { symbol: '♀︎', label: 'WOMEN' }
@@ -56,17 +48,24 @@ function RaceCard({
 
   return (
     <article className="race-card race-card--compact" onClick={onClick}>
-      <div className="race-card__date-block" aria-label={date}>
-        <strong>{compactDate.day}</strong>
-        <span>{compactDate.month}</span>
+      <div className="race-card__series-mark" aria-hidden="true">
+        <span>{series === 'Triathlon World Tour' ? 'T' : series === 'Challenge' ? 'R' : 'IM'}</span>
       </div>
 
       <div className="race-card__content">
         <h3>{name}</h3>
 
-        <p className="race-card__location">
-          {city ? `${city}, ${country}` : country}
-        </p>
+        <div className="race-card__info-row">
+          <span className="race-card__info-item">
+            <CalendarIcon />
+            <span>{date}</span>
+          </span>
+          <span className="race-card__info-divider" aria-hidden="true" />
+          <span className="race-card__info-item race-card__location">
+            <LocationIcon />
+            <span>{city ? `${city}, ${country}` : country}</span>
+          </span>
+        </div>
 
         <div className="race-card__meta-row">
           <span className="race-card__tag">{distance}</span>
