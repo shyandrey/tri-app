@@ -206,11 +206,12 @@
 @media (min-width: 701px) {
   .calendar-filters--series {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .calendar-filters--series > button:not(.series-filter--disabled) {
     width: 100%;
+    min-width: 0;
   }
 
   .race-detail-page.race-detail-page--table,
