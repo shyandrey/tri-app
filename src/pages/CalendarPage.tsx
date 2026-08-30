@@ -13,9 +13,9 @@ type CalendarPageProps = {
 }
 
 const seriesFilters = [
-  { value: 'Все', short: 'ALL', label: 'ВСЕ' },
-  { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES' },
-  { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR' },
+  { value: 'Все', short: 'ALL', label: 'ВСЕ', desktopLabel: 'ALL RACES' },
+  { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES', desktopLabel: 'IRONMAN Pro Series' },
+  { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
 ] as const
 
 function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
@@ -80,7 +80,7 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
                   <span key={line}>{line}{index === 0 && item.label.includes('\n') ? <br /> : null}</span>
                 ))}
               </span>
-              <span className="series-filter__desktop-label">{item.value}</span>
+              <span className="series-filter__desktop-label">{item.desktopLabel}</span>
             </button>
           ))}
 
