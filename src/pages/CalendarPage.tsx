@@ -12,6 +12,12 @@ type CalendarPageProps = {
   onNavigate: (page: Page) => void
 }
 
+const seriesFilters = [
+  { value: 'Все', short: 'ALL', label: 'ВСЕ' },
+  { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES' },
+  { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR' },
+] as const
+
 function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('Все')
@@ -59,10 +65,35 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
           <button className={timeFilter === 'all' ? 'filter-active' : ''} onClick={() => setTimeFilter('all')}>Все</button>
         </div>
 
-        <div className="calendar-filters">
-          {['Все', 'IRONMAN Pro Series', 'Triathlon World Tour'].map((item) => (
-            <button key={item} className={filter === item ? 'filter-active' : ''} onClick={() => setFilter(item)}>{item}</button>
+        <div className="calendar-filters calendar-filters--series">
+          {seriesFilters.map((item) => (
+            <button
+              key={item.value}
+              className={filter === item.value ? 'filter-active' : ''}
+              onClick={() => setFilter(item.value)}
+              aria-pressed={filter === item.value}
+              aria-label={item.value}
+            >
+              <span className="series-filter__circle">{item.short}</span>
+              <span className="series-filter__label">
+                {item.label.split('\n').map((line, index) => (
+                  <span key={line}>{line}{index === 0 && item.label.includes('\n') ? <br /> : null}</span>
+                ))}
+              </span>
+              <span className="series-filter__desktop-label">{item.value}</span>
+            </button>
           ))}
+
+          <button
+            className="series-filter--disabled"
+            type="button"
+            disabled
+            aria-label="Challenge Roth — скоро"
+          >
+            <span className="series-filter__circle">R</span>
+            <span className="series-filter__label">CHALLENGE<br />ROTH</span>
+            <span className="series-filter__desktop-label">Challenge Roth</span>
+          </button>
         </div>
 
         {filteredRaces.map((race) => (
