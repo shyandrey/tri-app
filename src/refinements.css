@@ -126,6 +126,15 @@
   font-size: 14px;
 }
 
+.series-filter__circle,
+.series-filter__label {
+  display: none;
+}
+
+.calendar-filters--series .series-filter--disabled {
+  display: none;
+}
+
 /* Athlete profile list */
 .athlete-card {
   text-align: left;
@@ -227,6 +236,85 @@
     margin-left: auto;
     margin-right: auto;
     text-wrap: balance;
+  }
+}
+
+@media (max-width: 700px) {
+  .calendar-filters--series {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: 8px;
+    margin-top: 14px;
+    margin-bottom: 18px;
+  }
+
+  .calendar-filters--series button,
+  .calendar-filters--series .series-filter--disabled {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    color: #8f8f8f;
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  .calendar-filters--series button:hover {
+    background: transparent;
+  }
+
+  .calendar-filters--series button.filter-active {
+    background: transparent;
+    color: #f3b72b;
+  }
+
+  .series-filter__desktop-label {
+    display: none;
+  }
+
+  .series-filter__circle {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    box-sizing: border-box;
+    border: 2px solid #555;
+    border-radius: 50%;
+    color: #8f8f8f;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0;
+    transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+  }
+
+  .series-filter__label {
+    display: block;
+    min-height: 24px;
+    color: currentColor;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.1px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .calendar-filters--series button.filter-active .series-filter__circle {
+    border-color: #f3b72b;
+    color: #f3b72b;
+  }
+
+  .calendar-filters--series .series-filter--disabled {
+    opacity: 0.42;
+    cursor: default;
   }
 }
 
