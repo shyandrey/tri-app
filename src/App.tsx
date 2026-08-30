@@ -12,6 +12,7 @@ import { useState } from 'react'
 import './App.css'
 import './refinements.css'
 import './series-colors.css'
+import './home-refinements.css'
 import triLogo from './assets/300w_5.png'
 import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
@@ -65,7 +66,7 @@ function App() {
           <div><h1>TRI APP</h1><p>Триатлон в одном приложении</p></div>
         </div>
         <div className="hero__text">
-          <h2>ТРИАТЛОН —<br />ЭТО <span>МОЩНО</span></h2>
+          <h2>ТРИАТЛОН — ЭТО <span>МОЩНО</span></h2>
           <p>Календарь стартов, профили атлетов<br />и всё, что нужно триатлету.</p>
         </div>
       </header>
@@ -78,11 +79,11 @@ function App() {
       <section className="features features--compact">
         <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}>
           <div className="feature-card__icon">📅</div>
-          <div className="feature-card__copy"><h3>Календарь</h3><p>Старты и результаты</p></div>
+          <div className="feature-card__copy"><h3>Календарь стартов</h3><p>Старты и результаты</p></div>
         </article>
         <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}>
           <div className="feature-card__icon">♙</div>
-          <div className="feature-card__copy"><h3>Профили</h3><p>Атлеты и достижения</p></div>
+          <div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div>
         </article>
         <article className="feature-card feature-card--compact" onClick={() => setPage('top')}>
           <div className="feature-card__icon">★</div>
