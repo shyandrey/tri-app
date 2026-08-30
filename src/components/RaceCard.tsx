@@ -1,5 +1,6 @@
 import type { RaceDistance, RaceSeries } from '../types/Race'
 import ironmanProImage from '../assets/series/ironman-pro.jpeg'
+import t100WorldTourImage from '../assets/series/t100-worldtour.jpeg'
 
 type RaceCardProps = {
   distance: RaceDistance
@@ -47,15 +48,20 @@ function RaceCard({
         ? { symbol: '♂︎', label: 'MEN' }
         : null
 
-  const isIronman = series === 'IRONMAN Pro Series'
+  const seriesImage =
+    series === 'IRONMAN Pro Series'
+      ? ironmanProImage
+      : series === 'Triathlon World Tour'
+        ? t100WorldTourImage
+        : null
 
   return (
     <article className="race-card race-card--compact" onClick={onClick}>
       <div className="race-card__series-mark" aria-hidden="true">
-        {isIronman ? (
-          <img className="race-card__series-image" src={ironmanProImage} alt="" />
+        {seriesImage ? (
+          <img className="race-card__series-image" src={seriesImage} alt="" />
         ) : (
-          <span>{series === 'Triathlon World Tour' ? 'T' : series === 'Challenge' ? 'R' : 'IM'}</span>
+          <span>{series === 'Challenge' ? 'R' : 'IM'}</span>
         )}
       </div>
 
