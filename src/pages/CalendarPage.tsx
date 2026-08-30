@@ -23,24 +23,26 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
   const [filter, setFilter] = useState('Все')
   const [timeFilter, setTimeFilter] = useState<'upcoming' | 'finished' | 'all'>('upcoming')
 
-  const filteredRaces = races.filter((race) => {
-    const matchesSearch =
-      race.name.toLowerCase().includes(search.toLowerCase()) ||
-      race.city.toLowerCase().includes(search.toLowerCase()) ||
-      race.country.toLowerCase().includes(search.toLowerCase())
+  const filteredRaces = races
+    .filter((race) => {
+      const matchesSearch =
+        race.name.toLowerCase().includes(search.toLowerCase()) ||
+        race.city.toLowerCase().includes(search.toLowerCase()) ||
+        race.country.toLowerCase().includes(search.toLowerCase())
 
-    const matchesFilter = filter === 'Все' || race.series === filter
-    const matchesTime =
-      timeFilter === 'all' ||
-      (timeFilter === 'upcoming' && isRaceUpcoming(race)) ||
-      (timeFilter === 'finished' && isRaceFinished(race))
+      const matchesFilter = filter === 'Все' || race.series === filter
+      const matchesTime =
+        timeFilter === 'all' ||
+        (timeFilter === 'upcoming' && isRaceUpcoming(race)) ||
+        (timeFilter === 'finished' && isRaceFinished(race))
 
-    const isSearching = search.trim().length > 0
+      const isSearching = search.trim().length > 0
 
-    return isSearching
-      ? matchesSearch
-      : matchesFilter && matchesTime
-  })
+      return isSearching
+        ? matchesSearch
+        : matchesFilter && matchesTime
+    })
+    .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
 
   return (
     <main className="app">
