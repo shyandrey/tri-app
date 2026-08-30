@@ -5,10 +5,10 @@
 
 /* Home hero: tighter vertical rhythm */
 .hero {
-  min-height: 300px;
+  min-height: 0;
   padding: 24px 28px;
   justify-content: flex-start;
-  gap: 64px;
+  gap: 34px;
 }
 
 .hero__brand {
@@ -28,7 +28,51 @@
 }
 
 .hero__text p {
-  margin-top: 14px;
+  margin-top: 12px;
+}
+
+/* Home shortcuts */
+.features--compact {
+  margin-top: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.feature-card--compact {
+  min-height: 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.feature-card--compact .feature-card__icon {
+  width: 34px;
+  margin: 0;
+  flex: 0 0 34px;
+  color: #f3b72b;
+  font-size: 25px;
+  line-height: 1;
+  text-align: center;
+}
+
+.feature-card--compact .feature-card__copy {
+  min-width: 0;
+}
+
+.feature-card--compact h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.feature-card--compact p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.25;
 }
 
 .page-back-button {
@@ -335,18 +379,44 @@
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 270px;
-    padding: 20px;
-    gap: 50px;
+    padding: 18px;
+    gap: 28px;
   }
 
   .hero__logo-image {
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
   }
 
   .hero__text p {
-    margin-top: 12px;
+    margin-top: 10px;
+  }
+
+  .features--compact {
+    gap: 8px;
+  }
+
+  .feature-card--compact {
+    padding: 11px 9px;
+    border-radius: 14px;
+    flex-direction: column;
+    gap: 7px;
+    text-align: center;
+  }
+
+  .feature-card--compact .feature-card__icon {
+    width: auto;
+    flex: 0 0 auto;
+    font-size: 22px;
+  }
+
+  .feature-card--compact h3 {
+    margin-bottom: 0;
+    font-size: 10px;
+  }
+
+  .feature-card--compact p {
+    display: none;
   }
 
   .page-back-button { top: 12px; right: 12px; padding: 9px 12px; font-size: 14px; }
