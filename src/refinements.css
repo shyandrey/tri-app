@@ -204,6 +204,15 @@
 .athlete-result-card__time { justify-self: end; text-align: right; white-space: nowrap; }
 
 @media (min-width: 701px) {
+  .calendar-filters--series {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .calendar-filters--series > button:not(.series-filter--disabled) {
+    width: 100%;
+  }
+
   .race-detail-page.race-detail-page--table,
   .athlete-detail-page { width: 100% !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
   .race-detail-page--table .race-detail,
