@@ -55,14 +55,26 @@ function RaceCard({
         ? t100WorldTourImage
         : null
 
+  const seriesClass =
+    series === 'IRONMAN Pro Series'
+      ? 'race-card--ironman'
+      : series === 'Triathlon World Tour'
+        ? 'race-card--t100'
+        : 'race-card--roth'
+
+  const distanceLabel = series === 'Challenge' ? 'ROTH' : distance
+
   return (
-    <article className="race-card race-card--compact" onClick={onClick}>
-      <div className="race-card__series-mark" aria-hidden="true">
-        {seriesImage ? (
-          <img className="race-card__series-image" src={seriesImage} alt="" />
-        ) : (
-          <span>{series === 'Challenge' ? 'R' : 'IM'}</span>
-        )}
+    <article className={`race-card race-card--compact ${seriesClass}`} onClick={onClick}>
+      <div className="race-card__series-column">
+        <div className="race-card__series-mark" aria-hidden="true">
+          {seriesImage ? (
+            <img className="race-card__series-image" src={seriesImage} alt="" />
+          ) : (
+            <span>R</span>
+          )}
+        </div>
+        <span className="race-card__tag race-card__tag--series">{distanceLabel}</span>
       </div>
 
       <div className="race-card__content">
@@ -81,7 +93,6 @@ function RaceCard({
         </div>
 
         <div className="race-card__meta-row">
-          <span className="race-card__tag">{distance}</span>
           <p className="race-card__series">{series}</p>
           {genderLabel && (
             <span className="race-card__gender">
