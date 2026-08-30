@@ -63,11 +63,14 @@ function App() {
       <header className="hero">
         <div className="hero__brand">
           <img className="hero__logo-image" src={triLogo} alt="TRI App" />
-          <div><h1>TRI APP</h1><p>Триатлон в одном приложении</p></div>
+          <div className="hero__brand-copy">
+            <h1>TRI APP</h1>
+            <p>Триатлон в одном приложении</p>
+          </div>
         </div>
         <div className="hero__text">
           <h2>ТРИАТЛОН — ЭТО <span>МОЩНО</span></h2>
-          <p>Календарь стартов, профили атлетов<br />и всё, что нужно триатлету.</p>
+          <p>Календарь стартов, профили атлетов и всё, что нужно триатлету.</p>
         </div>
       </header>
 
