@@ -31,7 +31,7 @@ function App() {
   const upcomingRaces = races
     .filter(isRaceUpcoming)
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
-    .slice(0, 2)
+    .slice(0, 3)
 
   if (page === 'calendar') {
     return <CalendarPage races={races} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
@@ -75,10 +75,19 @@ function App() {
         {upcomingRaces.map((race) => <RaceCard key={race.id} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
       </section>
 
-      <section className="features">
-        <article className="feature-card" onClick={() => setPage('calendar')}><div className="feature-card__icon">〰️</div><h3>Календарь стартов</h3><p>Соревнования по триатлону</p></article>
-        <article className="feature-card" onClick={() => setPage('athletes')}><div className="feature-card__icon">⚡</div><h3>Профили атлетов</h3><p>Результаты и достижения</p></article>
-        <article className="feature-card" onClick={() => setPage('top')}><div className="feature-card__icon">🏆</div><h3>Топ атлетов</h3><p>Рейтинг и лучшие результаты</p></article>
+      <section className="features features--compact">
+        <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}>
+          <div className="feature-card__icon">📅</div>
+          <div className="feature-card__copy"><h3>Календарь</h3><p>Старты и результаты</p></div>
+        </article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}>
+          <div className="feature-card__icon">♙</div>
+          <div className="feature-card__copy"><h3>Профили</h3><p>Атлеты и достижения</p></div>
+        </article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('top')}>
+          <div className="feature-card__icon">★</div>
+          <div className="feature-card__copy"><h3>Топ атлетов</h3><p>Рейтинг сильнейших</p></div>
+        </article>
       </section>
 
       <section className="section">
