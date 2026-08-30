@@ -13,7 +13,7 @@ type CalendarPageProps = {
 }
 
 const seriesFilters = [
-  { value: 'Все', short: 'ALL', label: 'ВСЕ', desktopLabel: 'ALL RACES' },
+  { value: 'Все', short: 'ALL', label: 'ВСЕ', desktopLabel: 'Все гонки' },
   { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES', desktopLabel: 'IRONMAN Pro Series' },
   { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
 ] as const
