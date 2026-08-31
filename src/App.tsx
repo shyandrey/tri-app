@@ -60,18 +60,20 @@ function App() {
 
   return (
     <main className="app">
-      <header className="hero">
-        <div className="hero__brand">
-          <img className="hero__logo-image" src={triLogo} alt="TRI App" />
+      <header className="hero hero--concept-4">
+        <div className="hero__top-row">
+          <div className="hero__logo-wrap">
+            <img className="hero__logo-image" src={triLogo} alt="TRI App" />
+          </div>
+          <div className="hero__vertical-divider" aria-hidden="true" />
           <div className="hero__brand-copy">
             <h1>TRI APP</h1>
-            <p>Триатлон в одном приложении</p>
+            <p className="hero__subtitle">Триатлон в одном приложении</p>
+            <h2>ТРИАТЛОН — ЭТО <span>МОЩНО</span></h2>
           </div>
         </div>
-        <div className="hero__text">
-          <h2>ТРИАТЛОН — ЭТО <span>МОЩНО</span></h2>
-          <p>Календарь стартов, профили атлетов и всё, что нужно триатлету.</p>
-        </div>
+        <div className="hero__horizontal-divider" aria-hidden="true" />
+        <p className="hero__description">Календарь стартов, профили атлетов и всё, что нужно триатлету.</p>
       </header>
 
       <section className="section">
