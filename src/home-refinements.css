@@ -1,54 +1,80 @@
 /* Home-only refinements */
-.hero {
-  align-items: center;
-  text-align: center;
+.hero--concept-4 {
+  display: flex;
+  min-height: 0;
+  padding: 24px 28px 20px;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+  text-align: left;
 }
 
-.hero__brand {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
+.hero__top-row {
+  display: grid;
+  grid-template-columns: auto 1px minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-align: center;
+  gap: 20px;
+}
+
+.hero__logo-wrap {
+  display: grid;
+  place-items: center;
 }
 
 .hero__logo-image {
   position: static;
-  width: 62px;
-  height: 62px;
+  width: 78px;
+  height: 78px;
+  border-radius: 20px;
+}
+
+.hero__vertical-divider {
+  width: 1px;
+  height: 96px;
+  background: #4a4a4a;
 }
 
 .hero__brand-copy {
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.hero__brand h1 {
+.hero__brand-copy h1 {
   margin: 0;
+  font-size: 32px;
+  letter-spacing: 1px;
 }
 
-.hero__brand p {
+.hero__subtitle {
   margin: 4px 0 0;
+  color: #a8a8a8;
+  font-size: 15px;
 }
 
-.hero__text {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-}
-
-.hero__text h2 {
-  font-size: clamp(30px, 5vw, 52px);
+.hero__brand-copy h2 {
+  margin: 18px 0 0;
+  font-size: clamp(25px, 4vw, 40px);
   line-height: 1;
   white-space: nowrap;
 }
 
-.hero__text p {
-  margin-left: auto;
-  margin-right: auto;
+.hero__brand-copy h2 span {
+  color: #f3b72b;
+}
+
+.hero__horizontal-divider {
+  width: 100%;
+  height: 1px;
+  background: #3a3a3a;
+}
+
+.hero__description {
+  margin: 0;
+  color: #a8a8a8;
+  font-size: 13px;
+  line-height: 1.4;
   text-align: center;
   white-space: nowrap;
 }
@@ -65,30 +91,43 @@
 }
 
 @media (max-width: 640px) {
-  .hero__brand {
-    gap: 8px;
+  .hero--concept-4 {
+    padding: 18px 16px 16px;
+    gap: 14px;
+  }
+
+  .hero__top-row {
+    grid-template-columns: auto 1px minmax(0, 1fr);
+    gap: 12px;
   }
 
   .hero__logo-image {
-    width: 54px;
-    height: 54px;
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
   }
 
-  .hero__brand h1 {
+  .hero__vertical-divider {
+    height: 78px;
+  }
+
+  .hero__brand-copy h1 {
     font-size: 24px;
   }
 
-  .hero__brand p {
-    font-size: 13px;
+  .hero__subtitle {
+    margin-top: 2px;
+    font-size: 11px;
   }
 
-  .hero__text h2 {
-    font-size: clamp(21px, 6.4vw, 30px);
+  .hero__brand-copy h2 {
+    margin-top: 12px;
+    font-size: clamp(17px, 4.7vw, 23px);
     white-space: nowrap;
   }
 
-  .hero__text p {
-    font-size: clamp(8px, 2.6vw, 12px);
+  .hero__description {
+    font-size: clamp(8px, 2.45vw, 11px);
     white-space: nowrap;
   }
 
