@@ -87,14 +87,17 @@ function App() {
         <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}>
           <div className="feature-card__icon">📅</div>
           <div className="feature-card__copy"><h3>Календарь стартов</h3><p>Старты и результаты</p></div>
+          <span className="feature-card__arrow" aria-hidden="true">›</span>
         </article>
         <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}>
           <div className="feature-card__icon">♙</div>
           <div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div>
+          <span className="feature-card__arrow" aria-hidden="true">›</span>
         </article>
         <article className="feature-card feature-card--compact" onClick={() => setPage('top')}>
           <div className="feature-card__icon">★</div>
           <div className="feature-card__copy"><h3>Топ атлетов</h3><p>Рейтинг сильнейших</p></div>
+          <span className="feature-card__arrow" aria-hidden="true">›</span>
         </article>
       </section>
 
