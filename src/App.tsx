@@ -67,8 +67,10 @@ function App() {
           </div>
           <div className="hero__vertical-divider" aria-hidden="true" />
           <div className="hero__brand-copy">
-            <h1>TRI APP</h1>
-            <p className="hero__subtitle">Триатлон в одном приложении</p>
+            <div className="hero__brand-line">
+              <h1>TRI APP</h1>
+              <p className="hero__subtitle">Триатлон в одном приложении</p>
+            </div>
             <h2>ТРИАТЛОН — ЭТО <span>МОЩНО</span></h2>
           </div>
         </div>
