@@ -1,4 +1,4 @@
-import { races } from './data/races'
+import { currentRaceEditions as races } from './data/raceEditions'
 import type { Race } from './types/Race'
 import { athletes } from './data/athletes'
 import type { Athlete } from './types/Athlete'
@@ -38,8 +38,8 @@ function App() {
     return <CalendarPage races={races} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
   }
 
-  if (page === 'race' && selectedRace) {
-    const results = getResultsByRace(raceResults, selectedRace.id)
+  if (page === 'race' && selectedRace && selectedRace.editionId) {
+    const results = getResultsByRace(raceResults, selectedRace.editionId)
     return <RaceDetailPage race={selectedRace} results={results} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={setPage} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
   }
 
@@ -80,7 +80,7 @@ function App() {
 
       <section className="section">
         <div className="section__header"><h2>⚡ Ближайшие старты</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
-        {upcomingRaces.map((race) => <RaceCard key={race.id} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
+        {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
       </section>
 
       <section className="features features--compact">
