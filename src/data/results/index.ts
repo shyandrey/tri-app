@@ -1,5 +1,6 @@
 import type { RaceResult } from '../../types/RaceResult'
 import { getRaceEditionId } from '../raceIdentity'
+import { geelong2025Results } from './2025/ironman/geelong'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -20,7 +21,7 @@ import { spainT1002026Results } from './2026/t100/spain'
 import { sanFrancisco2026Results } from './2026/t100/san-francisco'
 import { vancouver2026Results } from './2026/t100/vancouver'
 
-const legacyResults: RaceResult[] = [
+const results2026: RaceResult[] = [
   ...newZealand2026Results,
   ...geelong2026Results,
   ...oceanside2026Results,
@@ -40,11 +41,14 @@ const legacyResults: RaceResult[] = [
   ...spainT1002026Results,
   ...sanFrancisco2026Results,
   ...vancouver2026Results,
-]
-
-export const raceResults: RaceResult[] = legacyResults.map((result) => ({
+].map((result) => ({
   ...result,
   raceEditionId:
     result.raceEditionId ??
     (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined),
 }))
+
+export const raceResults: RaceResult[] = [
+  ...geelong2025Results,
+  ...results2026,
+]
