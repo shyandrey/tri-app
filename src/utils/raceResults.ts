@@ -2,10 +2,10 @@ import type { RaceResult } from '../types/RaceResult'
 
 export function getResultsByRace(
   results: RaceResult[],
-  raceId: number
+  raceEditionId: string
 ) {
   return results
-    .filter((result) => result.raceId === raceId)
+    .filter((result) => result.raceEditionId === raceEditionId)
     .sort((a, b) => {
       if (typeof a.position !== 'number') return 1
       if (typeof b.position !== 'number') return -1
