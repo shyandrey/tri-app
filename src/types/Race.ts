@@ -38,10 +38,35 @@ export type RaceEdition = {
   sourceUrl?: string
 }
 
-// Flattened view used by the current UI while pages are migrated to Race + RaceEdition.
-export type Race = RaceEntity &
-  Omit<RaceEdition, 'id' | 'raceId'> & {
-    id: number
-    raceId: string
-    editionId: string
-  }
+// Legacy flattened shape still accepted by the current UI during migration.
+export type Race = {
+  id: number
+  name: string
+
+  series: RaceSeries
+  distance: RaceDistance
+
+  date: string
+  dateISO: string
+
+  country: string
+  city: string
+
+  swim: string
+  bike: string
+  run: string
+
+  description: string
+  gender?: RaceGender
+  sourceUrl?: string
+
+  raceId?: string
+  editionId?: string
+  year?: number
+}
+
+export type RaceEditionView = Race & {
+  raceId: string
+  editionId: string
+  year: number
+}
