@@ -1,7 +1,7 @@
 import { races as legacyRaces } from './races'
 import type { RaceEdition, RaceEditionView } from '../types/Race'
 import { getRaceEditionId, getRaceId } from './raceIdentity'
-import { ironmanProSeries2024Editions, ironmanProSeries2025Editions } from './archiveIronmanProSeries'
+import { archiveIronmanRaceEntities, ironmanProSeries2024Editions, ironmanProSeries2025Editions } from './archiveIronmanProSeries'
 
 const CURRENT_SEASON = 2026
 
@@ -32,4 +32,55 @@ export const raceEditions: RaceEdition[] = [
   ...ironmanProSeries2024Editions,
   ...ironmanProSeries2025Editions,
   ...currentSeasonEditions,
+]
+
+const raceEntityById = new Map(
+  [
+    ...archiveIronmanRaceEntities,
+    ...currentRaceEditions.map((edition) => ({
+      id: edition.raceId,
+      name: edition.name,
+      country: edition.country,
+      city: edition.city,
+      distance: edition.distance,
+    })),
+  ].map((entity) => [entity.id, entity])
+)
+
+function editionToView(edition: RaceEdition, index: number): RaceEditionView {
+  const entity = raceEntityById.get(edition.raceId)
+
+  if (!entity) {
+    throw new Error(`Race entity ${edition.raceId} is missing for ${edition.id}`)
+  }
+
+  return {
+    id: edition.legacyId ?? -(index + 1),
+    name: entity.name,
+    series: edition.series,
+    distance: entity.distance,
+    date: edition.date,
+    dateISO: edition.dateISO,
+    country: entity.country,
+    city: entity.city,
+    swim: edition.swim,
+    bike: edition.bike,
+    run: edition.run,
+    description: edition.description,
+    gender: edition.gender,
+    sourceUrl: edition.sourceUrl,
+    raceId: edition.raceId,
+    editionId: edition.id,
+    year: edition.year,
+  }
+}
+
+const archiveRaceEditionViews = [
+  ...ironmanProSeries2024Editions,
+  ...ironmanProSeries2025Editions,
+].map(editionToView)
+
+export const allRaceEditionViews: RaceEditionView[] = [
+  ...archiveRaceEditionViews,
+  ...currentRaceEditions,
 ]
