@@ -71,7 +71,7 @@ function App() {
               <h1>TRI APP</h1>
               <p className="hero__subtitle">Триатлон в одном приложении</p>
             </div>
-            <h2>ТРИАТЛОН — ЭТО <span>МОЩНО</span></h2>
+            <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
           </div>
         </div>
         <div className="hero__horizontal-divider" aria-hidden="true" />
