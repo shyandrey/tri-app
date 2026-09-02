@@ -1,4 +1,4 @@
-import { currentRaceEditions as races } from './data/raceEditions'
+import { allRaceEditionViews, currentRaceEditions as races } from './data/raceEditions'
 import type { Race } from './types/Race'
 import { athletes } from './data/athletes'
 import type { Athlete } from './types/Athlete'
@@ -21,7 +21,7 @@ import MorePage from './pages/MorePage'
 
 import { isRaceUpcoming } from './utils/raceDate'
 import { raceResults } from './data/results/index'
-import { getResultsByAthlete, getResultsByRace } from './utils/raceResults'
+import { getResultsByAthlete } from './utils/raceResults'
 
 function App() {
   const [page, setPage] = useState<Page>('home')
@@ -40,8 +40,7 @@ function App() {
   }
 
   if (page === 'race' && selectedRace && selectedRace.editionId) {
-    const results = getResultsByRace(raceResults, selectedRace.editionId)
-    return <RaceDetailPage race={selectedRace} results={results} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={setPage} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
+    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={raceResults} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={setPage} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
   }
 
   if (page === 'athletes') {
@@ -50,7 +49,7 @@ function App() {
 
   if (page === 'athlete' && selectedAthlete) {
     const results = getResultsByAthlete(raceResults, selectedAthlete.id)
-    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={races} onBack={() => setPage(previousAthletePage)} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('athlete'); setPage('race') }} />
+    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('athlete'); setPage('race') }} />
   }
 
   if (page === 'top') {
