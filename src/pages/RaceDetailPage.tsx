@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from 'react'
 import type { Race } from '../types/Race'
 import BottomNav from '../components/BottomNav'
 import RaceResultsTable from '../components/RaceResultsTable'
@@ -8,7 +9,8 @@ import { countryCodeToFlag } from '../utils/countryFlag'
 
 type RaceDetailPageProps = {
   race: Race
-  results: RaceResult[]
+  raceEditions: Race[]
+  allResults: RaceResult[]
   athletes: Athlete[]
   onBack: () => void
   onNavigate: (page: Page) => void
@@ -17,9 +19,27 @@ type RaceDetailPageProps = {
 
 const seriesYears = [2026, 2025, 2024]
 
-function RaceDetailPage({ race, results, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
+function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
+  const [activeRace, setActiveRace] = useState(race)
+
+  useEffect(() => {
+    setActiveRace(race)
+  }, [race])
+
+  const siblingEditions = useMemo(
+    () => raceEditions
+      .filter((edition) => edition.raceId === race.raceId)
+      .sort((a, b) => (b.year ?? 0) - (a.year ?? 0)),
+    [race.raceId, raceEditions]
+  )
+
+  const results = useMemo(
+    () => allResults.filter((result) => result.raceEditionId === activeRace.editionId),
+    [activeRace.editionId, allResults]
+  )
+
   const hasResults = results.length > 0
-  const currentYear = race.year ?? new Date(race.dateISO).getFullYear()
+  const currentYear = activeRace.year ?? new Date(activeRace.dateISO).getFullYear()
   const winners = results.filter((result) => result.position === 1)
   const maleWinner = winners.find((result) => result.gender === 'M')
   const femaleWinner = winners.find((result) => result.gender === 'W')
@@ -38,32 +58,38 @@ function RaceDetailPage({ race, results, athletes, onBack, onNavigate, onAthlete
 
   return (
     <main className="app">
-      <span className="race-detail-page__distance-tag race-card__tag">{race.distance}</span>
+      <span className="race-detail-page__distance-tag race-card__tag">{activeRace.distance}</span>
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
         <div className="race-detail">
-          <h1>{race.name}</h1>
-          <p className="race-detail-meta">{race.date} · {race.city}, {race.country}</p>
+          <h1>{activeRace.name}</h1>
+          <p className="race-detail-meta">{activeRace.date} · {activeRace.city}, {activeRace.country}</p>
 
           <div className="race-season-switcher" aria-label="Сезон гонки">
-            {seriesYears.map((year) => (
-              <button
-                key={year}
-                type="button"
-                className={year === currentYear ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
-                disabled={year !== currentYear}
-                title={year !== currentYear ? 'Результаты этого сезона скоро появятся' : undefined}
-              >
-                {year}
-              </button>
-            ))}
+            {seriesYears.map((year) => {
+              const edition = siblingEditions.find((item) => item.year === year)
+              const isActive = year === currentYear
+
+              return (
+                <button
+                  key={year}
+                  type="button"
+                  className={isActive ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
+                  disabled={!edition}
+                  onClick={() => edition && setActiveRace(edition)}
+                  title={!edition ? 'Эта гонка не входила в покрываемую серию в этом сезоне' : undefined}
+                >
+                  {year}
+                </button>
+              )
+            })}
           </div>
 
           <div className="race-detail__summary">
             <div className="race-detail-about">
               <h2>О гонке</h2>
-              <p>{race.description}</p>
+              <p>{activeRace.description}</p>
             </div>
           </div>
 
