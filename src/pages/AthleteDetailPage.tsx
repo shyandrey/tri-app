@@ -15,11 +15,11 @@ type AthleteDetailPageProps = {
 
 function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRaceClick }: AthleteDetailPageProps) {
   const resultsByYear = results
-    .map((result) => ({ ...result, race: races.find((race) => race.id === result.raceId) }))
+    .map((result) => ({ ...result, race: races.find((race) => race.editionId === result.raceEditionId) }))
     .filter((result) => result.race)
     .sort((a, b) => new Date(b.race!.dateISO).getTime() - new Date(a.race!.dateISO).getTime())
     .reduce<Record<string, Array<RaceResult & { race: Race }>>>((groups, result) => {
-      const year = new Date(result.race!.dateISO).getFullYear().toString()
+      const year = (result.race!.year ?? new Date(result.race!.dateISO).getFullYear()).toString()
       if (!groups[year]) groups[year] = []
       groups[year].push(result as RaceResult & { race: Race })
       return groups
