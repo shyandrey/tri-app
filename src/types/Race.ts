@@ -9,26 +9,39 @@ export type RaceDistance =
   | 'T100'
   | 'Challenge Roth'
 
-export type Race = {
-  id: number
+export type RaceGender = 'WPRO' | 'MPRO' | 'WPRO & MPRO'
+
+export type RaceEntity = {
+  id: string
   name: string
-
-  series: RaceSeries
-  distance: RaceDistance
-
-  date: string
-  dateISO: string
-
   country: string
   city: string
+  distance: RaceDistance
+}
+
+export type RaceEdition = {
+  id: string
+  raceId: string
+  legacyId: number
+  year: number
+
+  series: RaceSeries
+  date: string
+  dateISO: string
 
   swim: string
   bike: string
   run: string
 
   description: string
-
-  gender?: 'WPRO' | 'MPRO' | 'WPRO & MPRO'
-
+  gender?: RaceGender
   sourceUrl?: string
 }
+
+// Flattened view used by the current UI while pages are migrated to Race + RaceEdition.
+export type Race = RaceEntity &
+  Omit<RaceEdition, 'id' | 'raceId'> & {
+    id: number
+    raceId: string
+    editionId: string
+  }
