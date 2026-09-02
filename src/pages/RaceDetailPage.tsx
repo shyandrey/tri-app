@@ -17,8 +17,6 @@ type RaceDetailPageProps = {
   onAthleteClick: (athlete: Athlete) => void
 }
 
-const seriesYears = [2026, 2025, 2024]
-
 function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
   const [activeRace, setActiveRace] = useState(race)
 
@@ -66,25 +64,25 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
           <h1>{activeRace.name}</h1>
           <p className="race-detail-meta">{activeRace.date} · {activeRace.city}, {activeRace.country}</p>
 
-          <div className="race-season-switcher" aria-label="Сезон гонки">
-            {seriesYears.map((year) => {
-              const edition = siblingEditions.find((item) => item.year === year)
-              const isActive = year === currentYear
+          {siblingEditions.length > 1 && (
+            <div className="race-season-switcher" aria-label="Сезон гонки">
+              {siblingEditions.map((edition) => {
+                const year = edition.year ?? new Date(edition.dateISO).getFullYear()
+                const isActive = edition.editionId === activeRace.editionId
 
-              return (
-                <button
-                  key={year}
-                  type="button"
-                  className={isActive ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
-                  disabled={!edition}
-                  onClick={() => edition && setActiveRace(edition)}
-                  title={!edition ? 'Эта гонка не входила в покрываемую серию в этом сезоне' : undefined}
-                >
-                  {year}
-                </button>
-              )
-            })}
-          </div>
+                return (
+                  <button
+                    key={edition.editionId}
+                    type="button"
+                    className={isActive ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
+                    onClick={() => setActiveRace(edition)}
+                  >
+                    {year}
+                  </button>
+                )
+              })}
+            </div>
+          )}
 
           <div className="race-detail__summary">
             <div className="race-detail-about">
