@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Athlete } from '../types/Athlete'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
@@ -13,11 +14,11 @@ type AthleteDetailPageProps = {
   onRaceClick: (race: Race) => void
 }
 
-function resultPlace(position: RaceResult['position']) {
+function podiumMedal(position: RaceResult['position']) {
   if (position === 1) return '🥇'
   if (position === 2) return '🥈'
   if (position === 3) return '🥉'
-  return position
+  return null
 }
 
 function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRaceClick }: AthleteDetailPageProps) {
@@ -31,6 +32,18 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
       groups[year].push(result as RaceResult & { race: Race })
       return groups
     }, {})
+
+  const years = Object.keys(resultsByYear).sort((a, b) => Number(b) - Number(a))
+  const latestYear = years[0]
+  const [expandedYears, setExpandedYears] = useState<string[]>(latestYear ? [latestYear] : [])
+
+  const toggleYear = (year: string) => {
+    setExpandedYears((current) =>
+      current.includes(year)
+        ? current.filter((item) => item !== year)
+        : [...current, year]
+    )
+  }
 
   return (
     <main className="app">
@@ -52,26 +65,50 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
             <ul>{athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul>
           </div>
 
-          {Object.keys(resultsByYear).length > 0 && (
+          {years.length > 0 && (
             <div className="athlete-detail__results">
               <h2>Недавние результаты</h2>
-              {Object.entries(resultsByYear).map(([year, yearResults]) => (
-                <div className="athlete-results-year" key={year}>
-                  <h3>{year}</h3>
-                  <div className="athlete-results-list">
-                    {yearResults.map((result) => (
-                      <article className="athlete-result-card" key={result.id} onClick={() => onRaceClick(result.race)}>
-                        <div className="athlete-result-card__place">{resultPlace(result.position)}</div>
-                        <div className="athlete-result-card__info">
-                          <strong>{result.race.name}</strong>
-                          <span>{result.race.date} · {result.race.city}</span>
-                        </div>
-                        <strong className="athlete-result-card__time">{result.totalTime ?? '—'}</strong>
-                      </article>
-                    ))}
+              {years.map((year) => {
+                const yearResults = resultsByYear[year]
+                const isExpanded = expandedYears.includes(year)
+
+                return (
+                  <div className="athlete-results-year" key={year}>
+                    <button
+                      className="athlete-results-year__toggle"
+                      type="button"
+                      onClick={() => toggleYear(year)}
+                      aria-expanded={isExpanded}
+                    >
+                      <span>{year}</span>
+                      <span className={`athlete-results-year__chevron ${isExpanded ? 'athlete-results-year__chevron--open' : ''}`} aria-hidden="true">›</span>
+                    </button>
+
+                    {isExpanded && (
+                      <div className="athlete-results-list">
+                        {yearResults.map((result) => {
+                          const medal = podiumMedal(result.position)
+
+                          return (
+                            <article className="athlete-result-card" key={result.id} onClick={() => onRaceClick(result.race)}>
+                              {medal ? (
+                                <div className="athlete-result-card__medal" aria-label={`${result.position} место`}>{medal}</div>
+                              ) : (
+                                <div className="athlete-result-card__place">{result.position}</div>
+                              )}
+                              <div className="athlete-result-card__info">
+                                <strong>{result.race.name}</strong>
+                                <span>{result.race.date} · {result.race.city}</span>
+                              </div>
+                              <strong className="athlete-result-card__time">{result.totalTime ?? '—'}</strong>
+                            </article>
+                          )
+                        })}
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </div>
