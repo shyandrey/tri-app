@@ -1,6 +1,11 @@
 export type RaceResult = {
   id: number
-  raceId: number
+
+  // New canonical relation. Populated by the results index for all 2026 data.
+  raceEditionId?: string
+
+  // Temporary legacy relation kept inside existing result source files during migration.
+  raceId?: number
 
   athleteId?: number
   athleteName: string
