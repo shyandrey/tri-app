@@ -98,7 +98,7 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                               )}
                               <div className="athlete-result-card__info">
                                 <strong>{result.race.name}</strong>
-                                <span>{result.race.date} · {result.race.city}</span>
+                                <span>{result.race.date} · {result.race.city ? `${result.race.city}, ${result.race.country}` : result.race.country}</span>
                               </div>
                               <strong className="athlete-result-card__time">{result.totalTime ?? '—'}</strong>
                             </article>
