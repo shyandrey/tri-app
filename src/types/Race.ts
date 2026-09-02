@@ -22,7 +22,7 @@ export type RaceEntity = {
 export type RaceEdition = {
   id: string
   raceId: string
-  legacyId: number
+  legacyId?: number
   year: number
 
   series: RaceSeries
