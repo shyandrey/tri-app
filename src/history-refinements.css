@@ -1,0 +1,132 @@
+/* Athlete recent results: podium medals + collapsible years */
+.athlete-results-year + .athlete-results-year {
+  margin-top: 12px;
+}
+
+.athlete-results-year__toggle {
+  width: 100%;
+  padding: 0 0 10px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.athlete-results-year__chevron {
+  display: inline-block;
+  color: #f3b72b;
+  font-size: 26px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 160ms ease;
+}
+
+.athlete-results-year__chevron--open {
+  transform: rotate(90deg);
+}
+
+.athlete-result-card__medal {
+  width: 46px;
+  justify-self: start;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+  box-shadow: none !important;
+  font-size: 27px;
+  line-height: 1;
+  text-align: left;
+}
+
+/* Race history */
+.race-season-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 22px;
+}
+
+.race-season-switcher__year {
+  min-width: 70px;
+  padding: 8px 14px;
+  border: 1px solid #4b4b4b;
+  border-radius: 999px;
+  background: transparent;
+  color: #777;
+  font: inherit;
+  font-weight: 700;
+}
+
+.race-season-switcher__year--active {
+  border-color: #f3b72b;
+  color: #f3b72b;
+}
+
+.race-season-switcher__year:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.race-winners {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.race-winners h2 {
+  margin: 0 0 16px;
+}
+
+.race-winners__year {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.race-winners__year-label {
+  color: #f3b72b;
+  font-size: 18px;
+}
+
+.race-winners__people {
+  display: grid;
+  gap: 9px;
+  flex: 1;
+}
+
+.race-winner {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.race-winner > span:last-child {
+  color: #b9b9b9;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 700px) {
+  .race-season-switcher__year {
+    min-width: 62px;
+    padding-inline: 11px;
+  }
+
+  .race-winners__year {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .athlete-result-card__medal {
+    width: 38px;
+    font-size: 25px;
+  }
+}
