@@ -13,6 +13,13 @@ type AthleteDetailPageProps = {
   onRaceClick: (race: Race) => void
 }
 
+function resultPlace(position: RaceResult['position']) {
+  if (position === 1) return '🥇'
+  if (position === 2) return '🥈'
+  if (position === 3) return '🥉'
+  return position
+}
+
 function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRaceClick }: AthleteDetailPageProps) {
   const resultsByYear = results
     .map((result) => ({ ...result, race: races.find((race) => race.editionId === result.raceEditionId) }))
@@ -54,7 +61,7 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                   <div className="athlete-results-list">
                     {yearResults.map((result) => (
                       <article className="athlete-result-card" key={result.id} onClick={() => onRaceClick(result.race)}>
-                        <div className="athlete-result-card__place">{result.position}</div>
+                        <div className="athlete-result-card__place">{resultPlace(result.position)}</div>
                         <div className="athlete-result-card__info">
                           <strong>{result.race.name}</strong>
                           <span>{result.race.date} · {result.race.city}</span>
