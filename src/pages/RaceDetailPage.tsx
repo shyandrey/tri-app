@@ -17,6 +17,14 @@ type RaceDetailPageProps = {
   onAthleteClick: (athlete: Athlete) => void
 }
 
+const getRaceYear = (race: Race) => race.year ?? new Date(race.dateISO).getFullYear()
+
+const genderLabel = (race: Race) => {
+  if (race.gender === 'MPRO') return 'MEN'
+  if (race.gender === 'WPRO') return 'WOMEN'
+  return null
+}
+
 function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
   const [activeRace, setActiveRace] = useState(race)
 
@@ -27,9 +35,36 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   const siblingEditions = useMemo(
     () => raceEditions
       .filter((edition) => edition.raceId === race.raceId)
-      .sort((a, b) => (b.year ?? 0) - (a.year ?? 0)),
+      .sort((a, b) => getRaceYear(b) - getRaceYear(a)),
     [race.raceId, raceEditions]
   )
+
+  const availableYears = useMemo(
+    () => Array.from(new Set(siblingEditions.map(getRaceYear))).sort((a, b) => b - a),
+    [siblingEditions]
+  )
+
+  const currentYear = getRaceYear(activeRace)
+
+  const editionsInCurrentYear = useMemo(
+    () => siblingEditions
+      .filter((edition) => getRaceYear(edition) === currentYear)
+      .sort((a, b) => a.dateISO.localeCompare(b.dateISO)),
+    [currentYear, siblingEditions]
+  )
+
+  const genderEditions = editionsInCurrentYear.filter((edition) => genderLabel(edition) !== null)
+  const showGenderSwitcher = genderEditions.length > 1
+
+  const selectYear = (year: number) => {
+    const editions = siblingEditions.filter((edition) => getRaceYear(edition) === year)
+    if (editions.length === 0) return
+
+    const sameGender = editions.find((edition) => edition.gender === activeRace.gender)
+    const combinedEdition = editions.find((edition) => edition.gender === 'WPRO & MPRO')
+
+    setActiveRace(sameGender ?? combinedEdition ?? editions[0])
+  }
 
   const results = useMemo(
     () => allResults.filter((result) => result.raceEditionId === activeRace.editionId),
@@ -37,7 +72,6 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   )
 
   const hasResults = results.length > 0
-  const currentYear = activeRace.year ?? new Date(activeRace.dateISO).getFullYear()
   const winners = results.filter((result) => result.position === 1)
   const maleWinner = winners.find((result) => result.gender === 'M')
   const femaleWinner = winners.find((result) => result.gender === 'W')
@@ -64,10 +98,25 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
           <h1>{activeRace.name}</h1>
           <p className="race-detail-meta">{activeRace.date} · {activeRace.city}, {activeRace.country}</p>
 
-          {siblingEditions.length > 1 && (
+          {availableYears.length > 1 && (
             <div className="race-season-switcher" aria-label="Сезон гонки">
-              {siblingEditions.map((edition) => {
-                const year = edition.year ?? new Date(edition.dateISO).getFullYear()
+              {availableYears.map((year) => (
+                <button
+                  key={year}
+                  type="button"
+                  className={year === currentYear ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
+                  onClick={() => selectYear(year)}
+                >
+                  {year}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {showGenderSwitcher && (
+            <div className="race-season-switcher" aria-label="Категория гонки">
+              {genderEditions.map((edition) => {
+                const label = genderLabel(edition)
                 const isActive = edition.editionId === activeRace.editionId
 
                 return (
@@ -77,7 +126,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
                     className={isActive ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
                     onClick={() => setActiveRace(edition)}
                   >
-                    {year}
+                    {label}
                   </button>
                 )
               })}
