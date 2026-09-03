@@ -1,6 +1,8 @@
 import type { RaceResult } from '../../types/RaceResult'
 import { getRaceEditionId } from '../raceIdentity'
 import { geelong2025Results } from './2025/ironman/geelong'
+import { southAfrica2025Results } from './2025/ironman/south-africa'
+import { oceanside2025Results } from './2025/ironman/oceanside'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -50,5 +52,7 @@ const results2026: RaceResult[] = [
 
 export const raceResults: RaceResult[] = [
   ...geelong2025Results,
+  ...southAfrica2025Results,
+  ...oceanside2025Results,
   ...results2026,
 ]
