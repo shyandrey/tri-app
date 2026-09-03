@@ -92,6 +92,10 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
     if (targetEdition) setActiveRace(targetEdition)
   }
 
+  const location = activeRace.city
+    ? `${activeRace.city}, ${activeRace.country}`
+    : activeRace.country
+
   return (
     <main className="app">
       <span className="race-detail-page__distance-tag race-card__tag">{activeRace.distance}</span>
@@ -100,7 +104,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
         <div className="race-detail">
           <h1>{activeRace.name}</h1>
-          <p className="race-detail-meta">{activeRace.date} · {activeRace.city}, {activeRace.country}</p>
+          <p className="race-detail-meta">{activeRace.date} · {location}</p>
 
           {years.length > 1 && (
             <div className="race-season-switcher" aria-label="Сезон гонки">
