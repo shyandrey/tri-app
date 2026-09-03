@@ -45,6 +45,36 @@
   text-align: left;
 }
 
+/* Race cards: align the distance tag baseline with the series label */
+.race-card--compact {
+  align-items: stretch;
+}
+
+.race-card__series-column,
+.race-card__content {
+  display: grid;
+  grid-template-rows: minmax(58px, auto) auto auto;
+  align-items: center;
+  row-gap: 0;
+}
+
+.race-card__series-column {
+  justify-items: center;
+}
+
+.race-card__series-mark {
+  align-self: start;
+}
+
+.race-card__tag--series,
+.race-card__meta-row {
+  align-self: center;
+}
+
+.race-card__meta-row {
+  margin-top: 0;
+}
+
 /* Race history */
 .race-season-switcher {
   display: flex;
@@ -128,5 +158,10 @@
   .athlete-result-card__medal {
     width: 38px;
     font-size: 25px;
+  }
+
+  .race-card__series-column,
+  .race-card__content {
+    grid-template-rows: minmax(48px, auto) auto auto;
   }
 }
