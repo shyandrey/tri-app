@@ -36,7 +36,7 @@ function App() {
     .slice(0, 3)
 
   if (page === 'calendar') {
-    return <CalendarPage races={races} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
+    return <CalendarPage races={races} searchRaces={allRaceEditionViews} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
   }
 
   if (page === 'race' && selectedRace && selectedRace.editionId) {
