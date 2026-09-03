@@ -3,6 +3,9 @@ import { getRaceEditionId } from '../raceIdentity'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
+import { texas2025Results } from './2025/ironman/texas'
+import { veniceJesolo2025Results } from './2025/ironman/venice-jesolo'
+import { stGeorge2025Results } from './2025/ironman/st-george'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -54,5 +57,8 @@ export const raceResults: RaceResult[] = [
   ...geelong2025Results,
   ...southAfrica2025Results,
   ...oceanside2025Results,
+  ...texas2025Results,
+  ...veniceJesolo2025Results,
+  ...stGeorge2025Results,
   ...results2026,
 ]
