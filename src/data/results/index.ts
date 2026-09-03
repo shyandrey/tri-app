@@ -24,6 +24,9 @@ import { vancouver2025Results } from './2025/t100/vancouver'
 import { london2025Results } from './2025/t100/london'
 import { frenchRiviera2025Results } from './2025/t100/french-riviera'
 import { spain2025Results } from './2025/t100/spain'
+import { wollongong2025Results } from './2025/t100/wollongong'
+import { dubai2025Results } from './2025/t100/dubai'
+import { qatar2025Results } from './2025/t100/qatar'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -71,6 +74,7 @@ const results2025: RaceResult[] = [
   ...kona2025Results, ...marbellaWomen2025Results, ...marbellaMen2025Results,
   ...singapore2025Results, ...sanFrancisco2025Results, ...vancouver2025Results,
   ...london2025Results, ...frenchRiviera2025Results, ...spain2025Results,
+  ...wollongong2025Results, ...dubai2025Results, ...qatar2025Results,
 ].map((result) => ({ ...result, raceEditionId: normalizeArchivedT100EditionId(result.raceEditionId) }))
 
 const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
