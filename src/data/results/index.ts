@@ -52,6 +52,14 @@ const results2026: RaceResult[] = [
   raceEditionId: result.raceEditionId ?? (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined),
 }))
 
+const normalizeArchivedT100EditionId = (editionId?: string) => {
+  if (!editionId) return editionId
+  return editionId
+    .replace(/^singapore-t100-/, 't100-singapore-')
+    .replace(/^san-francisco-t100-/, 't100-san-francisco-')
+    .replace(/^vancouver-t100-/, 't100-vancouver-')
+}
+
 const results2025: RaceResult[] = [
   ...geelong2025Results, ...southAfrica2025Results, ...oceanside2025Results, ...texas2025Results,
   ...veniceJesolo2025Results, ...stGeorge2025Results, ...aixEnProvence2025Results, ...hamburg2025Results,
@@ -59,7 +67,7 @@ const results2025: RaceResult[] = [
   ...lakePlacid2025Results, ...zellAmSee2025Results, ...niceWorldChampionship2025Results,
   ...kona2025Results, ...marbellaWomen2025Results, ...marbellaMen2025Results,
   ...singapore2025Results, ...sanFrancisco2025Results, ...vancouver2025Results,
-]
+].map((result) => ({ ...result, raceEditionId: normalizeArchivedT100EditionId(result.raceEditionId) }))
 
 const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
 for (const result of [...results2026, ...results2025]) {
