@@ -6,6 +6,9 @@ import { oceanside2025Results } from './2025/ironman/oceanside'
 import { texas2025Results } from './2025/ironman/texas'
 import { veniceJesolo2025Results } from './2025/ironman/venice-jesolo'
 import { stGeorge2025Results } from './2025/ironman/st-george'
+import { aixEnProvence2025Results } from './2025/ironman/aix-en-provence'
+import { hamburg2025Results } from './2025/ironman/hamburg'
+import { eagleman2025Results } from './2025/ironman/eagleman'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -60,5 +63,8 @@ export const raceResults: RaceResult[] = [
   ...texas2025Results,
   ...veniceJesolo2025Results,
   ...stGeorge2025Results,
+  ...aixEnProvence2025Results,
+  ...hamburg2025Results,
+  ...eagleman2025Results,
   ...results2026,
 ]
