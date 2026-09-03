@@ -14,16 +14,16 @@ type T100ArchiveRace = {
 }
 
 const races2025: T100ArchiveRace[] = [
-  { raceId: 'singapore-t100', name: 'Singapore T100', dateISO: '2025-04-05', date: '5 апреля', city: 'Сингапур', country: 'Сингапур', gender: 'WPRO', suffix: 'women' },
-  { raceId: 'singapore-t100', name: 'Singapore T100', dateISO: '2025-04-06', date: '6 апреля', city: 'Сингапур', country: 'Сингапур', gender: 'MPRO', suffix: 'men' },
-  { raceId: 'san-francisco-t100', name: 'San Francisco T100', dateISO: '2025-05-31', date: '31 мая', city: 'Сан-Франциско', country: 'США', gender: 'WPRO & MPRO' },
-  { raceId: 'vancouver-t100', name: 'Vancouver T100', dateISO: '2025-06-14', date: '14 июня', city: 'Ванкувер', country: 'Канада', gender: 'WPRO & MPRO' },
-  { raceId: 'london-t100', name: 'London T100', dateISO: '2025-08-09', date: '9 августа', city: 'Лондон', country: 'Великобритания', gender: 'WPRO & MPRO' },
-  { raceId: 'french-riviera-t100', name: 'EKOÏ French Riviera T100', dateISO: '2025-08-30', date: '30 августа', city: 'Сен-Рафаэль / Фрежюс', country: 'Франция', gender: 'WPRO & MPRO' },
-  { raceId: 'spain-t100', name: 'Spain T100', dateISO: '2025-09-20', date: '20 сентября', city: 'Оропеса-дель-Мар', country: 'Испания', gender: 'WPRO & MPRO' },
-  { raceId: 'wollongong-t100', name: 'Wollongong T100', dateISO: '2025-10-18', date: '18 октября', city: 'Вуллонгонг', country: 'Австралия', gender: 'WPRO & MPRO' },
-  { raceId: 'dubai-t100', name: 'Dubai T100', dateISO: '2025-11-15', date: '15 ноября', city: 'Дубай', country: 'ОАЭ', gender: 'WPRO & MPRO' },
-  { raceId: 'qatar-t100', name: 'Qatar T100 World Championship Final', dateISO: '2025-12-12', date: '12 декабря', city: 'Доха / Лусаил', country: 'Катар', gender: 'WPRO & MPRO' },
+  { raceId: 't100-singapore', name: 'Singapore T100', dateISO: '2025-04-05', date: '5 апреля', city: 'Сингапур', country: 'Сингапур', gender: 'WPRO', suffix: 'women' },
+  { raceId: 't100-singapore', name: 'Singapore T100', dateISO: '2025-04-06', date: '6 апреля', city: 'Сингапур', country: 'Сингапур', gender: 'MPRO', suffix: 'men' },
+  { raceId: 't100-san-francisco', name: 'San Francisco T100', dateISO: '2025-05-31', date: '31 мая', city: 'Сан-Франциско', country: 'США', gender: 'WPRO & MPRO' },
+  { raceId: 't100-vancouver', name: 'Vancouver T100', dateISO: '2025-06-14', date: '14 июня', city: 'Ванкувер', country: 'Канада', gender: 'WPRO & MPRO' },
+  { raceId: 't100-london', name: 'London T100', dateISO: '2025-08-09', date: '9 августа', city: 'Лондон', country: 'Великобритания', gender: 'WPRO & MPRO' },
+  { raceId: 't100-french-riviera', name: 'EKOÏ French Riviera T100', dateISO: '2025-08-30', date: '30 августа', city: 'Сен-Рафаэль / Фрежюс', country: 'Франция', gender: 'WPRO & MPRO' },
+  { raceId: 't100-spain', name: 'Spain T100', dateISO: '2025-09-20', date: '20 сентября', city: 'Оропеса-дель-Мар', country: 'Испания', gender: 'WPRO & MPRO' },
+  { raceId: 't100-wollongong', name: 'Wollongong T100', dateISO: '2025-10-18', date: '18 октября', city: 'Вуллонгонг', country: 'Австралия', gender: 'WPRO & MPRO' },
+  { raceId: 't100-dubai', name: 'Dubai T100', dateISO: '2025-11-15', date: '15 ноября', city: 'Дубай', country: 'ОАЭ', gender: 'WPRO & MPRO' },
+  { raceId: 't100-qatar', name: 'Qatar T100 World Championship Final', dateISO: '2025-12-12', date: '12 декабря', city: 'Доха / Лусаил', country: 'Катар', gender: 'WPRO & MPRO' },
 ]
 
 export const t1002025Editions: RaceEdition[] = races2025.map((race) => ({
