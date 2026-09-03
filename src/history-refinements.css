@@ -45,7 +45,7 @@
   text-align: left;
 }
 
-/* Race cards: lift timing/location and series rows to the distance-tag level */
+/* Race cards: keep timing/location compact and align series with distance tag */
 .race-card__info-row {
   position: relative;
   top: -4px;
@@ -53,7 +53,7 @@
 
 .race-card__meta-row {
   position: relative;
-  top: -7px;
+  top: 5px;
   margin-top: 7px;
 }
 
@@ -147,7 +147,7 @@
   }
 
   .race-card__meta-row {
-    top: -6px;
+    top: 5px;
     margin-top: 6px;
   }
 }
