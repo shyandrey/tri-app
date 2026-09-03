@@ -45,16 +45,54 @@
   text-align: left;
 }
 
-/* Race cards: keep timing/location compact and align series with distance tag */
+/* Race cards: the distance tag and series share one real grid row */
+.race-card--compact {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) 28px;
+  grid-template-rows: auto auto auto;
+  column-gap: 16px;
+  row-gap: 6px;
+  align-items: center;
+}
+
+.race-card__series-mark {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  justify-self: center;
+}
+
+.race-card__title {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0 !important;
+}
+
 .race-card__info-row {
-  position: relative;
-  top: -4px;
+  grid-column: 2;
+  grid-row: 2;
+  position: static;
+}
+
+.race-card__tag--series {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
+  align-self: center;
 }
 
 .race-card__meta-row {
-  position: relative;
-  top: 5px;
-  margin-top: 7px;
+  grid-column: 2;
+  grid-row: 3;
+  position: static;
+  margin-top: 0;
+  align-self: center;
+}
+
+.race-card__arrow {
+  grid-column: 3;
+  grid-row: 1 / 4;
+  align-self: center;
 }
 
 /* Race history */
@@ -142,12 +180,9 @@
     font-size: 25px;
   }
 
-  .race-card__info-row {
-    top: -3px;
-  }
-
-  .race-card__meta-row {
-    top: 5px;
-    margin-top: 6px;
+  .race-card--compact {
+    grid-template-columns: 54px minmax(0, 1fr) 20px;
+    column-gap: 11px;
+    row-gap: 5px;
   }
 }
