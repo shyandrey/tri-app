@@ -13,6 +13,9 @@ import { eagleman2025Results } from './2025/ironman/eagleman'
 import { cairns2025Results } from './2025/ironman/cairns'
 import { frankfurt2025Results } from './2025/ironman/frankfurt'
 import { swansea2025Results } from './2025/ironman/swansea'
+import { lakePlacid2025Results } from './2025/ironman/lake-placid'
+import { zellAmSee2025Results } from './2025/ironman/zell-am-see'
+import { niceWorldChampionship2025Results } from './2025/ironman/nice-world-championship'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -48,6 +51,7 @@ const results2025: RaceResult[] = [
   ...geelong2025Results, ...southAfrica2025Results, ...oceanside2025Results, ...texas2025Results,
   ...veniceJesolo2025Results, ...stGeorge2025Results, ...aixEnProvence2025Results, ...hamburg2025Results,
   ...eagleman2025Results, ...cairns2025Results, ...frankfurt2025Results, ...swansea2025Results,
+  ...lakePlacid2025Results, ...zellAmSee2025Results, ...niceWorldChampionship2025Results,
 ]
 
 const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
