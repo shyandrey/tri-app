@@ -5,15 +5,34 @@ import { countryCodeToFlag } from '../utils/countryFlag'
 import { getBestSplit, getResultTime, sortRaceResults, type ResultSortKey } from '../utils/raceResultTime'
 import './RaceResultsTable.css'
 
-type RaceResultsTableProps = { results: RaceResult[]; athletes: Athlete[]; onAthleteClick: (athlete: Athlete) => void }
+type Gender = 'M' | 'W'
+type RaceResultsTableProps = {
+  results: RaceResult[]
+  athletes: Athlete[]
+  onAthleteClick: (athlete: Athlete) => void
+  selectedGender?: Gender
+  onGenderChange?: (gender: Gender) => void
+}
 const sortOptions: { key: ResultSortKey; label: string }[] = [{ key: 'swim', label: 'Swim' }, { key: 'bike', label: 'Bike' }, { key: 'run', label: 'Run' }, { key: 'overall', label: 'Total' }]
 const genderLabels = { M: 'MEN', W: 'WOMEN' } as const
 
-function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTableProps) {
+function RaceResultsTable({ results, athletes, onAthleteClick, selectedGender: controlledGender, onGenderChange }: RaceResultsTableProps) {
   const [sortKey, setSortKey] = useState<ResultSortKey>('overall')
   const genders = useMemo(() => { const present = new Set(results.map((result) => result.gender).filter(Boolean)); return (['M', 'W'] as const).filter((gender) => present.has(gender)) }, [results])
-  const [selectedGender, setSelectedGender] = useState<'M' | 'W' | undefined>(genders[0])
-  useEffect(() => { setSelectedGender(genders[0]); setSortKey('overall') }, [results, genders])
+  const [internalGender, setInternalGender] = useState<Gender | undefined>(genders[0])
+  const selectedGender = controlledGender ?? internalGender
+
+  useEffect(() => {
+    if (!controlledGender) setInternalGender(genders[0])
+    setSortKey('overall')
+  }, [results, genders, controlledGender])
+
+  const selectGender = (gender: Gender) => {
+    if (onGenderChange) onGenderChange(gender)
+    else setInternalGender(gender)
+    setSortKey('overall')
+  }
+
   const visibleResults = useMemo(() => selectedGender ? results.filter((result) => result.gender === selectedGender) : results, [results, selectedGender])
   const sortedResults = useMemo(() => sortRaceResults(visibleResults, sortKey), [visibleResults, sortKey])
   const bestSwim = useMemo(() => getBestSplit(visibleResults, 'swim'), [visibleResults])
@@ -22,7 +41,7 @@ function RaceResultsTable({ results, athletes, onAthleteClick }: RaceResultsTabl
   const athleteFlag = (result: RaceResult, athlete?: Athlete) => countryCodeToFlag(result.countryCode) || athlete?.flag || ''
 
   return <div className="results-table">
-    <div className="results-table__toolbar"><div className="results-table__title-row"><h2>Результаты</h2>{genders.length > 1 && <div className="results-table__gender-tabs" aria-label="Категория результатов">{genders.map((gender) => <button key={gender} className={selectedGender === gender ? 'is-active' : ''} onClick={() => { setSelectedGender(gender); setSortKey('overall') }}>{genderLabels[gender]}</button>)}</div>}</div>
+    <div className="results-table__toolbar"><div className="results-table__title-row"><h2>Результаты</h2>{genders.length > 1 && <div className="results-table__gender-tabs" aria-label="Категория результатов">{genders.map((gender) => <button key={gender} className={selectedGender === gender ? 'is-active' : ''} onClick={() => selectGender(gender)}>{genderLabels[gender]}</button>)}</div>}</div>
       <div className="results-table__sort-tabs">{sortOptions.map((option) => <button key={option.key} className={sortKey === option.key ? 'is-active' : ''} onClick={() => setSortKey(option.key)}>{option.label}</button>)}</div></div>
     <div className="results-table__desktop-wrap"><table className="results-table__desktop"><thead><tr><th>#</th><th>Athlete</th><th><button className={sortKey === 'swim' ? 'is-active-sort' : ''} onClick={() => setSortKey('swim')}>Swim</button></th><th>T1</th><th><button className={sortKey === 'bike' ? 'is-active-sort' : ''} onClick={() => setSortKey('bike')}>Bike</button></th><th>T2</th><th><button className={sortKey === 'run' ? 'is-active-sort' : ''} onClick={() => setSortKey('run')}>Run</button></th><th><button className={sortKey === 'overall' ? 'is-active-sort' : ''} onClick={() => setSortKey('overall')}>Total</button></th></tr></thead><tbody>
       {sortedResults.map((result, index) => { const athlete = result.athleteId ? athletes.find((item) => item.id === result.athleteId) : undefined; const selectedTime = getResultTime(result, sortKey); const splitRank = sortKey !== 'overall' && selectedTime ? index + 1 : undefined; const flag = athleteFlag(result, athlete); return <tr key={result.id} className={athlete ? 'is-clickable' : ''} onClick={() => athlete && onAthleteClick(athlete)}><td className="results-table__position"><span>{result.position}</span>{sortKey !== 'overall' && <small>({splitRank ?? '—'})</small>}</td><td><div className="results-table__athlete">{athlete?.image ? <img src={athlete.image} alt="" /> : <span className="results-table__avatar">{result.athleteName.charAt(0)}</span>}<div><strong>{result.athleteName}{flag ? ` ${flag}` : ''}</strong>{result.country && <small>{result.country}</small>}</div></div></td><td><span className={result.swimTime === bestSwim ? 'best-split-badge' : ''}>{result.swimTime ?? '—'}</span></td><td>{result.t1Time ?? '—'}</td><td><span className={result.bikeTime === bestBike ? 'best-split-badge' : ''}>{result.bikeTime ?? '—'}</span></td><td>{result.t2Time ?? '—'}</td><td><span className={result.runTime === bestRun ? 'best-split-badge' : ''}>{result.runTime ?? '—'}</span></td><td className="results-table__total">{typeof result.position === 'string' ? result.position : result.totalTime ?? '—'}</td></tr> })}
