@@ -21,6 +21,10 @@ const raceIdsByLegacyId: Record<number, string> = {
   20: 't100-spain',
   21: 't100-san-francisco',
   22: 't100-vancouver',
+  23: 't100-french-riviera',
+  24: 't100-dubai',
+  25: 't100-saudi-arabia',
+  26: 't100-qatar',
 }
 
 export function getRaceId(legacyId: number) {
