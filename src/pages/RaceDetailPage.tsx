@@ -5,7 +5,6 @@ import RaceResultsTable from '../components/RaceResultsTable'
 import type { Page } from '../types/Page'
 import type { RaceResult } from '../types/RaceResult'
 import type { Athlete } from '../types/Athlete'
-import { countryCodeToFlag } from '../utils/countryFlag'
 
 type RaceDetailPageProps = {
   race: Race
@@ -76,9 +75,6 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   }, [rawResults, activeYearEditions.length, activeGender])
 
   const hasResults = results.length > 0
-  const winners = results.filter((result) => result.position === 1)
-  const maleWinner = winners.find((result) => result.gender === 'M')
-  const femaleWinner = winners.find((result) => result.gender === 'W')
 
   const switchYear = (year: number) => {
     const targetEditions = editionsByYear.get(year)
@@ -94,18 +90,6 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   const switchGender = (gender: ResultGender) => {
     const targetEdition = activeYearEditions.find((edition) => genderFromEdition(edition) === gender)
     if (targetEdition) setActiveRace(targetEdition)
-  }
-
-  const winnerLine = (winner?: RaceResult) => {
-    if (!winner) return null
-    const flag = winner.countryCode ? countryCodeToFlag(winner.countryCode) : ''
-    return (
-      <div className="race-winner">
-        <span className="race-winner__flag">{flag}</span>
-        <strong>{winner.athleteName}</strong>
-        <span>{winner.totalTime ?? '—'}</span>
-      </div>
-    )
   }
 
   return (
@@ -146,21 +130,8 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               athletes={athletes}
               onAthleteClick={onAthleteClick}
               selectedGender={activeGender}
-              onGenderChange={switchGender}
+              onGenderChange={activeGender ? switchGender : undefined}
             />
-          )}
-
-          {winners.length > 0 && (
-            <section className="race-winners">
-              <h2>Победители Pro Series</h2>
-              <div className="race-winners__year">
-                <strong className="race-winners__year-label">{currentYear}</strong>
-                <div className="race-winners__people">
-                  {winnerLine(maleWinner)}
-                  {winnerLine(femaleWinner)}
-                </div>
-              </div>
-            </section>
           )}
         </div>
       </section>
