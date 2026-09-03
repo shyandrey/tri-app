@@ -47,7 +47,16 @@ function CalendarPage({ races, searchRaces = races, onBack, onRaceClick, onNavig
         ? matchesSearch
         : matchesFilter && matchesTime
     })
-    .sort((a, b) => new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime())
+    .sort((a, b) => {
+      const aDate = new Date(a.dateISO).getTime()
+      const bDate = new Date(b.dateISO).getTime()
+
+      if (isSearching || timeFilter === 'finished') {
+        return bDate - aDate
+      }
+
+      return aDate - bDate
+    })
 
   const archiveRacesByYear = archiveYears.map((year) => ({
     year,
