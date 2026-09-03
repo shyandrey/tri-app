@@ -66,41 +66,38 @@ function RaceCard({
 
   return (
     <article className={`race-card race-card--compact ${seriesClass}`} onClick={onClick}>
-      <div className="race-card__series-column">
-        <div className="race-card__series-mark" aria-hidden="true">
-          {seriesImage ? (
-            <img className="race-card__series-image" src={seriesImage} alt="" />
-          ) : (
-            <span>R</span>
-          )}
-        </div>
-        <span className="race-card__tag race-card__tag--series">{distanceLabel}</span>
+      <div className="race-card__series-mark" aria-hidden="true">
+        {seriesImage ? (
+          <img className="race-card__series-image" src={seriesImage} alt="" />
+        ) : (
+          <span>R</span>
+        )}
       </div>
 
-      <div className="race-card__content">
-        <h3>{name}</h3>
+      <h3 className="race-card__title">{name}</h3>
 
-        <div className="race-card__info-row">
-          <span className="race-card__info-item">
-            <CalendarIcon />
-            <span>{date}</span>
-          </span>
-          <span className="race-card__info-divider" aria-hidden="true" />
-          <span className="race-card__info-item race-card__location">
-            <LocationIcon />
-            <span>{city ? `${city}, ${country}` : country}</span>
-          </span>
-        </div>
+      <div className="race-card__info-row">
+        <span className="race-card__info-item">
+          <CalendarIcon />
+          <span>{date}</span>
+        </span>
+        <span className="race-card__info-divider" aria-hidden="true" />
+        <span className="race-card__info-item race-card__location">
+          <LocationIcon />
+          <span>{city ? `${city}, ${country}` : country}</span>
+        </span>
+      </div>
 
-        <div className="race-card__meta-row">
-          <p className="race-card__series">{series}</p>
-          {genderLabel && (
-            <span className="race-card__gender">
-              <span className="race-card__gender-symbol" aria-hidden="true">{genderLabel.symbol}</span>
-              {genderLabel.label}
-            </span>
-          )}
-        </div>
+      <span className="race-card__tag race-card__tag--series">{distanceLabel}</span>
+
+      <div className="race-card__meta-row">
+        <p className="race-card__series">{series}</p>
+        {genderLabel && (
+          <span className="race-card__gender">
+            <span className="race-card__gender-symbol" aria-hidden="true">{genderLabel.symbol}</span>
+            {genderLabel.label}
+          </span>
+        )}
       </div>
 
       <span className="race-card__arrow">›</span>
