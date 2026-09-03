@@ -30,41 +30,35 @@ import { sanFrancisco2026Results } from './2026/t100/san-francisco'
 import { vancouver2026Results } from './2026/t100/vancouver'
 
 const results2026: RaceResult[] = [
-  ...newZealand2026Results,
-  ...geelong2026Results,
-  ...oceanside2026Results,
-  ...texas2026Results,
-  ...aixEnProvence2026Results,
-  ...hamburg2026Results,
-  ...pennsylvania2026Results,
-  ...elsinore2026Results,
-  ...frankfurt2026Results,
-  ...swansea2026Results,
-  ...lakePlacid2026Results,
-  ...boise2026Results,
-  ...kalmar2026Results,
-  ...zellAmSee2026Results,
-  ...goldCoast2026Results,
-  ...singapore2026Results,
-  ...spainT1002026Results,
-  ...sanFrancisco2026Results,
-  ...vancouver2026Results,
+  ...newZealand2026Results, ...geelong2026Results, ...oceanside2026Results, ...texas2026Results,
+  ...aixEnProvence2026Results, ...hamburg2026Results, ...pennsylvania2026Results, ...elsinore2026Results,
+  ...frankfurt2026Results, ...swansea2026Results, ...lakePlacid2026Results, ...boise2026Results,
+  ...kalmar2026Results, ...zellAmSee2026Results, ...goldCoast2026Results, ...singapore2026Results,
+  ...spainT1002026Results, ...sanFrancisco2026Results, ...vancouver2026Results,
 ].map((result) => ({
   ...result,
-  raceEditionId:
-    result.raceEditionId ??
-    (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined),
+  raceEditionId: result.raceEditionId ?? (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined),
 }))
 
-export const raceResults: RaceResult[] = [
-  ...geelong2025Results,
-  ...southAfrica2025Results,
-  ...oceanside2025Results,
-  ...texas2025Results,
-  ...veniceJesolo2025Results,
-  ...stGeorge2025Results,
-  ...aixEnProvence2025Results,
-  ...hamburg2025Results,
+const results2025: RaceResult[] = [
+  ...geelong2025Results, ...southAfrica2025Results, ...oceanside2025Results, ...texas2025Results,
+  ...veniceJesolo2025Results, ...stGeorge2025Results, ...aixEnProvence2025Results, ...hamburg2025Results,
   ...eagleman2025Results,
-  ...results2026,
+]
+
+// Reuse a verified country code when the same athlete already appears in another imported season.
+// This keeps nationality data consistent without guessing it from names.
+const countryCodeByAthlete = new Map<string, string>()
+for (const result of [...results2026, ...results2025]) {
+  if (result.countryCode) countryCodeByAthlete.set(result.athleteName, result.countryCode)
+}
+
+const withKnownCountryCode = (result: RaceResult): RaceResult => ({
+  ...result,
+  countryCode: result.countryCode ?? countryCodeByAthlete.get(result.athleteName),
+})
+
+export const raceResults: RaceResult[] = [
+  ...results2025.map(withKnownCountryCode),
+  ...results2026.map(withKnownCountryCode),
 ]
