@@ -60,12 +60,21 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   const activeYearEditions = editionsByYear.get(currentYear) ?? [activeRace]
   const activeYearEditionIds = new Set(activeYearEditions.map((edition) => edition.editionId))
 
-  const results = useMemo(
+  const rawResults = useMemo(
     () => allResults.filter((result) => result.raceEditionId && activeYearEditionIds.has(result.raceEditionId)),
     [allResults, activeYearEditionIds]
   )
 
   const activeGender = genderFromEdition(activeRace)
+
+  // Some older result imports for single-gender editions predate the `gender`
+  // field. The edition itself is authoritative in that case, so enrich those
+  // rows at display time instead of hiding them when MEN/WOMEN is controlled.
+  const results = useMemo(() => {
+    if (activeYearEditions.length !== 1 || !activeGender) return rawResults
+    return rawResults.map((result) => result.gender ? result : { ...result, gender: activeGender })
+  }, [rawResults, activeYearEditions.length, activeGender])
+
   const hasResults = results.length > 0
   const winners = results.filter((result) => result.position === 1)
   const maleWinner = winners.find((result) => result.gender === 'M')
