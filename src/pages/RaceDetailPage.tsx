@@ -66,9 +66,6 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
 
   const activeGender = genderFromEdition(activeRace)
 
-  // Some older result imports for single-gender editions predate the `gender`
-  // field. The edition itself is authoritative in that case, so enrich those
-  // rows at display time instead of hiding them when MEN/WOMEN is controlled.
   const results = useMemo(() => {
     if (activeYearEditions.length !== 1 || !activeGender) return rawResults
     return rawResults.map((result) => result.gender ? result : { ...result, gender: activeGender })
@@ -120,13 +117,6 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               ))}
             </div>
           )}
-
-          <div className="race-detail__summary">
-            <div className="race-detail-about">
-              <h2>О гонке</h2>
-              <p>{activeRace.description}</p>
-            </div>
-          </div>
 
           {hasResults && (
             <RaceResultsTable
