@@ -113,6 +113,51 @@
   align-self: center;
 }
 
+/* Calendar archive seasons */
+.calendar-archive {
+  margin-top: 18px;
+}
+
+.calendar-archive + .calendar-archive {
+  margin-top: 10px;
+}
+
+.calendar-archive__toggle {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 4px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.calendar-archive__chevron {
+  display: inline-block;
+  color: #f3b72b;
+  font-size: 30px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 160ms ease;
+}
+
+.calendar-archive__chevron--open {
+  transform: rotate(90deg);
+}
+
+.calendar-archive__races {
+  padding-top: 10px;
+}
+
 /* Race history */
 .race-season-switcher {
   display: flex;
@@ -202,5 +247,10 @@
     grid-template-columns: 96px minmax(0, 1fr) 20px;
     column-gap: 6px;
     row-gap: 5px;
+  }
+
+  .calendar-archive__toggle {
+    min-height: 46px;
+    font-size: 20px;
   }
 }
