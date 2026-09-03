@@ -1,4 +1,5 @@
 import type { RaceResult } from '../../types/RaceResult'
+import { athleteCountryCodes } from '../athleteCountries'
 import { getRaceEditionId } from '../raceIdentity'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
@@ -46,9 +47,10 @@ const results2025: RaceResult[] = [
   ...eagleman2025Results,
 ]
 
-// Reuse a verified country code when the same athlete already appears in another imported season.
-// This keeps nationality data consistent without guessing it from names.
-const countryCodeByAthlete = new Map<string, string>()
+// First learn every country code already present in imported source data.
+// The central registry supplements that data for athletes whose older results
+// were imported without nationality.
+const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
 for (const result of [...results2026, ...results2025]) {
   if (result.countryCode) countryCodeByAthlete.set(result.athleteName, result.countryCode)
 }
