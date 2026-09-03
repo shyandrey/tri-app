@@ -17,12 +17,12 @@ type RaceDetailPageProps = {
   onAthleteClick: (athlete: Athlete) => void
 }
 
-const getRaceYear = (race: Race) => race.year ?? new Date(race.dateISO).getFullYear()
+type ResultGender = 'M' | 'W'
 
-const genderLabel = (race: Race) => {
-  if (race.gender === 'MPRO') return 'MEN'
-  if (race.gender === 'WPRO') return 'WOMEN'
-  return null
+const genderFromEdition = (race: Race): ResultGender | undefined => {
+  if (race.gender === 'MPRO') return 'M'
+  if (race.gender === 'WPRO') return 'W'
+  return undefined
 }
 
 function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
@@ -35,46 +35,57 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   const siblingEditions = useMemo(
     () => raceEditions
       .filter((edition) => edition.raceId === race.raceId)
-      .sort((a, b) => getRaceYear(b) - getRaceYear(a)),
+      .sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.dateISO.localeCompare(b.dateISO)),
     [race.raceId, raceEditions]
   )
 
-  const availableYears = useMemo(
-    () => Array.from(new Set(siblingEditions.map(getRaceYear))).sort((a, b) => b - a),
-    [siblingEditions]
+  const currentYear = activeRace.year ?? new Date(activeRace.dateISO).getFullYear()
+
+  const editionsByYear = useMemo(() => {
+    const map = new Map<number, Race[]>()
+    for (const edition of siblingEditions) {
+      const year = edition.year ?? new Date(edition.dateISO).getFullYear()
+      const editions = map.get(year) ?? []
+      editions.push(edition)
+      map.set(year, editions)
+    }
+    return map
+  }, [siblingEditions])
+
+  const years = useMemo(
+    () => Array.from(editionsByYear.keys()).sort((a, b) => b - a),
+    [editionsByYear]
   )
 
-  const currentYear = getRaceYear(activeRace)
-
-  const editionsInCurrentYear = useMemo(
-    () => siblingEditions
-      .filter((edition) => getRaceYear(edition) === currentYear)
-      .sort((a, b) => a.dateISO.localeCompare(b.dateISO)),
-    [currentYear, siblingEditions]
-  )
-
-  const genderEditions = editionsInCurrentYear.filter((edition) => genderLabel(edition) !== null)
-  const showGenderSwitcher = genderEditions.length > 1
-
-  const selectYear = (year: number) => {
-    const editions = siblingEditions.filter((edition) => getRaceYear(edition) === year)
-    if (editions.length === 0) return
-
-    const sameGender = editions.find((edition) => edition.gender === activeRace.gender)
-    const combinedEdition = editions.find((edition) => edition.gender === 'WPRO & MPRO')
-
-    setActiveRace(sameGender ?? combinedEdition ?? editions[0])
-  }
+  const activeYearEditions = editionsByYear.get(currentYear) ?? [activeRace]
+  const activeYearEditionIds = new Set(activeYearEditions.map((edition) => edition.editionId))
 
   const results = useMemo(
-    () => allResults.filter((result) => result.raceEditionId === activeRace.editionId),
-    [activeRace.editionId, allResults]
+    () => allResults.filter((result) => result.raceEditionId && activeYearEditionIds.has(result.raceEditionId)),
+    [allResults, activeYearEditionIds]
   )
 
+  const activeGender = genderFromEdition(activeRace)
   const hasResults = results.length > 0
   const winners = results.filter((result) => result.position === 1)
   const maleWinner = winners.find((result) => result.gender === 'M')
   const femaleWinner = winners.find((result) => result.gender === 'W')
+
+  const switchYear = (year: number) => {
+    const targetEditions = editionsByYear.get(year)
+    if (!targetEditions?.length) return
+
+    const sameGender = activeGender
+      ? targetEditions.find((edition) => genderFromEdition(edition) === activeGender)
+      : undefined
+
+    setActiveRace(sameGender ?? targetEditions[0])
+  }
+
+  const switchGender = (gender: ResultGender) => {
+    const targetEdition = activeYearEditions.find((edition) => genderFromEdition(edition) === gender)
+    if (targetEdition) setActiveRace(targetEdition)
+  }
 
   const winnerLine = (winner?: RaceResult) => {
     if (!winner) return null
@@ -98,38 +109,18 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
           <h1>{activeRace.name}</h1>
           <p className="race-detail-meta">{activeRace.date} · {activeRace.city}, {activeRace.country}</p>
 
-          {availableYears.length > 1 && (
+          {years.length > 1 && (
             <div className="race-season-switcher" aria-label="Сезон гонки">
-              {availableYears.map((year) => (
+              {years.map((year) => (
                 <button
                   key={year}
                   type="button"
                   className={year === currentYear ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
-                  onClick={() => selectYear(year)}
+                  onClick={() => switchYear(year)}
                 >
                   {year}
                 </button>
               ))}
-            </div>
-          )}
-
-          {showGenderSwitcher && (
-            <div className="race-season-switcher" aria-label="Категория гонки">
-              {genderEditions.map((edition) => {
-                const label = genderLabel(edition)
-                const isActive = edition.editionId === activeRace.editionId
-
-                return (
-                  <button
-                    key={edition.editionId}
-                    type="button"
-                    className={isActive ? 'race-season-switcher__year race-season-switcher__year--active' : 'race-season-switcher__year'}
-                    onClick={() => setActiveRace(edition)}
-                  >
-                    {label}
-                  </button>
-                )
-              })}
             </div>
           )}
 
@@ -140,7 +131,15 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
             </div>
           </div>
 
-          {hasResults && <RaceResultsTable results={results} athletes={athletes} onAthleteClick={onAthleteClick} />}
+          {hasResults && (
+            <RaceResultsTable
+              results={results}
+              athletes={athletes}
+              onAthleteClick={onAthleteClick}
+              selectedGender={activeGender}
+              onGenderChange={switchGender}
+            />
+          )}
 
           {winners.length > 0 && (
             <section className="race-winners">
