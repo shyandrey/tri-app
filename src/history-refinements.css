@@ -45,12 +45,12 @@
   text-align: left;
 }
 
-/* Race cards: the distance tag and series share one real grid row */
+/* Race cards: distance tag and series share one row; right content sits close to the left column */
 .race-card--compact {
   display: grid;
   grid-template-columns: 68px minmax(0, 1fr) 28px;
   grid-template-rows: auto auto auto;
-  column-gap: 16px;
+  column-gap: 6px;
   row-gap: 6px;
   align-items: center;
 }
@@ -182,7 +182,7 @@
 
   .race-card--compact {
     grid-template-columns: 54px minmax(0, 1fr) 20px;
-    column-gap: 11px;
+    column-gap: 6px;
     row-gap: 5px;
   }
 }
