@@ -45,10 +45,10 @@
   text-align: left;
 }
 
-/* Race cards: distance tag and series share one row. The left column grows to fit IRONMAN. */
+/* Race cards: all series use the same left-column width, based on the widest IRONMAN tag. */
 .race-card--compact {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) 28px;
+  grid-template-columns: 96px minmax(0, 1fr) 28px;
   grid-template-rows: auto auto auto;
   column-gap: 6px;
   row-gap: 6px;
@@ -199,7 +199,7 @@
   }
 
   .race-card--compact {
-    grid-template-columns: max-content minmax(0, 1fr) 20px;
+    grid-template-columns: 96px minmax(0, 1fr) 20px;
     column-gap: 6px;
     row-gap: 5px;
   }
