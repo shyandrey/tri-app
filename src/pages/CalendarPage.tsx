@@ -7,6 +7,7 @@ import { isRaceFinished, isRaceUpcoming } from '../utils/raceDate'
 
 type CalendarPageProps = {
   races: Race[]
+  searchRaces?: Race[]
   onBack: () => void
   onRaceClick: (race: Race) => void
   onNavigate: (page: Page) => void
@@ -18,17 +19,20 @@ const seriesFilters = [
   { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
 ] as const
 
-function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
+function CalendarPage({ races, searchRaces = races, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('Все')
   const [timeFilter, setTimeFilter] = useState<'upcoming' | 'finished' | 'all'>('upcoming')
 
-  const filteredRaces = races
+  const isSearching = search.trim().length > 0
+  const normalizedSearch = search.trim().toLowerCase()
+
+  const filteredRaces = (isSearching ? searchRaces : races)
     .filter((race) => {
       const matchesSearch =
-        race.name.toLowerCase().includes(search.toLowerCase()) ||
-        race.city.toLowerCase().includes(search.toLowerCase()) ||
-        race.country.toLowerCase().includes(search.toLowerCase())
+        race.name.toLowerCase().includes(normalizedSearch) ||
+        race.city.toLowerCase().includes(normalizedSearch) ||
+        race.country.toLowerCase().includes(normalizedSearch)
 
       const matchesFilter = filter === 'Все' || race.series === filter
       const matchesTime =
@@ -36,13 +40,11 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
         (timeFilter === 'upcoming' && isRaceUpcoming(race)) ||
         (timeFilter === 'finished' && isRaceFinished(race))
 
-      const isSearching = search.trim().length > 0
-
       return isSearching
         ? matchesSearch
         : matchesFilter && matchesTime
     })
-    .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
+    .sort((a, b) => new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime())
 
   return (
     <main className="app">
@@ -100,11 +102,11 @@ function CalendarPage({ races, onBack, onRaceClick, onNavigate }: CalendarPagePr
 
         {filteredRaces.map((race) => (
           <RaceCard
-            key={race.id}
+            key={race.editionId ?? race.id}
             distance={race.distance}
             series={race.series}
             name={race.name}
-            date={race.date}
+            date={`${race.date}${isSearching && race.year ? ` ${race.year}` : ''}`}
             city={race.city}
             country={race.country}
             gender={race.gender}
