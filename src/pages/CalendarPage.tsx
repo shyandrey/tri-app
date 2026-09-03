@@ -19,10 +19,13 @@ const seriesFilters = [
   { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
 ] as const
 
+const archiveYears = [2025, 2024] as const
+
 function CalendarPage({ races, searchRaces = races, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('Все')
   const [timeFilter, setTimeFilter] = useState<'upcoming' | 'finished' | 'all'>('upcoming')
+  const [openArchiveYears, setOpenArchiveYears] = useState<number[]>([])
 
   const isSearching = search.trim().length > 0
   const normalizedSearch = search.trim().toLowerCase()
@@ -45,6 +48,38 @@ function CalendarPage({ races, searchRaces = races, onBack, onRaceClick, onNavig
         : matchesFilter && matchesTime
     })
     .sort((a, b) => new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime())
+
+  const archiveRacesByYear = archiveYears.map((year) => ({
+    year,
+    races: searchRaces
+      .filter((race) => race.year === year)
+      .filter((race) => filter === 'Все' || race.series === filter)
+      .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()),
+  }))
+
+  const showArchive = !isSearching && timeFilter !== 'upcoming'
+
+  const toggleArchiveYear = (year: number) => {
+    setOpenArchiveYears((current) =>
+      current.includes(year)
+        ? current.filter((item) => item !== year)
+        : [...current, year]
+    )
+  }
+
+  const renderRaceCard = (race: Race, showYear = false) => (
+    <RaceCard
+      key={race.editionId ?? race.id}
+      distance={race.distance}
+      series={race.series}
+      name={race.name}
+      date={`${race.date}${showYear && race.year ? ` ${race.year}` : ''}`}
+      city={race.city}
+      country={race.country}
+      gender={race.gender}
+      onClick={() => onRaceClick(race)}
+    />
+  )
 
   return (
     <main className="app">
@@ -100,19 +135,32 @@ function CalendarPage({ races, searchRaces = races, onBack, onRaceClick, onNavig
           </button>
         </div>
 
-        {filteredRaces.map((race) => (
-          <RaceCard
-            key={race.editionId ?? race.id}
-            distance={race.distance}
-            series={race.series}
-            name={race.name}
-            date={`${race.date}${isSearching && race.year ? ` ${race.year}` : ''}`}
-            city={race.city}
-            country={race.country}
-            gender={race.gender}
-            onClick={() => onRaceClick(race)}
-          />
-        ))}
+        {filteredRaces.map((race) => renderRaceCard(race, isSearching))}
+
+        {showArchive && archiveRacesByYear.map(({ year, races: archiveRaces }) => {
+          if (archiveRaces.length === 0) return null
+          const isOpen = openArchiveYears.includes(year)
+
+          return (
+            <section className="calendar-archive" key={year}>
+              <button
+                type="button"
+                className="calendar-archive__toggle"
+                onClick={() => toggleArchiveYear(year)}
+                aria-expanded={isOpen}
+              >
+                <span>{year}</span>
+                <span className={`calendar-archive__chevron${isOpen ? ' calendar-archive__chevron--open' : ''}`}>›</span>
+              </button>
+
+              {isOpen && (
+                <div className="calendar-archive__races">
+                  {archiveRaces.map((race) => renderRaceCard(race))}
+                </div>
+              )}
+            </section>
+          )
+        })}
       </section>
 
       <BottomNav currentPage="calendar" onNavigate={onNavigate} />
