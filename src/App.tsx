@@ -6,7 +6,7 @@ import type { Page } from './types/Page'
 import AthleteDetailPage from './pages/AthleteDetailPage'
 import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
-import CalendarPage from './pages/CalendarPage'
+import CalendarPage, { type CalendarViewState } from './pages/CalendarPage'
 import TopAthletesPage from './pages/TopAthletesPage'
 import { useState } from 'react'
 import './App.css'
@@ -18,10 +18,17 @@ import triLogo from './assets/300w_5.png'
 import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
-
 import { isRaceUpcoming } from './utils/raceDate'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete } from './utils/raceResults'
+
+const initialCalendarViewState: CalendarViewState = {
+  search: '',
+  filter: 'Все',
+  timeFilter: 'upcoming',
+  openArchiveYears: [],
+  scrollY: 0,
+}
 
 function App() {
   const [page, setPage] = useState<Page>('home')
@@ -29,14 +36,12 @@ function App() {
   const [previousAthletePage, setPreviousAthletePage] = useState<'athletes' | 'top' | 'race'>('athletes')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
+  const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
 
-  const upcomingRaces = races
-    .filter(isRaceUpcoming)
-    .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
-    .slice(0, 3)
+  const upcomingRaces = races.filter(isRaceUpcoming).sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()).slice(0, 3)
 
   if (page === 'calendar') {
-    return <CalendarPage races={races} searchRaces={allRaceEditionViews} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
+    return <CalendarPage races={races} searchRaces={allRaceEditionViews} viewState={calendarViewState} onViewStateChange={setCalendarViewState} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
   }
 
   if (page === 'race' && selectedRace && selectedRace.editionId) {
@@ -62,50 +67,29 @@ function App() {
     <main className="app">
       <header className="hero hero--concept-4">
         <div className="hero__top-row">
-          <div className="hero__logo-wrap">
-            <img className="hero__logo-image" src={triLogo} alt="TRI App" />
-          </div>
+          <div className="hero__logo-wrap"><img className="hero__logo-image" src={triLogo} alt="TRI App" /></div>
           <div className="hero__vertical-divider" aria-hidden="true" />
           <div className="hero__brand-copy">
-            <div className="hero__brand-line">
-              <h1>TRI APP</h1>
-              <p className="hero__subtitle">Триатлон в одном приложении</p>
-            </div>
+            <div className="hero__brand-line"><h1>TRI APP</h1><p className="hero__subtitle">Триатлон в одном приложении</p></div>
             <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
           </div>
         </div>
         <div className="hero__horizontal-divider" aria-hidden="true" />
         <p className="hero__description">Календарь стартов, профили атлетов и всё, что нужно триатлету.</p>
       </header>
-
       <section className="section">
         <div className="section__header"><h2>⚡ Ближайшие старты</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
         {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
       </section>
-
       <section className="features features--compact">
-        <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}>
-          <div className="feature-card__icon">📅</div>
-          <div className="feature-card__copy"><h3>Календарь стартов</h3><p>Старты и результаты</p></div>
-          <span className="feature-card__arrow" aria-hidden="true">›</span>
-        </article>
-        <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}>
-          <div className="feature-card__icon">♙</div>
-          <div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div>
-          <span className="feature-card__arrow" aria-hidden="true">›</span>
-        </article>
-        <article className="feature-card feature-card--compact" onClick={() => setPage('top')}>
-          <div className="feature-card__icon">★</div>
-          <div className="feature-card__copy"><h3>Топ атлетов</h3><p>Рейтинг сильнейших</p></div>
-          <span className="feature-card__arrow" aria-hidden="true">›</span>
-        </article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}><div className="feature-card__icon">📅</div><div className="feature-card__copy"><h3>Календарь стартов</h3><p>Старты и результаты</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}><div className="feature-card__icon">♙</div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('top')}><div className="feature-card__icon">★</div><div className="feature-card__copy"><h3>Топ атлетов</h3><p>Рейтинг сильнейших</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
       </section>
-
       <section className="section">
         <div className="section__header"><h2>Новости из канала</h2><button>@trista_watt</button></div>
         <article className="news-card"><div><h3>IRONMAN объявил новый календарь стартов</h3><p>Последние новости из Telegram-канала</p></div><span className="news-card__telegram">➤</span></article>
       </section>
-
       <BottomNav currentPage={page} onNavigate={setPage} />
     </main>
   )
