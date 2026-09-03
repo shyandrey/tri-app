@@ -10,6 +10,9 @@ import { stGeorge2025Results } from './2025/ironman/st-george'
 import { aixEnProvence2025Results } from './2025/ironman/aix-en-provence'
 import { hamburg2025Results } from './2025/ironman/hamburg'
 import { eagleman2025Results } from './2025/ironman/eagleman'
+import { cairns2025Results } from './2025/ironman/cairns'
+import { frankfurt2025Results } from './2025/ironman/frankfurt'
+import { swansea2025Results } from './2025/ironman/swansea'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -44,12 +47,9 @@ const results2026: RaceResult[] = [
 const results2025: RaceResult[] = [
   ...geelong2025Results, ...southAfrica2025Results, ...oceanside2025Results, ...texas2025Results,
   ...veniceJesolo2025Results, ...stGeorge2025Results, ...aixEnProvence2025Results, ...hamburg2025Results,
-  ...eagleman2025Results,
+  ...eagleman2025Results, ...cairns2025Results, ...frankfurt2025Results, ...swansea2025Results,
 ]
 
-// First learn every country code already present in imported source data.
-// The central registry supplements that data for athletes whose older results
-// were imported without nationality.
 const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
 for (const result of [...results2026, ...results2025]) {
   if (result.countryCode) countryCodeByAthlete.set(result.athleteName, result.countryCode)
