@@ -92,6 +92,19 @@
   margin-top: 0;
   align-self: center;
   min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.race-card__gender {
+  align-self: center;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1;
+}
+
+.race-card__gender-symbol {
+  line-height: 1;
 }
 
 .race-card__arrow {
