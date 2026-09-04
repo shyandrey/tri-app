@@ -1,6 +1,8 @@
 import type { RaceResult } from '../../types/RaceResult'
 import { athleteCountryCodes } from '../athleteCountries'
 import { getRaceEditionId } from '../raceIdentity'
+import { oceanside2024Results } from './2024/ironman/oceanside'
+import { texas2024Results } from './2024/ironman/texas'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
@@ -47,6 +49,11 @@ import { spainT1002026Results } from './2026/t100/spain'
 import { sanFrancisco2026Results } from './2026/t100/san-francisco'
 import { vancouver2026Results } from './2026/t100/vancouver'
 
+const results2024: RaceResult[] = [
+  ...oceanside2024Results,
+  ...texas2024Results,
+]
+
 const results2026: RaceResult[] = [
   ...newZealand2026Results, ...geelong2026Results, ...oceanside2026Results, ...texas2026Results,
   ...aixEnProvence2026Results, ...hamburg2026Results, ...pennsylvania2026Results, ...elsinore2026Results,
@@ -78,7 +85,7 @@ const results2025: RaceResult[] = [
 ].map((result) => ({ ...result, raceEditionId: normalizeArchivedT100EditionId(result.raceEditionId) }))
 
 const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
-for (const result of [...results2026, ...results2025]) {
+for (const result of [...results2026, ...results2025, ...results2024]) {
   if (result.countryCode) countryCodeByAthlete.set(result.athleteName, result.countryCode)
 }
 
@@ -88,6 +95,7 @@ const withKnownCountryCode = (result: RaceResult): RaceResult => ({
 })
 
 export const raceResults: RaceResult[] = [
+  ...results2024.map(withKnownCountryCode),
   ...results2025.map(withKnownCountryCode),
   ...results2026.map(withKnownCountryCode),
 ]
