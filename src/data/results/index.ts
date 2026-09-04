@@ -20,6 +20,9 @@ import { niceWorldChampionship2024Results } from './2024/ironman/nice-world-cham
 import { kona2024Results } from './2024/ironman/kona'
 import { westernAustralia2024Results } from './2024/ironman/western-australia'
 import { taupoWomen2024Results, taupoMen2024Results } from './2024/ironman/taupo-world-championship'
+import { miami2024Results } from './2024/t100/miami'
+import { singapore2024Results } from './2024/t100/singapore'
+import { sanFrancisco2024Results } from './2024/t100/san-francisco'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
@@ -73,6 +76,7 @@ const results2024: RaceResult[] = [
   ...vitoriaGasteiz2024Results, ...lakePlacid2024Results, ...frankfurt2024Results,
   ...tallinn2024Results, ...zellAmSee2024Results, ...niceWorldChampionship2024Results,
   ...kona2024Results, ...westernAustralia2024Results, ...taupoWomen2024Results, ...taupoMen2024Results,
+  ...miami2024Results, ...singapore2024Results, ...sanFrancisco2024Results,
 ]
 
 const results2026: RaceResult[] = [
