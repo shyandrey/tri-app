@@ -2,7 +2,7 @@ import { races as legacyRaces } from './races'
 import type { RaceEdition, RaceEditionView } from '../types/Race'
 import { getRaceEditionId, getRaceId } from './raceIdentity'
 import { archiveIronmanRaceEntities, ironmanProSeries2024Editions, ironmanProSeries2025Editions } from './archiveIronmanProSeries'
-import { archiveT100RaceEntities, t1002025Editions } from './archiveT100'
+import { archiveT100RaceEntities, t1002024Editions, t1002025Editions } from './archiveT100'
 
 const CURRENT_SEASON = 2026
 
@@ -32,6 +32,7 @@ export const currentRaceEditions: RaceEditionView[] = legacyRaces.map((race) => 
 export const raceEditions: RaceEdition[] = [
   ...ironmanProSeries2024Editions,
   ...ironmanProSeries2025Editions,
+  ...t1002024Editions,
   ...t1002025Editions,
   ...currentSeasonEditions,
 ]
@@ -81,6 +82,7 @@ function editionToView(edition: RaceEdition, index: number): RaceEditionView {
 const archiveRaceEditionViews = [
   ...ironmanProSeries2024Editions,
   ...ironmanProSeries2025Editions,
+  ...t1002024Editions,
   ...t1002025Editions,
 ].map(editionToView)
 
