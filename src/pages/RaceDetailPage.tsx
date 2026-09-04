@@ -168,7 +168,11 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
           )}
 
           {isChampionship && activeGender && (
-            <div className="results-table__gender-tabs race-detail__championship-gender-tabs" aria-label="Категория чемпионата">
+            <div
+              className="results-table__gender-tabs"
+              style={{ width: 'fit-content', margin: '16px auto 0' }}
+              aria-label="Категория чемпионата"
+            >
               {(['M', 'W'] as const).map((gender) => (
                 <button
                   key={gender}
