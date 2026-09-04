@@ -167,7 +167,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
             </div>
           )}
 
-          {isChampionship && activeGender && (
+          {isChampionship && activeGender && !hasResults && (
             <div
               className="results-table__gender-tabs"
               style={{ width: 'fit-content', margin: '16px auto 0' }}
@@ -197,7 +197,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               onAthleteClick={onAthleteClick}
               selectedGender={activeGender}
               onGenderChange={isChampionship || activeGender ? switchGender : undefined}
-              showGenderTabs={!isChampionship}
+              showGenderTabs
             />
           ) : (
             <div className="race-detail-countdown" role="status">
