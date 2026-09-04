@@ -30,7 +30,7 @@ const races2024: ArchiveRace[] = [
   { raceId: 'ironman-70-3-boulder', name: 'IRONMAN 70.3 Boulder', dateISO: '2024-06-08', date: '8 июня', city: 'Боулдер', country: 'США', distance: '70.3', gender: 'WPRO & MPRO' },
   { raceId: 'ironman-cairns', name: 'IRONMAN Cairns Asia-Pacific Championship', dateISO: '2024-06-16', date: '16 июня', city: 'Кэрнс', country: 'Австралия', distance: 'IRONMAN', gender: 'WPRO & MPRO' },
   { raceId: 'ironman-70-3-mont-tremblant', name: 'IRONMAN 70.3 Mont-Tremblant', dateISO: '2024-06-23', date: '23 июня', city: 'Мон-Тремблан', country: 'Канада', distance: '70.3', gender: 'WPRO & MPRO' },
-  { raceId: 'ironman-70-3-les-sables', name: 'IRONMAN 70.3 Les Sables d’Olonne', dateISO: '2024-06-30', date: '30 июня', city: 'Ле-Сабль-д’Олон', country: 'Франция', distance: '70.3', gender: 'WPRO & MPRO' },
+  { raceId: 'ironman-70-3-les-sables', name: 'IRONMAN 70.3 Les Sables d’Olonne', dateISO: '2024-06-29', date: '29 июня', city: 'Ле-Сабль-д’Олон', country: 'Франция', distance: '70.3', gender: 'WPRO & MPRO' },
   { raceId: 'ironman-vitoria-gasteiz', name: 'IRONMAN Vitoria-Gasteiz', dateISO: '2024-07-14', date: '14 июля', city: 'Витория-Гастейс', country: 'Испания', distance: 'IRONMAN', gender: 'WPRO & MPRO' },
   { raceId: 'ironman-lake-placid', name: 'IRONMAN Lake Placid', dateISO: '2024-07-21', date: '21 июля', city: 'Лейк-Плэсид', country: 'США', distance: 'IRONMAN', gender: 'WPRO & MPRO' },
   { raceId: 'ironman-frankfurt', name: 'IRONMAN Frankfurt European Championship', dateISO: '2024-08-18', date: '18 августа', city: 'Франкфурт', country: 'Германия', distance: 'IRONMAN', gender: 'MPRO' },
