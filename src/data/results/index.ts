@@ -8,6 +8,9 @@ import { mallorca2024Results } from './2024/ironman/mallorca'
 import { chattanooga2024Results } from './2024/ironman/chattanooga'
 import { hamburg2024Results } from './2024/ironman/hamburg'
 import { boulder2024Results } from './2024/ironman/boulder'
+import { cairns2024Results } from './2024/ironman/cairns'
+import { montTremblant2024Results } from './2024/ironman/mont-tremblant'
+import { lesSables2024Results } from './2024/ironman/les-sables'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
@@ -55,13 +58,9 @@ import { sanFrancisco2026Results } from './2026/t100/san-francisco'
 import { vancouver2026Results } from './2026/t100/vancouver'
 
 const results2024: RaceResult[] = [
-  ...oceanside2024Results,
-  ...texas2024Results,
-  ...stGeorge2024Results,
-  ...mallorca2024Results,
-  ...chattanooga2024Results,
-  ...hamburg2024Results,
-  ...boulder2024Results,
+  ...oceanside2024Results, ...texas2024Results, ...stGeorge2024Results, ...mallorca2024Results,
+  ...chattanooga2024Results, ...hamburg2024Results, ...boulder2024Results,
+  ...cairns2024Results, ...montTremblant2024Results, ...lesSables2024Results,
 ]
 
 const results2026: RaceResult[] = [
