@@ -3,6 +3,8 @@ import { athleteCountryCodes } from '../athleteCountries'
 import { getRaceEditionId } from '../raceIdentity'
 import { oceanside2024Results } from './2024/ironman/oceanside'
 import { texas2024Results } from './2024/ironman/texas'
+import { stGeorge2024Results } from './2024/ironman/st-george'
+import { mallorca2024Results } from './2024/ironman/mallorca'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
@@ -52,6 +54,8 @@ import { vancouver2026Results } from './2026/t100/vancouver'
 const results2024: RaceResult[] = [
   ...oceanside2024Results,
   ...texas2024Results,
+  ...stGeorge2024Results,
+  ...mallorca2024Results,
 ]
 
 const results2026: RaceResult[] = [
