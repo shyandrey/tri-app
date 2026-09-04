@@ -5,6 +5,9 @@ import { oceanside2024Results } from './2024/ironman/oceanside'
 import { texas2024Results } from './2024/ironman/texas'
 import { stGeorge2024Results } from './2024/ironman/st-george'
 import { mallorca2024Results } from './2024/ironman/mallorca'
+import { chattanooga2024Results } from './2024/ironman/chattanooga'
+import { hamburg2024Results } from './2024/ironman/hamburg'
+import { boulder2024Results } from './2024/ironman/boulder'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
@@ -56,6 +59,9 @@ const results2024: RaceResult[] = [
   ...texas2024Results,
   ...stGeorge2024Results,
   ...mallorca2024Results,
+  ...chattanooga2024Results,
+  ...hamburg2024Results,
+  ...boulder2024Results,
 ]
 
 const results2026: RaceResult[] = [
