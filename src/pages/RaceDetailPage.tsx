@@ -24,6 +24,32 @@ const genderFromEdition = (race: Race): ResultGender | undefined => {
   return undefined
 }
 
+const getMoscowToday = () => {
+  const dateISO = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Moscow',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+
+  return new Date(`${dateISO}T00:00:00Z`)
+}
+
+const getDaysUntilRace = (dateISO: string) => {
+  const today = getMoscowToday()
+  const raceDate = new Date(`${dateISO}T00:00:00Z`)
+  return Math.max(0, Math.ceil((raceDate.getTime() - today.getTime()) / 86_400_000))
+}
+
+const getDaysLabel = (days: number) => {
+  const lastTwo = days % 100
+  const last = days % 10
+  if (lastTwo >= 11 && lastTwo <= 14) return 'дней'
+  if (last === 1) return 'день'
+  if (last >= 2 && last <= 4) return 'дня'
+  return 'дней'
+}
+
 function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
   const [activeRace, setActiveRace] = useState(race)
 
@@ -72,6 +98,14 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   }, [rawResults, activeYearEditions.length, activeGender])
 
   const hasResults = results.length > 0
+  const todayISO = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Moscow',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+  const isFutureRace = activeRace.dateISO > todayISO
+  const daysUntilRace = isFutureRace ? getDaysUntilRace(activeRace.dateISO) : 0
 
   const switchYear = (year: number) => {
     const targetEditions = editionsByYear.get(year)
@@ -101,7 +135,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
         <div className="race-detail">
           <h1>{activeRace.name}</h1>
-          <p className="race-detail-meta">{activeRace.date} · {location}</p>
+          <p className="race-detail-meta">{activeRace.date} {currentYear} · {location}</p>
 
           {years.length > 1 && (
             <div className="race-season-switcher" aria-label="Сезон гонки">
@@ -118,7 +152,11 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
             </div>
           )}
 
-          {hasResults && (
+          {isFutureRace ? (
+            <div className="race-detail-countdown" role="status">
+              До гонки осталось {daysUntilRace} {getDaysLabel(daysUntilRace)}
+            </div>
+          ) : hasResults ? (
             <RaceResultsTable
               results={results}
               athletes={athletes}
@@ -126,7 +164,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               selectedGender={activeGender}
               onGenderChange={activeGender ? switchGender : undefined}
             />
-          )}
+          ) : null}
         </div>
       </section>
 
