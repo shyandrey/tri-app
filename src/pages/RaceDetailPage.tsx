@@ -5,6 +5,7 @@ import RaceResultsTable from '../components/RaceResultsTable'
 import type { Page } from '../types/Page'
 import type { RaceResult } from '../types/RaceResult'
 import type { Athlete } from '../types/Athlete'
+import { getChampionshipNavigationGroup } from '../utils/raceChampionshipGroup'
 
 type RaceDetailPageProps = {
   race: Race
@@ -51,18 +52,27 @@ const getDaysLabel = (days: number) => {
 }
 
 function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
+  const championshipGroup = getChampionshipNavigationGroup(race)
+  const initialGender = genderFromEdition(race) ?? (championshipGroup ? 'M' : undefined)
   const [activeRace, setActiveRace] = useState(race)
+  const [activeGender, setActiveGender] = useState<ResultGender | undefined>(initialGender)
 
   useEffect(() => {
+    const nextGroup = getChampionshipNavigationGroup(race)
     setActiveRace(race)
+    setActiveGender(genderFromEdition(race) ?? (nextGroup ? 'M' : undefined))
   }, [race])
 
-  const siblingEditions = useMemo(
-    () => raceEditions
-      .filter((edition) => edition.raceId === race.raceId)
-      .sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.dateISO.localeCompare(b.dateISO)),
-    [race.raceId, raceEditions]
-  )
+  const siblingEditions = useMemo(() => {
+    const group = getChampionshipNavigationGroup(race)
+
+    return raceEditions
+      .filter((edition) => {
+        if (group) return getChampionshipNavigationGroup(edition) === group
+        return edition.raceId === race.raceId
+      })
+      .sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.dateISO.localeCompare(b.dateISO))
+  }, [race, raceEditions])
 
   const currentYear = activeRace.year ?? new Date(activeRace.dateISO).getFullYear()
 
@@ -90,8 +100,6 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
     [allResults, activeYearEditionIds]
   )
 
-  const activeGender = genderFromEdition(activeRace)
-
   const results = useMemo(() => {
     if (activeYearEditions.length !== 1 || !activeGender) return rawResults
     return rawResults.map((result) => result.gender ? result : { ...result, gender: activeGender })
@@ -107,25 +115,32 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   const isFutureRace = activeRace.dateISO > todayISO
   const daysUntilRace = isFutureRace ? getDaysUntilRace(activeRace.dateISO) : 0
 
+  const findEditionForGender = (editions: Race[], gender: ResultGender) =>
+    editions.find((edition) => genderFromEdition(edition) === gender)
+    ?? editions.find((edition) => edition.gender === 'WPRO & MPRO')
+
   const switchYear = (year: number) => {
     const targetEditions = editionsByYear.get(year)
     if (!targetEditions?.length) return
 
-    const sameGender = activeGender
-      ? targetEditions.find((edition) => genderFromEdition(edition) === activeGender)
+    const targetEdition = activeGender
+      ? findEditionForGender(targetEditions, activeGender)
       : undefined
 
-    setActiveRace(sameGender ?? targetEditions[0])
+    setActiveRace(targetEdition ?? targetEditions[0])
   }
 
   const switchGender = (gender: ResultGender) => {
-    const targetEdition = activeYearEditions.find((edition) => genderFromEdition(edition) === gender)
+    setActiveGender(gender)
+    const targetEdition = findEditionForGender(activeYearEditions, gender)
     if (targetEdition) setActiveRace(targetEdition)
   }
 
   const location = activeRace.city
     ? `${activeRace.city}, ${activeRace.country}`
     : activeRace.country
+
+  const isChampionship = Boolean(getChampionshipNavigationGroup(activeRace))
 
   return (
     <main className="app">
@@ -162,7 +177,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               athletes={athletes}
               onAthleteClick={onAthleteClick}
               selectedGender={activeGender}
-              onGenderChange={activeGender ? switchGender : undefined}
+              onGenderChange={isChampionship || activeGender ? switchGender : undefined}
             />
           ) : (
             <div className="race-detail-countdown" role="status">
