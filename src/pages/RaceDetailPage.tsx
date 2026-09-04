@@ -141,6 +141,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
     : activeRace.country
 
   const isChampionship = Boolean(getChampionshipNavigationGroup(activeRace))
+  const showPendingResultsHeader = !hasResults
 
   return (
     <main className="app">
@@ -167,22 +168,27 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
             </div>
           )}
 
-          {isChampionship && activeGender && !hasResults && (
-            <div
-              className="results-table__gender-tabs"
-              style={{ width: 'fit-content', margin: '16px auto 0' }}
-              aria-label="Категория чемпионата"
-            >
-              {(['M', 'W'] as const).map((gender) => (
-                <button
-                  key={gender}
-                  type="button"
-                  className={activeGender === gender ? 'is-active' : ''}
-                  onClick={() => switchGender(gender)}
-                >
-                  {gender === 'M' ? 'MEN' : 'WOMEN'}
-                </button>
-              ))}
+          {showPendingResultsHeader && (
+            <div className="results-table" style={{ marginBottom: 0 }}>
+              <div className="results-table__toolbar">
+                <div className="results-table__title-row">
+                  <h2>Результаты</h2>
+                  {isChampionship && activeGender && (
+                    <div className="results-table__gender-tabs" aria-label="Категория чемпионата">
+                      {(['M', 'W'] as const).map((gender) => (
+                        <button
+                          key={gender}
+                          type="button"
+                          className={activeGender === gender ? 'is-active' : ''}
+                          onClick={() => switchGender(gender)}
+                        >
+                          {gender === 'M' ? 'MEN' : 'WOMEN'}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
