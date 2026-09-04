@@ -164,7 +164,11 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               selectedGender={activeGender}
               onGenderChange={activeGender ? switchGender : undefined}
             />
-          ) : null}
+          ) : (
+            <div className="race-detail-countdown" role="status">
+              Скоро здесь будут результаты!
+            </div>
+          )}
         </div>
       </section>
 
