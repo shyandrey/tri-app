@@ -167,6 +167,21 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
             </div>
           )}
 
+          {isChampionship && activeGender && (
+            <div className="results-table__gender-tabs race-detail__championship-gender-tabs" aria-label="Категория чемпионата">
+              {(['M', 'W'] as const).map((gender) => (
+                <button
+                  key={gender}
+                  type="button"
+                  className={activeGender === gender ? 'is-active' : ''}
+                  onClick={() => switchGender(gender)}
+                >
+                  {gender === 'M' ? 'MEN' : 'WOMEN'}
+                </button>
+              ))}
+            </div>
+          )}
+
           {isFutureRace ? (
             <div className="race-detail-countdown" role="status">
               До гонки осталось {daysUntilRace} {getDaysLabel(daysUntilRace)}
@@ -178,6 +193,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               onAthleteClick={onAthleteClick}
               selectedGender={activeGender}
               onGenderChange={isChampionship || activeGender ? switchGender : undefined}
+              showGenderTabs={!isChampionship}
             />
           ) : (
             <div className="race-detail-countdown" role="status">
