@@ -88,6 +88,14 @@ const results2024: RaceResult[] = [
   ...challengeRoth2024Results,
 ]
 
+const t100GenderByEditionId: Record<string, 'M' | 'W'> = {
+  't100-gold-coast-2026': 'W',
+  't100-singapore-2026': 'M',
+  't100-spain-2026': 'W',
+  't100-san-francisco-2026': 'M',
+  't100-vancouver-2026': 'W',
+}
+
 const results2026: RaceResult[] = [
   ...newZealand2026Results, ...geelong2026Results, ...oceanside2026Results, ...texas2026Results,
   ...aixEnProvence2026Results, ...hamburg2026Results, ...pennsylvania2026Results, ...elsinore2026Results,
@@ -95,10 +103,14 @@ const results2026: RaceResult[] = [
   ...kalmar2026Results, ...zellAmSee2026Results, ...goldCoast2026Results, ...singapore2026Results,
   ...spainT1002026Results, ...sanFrancisco2026Results, ...vancouver2026Results,
   ...challengeRoth2026Results,
-].map((result) => ({
-  ...result,
-  raceEditionId: result.raceEditionId ?? (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined),
-}))
+].map((result) => {
+  const raceEditionId = result.raceEditionId ?? (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined)
+  return {
+    ...result,
+    raceEditionId,
+    gender: result.gender ?? (raceEditionId ? t100GenderByEditionId[raceEditionId] : undefined),
+  }
+})
 
 const normalizeArchivedT100EditionId = (editionId?: string) => {
   if (!editionId) return editionId
@@ -130,8 +142,15 @@ const withKnownCountryCode = (result: RaceResult): RaceResult => ({
   countryCode: result.countryCode ?? countryCodeByAthlete.get(result.athleteName),
 })
 
-export const raceResults: RaceResult[] = [
+const allResults = [
   ...results2024.map(withKnownCountryCode),
   ...results2025.map(withKnownCountryCode),
   ...results2026.map(withKnownCountryCode),
 ]
+
+// Result IDs are internal row identifiers, not source data. Assign them once after
+// all seasons are combined so they are guaranteed to be unique across the database.
+export const raceResults: RaceResult[] = allResults.map((result, index) => ({
+  ...result,
+  id: index + 1,
+}))
