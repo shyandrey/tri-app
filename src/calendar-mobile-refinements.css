@@ -4,28 +4,47 @@
 
 .calendar-search-wrap .calendar-search {
   width: 100%;
-  padding-right: 50px;
+  padding-right: 58px;
   box-sizing: border-box;
 }
 
 .calendar-search-clear {
   position: absolute;
-  top: 0;
-  right: 10px;
-  bottom: 0;
-  width: 36px;
+  top: 50%;
+  right: 8px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
+  transform: translateY(-50%);
   background: transparent;
   color: #7e7e7e;
-  font-size: 30px;
-  font-weight: 300;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 0;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.9;
+}
+
+.calendar-search-clear::before,
+.calendar-search-clear::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+}
+
+.calendar-search-clear::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.calendar-search-clear::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .calendar-search-clear:hover,
@@ -93,8 +112,14 @@
   }
 
   .calendar-search-clear {
-    right: 8px;
-    width: 36px;
-    font-size: 30px;
+    right: 6px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .calendar-search-clear::before,
+  .calendar-search-clear::after {
+    width: 28px;
+    height: 2px;
   }
 }
