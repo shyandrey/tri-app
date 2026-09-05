@@ -4,6 +4,7 @@ import type { Race, RaceGender } from '../types/Race'
 import type { Page } from '../types/Page'
 import BottomNav from '../components/BottomNav'
 import { isRaceFinished, isRaceUpcoming } from '../utils/raceDate'
+import { getChampionshipNavigationGroup } from '../utils/raceChampionshipGroup'
 
 export type CalendarViewState = {
   search: string
@@ -64,6 +65,28 @@ const formatEventDateRange = (first: Race, second: Race) => {
 
   if (firstDate.getUTCMonth() === secondDate.getUTCMonth()) return `${firstDay}–${secondDay} ${secondMonth}`
   return `${firstDay} ${firstMonth} – ${secondDay} ${secondMonth}`
+}
+
+const getRaceSearchTags = (race: Race) => {
+  const tags: string[] = []
+  const championshipGroup = getChampionshipNavigationGroup(race)
+
+  if (championshipGroup) {
+    tags.push('чемпионат', 'чемпионат мира', 'финал', 'финал серии', 'world championship')
+  }
+
+  const raceYear = race.year ?? new Date(race.dateISO).getFullYear()
+  const isT100Final = race.series === 'Triathlon World Tour' && (
+    (race.raceId === 't100-dubai' && raceYear === 2024)
+    || race.raceId === 't100-qatar'
+    || race.name.toLowerCase().includes('final')
+  )
+
+  if (isT100Final) {
+    tags.push('финал', 'финал серии', 'гранд финал', 'чемпионат', 'чемпионат мира', 'grand final', 'world championship')
+  }
+
+  return tags
 }
 
 const groupRaceEventCards = (source: Race[]): RaceCardItem[] => {
@@ -129,10 +152,14 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
 
   const filteredRaces = visibleRaces
     .filter((race) => {
-      const matchesSearch =
-        race.name.toLowerCase().includes(normalizedSearch) ||
-        race.city.toLowerCase().includes(normalizedSearch) ||
-        race.country.toLowerCase().includes(normalizedSearch)
+      const searchableText = [
+        race.name,
+        race.city,
+        race.country,
+        race.series,
+        ...getRaceSearchTags(race),
+      ].join(' ').toLowerCase()
+      const matchesSearch = searchableText.includes(normalizedSearch)
 
       const matchesFilter = filter === 'Все' || race.series === filter
       const matchesTime =
