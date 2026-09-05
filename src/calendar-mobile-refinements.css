@@ -1,9 +1,11 @@
 .calendar-search-wrap {
   position: relative;
+  margin-bottom: 14px;
 }
 
 .calendar-search-wrap .calendar-search {
   width: 100%;
+  margin-bottom: 0;
   padding-right: 64px;
   box-sizing: border-box;
 }
