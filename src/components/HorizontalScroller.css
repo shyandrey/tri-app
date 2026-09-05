@@ -14,7 +14,8 @@
 }
 
 .horizontal-scroller > * {
-  flex: 0 0 calc((100% - 24px) / 3);
+  box-sizing: border-box;
+  flex: 0 0 calc((100% - 36px) / 3.2);
   scroll-snap-align: start;
 }
 
@@ -24,6 +25,6 @@
   }
 
   .horizontal-scroller > * {
-    flex-basis: calc((100% - 16px) / 3);
+    flex-basis: calc((100% - 24px) / 3.2);
   }
 }
