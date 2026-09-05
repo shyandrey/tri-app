@@ -112,7 +112,20 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
       <button className="page-back-button" onClick={onBack}>← Назад</button>
       <section className="section">
         <div className="section__header"><h1>Календарь стартов</h1></div>
-        <input className="calendar-search" type="text" placeholder="Поиск стартов..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
+        <div className="calendar-search-wrap">
+          <input className="calendar-search" type="text" placeholder="Поиск стартов..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
+          {search.length > 0 && (
+            <button
+              className="calendar-search__clear"
+              type="button"
+              aria-label="Очистить поиск"
+              title="Очистить поиск"
+              onClick={() => updateViewState({ search: '', scrollY: 0 })}
+            >
+              ×
+            </button>
+          )}
+        </div>
         <div className="calendar-time-filters">
           <button className={timeFilter === 'upcoming' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'upcoming', scrollY: 0 })}>Предстоящие</button>
           <button className={timeFilter === 'finished' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'finished', scrollY: 0 })}>Прошедшие</button>
