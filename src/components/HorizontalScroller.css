@@ -1,0 +1,29 @@
+.horizontal-scroller {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.horizontal-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroller > * {
+  flex: 0 0 calc((100% - 24px) / 3);
+  scroll-snap-align: start;
+}
+
+@media (max-width: 640px) {
+  .horizontal-scroller {
+    gap: 8px;
+  }
+
+  .horizontal-scroller > * {
+    flex-basis: calc((100% - 16px) / 3);
+  }
+}
