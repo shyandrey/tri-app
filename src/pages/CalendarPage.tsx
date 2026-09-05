@@ -27,7 +27,6 @@ const seriesFilters = [
   { value: 'Все', short: 'ALL', label: 'ВСЕ', desktopLabel: 'Все гонки' },
   { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES', desktopLabel: 'IRONMAN Pro Series' },
   { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
-  { value: 'Challenge', short: 'R', label: 'CHALLENGE\nROTH', desktopLabel: 'Challenge Roth' },
 ] as const
 
 const archiveYears = [2025, 2024] as const
@@ -46,8 +45,9 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
 
   const isSearching = search.trim().length > 0
   const normalizedSearch = search.trim().toLowerCase()
+  const visibleRaces = (isSearching ? searchRaces : races).filter((race) => race.series !== 'Challenge')
 
-  const filteredRaces = (isSearching ? searchRaces : races)
+  const filteredRaces = visibleRaces
     .filter((race) => {
       const matchesSearch =
         race.name.toLowerCase().includes(normalizedSearch) ||
@@ -72,6 +72,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
   const archiveRacesByYear = archiveYears.map((year) => ({
     year,
     races: searchRaces
+      .filter((race) => race.series !== 'Challenge')
       .filter((race) => race.year === year)
       .filter((race) => filter === 'Все' || race.series === filter)
       .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()),
