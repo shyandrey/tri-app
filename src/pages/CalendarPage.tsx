@@ -37,16 +37,32 @@ const seriesFilters = [
 
 const archiveYears = [2025, 2024] as const
 const DAY_MS = 86_400_000
+const russianMonthsGenitive = [
+  'января',
+  'февраля',
+  'марта',
+  'апреля',
+  'мая',
+  'июня',
+  'июля',
+  'августа',
+  'сентября',
+  'октября',
+  'ноября',
+  'декабря',
+] as const
+
+const getRussianMonthGenitive = (date: Date) => russianMonthsGenitive[date.getUTCMonth()]
 
 const formatEventDateRange = (first: Race, second: Race) => {
   const firstDate = new Date(`${first.dateISO}T00:00:00Z`)
   const secondDate = new Date(`${second.dateISO}T00:00:00Z`)
   const firstDay = firstDate.getUTCDate()
   const secondDay = secondDate.getUTCDate()
-  const firstMonth = new Intl.DateTimeFormat('ru-RU', { month: 'long', timeZone: 'UTC' }).format(firstDate)
-  const secondMonth = new Intl.DateTimeFormat('ru-RU', { month: 'long', timeZone: 'UTC' }).format(secondDate)
+  const firstMonth = getRussianMonthGenitive(firstDate)
+  const secondMonth = getRussianMonthGenitive(secondDate)
 
-  if (firstMonth === secondMonth) return `${firstDay}–${secondDay} ${secondMonth}`
+  if (firstDate.getUTCMonth() === secondDate.getUTCMonth()) return `${firstDay}–${secondDay} ${secondMonth}`
   return `${firstDay} ${firstMonth} – ${secondDay} ${secondMonth}`
 }
 
