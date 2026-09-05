@@ -1,6 +1,8 @@
 @media (max-width: 700px) {
   .calendar-filters--series {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 76px);
+    justify-content: center;
+    column-gap: 24px;
   }
 }
 
