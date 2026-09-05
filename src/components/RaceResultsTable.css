@@ -84,7 +84,7 @@
  .results-table__desktop-wrap { display: none; }
  .results-table__mobile { display: block; border: 1px solid #343434; border-radius: 18px; overflow: hidden; background: #202020; }
  .results-table__toolbar { align-items: stretch; flex-direction: column; }
- .results-table__title-row { justify-content: space-between; }
+ .results-table__title-row { justify-content: space-between; min-height: 44px; }
  .results-table__gender-tabs { margin-left: auto; }
  .results-table__gender-tabs button { min-width: 72px; padding: 9px 12px; }
  .results-table__sort-tabs { width: 100%; box-sizing: border-box; display: grid; grid-template-columns: repeat(4,1fr); }
