@@ -15,6 +15,7 @@ try {
   const errors = []
   const warnings = []
   const info = []
+  const sourceNotes = []
 
   const editionById = new Map(allRaceEditionViews.map((edition) => [edition.editionId, edition]))
   const resultIds = new Map()
@@ -34,6 +35,15 @@ try {
     bikeTime: 30 * 60,
     runTime: 20 * 60,
   }
+
+  const verifiedSourceSplitTotalAnomalies = new Set([
+    't100-san-francisco-2024',
+    't100-spain-2025',
+  ])
+
+  const verifiedSourceAthleteSplitTotalAnomalies = new Set([
+    'ironman-texas-2026::Olivia Dietzel',
+  ])
 
   for (const result of raceResults) {
     if (resultIds.has(result.id)) {
@@ -102,8 +112,17 @@ try {
       const splitSeconds = splitFields.map((field) => parseTime(result[field])).filter(Number.isFinite)
       if (splitSeconds.length === 5 && Number.isFinite(total)) {
         const sum = splitSeconds.reduce((acc, value) => acc + value, 0)
-        if (Math.abs(sum - total) > 5) {
-          warnings.push(`Split sum differs from total by ${Math.abs(sum - total)}s: ${result.raceEditionId} — ${result.athleteName}`)
+        const difference = Math.abs(sum - total)
+        if (difference > 5) {
+          const athleteSourceKey = `${result.raceEditionId}::${result.athleteName}`
+          if (
+            verifiedSourceSplitTotalAnomalies.has(result.raceEditionId) ||
+            verifiedSourceAthleteSplitTotalAnomalies.has(athleteSourceKey)
+          ) {
+            sourceNotes.push(`Verified source split/total mismatch ${difference}s: ${result.raceEditionId} — ${result.athleteName}`)
+          } else {
+            warnings.push(`Split sum differs from total by ${difference}s: ${result.raceEditionId} — ${result.athleteName}`)
+          }
         }
       }
     }
@@ -140,6 +159,7 @@ try {
   info.push(`Race editions: ${allRaceEditionViews.length}`)
   info.push(`Editions with results: ${editionsWithResults.length}`)
   info.push(`Unique result IDs: ${resultIds.size}`)
+  info.push(`Verified source anomalies: ${sourceNotes.length}`)
 
   console.log('\nTRI APP — RESULTS SANITY CHECK')
   console.log('================================')
@@ -152,6 +172,10 @@ try {
   console.log(`\nWARNINGS (${warnings.length})`)
   if (!warnings.length) console.log('  none')
   else warnings.forEach((message) => console.log(`  - ${message}`))
+
+  console.log(`\nVERIFIED SOURCE NOTES (${sourceNotes.length})`)
+  if (!sourceNotes.length) console.log('  none')
+  else sourceNotes.forEach((message) => console.log(`  - ${message}`))
 
   process.exitCode = errors.length ? 1 : 0
 } finally {
