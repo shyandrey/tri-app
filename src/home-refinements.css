@@ -93,8 +93,7 @@
 
 /* Home shortcut cards */
 .features--compact {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  margin-top: 24px;
 }
 
 .feature-card--compact {
@@ -177,6 +176,21 @@
   background: #24211b;
 }
 
+.feature-card--disabled {
+  cursor: default;
+  opacity: 0.38;
+  filter: saturate(0.35);
+}
+
+.feature-card--disabled:hover {
+  border-color: #343434;
+  background: #202020;
+}
+
+.feature-card--disabled .feature-card__icon {
+  color: #9a9a9a;
+}
+
 @media (max-width: 640px) {
   .hero--concept-4 {
     padding: 18px 16px 16px;
@@ -222,7 +236,7 @@
   }
 
   .features--compact {
-    gap: 8px;
+    margin-top: 24px;
   }
 
   .feature-card--compact {
