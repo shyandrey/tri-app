@@ -27,6 +27,7 @@ import { london2024Results } from './2024/t100/london'
 import { ibiza2024Results } from './2024/t100/ibiza'
 import { lakeLasVegas2024Results } from './2024/t100/lake-las-vegas'
 import { dubai2024Results } from './2024/t100/dubai'
+import { challengeRoth2024Results } from './2024/challenge/roth'
 import { geelong2025Results } from './2025/ironman/geelong'
 import { southAfrica2025Results } from './2025/ironman/south-africa'
 import { oceanside2025Results } from './2025/ironman/oceanside'
@@ -53,6 +54,7 @@ import { spain2025Results } from './2025/t100/spain'
 import { wollongong2025Results } from './2025/t100/wollongong'
 import { dubai2025Results } from './2025/t100/dubai'
 import { qatar2025Results } from './2025/t100/qatar'
+import { challengeRoth2025Results } from './2025/challenge/roth'
 import { newZealand2026Results } from './2026/ironman/new-zealand'
 import { geelong2026Results } from './2026/ironman/geelong'
 import { oceanside2026Results } from './2026/ironman/oceanside'
@@ -72,6 +74,7 @@ import { singapore2026Results } from './2026/t100/singapore'
 import { spainT1002026Results } from './2026/t100/spain'
 import { sanFrancisco2026Results } from './2026/t100/san-francisco'
 import { vancouver2026Results } from './2026/t100/vancouver'
+import { challengeRoth2026Results } from './2026/challenge/roth'
 
 const results2024: RaceResult[] = [
   ...oceanside2024Results, ...texas2024Results, ...stGeorge2024Results, ...mallorca2024Results,
@@ -82,6 +85,7 @@ const results2024: RaceResult[] = [
   ...kona2024Results, ...westernAustralia2024Results, ...taupoWomen2024Results, ...taupoMen2024Results,
   ...miami2024Results, ...singapore2024Results, ...sanFrancisco2024Results,
   ...london2024Results, ...ibiza2024Results, ...lakeLasVegas2024Results, ...dubai2024Results,
+  ...challengeRoth2024Results,
 ]
 
 const results2026: RaceResult[] = [
@@ -90,6 +94,7 @@ const results2026: RaceResult[] = [
   ...frankfurt2026Results, ...swansea2026Results, ...lakePlacid2026Results, ...boise2026Results,
   ...kalmar2026Results, ...zellAmSee2026Results, ...goldCoast2026Results, ...singapore2026Results,
   ...spainT1002026Results, ...sanFrancisco2026Results, ...vancouver2026Results,
+  ...challengeRoth2026Results,
 ].map((result) => ({
   ...result,
   raceEditionId: result.raceEditionId ?? (result.raceId ? getRaceEditionId(result.raceId, 2026) : undefined),
@@ -112,6 +117,7 @@ const results2025: RaceResult[] = [
   ...singapore2025Results, ...sanFrancisco2025Results, ...vancouver2025Results,
   ...london2025Results, ...frenchRiviera2025Results, ...spain2025Results,
   ...wollongong2025Results, ...dubai2025Results, ...qatar2025Results,
+  ...challengeRoth2025Results,
 ].map((result) => ({ ...result, raceEditionId: normalizeArchivedT100EditionId(result.raceEditionId) }))
 
 const countryCodeByAthlete = new Map<string, string>(Object.entries(athleteCountryCodes))
