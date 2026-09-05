@@ -63,6 +63,7 @@ export function sortRaceResults(results: RaceResult[], sortKey: ResultSortKey) {
 
 export function getBestSplit(results: RaceResult[], key: SplitKey) {
   const times = results
+    .filter((result) => typeof result.position === 'number')
     .map((result) => getResultTime(result, key))
     .filter((value): value is string => Boolean(value))
 
