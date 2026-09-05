@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import RaceCard from '../components/RaceCard'
-import type { Race } from '../types/Race'
+import type { Race, RaceGender } from '../types/Race'
 import type { Page } from '../types/Page'
 import BottomNav from '../components/BottomNav'
 import { isRaceFinished, isRaceUpcoming } from '../utils/raceDate'
@@ -23,6 +23,12 @@ type CalendarPageProps = {
   onNavigate: (page: Page) => void
 }
 
+type RaceCardItem = {
+  race: Race
+  displayDate: string
+  displayGender?: RaceGender
+}
+
 const seriesFilters = [
   { value: 'Все', short: 'ALL', label: 'ВСЕ', desktopLabel: 'Все гонки' },
   { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES', desktopLabel: 'IRONMAN Pro Series' },
@@ -30,6 +36,64 @@ const seriesFilters = [
 ] as const
 
 const archiveYears = [2025, 2024] as const
+const DAY_MS = 86_400_000
+
+const formatEventDateRange = (first: Race, second: Race) => {
+  const firstDate = new Date(`${first.dateISO}T00:00:00Z`)
+  const secondDate = new Date(`${second.dateISO}T00:00:00Z`)
+  const firstDay = firstDate.getUTCDate()
+  const secondDay = secondDate.getUTCDate()
+  const firstMonth = new Intl.DateTimeFormat('ru-RU', { month: 'long', timeZone: 'UTC' }).format(firstDate)
+  const secondMonth = new Intl.DateTimeFormat('ru-RU', { month: 'long', timeZone: 'UTC' }).format(secondDate)
+
+  if (firstMonth === secondMonth) return `${firstDay}–${secondDay} ${secondMonth}`
+  return `${firstDay} ${firstMonth} – ${secondDay} ${secondMonth}`
+}
+
+const groupRaceEventCards = (source: Race[]): RaceCardItem[] => {
+  const sorted = [...source].sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
+  const used = new Set<number>()
+  const items: RaceCardItem[] = []
+
+  for (let index = 0; index < sorted.length; index += 1) {
+    if (used.has(index)) continue
+
+    const race = sorted[index]
+    const raceYear = race.year ?? new Date(race.dateISO).getFullYear()
+    const oppositeGender = race.gender === 'WPRO' ? 'MPRO' : race.gender === 'MPRO' ? 'WPRO' : undefined
+
+    let pairIndex = -1
+    if (oppositeGender && race.raceId) {
+      pairIndex = sorted.findIndex((candidate, candidateIndex) => {
+        if (candidateIndex === index || used.has(candidateIndex)) return false
+        const candidateYear = candidate.year ?? new Date(candidate.dateISO).getFullYear()
+        const dateGap = Math.abs(new Date(candidate.dateISO).getTime() - new Date(race.dateISO).getTime())
+
+        return candidate.raceId === race.raceId
+          && candidateYear === raceYear
+          && candidate.gender === oppositeGender
+          && candidate.name === race.name
+          && candidate.city === race.city
+          && candidate.country === race.country
+          && dateGap <= DAY_MS
+      })
+    }
+
+    if (pairIndex >= 0) {
+      const pair = sorted[pairIndex]
+      const [first, second] = race.dateISO <= pair.dateISO ? [race, pair] : [pair, race]
+      used.add(index)
+      used.add(pairIndex)
+      items.push({ race: first, displayDate: formatEventDateRange(first, second), displayGender: 'WPRO & MPRO' })
+      continue
+    }
+
+    used.add(index)
+    items.push({ race, displayDate: race.date, displayGender: race.gender })
+  }
+
+  return items
+}
 
 function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
   const { search, filter, timeFilter, openArchiveYears } = viewState
@@ -62,20 +126,23 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
 
       return isSearching ? matchesSearch : matchesFilter && matchesTime
     })
+
+  const groupedFilteredRaces = groupRaceEventCards(filteredRaces)
     .sort((a, b) => {
-      const aDate = new Date(a.dateISO).getTime()
-      const bDate = new Date(b.dateISO).getTime()
+      const aDate = new Date(a.race.dateISO).getTime()
+      const bDate = new Date(b.race.dateISO).getTime()
       if (isSearching || timeFilter === 'finished') return bDate - aDate
       return aDate - bDate
     })
 
   const archiveRacesByYear = archiveYears.map((year) => ({
     year,
-    races: searchRaces
-      .filter((race) => race.series !== 'Challenge')
-      .filter((race) => race.year === year)
-      .filter((race) => filter === 'Все' || race.series === filter)
-      .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()),
+    races: groupRaceEventCards(
+      searchRaces
+        .filter((race) => race.series !== 'Challenge')
+        .filter((race) => race.year === year)
+        .filter((race) => filter === 'Все' || race.series === filter)
+    ).sort((a, b) => new Date(a.race.dateISO).getTime() - new Date(b.race.dateISO).getTime()),
   }))
 
   const showArchive = !isSearching && timeFilter !== 'upcoming'
@@ -93,19 +160,22 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
     onRaceClick(race)
   }
 
-  const renderRaceCard = (race: Race, showYear = false) => (
-    <RaceCard
-      key={race.editionId ?? race.id}
-      distance={race.distance}
-      series={race.series}
-      name={race.name}
-      date={`${race.date}${showYear && race.year ? ` ${race.year}` : ''}`}
-      city={race.city}
-      country={race.country}
-      gender={race.gender}
-      onClick={() => openRace(race)}
-    />
-  )
+  const renderRaceCard = (item: RaceCardItem, showYear = false) => {
+    const { race, displayDate, displayGender } = item
+    return (
+      <RaceCard
+        key={`${race.raceId ?? race.id}-${race.year ?? ''}-${displayDate}`}
+        distance={race.distance}
+        series={race.series}
+        name={race.name}
+        date={`${displayDate}${showYear && race.year ? ` ${race.year}` : ''}`}
+        city={race.city}
+        country={race.country}
+        gender={displayGender}
+        onClick={() => openRace(race)}
+      />
+    )
+  }
 
   return (
     <main className="app">
@@ -114,16 +184,8 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
         <div className="section__header"><h1>Календарь стартов</h1></div>
         <div className="calendar-search-wrap">
           <input className="calendar-search" type="text" placeholder="Поиск стартов..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
-          {search.length > 0 && (
-            <button
-              className="calendar-search__clear"
-              type="button"
-              aria-label="Очистить поиск"
-              title="Очистить поиск"
-              onClick={() => updateViewState({ search: '', scrollY: 0 })}
-            >
-              ×
-            </button>
+          {search && (
+            <button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={() => updateViewState({ search: '', scrollY: 0 })}>×</button>
           )}
         </div>
         <div className="calendar-time-filters">
@@ -140,7 +202,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
             </button>
           ))}
         </div>
-        {filteredRaces.map((race) => renderRaceCard(race, isSearching))}
+        {groupedFilteredRaces.map((item) => renderRaceCard(item, isSearching))}
         {showArchive && archiveRacesByYear.map(({ year, races: archiveRaces }) => {
           if (archiveRaces.length === 0) return null
           const isOpen = openArchiveYears.includes(year)
@@ -149,7 +211,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
               <button type="button" className="calendar-archive__toggle" onClick={() => toggleArchiveYear(year)} aria-expanded={isOpen}>
                 <span>{year}</span><span className={`calendar-archive__chevron${isOpen ? ' calendar-archive__chevron--open' : ''}`}>›</span>
               </button>
-              {isOpen && <div className="calendar-archive__races">{archiveRaces.map((race) => renderRaceCard(race))}</div>}
+              {isOpen && <div className="calendar-archive__races">{archiveRaces.map((item) => renderRaceCard(item))}</div>}
             </section>
           )
         })}
