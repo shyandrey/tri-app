@@ -27,6 +27,7 @@ const seriesFilters = [
   { value: 'Все', short: 'ALL', label: 'ВСЕ', desktopLabel: 'Все гонки' },
   { value: 'IRONMAN Pro Series', short: 'IM', label: 'IRONMAN\nPRO SERIES', desktopLabel: 'IRONMAN Pro Series' },
   { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
+  { value: 'Challenge', short: 'R', label: 'CHALLENGE\nROTH', desktopLabel: 'Challenge Roth' },
 ] as const
 
 const archiveYears = [2025, 2024] as const
@@ -124,9 +125,6 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
               <span className="series-filter__desktop-label">{item.desktopLabel}</span>
             </button>
           ))}
-          <button className="series-filter--disabled" type="button" disabled aria-label="Challenge Roth — скоро">
-            <span className="series-filter__circle">R</span><span className="series-filter__label">CHALLENGE<br />ROTH</span><span className="series-filter__desktop-label">Challenge Roth</span>
-          </button>
         </div>
         {filteredRaces.map((race) => renderRaceCard(race, isSearching))}
         {showArchive && archiveRacesByYear.map(({ year, races: archiveRaces }) => {
