@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react'
+import './AppIcons.css'
 
 type IconProps = SVGProps<SVGSVGElement>
 
