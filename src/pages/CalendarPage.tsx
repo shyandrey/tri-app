@@ -224,7 +224,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
     <main className="app">
       <button className="page-back-button" onClick={onBack}>← Назад</button>
       <section className="section">
-        <div className="section__header"><h1>Календарь стартов</h1></div>
+        <div className="section__header"><h1>Календарь и результаты</h1></div>
         <div className="calendar-search-wrap">
           <input className="calendar-search" type="text" placeholder="Поиск стартов..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
           {search && (
