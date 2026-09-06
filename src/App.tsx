@@ -78,10 +78,10 @@ function App() {
           </div>
         </div>
         <div className="hero__horizontal-divider" aria-hidden="true" />
-        <p className="hero__description">Календарь стартов, профили атлетов и всё, что нужно триатлету.</p>
+        <p className="hero__description">Календарь и результаты стартов, профили атлетов и всё, что нужно триатлету.</p>
       </header>
       <section className="section">
-        <div className="section__header"><h2>⚡ Ближайшие старты</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
+        <div className="section__header"><h2>⚡ Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
         {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
       </section>
       <HorizontalScroller className="features features--compact" ariaLabel="Разделы приложения">
