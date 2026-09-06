@@ -83,7 +83,7 @@
   .race-card__title,
   .race-card__info-row,
   .race-card__meta-row {
-    transform: translateX(3px);
+    transform: translateX(5px);
   }
 
   .race-card__meta-row {
