@@ -69,10 +69,14 @@
 
 @media (max-width: 640px) {
   .race-card--compact {
-    grid-template-columns: 48px minmax(0, 1fr) 20px;
-    column-gap: 7px;
-    padding-left: 4px;
-    padding-right: 6px;
+    grid-template-columns: 50px minmax(0, 1fr) 20px;
+    column-gap: 9px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .race-card__meta-row {
+    padding-left: 3px;
   }
 }
 
@@ -107,6 +111,7 @@
   .race-card__meta-row {
     margin-top: 7px;
     gap: 6px;
+    padding-left: 3px;
   }
 
   .race-card__meta-row .race-card__series,
