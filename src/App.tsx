@@ -20,6 +20,7 @@ import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
 import HorizontalScroller from './components/HorizontalScroller'
+import { AthleteIcon, CalendarIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
 import { isRaceUpcoming } from './utils/raceDate'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete } from './utils/raceResults'
@@ -84,11 +85,11 @@ function App() {
         {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
       </section>
       <HorizontalScroller className="features features--compact" ariaLabel="Разделы приложения">
-        <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}><div className="feature-card__icon">📅</div><div className="feature-card__copy"><h3>Календарь стартов</h3><p>Старты и результаты</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
-        <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}><div className="feature-card__icon">♙</div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
-        <article className="feature-card feature-card--compact" onClick={() => setPage('top')}><div className="feature-card__icon">★</div><div className="feature-card__copy"><h3>Топ атлетов</h3><p>Рейтинг сильнейших</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
-        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon">≡</div><div className="feature-card__copy"><h3>Таблицы очков</h3><p>Скоро</p></div></article>
-        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon">⏱</div><div className="feature-card__copy"><h3>Калькулятор темпа</h3><p>Скоро</p></div></article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}><div className="feature-card__icon"><CalendarIcon /></div><div className="feature-card__copy"><h3>Календарь стартов</h3><p>Старты и результаты</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}><div className="feature-card__icon"><AthleteIcon /></div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
+        <article className="feature-card feature-card--compact" onClick={() => setPage('top')}><div className="feature-card__icon"><RankingIcon /></div><div className="feature-card__copy"><h3>Топ атлетов</h3><p>Рейтинг сильнейших</p></div><span className="feature-card__arrow" aria-hidden="true">›</span></article>
+        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PointsTableIcon /></div><div className="feature-card__copy"><h3>Таблицы очков</h3><p>Скоро</p></div></article>
+        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PaceIcon /></div><div className="feature-card__copy"><h3>Калькулятор темпа</h3><p>Скоро</p></div></article>
       </HorizontalScroller>
       <section className="section">
         <div className="section__header"><h2>Новости из канала</h2><button>@trista_watt</button></div>
