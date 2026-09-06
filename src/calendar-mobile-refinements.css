@@ -75,8 +75,19 @@
     padding-right: 8px;
   }
 
+  .race-card__series-mark,
+  .race-card__tag--series {
+    transform: translateX(2px);
+  }
+
+  .race-card__title,
+  .race-card__info-row,
   .race-card__meta-row {
-    padding-left: 3px;
+    transform: translateX(3px);
+  }
+
+  .race-card__meta-row {
+    padding-left: 0;
   }
 }
 
@@ -111,7 +122,6 @@
   .race-card__meta-row {
     margin-top: 7px;
     gap: 6px;
-    padding-left: 3px;
   }
 
   .race-card__meta-row .race-card__series,
