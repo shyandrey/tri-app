@@ -37,6 +37,10 @@ export function PaceIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><circle cx="12" cy="13" r="7.5"/><path d="M9.5 3.5h5M12 5.5V3.5M17.3 7.7l1.5-1.5M12 13l3.2-2.3"/></svg>
 }
 
+export function GearIcon(props: IconProps) {
+  return <svg {...baseProps} {...props}><circle cx="12" cy="12" r="3.2"/><path d="M19.2 13.3a7.8 7.8 0 0 0 0-2.6l2-1.5-2-3.4-2.4 1a8 8 0 0 0-2.2-1.3L14.3 3h-4.1l-.4 2.5a8 8 0 0 0-2.2 1.3l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 2.6l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 2.2 1.3l.4 2.5h4.1l.4-2.5a8 8 0 0 0 2.2-1.3l2.4 1 2-3.4-2.1-1.5Z"/></svg>
+}
+
 export function MoreIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>
 }
