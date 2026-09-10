@@ -121,6 +121,13 @@
     linear-gradient(160deg, #303841 0%, #1d2329 50%, #101317 100%);
 }
 
+.showcase-card--has-image::before {
+  background-image: var(--showcase-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
 .showcase-card__shade {
   position: absolute;
   inset: 0;
@@ -140,11 +147,26 @@
 }
 
 .showcase-card__eyebrow {
+  position: relative;
   margin-bottom: 8px;
-  color: #c5c8cc;
+  padding-left: 9px;
+  color: #f3f4f5;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: 0.1px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+.showcase-card__eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  bottom: 1px;
+  width: 2px;
+  border-radius: 999px;
+  background: #f3b72b;
+  box-shadow: 0 0 8px rgba(243, 183, 43, 0.24);
 }
 
 .showcase-card__tag {
