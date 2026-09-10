@@ -21,6 +21,10 @@ export function CalendarIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9h17"/><path d="M7 12h2M11 12h2M15 12h2M7 15.5h2M11 15.5h2M15 15.5h2"/></svg>
 }
 
+export function LocationIcon(props: IconProps) {
+  return <svg {...baseProps} {...props}><path d="M19 10c0 5.2-7 11-7 11S5 15.2 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+}
+
 export function AthleteIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><circle cx="12" cy="7.5" r="3.2"/><path d="M5.5 20c.8-4.4 3-6.7 6.5-6.7s5.7 2.3 6.5 6.7"/></svg>
 }
