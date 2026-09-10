@@ -32,6 +32,47 @@ const initialCalendarViewState: CalendarViewState = {
   scrollY: 0,
 }
 
+const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
+
+function getShowcaseRaceName(name: string) {
+  const cleanName = name.replace(/\s+/g, ' ').trim()
+
+  if (/IRONMAN 70\.3 World Championship/i.test(cleanName)) return 'IRONMAN 70.3 World Championship'
+  if (/IRONMAN World Championship/i.test(cleanName)) return 'IRONMAN World Championship'
+
+  const t100Index = cleanName.search(/\bT100\b/i)
+  if (t100Index >= 0) {
+    return cleanName
+      .slice(t100Index)
+      .replace(/\s+(?:Triathlon )?World Tour.*$/i, '')
+      .trim()
+  }
+
+  const ironman703Index = cleanName.search(/\bIRONMAN 70\.3\b/i)
+  if (ironman703Index >= 0) {
+    const ironmanName = cleanName.slice(ironman703Index)
+    const leadingChampionship = ironmanName.match(new RegExp(`^IRONMAN 70\\.3 ${regionalChampionship} Championship (.+)$`, 'i'))
+    if (leadingChampionship) return `IRONMAN 70.3 ${leadingChampionship[1]}`
+
+    return ironmanName
+      .replace(new RegExp(`\\s+${regionalChampionship} Championship.*$`, 'i'), '')
+      .trim()
+  }
+
+  const ironmanIndex = cleanName.search(/\bIRONMAN\b/i)
+  if (ironmanIndex >= 0) {
+    const ironmanName = cleanName.slice(ironmanIndex)
+    const leadingChampionship = ironmanName.match(new RegExp(`^IRONMAN ${regionalChampionship} Championship (.+)$`, 'i'))
+    if (leadingChampionship) return `IRONMAN ${leadingChampionship[1]}`
+
+    return ironmanName
+      .replace(new RegExp(`\\s+${regionalChampionship} Championship.*$`, 'i'), '')
+      .trim()
+  }
+
+  return cleanName
+}
+
 function App() {
   const [page, setPage] = useState<Page>('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar' | 'athlete'>('home')
@@ -86,25 +127,29 @@ function App() {
 
       <section className="home-showcase" aria-label="Ближайшие старты">
         <div className="home-showcase__track">
-          {upcomingRaces.map((race, index) => (
-            <article
-              className={`showcase-card showcase-card--${index + 1}`}
-              key={`showcase-${race.editionId}`}
-              onClick={() => openRace(race)}
-            >
-              <div className="showcase-card__shade" aria-hidden="true" />
-              <div className="showcase-card__content">
-                <span className="showcase-card__eyebrow">Ближайший старт</span>
-                <span className="showcase-card__tag">{race.series}</span>
-                <h2>{race.name}</h2>
-                <div className="showcase-card__meta">
-                  <p><CalendarIcon /> <span>{race.date}</span></p>
-                  <p><LocationIcon /> <span>{[race.city, race.country].filter(Boolean).join(', ')}</span></p>
+          {upcomingRaces.map((race, index) => {
+            const showcaseName = getShowcaseRaceName(race.name)
+
+            return (
+              <article
+                className={`showcase-card showcase-card--${index + 1}`}
+                key={`showcase-${race.editionId}`}
+                onClick={() => openRace(race)}
+              >
+                <div className="showcase-card__shade" aria-hidden="true" />
+                <div className="showcase-card__content">
+                  <span className="showcase-card__eyebrow">Ближайший старт</span>
+                  <span className="showcase-card__tag">{race.series}</span>
+                  <h2>{showcaseName}</h2>
+                  <div className="showcase-card__meta">
+                    <p><CalendarIcon /> <span>{race.date}</span></p>
+                    <p><LocationIcon /> <span>{[race.city, race.country].filter(Boolean).join(', ')}</span></p>
+                  </div>
                 </div>
-              </div>
-              <button className="showcase-card__open" type="button" aria-label={`Открыть ${race.name}`}>→</button>
-            </article>
-          ))}
+                <button className="showcase-card__open" type="button" aria-label={`Открыть ${race.name}`}>→</button>
+              </article>
+            )
+          })}
         </div>
         <div className="home-showcase__hint" aria-hidden="true">
           {upcomingRaces.map((race, index) => <span className={index === 0 ? 'is-active' : ''} key={`dot-${race.editionId}`} />)}
