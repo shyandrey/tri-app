@@ -19,7 +19,8 @@ import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
 import HorizontalScroller from './components/HorizontalScroller'
-import { AthleteIcon, CalendarIcon, GearIcon, LocationIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
+import HomeShowcase from './components/HomeShowcase'
+import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
 import { isRaceUpcoming } from './utils/raceDate'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete } from './utils/raceResults'
@@ -125,36 +126,7 @@ function App() {
         <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
       </header>
 
-      <section className="home-showcase" aria-label="Ближайшие старты">
-        <div className="home-showcase__track">
-          {upcomingRaces.map((race, index) => {
-            const showcaseName = getShowcaseRaceName(race.name)
-
-            return (
-              <article
-                className={`showcase-card showcase-card--${index + 1}`}
-                key={`showcase-${race.editionId}`}
-                onClick={() => openRace(race)}
-              >
-                <div className="showcase-card__shade" aria-hidden="true" />
-                <div className="showcase-card__content">
-                  <span className="showcase-card__eyebrow">Ближайший старт</span>
-                  <span className="showcase-card__tag">{race.series}</span>
-                  <h2>{showcaseName}</h2>
-                  <div className="showcase-card__meta">
-                    <p><CalendarIcon /> <span>{race.date}</span></p>
-                    <p><LocationIcon /> <span>{[race.city, race.country].filter(Boolean).join(', ')}</span></p>
-                  </div>
-                </div>
-                <button className="showcase-card__open" type="button" aria-label={`Открыть ${race.name}`}>→</button>
-              </article>
-            )
-          })}
-        </div>
-        <div className="home-showcase__hint" aria-hidden="true">
-          {upcomingRaces.map((race, index) => <span className={index === 0 ? 'is-active' : ''} key={`dot-${race.editionId}`} />)}
-        </div>
-      </section>
+      <HomeShowcase races={upcomingRaces} onRaceClick={openRace} getRaceName={getShowcaseRaceName} />
 
       <section className="section home-races-section">
         <div className="section__header"><h2>⚡ Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
