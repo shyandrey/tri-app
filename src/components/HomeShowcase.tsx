@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
 import type { Race } from '../types/Race'
 import { CalendarIcon, LocationIcon } from './AppIcons'
 import { pickShowcaseImage } from '../data/showcaseImages'
+import './HomeShowcase.css'
 
 type HomeShowcaseProps = {
   races: Race[]
@@ -101,7 +103,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
               key={`showcase-${race.editionId}`}
               ref={(node) => { cardRefs.current[index] = node }}
               onClick={() => onRaceClick(race)}
-              style={showcaseImage ? { '--showcase-image': `url(${showcaseImage})` } as React.CSSProperties : undefined}
+              style={showcaseImage ? { '--showcase-image': `url(${showcaseImage})` } as CSSProperties : undefined}
             >
               <div className="showcase-card__shade" aria-hidden="true" />
               <div className="showcase-card__content">
