@@ -136,6 +136,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
 }
 
 .showcase-card__eyebrow {
@@ -163,25 +164,45 @@
 }
 
 .showcase-card h2 {
+  width: 100%;
   max-width: 100%;
   margin: 0 0 10px;
   color: #fff;
   font-size: clamp(25px, 6.8vw, 36px);
   line-height: 0.98;
   letter-spacing: -0.7px;
+  text-align: left;
   text-wrap: balance;
 }
 
-.showcase-card p {
-  margin: 3px 0 0;
+.showcase-card__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.showcase-card__meta p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
   color: #d1d4d7;
   font-size: 12px;
   line-height: 1.25;
+  text-align: left;
 }
 
-.showcase-card p:first-of-type {
+.showcase-card__meta p:first-child {
   color: #f3b72b;
   font-weight: 700;
+}
+
+.showcase-card__meta svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  stroke-width: 1.9;
 }
 
 .showcase-card__open {
