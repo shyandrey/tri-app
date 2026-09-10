@@ -19,7 +19,7 @@ import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
 import HorizontalScroller from './components/HorizontalScroller'
-import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
+import { AthleteIcon, CalendarIcon, GearIcon, LocationIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
 import { isRaceUpcoming } from './utils/raceDate'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete } from './utils/raceResults'
@@ -97,8 +97,10 @@ function App() {
                 <span className="showcase-card__eyebrow">Ближайший старт</span>
                 <span className="showcase-card__tag">{race.series}</span>
                 <h2>{race.name}</h2>
-                <p>{race.date}</p>
-                <p>{[race.city, race.country].filter(Boolean).join(', ')}</p>
+                <div className="showcase-card__meta">
+                  <p><CalendarIcon /> <span>{race.date}</span></p>
+                  <p><LocationIcon /> <span>{[race.city, race.country].filter(Boolean).join(', ')}</span></p>
+                </div>
               </div>
               <button className="showcase-card__open" type="button" aria-label={`Открыть ${race.name}`}>→</button>
             </article>
