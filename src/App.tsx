@@ -43,8 +43,14 @@ function App() {
 
   const upcomingRaces = races.filter(isRaceUpcoming).sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()).slice(0, 3)
 
+  const openRace = (race: Race, from: 'home' | 'calendar' | 'athlete' = 'home') => {
+    setSelectedRace(race)
+    setPreviousPage(from)
+    setPage('race')
+  }
+
   if (page === 'calendar') {
-    return <CalendarPage races={races} searchRaces={allRaceEditionViews} viewState={calendarViewState} onViewStateChange={setCalendarViewState} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('calendar'); setPage('race') }} />
+    return <CalendarPage races={races} searchRaces={allRaceEditionViews} viewState={calendarViewState} onViewStateChange={setCalendarViewState} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => openRace(race, 'calendar')} />
   }
 
   if (page === 'race' && selectedRace && selectedRace.editionId) {
@@ -57,7 +63,7 @@ function App() {
 
   if (page === 'athlete' && selectedAthlete) {
     const results = getResultsByAthlete(raceResults, selectedAthlete.id)
-    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={setPage} onRaceClick={(race) => { setSelectedRace(race); setPreviousPage('athlete'); setPage('race') }} />
+    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={setPage} onRaceClick={(race) => openRace(race, 'athlete')} />
   }
 
   if (page === 'top') {
@@ -67,7 +73,7 @@ function App() {
   if (page === 'more') return <MorePage onNavigate={setPage} />
 
   return (
-    <main className="app">
+    <main className="app app--home-experiment">
       <header className="home-header">
         <div className="home-header__top-row">
           <h1>TRI APP</h1>
@@ -78,9 +84,34 @@ function App() {
         <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
       </header>
 
-      <section className="section">
+      <section className="home-showcase" aria-label="Ближайшие старты">
+        <div className="home-showcase__track">
+          {upcomingRaces.map((race, index) => (
+            <article
+              className={`showcase-card showcase-card--${index + 1}`}
+              key={`showcase-${race.editionId}`}
+              onClick={() => openRace(race)}
+            >
+              <div className="showcase-card__shade" aria-hidden="true" />
+              <div className="showcase-card__content">
+                <span className="showcase-card__eyebrow">Ближайший старт</span>
+                <span className="showcase-card__tag">{race.series}</span>
+                <h2>{race.name}</h2>
+                <p>{race.date}</p>
+                <p>{[race.city, race.country].filter(Boolean).join(', ')}</p>
+              </div>
+              <button className="showcase-card__open" type="button" aria-label={`Открыть ${race.name}`}>→</button>
+            </article>
+          ))}
+        </div>
+        <div className="home-showcase__hint" aria-hidden="true">
+          {upcomingRaces.map((race, index) => <span className={index === 0 ? 'is-active' : ''} key={`dot-${race.editionId}`} />)}
+        </div>
+      </section>
+
+      <section className="section home-races-section">
         <div className="section__header"><h2>⚡ Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
-        {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => { setSelectedRace(race); setPreviousPage('home'); setPage('race') }} />)}
+        {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />)}
       </section>
 
       <HorizontalScroller className="features features--compact" ariaLabel="Разделы приложения">
