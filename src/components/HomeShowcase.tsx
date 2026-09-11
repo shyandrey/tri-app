@@ -14,6 +14,22 @@ type HomeShowcaseProps = {
 const AUTO_SCROLL_MS = 4000
 const MANUAL_PAUSE_MS = 7000
 
+function splitShowcaseName(name: string) {
+  if (name.startsWith('IRONMAN 70.3 ')) {
+    return ['IRONMAN 70.3', name.slice('IRONMAN 70.3 '.length)]
+  }
+
+  if (name.startsWith('IRONMAN ')) {
+    return ['IRONMAN', name.slice('IRONMAN '.length)]
+  }
+
+  if (name.startsWith('T100 ')) {
+    return ['T100', name.slice('T100 '.length)]
+  }
+
+  return ['', name]
+}
+
 export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeShowcaseProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
@@ -95,6 +111,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
       >
         {races.map((race, index) => {
           const showcaseName = getRaceName(race.name)
+          const [seriesName, locationName] = splitShowcaseName(showcaseName)
           const showcaseImage = race.raceId ? imageByRaceId.get(race.raceId) : undefined
 
           return (
@@ -109,7 +126,10 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
               <div className="showcase-card__content">
                 <span className="showcase-card__eyebrow">Ближайший старт</span>
                 <span className="showcase-card__tag">{race.series}</span>
-                <h2>{showcaseName}</h2>
+                <h2 className="showcase-card__title">
+                  {seriesName && <span className="showcase-card__title-part">{seriesName}</span>}
+                  <span className="showcase-card__title-part">{locationName}</span>
+                </h2>
                 <div className="showcase-card__meta">
                   <p><CalendarIcon /> <span>{race.date}</span></p>
                   <p><LocationIcon /> <span>{[race.city, race.country].filter(Boolean).join(', ')}</span></p>
