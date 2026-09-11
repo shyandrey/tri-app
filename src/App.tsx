@@ -22,6 +22,7 @@ import HorizontalScroller from './components/HorizontalScroller'
 import HomeShowcase from './components/HomeShowcase'
 import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
 import { isRaceUpcoming } from './utils/raceDate'
+import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete } from './utils/raceResults'
 
@@ -89,7 +90,10 @@ function App() {
   const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
   const [settingsOpen, setSettingsOpen] = useState(false)
 
-  const upcomingRaces = races.filter(isRaceUpcoming).sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()).slice(0, 3)
+  const allUpcomingRaces = races
+    .filter(isRaceUpcoming)
+    .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
+  const upcomingRaces = groupRacesForHome(allUpcomingRaces).slice(0, 3)
 
   const openRace = (race: Race, from: 'home' | 'calendar' | 'athlete' = 'home') => {
     setSelectedRace(race)
