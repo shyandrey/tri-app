@@ -11,3 +11,14 @@
     linear-gradient(180deg, rgba(7, 8, 10, 0.03) 0%, rgba(7, 8, 10, 0.12) 34%, rgba(7, 8, 10, 0.52) 70%, rgba(7, 8, 10, 0.84) 100%),
     var(--showcase-image) center / cover no-repeat;
 }
+
+.showcase-card__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.22em;
+}
+
+.showcase-card__title-part {
+  white-space: nowrap;
+}
