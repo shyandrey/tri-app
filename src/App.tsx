@@ -43,10 +43,16 @@ function getShowcaseRaceName(name: string) {
 
   const t100Index = cleanName.search(/\bT100\b/i)
   if (t100Index >= 0) {
-    return cleanName
-      .slice(t100Index)
+    const beforeT100 = cleanName
+      .slice(0, t100Index)
+      .replace(/^(?:EKOÏ|Sokin)\s+/i, '')
+      .trim()
+    const afterT100 = cleanName
+      .slice(t100Index + 4)
       .replace(/\s+(?:Triathlon )?World Tour.*$/i, '')
       .trim()
+
+    return ['T100', beforeT100, afterT100].filter(Boolean).join(' ')
   }
 
   const ironman703Index = cleanName.search(/\bIRONMAN 70\.3\b/i)
@@ -126,7 +132,7 @@ function App() {
         <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
       </header>
 
-      <HomeShowcase races={upcomingRaces} onRaceClick={openRace} getRaceName={getShowcaseRaceName} />
+      <HomeShowcase races={upcomingRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
 
       <section className="section home-races-section">
         <div className="section__header"><h2>⚡ Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
