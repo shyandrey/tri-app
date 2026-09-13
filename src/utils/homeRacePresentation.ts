@@ -1,4 +1,5 @@
 import type { RaceEditionView } from '../types/Race'
+import { getChampionshipNavigationGroup } from './raceChampionshipGroup'
 
 function isComplementaryGenderPair(a: RaceEditionView['gender'], b: RaceEditionView['gender']) {
   return (a === 'WPRO' && b === 'MPRO') || (a === 'MPRO' && b === 'WPRO')
@@ -23,9 +24,17 @@ function formatCombinedDate(first: RaceEditionView, second: RaceEditionView) {
   return `${first.date} – ${second.date}`
 }
 
+function hasSamePresentationIdentity(a: RaceEditionView, b: RaceEditionView) {
+  if (a.raceId === b.raceId) return true
+
+  const aChampionshipGroup = getChampionshipNavigationGroup(a)
+  const bChampionshipGroup = getChampionshipNavigationGroup(b)
+  return Boolean(aChampionshipGroup && aChampionshipGroup === bChampionshipGroup)
+}
+
 function canGroupForHome(a: RaceEditionView, b: RaceEditionView) {
   return Boolean(
-    a.raceId === b.raceId &&
+    hasSamePresentationIdentity(a, b) &&
     a.year === b.year &&
     a.name === b.name &&
     a.series === b.series &&
