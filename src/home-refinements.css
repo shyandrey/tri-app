@@ -267,6 +267,22 @@
   margin-top: 18px;
 }
 
+.home-races-section__header button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 9px;
+  padding: 0;
+}
+
+.home-races-section__chevron {
+  display: inline-block;
+  color: #8e8e8e;
+  font-size: 28px;
+  line-height: 0.7;
+  transform: translateY(-1px);
+}
+
 .app--home-experiment .section__header h2,
 .app--home-experiment .section__header h1 {
   color: #f4f4f2;
@@ -517,71 +533,3 @@
     width: 24px;
     height: 24px;
   }
-
-  .home-showcase__track {
-    gap: 10px;
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .showcase-card {
-    min-width: calc(100vw - 42px);
-    min-height: 230px;
-    border-radius: 20px;
-  }
-
-  .showcase-card__content {
-    left: 16px;
-    right: 68px;
-    bottom: 16px;
-  }
-
-  .showcase-card__open {
-    right: 14px;
-    bottom: 16px;
-    width: 42px;
-    height: 42px;
-    font-size: 22px;
-  }
-
-  .features--compact {
-    margin-top: 24px;
-  }
-
-  .feature-card--compact {
-    min-height: 116px;
-    padding: 15px 10px;
-    border-radius: 17px;
-    gap: 7px;
-  }
-
-  .feature-card--compact .feature-card__icon {
-    width: 38px;
-    height: 38px;
-    flex-basis: 38px;
-  }
-
-  .feature-card--compact .feature-card__icon svg {
-    width: 31px;
-    height: 31px;
-  }
-
-  .feature-card--compact .feature-card__copy {
-    min-height: 28px;
-  }
-
-  .feature-card--compact h3 {
-    max-width: 96px;
-    font-size: 10px;
-    line-height: 1.15;
-    letter-spacing: 0;
-  }
-
-  .settings-overlay {
-    padding: 10px;
-  }
-
-  .settings-sheet {
-    border-radius: 22px;
-  }
-}
