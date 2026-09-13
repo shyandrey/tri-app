@@ -46,7 +46,7 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
   }
 
   return (
-    <main className="app">
+    <main className="app app--athlete-detail">
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
       <section className="section athlete-detail-page">
