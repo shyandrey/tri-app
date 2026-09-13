@@ -25,6 +25,6 @@ export const challengeRothEditions: RaceEdition[] = ([2024, 2025, 2026] as const
   bike: '180 км',
   run: '42.2 км',
   description: `Challenge Roth ${year} — профессиональная гонка на полной дистанции в Роте, Германия.`,
-  gender: 'WPRO & MPRO',
+  gender: 'ALL',
   sourceUrl: `https://stats.protriathletes.org/race/challenge-roth/${year}/results`,
 }))
