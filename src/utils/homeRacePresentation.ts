@@ -1,6 +1,6 @@
-import type { Race } from '../types/Race'
+import type { RaceEditionView } from '../types/Race'
 
-function isComplementaryGenderPair(a?: Race['gender'], b?: Race['gender']) {
+function isComplementaryGenderPair(a: RaceEditionView['gender'], b: RaceEditionView['gender']) {
   return (a === 'WPRO' && b === 'MPRO') || (a === 'MPRO' && b === 'WPRO')
 }
 
@@ -12,7 +12,7 @@ function areAdjacentDates(a: string, b: string) {
   return diffDays <= 1
 }
 
-function formatCombinedDate(first: Race, second: Race) {
+function formatCombinedDate(first: RaceEditionView, second: RaceEditionView) {
   const firstMatch = first.date.match(/^(\d{1,2})\s+(.+)$/)
   const secondMatch = second.date.match(/^(\d{1,2})\s+(.+)$/)
 
@@ -23,10 +23,8 @@ function formatCombinedDate(first: Race, second: Race) {
   return `${first.date} – ${second.date}`
 }
 
-function canGroupForHome(a: Race, b: Race) {
+function canGroupForHome(a: RaceEditionView, b: RaceEditionView) {
   return Boolean(
-    a.raceId &&
-    b.raceId &&
     a.raceId === b.raceId &&
     a.year === b.year &&
     a.name === b.name &&
@@ -39,8 +37,8 @@ function canGroupForHome(a: Race, b: Race) {
   )
 }
 
-export function groupRacesForHome(races: Race[]) {
-  const grouped: Race[] = []
+export function groupRacesForHome(races: RaceEditionView[]) {
+  const grouped: RaceEditionView[] = []
   const used = new Set<number>()
 
   races.forEach((race, index) => {
