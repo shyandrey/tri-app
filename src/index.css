@@ -109,22 +109,3 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
-
-/* App shell background: keep all internal pages flat charcoal.
-   Home retains the subtle experimental hero glow intentionally. */
-html,
-body,
-#root {
-  background: #0f1115 !important;
-}
-
-.app {
-  background: #0f1115 !important;
-  background-image: none !important;
-}
-
-.app.app--home-experiment {
-  background:
-    radial-gradient(circle at 50% -10%, rgba(243, 183, 43, 0.035), transparent 34%),
-    #0f1115 !important;
-}
