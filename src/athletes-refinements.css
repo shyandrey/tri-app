@@ -73,17 +73,24 @@
 
 .athlete-detail__section-preview {
   margin-top: 10px;
-  max-height: 4.35em;
+  max-height: 4.5em;
   overflow: hidden;
   color: var(--tri-muted);
   font-size: 13px;
-  line-height: 1.45;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, rgba(0, 0, 0, 0.72) 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, rgba(0, 0, 0, 0.72) 72%, transparent 100%);
+  line-height: 1.5;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, rgba(0, 0, 0, 0.72) 76%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, rgba(0, 0, 0, 0.72) 76%, transparent 100%);
+}
+
+.athlete-detail__section-preview-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.athlete-detail__section-preview-list li {
+  margin: 0 0 7px;
+  color: var(--tri-muted);
+  line-height: 1.5;
 }
 
 .athletes-gender-filter {
