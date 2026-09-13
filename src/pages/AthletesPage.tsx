@@ -88,20 +88,21 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
 
       <section className="section athletes-page">
         <div className="section__header athletes-page__header">
-          <h1>Профили атлетов</h1>
+          <div>
+            <h1>Профили атлетов</h1>
+          </div>
         </div>
 
-        <div className="athletes-search-wrap">
-          <span className="athletes-search__icon" aria-hidden="true">⌕</span>
+        <div className="calendar-search-wrap athletes-search-wrap">
           <input
-            className="athletes-search"
-            type="search"
-            placeholder="Найти атлета..."
+            className="calendar-search athletes-search"
+            type="text"
+            placeholder="Найти атлета"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
           {search && (
-            <button type="button" className="athletes-search__clear" aria-label="Очистить поиск" onClick={() => setSearch('')}>×</button>
+            <button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={() => setSearch('')}>×</button>
           )}
         </div>
 
