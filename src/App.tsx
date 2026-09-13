@@ -36,6 +36,7 @@ const initialCalendarViewState: CalendarViewState = {
 }
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
+const DAY_MS = 86_400_000
 
 function getShowcaseRaceName(name: string) {
   const cleanName = name.replace(/\s+/g, ' ').trim()
@@ -82,6 +83,26 @@ function getShowcaseRaceName(name: string) {
   return cleanName
 }
 
+function isSplitWeekendPartnerUpcoming(race: Race, source: Race[]) {
+  if (race.gender !== 'WPRO' && race.gender !== 'MPRO') return false
+  const oppositeGender = race.gender === 'WPRO' ? 'MPRO' : 'WPRO'
+
+  return source.some((candidate) => {
+    if (!isRaceUpcoming(candidate)) return false
+    const raceYear = race.year ?? new Date(race.dateISO).getFullYear()
+    const candidateYear = candidate.year ?? new Date(candidate.dateISO).getFullYear()
+    const dateGap = Math.abs(new Date(candidate.dateISO).getTime() - new Date(race.dateISO).getTime())
+
+    return candidate.raceId === race.raceId
+      && candidateYear === raceYear
+      && candidate.gender === oppositeGender
+      && candidate.name === race.name
+      && candidate.city === race.city
+      && candidate.country === race.country
+      && dateGap <= DAY_MS
+  })
+}
+
 function App() {
   const [page, setPage] = useState<Page>('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar' | 'athlete'>('home')
@@ -92,7 +113,7 @@ function App() {
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   const allUpcomingRaces = races
-    .filter(isRaceUpcoming)
+    .filter((race) => isRaceUpcoming(race) || isSplitWeekendPartnerUpcoming(race, races))
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const upcomingRaces = groupRacesForHome(allUpcomingRaces).slice(0, 3)
 
@@ -140,7 +161,7 @@ function App() {
       <HomeShowcase races={upcomingRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
 
       <section className="section home-races-section">
-        <div className="section__header"><h2>Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Все гонки →</button></div>
+        <div className="section__header home-races-section__header"><h2>Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Все гонки <span className="home-races-section__chevron">›</span></button></div>
         {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />)}
       </section>
 
