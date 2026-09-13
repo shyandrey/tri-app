@@ -26,7 +26,9 @@ import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, Ranking
 import { isRaceUpcoming } from './utils/raceDate'
 import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
-import { getResultsByAthlete } from './utils/raceResults'
+import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
+
+const linkedRaceResults = linkResultsToAthletes(raceResults)
 
 const initialCalendarViewState: CalendarViewState = {
   search: '',
@@ -132,7 +134,7 @@ function App() {
   }
 
   if (page === 'race' && selectedRace && selectedRace.editionId) {
-    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={raceResults} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
+    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
   }
 
   if (page === 'athletes') {
@@ -140,7 +142,7 @@ function App() {
   }
 
   if (page === 'athlete' && selectedAthlete) {
-    const results = getResultsByAthlete(raceResults, selectedAthlete.id)
+    const results = getResultsByAthlete(linkedRaceResults, selectedAthlete.id)
     return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={navigateSection} onRaceClick={(race) => openRace(race, 'athlete')} />
   }
 
