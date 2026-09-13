@@ -71,6 +71,21 @@
   margin-bottom: 0;
 }
 
+.athlete-detail__section-preview {
+  margin-top: 10px;
+  max-height: 4.35em;
+  overflow: hidden;
+  color: var(--tri-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, rgba(0, 0, 0, 0.72) 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 54%, rgba(0, 0, 0, 0.72) 72%, transparent 100%);
+}
+
 .athletes-gender-filter {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
