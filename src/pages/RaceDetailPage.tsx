@@ -144,7 +144,10 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
   const showPendingResultsHeader = !hasResults
 
   return (
-    <main className="app app--race-detail">
+    <main
+      className="app app--race-detail"
+      style={{ background: '#0f1115', backgroundImage: 'none' }}
+    >
       <span className="race-detail-page__distance-tag race-card__tag">{activeRace.distance}</span>
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
