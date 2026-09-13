@@ -87,6 +87,8 @@ function App() {
   const [page, setPage] = useState<Page>('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar' | 'athlete'>('home')
   const [previousAthletePage, setPreviousAthletePage] = useState<'athletes' | 'top' | 'race'>('athletes')
+  const [athletesBackPage, setAthletesBackPage] = useState<Page>('home')
+  const [calendarEntryMode, setCalendarEntryMode] = useState<'top' | 'restore'>('top')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
   const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
@@ -97,34 +99,56 @@ function App() {
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const upcomingRaces = groupRacesForHome(allUpcomingRaces).slice(0, 3)
 
+  const navigateSection = (target: Page) => {
+    if (target === page) {
+      if (target === 'calendar') window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    if (target === 'athletes') setAthletesBackPage(page)
+    if (target === 'calendar') setCalendarEntryMode('top')
+
+    setPage(target)
+
+    if (target !== 'calendar') {
+      requestAnimationFrame(() => window.scrollTo(0, 0))
+    }
+  }
+
+  const backFromAthletes = () => {
+    if (athletesBackPage === 'calendar') setCalendarEntryMode('restore')
+    setPage(athletesBackPage)
+  }
+
   const openRace = (race: Race, from: 'home' | 'calendar' | 'athlete' = 'home') => {
     setSelectedRace(race)
     setPreviousPage(from)
+    if (from === 'calendar') setCalendarEntryMode('restore')
     setPage('race')
   }
 
   if (page === 'calendar') {
-    return <CalendarPage races={races} searchRaces={allRaceEditionViews} viewState={calendarViewState} onViewStateChange={setCalendarViewState} onBack={() => setPage('home')} onNavigate={setPage} onRaceClick={(race) => openRace(race, 'calendar')} />
+    return <CalendarPage races={races} searchRaces={allRaceEditionViews} viewState={calendarViewState} onViewStateChange={setCalendarViewState} onBack={() => setPage('home')} onNavigate={navigateSection} onRaceClick={(race) => openRace(race, 'calendar')} restoreScroll={calendarEntryMode === 'restore'} />
   }
 
   if (page === 'race' && selectedRace && selectedRace.editionId) {
-    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={raceResults} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={setPage} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
+    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={raceResults} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
   }
 
   if (page === 'athletes') {
-    return <AthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={setPage} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('athletes'); setPage('athlete') }} />
+    return <AthletesPage athletes={athletes} onBack={backFromAthletes} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('athletes'); setPage('athlete') }} />
   }
 
   if (page === 'athlete' && selectedAthlete) {
     const results = getResultsByAthlete(raceResults, selectedAthlete.id)
-    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={setPage} onRaceClick={(race) => openRace(race, 'athlete')} />
+    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={navigateSection} onRaceClick={(race) => openRace(race, 'athlete')} />
   }
 
   if (page === 'top') {
-    return <TopAthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={setPage} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('top'); setPage('athlete') }} />
+    return <TopAthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('top'); setPage('athlete') }} />
   }
 
-  if (page === 'more') return <MorePage onNavigate={setPage} />
+  if (page === 'more') return <MorePage onNavigate={navigateSection} />
 
   return (
     <main className="app app--home-experiment">
@@ -141,14 +165,14 @@ function App() {
       <HomeShowcase races={upcomingRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
 
       <section className="section home-races-section">
-        <div className="section__header home-races-section__header"><h2>Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Все гонки <span className="home-races-section__chevron">›</span></button></div>
+        <div className="section__header home-races-section__header"><h2>Ближайшие гонки</h2><button onClick={() => navigateSection('calendar')}>Все гонки <span className="home-races-section__chevron">›</span></button></div>
         {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />)}
       </section>
 
       <HorizontalScroller className="features features--compact" ariaLabel="Разделы приложения">
-        <article className="feature-card feature-card--compact" onClick={() => setPage('calendar')}><div className="feature-card__icon"><CalendarIcon /></div><div className="feature-card__copy"><h3>Календарь и результаты</h3><p>Старты и результаты</p></div></article>
-        <article className="feature-card feature-card--compact" onClick={() => setPage('athletes')}><div className="feature-card__icon"><AthleteIcon /></div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div></article>
-        <article className="feature-card feature-card--compact" onClick={() => setPage('top')}><div className="feature-card__icon"><RankingIcon /></div><div className="feature-card__copy"><h3>Рейтинг атлетов</h3><p>Рейтинг сильнейших</p></div></article>
+        <article className="feature-card feature-card--compact" onClick={() => navigateSection('calendar')}><div className="feature-card__icon"><CalendarIcon /></div><div className="feature-card__copy"><h3>Календарь и результаты</h3><p>Старты и результаты</p></div></article>
+        <article className="feature-card feature-card--compact" onClick={() => navigateSection('athletes')}><div className="feature-card__icon"><AthleteIcon /></div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div></article>
+        <article className="feature-card feature-card--compact" onClick={() => navigateSection('top')}><div className="feature-card__icon"><RankingIcon /></div><div className="feature-card__copy"><h3>Рейтинг атлетов</h3><p>Рейтинг сильнейших</p></div></article>
         <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PointsTableIcon /></div><div className="feature-card__copy"><h3>Таблицы очков</h3><p>Скоро</p></div></article>
         <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PaceIcon /></div><div className="feature-card__copy"><h3>Калькулятор темпа</h3><p>Скоро</p></div></article>
       </HorizontalScroller>
@@ -158,7 +182,7 @@ function App() {
         <article className="news-card"><div><h3>IRONMAN объявил новый календарь стартов</h3><p>Последние новости из Telegram-канала</p></div><span className="news-card__telegram">➤</span></article>
       </section>
 
-      <BottomNav currentPage={page} onNavigate={setPage} />
+      <BottomNav currentPage={page} onNavigate={navigateSection} />
 
       {settingsOpen && (
         <div className="settings-overlay" role="presentation" onClick={() => setSettingsOpen(false)}>
