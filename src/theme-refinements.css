@@ -15,10 +15,14 @@
 }
 
 .app {
+  background: var(--tri-bg);
+  color: var(--tri-text);
+}
+
+.app--home-experiment {
   background:
     radial-gradient(circle at 50% -10%, rgba(243, 183, 43, 0.035), transparent 34%),
     var(--tri-bg);
-  color: var(--tri-text);
 }
 
 .app--race-detail {
