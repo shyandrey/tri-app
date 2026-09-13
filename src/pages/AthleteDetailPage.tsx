@@ -76,7 +76,9 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                 </ul>
               ) : (
                 <div className="athlete-detail__section-preview" aria-hidden="true">
-                  {bioFacts.join(' · ')}
+                  <ul className="athlete-detail__section-preview-list">
+                    {bioFacts.map((fact) => <li key={fact}>{fact}</li>)}
+                  </ul>
                 </div>
               )}
             </div>
@@ -97,7 +99,9 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                 <ul>{athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul>
               ) : (
                 <div className="athlete-detail__section-preview" aria-hidden="true">
-                  {athlete.achievements.join(' · ')}
+                  <ul className="athlete-detail__section-preview-list">
+                    {athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}
+                  </ul>
                 </div>
               )}
             </div>
