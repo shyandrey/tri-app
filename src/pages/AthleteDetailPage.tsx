@@ -36,6 +36,10 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
   const years = Object.keys(resultsByYear).sort((a, b) => Number(b) - Number(a))
   const latestYear = years[0]
   const [expandedYears, setExpandedYears] = useState<string[]>(latestYear ? [latestYear] : [])
+  const [bioExpanded, setBioExpanded] = useState(true)
+  const [achievementsExpanded, setAchievementsExpanded] = useState(true)
+  const bioFacts = athlete.bioFacts?.length ? athlete.bioFacts : athlete.bio ? [athlete.bio] : []
+  const hasAchievements = athlete.achievements.length > 0
 
   const toggleYear = (year: string) => {
     setExpandedYears((current) =>
@@ -55,15 +59,41 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
           <h1>{athlete.name} <span className="athlete-detail__flag-inline">{athlete.flag}</span></h1>
           <p className="athlete-detail__meta">{athlete.nameEn}{athlete.nameEn && athlete.countryEn && ' · '}{athlete.countryEn}</p>
 
-          <div className="athlete-detail__about">
-            <h2>Об атлете</h2>
-            <p>{athlete.bio}</p>
-          </div>
+          {bioFacts.length > 0 && (
+            <div className="athlete-detail__about athlete-detail__collapsible">
+              <button
+                className="athlete-detail__section-toggle"
+                type="button"
+                onClick={() => setBioExpanded((current) => !current)}
+                aria-expanded={bioExpanded}
+              >
+                <span>Био</span>
+                <span className={`athlete-detail__section-chevron ${bioExpanded ? 'athlete-detail__section-chevron--open' : ''}`} aria-hidden="true">›</span>
+              </button>
+              {bioExpanded && (
+                <ul className="athlete-detail__bio-list">
+                  {bioFacts.map((fact) => <li key={fact}>{fact}</li>)}
+                </ul>
+              )}
+            </div>
+          )}
 
-          <div className="athlete-detail__achievements">
-            <h2>Ключевые достижения</h2>
-            <ul>{athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul>
-          </div>
+          {hasAchievements && (
+            <div className="athlete-detail__achievements athlete-detail__collapsible">
+              <button
+                className="athlete-detail__section-toggle"
+                type="button"
+                onClick={() => setAchievementsExpanded((current) => !current)}
+                aria-expanded={achievementsExpanded}
+              >
+                <span>Достижения</span>
+                <span className={`athlete-detail__section-chevron ${achievementsExpanded ? 'athlete-detail__section-chevron--open' : ''}`} aria-hidden="true">›</span>
+              </button>
+              {achievementsExpanded && (
+                <ul>{athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul>
+              )}
+            </div>
+          )}
 
           {years.length > 0 && (
             <div className="athlete-detail__results">
