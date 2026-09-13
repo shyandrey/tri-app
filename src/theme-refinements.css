@@ -1,0 +1,192 @@
+/* Shared visual theme aligned with the experimental Home design.
+   Loaded last so page-specific layout refinements remain intact. */
+
+:root {
+  --tri-bg: #0f1115;
+  --tri-surface: #1b1f24;
+  --tri-surface-raised: #20252b;
+  --tri-border: #2d3239;
+  --tri-border-strong: #3a414a;
+  --tri-text: #f4f4f2;
+  --tri-muted: #aeb2b7;
+  --tri-muted-soft: #7f858d;
+  --tri-accent: #f3b72b;
+}
+
+.app {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(243, 183, 43, 0.035), transparent 34%),
+    var(--tri-bg);
+  color: var(--tri-text);
+}
+
+/* Shared page controls */
+.page-back-button,
+.race-detail-back {
+  border-color: var(--tri-border-strong);
+  background: rgba(27, 31, 36, 0.82);
+  color: var(--tri-accent);
+  backdrop-filter: blur(10px);
+}
+
+.page-back-button:hover,
+.race-detail-back:hover {
+  border-color: var(--tri-accent);
+  background: var(--tri-surface-raised);
+}
+
+/* Calendar */
+.calendar-search,
+.calendar-time-filters,
+.calendar-filters button {
+  border-color: var(--tri-border);
+  background: var(--tri-surface);
+}
+
+.calendar-search {
+  color: var(--tri-text);
+}
+
+.calendar-search::placeholder {
+  color: var(--tri-muted-soft);
+}
+
+.calendar-search:focus {
+  border-color: var(--tri-accent);
+}
+
+.calendar-time-filters button,
+.calendar-filters button {
+  color: var(--tri-muted);
+}
+
+.calendar-time-filters button.filter-active {
+  background: var(--tri-accent);
+  color: var(--tri-bg);
+}
+
+/* Cards shared across calendar, athlete pages and More */
+.race-card,
+.news-card,
+.athlete-card,
+.top-athlete-card,
+.more-card,
+.feature-card,
+.race-result-card {
+  border-color: var(--tri-border);
+  background: var(--tri-surface);
+}
+
+.race-card:hover,
+.athlete-card:hover,
+.top-athlete-card:hover,
+.more-card:hover,
+.race-result-card--clickable:hover {
+  border-color: var(--tri-border-strong);
+  background: var(--tri-surface-raised);
+}
+
+.race-card p,
+.news-card p,
+.athlete-card__info p,
+.top-athlete-card__info p,
+.more-card p,
+.race-result-card__athlete small,
+.race-result-card__splits {
+  color: var(--tri-muted);
+}
+
+.race-card__series-mark,
+.athlete-card__flag,
+.athlete-card__image--placeholder {
+  background: #14171b;
+  box-shadow: inset 0 0 0 1px var(--tri-border);
+}
+
+/* Race detail */
+.race-detail-meta,
+.athlete-detail__meta {
+  color: var(--tri-muted);
+}
+
+.race-detail-countdown,
+.race-detail-distance,
+.race-detail-about,
+.athlete-detail__about,
+.athlete-detail__achievements,
+.athlete-detail__results {
+  border-color: var(--tri-border);
+  background: var(--tri-surface);
+}
+
+.race-detail-countdown {
+  color: var(--tri-muted);
+}
+
+.race-detail-distance small,
+.race-detail-about p,
+.athlete-detail__about p {
+  color: var(--tri-muted);
+}
+
+/* Athlete pages */
+.athlete-detail__flag,
+.athlete-detail__image {
+  border-color: var(--tri-border);
+  background: var(--tri-surface);
+}
+
+.athlete-detail__achievements li {
+  color: #d7d9dc;
+}
+
+.athlete-result-card {
+  border-bottom-color: var(--tri-border);
+}
+
+.athlete-result-card:hover {
+  background: var(--tri-surface-raised);
+}
+
+.athlete-result-card__info span {
+  color: var(--tri-muted);
+}
+
+.top-athlete-card__position,
+.race-result-card__position,
+.athlete-result-card__place {
+  background: var(--tri-accent);
+  color: var(--tri-bg);
+}
+
+/* Bottom navigation follows the same restrained charcoal treatment. */
+.bottom-nav {
+  border-color: var(--tri-border);
+  background: rgba(20, 23, 27, 0.94);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.32);
+}
+
+.bottom-nav button {
+  color: var(--tri-muted);
+}
+
+.bottom-nav__active {
+  color: var(--tri-accent) !important;
+}
+
+@media (max-width: 700px) {
+  .calendar-filters--series button,
+  .calendar-filters--series .series-filter--disabled {
+    background: transparent;
+  }
+
+  .series-filter__circle {
+    border-color: var(--tri-border-strong);
+    color: var(--tri-muted);
+  }
+
+  .calendar-filters--series button.filter-active .series-filter__circle {
+    border-color: var(--tri-accent);
+    color: var(--tri-accent);
+  }
+}
