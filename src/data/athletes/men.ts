@@ -14,6 +14,11 @@ export const maleAthletes: Athlete[] = [
     gender: 'M',
     discipline: 'IRONMAN / T100',
     image: blummenfeltImage,
+    age: 32,
+    socialLinks: {
+      instagram: 'kristianblu',
+      youtube: 'kristian.blummenfelt',
+    },
     bio:
       'Один из самых универсальных триатлетов своего поколения: Блюмменфельт сумел перенести скорость с олимпийской дистанции в длинный триатлон и выиграть крупнейшие титулы в обоих форматах. В 2021 году он стал олимпийским чемпионом в Токио и в том же сезоне выиграл чемпионат мира World Triathlon. После перехода на длинные дистанции норвежец добавил титулы чемпиона мира IRONMAN и IRONMAN 70.3. Блюмменфельт известен агрессивным стилем гонки, сильным бегом и крайне системным подходом к тренировкам, тестированию и питанию.',
     achievements: [
@@ -24,7 +29,13 @@ export const maleAthletes: Athlete[] = [
     ],
   },
   makeAthlete(2, 'Мартен ван Рил', 'Marten Van Riel', 'Бельгия', 'Belgium', 'BEL', '🇧🇪', 'M', 'T100'),
-  makeAthlete(3, 'Хайден Уайлд', 'Hayden Wilde', 'Новая Зеландия', 'New Zealand', 'NZL', '🇳🇿', 'M', 'T100'),
+  {
+    ...makeAthlete(3, 'Хайден Уайлд', 'Hayden Wilde', 'Новая Зеландия', 'New Zealand', 'NZL', '🇳🇿', 'M', 'T100'),
+    age: 29,
+    socialLinks: {
+      instagram: 'hayden_wilde',
+    },
+  },
   makeAthlete(4, 'Мика Нудт', 'Mika Noodt', 'Германия', 'Germany', 'GER', '🇩🇪', 'M'),
   makeAthlete(5, 'Рико Боген', 'Rico Bogen', 'Германия', 'Germany', 'GER', '🇩🇪', 'M'),
   makeAthlete(6, 'Йелле Гинс', 'Jelle Geens', 'Бельгия', 'Belgium', 'BEL', '🇧🇪', 'M'),
