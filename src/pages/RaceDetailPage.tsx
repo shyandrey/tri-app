@@ -152,7 +152,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
 
   return (
     <main className={`app app--race-detail ${seriesClass}`}>
-      <span className="race-detail-page__distance-tag race-card__tag race-card__tag--series">{activeRace.distance}</span>
+      <span className="race-detail-page__distance-tag race-card__tag">{activeRace.distance}</span>
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
