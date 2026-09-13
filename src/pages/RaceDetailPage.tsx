@@ -25,6 +25,12 @@ const genderFromEdition = (race: Race): ResultGender | undefined => {
   return undefined
 }
 
+const getSeriesClass = (race: Race) => {
+  if (race.series === 'IRONMAN Pro Series') return 'race-card--ironman'
+  if (race.series === 'Triathlon World Tour') return 'race-card--t100'
+  return 'race-card--roth'
+}
+
 const getMoscowToday = () => {
   const dateISO = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Europe/Moscow',
@@ -142,10 +148,11 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
 
   const isChampionship = Boolean(getChampionshipNavigationGroup(activeRace))
   const showPendingResultsHeader = !hasResults
+  const seriesClass = getSeriesClass(activeRace)
 
   return (
-    <main className="app app--race-detail">
-      <span className="race-detail-page__distance-tag race-card__tag">{activeRace.distance}</span>
+    <main className={`app app--race-detail ${seriesClass}`}>
+      <span className="race-detail-page__distance-tag race-card__tag race-card__tag--series">{activeRace.distance}</span>
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
