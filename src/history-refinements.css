@@ -45,14 +45,14 @@
   text-align: left;
 }
 
-/* Non-podium results stay visually quieter than medals. */
+/* Non-podium results stay visually quieter than medals, but remain readable. */
 .athlete-result-card__place {
   width: 38px;
   height: 38px;
-  border: 1px solid var(--tri-border-strong);
+  border: 1px solid var(--tri-accent);
   border-radius: 50%;
   background: transparent;
-  color: var(--tri-muted);
+  color: var(--tri-accent);
   font-size: 13px;
   font-weight: 800;
   line-height: 1;
