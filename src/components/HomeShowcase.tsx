@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
-import type { Race } from '../types/Race'
+import type { RaceEditionView } from '../types/Race'
 import { CalendarIcon, LocationIcon } from './AppIcons'
 import { pickShowcaseImage } from '../data/showcaseImages'
+import { getRaceGenderLabel } from '../utils/raceGender'
 import './HomeShowcase.css'
 
 type HomeShowcaseProps = {
-  races: Race[]
-  onRaceClick: (race: Race) => void
+  races: RaceEditionView[]
+  onRaceClick: (race: RaceEditionView) => void
   getRaceName: (name: string) => string
 }
 
@@ -30,12 +31,6 @@ function splitShowcaseName(name: string) {
   return ['', name]
 }
 
-function getGenderTags(gender?: Race['gender']) {
-  if (gender === 'MPRO') return ['MEN']
-  if (gender === 'WPRO') return ['WOMEN']
-  return []
-}
-
 export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeShowcaseProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
@@ -46,7 +41,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
   const imageByRaceId = useMemo(() => {
     const selected = new Map<string, string | undefined>()
     races.forEach((race) => {
-      if (race.raceId && !selected.has(race.raceId)) {
+      if (!selected.has(race.raceId)) {
         selected.set(race.raceId, pickShowcaseImage(race.raceId))
       }
     })
@@ -118,8 +113,8 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
         {races.map((race, index) => {
           const showcaseName = getRaceName(race.name)
           const [seriesName, locationName] = splitShowcaseName(showcaseName)
-          const showcaseImage = race.raceId ? imageByRaceId.get(race.raceId) : undefined
-          const genderTags = getGenderTags(race.gender)
+          const showcaseImage = imageByRaceId.get(race.raceId)
+          const genderLabel = getRaceGenderLabel(race.gender)
 
           return (
             <article
@@ -134,7 +129,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
                 <span className="showcase-card__eyebrow">Скоро</span>
                 <div className="showcase-card__tag-row">
                   <span className="showcase-card__tag">{race.series}</span>
-                  {genderTags.map((tag) => <span className="showcase-card__tag" key={tag}>{tag}</span>)}
+                  {genderLabel && <span className="showcase-card__tag">{genderLabel}</span>}
                 </div>
                 <h2 className="showcase-card__title">
                   {seriesName && <span className="showcase-card__title-part">{seriesName}</span>}
