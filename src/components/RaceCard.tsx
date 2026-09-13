@@ -1,4 +1,5 @@
-import type { RaceDistance, RaceSeries } from '../types/Race'
+import type { RaceDistance, RaceGender, RaceSeries } from '../types/Race'
+import { getRaceGenderLabel } from '../utils/raceGender'
 import ironmanProImage from '../assets/series/ironman-pro.jpeg'
 import t100WorldTourImage from '../assets/series/t100-worldtour.jpeg'
 
@@ -9,7 +10,7 @@ type RaceCardProps = {
   date: string
   city: string
   country: string
-  gender?: 'WPRO' | 'MPRO' | 'WPRO & MPRO'
+  gender?: RaceGender
   onClick?: () => void
 }
 
@@ -41,12 +42,8 @@ function RaceCard({
   gender,
   onClick,
 }: RaceCardProps) {
-  const genderLabel =
-    gender === 'WPRO'
-      ? { symbol: '♀︎', label: 'WOMEN' }
-      : gender === 'MPRO'
-        ? { symbol: '♂︎', label: 'MEN' }
-        : null
+  const genderLabel = gender ? getRaceGenderLabel(gender) : null
+  const genderSymbol = gender === 'WPRO' ? '♀︎' : gender === 'MPRO' ? '♂︎' : null
 
   const seriesImage =
     series === 'IRONMAN Pro Series'
@@ -92,10 +89,10 @@ function RaceCard({
 
       <div className="race-card__meta-row">
         <p className="race-card__series">{series}</p>
-        {genderLabel && (
+        {genderLabel && genderSymbol && (
           <span className="race-card__gender">
-            <span className="race-card__gender-symbol" aria-hidden="true">{genderLabel.symbol}</span>
-            {genderLabel.label}
+            <span className="race-card__gender-symbol" aria-hidden="true">{genderSymbol}</span>
+            {genderLabel}
           </span>
         )}
       </div>
