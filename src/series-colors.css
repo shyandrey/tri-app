@@ -3,3 +3,8 @@
 .race-card--roth .race-card__series {
   color: var(--race-series-color) !important;
 }
+
+.app--race-detail .race-detail-page__distance-tag {
+  color: var(--race-series-color);
+  border-color: currentColor;
+}
