@@ -11,10 +11,6 @@ export type RaceDistance =
 
 export type RaceGender = 'WPRO' | 'MPRO' | 'WPRO+MPRO' | 'ALL'
 
-// Transitional input value used by older race source files.
-// RaceEditionView always exposes the canonical RaceGender values above.
-export type LegacyRaceGender = RaceGender | 'WPRO & MPRO'
-
 export type RaceEntity = {
   id: string
   name: string
@@ -38,7 +34,7 @@ export type RaceEdition = {
   run: string
 
   description: string
-  gender?: LegacyRaceGender
+  gender?: RaceGender
   sourceUrl?: string
 }
 
@@ -61,7 +57,7 @@ export type Race = {
   run: string
 
   description: string
-  gender?: LegacyRaceGender
+  gender?: RaceGender
   sourceUrl?: string
 
   raceId?: string
