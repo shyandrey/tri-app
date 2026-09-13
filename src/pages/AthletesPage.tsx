@@ -154,13 +154,6 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
           ))}
         </div>
 
-        <div className="athletes-results-heading">
-          <span>{visibleAthletes.length} найдено</span>
-          {(genderFilter !== 'ALL' || countryFilter !== 'ALL' || search) && (
-            <button type="button" onClick={() => { setGenderFilter('ALL'); setCountryFilter('ALL'); setSearch('') }}>Сбросить</button>
-          )}
-        </div>
-
         <div className="athletes-list athletes-list--profiles">
           {visibleAthletes.map((athlete) => (
             <article className="athlete-card athlete-card--profile" key={athlete.id} onClick={() => onAthleteClick(athlete)}>
