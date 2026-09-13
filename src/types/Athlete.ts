@@ -12,5 +12,6 @@ export type Athlete = {
   discipline: string
   image?: string
   bio: string
+  bioFacts?: string[]
   achievements: string[]
 }
