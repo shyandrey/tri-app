@@ -1,0 +1,11 @@
+/* Final background layer: internal pages use a flat charcoal canvas. */
+.app {
+  background: var(--tri-bg);
+}
+
+/* Home intentionally keeps the subtle warm glow. */
+.app.app--home-experiment {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(243, 183, 43, 0.035), transparent 34%),
+    var(--tri-bg);
+}
