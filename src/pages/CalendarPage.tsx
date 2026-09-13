@@ -22,6 +22,7 @@ type CalendarPageProps = {
   onBack: () => void
   onRaceClick: (race: RaceEditionView) => void
   onNavigate: (page: Page) => void
+  restoreScroll?: boolean
 }
 
 type RaceCardItem = {
@@ -132,11 +133,11 @@ const groupRaceEventCards = (source: RaceEditionView[]): RaceCardItem[] => {
   return items
 }
 
-function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
+function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate, restoreScroll = true }: CalendarPageProps) {
   const { search, filter, timeFilter, openArchiveYears } = viewState
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => window.scrollTo(0, viewState.scrollY))
+    const frame = requestAnimationFrame(() => window.scrollTo(0, restoreScroll ? viewState.scrollY : 0))
     return () => cancelAnimationFrame(frame)
   }, [])
 
@@ -201,6 +202,11 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
     onRaceClick(race)
   }
 
+  const navigateFromCalendar = (target: Page) => {
+    updateViewState({ scrollY: window.scrollY })
+    onNavigate(target)
+  }
+
   const renderRaceCard = (item: RaceCardItem, showYear = false) => {
     const { race, displayDate, displayGender } = item
     return (
@@ -224,7 +230,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
       <section className="section">
         <div className="section__header"><h1>Календарь и результаты</h1></div>
         <div className="calendar-search-wrap">
-          <input className="calendar-search" type="text" placeholder="Поиск стартов..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
+          <input className="calendar-search" type="text" placeholder="Найти старт..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
           {search && (
             <button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={() => updateViewState({ search: '', scrollY: 0 })}>×</button>
           )}
@@ -257,7 +263,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
           )
         })}
       </section>
-      <BottomNav currentPage="calendar" onNavigate={onNavigate} />
+      <BottomNav currentPage="calendar" onNavigate={navigateFromCalendar} />
     </main>
   )
 }
