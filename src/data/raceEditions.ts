@@ -4,8 +4,14 @@ import { getRaceEditionId, getRaceId } from './raceIdentity'
 import { archiveIronmanRaceEntities, ironmanProSeries2024Editions, ironmanProSeries2025Editions } from './archiveIronmanProSeries'
 import { archiveT100RaceEntities, t1002024Editions, t1002025Editions } from './archiveT100'
 import { challengeRothEditions, challengeRothRaceEntity } from './archiveChallengeRoth'
+import { normalizeRaceGender } from '../utils/raceGender'
 
 const CURRENT_SEASON = 2026
+
+const normalizeEdition = (edition: RaceEdition): RaceEdition => ({
+  ...edition,
+  gender: normalizeRaceGender(edition.gender),
+})
 
 const currentSeasonEditions: RaceEdition[] = legacyRaces.map((race) => ({
   id: getRaceEditionId(race.id, CURRENT_SEASON),
@@ -19,7 +25,7 @@ const currentSeasonEditions: RaceEdition[] = legacyRaces.map((race) => ({
   bike: race.bike,
   run: race.run,
   description: race.description,
-  gender: race.gender,
+  gender: normalizeRaceGender(race.gender),
   sourceUrl: race.sourceUrl,
 }))
 
@@ -38,7 +44,7 @@ const challengeRoth2026View: RaceEditionView = {
   bike: challengeRoth2026Edition.bike,
   run: challengeRoth2026Edition.run,
   description: challengeRoth2026Edition.description,
-  gender: challengeRoth2026Edition.gender,
+  gender: normalizeRaceGender(challengeRoth2026Edition.gender),
   sourceUrl: challengeRoth2026Edition.sourceUrl,
   raceId: challengeRoth2026Edition.raceId,
   editionId: challengeRoth2026Edition.id,
@@ -48,6 +54,7 @@ const challengeRoth2026View: RaceEditionView = {
 export const currentRaceEditions: RaceEditionView[] = [
   ...legacyRaces.map((race) => ({
     ...race,
+    gender: normalizeRaceGender(race.gender),
     raceId: getRaceId(race.id),
     editionId: getRaceEditionId(race.id, CURRENT_SEASON),
     year: CURRENT_SEASON,
@@ -62,7 +69,7 @@ export const raceEditions: RaceEdition[] = [
   ...t1002025Editions,
   ...challengeRothEditions,
   ...currentSeasonEditions,
-]
+].map(normalizeEdition)
 
 const raceEntityById = new Map(
   [
@@ -99,7 +106,7 @@ function editionToView(edition: RaceEdition, index: number): RaceEditionView {
     bike: edition.bike,
     run: edition.run,
     description: edition.description,
-    gender: edition.gender,
+    gender: normalizeRaceGender(edition.gender),
     sourceUrl: edition.sourceUrl,
     raceId: edition.raceId,
     editionId: edition.id,
