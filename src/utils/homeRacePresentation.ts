@@ -61,7 +61,7 @@ export function groupRacesForHome(races: Race[]) {
     grouped.push({
       ...first,
       date: formatCombinedDate(first, second),
-      gender: 'WPRO & MPRO',
+      gender: 'WPRO+MPRO',
     })
 
     used.add(partnerIndex)
