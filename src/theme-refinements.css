@@ -26,18 +26,18 @@
 }
 
 /* Secondary-page title treatment */
-.app > .section:first-of-type {
+.app:not(.app--race-detail) > .section:first-of-type {
   margin-top: 24px;
 }
 
-.app > .section:first-of-type > .section__header {
+.app:not(.app--race-detail) > .section:first-of-type > .section__header {
   min-height: 42px;
   margin-bottom: 18px;
   padding-right: 106px;
   align-items: center;
 }
 
-.app > .section:first-of-type > .section__header h1 {
+.app:not(.app--race-detail) > .section:first-of-type > .section__header h1 {
   position: relative;
   margin: 0;
   padding-left: 11px;
@@ -48,7 +48,7 @@
   text-transform: none;
 }
 
-.app > .section:first-of-type > .section__header h1::before {
+.app:not(.app--race-detail) > .section:first-of-type > .section__header h1::before {
   content: '';
   position: absolute;
   left: 0;
@@ -57,6 +57,11 @@
   width: 2px;
   border-radius: 999px;
   background: var(--tri-accent);
+}
+
+/* Race detail has absolute top controls, so its content starts below them. */
+.app--race-detail > .race-detail-page {
+  margin-top: 58px;
 }
 
 /* Shared page controls */
@@ -264,18 +269,22 @@
 }
 
 @media (max-width: 700px) {
-  .app > .section:first-of-type {
+  .app:not(.app--race-detail) > .section:first-of-type {
     margin-top: 18px;
   }
 
-  .app > .section:first-of-type > .section__header {
+  .app:not(.app--race-detail) > .section:first-of-type > .section__header {
     min-height: 38px;
     margin-bottom: 16px;
     padding-right: 92px;
   }
 
-  .app > .section:first-of-type > .section__header h1 {
+  .app:not(.app--race-detail) > .section:first-of-type > .section__header h1 {
     font-size: clamp(22px, 6.2vw, 28px);
+  }
+
+  .app--race-detail > .race-detail-page {
+    margin-top: 56px;
   }
 
   .calendar-filters--series button,
@@ -296,11 +305,11 @@
 }
 
 @media (max-width: 420px) {
-  .app > .section:first-of-type > .section__header {
+  .app:not(.app--race-detail) > .section:first-of-type > .section__header {
     padding-right: 82px;
   }
 
-  .app > .section:first-of-type > .section__header h1 {
+  .app:not(.app--race-detail) > .section:first-of-type > .section__header h1 {
     font-size: 21px;
   }
 }
