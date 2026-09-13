@@ -88,10 +88,7 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
 
       <section className="section athletes-page">
         <div className="section__header athletes-page__header">
-          <div>
-            <h1>Профили атлетов</h1>
-            <p className="athletes-page__total">{athletes.length} PRO ATHLETES</p>
-          </div>
+          <h1>Профили атлетов</h1>
         </div>
 
         <div className="athletes-search-wrap">
