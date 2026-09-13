@@ -124,11 +124,6 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
           ))}
         </div>
 
-        <div className="athletes-countries-header">
-          <h2>Страны</h2>
-          <span>{genderFilteredAthletes.length} атлетов</span>
-        </div>
-
         <div className="athletes-country-scroller" aria-label="Фильтр по стране">
           <button
             type="button"
