@@ -33,7 +33,6 @@ function splitShowcaseName(name: string) {
 function getGenderTags(gender?: Race['gender']) {
   if (gender === 'MPRO') return ['MEN']
   if (gender === 'WPRO') return ['WOMEN']
-  if (gender === 'WPRO & MPRO') return ['MEN', 'WOMEN']
   return []
 }
 
@@ -159,3 +158,5 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
     </section>
   )
 }
+
+export default HomeShowcase
