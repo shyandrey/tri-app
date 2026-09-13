@@ -35,10 +35,10 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
     [athletes, genderFilter],
   )
 
-  const countries = useMemo<CountryFilter[]>(() => {
+  const countryOrder = useMemo(() => {
     const byCountry = new Map<string, CountryFilter>()
 
-    genderFilteredAthletes.forEach((athlete) => {
+    athletes.forEach((athlete) => {
       const key = athlete.countryCode ?? athlete.country
       const current = byCountry.get(key)
       if (current) {
@@ -56,7 +56,22 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
 
     return Array.from(byCountry.values())
       .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
-  }, [genderFilteredAthletes])
+      .map(({ key, label, flag }) => ({ key, label, flag }))
+  }, [athletes])
+
+  const countries = useMemo<CountryFilter[]>(() => {
+    const counts = new Map<string, number>()
+
+    genderFilteredAthletes.forEach((athlete) => {
+      const key = athlete.countryCode ?? athlete.country
+      counts.set(key, (counts.get(key) ?? 0) + 1)
+    })
+
+    return countryOrder.map((country) => ({
+      ...country,
+      count: counts.get(country.key) ?? 0,
+    }))
+  }, [countryOrder, genderFilteredAthletes])
 
   const visibleAthletes = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
