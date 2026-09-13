@@ -20,6 +20,57 @@
   box-sizing: border-box;
 }
 
+.athlete-detail__section-toggle {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--tri-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.athlete-detail__section-toggle > span:first-child {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.athlete-detail__section-chevron {
+  color: var(--tri-accent);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 160ms ease;
+}
+
+.athlete-detail__section-chevron--open {
+  transform: rotate(90deg);
+}
+
+.athlete-detail__bio-list,
+.athlete-detail__achievements ul {
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
+.athlete-detail__bio-list li,
+.athlete-detail__achievements li {
+  margin: 0 0 8px;
+  color: var(--tri-muted);
+  line-height: 1.45;
+}
+
+.athlete-detail__bio-list li:last-child,
+.athlete-detail__achievements li:last-child {
+  margin-bottom: 0;
+}
+
 .athletes-gender-filter {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
