@@ -21,6 +21,25 @@ function podiumMedal(position: RaceResult['position']) {
   return null
 }
 
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" />
+      <circle cx="12" cy="12" r="4.1" />
+      <circle cx="17.6" cy="6.7" r="1" className="athlete-social-icon__dot" />
+    </svg>
+  )
+}
+
+function YouTubeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 8.2a3 3 0 0 0-2.1-2.1C17.1 5.6 12 5.6 12 5.6s-5.1 0-6.9.5A3 3 0 0 0 3 8.2 31 31 0 0 0 2.6 12 31 31 0 0 0 3 15.8a3 3 0 0 0 2.1 2.1c1.8.5 6.9.5 6.9.5s5.1 0 6.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8Z" />
+      <path d="m10 9 5 3-5 3Z" className="athlete-social-icon__play" />
+    </svg>
+  )
+}
+
 function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRaceClick }: AthleteDetailPageProps) {
   const resultsByYear = results
     .map((result) => ({ ...result, race: races.find((race) => race.editionId === result.raceEditionId) }))
@@ -40,6 +59,7 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
   const [achievementsExpanded, setAchievementsExpanded] = useState(true)
   const bioFacts = athlete.bioFacts?.length ? athlete.bioFacts : athlete.bio ? [athlete.bio] : []
   const hasAchievements = athlete.achievements.length > 0
+  const hasSocialLinks = Boolean(athlete.socialLinks?.instagram || athlete.socialLinks?.youtube)
 
   const toggleYear = (year: string) => {
     setExpandedYears((current) =>
@@ -55,9 +75,52 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
 
       <section className="section athlete-detail-page">
         <div className="athlete-detail">
-          {athlete.image && <img className="athlete-detail__image" src={athlete.image} alt={athlete.name} />}
-          <h1>{athlete.name} <span className="athlete-detail__flag-inline">{athlete.flag}</span></h1>
-          <p className="athlete-detail__meta">{athlete.nameEn}{athlete.nameEn && athlete.countryEn && ' · '}{athlete.countryEn}</p>
+          <div className="athlete-detail__hero">
+            <div className="athlete-detail__portrait-wrap">
+              {athlete.image ? (
+                <img className="athlete-detail__image" src={athlete.image} alt={athlete.name} />
+              ) : (
+                <div className="athlete-detail__image athlete-detail__image--placeholder" aria-hidden="true">{athlete.name.charAt(0)}</div>
+              )}
+            </div>
+
+            <div className="athlete-detail__identity">
+              <h1>{athlete.name} <span className="athlete-detail__flag-inline">{athlete.flag}</span></h1>
+              <div className="athlete-detail__facts">
+                {athlete.age && <span>{athlete.age} лет</span>}
+                {athlete.age && <span className="athlete-detail__facts-divider" aria-hidden="true" />}
+                <span>{athlete.country}</span>
+              </div>
+              {athlete.nameEn && <p className="athlete-detail__meta">{athlete.nameEn}</p>}
+
+              {hasSocialLinks && (
+                <div className="athlete-detail__socials" aria-label="Социальные сети">
+                  {athlete.socialLinks?.instagram && (
+                    <a
+                      className="athlete-social-icon"
+                      href={`https://www.instagram.com/${athlete.socialLinks.instagram}/`}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <InstagramIcon />
+                    </a>
+                  )}
+                  {athlete.socialLinks?.youtube && (
+                    <a
+                      className="athlete-social-icon"
+                      href={`https://www.youtube.com/@${athlete.socialLinks.youtube}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="YouTube"
+                    >
+                      <YouTubeIcon />
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
 
           {bioFacts.length > 0 && (
             <div className="athlete-detail__about athlete-detail__collapsible">
