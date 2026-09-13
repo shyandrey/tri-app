@@ -68,6 +68,7 @@ export function groupRacesForHome(races: RaceEditionView[]) {
     grouped.push({
       ...first,
       date: formatCombinedDate(first, second),
+      dateISO: second.dateISO,
       gender: 'WPRO+MPRO',
     })
 
