@@ -131,7 +131,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
             >
               <div className="showcase-card__shade" aria-hidden="true" />
               <div className="showcase-card__content">
-                <span className="showcase-card__eyebrow">На очереди</span>
+                <span className="showcase-card__eyebrow">Скоро</span>
                 <div className="showcase-card__tag-row">
                   <span className="showcase-card__tag">{race.series}</span>
                   {genderTags.map((tag) => <span className="showcase-card__tag" key={tag}>{tag}</span>)}
