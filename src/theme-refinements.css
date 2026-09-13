@@ -25,10 +25,6 @@
     var(--tri-bg);
 }
 
-.app--race-detail {
-  background: var(--tri-bg);
-}
-
 /* Secondary-page title treatment */
 .app > .section:first-of-type {
   margin-top: 24px;
