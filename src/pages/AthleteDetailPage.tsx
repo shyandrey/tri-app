@@ -41,6 +41,56 @@ function YouTubeIcon() {
   )
 }
 
+function LaurelIcon() {
+  const leaves = [
+    { cx: 7.1, cy: 17.5, rotate: -52 },
+    { cx: 5.6, cy: 14.8, rotate: -44 },
+    { cx: 4.9, cy: 11.8, rotate: -31 },
+    { cx: 5.2, cy: 8.8, rotate: -18 },
+    { cx: 6.3, cy: 6.1, rotate: -8 },
+  ]
+
+  return (
+    <svg className="athlete-achievement__laurel" viewBox="0 0 24 24" aria-hidden="true">
+      <defs>
+        <linearGradient id="laurelGreen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#b7f36a" />
+          <stop offset="45%" stopColor="#67cf4d" />
+          <stop offset="100%" stopColor="#2f8f3d" />
+        </linearGradient>
+      </defs>
+      <path d="M11.2 20.6C7.2 20.1 4.4 17.1 3.8 13.1C3.2 9.4 4.4 6.4 6.8 4" />
+      <path d="M12.8 20.6C16.8 20.1 19.6 17.1 20.2 13.1C20.8 9.4 19.6 6.4 17.2 4" />
+      {leaves.map((leaf, index) => (
+        <g key={`left-${index}`} transform={`rotate(${leaf.rotate} ${leaf.cx} ${leaf.cy})`}>
+          <ellipse cx={leaf.cx} cy={leaf.cy} rx="1.15" ry="2.25" />
+        </g>
+      ))}
+      {leaves.map((leaf, index) => {
+        const mirrorX = 24 - leaf.cx
+        return (
+          <g key={`right-${index}`} transform={`rotate(${-leaf.rotate} ${mirrorX} ${leaf.cy})`}>
+            <ellipse cx={mirrorX} cy={leaf.cy} rx="1.15" ry="2.25" />
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
+function cleanAchievementText(achievement: string) {
+  return achievement.replace(/^[\s🥇🥈🥉🏅🏆👑]+/u, '').trim()
+}
+
+function achievementIcon(achievement: string) {
+  const normalized = cleanAchievementText(achievement).toLowerCase()
+  if (normalized.includes('олимп')) return <LaurelIcon />
+  if (normalized.includes('ironman pro series') || normalized.includes('t100 world tour') || normalized.includes('победитель серии')) {
+    return <span className="athlete-achievement__emoji" aria-hidden="true">👑</span>
+  }
+  return <span className="athlete-achievement__emoji" aria-hidden="true">🏆</span>
+}
+
 function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRaceClick }: AthleteDetailPageProps) {
   const resultsByYear = results
     .map((result) => ({ ...result, race: races.find((race) => race.editionId === result.raceEditionId) }))
@@ -154,7 +204,14 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                 <span className={`athlete-detail__section-chevron ${achievementsExpanded ? 'athlete-detail__section-chevron--open' : ''}`} aria-hidden="true">›</span>
               </button>
               <div className={achievementsExpanded ? 'athlete-detail__section-body' : 'athlete-detail__section-body athlete-detail__section-body--collapsed'}>
-                <ul>{athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul>
+                <ul className="athlete-detail__achievements-list">
+                  {athlete.achievements.map((achievement) => (
+                    <li key={achievement}>
+                      <span className="athlete-achievement__icon">{achievementIcon(achievement)}</span>
+                      <span>{cleanAchievementText(achievement)}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           )}
