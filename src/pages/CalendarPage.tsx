@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import RaceCard from '../components/RaceCard'
-import type { Race, RaceGender } from '../types/Race'
+import type { RaceEditionView, RaceGender } from '../types/Race'
 import type { Page } from '../types/Page'
 import BottomNav from '../components/BottomNav'
 import { isRaceFinished, isRaceUpcoming } from '../utils/raceDate'
@@ -15,19 +15,19 @@ export type CalendarViewState = {
 }
 
 type CalendarPageProps = {
-  races: Race[]
-  searchRaces?: Race[]
+  races: RaceEditionView[]
+  searchRaces?: RaceEditionView[]
   viewState: CalendarViewState
   onViewStateChange: (state: CalendarViewState) => void
   onBack: () => void
-  onRaceClick: (race: Race) => void
+  onRaceClick: (race: RaceEditionView) => void
   onNavigate: (page: Page) => void
 }
 
 type RaceCardItem = {
-  race: Race
+  race: RaceEditionView
   displayDate: string
-  displayGender?: RaceGender
+  displayGender: RaceGender
 }
 
 const seriesFilters = [
@@ -55,7 +55,7 @@ const russianMonthsGenitive = [
 
 const getRussianMonthGenitive = (date: Date) => russianMonthsGenitive[date.getUTCMonth()]
 
-const formatEventDateRange = (first: Race, second: Race) => {
+const formatEventDateRange = (first: RaceEditionView, second: RaceEditionView) => {
   const firstDate = new Date(`${first.dateISO}T00:00:00Z`)
   const secondDate = new Date(`${second.dateISO}T00:00:00Z`)
   const firstDay = firstDate.getUTCDate()
@@ -67,7 +67,7 @@ const formatEventDateRange = (first: Race, second: Race) => {
   return `${firstDay} ${firstMonth} – ${secondDay} ${secondMonth}`
 }
 
-const getRaceSearchTags = (race: Race) => {
+const getRaceSearchTags = (race: RaceEditionView) => {
   const tags: string[] = []
   const championshipGroup = getChampionshipNavigationGroup(race)
 
@@ -75,7 +75,7 @@ const getRaceSearchTags = (race: Race) => {
     tags.push('чемпионат', 'чемпионат мира', 'финал', 'финал серии', 'world championship')
   }
 
-  const raceYear = race.year ?? new Date(race.dateISO).getFullYear()
+  const raceYear = race.year
   const isT100Final = race.series === 'Triathlon World Tour' && (
     (race.raceId === 't100-dubai' && raceYear === 2024)
     || race.raceId === 't100-qatar'
@@ -89,7 +89,7 @@ const getRaceSearchTags = (race: Race) => {
   return tags
 }
 
-const groupRaceEventCards = (source: Race[]): RaceCardItem[] => {
+const groupRaceEventCards = (source: RaceEditionView[]): RaceCardItem[] => {
   const sorted = [...source].sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const used = new Set<number>()
   const items: RaceCardItem[] = []
@@ -98,18 +98,16 @@ const groupRaceEventCards = (source: Race[]): RaceCardItem[] => {
     if (used.has(index)) continue
 
     const race = sorted[index]
-    const raceYear = race.year ?? new Date(race.dateISO).getFullYear()
     const oppositeGender = race.gender === 'WPRO' ? 'MPRO' : race.gender === 'MPRO' ? 'WPRO' : undefined
 
     let pairIndex = -1
-    if (oppositeGender && race.raceId) {
+    if (oppositeGender) {
       pairIndex = sorted.findIndex((candidate, candidateIndex) => {
         if (candidateIndex === index || used.has(candidateIndex)) return false
-        const candidateYear = candidate.year ?? new Date(candidate.dateISO).getFullYear()
         const dateGap = Math.abs(new Date(candidate.dateISO).getTime() - new Date(race.dateISO).getTime())
 
         return candidate.raceId === race.raceId
-          && candidateYear === raceYear
+          && candidate.year === race.year
           && candidate.gender === oppositeGender
           && candidate.name === race.name
           && candidate.city === race.city
@@ -123,7 +121,7 @@ const groupRaceEventCards = (source: Race[]): RaceCardItem[] => {
       const [first, second] = race.dateISO <= pair.dateISO ? [race, pair] : [pair, race]
       used.add(index)
       used.add(pairIndex)
-      items.push({ race: first, displayDate: formatEventDateRange(first, second), displayGender: 'WPRO & MPRO' })
+      items.push({ race: first, displayDate: formatEventDateRange(first, second), displayGender: 'WPRO+MPRO' })
       continue
     }
 
@@ -198,7 +196,7 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
     })
   }
 
-  const openRace = (race: Race) => {
+  const openRace = (race: RaceEditionView) => {
     updateViewState({ scrollY: window.scrollY })
     onRaceClick(race)
   }
@@ -207,11 +205,11 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
     const { race, displayDate, displayGender } = item
     return (
       <RaceCard
-        key={`${race.raceId ?? race.id}-${race.year ?? ''}-${displayDate}`}
+        key={`${race.raceId}-${race.year}-${displayDate}`}
         distance={race.distance}
         series={race.series}
         name={race.name}
-        date={`${displayDate}${showYear && race.year ? ` ${race.year}` : ''}`}
+        date={`${displayDate}${showYear ? ` ${race.year}` : ''}`}
         city={race.city}
         country={race.country}
         gender={displayGender}
