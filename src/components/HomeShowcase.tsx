@@ -153,5 +153,3 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
     </section>
   )
 }
-
-export default HomeShowcase
