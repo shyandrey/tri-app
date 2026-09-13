@@ -70,10 +70,14 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                 <span>Био</span>
                 <span className={`athlete-detail__section-chevron ${bioExpanded ? 'athlete-detail__section-chevron--open' : ''}`} aria-hidden="true">›</span>
               </button>
-              {bioExpanded && (
+              {bioExpanded ? (
                 <ul className="athlete-detail__bio-list">
                   {bioFacts.map((fact) => <li key={fact}>{fact}</li>)}
                 </ul>
+              ) : (
+                <div className="athlete-detail__section-preview" aria-hidden="true">
+                  {bioFacts.join(' · ')}
+                </div>
               )}
             </div>
           )}
@@ -89,8 +93,12 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
                 <span>Достижения</span>
                 <span className={`athlete-detail__section-chevron ${achievementsExpanded ? 'athlete-detail__section-chevron--open' : ''}`} aria-hidden="true">›</span>
               </button>
-              {achievementsExpanded && (
+              {achievementsExpanded ? (
                 <ul>{athlete.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}</ul>
+              ) : (
+                <div className="athlete-detail__section-preview" aria-hidden="true">
+                  {athlete.achievements.join(' · ')}
+                </div>
               )}
             </div>
           )}
