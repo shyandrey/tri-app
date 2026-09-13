@@ -78,15 +78,11 @@
   color: rgba(243, 183, 43, 0.78);
 }
 
-.athletes-countries-header,
-.athletes-results-heading {
+.athletes-countries-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-}
-
-.athletes-countries-header {
   margin-bottom: 11px;
 }
 
@@ -98,8 +94,7 @@
   text-transform: uppercase;
 }
 
-.athletes-countries-header span,
-.athletes-results-heading span {
+.athletes-countries-header span {
   color: var(--tri-muted-soft);
   font-size: 11px;
   font-weight: 600;
@@ -174,23 +169,6 @@
   color: var(--tri-muted-soft);
   font-size: 9px;
   font-weight: 700;
-}
-
-.athletes-results-heading {
-  min-height: 28px;
-  margin-bottom: 8px;
-  padding-top: 2px;
-  border-top: 1px solid rgba(45, 50, 57, 0.72);
-}
-
-.athletes-results-heading button {
-  padding: 5px 0;
-  border: 0;
-  background: transparent;
-  color: var(--tri-accent);
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
 }
 
 .athletes-list--profiles {
