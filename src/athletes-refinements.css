@@ -296,6 +296,14 @@
   line-height: 1.4;
 }
 
+@media (min-width: 701px) and (orientation: landscape) {
+  .app--athletes .athletes-page {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+}
+
 @media (max-width: 640px) {
   .app--athletes .athletes-page {
     margin-top: 18px;
@@ -303,8 +311,7 @@
 
   .app--athlete-detail .athlete-detail-page {
     margin-top: 0;
-    padding-top: 58px;
-    box-sizing: border-box;
+    padding-top: 52px;
   }
 
   .app--athlete-detail .athlete-detail > h1,
