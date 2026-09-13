@@ -79,7 +79,6 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
 
   const chooseGender = (gender: GenderFilter) => {
     setGenderFilter(gender)
-    setCountryFilter('ALL')
   }
 
   return (
