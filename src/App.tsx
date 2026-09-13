@@ -140,7 +140,7 @@ function App() {
       <HomeShowcase races={upcomingRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
 
       <section className="section home-races-section">
-        <div className="section__header"><h2>⚡ Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Смотреть все</button></div>
+        <div className="section__header"><h2>Ближайшие гонки</h2><button onClick={() => setPage('calendar')}>Все гонки →</button></div>
         {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />)}
       </section>
 
