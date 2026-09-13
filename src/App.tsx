@@ -16,6 +16,7 @@ import './home-refinements.css'
 import './history-refinements.css'
 import './calendar-mobile-refinements.css'
 import './theme-refinements.css'
+import './athletes-refinements.css'
 import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
@@ -36,7 +37,6 @@ const initialCalendarViewState: CalendarViewState = {
 }
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
-const DAY_MS = 86_400_000
 
 function getShowcaseRaceName(name: string) {
   const cleanName = name.replace(/\s+/g, ' ').trim()
@@ -83,26 +83,6 @@ function getShowcaseRaceName(name: string) {
   return cleanName
 }
 
-function isSplitWeekendPartnerUpcoming(race: Race, source: Race[]) {
-  if (race.gender !== 'WPRO' && race.gender !== 'MPRO') return false
-  const oppositeGender = race.gender === 'WPRO' ? 'MPRO' : 'WPRO'
-
-  return source.some((candidate) => {
-    if (!isRaceUpcoming(candidate)) return false
-    const raceYear = race.year ?? new Date(race.dateISO).getFullYear()
-    const candidateYear = candidate.year ?? new Date(candidate.dateISO).getFullYear()
-    const dateGap = Math.abs(new Date(candidate.dateISO).getTime() - new Date(race.dateISO).getTime())
-
-    return candidate.raceId === race.raceId
-      && candidateYear === raceYear
-      && candidate.gender === oppositeGender
-      && candidate.name === race.name
-      && candidate.city === race.city
-      && candidate.country === race.country
-      && dateGap <= DAY_MS
-  })
-}
-
 function App() {
   const [page, setPage] = useState<Page>('home')
   const [previousPage, setPreviousPage] = useState<'home' | 'calendar' | 'athlete'>('home')
@@ -113,7 +93,7 @@ function App() {
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   const allUpcomingRaces = races
-    .filter((race) => isRaceUpcoming(race) || isSplitWeekendPartnerUpcoming(race, races))
+    .filter(isRaceUpcoming)
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const upcomingRaces = groupRacesForHome(allUpcomingRaces).slice(0, 3)
 
