@@ -45,6 +45,19 @@
   text-align: left;
 }
 
+/* Non-podium results stay visually quieter than medals. */
+.athlete-result-card__place {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--tri-border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--tri-muted);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
 /* Race cards: all series use the same left-column width, based on the widest IRONMAN tag. */
 .race-card--compact {
   display: grid;
@@ -241,6 +254,12 @@
   .athlete-result-card__medal {
     width: 38px;
     font-size: 25px;
+  }
+
+  .athlete-result-card__place {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
   }
 
   .race-card--compact {
