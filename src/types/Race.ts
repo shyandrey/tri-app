@@ -9,7 +9,11 @@ export type RaceDistance =
   | 'T100'
   | 'Challenge Roth'
 
-export type RaceGender = 'WPRO' | 'MPRO' | 'WPRO & MPRO'
+export type RaceGender = 'WPRO' | 'MPRO' | 'WPRO+MPRO' | 'ALL'
+
+// Transitional input value used by older race source files.
+// RaceEditionView always exposes the canonical RaceGender values above.
+export type LegacyRaceGender = RaceGender | 'WPRO & MPRO'
 
 export type RaceEntity = {
   id: string
@@ -34,7 +38,7 @@ export type RaceEdition = {
   run: string
 
   description: string
-  gender?: RaceGender
+  gender?: LegacyRaceGender
   sourceUrl?: string
 }
 
@@ -57,7 +61,7 @@ export type Race = {
   run: string
 
   description: string
-  gender?: RaceGender
+  gender?: LegacyRaceGender
   sourceUrl?: string
 
   raceId?: string
@@ -65,8 +69,9 @@ export type Race = {
   year?: number
 }
 
-export type RaceEditionView = Race & {
+export type RaceEditionView = Omit<Race, 'gender'> & {
   raceId: string
   editionId: string
   year: number
+  gender: RaceGender
 }
