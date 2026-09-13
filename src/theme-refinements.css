@@ -257,8 +257,9 @@
 }
 
 .athlete-result-card__place {
+  border-color: var(--tri-accent);
   background: transparent;
-  color: var(--tri-muted);
+  color: var(--tri-accent);
 }
 
 /* Bottom navigation follows the same restrained charcoal treatment. */
