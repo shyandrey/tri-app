@@ -97,7 +97,7 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
           <input
             className="calendar-search athletes-search"
             type="text"
-            placeholder="Найти атлета"
+            placeholder="Найти атлета..."
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
