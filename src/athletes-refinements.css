@@ -60,8 +60,8 @@
 .athlete-detail__section-body--collapsed {
   max-height: 4.4em;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 56%, rgba(0, 0, 0, 0.7) 76%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 56%, rgba(0, 0, 0, 0.7) 76%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 30%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.68) 68%, rgba(0, 0, 0, 0.34) 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 30%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.68) 68%, rgba(0, 0, 0, 0.34) 86%, transparent 100%);
 }
 
 .athlete-detail__bio-list,
