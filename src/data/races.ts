@@ -15,7 +15,7 @@ export const races: Race[] = [
     run: '42.2 км',
     description:
       'Этап IRONMAN Pro Series на полной дистанции в Таупо, Новая Зеландия.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im-new-zealand',
   },
@@ -33,7 +33,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Джилонге, Австралия.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-geelong',
   },
@@ -51,7 +51,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Оушенсайде, Калифорния.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-oceanside',
   },
@@ -69,7 +69,7 @@ export const races: Race[] = [
     run: '42.2 км',
     description:
       'Североамериканский чемпионат IRONMAN в рамках IRONMAN Pro Series.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im-texas',
   },
@@ -87,7 +87,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Экс-ан-Провансе.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-aix-en-provence',
   },
@@ -123,7 +123,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Североамериканский чемпионат IRONMAN 70.3 в рамках Pro Series.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-pennsylvania',
   },
@@ -141,7 +141,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Хельсингёре.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-elsinore',
   },
@@ -177,7 +177,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Суонси.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-swansea',
   },
@@ -195,7 +195,7 @@ export const races: Race[] = [
     run: '42.2 км',
     description:
       'Этап IRONMAN Pro Series на полной дистанции в Лейк-Плэсиде.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im-lake-placid',
   },
@@ -213,7 +213,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Бойсе, Айдахо.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-boise',
   },
@@ -231,7 +231,7 @@ export const races: Race[] = [
     run: '42.2 км',
     description:
       'Этап IRONMAN Pro Series на полной дистанции в Кальмаре.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im-kalmar',
   },
@@ -249,7 +249,7 @@ export const races: Race[] = [
     run: '21.1 км',
     description:
       'Этап IRONMAN Pro Series на дистанции 70.3 в Целль-ам-Зее.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im703-zell-am-see',
   },
@@ -303,7 +303,7 @@ export const races: Race[] = [
     run: '42.2 км',
     description:
       'Чемпионат мира IRONMAN 2026 в Коне, Гавайи.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://www.ironman.com/proseries/races/im-world-championship-kona',
   },
@@ -465,7 +465,7 @@ export const races: Race[] = [
     run: '18 км',
     description:
       'Финал T100 Triathlon World Tour 2026 с участием мужчин и женщин.',
-    gender: 'WPRO & MPRO',
+    gender: 'ALL',
     sourceUrl:
       'https://t100triathlon.com/pro-racing/',
   },
