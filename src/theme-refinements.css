@@ -251,10 +251,14 @@
 }
 
 .top-athlete-card__position,
-.race-result-card__position,
-.athlete-result-card__place {
+.race-result-card__position {
   background: var(--tri-accent);
   color: var(--tri-bg);
+}
+
+.athlete-result-card__place {
+  background: transparent;
+  color: var(--tri-muted);
 }
 
 /* Bottom navigation follows the same restrained charcoal treatment. */
