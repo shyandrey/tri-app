@@ -23,7 +23,6 @@ import MorePage from './pages/MorePage'
 import HorizontalScroller from './components/HorizontalScroller'
 import HomeShowcase from './components/HomeShowcase'
 import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
-import { isRaceUpcoming } from './utils/raceDate'
 import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
@@ -39,6 +38,15 @@ const initialCalendarViewState: CalendarViewState = {
 }
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
+
+function getMoscowTodayISO() {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Moscow',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+}
 
 function getShowcaseRaceName(name: string) {
   const cleanName = name.replace(/\s+/g, ' ').trim()
@@ -96,10 +104,12 @@ function App() {
   const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
   const [settingsOpen, setSettingsOpen] = useState(false)
 
-  const upcomingRaces = groupRacesForHome(races)
-    .filter(isRaceUpcoming)
+  const todayISO = getMoscowTodayISO()
+  const futureHomeRaces = groupRacesForHome(races)
+    .filter((race) => race.dateISO > todayISO)
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
-    .slice(0, 3)
+  const showcaseRaces = futureHomeRaces.slice(0, 5)
+  const upcomingRaces = futureHomeRaces.slice(0, 3)
 
   const navigateSection = (target: Page) => {
     if (target === page) {
@@ -164,7 +174,7 @@ function App() {
         <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
       </header>
 
-      <HomeShowcase races={upcomingRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
+      <HomeShowcase races={showcaseRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
 
       <section className="section home-races-section">
         <div className="section__header home-races-section__header"><h2>Ближайшие гонки</h2><button onClick={() => navigateSection('calendar')}>Все гонки <span className="home-races-section__chevron">›</span></button></div>
