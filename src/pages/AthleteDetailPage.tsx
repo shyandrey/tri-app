@@ -56,8 +56,8 @@ function AthleteDetailPage({ athlete, results, races, onBack, onNavigate, onRace
   const years = Object.keys(resultsByYear).sort((a, b) => Number(b) - Number(a))
   const latestYear = years[0]
   const [expandedYears, setExpandedYears] = useState<string[]>(latestYear ? [latestYear] : [])
-  const [bioExpanded, setBioExpanded] = useState(true)
-  const [achievementsExpanded, setAchievementsExpanded] = useState(true)
+  const [bioExpanded, setBioExpanded] = useState(false)
+  const [achievementsExpanded, setAchievementsExpanded] = useState(false)
   const bioFacts = athlete.bioFacts?.length ? athlete.bioFacts : athlete.bio ? [athlete.bio] : []
   const hasAchievements = athlete.achievements.length > 0
   const hasSocialLinks = Boolean(athlete.socialLinks?.instagram || athlete.socialLinks?.youtube)
