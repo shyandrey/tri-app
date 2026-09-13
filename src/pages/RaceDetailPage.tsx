@@ -117,7 +117,7 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
 
   const findEditionForGender = (editions: Race[], gender: ResultGender) =>
     editions.find((edition) => genderFromEdition(edition) === gender)
-    ?? editions.find((edition) => edition.gender === 'WPRO & MPRO')
+    ?? editions.find((edition) => edition.gender === 'ALL' || edition.gender === 'WPRO+MPRO')
 
   const switchYear = (year: number) => {
     const targetEditions = editionsByYear.get(year)
