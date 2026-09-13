@@ -8,7 +8,9 @@ export const athletes: Athlete[] = [
     nameEn: 'Kristian Blummenfelt',
     country: 'Норвегия',
     countryEn: 'Norway',
+    countryCode: 'NOR',
     flag: '🇳🇴',
+    gender: 'M',
     discipline: 'IRONMAN / T100',
     image: blummenfeltImage,
     bio:
@@ -26,7 +28,9 @@ export const athletes: Athlete[] = [
     nameEn: 'Marten Van Riel',
     country: 'Бельгия',
     countryEn: 'Belgium',
+    countryCode: 'BEL',
     flag: '🇧🇪',
+    gender: 'M',
     discipline: 'T100',
     bio:
       'Бельгийский профессиональный триатлет, специализирующийся на коротких и средних дистанциях.',
@@ -41,7 +45,9 @@ export const athletes: Athlete[] = [
     nameEn: 'Hayden Wilde',
     country: 'Новая Зеландия',
     countryEn: 'New Zealand',
+    countryCode: 'NZL',
     flag: '🇳🇿',
+    gender: 'M',
     discipline: 'T100',
     bio:
       'Новозеландский профессиональный триатлет, выступающий на олимпийской и средней дистанциях.',
