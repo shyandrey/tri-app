@@ -1,3 +1,7 @@
+.race-card--t100 {
+  --race-series-color: #22d3e6;
+}
+
 .race-card--ironman .race-card__series,
 .race-card--t100 .race-card__series,
 .race-card--roth .race-card__series {
