@@ -4,6 +4,7 @@ import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 import type { RaceResult } from '../types/RaceResult'
 import type { Race } from '../types/Race'
+import '../athlete-detail.css'
 
 type AthleteDetailPageProps = {
   athlete: Athlete
