@@ -302,7 +302,9 @@
   }
 
   .app--athlete-detail .athlete-detail-page {
-    margin-top: 52px;
+    margin-top: 0;
+    padding-top: 58px;
+    box-sizing: border-box;
   }
 
   .app--athlete-detail .athlete-detail > h1,
