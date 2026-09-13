@@ -176,7 +176,7 @@ function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: Athletes
               <div className="athlete-card__info">
                 <h3>{athlete.name}</h3>
                 {athlete.nameEn && <span className="athlete-card__name-en">{athlete.nameEn}</span>}
-                <p>{athlete.countryCode ?? athlete.country} · {athlete.discipline}</p>
+                <p>{athlete.countryCode ?? athlete.country} · {athlete.country}</p>
               </div>
               <span className="athlete-card__arrow">›</span>
             </article>
