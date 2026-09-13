@@ -123,6 +123,44 @@
   stroke: none;
 }
 
+.athlete-detail__achievements-list {
+  list-style: none;
+  padding-left: 0 !important;
+}
+
+.athlete-detail__achievements-list li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+}
+
+.athlete-achievement__icon {
+  display: grid;
+  width: 28px;
+  height: 26px;
+  place-items: center;
+  align-self: start;
+  margin-top: -1px;
+}
+
+.athlete-achievement__emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.athlete-achievement__laurel {
+  width: 25px;
+  height: 25px;
+  overflow: visible;
+  fill: url(#laurelGreen);
+  stroke: #3b9f46;
+  stroke-width: 0.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.22));
+}
+
 .athlete-results-year + .athlete-results-year {
   margin-top: 0;
   border-top: 1px solid var(--tri-border);
@@ -183,6 +221,20 @@
   .athlete-social-icon svg {
     width: 18px;
     height: 18px;
+  }
+
+  .athlete-detail__achievements-list li {
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .athlete-achievement__icon {
+    width: 26px;
+  }
+
+  .athlete-achievement__laurel {
+    width: 23px;
+    height: 23px;
   }
 }
 
