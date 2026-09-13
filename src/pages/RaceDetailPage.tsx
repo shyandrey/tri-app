@@ -142,17 +142,21 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
 
   const isChampionship = Boolean(getChampionshipNavigationGroup(activeRace))
   const showPendingResultsHeader = !hasResults
+  const flatBackground = { background: '#0f1115', backgroundImage: 'none' } as const
 
   return (
     <main
       className="app app--race-detail"
-      style={{ background: '#0f1115', backgroundImage: 'none' }}
+      style={flatBackground}
     >
       <span className="race-detail-page__distance-tag race-card__tag">{activeRace.distance}</span>
       <button className="page-back-button" onClick={onBack}>← Назад</button>
 
-      <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
-        <div className="race-detail">
+      <section
+        className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}
+        style={flatBackground}
+      >
+        <div className="race-detail" style={flatBackground}>
           <h1>{activeRace.name}</h1>
           <p className="race-detail-meta">{activeRace.date} {currentYear} · {location}</p>
 
