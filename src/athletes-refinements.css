@@ -9,6 +9,17 @@
   min-width: 0;
 }
 
+/* Athlete detail: reserve the top-right corner for the back button. */
+.app--athlete-detail .athlete-detail-page {
+  margin-top: 56px;
+}
+
+.app--athlete-detail .athlete-detail > h1,
+.app--athlete-detail .athlete-detail__meta {
+  padding-right: 104px;
+  box-sizing: border-box;
+}
+
 .athletes-gender-filter {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -288,6 +299,15 @@
 @media (max-width: 640px) {
   .app--athletes .athletes-page {
     margin-top: 18px;
+  }
+
+  .app--athlete-detail .athlete-detail-page {
+    margin-top: 52px;
+  }
+
+  .app--athlete-detail .athlete-detail > h1,
+  .app--athlete-detail .athlete-detail__meta {
+    padding-right: 0;
   }
 
   .athletes-gender-filter {
