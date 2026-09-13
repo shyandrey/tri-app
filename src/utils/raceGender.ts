@@ -1,11 +1,7 @@
-import type { LegacyRaceGender, RaceGender } from '../types/Race'
+import type { RaceGender } from '../types/Race'
 
-export function normalizeRaceGender(gender?: LegacyRaceGender): RaceGender {
-  if (gender === 'WPRO' || gender === 'MPRO' || gender === 'WPRO+MPRO' || gender === 'ALL') {
-    return gender
-  }
-
-  return 'ALL'
+export function normalizeRaceGender(gender?: RaceGender): RaceGender {
+  return gender ?? 'ALL'
 }
 
 export function getRaceGenderLabel(gender: RaceGender) {
