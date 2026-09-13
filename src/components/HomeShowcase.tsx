@@ -30,6 +30,13 @@ function splitShowcaseName(name: string) {
   return ['', name]
 }
 
+function getGenderTags(gender?: Race['gender']) {
+  if (gender === 'MPRO') return ['MEN']
+  if (gender === 'WPRO') return ['WOMEN']
+  if (gender === 'WPRO & MPRO') return ['MEN', 'WOMEN']
+  return []
+}
+
 export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeShowcaseProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
@@ -113,6 +120,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
           const showcaseName = getRaceName(race.name)
           const [seriesName, locationName] = splitShowcaseName(showcaseName)
           const showcaseImage = race.raceId ? imageByRaceId.get(race.raceId) : undefined
+          const genderTags = getGenderTags(race.gender)
 
           return (
             <article
@@ -124,8 +132,11 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
             >
               <div className="showcase-card__shade" aria-hidden="true" />
               <div className="showcase-card__content">
-                <span className="showcase-card__eyebrow">Ближайший старт</span>
-                <span className="showcase-card__tag">{race.series}</span>
+                <span className="showcase-card__eyebrow">На очереди</span>
+                <div className="showcase-card__tag-row">
+                  <span className="showcase-card__tag">{race.series}</span>
+                  {genderTags.map((tag) => <span className="showcase-card__tag" key={tag}>{tag}</span>)}
+                </div>
                 <h2 className="showcase-card__title">
                   {seriesName && <span className="showcase-card__title-part">{seriesName}</span>}
                   <span className="showcase-card__title-part">{locationName}</span>
