@@ -12,6 +12,12 @@
     var(--showcase-image) center / cover no-repeat;
 }
 
+.showcase-card__tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 .showcase-card__title {
   display: flex;
   flex-wrap: wrap;
