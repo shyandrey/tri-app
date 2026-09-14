@@ -1,4 +1,5 @@
 import type { Athlete } from '../../types/Athlete'
+import { athletePhotosByName } from './athletePhotos.generated'
 
 export const makeAthlete = (
   id: number,
@@ -20,6 +21,7 @@ export const makeAthlete = (
   flag,
   gender,
   discipline,
+  image: athletePhotosByName[nameEn],
   bio: `${name} — профессиональный триатлет. Профиль добавлен для тестирования каталога атлетов.`,
   achievements: [],
 })
