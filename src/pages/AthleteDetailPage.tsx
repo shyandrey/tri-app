@@ -42,35 +42,62 @@ function YouTubeIcon() {
 }
 
 function LaurelIcon() {
-  const leaves = [
-    { cx: 7.1, cy: 17.5, rotate: -52 },
-    { cx: 5.6, cy: 14.8, rotate: -44 },
-    { cx: 4.9, cy: 11.8, rotate: -31 },
-    { cx: 5.2, cy: 8.8, rotate: -18 },
-    { cx: 6.3, cy: 6.1, rotate: -8 },
+  const leftLeaves = [
+    { x: 7.4, y: 17.7, angle: -58, scale: 1.04 },
+    { x: 5.6, y: 15.5, angle: -47, scale: 1.02 },
+    { x: 4.5, y: 12.8, angle: -34, scale: 0.98 },
+    { x: 4.3, y: 9.8, angle: -22, scale: 0.94 },
+    { x: 5.1, y: 7.0, angle: -12, scale: 0.9 },
+    { x: 6.6, y: 4.8, angle: -4, scale: 0.84 },
   ]
 
   return (
     <svg className="athlete-achievement__laurel" viewBox="0 0 24 24" aria-hidden="true">
       <defs>
-        <linearGradient id="laurelGreen" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#b7f36a" />
-          <stop offset="45%" stopColor="#67cf4d" />
-          <stop offset="100%" stopColor="#2f8f3d" />
+        <linearGradient id="laurelLeafGreen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#c5ff7a" />
+          <stop offset="38%" stopColor="#79df4f" />
+          <stop offset="72%" stopColor="#46b83e" />
+          <stop offset="100%" stopColor="#267c34" />
+        </linearGradient>
+        <linearGradient id="laurelStemGreen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#6ad14a" />
+          <stop offset="100%" stopColor="#2d8d38" />
         </linearGradient>
       </defs>
-      <path d="M11.2 20.6C7.2 20.1 4.4 17.1 3.8 13.1C3.2 9.4 4.4 6.4 6.8 4" />
-      <path d="M12.8 20.6C16.8 20.1 19.6 17.1 20.2 13.1C20.8 9.4 19.6 6.4 17.2 4" />
-      {leaves.map((leaf, index) => (
-        <g key={`left-${index}`} transform={`rotate(${leaf.rotate} ${leaf.cx} ${leaf.cy})`}>
-          <ellipse cx={leaf.cx} cy={leaf.cy} rx="1.15" ry="2.25" />
+
+      <path
+        className="athlete-achievement__laurel-stem"
+        d="M11.2 20.5C7.3 19.7 4.7 17.5 3.8 14.2C2.9 10.9 3.6 7.6 6.6 4.1"
+      />
+      <path
+        className="athlete-achievement__laurel-stem"
+        d="M12.8 20.5C16.7 19.7 19.3 17.5 20.2 14.2C21.1 10.9 20.4 7.6 17.4 4.1"
+      />
+      <path
+        className="athlete-achievement__laurel-stem"
+        d="M10.8 20.2C11.2 20.5 11.6 20.7 12 20.9C12.4 20.7 12.8 20.5 13.2 20.2"
+      />
+
+      {leftLeaves.map((leaf, index) => (
+        <g key={`left-${index}`} transform={`translate(${leaf.x} ${leaf.y}) rotate(${leaf.angle}) scale(${leaf.scale})`}>
+          <path
+            className="athlete-achievement__laurel-leaf"
+            d="M0 0C-1.35-1.3-1.55-3.05-.4-4.35C.35-3.9 1.3-3 1.5-1.95C1.68-.95 1.05-.2 0 0Z"
+          />
+          <path className="athlete-achievement__laurel-leaf-vein" d="M-.05-.25C.2-1.35.2-2.45-.2-3.7" />
         </g>
       ))}
-      {leaves.map((leaf, index) => {
-        const mirrorX = 24 - leaf.cx
+
+      {leftLeaves.map((leaf, index) => {
+        const mirrorX = 24 - leaf.x
         return (
-          <g key={`right-${index}`} transform={`rotate(${-leaf.rotate} ${mirrorX} ${leaf.cy})`}>
-            <ellipse cx={mirrorX} cy={leaf.cy} rx="1.15" ry="2.25" />
+          <g key={`right-${index}`} transform={`translate(${mirrorX} ${leaf.y}) rotate(${-leaf.angle}) scale(${-leaf.scale} ${leaf.scale})`}>
+            <path
+              className="athlete-achievement__laurel-leaf"
+              d="M0 0C-1.35-1.3-1.55-3.05-.4-4.35C.35-3.9 1.3-3 1.5-1.95C1.68-.95 1.05-.2 0 0Z"
+            />
+            <path className="athlete-achievement__laurel-leaf-vein" d="M-.05-.25C.2-1.35.2-2.45-.2-3.7" />
           </g>
         )
       })}
