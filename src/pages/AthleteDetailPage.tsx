@@ -43,25 +43,25 @@ function YouTubeIcon() {
 
 function LaurelIcon() {
   const leftLeaves = [
-    { x: 7.4, y: 17.7, angle: -58, scale: 1.04 },
-    { x: 5.6, y: 15.5, angle: -47, scale: 1.02 },
-    { x: 4.5, y: 12.8, angle: -34, scale: 0.98 },
-    { x: 4.3, y: 9.8, angle: -22, scale: 0.94 },
-    { x: 5.1, y: 7.0, angle: -12, scale: 0.9 },
-    { x: 6.6, y: 4.8, angle: -4, scale: 0.84 },
+    { x: 7.6, y: 17.9, angle: -60, scale: 1.08 },
+    { x: 5.7, y: 15.7, angle: -48, scale: 1.06 },
+    { x: 4.6, y: 13.0, angle: -35, scale: 1.02 },
+    { x: 4.4, y: 10.0, angle: -23, scale: 0.98 },
+    { x: 5.2, y: 7.2, angle: -12, scale: 0.94 },
+    { x: 6.7, y: 4.9, angle: -4, scale: 0.88 },
   ]
 
   return (
     <svg className="athlete-achievement__laurel" viewBox="0 0 24 24" aria-hidden="true">
       <defs>
         <linearGradient id="laurelLeafGreen" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#c5ff7a" />
-          <stop offset="38%" stopColor="#79df4f" />
-          <stop offset="72%" stopColor="#46b83e" />
-          <stop offset="100%" stopColor="#267c34" />
+          <stop offset="0%" stopColor="#cfff82" />
+          <stop offset="34%" stopColor="#86e95b" />
+          <stop offset="68%" stopColor="#4fc845" />
+          <stop offset="100%" stopColor="#2b8b39" />
         </linearGradient>
         <linearGradient id="laurelStemGreen" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#6ad14a" />
+          <stop offset="0%" stopColor="#72d852" />
           <stop offset="100%" stopColor="#2d8d38" />
         </linearGradient>
       </defs>
@@ -83,9 +83,9 @@ function LaurelIcon() {
         <g key={`left-${index}`} transform={`translate(${leaf.x} ${leaf.y}) rotate(${leaf.angle}) scale(${leaf.scale})`}>
           <path
             className="athlete-achievement__laurel-leaf"
-            d="M0 0C-1.35-1.3-1.55-3.05-.4-4.35C.35-3.9 1.3-3 1.5-1.95C1.68-.95 1.05-.2 0 0Z"
+            d="M0 0C-1.75-1.05-2.25-2.95-.95-4.55C-.1-5.55 1.35-5.25 2.05-4.05C2.85-2.7 2.35-1.05 0 0Z"
           />
-          <path className="athlete-achievement__laurel-leaf-vein" d="M-.05-.25C.2-1.35.2-2.45-.2-3.7" />
+          <path className="athlete-achievement__laurel-leaf-vein" d="M0-.2C.25-1.45.15-2.7-.35-4.05" />
         </g>
       ))}
 
@@ -95,9 +95,9 @@ function LaurelIcon() {
           <g key={`right-${index}`} transform={`translate(${mirrorX} ${leaf.y}) rotate(${-leaf.angle}) scale(${-leaf.scale} ${leaf.scale})`}>
             <path
               className="athlete-achievement__laurel-leaf"
-              d="M0 0C-1.35-1.3-1.55-3.05-.4-4.35C.35-3.9 1.3-3 1.5-1.95C1.68-.95 1.05-.2 0 0Z"
+              d="M0 0C-1.75-1.05-2.25-2.95-.95-4.55C-.1-5.55 1.35-5.25 2.05-4.05C2.85-2.7 2.35-1.05 0 0Z"
             />
-            <path className="athlete-achievement__laurel-leaf-vein" d="M-.05-.25C.2-1.35.2-2.45-.2-3.7" />
+            <path className="athlete-achievement__laurel-leaf-vein" d="M0-.2C.25-1.45.15-2.7-.35-4.05" />
           </g>
         )
       })}
