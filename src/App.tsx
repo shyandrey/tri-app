@@ -17,6 +17,7 @@ import './history-refinements.css'
 import './calendar-mobile-refinements.css'
 import './theme-refinements.css'
 import './athletes-refinements.css'
+import './bottom-nav-glass.css'
 import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
@@ -48,183 +49,265 @@ function getMoscowTodayISO() {
   }).format(new Date())
 }
 
-function getShowcaseRaceName(name: string) {
-  const cleanName = name.replace(/\s+/g, ' ').trim()
+function stripSponsorPrefix(name: string) {
+  return name
+    .replace(/^Sokin\s+/i, '')
+    .replace(/^VinFast\s+/i, '')
+    .replace(/^Qiddiya\s+/i, '')
+    .replace(/^PTO\s+/i, '')
+}
 
-  if (/IRONMAN 70\.3 World Championship/i.test(cleanName)) return 'IRONMAN 70.3 World Championship'
-  if (/IRONMAN World Championship/i.test(cleanName)) return 'IRONMAN World Championship'
+function getHomeRaceTitle(race: Race) {
+  let name = stripSponsorPrefix(race.name)
 
-  const t100Index = cleanName.search(/\bT100\b/i)
-  if (t100Index >= 0) {
-    const beforeT100 = cleanName
-      .slice(0, t100Index)
-      .replace(/^(?:EKOÏ|Sokin)\s+/i, '')
-      .trim()
-    const afterT100 = cleanName
-      .slice(t100Index + 4)
-      .replace(/\s+(?:Triathlon )?World Tour.*$/i, '')
-      .trim()
+  name = name
+    .replace(new RegExp(`\\s+${regionalChampionship} Championship(?:s)?`, 'i'), '')
+    .replace(/\s+World Championship(?:s)?/i, '')
+    .replace(/\s+Championship(?:s)?/i, '')
+    .replace(/\s+Final(?:s)?/i, '')
+    .replace(/\s+Grand Final(?:s)?/i, '')
 
-    return ['T100', beforeT100, afterT100].filter(Boolean).join(' ')
+  if (/IRONMAN 70\.3/i.test(name)) {
+    const city = race.city?.trim()
+    if (city && !name.toLowerCase().includes(city.toLowerCase())) return `IRONMAN 70.3 ${city}`
   }
 
-  const ironman703Index = cleanName.search(/\bIRONMAN 70\.3\b/i)
-  if (ironman703Index >= 0) {
-    const ironmanName = cleanName.slice(ironman703Index)
-    const leadingChampionship = ironmanName.match(new RegExp(`^IRONMAN 70\\.3 ${regionalChampionship} Championship (.+)$`, 'i'))
-    if (leadingChampionship) return `IRONMAN 70.3 ${leadingChampionship[1]}`
+  return name.trim()
+}
 
-    return ironmanName
-      .replace(new RegExp(`\\s+${regionalChampionship} Championship.*$`, 'i'), '')
-      .trim()
-  }
-
-  const ironmanIndex = cleanName.search(/\bIRONMAN\b/i)
-  if (ironmanIndex >= 0) {
-    const ironmanName = cleanName.slice(ironmanIndex)
-    const leadingChampionship = ironmanName.match(new RegExp(`^IRONMAN ${regionalChampionship} Championship (.+)$`, 'i'))
-    if (leadingChampionship) return `IRONMAN ${leadingChampionship[1]}`
-
-    return ironmanName
-      .replace(new RegExp(`\\s+${regionalChampionship} Championship.*$`, 'i'), '')
-      .trim()
-  }
-
-  return cleanName
+function isRaceUpcoming(race: Race) {
+  return race.dateISO > getMoscowTodayISO()
 }
 
 function App() {
   const [page, setPage] = useState<Page>('home')
-  const [previousPage, setPreviousPage] = useState<'home' | 'calendar' | 'athlete'>('home')
-  const [previousAthletePage, setPreviousAthletePage] = useState<'athletes' | 'top' | 'race'>('athletes')
-  const [athletesBackPage, setAthletesBackPage] = useState<Page>('home')
-  const [calendarEntryMode, setCalendarEntryMode] = useState<'top' | 'restore'>('top')
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
+  const [calendarEntryMode, setCalendarEntryMode] = useState<'top' | 'restore'>('top')
+  const [athletesBackPage, setAthletesBackPage] = useState<Page>('home')
   const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
-  const [settingsOpen, setSettingsOpen] = useState(false)
 
-  const todayISO = getMoscowTodayISO()
-  const futureHomeRaces = groupRacesForHome(races)
-    .filter((race) => race.dateISO > todayISO)
-    .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
-  const showcaseRaces = futureHomeRaces.slice(0, 5)
-  const upcomingRaces = futureHomeRaces.slice(0, 3)
+  const captureCalendarPosition = () => {
+    if (page !== 'calendar') return
+    setCalendarViewState((current) => ({ ...current, scrollY: window.scrollY }))
+  }
 
   const navigateSection = (target: Page) => {
     if (target === page) {
-      if (target === 'calendar') window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       return
     }
 
-    if (target === 'athletes') setAthletesBackPage(page)
-    if (target === 'calendar') setCalendarEntryMode('top')
+    if (page === 'calendar') captureCalendarPosition()
+
+    if (target === 'calendar') {
+      setCalendarEntryMode('top')
+      setSelectedRace(null)
+      setSelectedAthlete(null)
+    }
+
+    if (target === 'athletes') {
+      setAthletesBackPage(page)
+      setSelectedAthlete(null)
+      setSelectedRace(null)
+    }
 
     setPage(target)
-
-    if (target !== 'calendar') {
-      requestAnimationFrame(() => window.scrollTo(0, 0))
-    }
   }
 
-  const backFromAthletes = () => {
-    if (athletesBackPage === 'calendar') setCalendarEntryMode('restore')
+  const openRace = (race: Race) => {
+    if (page === 'calendar') {
+      captureCalendarPosition()
+      setCalendarEntryMode('restore')
+    }
+    setSelectedRace(race)
+    setPage('raceDetail')
+    window.scrollTo(0, 0)
+  }
+
+  const openAthlete = (athlete: Athlete) => {
+    setAthletesBackPage(page)
+    setSelectedAthlete(athlete)
+    setPage('athleteDetail')
+    window.scrollTo(0, 0)
+  }
+
+  const backFromRace = () => {
+    setSelectedRace(null)
+    setPage('calendar')
+    setCalendarEntryMode('restore')
+  }
+
+  const backFromAthlete = () => {
+    setSelectedAthlete(null)
     setPage(athletesBackPage)
   }
 
-  const openRace = (race: Race, from: 'home' | 'calendar' | 'athlete' = 'home') => {
-    setSelectedRace(race)
-    setPreviousPage(from)
-    if (from === 'calendar') setCalendarEntryMode('restore')
-    setPage('race')
-  }
+  const upcomingRaces = groupRacesForHome(races)
+    .filter(isRaceUpcoming)
+    .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
+    .slice(0, 5)
 
   if (page === 'calendar') {
-    return <CalendarPage races={races} searchRaces={allRaceEditionViews} viewState={calendarViewState} onViewStateChange={setCalendarViewState} onBack={() => setPage('home')} onNavigate={navigateSection} onRaceClick={(race) => openRace(race, 'calendar')} restoreScroll={calendarEntryMode === 'restore'} />
-  }
-
-  if (page === 'race' && selectedRace && selectedRace.editionId) {
-    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={() => setPage(previousPage)} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('race'); setPage('athlete') }} />
+    return (
+      <CalendarPage
+        races={allRaceEditionViews}
+        onBack={() => setPage('home')}
+        onRaceClick={openRace}
+        onNavigate={navigateSection}
+        viewState={calendarViewState}
+        onViewStateChange={setCalendarViewState}
+        restoreScroll={calendarEntryMode === 'restore'}
+      />
+    )
   }
 
   if (page === 'athletes') {
-    return <AthletesPage athletes={athletes} onBack={backFromAthletes} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('athletes'); setPage('athlete') }} />
-  }
-
-  if (page === 'athlete' && selectedAthlete) {
-    const results = getResultsByAthlete(linkedRaceResults, selectedAthlete.id)
-    return <AthleteDetailPage athlete={selectedAthlete} results={results} races={allRaceEditionViews} onBack={() => setPage(previousAthletePage)} onNavigate={navigateSection} onRaceClick={(race) => openRace(race, 'athlete')} />
+    return (
+      <AthletesPage
+        athletes={athletes}
+        onBack={() => setPage(athletesBackPage)}
+        onAthleteClick={openAthlete}
+        onNavigate={navigateSection}
+      />
+    )
   }
 
   if (page === 'top') {
-    return <TopAthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={navigateSection} onAthleteClick={(athlete) => { setSelectedAthlete(athlete); setPreviousAthletePage('top'); setPage('athlete') }} />
+    return <TopAthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={navigateSection} />
   }
 
-  if (page === 'more') return <MorePage onNavigate={navigateSection} />
+  if (page === 'more') {
+    return <MorePage onBack={() => setPage('home')} onNavigate={navigateSection} />
+  }
+
+  if (page === 'raceDetail' && selectedRace) {
+    return (
+      <RaceDetailPage
+        race={selectedRace}
+        raceEditions={allRaceEditionViews}
+        allResults={linkedRaceResults}
+        athletes={athletes}
+        onBack={backFromRace}
+        onNavigate={navigateSection}
+        onAthleteClick={openAthlete}
+      />
+    )
+  }
+
+  if (page === 'athleteDetail' && selectedAthlete) {
+    return (
+      <AthleteDetailPage
+        athlete={selectedAthlete}
+        results={getResultsByAthlete(linkedRaceResults, selectedAthlete.id)}
+        races={allRaceEditionViews}
+        onBack={backFromAthlete}
+        onNavigate={navigateSection}
+        onRaceClick={openRace}
+      />
+    )
+  }
 
   return (
     <main className="app app--home-experiment">
-      <header className="home-header">
-        <div className="home-header__top-row">
-          <h1>TRI APP</h1>
-          <button className="home-header__settings" type="button" aria-label="Настройки" onClick={() => setSettingsOpen(true)}>
-            <GearIcon />
-          </button>
-        </div>
-        <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
+      <header className="home-topbar">
+        <div className="home-topbar__brand">TRI APP</div>
+        <button className="home-topbar__settings" type="button" aria-label="Настройки" onClick={() => setPage('more')}>
+          <GearIcon />
+        </button>
       </header>
 
-      <HomeShowcase races={showcaseRaces} onRaceClick={(race) => openRace(race)} getRaceName={getShowcaseRaceName} />
+      <div className="home-kicker">ТРИАТЛОН — ЭТО <strong>МОЩНО!</strong></div>
 
-      <section className="section home-races-section">
-        <div className="section__header home-races-section__header"><h2>Ближайшие гонки</h2><button onClick={() => navigateSection('calendar')}>Все гонки <span className="home-races-section__chevron">›</span></button></div>
-        {upcomingRaces.map((race) => <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />)}
-      </section>
-
-      <HorizontalScroller className="features features--compact" ariaLabel="Разделы приложения">
-        <article className="feature-card feature-card--compact" onClick={() => navigateSection('calendar')}><div className="feature-card__icon"><CalendarIcon /></div><div className="feature-card__copy"><h3>Календарь и результаты</h3><p>Старты и результаты</p></div></article>
-        <article className="feature-card feature-card--compact" onClick={() => navigateSection('athletes')}><div className="feature-card__icon"><AthleteIcon /></div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div></article>
-        <article className="feature-card feature-card--compact" onClick={() => navigateSection('top')}><div className="feature-card__icon"><RankingIcon /></div><div className="feature-card__copy"><h3>Рейтинг атлетов</h3><p>Рейтинг сильнейших</p></div></article>
-        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PointsTableIcon /></div><div className="feature-card__copy"><h3>Таблицы очков</h3><p>Скоро</p></div></article>
-        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PaceIcon /></div><div className="feature-card__copy"><h3>Калькулятор темпа</h3><p>Скоро</p></div></article>
-      </HorizontalScroller>
-
-      <section className="section">
-        <div className="section__header"><h2>Новости из канала</h2><button>@trista_watt</button></div>
-        <article className="news-card"><div><h3>IRONMAN объявил новый календарь стартов</h3><p>Последние новости из Telegram-канала</p></div><span className="news-card__telegram">➤</span></article>
-      </section>
-
-      <BottomNav currentPage={page} onNavigate={navigateSection} />
-
-      {settingsOpen && (
-        <div className="settings-overlay" role="presentation" onClick={() => setSettingsOpen(false)}>
-          <section className="settings-sheet" role="dialog" aria-modal="true" aria-label="Настройки" onClick={(event) => event.stopPropagation()}>
-            <div className="settings-sheet__handle" aria-hidden="true" />
-            <div className="settings-sheet__header">
-              <h2>Настройки</h2>
-              <button type="button" aria-label="Закрыть настройки" onClick={() => setSettingsOpen(false)}>×</button>
-            </div>
-
-            <div className="settings-sheet__list">
-              <div className="settings-row settings-row--disabled">
-                <div>
-                  <strong>Светлая тема</strong>
-                  <span>Скоро</span>
-                </div>
-                <span className="settings-switch" aria-hidden="true"><span /></span>
-              </div>
-
-              <button className="settings-row settings-row--button" type="button" disabled>
-                <div>
-                  <strong>Сообщить об ошибке</strong>
-                  <span>Скоро</span>
-                </div>
-                <span className="settings-row__arrow">›</span>
-              </button>
-            </div>
-          </section>
-        </div>
+      {upcomingRaces.length > 0 && (
+        <HomeShowcase
+          races={upcomingRaces}
+          titleForRace={getHomeRaceTitle}
+          onRaceClick={openRace}
+        />
       )}
+
+      <section className="section home-section home-section--races">
+        <div className="section__header home-section__header">
+          <h2>Ближайшие гонки</h2>
+        </div>
+        <HorizontalScroller className="home-races-scroller" itemClassName="home-races-scroller__item">
+          {upcomingRaces.slice(0, 3).map((race) => (
+            <RaceCard
+              key={race.editionId}
+              distance={race.distance}
+              series={race.series}
+              name={race.name}
+              date={race.date}
+              city={race.city}
+              country={race.country}
+              gender={race.gender}
+              onClick={() => openRace(race)}
+            />
+          ))}
+        </HorizontalScroller>
+        <button className="home-all-races" onClick={() => navigateSection('calendar')}>
+          Все гонки <span aria-hidden="true">›</span>
+        </button>
+      </section>
+
+      <section className="section home-section home-section--shortcuts">
+        <div className="section__header home-section__header">
+          <h2>Разделы</h2>
+        </div>
+        <HorizontalScroller className="features features--compact" itemClassName="features__item">
+          <button className="feature-card feature-card--compact" onClick={() => navigateSection('calendar')}>
+            <CalendarIcon className="feature-card__icon" />
+            <span className="feature-card__copy">
+              <h3>Календарь и результаты</h3>
+              <p>Профессиональные старты и архив</p>
+            </span>
+          </button>
+          <button className="feature-card feature-card--compact" onClick={() => navigateSection('athletes')}>
+            <AthleteIcon className="feature-card__icon" />
+            <span className="feature-card__copy">
+              <h3>Профили атлетов</h3>
+              <p>Био, достижения и последние результаты</p>
+            </span>
+          </button>
+          <button className="feature-card feature-card--compact" onClick={() => navigateSection('top')}>
+            <RankingIcon className="feature-card__icon" />
+            <span className="feature-card__copy">
+              <h3>Рейтинг атлетов</h3>
+              <p>Топ профессионального триатлона</p>
+            </span>
+          </button>
+          <button className="feature-card feature-card--compact feature-card--disabled" disabled>
+            <PointsTableIcon className="feature-card__icon" />
+            <span className="feature-card__copy">
+              <h3>Таблицы очков</h3>
+              <p>Скоро</p>
+            </span>
+          </button>
+          <button className="feature-card feature-card--compact feature-card--disabled" disabled>
+            <PaceIcon className="feature-card__icon" />
+            <span className="feature-card__copy">
+              <h3>Калькулятор темпа</h3>
+              <p>Скоро</p>
+            </span>
+          </button>
+        </HorizontalScroller>
+      </section>
+
+      <section className="section home-section home-section--news">
+        <div className="section__header home-section__header">
+          <h2>Новости</h2>
+        </div>
+        <article className="news-card">
+          <div>
+            <h3>@trista_watt</h3>
+            <p>Свежие новости профессионального триатлона.</p>
+          </div>
+          <span className="news-card__telegram">✈</span>
+        </article>
+      </section>
+
+      <BottomNav currentPage="home" onNavigate={navigateSection} />
     </main>
   )
 }
