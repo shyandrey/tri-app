@@ -22,6 +22,5 @@ export const makeAthlete = (
   gender,
   discipline,
   image: athletePhotosByName[nameEn],
-  bio: `${name} — профессиональный триатлет. Профиль добавлен для тестирования каталога атлетов.`,
   achievements: [],
 })
