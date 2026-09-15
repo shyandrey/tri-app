@@ -49,13 +49,8 @@ function extractAttribute(tag, name) {
 function collectAthleteNames(source) {
   const names = new Set()
 
-  for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) {
-    names.add(match[1])
-  }
-
-  for (const match of source.matchAll(/nameEn:\s*'([^']+)'/g)) {
-    names.add(match[1])
-  }
+  for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) names.add(match[1])
+  for (const match of source.matchAll(/nameEn:\s*'([^']+)'/g)) names.add(match[1])
 
   return [...names]
 }
@@ -65,27 +60,52 @@ function isImageLikeUrl(url) {
     || /(?:image|img|photo|portrait|profile|athlete)[=/\-_]/i.test(url)
 }
 
+function normalizedText(value) {
+  return decodeHtml(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\\[nrt]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .toLowerCase()
+}
+
+function contextScore(html, position, athleteName) {
+  const before = html.slice(Math.max(0, position - 900), position)
+  const after = html.slice(position, Math.min(html.length, position + 450))
+  const context = normalizedText(`${before} ${after}`)
+  const athlete = athleteName.toLowerCase()
+  const tokens = athlete.split(/\s+/).filter((token) => token.length > 2)
+
+  let score = 0
+  if (context.includes(athlete)) score += 80
+  for (const token of tokens) if (context.includes(token)) score += 12
+  if (/athlete.{0,30}(image|photo|avatar)|profile.{0,30}(image|photo|avatar)|(image|photo|avatar).{0,30}(athlete|profile)/.test(context)) score += 35
+  if (/biography|overview|world rank|national|weight|height|born/.test(context)) score += 12
+  if (/youtube|race results|upcoming races|background|sponsor|ranking logo/.test(context)) score -= 18
+  return score
+}
+
 function candidateScore(candidate, athleteName, slug) {
   const url = candidate.url.toLowerCase()
   const alt = (candidate.alt ?? '').toLowerCase()
   const athlete = athleteName.toLowerCase()
   const tokens = athlete.split(/\s+/).filter((token) => token.length > 2)
 
-  let score = candidate.baseScore ?? 0
+  let score = (candidate.baseScore ?? 0) + (candidate.contextScore ?? 0)
 
   if (isImageLikeUrl(url)) score += 16
   if (/\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(url)) score += 12
   if (/image|img|photo|portrait|profile/.test(url)) score += 10
   if (url.includes(slug)) score += 28
-  if (alt.includes(athlete)) score += 35
+  if (alt.includes(athlete)) score += 70
   for (const token of tokens) {
     if (url.includes(slugify(token))) score += 5
-    if (alt.includes(token)) score += 4
+    if (alt.includes(token)) score += 8
   }
 
-  if (/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon|background|all-race-results|all-upcoming-races|pto-triathlon-stats/.test(url)) score -= 55
+  if (/content\.protriathletes\.org\/content\/images\//.test(url)) score += 8
+  if (/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon|background|all-race-results|all-upcoming-races|pto-triathlon-stats/.test(url)) score -= 70
   if (/\.svg(?:[?#]|$)/.test(url)) score -= 30
-  if (/googletagmanager|doubleclick|facebook|youtube/.test(url)) score -= 60
+  if (/ytimg|googletagmanager|doubleclick|facebook|youtube/.test(url)) score -= 80
   if (!isImageLikeUrl(url)) score -= 80
 
   return score
@@ -93,7 +113,9 @@ function candidateScore(candidate, athleteName, slug) {
 
 function findImageCandidates(html, athleteName, pageUrl) {
   const candidates = []
-  const push = (rawUrl, baseScore = 0, alt = '') => {
+  let sequence = 0
+
+  const push = (rawUrl, baseScore = 0, alt = '', position = -1, source = 'page') => {
     if (!rawUrl) return
     const cleaned = decodeHtml(rawUrl.trim())
     if (!cleaned || cleaned.startsWith('data:')) return
@@ -106,46 +128,56 @@ function findImageCandidates(html, athleteName, pageUrl) {
     }
 
     if (!isImageLikeUrl(absolute)) return
-    candidates.push({ url: absolute, baseScore, alt })
+    candidates.push({
+      url: absolute,
+      baseScore,
+      alt,
+      source,
+      sequence: sequence++,
+      contextScore: position >= 0 ? contextScore(html, position, athleteName) : 0,
+    })
   }
 
   for (const meta of html.matchAll(/<meta\b[^>]*>/gi)) {
     const tag = meta[0]
     const key = (extractAttribute(tag, 'property') ?? extractAttribute(tag, 'name') ?? '').toLowerCase()
     if (key === 'og:image' || key === 'twitter:image' || key === 'twitter:image:src') {
-      push(extractAttribute(tag, 'content'), 30)
+      push(extractAttribute(tag, 'content'), 30, '', meta.index ?? -1, key)
     }
   }
 
   for (const img of html.matchAll(/<img\b[^>]*>/gi)) {
     const tag = img[0]
     const alt = extractAttribute(tag, 'alt') ?? ''
-    push(extractAttribute(tag, 'src'), 18, alt)
-    push(extractAttribute(tag, 'data-src'), 16, alt)
-    push(extractAttribute(tag, 'data-lazy-src'), 16, alt)
+    const position = img.index ?? -1
+    push(extractAttribute(tag, 'src'), 18, alt, position, 'img:src')
+    push(extractAttribute(tag, 'data-src'), 16, alt, position, 'img:data-src')
+    push(extractAttribute(tag, 'data-lazy-src'), 16, alt, position, 'img:data-lazy-src')
 
     const srcset = extractAttribute(tag, 'srcset') ?? extractAttribute(tag, 'data-srcset')
     if (srcset) {
-      for (const part of srcset.split(',')) {
-        push(part.trim().split(/\s+/)[0], 22, alt)
-      }
+      for (const part of srcset.split(',')) push(part.trim().split(/\s+/)[0], 22, alt, position, 'img:srcset')
     }
   }
 
   for (const match of html.matchAll(/(?:https?:\\?\/\\?\/|\/)[^"'<>\s]+?\.(?:jpe?g|png|webp|avif)(?:\?[^"'<>\s]*)?/gi)) {
-    push(match[0], 4)
+    push(match[0], 4, '', match.index ?? -1, 'raw-url')
   }
 
   for (const match of html.matchAll(/["'](?:image|imageUrl|image_url|photo|photoUrl|photo_url|profileImage|profile_image|avatar)["']\s*:\s*["']([^"']+)["']/gi)) {
-    push(match[1], 26)
+    push(match[1], 34, '', match.index ?? -1, 'image-field')
   }
 
   const slug = slugify(athleteName)
-  const deduped = [...new Map(candidates.map((item) => [item.url, item])).values()]
+  const deduped = new Map()
+  for (const item of candidates) {
+    const existing = deduped.get(item.url)
+    if (!existing || (item.baseScore + item.contextScore) > (existing.baseScore + existing.contextScore)) deduped.set(item.url, item)
+  }
 
-  return deduped
+  return [...deduped.values()]
     .map((item) => ({ ...item, score: candidateScore(item, athleteName, slug) }))
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => b.score - a.score || a.sequence - b.sequence)
 }
 
 function extensionFromContentType(contentType, url) {
@@ -220,12 +252,23 @@ async function readExistingRegistry() {
   try {
     const source = await fs.readFile(REGISTRY_FILE, 'utf8')
     const records = []
-    for (const match of source.matchAll(/^\s*"([^"]+)":\s*"([^"]+)",?$/gm)) {
-      records.push({ name: match[1], publicPath: match[2] })
-    }
+    for (const match of source.matchAll(/^\s*"([^"]+)":\s*"([^"]+)",?$/gm)) records.push({ name: match[1], publicPath: match[2] })
     return records
   } catch {
     return []
+  }
+}
+
+function printDryRunCandidates(candidates) {
+  if (!candidates.length) {
+    console.log('  no image candidates')
+    return
+  }
+
+  for (const [index, candidate] of candidates.slice(0, 8).entries()) {
+    const marker = index === 0 && candidate.score >= 90 ? 'PROFILE PHOTO?' : 'candidate'
+    console.log(`  ${marker} | score ${candidate.score} | context ${candidate.contextScore} | ${candidate.source}`)
+    console.log(`    ${candidate.url}`)
   }
 }
 
@@ -242,7 +285,7 @@ async function main() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true })
 
   console.log(`Stats PTO athlete photo import: ${selectedNames.length} athlete(s)${importAll ? ' (--all)' : ' (sample)'}`)
-  if (dryRun) console.log('Dry run: no files will be written.')
+  if (dryRun) console.log('Dry run: ranking image candidates by athlete-page context; no files will be written.')
 
   for (const [index, athleteName] of selectedNames.entries()) {
     const slug = slugify(athleteName)
@@ -263,14 +306,14 @@ async function main() {
       const candidates = findImageCandidates(html, athleteName, profileUrl)
 
       if (dryRun) {
-        console.log(candidates.slice(0, 8).map((candidate) => `  score ${candidate.score}: ${candidate.url}`).join('\n') || '  no image candidates')
+        printDryRunCandidates(candidates)
         continue
       }
 
-      const resolved = await findDownloadableCandidate(candidates)
+      const confidentCandidates = candidates.filter((candidate) => candidate.score >= 90)
+      const resolved = await findDownloadableCandidate(confidentCandidates)
       if (!resolved) {
-        console.warn('  ! No downloadable athlete image found. Top image candidates:')
-        for (const candidate of candidates.slice(0, 8)) console.warn(`    ${candidate.score}: ${candidate.url}`)
+        console.warn('  ! No confident downloadable profile image found. Run with --dry-run and inspect candidates.')
         continue
       }
 
@@ -281,7 +324,7 @@ async function main() {
 
       await fs.writeFile(filePath, resolved.bytes)
       registry.set(athleteName, publicPath)
-      console.log(`  ✓ ${publicPath} (${Math.round(resolved.bytes.byteLength / 1024)} KB)`)
+      console.log(`  ✓ ${publicPath} (${Math.round(resolved.bytes.byteLength / 1024)} KB, score ${resolved.candidate.score})`)
     } catch (error) {
       console.warn(`  ! ${error instanceof Error ? error.message : String(error)}`)
     }
