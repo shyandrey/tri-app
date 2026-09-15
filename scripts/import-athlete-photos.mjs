@@ -14,6 +14,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Andy Krueger','Matt Kerr','Brock Hoel','Matthew Richard','Blake Selm',
   'Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen',
   'Tommy Doubleday','Yvan Jarrige','Albert Askengren',
+  'Ari Klau','Benjamin Randall','Brad Bischoff','Brian Folts','David Reynolds',
 ])
 const PROFILE_SLUG_OVERRIDES = {
   'Magnus Ditlev': 'magnus-elbaek-ditlev', 'Daniel Bækkegård': 'daniel-baekkegard', 'Kristian Høgenhaug': 'kristian-hogenhaug',
