@@ -19,10 +19,21 @@ async function walk(dir) {
   return files
 }
 
+function normalizeName(value) {
+  return value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/['’`.-]/g, ' ')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 function existingNames(source) {
   const names = new Set()
-  for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) names.add(match[1])
-  for (const match of source.matchAll(/nameEn:\s*'([^']+)'/g)) names.add(match[1])
+  for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) names.add(normalizeName(match[1]))
+  for (const match of source.matchAll(/nameEn:\s*'([^']+)'/g)) names.add(normalizeName(match[1]))
   return names
 }
 
@@ -33,7 +44,7 @@ function parseObjects(source) {
     const athleteName = body.match(/athleteName:\s*['"]([^'"]+)['"]/)?.[1]
     if (!athleteName) continue
     const gender = body.match(/gender:\s*['"]([MW])['"]/)?.[1]
-    const countryCode = body.match(/countryCode:\s*['"]([A-Z]{3})['"]/)?.[1]
+    const countryCode = body.match(/countryCode:\s*['"]([A-Z]{2,3})['"]/)?.[1]
     rows.push({ athleteName, gender, countryCode })
   }
   return rows
@@ -47,14 +58,16 @@ const stats = new Map()
 for (const file of resultFiles) {
   const source = await fs.readFile(file, 'utf8')
   for (const row of parseObjects(source)) {
-    if (existing.has(row.athleteName)) continue
-    const current = stats.get(row.athleteName) ?? { name: row.athleteName, M: 0, W: 0, unknown: 0, countryCodes: new Map(), starts: 0 }
+    const key = normalizeName(row.athleteName)
+    if (existing.has(key)) continue
+    const current = stats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), starts: 0 }
+    current.names.set(row.athleteName, (current.names.get(row.athleteName) ?? 0) + 1)
     current.starts += 1
     if (row.gender === 'M') current.M += 1
     else if (row.gender === 'W') current.W += 1
     else current.unknown += 1
     if (row.countryCode) current.countryCodes.set(row.countryCode, (current.countryCodes.get(row.countryCode) ?? 0) + 1)
-    stats.set(row.athleteName, current)
+    stats.set(key, current)
   }
 }
 
@@ -66,17 +79,23 @@ function inferredGender(item) {
 function topCountry(item) {
   return [...item.countryCodes.entries()].sort((a,b) => b[1]-a[1])[0]?.[0]
 }
+function preferredName(item) {
+  return [...item.names.entries()].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))[0][0]
+}
 function printGroup(gender, limit = 50) {
   const rows = [...stats.values()]
     .filter((item) => inferredGender(item) === gender)
-    .sort((a,b) => b.starts-a.starts || a.name.localeCompare(b.name))
+    .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(preferredName(b)))
     .slice(0, limit)
   console.log(`\n${gender === 'M' ? 'MEN' : 'WOMEN'} (${rows.length})`)
-  rows.forEach((item, index) => console.log(`${String(index+1).padStart(2,' ')}. ${item.name} | ${topCountry(item) ?? '???'} | ${item.starts} result row(s)`))
+  rows.forEach((item, index) => {
+    const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
+    console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | ${topCountry(item) ?? '???'} | ${item.starts} result row(s)${aliases}`)
+  })
 }
 
 console.log(`Existing catalog: ${existing.size} athletes`)
-console.log(`Uncatalogued names found in result files: ${stats.size}`)
+console.log(`Uncatalogued normalized identities found in result files: ${stats.size}`)
 printGroup('M')
 printGroup('W')
-console.log('\nNote: rows without explicit gender are intentionally not guessed. Country codes come only from result rows that explicitly contain them.')
+console.log('\nNote: catalog/result names are compared with the same normalization used by athlete identity linking. Country codes come only from result rows that explicitly contain them.')
