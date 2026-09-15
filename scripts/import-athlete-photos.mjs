@@ -60,6 +60,11 @@ function collectAthleteNames(source) {
   return [...names]
 }
 
+function isImageLikeUrl(url) {
+  return /\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(url)
+    || /(?:image|img|photo|portrait|profile|athlete)[=/\-_]/i.test(url)
+}
+
 function candidateScore(candidate, athleteName, slug) {
   const url = candidate.url.toLowerCase()
   const alt = (candidate.alt ?? '').toLowerCase()
@@ -68,8 +73,9 @@ function candidateScore(candidate, athleteName, slug) {
 
   let score = candidate.baseScore ?? 0
 
-  if (/\.(?:jpe?g|png|webp|avif)(?:\?|$)/i.test(url)) score += 12
-  if (/image|img|photo|portrait|profile|athlete/.test(url)) score += 8
+  if (isImageLikeUrl(url)) score += 16
+  if (/\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(url)) score += 12
+  if (/image|img|photo|portrait|profile/.test(url)) score += 10
   if (url.includes(slug)) score += 28
   if (alt.includes(athlete)) score += 35
   for (const token of tokens) {
@@ -77,9 +83,10 @@ function candidateScore(candidate, athleteName, slug) {
     if (alt.includes(token)) score += 4
   }
 
-  if (/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon/.test(url)) score -= 45
-  if (/\.svg(?:\?|$)/.test(url)) score -= 30
+  if (/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon|background|all-race-results|all-upcoming-races|pto-triathlon-stats/.test(url)) score -= 55
+  if (/\.svg(?:[?#]|$)/.test(url)) score -= 30
   if (/googletagmanager|doubleclick|facebook|youtube/.test(url)) score -= 60
+  if (!isImageLikeUrl(url)) score -= 80
 
   return score
 }
@@ -98,14 +105,15 @@ function findImageCandidates(html, athleteName, pageUrl) {
       return
     }
 
+    if (!isImageLikeUrl(absolute)) return
     candidates.push({ url: absolute, baseScore, alt })
   }
 
   for (const meta of html.matchAll(/<meta\b[^>]*>/gi)) {
     const tag = meta[0]
     const key = (extractAttribute(tag, 'property') ?? extractAttribute(tag, 'name') ?? '').toLowerCase()
-    if (key === 'og:image' || key === 'twitter:image') {
-      push(extractAttribute(tag, 'content'), 25)
+    if (key === 'og:image' || key === 'twitter:image' || key === 'twitter:image:src') {
+      push(extractAttribute(tag, 'content'), 30)
     }
   }
 
@@ -114,17 +122,22 @@ function findImageCandidates(html, athleteName, pageUrl) {
     const alt = extractAttribute(tag, 'alt') ?? ''
     push(extractAttribute(tag, 'src'), 18, alt)
     push(extractAttribute(tag, 'data-src'), 16, alt)
+    push(extractAttribute(tag, 'data-lazy-src'), 16, alt)
 
-    const srcset = extractAttribute(tag, 'srcset')
+    const srcset = extractAttribute(tag, 'srcset') ?? extractAttribute(tag, 'data-srcset')
     if (srcset) {
       for (const part of srcset.split(',')) {
-        push(part.trim().split(/\s+/)[0], 20, alt)
+        push(part.trim().split(/\s+/)[0], 22, alt)
       }
     }
   }
 
-  for (const match of html.matchAll(/https?:\\?\/\\?\/[^"'<>\s]+/gi)) {
-    push(match[0], 2)
+  for (const match of html.matchAll(/(?:https?:\\?\/\\?\/|\/)[^"'<>\s]+?\.(?:jpe?g|png|webp|avif)(?:\?[^"'<>\s]*)?/gi)) {
+    push(match[0], 4)
+  }
+
+  for (const match of html.matchAll(/["'](?:image|imageUrl|image_url|photo|photoUrl|photo_url|profileImage|profile_image|avatar)["']\s*:\s*["']([^"']+)["']/gi)) {
+    push(match[1], 26)
   }
 
   const slug = slugify(athleteName)
@@ -158,7 +171,7 @@ async function fetchPage(url) {
 }
 
 async function findDownloadableCandidate(candidates) {
-  for (const candidate of candidates.slice(0, 12)) {
+  for (const candidate of candidates.slice(0, 20)) {
     try {
       const response = await fetch(candidate.url, {
         headers: {
@@ -250,14 +263,14 @@ async function main() {
       const candidates = findImageCandidates(html, athleteName, profileUrl)
 
       if (dryRun) {
-        console.log(candidates.slice(0, 5).map((candidate) => `  score ${candidate.score}: ${candidate.url}`).join('\n') || '  no candidates')
+        console.log(candidates.slice(0, 8).map((candidate) => `  score ${candidate.score}: ${candidate.url}`).join('\n') || '  no image candidates')
         continue
       }
 
       const resolved = await findDownloadableCandidate(candidates)
       if (!resolved) {
-        console.warn(`  ! No downloadable athlete image found. Top candidates:`)
-        for (const candidate of candidates.slice(0, 5)) console.warn(`    ${candidate.score}: ${candidate.url}`)
+        console.warn('  ! No downloadable athlete image found. Top image candidates:')
+        for (const candidate of candidates.slice(0, 8)) console.warn(`    ${candidate.score}: ${candidate.url}`)
         continue
       }
 
