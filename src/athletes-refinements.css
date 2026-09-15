@@ -1,410 +1,64 @@
 /* Athlete explorer */
-.app--athletes .athletes-page {
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.athletes-page__header > div {
-  min-width: 0;
-}
-
-/* Athlete detail: reserve the top-right corner for the back button. */
-.app--athlete-detail .athlete-detail-page {
-  margin-top: 56px;
-}
-
-.app--athlete-detail .athlete-detail > h1,
-.app--athlete-detail .athlete-detail__meta {
-  padding-right: 104px;
-  box-sizing: border-box;
-}
-
-.athlete-detail__section-toggle {
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--tri-text);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  font: inherit;
-  cursor: pointer;
-  text-align: left;
-}
-
-.athlete-detail__section-toggle > span:first-child {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.athlete-detail__section-chevron {
-  color: var(--tri-accent);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-  transform: rotate(0deg);
-  transition: transform 160ms ease;
-}
-
-.athlete-detail__section-chevron--open {
-  transform: rotate(90deg);
-}
-
-.athlete-detail__section-body {
-  margin-top: 14px;
-}
-
-.athlete-detail__section-body--collapsed {
-  max-height: 4.4em;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 30%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.68) 68%, rgba(0, 0, 0, 0.34) 86%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 30%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.68) 68%, rgba(0, 0, 0, 0.34) 86%, transparent 100%);
-}
-
-.athlete-detail__bio-list,
-.athlete-detail__achievements ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.athlete-detail__bio-list li,
-.athlete-detail__achievements li {
-  margin: 0 0 8px;
-  color: var(--tri-muted);
-  line-height: 1.45;
-}
-
-.athlete-detail__bio-list li:last-child,
-.athlete-detail__achievements li:last-child {
-  margin-bottom: 0;
-}
-
-.athletes-gender-filter {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.athletes-gender-card {
-  min-width: 0;
-  min-height: 94px;
-  padding: 12px 8px 10px;
-  border: 1px solid var(--tri-border);
-  border-radius: 18px;
-  background: var(--tri-surface);
-  color: var(--tri-muted);
-  display: grid;
-  grid-template-rows: 30px auto auto;
-  place-items: center;
-  gap: 3px;
-  cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease, color 150ms ease, transform 150ms ease;
-}
-
-.athletes-gender-card:hover {
-  border-color: var(--tri-border-strong);
-  background: var(--tri-surface-raised);
-}
-
-.athletes-gender-card.is-active {
-  border-color: rgba(243, 183, 43, 0.82);
-  background: var(--tri-accent-soft);
-  color: var(--tri-accent);
-  box-shadow: inset 0 0 0 1px rgba(243, 183, 43, 0.12);
-}
-
-.athletes-gender-card__symbol {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.athletes-gender-card__label {
-  color: currentColor;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-}
-
-.athletes-gender-card__count {
-  color: var(--tri-muted-soft);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.athletes-gender-card.is-active .athletes-gender-card__count {
-  color: rgba(243, 183, 43, 0.78);
-}
-
-.athletes-countries-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 11px;
-}
-
-.athletes-countries-header h2 {
-  margin: 0;
-  color: var(--tri-text);
-  font-size: 16px;
-  letter-spacing: 0.15px;
-  text-transform: uppercase;
-}
-
-.athletes-countries-header span {
-  color: var(--tri-muted-soft);
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.athletes-country-scroller {
-  display: flex;
-  gap: 10px;
-  margin: 0 -2px 22px;
-  padding: 1px 2px 4px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.athletes-country-scroller::-webkit-scrollbar {
-  display: none;
-}
-
-.athletes-country-chip {
-  flex: 0 0 68px;
-  min-height: 82px;
-  padding: 9px 6px 8px;
-  border: 1px solid transparent;
-  border-radius: 18px;
-  background: transparent;
-  color: var(--tri-muted);
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 3px;
-  scroll-snap-align: start;
-  cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
-}
-
-.athletes-country-chip:hover {
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.athletes-country-chip.is-active {
-  border-color: rgba(243, 183, 43, 0.42);
-  background: rgba(243, 183, 43, 0.075);
-  color: var(--tri-accent);
-}
-
-.athletes-country-chip__flag {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border: 1px solid var(--tri-border);
-  border-radius: 50%;
-  background: #15181c;
-  font-size: 24px;
-  line-height: 1;
-}
-
-.athletes-country-chip.is-active .athletes-country-chip__flag {
-  border-color: var(--tri-accent);
-}
-
-.athletes-country-chip__code {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.45px;
-}
-
-.athletes-country-chip__count {
-  color: var(--tri-muted-soft);
-  font-size: 9px;
-  font-weight: 700;
-}
-
-.athletes-list--profiles {
-  gap: 10px;
-}
-
-.athlete-card--profile {
-  min-height: 84px;
-  padding: 12px 14px;
-  border-radius: 20px;
-  gap: 13px;
-}
-
-.athlete-card__portrait-wrap {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  flex: 0 0 60px;
-}
-
-.athlete-card--profile .athlete-card__image,
-.athlete-card--profile .athlete-card__image--placeholder {
-  display: grid;
-  width: 60px;
-  height: 60px;
-  margin: 0;
-  border: 1px solid var(--tri-border);
-  border-radius: 17px;
-  place-items: center;
-  object-fit: cover;
-  object-position: top center;
-  background: #14171b;
-  color: var(--tri-muted);
-  font-size: 22px;
-  font-weight: 700;
-  box-sizing: border-box;
-}
-
-.athlete-card__flag-badge {
-  position: absolute;
-  right: -5px;
-  bottom: -5px;
-  display: grid;
-  width: 25px;
-  height: 25px;
-  place-items: center;
-  border: 2px solid var(--tri-surface);
-  border-radius: 50%;
-  background: #16191d;
-  font-size: 14px;
-  line-height: 1;
-}
-
-.athlete-card--profile .athlete-card__info h3 {
-  margin: 0 0 2px;
-  color: var(--tri-text);
-  font-size: 16px;
-  line-height: 1.15;
-}
-
-.athlete-card__name-en {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--tri-muted);
-  font-size: 11px;
-  line-height: 1.15;
-}
-
-.athlete-card--profile .athlete-card__info p {
-  color: var(--tri-muted-soft);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.28px;
-  text-transform: uppercase;
-}
-
-.athlete-card--profile .athlete-card__arrow {
-  margin-left: auto;
-  font-size: 28px;
-}
-
-.athletes-empty {
-  min-height: 150px;
-  padding: 22px;
-  border: 1px dashed var(--tri-border-strong);
-  border-radius: 20px;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 8px;
-  color: var(--tri-muted);
-  text-align: center;
-}
-
-.athletes-empty strong {
-  color: var(--tri-text);
-  font-size: 15px;
-}
-
-.athletes-empty span {
-  max-width: 290px;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-@media (min-width: 701px) and (orientation: landscape) {
-  .app--athletes .athletes-page {
-    width: 100%;
-    max-width: none;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 640px) {
-  .app--athletes .athletes-page {
-    margin-top: 18px;
-  }
-
-  .app--athlete-detail .athlete-detail-page {
-    margin-top: 0;
-    padding-top: 52px;
-  }
-
-  .app--athlete-detail .athlete-detail > h1,
-  .app--athlete-detail .athlete-detail__meta {
-    padding-right: 0;
-  }
-
-  .athletes-gender-filter {
-    gap: 8px;
-    margin-bottom: 21px;
-  }
-
-  .athletes-gender-card {
-    min-height: 86px;
-    border-radius: 16px;
-  }
-
-  .athletes-gender-card__symbol {
-    font-size: 25px;
-  }
-
-  .athletes-country-scroller {
-    gap: 7px;
-    margin-right: -12px;
-    padding-right: 12px;
-  }
-
-  .athletes-country-chip {
-    flex-basis: 64px;
-    min-height: 78px;
-  }
-
-  .athletes-country-chip__flag {
-    width: 40px;
-    height: 40px;
-    font-size: 23px;
-  }
-
-  .athlete-card--profile {
-    min-height: 78px;
-    padding: 11px 12px;
-    border-radius: 18px;
-    gap: 12px;
-  }
-
-  .athlete-card__portrait-wrap,
-  .athlete-card--profile .athlete-card__image,
-  .athlete-card--profile .athlete-card__image--placeholder {
-    width: 56px;
-    height: 56px;
-  }
-
-  .athlete-card--profile .athlete-card__info h3 {
-    font-size: 14px;
-  }
+.app--athletes .athletes-page { max-width: 760px; margin-left: auto; margin-right: auto; }
+.athletes-page__header > div { min-width: 0; }
+.app--athlete-detail .athlete-detail-page { margin-top: 56px; }
+.app--athlete-detail .athlete-detail > h1, .app--athlete-detail .athlete-detail__meta { padding-right: 104px; box-sizing: border-box; }
+.athlete-detail__section-toggle { width:100%;padding:0;border:0;background:transparent;color:var(--tri-text);display:flex;align-items:center;justify-content:space-between;gap:12px;font:inherit;cursor:pointer;text-align:left; }
+.athlete-detail__section-toggle > span:first-child { font-size:18px;font-weight:700; }
+.athlete-detail__section-chevron { color:var(--tri-accent);font-size:24px;font-weight:700;line-height:1;transform:rotate(0deg);transition:transform 160ms ease; }
+.athlete-detail__section-chevron--open { transform:rotate(90deg); }
+.athlete-detail__section-body { margin-top:14px; }
+.athlete-detail__section-body--collapsed { max-height:4.4em;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 30%,rgba(0,0,0,.92) 48%,rgba(0,0,0,.68) 68%,rgba(0,0,0,.34) 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 30%,rgba(0,0,0,.92) 48%,rgba(0,0,0,.68) 68%,rgba(0,0,0,.34) 86%,transparent 100%); }
+.athlete-detail__bio-list,.athlete-detail__achievements ul { margin:0;padding-left:20px; }
+.athlete-detail__bio-list li,.athlete-detail__achievements li { margin:0 0 8px;color:var(--tri-muted);line-height:1.45; }
+.athlete-detail__bio-list li:last-child,.athlete-detail__achievements li:last-child { margin-bottom:0; }
+.athletes-gender-filter { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:24px; }
+.athletes-gender-card { min-width:0;min-height:94px;padding:12px 8px 10px;border:1px solid var(--tri-border);border-radius:18px;background:var(--tri-surface);color:var(--tri-muted);display:grid;grid-template-rows:30px auto auto;place-items:center;gap:3px;cursor:pointer;transition:border-color 150ms ease,background 150ms ease,color 150ms ease,transform 150ms ease; }
+.athletes-gender-card:hover { border-color:var(--tri-border-strong);background:var(--tri-surface-raised); }
+.athletes-gender-card.is-active { border-color:rgba(243,183,43,.82);background:var(--tri-accent-soft);color:var(--tri-accent);box-shadow:inset 0 0 0 1px rgba(243,183,43,.12); }
+.athletes-gender-card__symbol { font-size:28px;font-weight:700;line-height:1; }
+.athletes-gender-card__label { color:currentColor;font-size:12px;font-weight:800;letter-spacing:.6px; }
+.athletes-gender-card__count { color:var(--tri-muted-soft);font-size:11px;font-weight:700; }
+.athletes-gender-card.is-active .athletes-gender-card__count { color:rgba(243,183,43,.78); }
+.athletes-country-scroller { display:flex;gap:10px;margin:0 -2px 22px;padding:1px 2px 4px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch; }
+.athletes-country-scroller::-webkit-scrollbar { display:none; }
+.athletes-country-chip { flex:0 0 68px;min-height:82px;padding:9px 6px 8px;border:1px solid transparent;border-radius:18px;background:transparent;color:var(--tri-muted);display:grid;place-items:center;align-content:center;gap:3px;scroll-snap-align:start;cursor:pointer;transition:border-color 150ms ease,background 150ms ease,color 150ms ease; }
+.athletes-country-chip:hover { background:rgba(255,255,255,.025); }
+.athletes-country-chip.is-active { border-color:rgba(243,183,43,.42);background:rgba(243,183,43,.075);color:var(--tri-accent); }
+.athletes-country-chip__flag { display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--tri-border);border-radius:50%;background:#15181c;font-size:24px;line-height:1; }
+.athletes-country-chip.is-active .athletes-country-chip__flag { border-color:var(--tri-accent); }
+.athletes-country-chip__code { font-size:10px;font-weight:800;letter-spacing:.45px; }
+.athletes-country-chip__count { color:var(--tri-muted-soft);font-size:9px;font-weight:700; }
+.athletes-list--profiles { gap:10px; }
+.athlete-card--profile { min-height:84px;padding:12px 14px;border-radius:20px;gap:13px; }
+.athlete-card__portrait-wrap { position:relative;width:60px;height:60px;flex:0 0 60px; }
+.athlete-card--profile .athlete-card__image,.athlete-card--profile .athlete-card__image--placeholder { display:grid;width:60px;height:60px;margin:0;border:1px solid var(--tri-border);border-radius:17px;place-items:center;object-fit:cover;object-position:top center;background:#14171b;color:var(--tri-muted);font-size:22px;font-weight:700;box-sizing:border-box; }
+.athlete-card--profile .athlete-card__image--placeholder { position:relative;overflow:hidden;background:radial-gradient(circle at 72% 22%,rgba(243,183,43,.13),transparent 34%),linear-gradient(145deg,#20252b,#111419);border-color:#343a42; }
+.athlete-card--profile .athlete-card__image--placeholder::after { content:'';position:absolute;right:-11px;bottom:7px;width:48px;height:2px;background:var(--tri-accent);opacity:.45;transform:rotate(-27deg);box-shadow:0 7px 0 rgba(243,183,43,.14); }
+.athlete-placeholder-icon { position:relative;z-index:1;width:47px;height:47px;fill:none;stroke:#aeb2b7;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round; }
+.athlete-placeholder-icon__goggles { stroke:var(--tri-accent);stroke-width:2.1; }
+.athlete-placeholder-icon__swash { stroke:rgba(243,183,43,.28);stroke-width:2; }
+.athlete-card__flag-badge { position:absolute;right:-5px;bottom:-5px;display:grid;width:25px;height:25px;place-items:center;border:2px solid var(--tri-surface);border-radius:50%;background:#16191d;font-size:14px;line-height:1; }
+.athlete-card--profile .athlete-card__info h3 { margin:0 0 2px;color:var(--tri-text);font-size:16px;line-height:1.15; }
+.athlete-card__name-en { display:block;margin-bottom:6px;color:var(--tri-muted);font-size:11px;line-height:1.15; }
+.athlete-card--profile .athlete-card__info p { color:var(--tri-muted-soft);font-size:10px;font-weight:700;letter-spacing:.28px;text-transform:uppercase; }
+.athlete-card--profile .athlete-card__arrow { margin-left:auto;font-size:28px; }
+.athletes-empty { min-height:150px;padding:22px;border:1px dashed var(--tri-border-strong);border-radius:20px;display:grid;place-items:center;align-content:center;gap:8px;color:var(--tri-muted);text-align:center; }
+.athletes-empty strong { color:var(--tri-text);font-size:15px; }
+.athletes-empty span { max-width:290px;font-size:12px;line-height:1.4; }
+@media (min-width:701px) and (orientation:landscape) { .app--athletes .athletes-page { width:100%;max-width:none;box-sizing:border-box; } }
+@media (max-width:640px) {
+  .app--athletes .athletes-page { margin-top:18px; }
+  .app--athlete-detail .athlete-detail-page { margin-top:0;padding-top:52px; }
+  .app--athlete-detail .athlete-detail > h1,.app--athlete-detail .athlete-detail__meta { padding-right:0; }
+  .athletes-gender-filter { gap:8px;margin-bottom:21px; }
+  .athletes-gender-card { min-height:86px;border-radius:16px; }
+  .athletes-gender-card__symbol { font-size:25px; }
+  .athletes-country-scroller { gap:7px;margin-right:-12px;padding-right:12px; }
+  .athletes-country-chip { flex-basis:64px;min-height:78px; }
+  .athletes-country-chip__flag { width:40px;height:40px;font-size:23px; }
+  .athlete-card--profile { min-height:78px;padding:11px 12px;border-radius:18px;gap:12px; }
+  .athlete-card__portrait-wrap,.athlete-card--profile .athlete-card__image,.athlete-card--profile .athlete-card__image--placeholder { width:56px;height:56px; }
+  .athlete-card--profile .athlete-card__info h3 { font-size:14px; }
+  .athlete-placeholder-icon { width:43px;height:43px; }
 }
