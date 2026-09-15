@@ -5,6 +5,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Andy Krueger','Matt Kerr','Brock Hoel','Matthew Richard','Blake Selm',
   'Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen',
   'Tommy Doubleday','Yvan Jarrige','Albert Askengren',
+  'Ari Klau','Benjamin Randall','Brad Bischoff','Brian Folts','David Reynolds',
 ])
 
 export const makeAthlete = (
