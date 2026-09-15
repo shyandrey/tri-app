@@ -6,6 +6,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen',
   'Tommy Doubleday','Yvan Jarrige','Albert Askengren',
   'Ari Klau','Benjamin Randall','Brad Bischoff','Brian Folts','David Reynolds',
+  'Dries Matthys','Dylan Clough','Dylan Thissen','Erwan Jacobi','Florin Parfuss',
 ])
 
 export const makeAthlete = (
