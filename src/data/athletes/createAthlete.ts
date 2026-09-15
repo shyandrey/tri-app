@@ -10,6 +10,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Ethan Sunseri',
   'Federico Scarabino',
   'James Hayes',
+  'John Killeen',
 ])
 
 export const makeAthlete = (
