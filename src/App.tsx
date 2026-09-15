@@ -222,7 +222,10 @@ function App() {
       {upcomingRaces.length > 0 && (
         <HomeShowcase
           races={upcomingRaces}
-          titleForRace={getHomeRaceTitle}
+          getRaceName={(name) => {
+            const race = upcomingRaces.find((item) => item.name === name)
+            return race ? getHomeRaceTitle(race) : stripSponsorPrefix(name)
+          }}
           onRaceClick={openRace}
         />
       )}
