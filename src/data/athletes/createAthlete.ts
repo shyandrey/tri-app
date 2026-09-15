@@ -1,6 +1,17 @@
 import type { Athlete } from '../../types/Athlete'
 import { athletePhotosByName } from './athletePhotos.generated'
 
+const VERIFIED_NO_PHOTO_NAMES = new Set([
+  'Andy Krueger',
+  'Matt Kerr',
+  'Brock Hoel',
+  'Matthew Richard',
+  'Blake Selm',
+  'Ethan Sunseri',
+  'Federico Scarabino',
+  'James Hayes',
+])
+
 export const makeAthlete = (
   id: number,
   name: string,
@@ -21,6 +32,6 @@ export const makeAthlete = (
   flag,
   gender,
   discipline,
-  image: athletePhotosByName[nameEn],
+  image: VERIFIED_NO_PHOTO_NAMES.has(nameEn) ? undefined : athletePhotosByName[nameEn],
   achievements: [],
 })
