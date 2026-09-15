@@ -9,161 +9,27 @@ const REGISTRY_FILE = path.join(ROOT, 'src/data/athletes/athletePhotos.generated
 const BASE_URL = 'https://stats.protriathletes.org/athlete/'
 
 const SAMPLE_NAMES = ['Mika Noodt']
-
 const PROFILE_SLUG_OVERRIDES = {
-  'Magnus Ditlev': 'magnus-elbaek-ditlev',
-  'Daniel Bækkegård': 'daniel-baekkegard',
-  'Kristian Høgenhaug': 'kristian-hogenhaug',
-  'Guillem Montiel': 'montiel-moreno-guillem',
-  'Solveig Løvseth': 'solveig-loevseth',
-  'Hannah Berry': 'hannah-wells',
-  'Caroline Pohle': 'carolin-pohle',
-  'Katrine Græsbøll Christensen': 'katrine-graesboell-christensen',
-  'Lena Meißner': 'lena-meißner',
+  'Magnus Ditlev': 'magnus-elbaek-ditlev', 'Daniel Bækkegård': 'daniel-baekkegard', 'Kristian Høgenhaug': 'kristian-hogenhaug',
+  'Guillem Montiel': 'montiel-moreno-guillem', 'Solveig Løvseth': 'solveig-loevseth', 'Hannah Berry': 'hannah-wells',
+  'Caroline Pohle': 'carolin-pohle', 'Katrine Græsbøll Christensen': 'katrine-graesboell-christensen', 'Lena Meißner': 'lena-meißner',
 }
-
-const args = new Set(process.argv.slice(2))
-const importAll = args.has('--all')
-const refresh = args.has('--refresh')
-const dryRun = args.has('--dry-run')
-const audit = args.has('--audit')
-
-function slugify(value) {
-  return value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
-}
-function profileSlugForName(name) { return PROFILE_SLUG_OVERRIDES[name] ?? slugify(name) }
-function decodeHtml(value) { return value.replace(/\\u0026/g, '&').replace(/\\u002F/g, '/').replace(/\\\//g, '/').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'") }
-function extractAttribute(tag, name) { return tag.match(new RegExp(`${name}\\s*=\\s*["']([^"']+)["']`, 'i'))?.[1] }
-function collectAthleteNames(source) {
-  const names = new Set()
-  for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) names.add(match[1])
-  for (const match of source.matchAll(/nameEn:\s*'([^']+)'/g)) names.add(match[1])
-  return [...names]
-}
-function normalizeIdentity(value) { return decodeHtml(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ') }
-function isExactAthleteAlt(alt, athleteName) { return Boolean(alt) && normalizeIdentity(alt) === normalizeIdentity(athleteName) }
-function isImageLikeUrl(url) { return /\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(url) || /(?:image|img|photo|portrait|profile|athlete)[=/\-_]/i.test(url) }
-function normalizedText(value) { return decodeHtml(value).replace(/<[^>]*>/g, ' ').replace(/\\[nrt]/g, ' ').replace(/\s+/g, ' ').toLowerCase() }
-function contextScore(html, position, athleteName) {
-  const before = html.slice(Math.max(0, position - 500), position)
-  const after = html.slice(position, Math.min(html.length, position + 250))
-  const context = normalizedText(`${before} ${after}`)
-  const athlete = athleteName.toLowerCase()
-  let score = context.includes(athlete) ? 40 : 0
-  if (/biography|overview|world rank|national|weight|height|born/.test(context)) score += 8
-  if (/rivals|results|youtube|upcoming races|background|sponsor/.test(context)) score -= 35
-  return score
-}
-function candidateScore(candidate, athleteName, slug) {
-  const url = candidate.url.toLowerCase()
-  let score = (candidate.baseScore ?? 0) + (candidate.contextScore ?? 0)
-  if (candidate.exactAthleteAlt) score += 500
-  if (isImageLikeUrl(url)) score += 16
-  if (/\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(url)) score += 12
-  if (url.includes(slug)) score += 28
-  if (/content\.protriathletes\.org\/content\/images\//.test(url)) score += 8
-  if (/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon|background|all-race-results|all-upcoming-races|pto-triathlon-stats/.test(url)) score -= 100
-  if (/ytimg|youtube/.test(url)) score -= 100
-  return score
-}
-function findImageCandidates(html, athleteName, pageUrl) {
-  const candidates = []
-  let sequence = 0
-  const push = (rawUrl, baseScore = 0, alt = '', position = -1, source = 'page') => {
-    if (!rawUrl) return
-    const cleaned = decodeHtml(rawUrl.trim())
-    if (!cleaned || cleaned.startsWith('data:')) return
-    let absolute
-    try { absolute = new URL(cleaned, pageUrl).href } catch { return }
-    if (!isImageLikeUrl(absolute)) return
-    candidates.push({ url: absolute, baseScore, alt, exactAthleteAlt: isExactAthleteAlt(alt, athleteName), source, sequence: sequence++, contextScore: position >= 0 ? contextScore(html, position, athleteName) : 0 })
-  }
-  for (const img of html.matchAll(/<img\b[^>]*>/gi)) {
-    const tag = img[0]
-    const alt = extractAttribute(tag, 'alt') ?? ''
-    const position = img.index ?? -1
-    push(extractAttribute(tag, 'src'), 18, alt, position, 'img:src')
-    push(extractAttribute(tag, 'data-src'), 16, alt, position, 'img:data-src')
-    push(extractAttribute(tag, 'data-lazy-src'), 16, alt, position, 'img:data-lazy-src')
-    const srcset = extractAttribute(tag, 'srcset') ?? extractAttribute(tag, 'data-srcset')
-    if (srcset) for (const part of srcset.split(',')) push(part.trim().split(/\s+/)[0], 22, alt, position, 'img:srcset')
-  }
-  for (const match of html.matchAll(/(?:https?:\\?\/\\?\/|\/)[^"'<>\s]+?\.(?:jpe?g|png|webp|avif)(?:\?[^"'<>\s]*)?/gi)) push(match[0], 4, '', match.index ?? -1, 'raw-url')
-  const slug = slugify(athleteName)
-  const deduped = new Map()
-  for (const item of candidates) {
-    const existing = deduped.get(item.url)
-    if (!existing || item.exactAthleteAlt || (item.baseScore + item.contextScore) > (existing.baseScore + existing.contextScore)) deduped.set(item.url, item)
-  }
-  return [...deduped.values()].map((item) => ({ ...item, score: candidateScore(item, athleteName, slug) })).sort((a, b) => Number(b.exactAthleteAlt) - Number(a.exactAthleteAlt) || b.score - a.score || a.sequence - b.sequence)
-}
-function extensionFromContentType(contentType, url) {
-  if (contentType.includes('image/webp')) return 'webp'
-  if (contentType.includes('image/png')) return 'png'
-  if (contentType.includes('image/avif')) return 'avif'
-  if (contentType.includes('image/jpeg') || contentType.includes('image/jpg')) return 'jpg'
-  const ext = new URL(url).pathname.match(/\.(jpe?g|png|webp|avif)$/i)?.[1]?.toLowerCase()
-  return ext === 'jpeg' ? 'jpg' : ext ?? 'jpg'
-}
-async function fetchPage(url) {
-  const response = await fetch(url, { headers: { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36', accept: 'text/html,application/xhtml+xml' } })
-  if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`)
-  return response.text()
-}
-async function findDownloadableCandidate(candidates) {
-  for (const candidate of candidates.slice(0, 20)) {
-    try {
-      const response = await fetch(candidate.url, { headers: { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36', referer: 'https://stats.protriathletes.org/' } })
-      const contentType = response.headers.get('content-type') ?? ''
-      if (!response.ok || !contentType.startsWith('image/')) continue
-      const bytes = new Uint8Array(await response.arrayBuffer())
-      if (bytes.byteLength < 8_000) continue
-      return { candidate, bytes, contentType }
-    } catch {}
-  }
-  return null
-}
-async function existingPhotoForSlug(slug) {
-  try { return (await fs.readdir(OUTPUT_DIR)).find((entry) => entry.startsWith(`${slug}.`)) ?? null } catch { return null }
-}
-async function writeRegistry(records) {
-  const lines = ['// Generated by scripts/import-athlete-photos.mjs.', '// Keep this file in git so the app has a stable photo registry after imports.', 'export const athletePhotosByName: Record<string, string> = {', ...records.sort((a,b)=>a.name.localeCompare(b.name)).map(({name,publicPath})=>`  ${JSON.stringify(name)}: ${JSON.stringify(publicPath)},`), '}', '']
-  await fs.writeFile(REGISTRY_FILE, lines.join('\n'), 'utf8')
-}
-async function readExistingRegistry() {
-  try {
-    const source = await fs.readFile(REGISTRY_FILE, 'utf8'); const records=[]
-    for (const match of source.matchAll(/^\s*"([^"]+)":\s*"([^"]+)",?$/gm)) records.push({name:match[1],publicPath:match[2]})
-    return records
-  } catch { return [] }
-}
-function printCandidates(candidates) {
-  for (const candidate of candidates.slice(0, 5)) console.log(`  ${candidate.exactAthleteAlt ? 'EXACT PROFILE' : 'candidate'} | score ${candidate.score} | alt ${JSON.stringify(candidate.alt)}\n    ${candidate.url}`)
-}
-async function main() {
-  const [menSource,womenSource]=await Promise.all([fs.readFile(MEN_FILE,'utf8'),fs.readFile(WOMEN_FILE,'utf8')])
-  const allNames=[...new Set([...collectAthleteNames(menSource),...collectAthleteNames(womenSource)])]
-  const selectedNames=(importAll||audit)?allNames:SAMPLE_NAMES.filter((name)=>allNames.includes(name))
-  const registry=new Map((await readExistingRegistry()).map((record)=>[record.name,record.publicPath]))
-  await fs.mkdir(OUTPUT_DIR,{recursive:true})
-  console.log(`Stats PTO athlete photo import: ${selectedNames.length} athlete(s)${audit?' (--audit)':importAll?' (--all)':' (Mika test)'}`)
-  for (const [index,athleteName] of selectedNames.entries()) {
-    const fileSlug=slugify(athleteName), profileSlug=profileSlugForName(athleteName), profileUrl=new URL(encodeURI(profileSlug),BASE_URL).href
-    const existing=await existingPhotoForSlug(fileSlug)
-    if (existing&&!refresh&&!audit&&!dryRun) { registry.set(athleteName,`/athletes/${existing}`); console.log(`[${index+1}/${selectedNames.length}] ${athleteName}: already exists`); continue }
-    console.log(`[${index+1}/${selectedNames.length}] ${athleteName}: ${profileUrl}`)
-    try {
-      const html=await fetchPage(profileUrl), candidates=findImageCandidates(html,athleteName,profileUrl), exact=candidates.filter((c)=>c.exactAthleteAlt)
-      if (audit) { console.log(exact.length ? `  ✓ exact profile candidate (${exact[0].url})` : '  ! REVIEW: no exact-name profile image'); continue }
-      if (dryRun) { printCandidates(candidates); continue }
-      if (!exact.length) { console.warn('  ! No exact-name profile image found; refusing to overwrite.'); continue }
-      const resolved=await findDownloadableCandidate(exact)
-      if (!resolved) { console.warn('  ! Exact profile image is not downloadable.'); continue }
-      const extension=extensionFromContentType(resolved.contentType,resolved.candidate.url), fileName=`${fileSlug}.${extension}`, publicPath=`/athletes/${fileName}`
-      await fs.writeFile(path.join(OUTPUT_DIR,fileName),resolved.bytes); registry.set(athleteName,publicPath)
-      console.log(`  ✓ ${publicPath} (${Math.round(resolved.bytes.byteLength/1024)} KB, exact alt ${JSON.stringify(resolved.candidate.alt)})`)
-    } catch(error) { console.warn(`  ! ${error instanceof Error?error.message:String(error)}`) }
-  }
-  if (!dryRun&&!audit) { await writeRegistry([...registry].map(([name,publicPath])=>({name,publicPath}))); console.log(`Updated ${path.relative(ROOT,REGISTRY_FILE)}`) }
-}
+const args = new Set(process.argv.slice(2)), importAll=args.has('--all'), refresh=args.has('--refresh'), dryRun=args.has('--dry-run')
+function slugify(v){return v.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
+function profileSlugForName(n){return PROFILE_SLUG_OVERRIDES[n]??slugify(n)}
+function decodeHtml(v){return v.replace(/\\u0026/g,'&').replace(/\\u002F/g,'/').replace(/\\\//g,'/').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
+function attr(tag,n){return tag.match(new RegExp(`${n}\\s*=\\s*["']([^"']+)["']`,'i'))?.[1]}
+function collect(source){const s=new Set();for(const m of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g))s.add(m[1]);for(const m of source.matchAll(/nameEn:\s*'([^']+)'/g))s.add(m[1]);return [...s]}
+function imageLike(u){return /\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(u)||/(?:image|img|photo|portrait|profile|athlete)[=/\-_]/i.test(u)}
+function text(v){return decodeHtml(v).replace(/<[^>]*>/g,' ').replace(/\\[nrt]/g,' ').replace(/\s+/g,' ').toLowerCase()}
+function contextScore(html,pos,name){const c=text(`${html.slice(Math.max(0,pos-650),pos)} ${html.slice(pos,Math.min(html.length,pos+350))}`), n=name.toLowerCase();let s=c.includes(n)?55:0;if(/biography|overview|world rank|national|weight|height|born/.test(c))s+=12;if(/rivals|results|youtube|upcoming races|background|sponsor/.test(c))s-=40;return s}
+function score(c,slug){const u=c.url.toLowerCase();let s=c.base+c.context;if(imageLike(u))s+=16;if(/\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(u))s+=12;if(u.includes(slug))s+=28;if(/content\.protriathletes\.org\/content\/images\//.test(u))s+=8;if(/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon|background|all-race-results|all-upcoming-races|pto-triathlon-stats|ytimg|youtube/.test(u))s-=100;return s}
+function candidates(html,name,page){const out=[];let seq=0;const push=(raw,base=0,pos=-1)=>{if(!raw)return;const clean=decodeHtml(raw.trim());if(!clean||clean.startsWith('data:'))return;let url;try{url=new URL(clean,page).href}catch{return}if(!imageLike(url))return;out.push({url,base,context:pos>=0?contextScore(html,pos,name):0,seq:seq++})};for(const m of html.matchAll(/<img\b[^>]*>/gi)){const tag=m[0],pos=m.index??-1;push(attr(tag,'src'),18,pos);push(attr(tag,'data-src'),16,pos);push(attr(tag,'data-lazy-src'),16,pos);const set=attr(tag,'srcset')??attr(tag,'data-srcset');if(set)for(const p of set.split(','))push(p.trim().split(/\s+/)[0],22,pos)}for(const m of html.matchAll(/(?:https?:\\?\/\\?\/|\/)[^"'<>\s]+?\.(?:jpe?g|png|webp|avif)(?:\?[^"'<>\s]*)?/gi))push(m[0],4,m.index??-1);const map=new Map();for(const x of out){const old=map.get(x.url);if(!old||x.base+x.context>old.base+old.context)map.set(x.url,x)}const slug=slugify(name);return [...map.values()].map(x=>({...x,score:score(x,slug)})).sort((a,b)=>b.score-a.score||a.seq-b.seq)}
+function ext(type,url){if(type.includes('webp'))return'webp';if(type.includes('png'))return'png';if(type.includes('avif'))return'avif';if(type.includes('jpeg')||type.includes('jpg'))return'jpg';const e=new URL(url).pathname.match(/\.(jpe?g|png|webp|avif)$/i)?.[1]?.toLowerCase();return e==='jpeg'?'jpg':e??'jpg'}
+async function page(url){const r=await fetch(url,{headers:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36',accept:'text/html,application/xhtml+xml'}});if(!r.ok)throw new Error(`HTTP ${r.status} for ${url}`);return r.text()}
+async function downloadable(cs){for(const c of cs.slice(0,12)){if(c.score<35)continue;try{const r=await fetch(c.url,{headers:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36',referer:'https://stats.protriathletes.org/'}}),type=r.headers.get('content-type')??'';if(!r.ok||!type.startsWith('image/'))continue;const bytes=new Uint8Array(await r.arrayBuffer());if(bytes.byteLength<8000)continue;return{c,bytes,type}}catch{}}return null}
+async function existing(slug){try{return(await fs.readdir(OUTPUT_DIR)).find(e=>e.startsWith(`${slug}.`))??null}catch{return null}}
+async function readRegistry(){try{const src=await fs.readFile(REGISTRY_FILE,'utf8'),r=[];for(const m of src.matchAll(/^\s*"([^"]+)":\s*"([^"]+)",?$/gm))r.push({name:m[1],publicPath:m[2]});return r}catch{return[]}}
+async function writeRegistry(records){const lines=['// Generated by scripts/import-athlete-photos.mjs.','// Keep this file in git so the app has a stable photo registry after imports.','export const athletePhotosByName: Record<string, string> = {',...records.sort((a,b)=>a.name.localeCompare(b.name)).map(x=>`  ${JSON.stringify(x.name)}: ${JSON.stringify(x.publicPath)},`),'}',''];await fs.writeFile(REGISTRY_FILE,lines.join('\n'),'utf8')}
+async function main(){const [m,w]=await Promise.all([fs.readFile(MEN_FILE,'utf8'),fs.readFile(WOMEN_FILE,'utf8')]),all=[...new Set([...collect(m),...collect(w)])],selected=importAll?all:SAMPLE_NAMES.filter(n=>all.includes(n)),registry=new Map((await readRegistry()).map(x=>[x.name,x.publicPath]));await fs.mkdir(OUTPUT_DIR,{recursive:true});console.log(`Stats PTO athlete photo import: ${selected.length} athlete(s)${importAll?' (--all)':' (Mika test)'}`);for(const [i,name]of selected.entries()){const fileSlug=slugify(name),profileSlug=profileSlugForName(name),url=new URL(encodeURI(profileSlug),BASE_URL).href,old=await existing(fileSlug);if(old&&!refresh&&!dryRun){registry.set(name,`/athletes/${old}`);console.log(`[${i+1}/${selected.length}] ${name}: already exists`);continue}console.log(`[${i+1}/${selected.length}] ${name}: ${url}`);try{const html=await page(url),cs=candidates(html,name,url);if(dryRun){for(const c of cs.slice(0,5))console.log(`  candidate | score ${c.score}\n    ${c.url}`);continue}const r=await downloadable(cs);if(!r){console.warn('  ! No sufficiently strong downloadable profile candidate found.');continue}const extension=ext(r.type,r.c.url),file=`${fileSlug}.${extension}`,publicPath=`/athletes/${file}`;await fs.writeFile(path.join(OUTPUT_DIR,file),r.bytes);registry.set(name,publicPath);console.log(`  ✓ ${publicPath} (${Math.round(r.bytes.byteLength/1024)} KB, score ${r.c.score})`)}catch(e){console.warn(`  ! ${e instanceof Error?e.message:String(e)}`)}}if(!dryRun){await writeRegistry([...registry].map(([name,publicPath])=>({name,publicPath})));console.log(`Updated ${path.relative(ROOT,REGISTRY_FILE)}`)}}
 await main()
