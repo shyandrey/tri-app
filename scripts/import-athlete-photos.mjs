@@ -13,6 +13,8 @@ const PROFILE_SLUG_OVERRIDES = {
   'Magnus Ditlev': 'magnus-elbaek-ditlev', 'Daniel Bækkegård': 'daniel-baekkegard', 'Kristian Høgenhaug': 'kristian-hogenhaug',
   'Guillem Montiel': 'montiel-moreno-guillem', 'Solveig Løvseth': 'solveig-loevseth', 'Hannah Berry': 'hannah-wells',
   'Caroline Pohle': 'carolin-pohle', 'Katrine Græsbøll Christensen': 'katrine-graesboell-christensen', 'Lena Meißner': 'lena-meißner',
+  'Benjamin Randall': 'ben-randall', 'Henry Räppo': 'henry-raeppo', 'Mathias Petersen': 'mathias-lyngsoe-petersen',
+  'Franzi Hofmann': 'franzi-reng', 'Jamie Besse': 'jamie-albert',
 }
 const args = new Set(process.argv.slice(2)), importAll=args.has('--all'), refresh=args.has('--refresh'), dryRun=args.has('--dry-run')
 function slugify(v){return v.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
