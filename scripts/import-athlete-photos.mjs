@@ -16,6 +16,20 @@ const SAMPLE_NAMES = [
   'Laura Philipp',
 ]
 
+// Stats PTO profile slugs are not always a mechanical transliteration of the
+// display name. Keep the exceptions explicit rather than guessing them.
+const PROFILE_SLUG_OVERRIDES = {
+  'Magnus Ditlev': 'magnus-elbaek-ditlev',
+  'Daniel Bækkegård': 'daniel-baekkegard',
+  'Kristian Høgenhaug': 'kristian-hogenhaug',
+  'Guillem Montiel': 'montiel-moreno-guillem',
+  'Solveig Løvseth': 'solveig-loevseth',
+  'Hannah Berry': 'hannah-wells',
+  'Caroline Pohle': 'carolin-pohle',
+  'Katrine Græsbøll Christensen': 'katrine-graesboell-christensen',
+  'Lena Meißner': 'lena-meißner',
+}
+
 const args = new Set(process.argv.slice(2))
 const importAll = args.has('--all')
 const refresh = args.has('--refresh')
@@ -29,6 +43,10 @@ function slugify(value) {
     .replace(/&/g, ' and ')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
+}
+
+function profileSlugForName(name) {
+  return PROFILE_SLUG_OVERRIDES[name] ?? slugify(name)
 }
 
 function decodeHtml(value) {
@@ -288,9 +306,10 @@ async function main() {
   if (dryRun) console.log('Dry run: ranking image candidates by athlete-page context; no files will be written.')
 
   for (const [index, athleteName] of selectedNames.entries()) {
-    const slug = slugify(athleteName)
-    const profileUrl = `${BASE_URL}${slug}`
-    const existing = await existingPhotoForSlug(slug)
+    const fileSlug = slugify(athleteName)
+    const profileSlug = profileSlugForName(athleteName)
+    const profileUrl = new URL(encodeURI(profileSlug), BASE_URL).href
+    const existing = await existingPhotoForSlug(fileSlug)
 
     if (existing && !refresh) {
       const publicPath = `/athletes/${existing}`
@@ -318,7 +337,7 @@ async function main() {
       }
 
       const extension = extensionFromContentType(resolved.contentType, resolved.candidate.url)
-      const fileName = `${slug}.${extension}`
+      const fileName = `${fileSlug}.${extension}`
       const filePath = path.join(OUTPUT_DIR, fileName)
       const publicPath = `/athletes/${fileName}`
 
