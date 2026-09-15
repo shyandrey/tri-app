@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "audit:results": "node scripts/audit-results.mjs",
+    "find:next-athletes": "node scripts/find-next-athletes.mjs",
     "import:athlete-photos": "node scripts/import-athlete-photos.mjs",
     "import:athlete-photos:all": "node scripts/import-athlete-photos.mjs --all",
     "preview": "vite preview"
@@ -24,10 +25,10 @@
     "@vitejs/plugin-react": "^6.0.4",
     "eslint": "^10.8.0",
     "eslint-plugin-react-hooks": "^8.65.0",
-    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-react-refresh": "^8.0.2",
     "globals": "^17.7.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.65.0",
-    "vite": "^8.2.0"
+    "vite": "^8.2.1"
   }
 }
