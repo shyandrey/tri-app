@@ -2,15 +2,9 @@ import type { Athlete } from '../../types/Athlete'
 import { athletePhotosByName } from './athletePhotos.generated'
 
 const VERIFIED_NO_PHOTO_NAMES = new Set([
-  'Andy Krueger',
-  'Matt Kerr',
-  'Brock Hoel',
-  'Matthew Richard',
-  'Blake Selm',
-  'Ethan Sunseri',
-  'Federico Scarabino',
-  'James Hayes',
-  'John Killeen',
+  'Andy Krueger','Matt Kerr','Brock Hoel','Matthew Richard','Blake Selm',
+  'Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen',
+  'Tommy Doubleday','Yvan Jarrige','Albert Askengren',
 ])
 
 export const makeAthlete = (
