@@ -9,7 +9,7 @@ const REGISTRY_FILE = path.join(ROOT, 'src/data/athletes/athletePhotos.generated
 const BASE_URL = 'https://stats.protriathletes.org/athlete/'
 
 const SAMPLE_NAMES = ['Mika Noodt']
-const MANUAL_PHOTO_NAMES = new Set(['Mika Noodt'])
+const MANUAL_PHOTO_NAMES = new Set(['Mika Noodt', 'Jelle Geens'])
 const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Andy Krueger','Matt Kerr','Brock Hoel','Matthew Richard','Blake Selm',
   'Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen',
