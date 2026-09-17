@@ -7,6 +7,8 @@ const ATHLETE_FILES = [
   path.join(ROOT, 'src/data/athletes/men.ts'),
   path.join(ROOT, 'src/data/athletes/women.ts'),
 ]
+const EXPORT_PATH = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
+const EXPORT = process.argv.includes('--write')
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -77,16 +79,18 @@ function inferredGender(item) {
   return undefined
 }
 function topCountry(item) {
-  return [...item.countryCodes.entries()].sort((a,b) => b[1]-a[1])[0]?.[0]
+  return [...item.countryCodes.entries()].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))[0]?.[0]
 }
 function preferredName(item) {
   return [...item.names.entries()].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))[0][0]
 }
-function printGroup(gender, limit = 50) {
-  const rows = [...stats.values()]
+function sortedRows(gender) {
+  return [...stats.values()]
     .filter((item) => inferredGender(item) === gender)
     .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(preferredName(b)))
-    .slice(0, limit)
+}
+function printGroup(gender, limit = 50) {
+  const rows = sortedRows(gender).slice(0, limit)
   console.log(`\n${gender === 'M' ? 'MEN' : 'WOMEN'} (${rows.length})`)
   rows.forEach((item, index) => {
     const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
@@ -94,8 +98,52 @@ function printGroup(gender, limit = 50) {
   })
 }
 
+function quote(value) {
+  return JSON.stringify(value)
+}
+
+async function writeGeneratedProfiles() {
+  const rows = [...stats.values()]
+    .filter((item) => inferredGender(item))
+    .sort((a,b) => inferredGender(a).localeCompare(inferredGender(b)) || preferredName(a).localeCompare(preferredName(b)))
+
+  const lines = [
+    "import type { Athlete } from '../../types/Athlete'",
+    '',
+    '// Generated from result rows by: npm run find:next-athletes -- --write',
+    '// Do not curate names, photos or biographies here; add a normal profile instead.',
+    'export const resultAthletes: Athlete[] = [',
+  ]
+
+  rows.forEach((item, index) => {
+    const name = preferredName(item)
+    const gender = inferredGender(item)
+    const countryCode = topCountry(item)
+    const fields = [
+      `id: ${10000 + index}`,
+      `name: ${quote(name)}`,
+      `nameEn: ${quote(name)}`,
+      countryCode ? `country: ${quote(countryCode)}` : `country: ''`,
+      countryCode ? `countryEn: ${quote(countryCode)}` : `countryEn: ''`,
+      countryCode ? `countryCode: ${quote(countryCode)}` : null,
+      `flag: ''`,
+      `gender: ${quote(gender)}`,
+      `discipline: 'IRONMAN / T100'`,
+      `bio: ''`,
+      `achievements: []`,
+    ].filter(Boolean)
+    lines.push(`  { ${fields.join(', ')} },`)
+  })
+  lines.push(']', '')
+  await fs.writeFile(EXPORT_PATH, lines.join('\n'), 'utf8')
+  console.log(`\nWrote ${rows.length} result-derived athlete profile(s) to ${path.relative(ROOT, EXPORT_PATH)}`)
+  const unresolved = stats.size - rows.length
+  if (unresolved) console.log(`Skipped ${unresolved} identity/identities with unresolved gender; they remain visible in the audit.`)
+}
+
 console.log(`Existing catalog: ${existing.size} athletes`)
 console.log(`Uncatalogued normalized identities found in result files: ${stats.size}`)
 printGroup('M')
 printGroup('W')
+if (EXPORT) await writeGeneratedProfiles()
 console.log('\nNote: catalog/result names are compared with the same normalization used by athlete identity linking. Country codes come only from result rows that explicitly contain them.')
