@@ -10,6 +10,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Fraser Minnican','Jack Sosinski','Jens Emil Nielsen','Joona Lehtonen','Stephanie Clutterbuck',
   'Abbie Sullivan','Adele Likin','Charlotte McShane','Nikita Paskiewiez','Sarah Karpinski',
   'Annette Rogers','Carolyn Olsen','Leslie Homol','Luisa Iogna Prat','Marissa Lovell',
+  'Rebecca Kawaoka','Shiva Leisner','Amber Ferreira','Anne Basso','Antonia Milowsky','Jana Uderstadt',
 ])
 
 export const makeAthlete = (
