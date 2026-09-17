@@ -3,25 +3,8 @@ import path from 'node:path'
 import { createServer } from 'vite'
 
 const ROOT = process.cwd()
-const RESULTS_ROOT = path.join(ROOT, 'src/data/results')
-const CURATED_ATHLETE_FILES = [
-  path.join(ROOT, 'src/data/athletes/men.ts'),
-  path.join(ROOT, 'src/data/athletes/women.ts'),
-  path.join(ROOT, 'src/data/athletes/verifiedResultAthletes.ts'),
-]
 const EXPORT_PATH = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
 const EXPORT = process.argv.includes('--write')
-
-async function walk(dir) {
-  const entries = await fs.readdir(dir, { withFileTypes: true })
-  const files = []
-  for (const entry of entries) {
-    const full = path.join(dir, entry.name)
-    if (entry.isDirectory()) files.push(...await walk(full))
-    else if (/\.ts$/.test(entry.name) && entry.name !== 'index.ts') files.push(full)
-  }
-  return files
-}
 
 function normalizeName(value) {
   return value
@@ -34,62 +17,56 @@ function normalizeName(value) {
     .trim()
 }
 
-function existingNames(source) {
-  const names = new Set()
-  for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) names.add(normalizeName(match[1]))
-  for (const match of source.matchAll(/nameEn:\s*['"]([^'"]+)['"]/g)) names.add(normalizeName(match[1]))
-  return names
-}
-
-function parseObjects(source) {
-  const rows = []
-  for (const match of source.matchAll(/\{([\s\S]*?)\}/g)) {
-    const body = match[1]
-    const athleteName = body.match(/athleteName:\s*['"]([^'"]+)['"]/)?.[1]
-    if (!athleteName) continue
-    const gender = body.match(/gender:\s*['"]([MW])['"]/)?.[1]
-    const countryCode = body.match(/countryCode:\s*['"]([A-Z]{2,3})['"]/)?.[1]
-    rows.push({ athleteName, gender, countryCode })
-  }
-  return rows
-}
-
-async function loadRuntimeCatalog() {
+async function loadRuntimeData() {
   const server = await createServer({
     server: { middlewareMode: true },
     appType: 'custom',
     logLevel: 'error',
   })
   try {
-    const { athletes } = await server.ssrLoadModule('/src/data/athletes/index.ts')
-    return athletes
+    const [catalog, results, menModule, womenModule, verifiedModule] = await Promise.all([
+      server.ssrLoadModule('/src/data/athletes/index.ts'),
+      server.ssrLoadModule('/src/data/results/index.ts'),
+      server.ssrLoadModule('/src/data/athletes/men.ts'),
+      server.ssrLoadModule('/src/data/athletes/women.ts'),
+      server.ssrLoadModule('/src/data/athletes/verifiedResultAthletes.ts'),
+    ])
+    return {
+      athletes: catalog.athletes,
+      raceResults: results.raceResults,
+      curatedAthletes: [
+        ...(menModule.men ?? menModule.menAthletes ?? []),
+        ...(womenModule.women ?? womenModule.womenAthletes ?? []),
+        ...(verifiedModule.verifiedResultAthletes ?? []),
+      ],
+    }
   } finally {
     await server.close()
   }
 }
 
-const runtimeAthletes = await loadRuntimeCatalog()
+const { athletes: runtimeAthletes, raceResults, curatedAthletes } = await loadRuntimeData()
 const existing = new Set(runtimeAthletes.map((athlete) => normalizeName(athlete.nameEn)).filter(Boolean))
-const resultFiles = await walk(RESULTS_ROOT)
-const stats = new Map()
 
-for (const file of resultFiles) {
-  const source = await fs.readFile(file, 'utf8')
-  const sourceFile = path.relative(ROOT, file)
-  for (const row of parseObjects(source)) {
+function collectStats(excludedNames) {
+  const stats = new Map()
+  for (const row of raceResults) {
     const key = normalizeName(row.athleteName)
-    if (existing.has(key)) continue
-    const current = stats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), files: new Map(), starts: 0 }
+    if (!key || excludedNames.has(key)) continue
+    const current = stats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), editions: new Map(), starts: 0 }
     current.names.set(row.athleteName, (current.names.get(row.athleteName) ?? 0) + 1)
     current.starts += 1
     if (row.gender === 'M') current.M += 1
     else if (row.gender === 'W') current.W += 1
     else current.unknown += 1
     if (row.countryCode) current.countryCodes.set(row.countryCode, (current.countryCodes.get(row.countryCode) ?? 0) + 1)
-    current.files.set(sourceFile, (current.files.get(sourceFile) ?? 0) + 1)
+    if (row.raceEditionId) current.editions.set(row.raceEditionId, (current.editions.get(row.raceEditionId) ?? 0) + 1)
     stats.set(key, current)
   }
+  return stats
 }
+
+const stats = collectStats(existing)
 
 function inferredGender(item) {
   if (item.M > item.W) return 'M'
@@ -120,7 +97,7 @@ function printGroup(gender, limit = 50) {
 function printUnresolved() {
   const rows = [...stats.values()]
     .filter((item) => !inferredGender(item))
-    .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(b && preferredName(b)))
+    .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(preferredName(b)))
   console.log(`\nUNRESOLVED (${rows.length})`)
   rows.forEach((item, index) => {
     const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
@@ -128,8 +105,8 @@ function printUnresolved() {
       ? [...item.countryCodes.entries()].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])).map(([code, count]) => `${code}:${count}`).join(', ')
       : '???'
     console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | country ${countries} | rows ${item.starts} | gender M:${item.M} W:${item.W} missing:${item.unknown}${aliases}`)
-    for (const [file, count] of [...item.files.entries()].sort((a,b) => a[0].localeCompare(b[0]))) {
-      console.log(`    - ${file} | ${count} row(s)`)
+    for (const [edition, count] of [...item.editions.entries()].sort((a,b) => a[0].localeCompare(b[0]))) {
+      console.log(`    - ${edition} | ${count} row(s)`)
     }
   })
 }
@@ -139,24 +116,8 @@ function quote(value) {
 }
 
 async function writeGeneratedProfiles() {
-  const curatedSources = await Promise.all(CURATED_ATHLETE_FILES.map((file) => fs.readFile(file, 'utf8')))
-  const curated = new Set(curatedSources.flatMap((source) => [...existingNames(source)]))
-  const allStats = new Map()
-  for (const file of resultFiles) {
-    const source = await fs.readFile(file, 'utf8')
-    for (const row of parseObjects(source)) {
-      const key = normalizeName(row.athleteName)
-      if (curated.has(key)) continue
-      const current = allStats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), starts: 0 }
-      current.names.set(row.athleteName, (current.names.get(row.athleteName) ?? 0) + 1)
-      current.starts += 1
-      if (row.gender === 'M') current.M += 1
-      else if (row.gender === 'W') current.W += 1
-      else current.unknown += 1
-      if (row.countryCode) current.countryCodes.set(row.countryCode, (current.countryCodes.get(row.countryCode) ?? 0) + 1)
-      allStats.set(key, current)
-    }
-  }
+  const curated = new Set(curatedAthletes.map((athlete) => normalizeName(athlete.nameEn)).filter(Boolean))
+  const allStats = collectStats(curated)
   const rows = [...allStats.values()]
     .filter((item) => inferredGender(item))
     .sort((a,b) => inferredGender(a).localeCompare(inferredGender(b)) || preferredName(a).localeCompare(preferredName(b)))
@@ -164,7 +125,7 @@ async function writeGeneratedProfiles() {
   const lines = [
     "import type { Athlete } from '../../types/Athlete'",
     '',
-    '// Generated from result rows by: npm run find:next-athletes -- --write',
+    '// Generated from runtime result rows by: npm run find:next-athletes -- --write',
     '// Do not curate names, photos or biographies here; add a normal profile instead.',
     'export const resultAthletes: Athlete[] = [',
   ]
@@ -196,9 +157,10 @@ async function writeGeneratedProfiles() {
 }
 
 console.log(`Existing runtime catalog: ${runtimeAthletes.length} athlete profiles / ${existing.size} normalized identities`)
-console.log(`Uncatalogued normalized identities found in result files: ${stats.size}`)
+console.log(`Runtime result rows scanned: ${raceResults.length}`)
+console.log(`Uncatalogued normalized identities found in runtime results: ${stats.size}`)
 printGroup('M')
 printGroup('W')
 printUnresolved()
 if (EXPORT) await writeGeneratedProfiles()
-console.log('\nNote: coverage is checked against the actual runtime athlete catalog. Country codes come only from result rows that explicitly contain them.')
+console.log('\nNote: both catalog coverage and result rows are read from the actual runtime modules. Country codes come only from result rows that explicitly contain them.')
