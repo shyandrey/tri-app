@@ -35,8 +35,8 @@ async function loadRuntimeData() {
       athletes: catalog.athletes,
       raceResults: results.raceResults,
       curatedAthletes: [
-        ...(menModule.men ?? menModule.menAthletes ?? []),
-        ...(womenModule.women ?? womenModule.womenAthletes ?? []),
+        ...(menModule.maleAthletes ?? []),
+        ...(womenModule.femaleAthletes ?? []),
         ...(verifiedModule.verifiedResultAthletes ?? []),
       ],
     }
@@ -151,7 +151,8 @@ async function writeGeneratedProfiles() {
   })
   lines.push(']', '')
   await fs.writeFile(EXPORT_PATH, lines.join('\n'), 'utf8')
-  console.log(`\nWrote ${rows.length} result-derived athlete profile(s) to ${path.relative(ROOT, EXPORT_PATH)}`)
+  console.log(`\nCurated/verified identities excluded from generation: ${curated.size}`)
+  console.log(`Wrote ${rows.length} result-derived athlete profile(s) to ${path.relative(ROOT, EXPORT_PATH)}`)
   const unresolved = allStats.size - rows.length
   if (unresolved) console.log(`Skipped ${unresolved} identity/identities with unresolved gender; they remain visible in the audit.`)
 }
