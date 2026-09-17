@@ -7,9 +7,11 @@ const server = await createServer({
 })
 
 try {
-  const [{ raceResults }, { allRaceEditionViews }] = await Promise.all([
+  const [{ raceResults }, { allRaceEditionViews }, { athletes }, { normalizeAthleteIdentityName, resolveAthleteId }] = await Promise.all([
     server.ssrLoadModule('/src/data/results/index.ts'),
     server.ssrLoadModule('/src/data/raceEditions.ts'),
+    server.ssrLoadModule('/src/data/athletes/index.ts'),
+    server.ssrLoadModule('/src/data/athleteIdentity.ts'),
   ])
 
   const errors = []
@@ -20,6 +22,33 @@ try {
   const editionById = new Map(allRaceEditionViews.map((edition) => [edition.editionId, edition]))
   const resultIds = new Map()
   const athleteKeys = new Map()
+  const athleteIds = new Map()
+  const normalizedAthleteNames = new Map()
+  const catalogAthleteIds = new Set(athletes.map((athlete) => athlete.id))
+  let linkedResultRows = 0
+
+  for (const athlete of athletes) {
+    if (athleteIds.has(athlete.id)) {
+      errors.push(`Duplicate athlete id ${athlete.id}: ${athleteIds.get(athlete.id)} / ${athlete.nameEn || athlete.name}`)
+    } else {
+      athleteIds.set(athlete.id, athlete.nameEn || athlete.name)
+    }
+
+    if (!athlete.nameEn) {
+      errors.push(`Missing athlete nameEn: id ${athlete.id} — ${athlete.name}`)
+      continue
+    }
+
+    const normalizedName = normalizeAthleteIdentityName(athlete.nameEn)
+    if (!normalizedName) {
+      errors.push(`Empty normalized athlete identity: id ${athlete.id} — ${athlete.nameEn}`)
+    } else if (normalizedAthleteNames.has(normalizedName)) {
+      const previous = normalizedAthleteNames.get(normalizedName)
+      errors.push(`Duplicate normalized athlete identity "${normalizedName}": ${previous.name} [id ${previous.id}] / ${athlete.nameEn} [id ${athlete.id}]`)
+    } else {
+      normalizedAthleteNames.set(normalizedName, { id: athlete.id, name: athlete.nameEn })
+    }
+  }
 
   const parseTime = (value) => {
     if (!value) return undefined
@@ -46,6 +75,19 @@ try {
   ])
 
   for (const result of raceResults) {
+    const resolvedAthleteId = resolveAthleteId(result.athleteName)
+    if (resolvedAthleteId === undefined) {
+      errors.push(`Unlinked result athlete: ${result.raceEditionId ?? '?'} — ${result.athleteName} [result id ${result.id}]`)
+    } else if (!catalogAthleteIds.has(resolvedAthleteId)) {
+      errors.push(`Resolved athlete id ${resolvedAthleteId} is missing from catalog: ${result.raceEditionId ?? '?'} — ${result.athleteName}`)
+    } else {
+      linkedResultRows += 1
+    }
+
+    if (result.athleteId !== undefined && resolvedAthleteId !== undefined && result.athleteId !== resolvedAthleteId) {
+      errors.push(`Athlete id mismatch: ${result.raceEditionId ?? '?'} — ${result.athleteName} has ${result.athleteId}, resolves to ${resolvedAthleteId}`)
+    }
+
     if (resultIds.has(result.id)) {
       errors.push(`Duplicate result id ${result.id}: ${resultIds.get(result.id)} / ${result.athleteName}`)
     } else {
@@ -159,6 +201,10 @@ try {
   info.push(`Race editions: ${allRaceEditionViews.length}`)
   info.push(`Editions with results: ${editionsWithResults.length}`)
   info.push(`Unique result IDs: ${resultIds.size}`)
+  info.push(`Athlete profiles: ${athletes.length}`)
+  info.push(`Unique athlete IDs: ${athleteIds.size}`)
+  info.push(`Unique athlete identities: ${normalizedAthleteNames.size}`)
+  info.push(`Result rows linked to athlete profiles: ${linkedResultRows}/${raceResults.length}`)
   info.push(`Verified source anomalies: ${sourceNotes.length}`)
 
   console.log('\nTRI APP — RESULTS SANITY CHECK')
