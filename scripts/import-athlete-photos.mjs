@@ -17,6 +17,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Ari Klau','Benjamin Randall','Brad Bischoff','Brian Folts','David Reynolds',
   'Dries Matthys','Dylan Clough','Dylan Thissen','Erwan Jacobi','Florin Parfuss',
   'Fraser Minnican','Jack Sosinski','Jens Emil Nielsen','Joona Lehtonen','Stephanie Clutterbuck',
+  'Abbie Sullivan','Adele Likin','Charlotte McShane','Nikita Paskiewiez','Sarah Karpinski',
 ])
 const PROFILE_SLUG_OVERRIDES = {
   'Magnus Ditlev': 'magnus-elbaek-ditlev', 'Daniel Bækkegård': 'daniel-baekkegard', 'Kristian Høgenhaug': 'kristian-hogenhaug',
