@@ -67,16 +67,18 @@ const stats = new Map()
 
 for (const file of resultFiles) {
   const source = await fs.readFile(file, 'utf8')
+  const sourceFile = path.relative(ROOT, file)
   for (const row of parseObjects(source)) {
     const key = normalizeName(row.athleteName)
     if (existing.has(key)) continue
-    const current = stats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), starts: 0 }
+    const current = stats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), files: new Map(), starts: 0 }
     current.names.set(row.athleteName, (current.names.get(row.athleteName) ?? 0) + 1)
     current.starts += 1
     if (row.gender === 'M') current.M += 1
     else if (row.gender === 'W') current.W += 1
     else current.unknown += 1
     if (row.countryCode) current.countryCodes.set(row.countryCode, (current.countryCodes.get(row.countryCode) ?? 0) + 1)
+    current.files.set(sourceFile, (current.files.get(sourceFile) ?? 0) + 1)
     stats.set(key, current)
   }
 }
@@ -112,7 +114,13 @@ function printUnresolved() {
   console.log(`\nUNRESOLVED (${rows.length})`)
   rows.forEach((item, index) => {
     const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
-    console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | ${topCountry(item) ?? '???'} | rows ${item.starts} | gender M:${item.M} W:${item.W} missing:${item.unknown}${aliases}`)
+    const countries = item.countryCodes.size
+      ? [...item.countryCodes.entries()].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])).map(([code, count]) => `${code}:${count}`).join(', ')
+      : '???'
+    console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | country ${countries} | rows ${item.starts} | gender M:${item.M} W:${item.W} missing:${item.unknown}${aliases}`)
+    for (const [file, count] of [...item.files.entries()].sort((a,b) => a[0].localeCompare(b[0]))) {
+      console.log(`    - ${file} | ${count} row(s)`)
+    }
   })
 }
 
