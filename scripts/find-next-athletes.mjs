@@ -3,12 +3,16 @@ import path from 'node:path'
 
 const ROOT = process.cwd()
 const RESULTS_ROOT = path.join(ROOT, 'src/data/results')
-const ATHLETE_FILES = [
+const CURATED_ATHLETE_FILES = [
   path.join(ROOT, 'src/data/athletes/men.ts'),
   path.join(ROOT, 'src/data/athletes/women.ts'),
-  path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts'),
+  path.join(ROOT, 'src/data/athletes/verifiedResultAthletes.ts'),
 ]
 const EXPORT_PATH = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
+const ATHLETE_FILES = [
+  ...CURATED_ATHLETE_FILES,
+  EXPORT_PATH,
+]
 const EXPORT = process.argv.includes('--write')
 
 async function walk(dir) {
@@ -129,7 +133,7 @@ function quote(value) {
 }
 
 async function writeGeneratedProfiles() {
-  const curatedSources = await Promise.all(ATHLETE_FILES.slice(0, 2).map((file) => fs.readFile(file, 'utf8')))
+  const curatedSources = await Promise.all(CURATED_ATHLETE_FILES.map((file) => fs.readFile(file, 'utf8')))
   const curated = new Set(curatedSources.flatMap((source) => [...existingNames(source)]))
   const allStats = new Map()
   for (const file of resultFiles) {
