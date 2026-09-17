@@ -18,6 +18,7 @@ const VERIFIED_NO_PHOTO_NAMES = new Set([
   'Dries Matthys','Dylan Clough','Dylan Thissen','Erwan Jacobi','Florin Parfuss',
   'Fraser Minnican','Jack Sosinski','Jens Emil Nielsen','Joona Lehtonen','Stephanie Clutterbuck',
   'Abbie Sullivan','Adele Likin','Charlotte McShane','Nikita Paskiewiez','Sarah Karpinski',
+  'Annette Rogers','Carolyn Olsen','Leslie Homol','Luisa Iogna Prat','Marissa Lovell',
 ])
 const PROFILE_SLUG_OVERRIDES = {
   'Magnus Ditlev': 'magnus-elbaek-ditlev', 'Daniel Bækkegård': 'daniel-baekkegard', 'Kristian Høgenhaug': 'kristian-hogenhaug',
