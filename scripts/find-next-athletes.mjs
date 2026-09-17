@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { createServer } from 'vite'
 
 const ROOT = process.cwd()
 const RESULTS_ROOT = path.join(ROOT, 'src/data/results')
@@ -9,10 +10,6 @@ const CURATED_ATHLETE_FILES = [
   path.join(ROOT, 'src/data/athletes/verifiedResultAthletes.ts'),
 ]
 const EXPORT_PATH = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
-const ATHLETE_FILES = [
-  ...CURATED_ATHLETE_FILES,
-  EXPORT_PATH,
-]
 const EXPORT = process.argv.includes('--write')
 
 async function walk(dir) {
@@ -57,15 +54,22 @@ function parseObjects(source) {
   return rows
 }
 
-const athleteSources = await Promise.all(ATHLETE_FILES.map(async (file) => {
+async function loadRuntimeCatalog() {
+  const server = await createServer({
+    server: { middlewareMode: true },
+    appType: 'custom',
+    logLevel: 'error',
+  })
   try {
-    return await fs.readFile(file, 'utf8')
-  } catch (error) {
-    if (error?.code === 'ENOENT' && file === EXPORT_PATH) return ''
-    throw error
+    const { athletes } = await server.ssrLoadModule('/src/data/athletes/index.ts')
+    return athletes
+  } finally {
+    await server.close()
   }
-}))
-const existing = new Set(athleteSources.flatMap((source) => [...existingNames(source)]))
+}
+
+const runtimeAthletes = await loadRuntimeCatalog()
+const existing = new Set(runtimeAthletes.map((athlete) => normalizeName(athlete.nameEn)).filter(Boolean))
 const resultFiles = await walk(RESULTS_ROOT)
 const stats = new Map()
 
@@ -104,17 +108,19 @@ function sortedRows(gender) {
     .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(preferredName(b)))
 }
 function printGroup(gender, limit = 50) {
-  const rows = sortedRows(gender).slice(0, limit)
-  console.log(`\n${gender === 'M' ? 'MEN' : 'WOMEN'} (${rows.length})`)
+  const allRows = sortedRows(gender)
+  const rows = allRows.slice(0, limit)
+  console.log(`\n${gender === 'M' ? 'MEN' : 'WOMEN'} (${allRows.length})`)
   rows.forEach((item, index) => {
     const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
     console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | ${topCountry(item) ?? '???'} | ${item.starts} result row(s)${aliases}`)
   })
+  if (allRows.length > rows.length) console.log(`    ... ${allRows.length - rows.length} more`)
 }
 function printUnresolved() {
   const rows = [...stats.values()]
     .filter((item) => !inferredGender(item))
-    .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(preferredName(b)))
+    .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(b && preferredName(b)))
   console.log(`\nUNRESOLVED (${rows.length})`)
   rows.forEach((item, index) => {
     const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
@@ -189,10 +195,10 @@ async function writeGeneratedProfiles() {
   if (unresolved) console.log(`Skipped ${unresolved} identity/identities with unresolved gender; they remain visible in the audit.`)
 }
 
-console.log(`Existing catalog: ${existing.size} athletes`)
+console.log(`Existing runtime catalog: ${runtimeAthletes.length} athlete profiles / ${existing.size} normalized identities`)
 console.log(`Uncatalogued normalized identities found in result files: ${stats.size}`)
 printGroup('M')
 printGroup('W')
 printUnresolved()
 if (EXPORT) await writeGeneratedProfiles()
-console.log('\nNote: catalog/result names are compared with the same normalization used by athlete identity linking. Country codes come only from result rows that explicitly contain them.')
+console.log('\nNote: coverage is checked against the actual runtime athlete catalog. Country codes come only from result rows that explicitly contain them.')
