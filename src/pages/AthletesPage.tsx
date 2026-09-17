@@ -3,74 +3,20 @@ import type { Athlete, AthleteGender } from '../types/Athlete'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 
-type AthletesPageProps = {
-  athletes: Athlete[]
-  onBack: () => void
-  onAthleteClick: (athlete: Athlete) => void
-  onNavigate: (page: Page) => void
-}
-
+type AthletesPageProps = { athletes: Athlete[]; onBack: () => void; onAthleteClick: (athlete: Athlete) => void; onNavigate: (page: Page) => void }
 type GenderFilter = 'ALL' | AthleteGender
-
 type CountryFilter = { key: string; label: string; flag: string; count: number }
-
-const EN_KEYS = "qwertyuiop[]asdfghjkl;'zxcvbnm,."
-const RU_KEYS = 'йцукенгшщзхъфывапролджэячсмитьбю'
-
-function swapKeyboardLayout(value: string) {
-  const lower = value.toLowerCase()
-  return Array.from(lower, (char) => {
-    const enIndex = EN_KEYS.indexOf(char)
-    if (enIndex >= 0) return RU_KEYS[enIndex]
-    const ruIndex = RU_KEYS.indexOf(char)
-    if (ruIndex >= 0) return EN_KEYS[ruIndex]
-    return char
-  }).join('')
-}
-
-function normalizeSearch(value: string) { return value.trim().toLowerCase().replace(/ё/g, 'е') }
-
-function AthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: AthletesPageProps) {
-  const [search, setSearch] = useState('')
-  const [genderFilter, setGenderFilter] = useState<GenderFilter>('ALL')
-  const [countryFilter, setCountryFilter] = useState('ALL')
-
-  const genderCounts = useMemo(() => ({ ALL: athletes.length, M: athletes.filter(a => a.gender === 'M').length, W: athletes.filter(a => a.gender === 'W').length }), [athletes])
-  const genderFilteredAthletes = useMemo(() => athletes.filter(a => genderFilter === 'ALL' || a.gender === genderFilter), [athletes, genderFilter])
-  const countryOrder = useMemo(() => {
-    const byCountry = new Map<string, CountryFilter>()
-    athletes.forEach((athlete) => {
-      const key = athlete.countryCode ?? athlete.country
-      const current = byCountry.get(key)
-      if (current) { current.count += 1; return }
-      byCountry.set(key, { key, label: athlete.countryCode ?? athlete.country, flag: athlete.flag, count: 1 })
-    })
-    return Array.from(byCountry.values()).sort((a,b)=>b.count-a.count||a.label.localeCompare(b.label)).map(({key,label,flag})=>({key,label,flag}))
-  }, [athletes])
-  const countries = useMemo<CountryFilter[]>(() => {
-    const counts = new Map<string, number>()
-    genderFilteredAthletes.forEach(a => { const key=a.countryCode??a.country; counts.set(key,(counts.get(key)??0)+1) })
-    return countryOrder.map(c=>({...c,count:counts.get(c.key)??0}))
-  }, [countryOrder, genderFilteredAthletes])
-  const visibleAthletes = useMemo(() => {
-    const query=normalizeSearch(search), swappedQuery=normalizeSearch(swapKeyboardLayout(search)), queries=[...new Set([query,swappedQuery].filter(Boolean))]
-    return genderFilteredAthletes.filter((athlete) => {
-      const athleteCountryKey=athlete.countryCode??athlete.country
-      const matchesCountry=countryFilter==='ALL'||athleteCountryKey===countryFilter
-      const haystack=normalizeSearch([athlete.name,athlete.nameEn,athlete.country,athlete.countryEn,athlete.countryCode,athlete.discipline].filter(Boolean).join(' '))
-      return matchesCountry&&(queries.length===0||queries.some(candidate=>haystack.includes(candidate)))
-    })
-  }, [countryFilter,genderFilteredAthletes,search])
-
-  return <main className="app app--athletes">
-    <button className="page-back-button" onClick={onBack}>← Назад</button>
-    <section className="section athletes-page">
-      <div className="section__header athletes-page__header"><div><h1>Профили атлетов</h1></div></div>
-      <div className="calendar-search-wrap athletes-search-wrap"><input className="calendar-search athletes-search" type="text" placeholder="Найти атлета..." value={search} onChange={e=>setSearch(e.target.value)}/>{search&&<button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={()=>setSearch('')}>×</button>}</div>
-      <div className="athletes-gender-filter" aria-label="Пол атлета">{([{value:'ALL',label:'ALL',symbol:'◎'},{value:'M',label:'MEN',symbol:'♂'},{value:'W',label:'WOMEN',symbol:'♀'}] as const).map(item=><button key={item.value} type="button" className={genderFilter===item.value?'athletes-gender-card is-active':'athletes-gender-card'} onClick={()=>setGenderFilter(item.value)}><span className="athletes-gender-card__symbol">{item.symbol}</span><span className="athletes-gender-card__label">{item.label}</span><span className="athletes-gender-card__count">{genderCounts[item.value]}</span></button>)}</div>
-      <div className="athletes-country-scroller" aria-label="Фильтр по стране"><button type="button" className={countryFilter==='ALL'?'athletes-country-chip is-active':'athletes-country-chip'} onClick={()=>setCountryFilter('ALL')}><span className="athletes-country-chip__flag">🌍</span><span className="athletes-country-chip__code">ALL</span><span className="athletes-country-chip__count">{genderFilteredAthletes.length}</span></button>{countries.map(country=><button key={country.key} type="button" className={countryFilter===country.key?'athletes-country-chip is-active':'athletes-country-chip'} onClick={()=>setCountryFilter(country.key)}><span className="athletes-country-chip__flag">{country.flag}</span><span className="athletes-country-chip__code">{country.label}</span><span className="athletes-country-chip__count">{country.count}</span></button>)}</div>
-      <div className="athletes-list athletes-list--profiles">{visibleAthletes.map(athlete=><article className={`athlete-card athlete-card--profile${athlete.image?'':' athlete-card--no-photo'}`} key={athlete.id} onClick={()=>onAthleteClick(athlete)}>{athlete.image&&<div className="athlete-card__portrait-wrap"><img className="athlete-card__image" src={athlete.image} alt=""/><span className="athlete-card__flag-badge">{athlete.flag}</span></div>}<div className="athlete-card__info"><h3>{athlete.name}</h3>{athlete.nameEn&&<span className="athlete-card__name-en">{athlete.nameEn}</span>}<p>{athlete.image?null:<>{athlete.flag} </>}{athlete.countryCode??athlete.country} · {athlete.country}</p></div><span className="athlete-card__arrow">›</span></article>)}{visibleAthletes.length===0&&<div className="athletes-empty"><strong>Атлеты не найдены</strong><span>Попробуй изменить страну, пол или поисковый запрос.</span></div>}</div>
-    </section><BottomNav currentPage="athletes" onNavigate={onNavigate}/>
-  </main>
+const EN_KEYS="qwertyuiop[]asdfghjkl;'zxcvbnm,.",RU_KEYS='йцукенгшщзхъфывапролджэячсмитьбю'
+function swapKeyboardLayout(value:string){const lower=value.toLowerCase();return Array.from(lower,char=>{const e=EN_KEYS.indexOf(char);if(e>=0)return RU_KEYS[e];const r=RU_KEYS.indexOf(char);if(r>=0)return EN_KEYS[r];return char}).join('')}
+function normalizeSearch(value:string){return value.trim().toLowerCase().replace(/ё/g,'е')}
+function englishInitials(name:string){const parts=name.trim().split(/\s+/).filter(Boolean);if(!parts.length)return'?';return `${parts[0]?.[0]??''}${parts.length>1?parts[parts.length-1]?.[0]??'':''}`.toUpperCase()}
+function AthletesPage({athletes,onBack,onAthleteClick,onNavigate}:AthletesPageProps){
+ const[search,setSearch]=useState(''),[genderFilter,setGenderFilter]=useState<GenderFilter>('ALL'),[countryFilter,setCountryFilter]=useState('ALL')
+ const genderCounts=useMemo(()=>({ALL:athletes.length,M:athletes.filter(a=>a.gender==='M').length,W:athletes.filter(a=>a.gender==='W').length}),[athletes])
+ const genderFilteredAthletes=useMemo(()=>athletes.filter(a=>genderFilter==='ALL'||a.gender===genderFilter),[athletes,genderFilter])
+ const countryOrder=useMemo(()=>{const byCountry=new Map<string,CountryFilter>();athletes.forEach(a=>{const key=a.countryCode??a.country,current=byCountry.get(key);if(current){current.count+=1;return}byCountry.set(key,{key,label:a.countryCode??a.country,flag:a.flag,count:1})});return Array.from(byCountry.values()).sort((a,b)=>b.count-a.count||a.label.localeCompare(b.label)).map(({key,label,flag})=>({key,label,flag}))},[athletes])
+ const countries=useMemo<CountryFilter[]>(()=>{const counts=new Map<string,number>();genderFilteredAthletes.forEach(a=>{const key=a.countryCode??a.country;counts.set(key,(counts.get(key)??0)+1)});return countryOrder.map(c=>({...c,count:counts.get(c.key)??0}))},[countryOrder,genderFilteredAthletes])
+ const visibleAthletes=useMemo(()=>{const query=normalizeSearch(search),swappedQuery=normalizeSearch(swapKeyboardLayout(search)),queries=[...new Set([query,swappedQuery].filter(Boolean))];return genderFilteredAthletes.filter(a=>{const key=a.countryCode??a.country,matchesCountry=countryFilter==='ALL'||key===countryFilter,haystack=normalizeSearch([a.name,a.nameEn,a.country,a.countryEn,a.countryCode,a.discipline].filter(Boolean).join(' '));return matchesCountry&&(queries.length===0||queries.some(q=>haystack.includes(q)))})},[countryFilter,genderFilteredAthletes,search])
+ return <main className="app app--athletes"><button className="page-back-button" onClick={onBack}>← Назад</button><section className="section athletes-page"><div className="section__header athletes-page__header"><div><h1>Профили атлетов</h1></div></div><div className="calendar-search-wrap athletes-search-wrap"><input className="calendar-search athletes-search" type="text" placeholder="Найти атлета..." value={search} onChange={e=>setSearch(e.target.value)}/>{search&&<button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={()=>setSearch('')}>×</button>}</div><div className="athletes-gender-filter" aria-label="Пол атлета">{([{value:'ALL',label:'ALL',symbol:'◎'},{value:'M',label:'MEN',symbol:'♂'},{value:'W',label:'WOMEN',symbol:'♀'}] as const).map(item=><button key={item.value} type="button" className={genderFilter===item.value?'athletes-gender-card is-active':'athletes-gender-card'} onClick={()=>setGenderFilter(item.value)}><span className="athletes-gender-card__symbol">{item.symbol}</span><span className="athletes-gender-card__label">{item.label}</span><span className="athletes-gender-card__count">{genderCounts[item.value]}</span></button>)}</div><div className="athletes-country-scroller" aria-label="Фильтр по стране"><button type="button" className={countryFilter==='ALL'?'athletes-country-chip is-active':'athletes-country-chip'} onClick={()=>setCountryFilter('ALL')}><span className="athletes-country-chip__flag">🌍</span><span className="athletes-country-chip__code">ALL</span><span className="athletes-country-chip__count">{genderFilteredAthletes.length}</span></button>{countries.map(c=><button key={c.key} type="button" className={countryFilter===c.key?'athletes-country-chip is-active':'athletes-country-chip'} onClick={()=>setCountryFilter(c.key)}><span className="athletes-country-chip__flag">{c.flag}</span><span className="athletes-country-chip__code">{c.label}</span><span className="athletes-country-chip__count">{c.count}</span></button>)}</div><div className="athletes-list athletes-list--profiles">{visibleAthletes.map(a=><article className="athlete-card athlete-card--profile" key={a.id} onClick={()=>onAthleteClick(a)}><div className="athlete-card__portrait-wrap">{a.image?<img className="athlete-card__image" src={a.image} alt=""/>:<div className="athlete-card__image--placeholder" aria-label={`No photo for ${a.nameEn}`}><span>{englishInitials(a.nameEn||a.name)}</span></div>}<span className="athlete-card__flag-badge">{a.flag}</span></div><div className="athlete-card__info"><h3>{a.name}</h3>{a.nameEn&&<span className="athlete-card__name-en">{a.nameEn}</span>}<p>{a.countryCode??a.country} · {a.country}</p></div><span className="athlete-card__arrow">›</span></article>)}{visibleAthletes.length===0&&<div className="athletes-empty"><strong>Атлеты не найдены</strong><span>Попробуй изменить страну, пол или поисковый запрос.</span></div>}</div></section><BottomNav currentPage="athletes" onNavigate={onNavigate}/></main>
 }
 export default AthletesPage
