@@ -105,6 +105,16 @@ function printGroup(gender, limit = 50) {
     console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | ${topCountry(item) ?? '???'} | ${item.starts} result row(s)${aliases}`)
   })
 }
+function printUnresolved() {
+  const rows = [...stats.values()]
+    .filter((item) => !inferredGender(item))
+    .sort((a,b) => b.starts-a.starts || preferredName(a).localeCompare(preferredName(b)))
+  console.log(`\nUNRESOLVED (${rows.length})`)
+  rows.forEach((item, index) => {
+    const aliases = item.names.size > 1 ? ` | aliases: ${[...item.names.keys()].join(' / ')}` : ''
+    console.log(`${String(index+1).padStart(2,' ')}. ${preferredName(item)} | ${topCountry(item) ?? '???'} | rows ${item.starts} | gender M:${item.M} W:${item.W} missing:${item.unknown}${aliases}`)
+  })
+}
 
 function quote(value) {
   return JSON.stringify(value)
@@ -171,5 +181,6 @@ console.log(`Existing catalog: ${existing.size} athletes`)
 console.log(`Uncatalogued normalized identities found in result files: ${stats.size}`)
 printGroup('M')
 printGroup('W')
+printUnresolved()
 if (EXPORT) await writeGeneratedProfiles()
 console.log('\nNote: catalog/result names are compared with the same normalization used by athlete identity linking. Country codes come only from result rows that explicitly contain them.')
