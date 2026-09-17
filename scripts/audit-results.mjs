@@ -57,14 +57,6 @@ try {
     }
   }
 
-  const diagnosticNames = ['Sam Laidlow', 'Alistair Brownlee', 'Anne Haug', 'Michael Boult', 'Henri Schoeman']
-  info.push(`Catalog ID ranges: curated(1-9999)=${athletes.filter((athlete) => athlete.id < 10000).length}, generated(10000-19999)=${athletes.filter((athlete) => athlete.id >= 10000 && athlete.id < 20000).length}, verified(20000+)=${athletes.filter((athlete) => athlete.id >= 20000).length}`)
-  for (const name of diagnosticNames) {
-    const normalized = normalizeAthleteIdentityName(name)
-    const match = normalizedAthleteNames.get(normalized)
-    info.push(`Catalog probe ${name}: ${match ? `FOUND id=${match.id} name=${match.name}` : 'MISSING'}`)
-  }
-
   const resolveAuditedAthleteId = (athleteName) =>
     normalizedAthleteNames.get(normalizeAthleteIdentityName(athleteName))?.id
 
@@ -213,15 +205,15 @@ try {
   const resultEditionIds = new Set(raceResults.map((result) => result.raceEditionId).filter(Boolean))
   const editionsWithResults = allRaceEditionViews.filter((edition) => resultEditionIds.has(edition.editionId))
 
-  info.unshift(`Race results: ${raceResults.length}`)
-  info.unshift(`Race editions: ${allRaceEditionViews.length}`)
-  info.unshift(`Editions with results: ${editionsWithResults.length}`)
-  info.unshift(`Unique result IDs: ${resultIds.size}`)
-  info.unshift(`Athlete profiles: ${athletes.length}`)
-  info.unshift(`Unique athlete IDs: ${athleteIds.size}`)
-  info.unshift(`Unique athlete identities: ${normalizedAthleteNames.size}`)
-  info.unshift(`Result rows linked to athlete profiles: ${linkedResultRows}/${raceResults.length}`)
-  info.unshift(`Verified source anomalies: ${sourceNotes.length}`)
+  info.push(`Race results: ${raceResults.length}`)
+  info.push(`Race editions: ${allRaceEditionViews.length}`)
+  info.push(`Editions with results: ${editionsWithResults.length}`)
+  info.push(`Unique result IDs: ${resultIds.size}`)
+  info.push(`Athlete profiles: ${athletes.length}`)
+  info.push(`Unique athlete IDs: ${athleteIds.size}`)
+  info.push(`Unique athlete identities: ${normalizedAthleteNames.size}`)
+  info.push(`Result rows linked to athlete profiles: ${linkedResultRows}/${raceResults.length}`)
+  info.push(`Verified source anomalies: ${sourceNotes.length}`)
 
   console.log('\nTRI APP — RESULTS SANITY CHECK')
   console.log('================================')
