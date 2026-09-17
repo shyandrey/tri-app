@@ -6,6 +6,7 @@ const RESULTS_ROOT = path.join(ROOT, 'src/data/results')
 const ATHLETE_FILES = [
   path.join(ROOT, 'src/data/athletes/men.ts'),
   path.join(ROOT, 'src/data/athletes/women.ts'),
+  path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts'),
 ]
 const EXPORT_PATH = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
 const EXPORT = process.argv.includes('--write')
@@ -35,7 +36,7 @@ function normalizeName(value) {
 function existingNames(source) {
   const names = new Set()
   for (const match of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g)) names.add(normalizeName(match[1]))
-  for (const match of source.matchAll(/nameEn:\s*'([^']+)'/g)) names.add(normalizeName(match[1]))
+  for (const match of source.matchAll(/nameEn:\s*['"]([^'"]+)['"]/g)) names.add(normalizeName(match[1]))
   return names
 }
 
@@ -52,7 +53,14 @@ function parseObjects(source) {
   return rows
 }
 
-const athleteSources = await Promise.all(ATHLETE_FILES.map((file) => fs.readFile(file, 'utf8')))
+const athleteSources = await Promise.all(ATHLETE_FILES.map(async (file) => {
+  try {
+    return await fs.readFile(file, 'utf8')
+  } catch (error) {
+    if (error?.code === 'ENOENT' && file === EXPORT_PATH) return ''
+    throw error
+  }
+}))
 const existing = new Set(athleteSources.flatMap((source) => [...existingNames(source)]))
 const resultFiles = await walk(RESULTS_ROOT)
 const stats = new Map()
@@ -103,7 +111,25 @@ function quote(value) {
 }
 
 async function writeGeneratedProfiles() {
-  const rows = [...stats.values()]
+  const curatedSources = await Promise.all(ATHLETE_FILES.slice(0, 2).map((file) => fs.readFile(file, 'utf8')))
+  const curated = new Set(curatedSources.flatMap((source) => [...existingNames(source)]))
+  const allStats = new Map()
+  for (const file of resultFiles) {
+    const source = await fs.readFile(file, 'utf8')
+    for (const row of parseObjects(source)) {
+      const key = normalizeName(row.athleteName)
+      if (curated.has(key)) continue
+      const current = allStats.get(key) ?? { key, names: new Map(), M: 0, W: 0, unknown: 0, countryCodes: new Map(), starts: 0 }
+      current.names.set(row.athleteName, (current.names.get(row.athleteName) ?? 0) + 1)
+      current.starts += 1
+      if (row.gender === 'M') current.M += 1
+      else if (row.gender === 'W') current.W += 1
+      else current.unknown += 1
+      if (row.countryCode) current.countryCodes.set(row.countryCode, (current.countryCodes.get(row.countryCode) ?? 0) + 1)
+      allStats.set(key, current)
+    }
+  }
+  const rows = [...allStats.values()]
     .filter((item) => inferredGender(item))
     .sort((a,b) => inferredGender(a).localeCompare(inferredGender(b)) || preferredName(a).localeCompare(preferredName(b)))
 
@@ -137,7 +163,7 @@ async function writeGeneratedProfiles() {
   lines.push(']', '')
   await fs.writeFile(EXPORT_PATH, lines.join('\n'), 'utf8')
   console.log(`\nWrote ${rows.length} result-derived athlete profile(s) to ${path.relative(ROOT, EXPORT_PATH)}`)
-  const unresolved = stats.size - rows.length
+  const unresolved = allStats.size - rows.length
   if (unresolved) console.log(`Skipped ${unresolved} identity/identities with unresolved gender; they remain visible in the audit.`)
 }
 
