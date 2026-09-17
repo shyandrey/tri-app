@@ -7,11 +7,10 @@ const server = await createServer({
 })
 
 try {
-  const [{ raceResults }, { allRaceEditionViews }, { athletes }, { normalizeAthleteIdentityName, resolveAthleteId }] = await Promise.all([
+  const [{ raceResults }, { allRaceEditionViews }, { athletes }] = await Promise.all([
     server.ssrLoadModule('/src/data/results/index.ts'),
     server.ssrLoadModule('/src/data/raceEditions.ts'),
     server.ssrLoadModule('/src/data/athletes/index.ts'),
-    server.ssrLoadModule('/src/data/athleteIdentity.ts'),
   ])
 
   const errors = []
@@ -19,12 +18,20 @@ try {
   const info = []
   const sourceNotes = []
 
+  const normalizeAthleteIdentityName = (value) => value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/['’`.-]/g, ' ')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+
   const editionById = new Map(allRaceEditionViews.map((edition) => [edition.editionId, edition]))
   const resultIds = new Map()
   const athleteKeys = new Map()
   const athleteIds = new Map()
   const normalizedAthleteNames = new Map()
-  const catalogAthleteIds = new Set(athletes.map((athlete) => athlete.id))
   let linkedResultRows = 0
 
   for (const athlete of athletes) {
@@ -49,6 +56,9 @@ try {
       normalizedAthleteNames.set(normalizedName, { id: athlete.id, name: athlete.nameEn })
     }
   }
+
+  const resolveAuditedAthleteId = (athleteName) =>
+    normalizedAthleteNames.get(normalizeAthleteIdentityName(athleteName))?.id
 
   const parseTime = (value) => {
     if (!value) return undefined
@@ -75,11 +85,9 @@ try {
   ])
 
   for (const result of raceResults) {
-    const resolvedAthleteId = resolveAthleteId(result.athleteName)
+    const resolvedAthleteId = resolveAuditedAthleteId(result.athleteName)
     if (resolvedAthleteId === undefined) {
       errors.push(`Unlinked result athlete: ${result.raceEditionId ?? '?'} — ${result.athleteName} [result id ${result.id}]`)
-    } else if (!catalogAthleteIds.has(resolvedAthleteId)) {
-      errors.push(`Resolved athlete id ${resolvedAthleteId} is missing from catalog: ${result.raceEditionId ?? '?'} — ${result.athleteName}`)
     } else {
       linkedResultRows += 1
     }
