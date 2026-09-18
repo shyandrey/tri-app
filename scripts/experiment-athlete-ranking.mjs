@@ -85,7 +85,8 @@ try {
   }
 
   const models = [
-    { id: 'E', label: 'candidate: p^-0.65, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50 },
+    { id: 'E', label: 'weighted-average: p^-0.65, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: false },
+    { id: 'F', label: 'direct-prestige: p^-0.65, A x1.20, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: true },
   ]
 
   const resultsByAthlete = new Map()
@@ -118,7 +119,7 @@ try {
         if (result.position === 1) sWins += 1
       }
       numerator += score * weight
-      denominator += weight
+      denominator += model.directPrestige ? recency : weight
       if (typeof result.position === 'number') {
         finishes += 1
         if (result.position === 1) wins += 1
@@ -206,7 +207,8 @@ try {
   console.log('A: Frankfurt, Hamburg, Texas, Challenge Roth, regular T100')
   console.log('B: other races currently in the database')
   console.log('Recency: 730-day half-life; DNS excluded; DNF/DSQ = 0 and count as starts.')
-  console.log('Model E: S-tier podium bonuses are +50% / +25% / +15% before race and recency weighting.')
+  console.log('Model E: tier multipliers weight the average; S-tier podium bonuses are +50% / +25% / +15%.')
+  console.log('Model F: tier multipliers directly increase performance; denominator uses recency only; S-tier podium bonuses remain +50% / +25% / +15%.')
   console.log('Activity confidence: 1=.45, 2=.60, 3=.72, 4=.80, 5=.86, 6=.90, 8=.94, 10=.97, 12+=1.00 (linear interpolation).')
 } finally {
   await server.close()
