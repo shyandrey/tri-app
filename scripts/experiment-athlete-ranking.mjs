@@ -37,7 +37,7 @@ try {
   const isRoth = (edition) => /challenge roth/i.test(edition?.name || '')
 
   function raceTier(edition) {
-    if (isWorldChampionship(edition) || isT100Final(edition)) return { tier: 'S', weight: 1.4 }
+    if (isWorldChampionship(edition) || isT100Final(edition)) return { tier: 'S', weight: 1.5 }
     if (isTierAChampionship(edition) || isT100(edition) || isRoth(edition)) return { tier: 'A', weight: 1.2 }
     return { tier: 'B', weight: 1.0 }
   }
@@ -51,13 +51,41 @@ try {
     return Math.pow(0.5, ageDays / HALF_LIFE_DAYS)
   }
 
-  const activityConfidence = (starts) => 0.70 + 0.30 * (1 - Math.exp(-starts / 5))
+  const activityConfidence = (starts) => {
+    const curve = [
+      [0, 0],
+      [1, 0.45],
+      [2, 0.60],
+      [3, 0.72],
+      [4, 0.80],
+      [5, 0.86],
+      [6, 0.90],
+      [8, 0.94],
+      [10, 0.97],
+      [12, 1.00],
+    ]
+
+    if (starts >= 12) return 1
+    for (let index = 1; index < curve.length; index += 1) {
+      const [rightStarts, rightValue] = curve[index]
+      if (starts <= rightStarts) {
+        const [leftStarts, leftValue] = curve[index - 1]
+        const progress = (starts - leftStarts) / (rightStarts - leftStarts)
+        return leftValue + (rightValue - leftValue) * progress
+      }
+    }
+    return 1
+  }
+
+  const sPodiumBonus = (position) => {
+    if (position === 1) return 0.50
+    if (position === 2) return 0.25
+    if (position === 3) return 0.15
+    return 0
+  }
 
   const models = [
-    { id: 'A', label: 'base: p^-0.65, S x1.40', exponent: 0.65, sWeight: 1.40, sWinBonus: 0 },
-    { id: 'B', label: 'S stronger: p^-0.65, S x1.55', exponent: 0.65, sWeight: 1.55, sWinBonus: 0 },
-    { id: 'C', label: 'S win bonus: S x1.50 + 25% win', exponent: 0.65, sWeight: 1.50, sWinBonus: 0.25 },
-    { id: 'D', label: 'flatter places + S win: p^-0.60, S x1.50 + 25% win', exponent: 0.60, sWeight: 1.50, sWinBonus: 0.25 },
+    { id: 'E', label: 'candidate: p^-0.65, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50 },
   ]
 
   const resultsByAthlete = new Map()
@@ -85,11 +113,9 @@ try {
       const recency = recencyWeight(edition.dateISO)
       const weight = raceWeight * recency
       let score = placeScore(result.position, model.exponent)
-      if (baseTier.tier === 'S' && result.position === 1 && model.sWinBonus) {
-        score *= 1 + model.sWinBonus
-        sWins += 1
-      } else if (baseTier.tier === 'S' && result.position === 1) {
-        sWins += 1
+      if (baseTier.tier === 'S' && typeof result.position === 'number') {
+        score *= 1 + sPodiumBonus(result.position)
+        if (result.position === 1) sWins += 1
       }
       numerator += score * weight
       denominator += weight
@@ -112,6 +138,26 @@ try {
       wins,
       podiums,
       sWins,
+      entries: entries.map(({ result, edition }) => {
+        const tierInfo = raceTier(edition)
+        const raceWeight = tierInfo.tier === 'S' ? model.sWeight : tierInfo.weight
+        const recency = recencyWeight(edition.dateISO)
+        const podiumBonus = tierInfo.tier === 'S' && typeof result.position === 'number'
+          ? sPodiumBonus(result.position)
+          : 0
+        const rawPlaceScore = placeScore(result.position, model.exponent)
+        const adjustedPlaceScore = rawPlaceScore * (1 + podiumBonus)
+        return {
+          name: edition.name,
+          dateISO: edition.dateISO,
+          position: result.position,
+          tier: tierInfo.tier,
+          raceWeight,
+          recency,
+          placeScore: adjustedPlaceScore,
+          contribution: adjustedPlaceScore * raceWeight * recency,
+        }
+      }).sort((a, b) => b.dateISO.localeCompare(a.dateISO)),
     }
   }
 
@@ -141,9 +187,16 @@ try {
           const name = row.athlete.nameEn || row.athlete.name
           console.log(
             `${String(index + 1).padStart(2)}. ${name.padEnd(28)} ` +
-            `TRI ${row.score.toFixed(2).padStart(6)} | perf ${row.performance.toFixed(2).padStart(6)} | ` +
+            `TRI ${row.score.toFixed(2).padStart(6)} | perf ${row.performance.toFixed(2).padStart(6)} | conf ${row.confidence.toFixed(2)} | ` +
             `starts ${String(row.starts).padStart(2)} | wins ${row.wins} | podiums ${row.podiums} | S-wins ${row.sWins}`
           )
+          row.entries.forEach((entry) => {
+            console.log(
+              `    ${entry.dateISO} | [${entry.tier}] ${String(entry.position).padEnd(4)} | ` +
+              `place ${entry.placeScore.toFixed(2).padStart(6)} | race x${entry.raceWeight.toFixed(2)} | rec ${entry.recency.toFixed(3)} | ` +
+              `weighted ${entry.contribution.toFixed(2).padStart(7)} | ${entry.name}`
+            )
+          })
         })
     }
   }
@@ -153,7 +206,8 @@ try {
   console.log('A: Frankfurt, Hamburg, Texas, Challenge Roth, regular T100')
   console.log('B: other races currently in the database')
   console.log('Recency: 730-day half-life; DNS excluded; DNF/DSQ = 0 and count as starts.')
-  console.log('Model C/D: an S-tier victory receives an additional +25% place-score bonus before weighting.')
+  console.log('Model E: S-tier podium bonuses are +50% / +25% / +15% before race and recency weighting.')
+  console.log('Activity confidence: 1=.45, 2=.60, 3=.72, 4=.80, 5=.86, 6=.90, 8=.94, 10=.97, 12+=1.00 (linear interpolation).')
 } finally {
   await server.close()
 }
