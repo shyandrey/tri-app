@@ -87,6 +87,7 @@ try {
   const models = [
     { id: 'E', label: 'weighted-average: p^-0.65, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: false },
     { id: 'F', label: 'direct-prestige: p^-0.65, A x1.20, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: true },
+    { id: 'G', label: 'direct-prestige sensitivity: p^-0.65, A x1.20, S x1.40, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.40, directPrestige: true },
   ]
 
   const resultsByAthlete = new Map()
@@ -191,13 +192,6 @@ try {
             `TRI ${row.score.toFixed(2).padStart(6)} | perf ${row.performance.toFixed(2).padStart(6)} | conf ${row.confidence.toFixed(2)} | ` +
             `starts ${String(row.starts).padStart(2)} | wins ${row.wins} | podiums ${row.podiums} | S-wins ${row.sWins}`
           )
-          row.entries.forEach((entry) => {
-            console.log(
-              `    ${entry.dateISO} | [${entry.tier}] ${String(entry.position).padEnd(4)} | ` +
-              `place ${entry.placeScore.toFixed(2).padStart(6)} | race x${entry.raceWeight.toFixed(2)} | rec ${entry.recency.toFixed(3)} | ` +
-              `weighted ${entry.contribution.toFixed(2).padStart(7)} | ${entry.name}`
-            )
-          })
         })
     }
   }
@@ -208,7 +202,8 @@ try {
   console.log('B: other races currently in the database')
   console.log('Recency: 730-day half-life; DNS excluded; DNF/DSQ = 0 and count as starts.')
   console.log('Model E: tier multipliers weight the average; S-tier podium bonuses are +50% / +25% / +15%.')
-  console.log('Model F: tier multipliers directly increase performance; denominator uses recency only; S-tier podium bonuses remain +50% / +25% / +15%.')
+  console.log('Model F: tier multipliers directly increase performance; denominator uses recency only; S x1.50; S-tier podium bonuses remain +50% / +25% / +15%.')
+  console.log('Model G: same as F, but S x1.40 for sensitivity testing; A remains x1.20.')
   console.log('Activity confidence: 1=.45, 2=.60, 3=.72, 4=.80, 5=.86, 6=.90, 8=.94, 10=.97, 12+=1.00 (linear interpolation).')
 } finally {
   await server.close()
