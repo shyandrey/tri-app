@@ -5,12 +5,14 @@ import { archiveIronmanRaceEntities, ironmanProSeries2024Editions, ironmanProSer
 import { archiveT100RaceEntities, t1002024Editions, t1002025Editions } from './archiveT100'
 import { challengeRothEditions, challengeRothRaceEntity } from './archiveChallengeRoth'
 import { normalizeRaceGender } from '../utils/raceGender'
+import { getStatsPtoUrl } from './statsPtoRaceUrls'
 
 const CURRENT_SEASON = 2026
 
 const normalizeEdition = (edition: RaceEdition): RaceEdition => ({
   ...edition,
   gender: normalizeRaceGender(edition.gender),
+  statsPtoUrl: edition.statsPtoUrl ?? getStatsPtoUrl(edition.raceId, edition.year),
 })
 
 const currentSeasonEditions: RaceEdition[] = legacyRaces.map((race) => ({
