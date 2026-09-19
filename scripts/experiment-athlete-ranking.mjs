@@ -84,10 +84,25 @@ try {
     return 0
   }
 
+  const sofFactor = (sof) => {
+    if (typeof sof !== 'number') return 1
+    // 90 SOF is neutral. Each 10 SOF points changes race value by 10%.
+    return Math.max(0.7, Math.min(1.15, 1 + (sof - 90) / 100))
+  }
+
+  const resultSof = (result, edition) => {
+    if (result.gender === 'W') return edition.sof?.women
+    if (result.gender === 'M') return edition.sof?.men
+    if (edition.gender === 'WPRO') return edition.sof?.women
+    if (edition.gender === 'MPRO') return edition.sof?.men
+    return undefined
+  }
+
   const models = [
     { id: 'E', label: 'weighted-average: p^-0.65, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: false },
     { id: 'F', label: 'direct-prestige: p^-0.65, A x1.20, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: true },
-    { id: 'G', label: 'direct-prestige sensitivity: p^-0.65, A x1.20, S x1.40, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.40, directPrestige: true },
+    { id: 'G', label: 'direct-prestige sensitivity: p^-0.65, A x1.20, S x1.40, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.40, directPrestige: true, useSof: false },
+    { id: 'H', label: 'SOF-adjusted: Model G + Stats PTO field strength (90 neutral, +/-1% per SOF point)', exponent: 0.65, sWeight: 1.40, directPrestige: true, useSof: true },
   ]
 
   const resultsByAthlete = new Map()
@@ -113,7 +128,9 @@ try {
       const baseTier = raceTier(edition)
       const raceWeight = baseTier.tier === 'S' ? model.sWeight : baseTier.weight
       const recency = recencyWeight(edition.dateISO)
-      const weight = raceWeight * recency
+      const sof = resultSof(result, edition)
+      const fieldStrength = model.useSof ? sofFactor(sof) : 1
+      const weight = raceWeight * fieldStrength * recency
       let score = placeScore(result.position, model.exponent)
       if (baseTier.tier === 'S' && typeof result.position === 'number') {
         score *= 1 + sPodiumBonus(result.position)
@@ -147,6 +164,8 @@ try {
         const podiumBonus = tierInfo.tier === 'S' && typeof result.position === 'number'
           ? sPodiumBonus(result.position)
           : 0
+        const sof = resultSof(result, edition)
+        const fieldStrength = model.useSof ? sofFactor(sof) : 1
         const rawPlaceScore = placeScore(result.position, model.exponent)
         const adjustedPlaceScore = rawPlaceScore * (1 + podiumBonus)
         return {
@@ -155,9 +174,11 @@ try {
           position: result.position,
           tier: tierInfo.tier,
           raceWeight,
+          sof,
+          fieldStrength,
           recency,
           placeScore: adjustedPlaceScore,
-          contribution: adjustedPlaceScore * raceWeight * recency,
+          contribution: adjustedPlaceScore * raceWeight * fieldStrength * recency,
         }
       }).sort((a, b) => b.dateISO.localeCompare(a.dateISO)),
     }
@@ -204,6 +225,7 @@ try {
   console.log('Model E: tier multipliers weight the average; S-tier podium bonuses are +50% / +25% / +15%.')
   console.log('Model F: tier multipliers directly increase performance; denominator uses recency only; S x1.50; S-tier podium bonuses remain +50% / +25% / +15%.')
   console.log('Model G: same as F, but S x1.40 for sensitivity testing; A remains x1.20.')
+  console.log('Model H: Model G + gender-specific Stats PTO SOF; 90 is neutral, each SOF point changes race value by 1%, capped at x0.70..x1.15. Missing SOF is neutral.')
   console.log('Activity confidence: 1=.45, 2=.60, 3=.72, 4=.80, 5=.86, 6=.90, 8=.94, 10=.97, 12+=1.00 (linear interpolation).')
 } finally {
   await server.close()
