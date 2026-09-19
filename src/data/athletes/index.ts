@@ -4,6 +4,7 @@ import { femaleAthletes } from './women'
 import { resultAthletes } from './resultAthletes.generated'
 import { verifiedResultAthletes } from './verifiedResultAthletes'
 import { athletePhotosByName } from './athletePhotos.generated'
+import { localizeAthlete } from './localization'
 
 const withRegisteredPhoto = (athlete: Athlete): Athlete => ({
   ...athlete,
@@ -15,6 +16,6 @@ export const athletes: Athlete[] = [
   ...femaleAthletes,
   ...resultAthletes,
   ...verifiedResultAthletes,
-].map(withRegisteredPhoto)
+].map(withRegisteredPhoto).map(localizeAthlete)
 
 export { maleAthletes, femaleAthletes, resultAthletes, verifiedResultAthletes }
