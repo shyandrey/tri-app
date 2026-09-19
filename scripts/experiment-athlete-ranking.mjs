@@ -83,6 +83,30 @@ try {
     return 1
   }
 
+  const activityBonus = (starts) => {
+    const curve = [
+      [0, 0],
+      [1, 0],
+      [3, 0.03],
+      [5, 0.06],
+      [8, 0.09],
+      [12, 0.12],
+      [16, 0.14],
+      [20, 0.15],
+    ]
+
+    if (starts >= 20) return 0.15
+    for (let index = 1; index < curve.length; index += 1) {
+      const [rightStarts, rightValue] = curve[index]
+      if (starts <= rightStarts) {
+        const [leftStarts, leftValue] = curve[index - 1]
+        const progress = (starts - leftStarts) / (rightStarts - leftStarts)
+        return leftValue + (rightValue - leftValue) * progress
+      }
+    }
+    return 0.15
+  }
+
   const sPodiumBonus = (position) => {
     if (position === 1) return 0.50
     if (position === 2) return 0.25
@@ -92,7 +116,6 @@ try {
 
   const sofFactor = (sof) => {
     if (typeof sof !== 'number') return 1
-    // 90 SOF is neutral. Each 10 SOF points changes race value by 10%.
     return Math.max(0.7, Math.min(1.15, 1 + (sof - 90) / 100))
   }
 
@@ -108,6 +131,7 @@ try {
     { id: 'G', label: 'direct-prestige: p^-0.65, A x1.20, S x1.40, no SOF', exponent: 0.65, aWeight: 1.20, sWeight: 1.40, directPrestige: true, useSof: false },
     { id: 'H', label: 'SOF-adjusted: G + Stats PTO field strength', exponent: 0.65, aWeight: 1.20, sWeight: 1.40, directPrestige: true, useSof: true },
     { id: 'I', label: 'SOF-led prestige: p^-0.65, A x1.10, S x1.20, S podium +50/+25/+15%', exponent: 0.65, aWeight: 1.10, sWeight: 1.20, directPrestige: true, useSof: true },
+    { id: 'J', label: 'Model I + bounded activity bonus up to +15%', exponent: 0.65, aWeight: 1.10, sWeight: 1.20, directPrestige: true, useSof: true, useActivityBonus: true },
   ]
 
   const resultsByAthlete = new Map()
@@ -152,11 +176,13 @@ try {
 
     const performance = denominator ? numerator / denominator : 0
     const confidence = activityConfidence(entries.length)
+    const bonus = model.useActivityBonus ? activityBonus(entries.length) : 0
     return {
       athlete,
-      score: performance * confidence,
+      score: performance * confidence * (1 + bonus),
       performance,
       confidence,
+      activityBonus: bonus,
       starts: entries.length,
       finishes,
       wins,
@@ -213,9 +239,10 @@ try {
         .slice(0, 30)
         .forEach((row, index) => {
           const name = row.athlete.nameEn || row.athlete.name
+          const activityLabel = model.useActivityBonus ? ` | act +${(row.activityBonus * 100).toFixed(1)}%` : ''
           console.log(
             `${String(index + 1).padStart(2)}. ${name.padEnd(28)} ` +
-            `TRI ${row.score.toFixed(2).padStart(6)} | perf ${row.performance.toFixed(2).padStart(6)} | conf ${row.confidence.toFixed(2)} | ` +
+            `TRI ${row.score.toFixed(2).padStart(6)} | perf ${row.performance.toFixed(2).padStart(6)} | conf ${row.confidence.toFixed(2)}${activityLabel} | ` +
             `starts ${String(row.starts).padStart(2)} | wins ${row.wins} | podiums ${row.podiums} | S-wins ${row.sWins}`
           )
           row.entries
@@ -241,6 +268,7 @@ try {
   console.log('Model G: direct prestige; A x1.20, S x1.40; no SOF.')
   console.log('Model H: Model G + gender-specific Stats PTO SOF; 90 is neutral, each SOF point changes race value by 1%, capped at x0.70..x1.15. Missing SOF is neutral.')
   console.log('Model I: SOF-led prestige; A x1.10, S x1.20; same SOF factor and S-tier podium bonuses +50% / +25% / +15%.')
+  console.log('Model J: Model I + bounded activity bonus: 1=0%, 3=3%, 5=6%, 8=9%, 12=12%, 16=14%, 20+=15% (linear interpolation).')
   console.log('Activity confidence: 1=.45, 2=.60, 3=.72, 4=.80, 5=.86, 6=.90, 8=.94, 10=.97, 12+=1.00 (linear interpolation).')
 } finally {
   await server.close()
