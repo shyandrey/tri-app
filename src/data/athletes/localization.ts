@@ -18,6 +18,14 @@ const COUNTRY_NAMES_EN: Record<string, string> = {
   PT:'Portugal', RO:'Romania', SE:'Sweden', SI:'Slovenia', SK:'Slovakia', US:'United States', ZA:'South Africa',
 }
 
+const ISO3_TO_ISO2: Record<string, string> = {
+  ARG:'AR', AUT:'AT', AUS:'AU', BEL:'BE', BRA:'BR', CAN:'CA', SUI:'CH', CHI:'CL', CHN:'CN',
+  COL:'CO', CZE:'CZ', GER:'DE', DEN:'DK', EST:'EE', ESP:'ES', FIN:'FI', FRA:'FR', GBR:'GB',
+  CRO:'HR', HUN:'HU', IRL:'IE', ISR:'IL', ITA:'IT', JPN:'JP', LTU:'LT', LUX:'LU', LAT:'LV',
+  MEX:'MX', NED:'NL', NOR:'NO', NZL:'NZ', POL:'PL', POR:'PT', ROU:'RO', SWE:'SE', SLO:'SI',
+  SVK:'SK', USA:'US', RSA:'ZA',
+}
+
 const ATHLETE_NAMES_RU: Record<string, string> = {
   'Justus Nieschlag':'Юстус Нишлаг',
   'Nick Thompson':'Ник Томпсон',
@@ -37,11 +45,13 @@ const ATHLETE_NAMES_RU: Record<string, string> = {
 }
 
 export function localizeAthlete(athlete: Athlete): Athlete {
-  const code = athlete.countryCode?.trim().toUpperCase()
+  const rawCode = athlete.countryCode?.trim().toUpperCase()
+  const code = rawCode ? (ISO3_TO_ISO2[rawCode] ?? rawCode) : undefined
   const nameEn = athlete.nameEn ?? athlete.name
   return {
     ...athlete,
     name: athlete.name !== nameEn ? athlete.name : (ATHLETE_NAMES_RU[nameEn] ?? athlete.name),
+    countryCode: code ?? athlete.countryCode,
     country: code ? (COUNTRY_NAMES_RU[code] ?? athlete.country) : athlete.country,
     countryEn: code ? (COUNTRY_NAMES_EN[code] ?? athlete.countryEn) : athlete.countryEn,
   }
