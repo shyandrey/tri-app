@@ -12,18 +12,26 @@ function slugCandidates(raceId) {
   const candidates = new Set([raceId])
 
   if (raceId.startsWith('ironman-70-3-')) {
+    candidates.add(raceId.replace('ironman-70-3-', 'im-703-'))
     candidates.add(raceId.replace('ironman-70-3-', 'im703-'))
   } else if (raceId.startsWith('ironman-')) {
     candidates.add(raceId.replace('ironman-', 'im-'))
   }
 
   const special = {
+    'ironman-70-3-oceanside': ['im-703-california'],
     'ironman-world-championship-kona': ['im-kona', 'ironman-world-championship-kona'],
     'ironman-world-championship-nice': ['im-nice', 'ironman-world-championship-nice'],
     'ironman-70-3-world-championship': ['im703-world-championship'],
     'ironman-70-3-world-championship-taupo': ['im703-taupo', 'im703-world-championship-taupo'],
     'ironman-70-3-world-championship-marbella': ['im703-marbella', 'im703-world-championship-marbella'],
     'challenge-roth': ['challenge-roth'],
+    't100-san-francisco': ['san-francisco-t100'],
+  }
+
+  if (raceId.startsWith('t100-')) {
+    candidates.add(`${raceId.slice('t100-'.length)}-t100`)
+  }
   }
 
   for (const slug of special[raceId] || []) candidates.add(slug)
