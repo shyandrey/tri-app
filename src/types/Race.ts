@@ -36,6 +36,7 @@ export type RaceEdition = {
   description: string
   gender?: RaceGender
   sourceUrl?: string
+  statsPtoUrl?: string
   sof?: { women?: number; men?: number }
 }
 
