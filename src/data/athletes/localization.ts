@@ -54,5 +54,6 @@ export function localizeAthlete(athlete: Athlete): Athlete {
     countryCode: code ?? athlete.countryCode,
     country: code ? (COUNTRY_NAMES_RU[code] ?? athlete.country) : athlete.country,
     countryEn: code ? (COUNTRY_NAMES_EN[code] ?? athlete.countryEn) : athlete.countryEn,
+    countryCode: code ?? athlete.countryCode,
   }
 }
