@@ -43,7 +43,7 @@ function slugify(v){return v.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').to
 function profileSlugForName(n){return PROFILE_SLUG_OVERRIDES[n]??slugify(n)}
 function decodeHtml(v){return v.replace(/\\u0026/g,'&').replace(/\\u002F/g,'/').replace(/\\\//g,'/').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
 function attr(tag,n){return tag.match(new RegExp(`${n}\\s*=\\s*["']([^"']+)["']`,'i'))?.[1]}
-function collect(source){const s=new Set();for(const m of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g))s.add(m[1]);for(const m of source.matchAll(/nameEn:\s*'([^']+)'/g))s.add(m[1]);return [...s]}
+function collect(source){const s=new Set();for(const m of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g))s.add(m[1]);for(const m of source.matchAll(/nameEn:\s*["']([^"']+)["']/g))s.add(m[1]);return [...s]}
 function imageLike(u){return /\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(u)||/(?:image|img|photo|portrait|profile|athlete)[=/\-_]/i.test(u)}
 function text(v){return decodeHtml(v).replace(/<[^>]*>/g,' ').replace(/\\[nrt]/g,' ').replace(/\s+/g,' ').toLowerCase()}
 function contextScore(html,pos,name){const c=text(`${html.slice(Math.max(0,pos-650),pos)} ${html.slice(pos,Math.min(html.length,pos+350))}`),n=name.toLowerCase();let s=c.includes(n)?55:0;if(/biography|overview|world rank|national|weight|height|born/.test(c))s+=12;if(/rivals|results|youtube|upcoming races|background|sponsor/.test(c))s-=40;return s}
