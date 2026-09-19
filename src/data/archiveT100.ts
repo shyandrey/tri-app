@@ -3,6 +3,29 @@ import type { RaceEdition, RaceEntity, RaceGender } from '../types/Race'
 const source2024 = 'https://stats.protriathletes.org/t100/results?season=2'
 const source2025 = 'https://stats.protriathletes.org/t100/results?season=3'
 
+const sofByEditionId: Record<string, { women?: number; men?: number }> = {
+  't100-miami-2024': {"women":91.53,"men":92.46},
+  't100-singapore-2024-women': {"women":93.53},
+  't100-singapore-2024-men': {"men":91.68},
+  't100-san-francisco-2024': {"women":95.28,"men":94.56},
+  't100-london-2024-women': {"women":97.09},
+  't100-london-2024-men': {"men":95.25},
+  't100-ibiza-2024': {"women":96.33,"men":92.34},
+  't100-lake-las-vegas-2024': {"women":95.48,"men":94},
+  't100-dubai-2024-women': {"women":98.53},
+  't100-dubai-2024-men': {"men":96.87},
+  't100-singapore-2025-women': {"women":95.83},
+  't100-singapore-2025-men': {"men":96.24},
+  't100-san-francisco-2025': {"women":97.77,"men":96.75},
+  't100-vancouver-2025': {"women":98.09,"men":97.38},
+  't100-london-2025': {"women":97.57,"men":96.58},
+  't100-french-riviera-2025': {"women":93.77,"men":97.21},
+  't100-spain-2025': {"women":96.22,"men":97.55},
+  't100-wollongong-2025': {"women":93.89,"men":95.49},
+  't100-dubai-2025': {"women":96.61,"men":97.46},
+  't100-qatar-2025': {"women":99.79,"men":98.49},
+}
+
 type T100ArchiveRace = {
   raceId: string
   name: string
@@ -53,6 +76,7 @@ const toEdition = (race: T100ArchiveRace, year: 2024 | 2025, sourceUrl: string):
   description: `Этап T100 Triathlon World Tour ${year}: ${race.name}.`,
   gender: race.gender,
   sourceUrl,
+  sof: sofByEditionId[`${race.raceId}-${year}${race.suffix ? `-${race.suffix}` : ''}`],
 })
 
 export const t1002024Editions: RaceEdition[] = races2024.map((race) => toEdition(race, 2024, source2024))
