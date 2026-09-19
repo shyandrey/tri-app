@@ -27,8 +27,10 @@ import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, Ranking
 import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
+import { sortAthletesByRanking } from './utils/athleteRanking'
 
 const linkedRaceResults = linkResultsToAthletes(raceResults)
+const rankedAthletes = sortAthletesByRanking(athletes, linkedRaceResults, allRaceEditionViews)
 
 const initialCalendarViewState: CalendarViewState = {
   search: '',
@@ -152,7 +154,7 @@ function App() {
   }
 
   if (page === 'athletes') {
-    return <AthletesPage athletes={athletes} onBack={() => setPage(athletesBackPage)} onAthleteClick={openAthlete} onNavigate={navigateSection} />
+    return <AthletesPage athletes={rankedAthletes} onBack={() => setPage(athletesBackPage)} onAthleteClick={openAthlete} onNavigate={navigateSection} />
   }
 
   if (page === 'top') return <TopAthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={navigateSection} />
