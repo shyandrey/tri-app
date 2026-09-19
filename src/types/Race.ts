@@ -68,6 +68,8 @@ export type Race = {
 }
 
 export type RaceEditionView = Omit<Race, 'gender'> & {
+  statsPtoUrl?: string
+  sof?: { women?: number; men?: number }
   raceId: string
   editionId: string
   year: number
