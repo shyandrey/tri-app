@@ -127,7 +127,7 @@ const archiveRaceEditionViews = [
   ...t1002024Editions,
   ...t1002025Editions,
   ...challengeRothEditions.filter((edition) => edition.year !== CURRENT_SEASON),
-].map(editionToView)
+].map(normalizeEdition).map(editionToView)
 
 export const allRaceEditionViews: RaceEditionView[] = [
   ...archiveRaceEditionViews,
