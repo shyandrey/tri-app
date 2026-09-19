@@ -32,7 +32,6 @@ function slugCandidates(raceId) {
   if (raceId.startsWith('t100-')) {
     candidates.add(`${raceId.slice('t100-'.length)}-t100`)
   }
-  }
 
   for (const slug of special[raceId] || []) candidates.add(slug)
   return [...candidates]
