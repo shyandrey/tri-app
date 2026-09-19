@@ -8,35 +8,6 @@ const server = await createServer({
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-function slugCandidates(raceId) {
-  const candidates = new Set([raceId])
-
-  if (raceId.startsWith('ironman-70-3-')) {
-    candidates.add(raceId.replace('ironman-70-3-', 'im-703-'))
-    candidates.add(raceId.replace('ironman-70-3-', 'im703-'))
-  } else if (raceId.startsWith('ironman-')) {
-    candidates.add(raceId.replace('ironman-', 'im-'))
-  }
-
-  const special = {
-    'ironman-70-3-oceanside': ['im-703-california'],
-    'ironman-world-championship-kona': ['im-kona', 'ironman-world-championship-kona'],
-    'ironman-world-championship-nice': ['im-nice', 'ironman-world-championship-nice'],
-    'ironman-70-3-world-championship': ['im703-world-championship'],
-    'ironman-70-3-world-championship-taupo': ['im703-taupo', 'im703-world-championship-taupo'],
-    'ironman-70-3-world-championship-marbella': ['im703-marbella', 'im703-world-championship-marbella'],
-    'challenge-roth': ['challenge-roth'],
-    't100-san-francisco': ['san-francisco-t100'],
-  }
-
-  if (raceId.startsWith('t100-')) {
-    candidates.add(`${raceId.slice('t100-'.length)}-t100`)
-  }
-
-  for (const slug of special[raceId] || []) candidates.add(slug)
-  return [...candidates]
-}
-
 function decodeText(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
@@ -51,30 +22,39 @@ function decodeText(html) {
 
 function extractSof(html) {
   const text = decodeText(html)
-  const matches = [...text.matchAll(/SOF:\s*([0-9]+(?:\\.[0-9]+)?)/gi)]
+  return [...text.matchAll(/SOF:\s*([0-9]+(?:\.[0-9]+)?)/gi)]
     .map((match) => Number(match[1]))
-  const values = matches.filter((value, index) => matches.indexOf(value) === index)
-  return values
+    .filter((value, index, values) => values.indexOf(value) === index)
 }
 
-async function fetchRace(raceId, year) {
-  for (const slug of slugCandidates(raceId)) {
-    const url = `https://stats.protriathletes.org/race/${slug}/${year}/results`
-    try {
-      const response = await fetch(url, {
-        headers: { 'user-agent': 'TRI-APP SOF collector/1.0' },
-      })
-      if (!response.ok) continue
-      const html = await response.text()
-      const sof = extractSof(html)
-      if (!sof.length) continue
-      return { raceId, year, slug, url, sof }
-    } catch {
-      // Try the next candidate slug.
-    }
-    await sleep(150)
+async function fetchRace(race) {
+  if (!race.statsPtoUrl) {
+    return { sof: [], unresolved: true, reason: 'NO_STATS_PTO_URL' }
   }
-  return { raceId, year, sof: [], unresolved: true }
+
+  try {
+    const response = await fetch(race.statsPtoUrl, {
+      headers: { 'user-agent': 'TRI-APP SOF collector/1.0' },
+    })
+    if (!response.ok) {
+      return { sof: [], unresolved: true, reason: `HTTP_${response.status}` }
+    }
+
+    const html = await response.text()
+    const sof = extractSof(html)
+    if (!sof.length) {
+      return { sof: [], unresolved: true, reason: 'SOF_NOT_FOUND' }
+    }
+
+    return { url: race.statsPtoUrl, sof }
+  } catch (error) {
+    return {
+      sof: [],
+      unresolved: true,
+      reason: 'FETCH_FAILED',
+      error: error instanceof Error ? error.message : String(error),
+    }
+  }
 }
 
 try {
@@ -82,15 +62,23 @@ try {
   const uniqueRaces = [...new Map(
     allRaceEditionViews.map((edition) => [
       `${edition.raceId}::${edition.year}`,
-      { raceId: edition.raceId, year: edition.year, name: edition.name },
+      {
+        raceId: edition.raceId,
+        year: edition.year,
+        name: edition.name,
+        gender: edition.gender,
+        statsPtoUrl: edition.statsPtoUrl,
+      },
     ])
   ).values()]
 
   const collected = []
   for (const [index, race] of uniqueRaces.entries()) {
-    const result = await fetchRace(race.raceId, race.year)
+    const result = await fetchRace(race)
     collected.push({ ...race, ...result })
-    const status = result.sof.length ? result.sof.join(' / ') : 'UNRESOLVED'
+    const status = result.sof.length
+      ? result.sof.join(' / ')
+      : `UNRESOLVED (${result.reason})`
     console.error(`[${index + 1}/${uniqueRaces.length}] ${race.year} ${race.name}: ${status}`)
     await sleep(200)
   }
