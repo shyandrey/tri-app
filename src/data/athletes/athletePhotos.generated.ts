@@ -135,6 +135,7 @@ export const athletePhotosByName: Record<string, string> = {
   "Rhianne Hughes": "/athletes/rhianne-hughes.png",
   "Rico Bogen": "/athletes/rico-bogen.png",
   "Rudy von Berg": "/athletes/rudy-von-berg.png",
+  "Sam Laidlow": "/athletes/sam-laidlow.png",
   "Sam Long": "/athletes/sam-long.png",
   "Sam Osborne": "/athletes/sam-osborne.png",
   "Samuel Dickinson": "/athletes/samuel-dickinson.png",
