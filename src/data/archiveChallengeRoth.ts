@@ -8,6 +8,12 @@ export const challengeRothRaceEntity: RaceEntity = {
   distance: 'Challenge Roth',
 }
 
+const sofByYear = {
+  2024: { women: 88.12, men: 91.65 },
+  2025: { women: 87.14, men: 88.82 },
+  2026: { women: 90.51, men: 93.64 },
+} as const
+
 const dates = {
   2024: { date: '7 июля', dateISO: '2024-07-07' },
   2025: { date: '6 июля', dateISO: '2025-07-06' },
@@ -27,4 +33,5 @@ export const challengeRothEditions: RaceEdition[] = ([2024, 2025, 2026] as const
   description: `Challenge Roth ${year} — профессиональная гонка на полной дистанции в Роте, Германия.`,
   gender: 'ALL',
   sourceUrl: `https://stats.protriathletes.org/race/challenge-roth/${year}/results`,
+  sof: sofByYear[year],
 }))
