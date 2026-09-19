@@ -8,7 +8,7 @@ import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
 import CalendarPage, { type CalendarViewState } from './pages/CalendarPage'
 import TopAthletesPage from './pages/TopAthletesPage'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import './refinements.css'
 import './series-colors.css'
@@ -89,6 +89,8 @@ function App() {
   const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
   const [calendarEntryMode, setCalendarEntryMode] = useState<'top' | 'restore'>('top')
   const [athletesBackPage, setAthletesBackPage] = useState<Page>('home')
+  const [athletesScrollY, setAthletesScrollY] = useState(0)
+  const [restoreAthletesScroll, setRestoreAthletesScroll] = useState(false)
   const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
 
   const captureCalendarPosition = () => {
@@ -126,6 +128,7 @@ function App() {
   }
 
   const openAthlete = (athlete: Athlete) => {
+    if (page === 'athletes') setAthletesScrollY(window.scrollY)
     setAthletesBackPage(page)
     setSelectedAthlete(athlete)
     setPage('athleteDetail')
@@ -140,8 +143,18 @@ function App() {
 
   const backFromAthlete = () => {
     setSelectedAthlete(null)
+    if (athletesBackPage === 'athletes') setRestoreAthletesScroll(true)
     setPage(athletesBackPage)
   }
+
+  useEffect(() => {
+    if (page !== 'athletes' || !restoreAthletesScroll) return
+    const frame = requestAnimationFrame(() => {
+      window.scrollTo(0, athletesScrollY)
+      setRestoreAthletesScroll(false)
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [page, restoreAthletesScroll, athletesScrollY])
 
   const futureHomeRaces = groupRacesForHome(races)
     .filter((race) => race.dateISO > getMoscowTodayISO())
