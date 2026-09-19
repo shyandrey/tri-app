@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "audit:results": "node scripts/audit-results.mjs",
     "experiment:ranking": "node scripts/experiment-athlete-ranking.mjs",
+    "collect:sof": "node scripts/collect-race-sof.mjs",
     "find:next-athletes": "node scripts/find-next-athletes.mjs",
     "import:athlete-photos": "node scripts/import-athlete-photos.mjs",
     "import:athlete-photos:all": "node scripts/import-athlete-photos.mjs --all",
