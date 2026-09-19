@@ -5,6 +5,7 @@ const server = await createServer({ server:{middlewareMode:true}, appType:'custo
 const norm = value => (value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/['’`.-]/g,' ').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim()
 const loose = value => norm(value).replace(/\s/g,'')
 const isoLike = value => /^[A-Z]{2,3}$/.test((value ?? '').trim())
+const VERBOSE = process.argv.includes('--verbose')
 
 try {
   const [{ maleAthletes, femaleAthletes, resultAthletes, verifiedResultAthletes, athletes }, { raceResults }] = await Promise.all([
@@ -46,7 +47,9 @@ try {
   }
 
   const noResults=athletes.filter(a=>!resultCounts.has(a.id))
-  const sameDisplay=generated.filter(a=>a.name===a.nameEn)
+  const generatedIds=new Set(generated.map(a=>a.id))
+  const localizedGenerated=athletes.filter(a=>generatedIds.has(a.id))
+  const sameDisplay=localizedGenerated.filter(a=>a.name===a.nameEn)
   const rawCountryLabels=athletes.filter(a=>isoLike(a.country)||isoLike(a.countryEn))
   const noPhoto=athletes.filter(a=>!a.image)
 
@@ -61,11 +64,15 @@ try {
   console.log('================================')
   info.forEach(x=>console.log(`INFO  ${x}`))
   console.log(`\nISSUES (${issues.length})`)
-  if(!issues.length) console.log('  none'); else issues.forEach(x=>console.log(`  - ${x}`))
-  console.log(`\nLOCALIZATION TODO (${sameDisplay.length})`)
-  sameDisplay.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}] — ${a.countryCode||'?'}`))
-  console.log(`\nMISSING COUNTRY (${generated.filter(a=>!a.countryCode).length})`)
-  generated.filter(a=>!a.countryCode).forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
-  console.log(`\nNO LINKED RESULTS (${noResults.length})`)
-  noResults.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
+  if(!issues.length) console.log('  none')
+  else if(VERBOSE) issues.forEach(x=>console.log(`  - ${x}`))
+  else console.log('  Run npm run audit:athletes -- --verbose to list all issues.')
+  if(VERBOSE){
+    console.log(`\nLOCALIZATION TODO (${sameDisplay.length})`)
+    sameDisplay.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}] — ${a.countryCode||'?'}`))
+    console.log(`\nMISSING COUNTRY (${generated.filter(a=>!a.countryCode).length})`)
+    generated.filter(a=>!a.countryCode).forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
+    console.log(`\nNO LINKED RESULTS (${noResults.length})`)
+    noResults.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
+  }
 } finally { await server.close() }
