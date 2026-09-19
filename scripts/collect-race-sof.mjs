@@ -20,11 +20,22 @@ function decodeText(html) {
     .replace(/\s+/g, ' ')
 }
 
-function extractSof(html) {
+function extractSof(html, gender) {
   const text = decodeText(html)
-  return [...text.matchAll(/SOF:\s*([0-9]+(?:\.[0-9]+)?)/gi)]
+  const values = [...text.matchAll(/SOF:\s*([0-9]+(?:\.[0-9]+)?)/gi)]
     .map((match) => Number(match[1]))
     .filter((value, index, values) => values.indexOf(value) === index)
+
+  // Stats PTO result pages render Women first, then Men.
+  if (values.length >= 2) {
+    return { women: values[0], men: values[1] }
+  }
+  if (values.length === 1) {
+    if (gender === 'WPRO') return { women: values[0] }
+    if (gender === 'MPRO') return { men: values[0] }
+    return { unknown: values[0] }
+  }
+  return {}
 }
 
 async function fetchRace(race) {
