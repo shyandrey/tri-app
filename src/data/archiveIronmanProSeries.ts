@@ -15,6 +15,47 @@ type ArchiveRace = {
   suffix?: string
 }
 
+const sofByEditionId: Record<string, { women?: number; men?: number }> = {
+  'ironman-70-3-oceanside-2024': {"women":89.21,"men":85.32},
+  'ironman-texas-2024': {"women":83.32,"men":85.5},
+  'ironman-70-3-st-george-2024': {"women":84.43,"men":83.88},
+  'ironman-70-3-mallorca-2024': {"women":80.44,"men":90.11},
+  'ironman-70-3-chattanooga-2024': {"women":83.38,"men":78.75},
+  'ironman-hamburg-2024': {"women":84.07},
+  'ironman-70-3-boulder-2024': {"women":72.74,"men":79.52},
+  'ironman-cairns-2024': {"women":78.73,"men":82.82},
+  'ironman-70-3-mont-tremblant-2024': {"women":86.4,"men":83.52},
+  'ironman-70-3-les-sables-2024': {"women":82.91,"men":86.85},
+  'ironman-vitoria-gasteiz-2024': {"women":81.75,"men":85.83},
+  'ironman-lake-placid-2024': {"women":83.61,"men":85.76},
+  'ironman-frankfurt-2024': {"men":89.88},
+  'ironman-70-3-tallinn-2024': {"women":88.36,"men":84.35},
+  'ironman-70-3-zell-am-see-2024': {"women":87.24,"men":85.72},
+  'ironman-world-championship-nice-2024-women': {"women":93.85},
+  'ironman-world-championship-kona-2024-men': {"men":93.08},
+  'ironman-70-3-western-australia-2024': {"women":85.79,"men":84.17},
+  'ironman-70-3-world-championship-taupo-2024-women': {"women":98.72},
+  'ironman-70-3-world-championship-taupo-2024-men': {"men":93.64},
+  'ironman-70-3-geelong-2025': {"women":80.97,"men":86.43},
+  'ironman-south-africa-2025': {"women":85.87,"men":90.77},
+  'ironman-70-3-oceanside-2025': {"women":88.88,"men":87.54},
+  'ironman-texas-2025': {"women":93.16,"men":89.3},
+  'ironman-70-3-venice-jesolo-2025': {"women":81.72,"men":85.96},
+  'ironman-70-3-st-george-2025': {"women":88.04,"men":90.42},
+  'ironman-70-3-aix-en-provence-2025': {"women":86.47,"men":85.68},
+  'ironman-hamburg-2025': {"women":93.95},
+  'ironman-70-3-eagleman-2025': {"women":83.69,"men":86.29},
+  'ironman-cairns-2025': {"women":83.13,"men":84.08},
+  'ironman-frankfurt-2025': {"men":91.69},
+  'ironman-70-3-swansea-2025': {"women":88.08,"men":86.74},
+  'ironman-lake-placid-2025': {"women":89.95,"men":89.08},
+  'ironman-70-3-zell-am-see-2025': {"women":90.65,"men":82.1},
+  'ironman-world-championship-nice-2025-men': {"men":94.96},
+  'ironman-world-championship-kona-2025-women': {"women":98.28},
+  'ironman-70-3-world-championship-marbella-2025-women': {"women":99.37},
+  'ironman-70-3-world-championship-marbella-2025-men': {"men":96.53},
+}
+
 const distances = {
   IRONMAN: { swim: '3.8 км', bike: '180 км', run: '42.2 км' },
   '70.3': { swim: '1.9 км', bike: '90 км', run: '21.1 км' },
@@ -76,6 +117,7 @@ function toEdition(race: ArchiveRace, year: 2024 | 2025, sourceUrl: string): Rac
     description: `Этап IRONMAN Pro Series ${year}: ${race.name}.`,
     gender: race.gender,
     sourceUrl,
+    sof: sofByEditionId[`${race.raceId}-${year}${race.suffix ? `-${race.suffix}` : ''}`],
   }
 }
 
