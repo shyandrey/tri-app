@@ -42,6 +42,12 @@ try {
     return { tier: 'B', weight: 1.0 }
   }
 
+  const modelTierWeight = (tier, model) => {
+    if (tier === 'S') return model.sWeight
+    if (tier === 'A') return model.aWeight ?? 1.2
+    return 1
+  }
+
   const placeScore = (position, exponent) =>
     typeof position === 'number' ? 100 / Math.pow(position, exponent) : 0
 
@@ -99,10 +105,9 @@ try {
   }
 
   const models = [
-    { id: 'E', label: 'weighted-average: p^-0.65, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: false },
-    { id: 'F', label: 'direct-prestige: p^-0.65, A x1.20, S x1.50, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.50, directPrestige: true },
-    { id: 'G', label: 'direct-prestige sensitivity: p^-0.65, A x1.20, S x1.40, S podium +50/+25/+15%', exponent: 0.65, sWeight: 1.40, directPrestige: true, useSof: false },
-    { id: 'H', label: 'SOF-adjusted: Model G + Stats PTO field strength (90 neutral, +/-1% per SOF point)', exponent: 0.65, sWeight: 1.40, directPrestige: true, useSof: true },
+    { id: 'G', label: 'direct-prestige: p^-0.65, A x1.20, S x1.40, no SOF', exponent: 0.65, aWeight: 1.20, sWeight: 1.40, directPrestige: true, useSof: false },
+    { id: 'H', label: 'SOF-adjusted: G + Stats PTO field strength', exponent: 0.65, aWeight: 1.20, sWeight: 1.40, directPrestige: true, useSof: true },
+    { id: 'I', label: 'SOF-led prestige: p^-0.65, A x1.10, S x1.20, S podium +50/+25/+15%', exponent: 0.65, aWeight: 1.10, sWeight: 1.20, directPrestige: true, useSof: true },
   ]
 
   const resultsByAthlete = new Map()
@@ -126,7 +131,7 @@ try {
 
     for (const { result, edition } of entries) {
       const baseTier = raceTier(edition)
-      const raceWeight = baseTier.tier === 'S' ? model.sWeight : baseTier.weight
+      const raceWeight = modelTierWeight(baseTier.tier, model)
       const recency = recencyWeight(edition.dateISO)
       const sof = resultSof(result, edition)
       const fieldStrength = model.useSof ? sofFactor(sof) : 1
@@ -159,7 +164,7 @@ try {
       sWins,
       entries: entries.map(({ result, edition }) => {
         const tierInfo = raceTier(edition)
-        const raceWeight = tierInfo.tier === 'S' ? model.sWeight : tierInfo.weight
+        const raceWeight = modelTierWeight(tierInfo.tier, model)
         const recency = recencyWeight(edition.dateISO)
         const podiumBonus = tierInfo.tier === 'S' && typeof result.position === 'number'
           ? sPodiumBonus(result.position)
@@ -213,6 +218,17 @@ try {
             `TRI ${row.score.toFixed(2).padStart(6)} | perf ${row.performance.toFixed(2).padStart(6)} | conf ${row.confidence.toFixed(2)} | ` +
             `starts ${String(row.starts).padStart(2)} | wins ${row.wins} | podiums ${row.podiums} | S-wins ${row.sWins}`
           )
+          row.entries
+            .slice()
+            .sort((a, b) => b.contribution - a.contribution)
+            .slice(0, 5)
+            .forEach((entry) => {
+              const sofLabel = typeof entry.sof === 'number' ? entry.sof.toFixed(2) : '—'
+              console.log(
+                `    ↳ ${entry.dateISO} | ${String(entry.position).padStart(3)} | ${entry.tier} | SOF ${sofLabel.padStart(5)} | ` +
+                `xTier ${entry.raceWeight.toFixed(2)} | xSOF ${entry.fieldStrength.toFixed(3)} | contribution ${entry.contribution.toFixed(2)} | ${entry.name}`
+              )
+            })
         })
     }
   }
@@ -222,10 +238,9 @@ try {
   console.log('A: Frankfurt, Hamburg, Texas, Challenge Roth, regular T100')
   console.log('B: other races currently in the database')
   console.log('Recency: 730-day half-life; DNS excluded; DNF/DSQ = 0 and count as starts.')
-  console.log('Model E: tier multipliers weight the average; S-tier podium bonuses are +50% / +25% / +15%.')
-  console.log('Model F: tier multipliers directly increase performance; denominator uses recency only; S x1.50; S-tier podium bonuses remain +50% / +25% / +15%.')
-  console.log('Model G: same as F, but S x1.40 for sensitivity testing; A remains x1.20.')
+  console.log('Model G: direct prestige; A x1.20, S x1.40; no SOF.')
   console.log('Model H: Model G + gender-specific Stats PTO SOF; 90 is neutral, each SOF point changes race value by 1%, capped at x0.70..x1.15. Missing SOF is neutral.')
+  console.log('Model I: SOF-led prestige; A x1.10, S x1.20; same SOF factor and S-tier podium bonuses +50% / +25% / +15%.')
   console.log('Activity confidence: 1=.45, 2=.60, 3=.72, 4=.80, 5=.86, 6=.90, 8=.94, 10=.97, 12+=1.00 (linear interpolation).')
 } finally {
   await server.close()
