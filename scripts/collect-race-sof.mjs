@@ -32,19 +32,19 @@ function slugCandidates(raceId) {
 
 function decodeText(html) {
   return html
-    .replace(/<script[\\s\\S]*?<\\/script>/gi, ' ')
-    .replace(/<style[\\s\\S]*?<\\/style>/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&#x27;/g, "'")
     .replace(/&quot;/g, '"')
-    .replace(/\\s+/g, ' ')
+    .replace(/\s+/g, ' ')
 }
 
 function extractSof(html) {
   const text = decodeText(html)
-  const matches = [...text.matchAll(/SOF:\\s*([0-9]+(?:\\.[0-9]+)?)/gi)]
+  const matches = [...text.matchAll(/SOF:\s*([0-9]+(?:\\.[0-9]+)?)/gi)]
     .map((match) => Number(match[1]))
   const values = matches.filter((value, index) => matches.indexOf(value) === index)
   return values
