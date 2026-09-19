@@ -20,6 +20,7 @@ const statsPtoSlugByRaceId: Record<string, string> = {
   'ironman-world-championship-nice': 'ironman-nice-world-championships',
   'ironman-south-africa': 'im-south-africa',
   'ironman-70-3-st-george': 'im-703-st-george',
+  'ironman-70-3-venice-jesolo': 'im-703-jesolo',
   'ironman-70-3-mallorca': 'im-703-mallorca',
   'ironman-70-3-chattanooga': 'im-703-chattanooga',
   'ironman-70-3-boulder': 'im-703-boulder',
