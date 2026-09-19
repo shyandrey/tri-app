@@ -36,6 +36,7 @@ export type RaceEdition = {
   description: string
   gender?: RaceGender
   sourceUrl?: string
+  sof?: { women?: number; men?: number }
 }
 
 // Legacy flattened shape still accepted by the current UI during migration.
