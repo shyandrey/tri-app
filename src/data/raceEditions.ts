@@ -9,6 +9,30 @@ import { getStatsPtoUrl } from './statsPtoRaceUrls'
 
 const CURRENT_SEASON = 2026
 
+const currentSeasonSofByRaceId: Record<string, { women?: number; men?: number }> = {
+  'ironman-new-zealand': {"women":88.05,"men":83.63},
+  'ironman-70-3-geelong': {"women":81.01,"men":92.19},
+  'ironman-70-3-oceanside': {"women":92.75,"men":92.74},
+  'ironman-texas': {"women":94.11,"men":95.57},
+  'ironman-70-3-aix-en-provence': {"women":89.45,"men":88.22},
+  'ironman-hamburg': {"women":91.01},
+  'ironman-70-3-pennsylvania': {"women":86.44,"men":88.75},
+  'ironman-70-3-elsinore': {"women":87.6,"men":80.23},
+  'ironman-frankfurt': {"men":88.91},
+  'ironman-70-3-swansea': {"women":83.23,"men":81.53},
+  'ironman-lake-placid': {"women":86.26,"men":88.06},
+  'ironman-70-3-boise': {"women":80.58,"men":80.09},
+  'ironman-kalmar': {"women":73.79,"men":87.34},
+  'ironman-70-3-zell-am-see': {"women":85.22,"men":87.85},
+  'ironman-70-3-world-championship': {"women":96.18,"men":96.35},
+  't100-gold-coast': {"women":91.16},
+  't100-singapore': {"men":96.38},
+  't100-spain': {"women":93.19},
+  't100-san-francisco': {"men":93.47},
+  't100-vancouver': {"women":95.52},
+  't100-french-riviera': {"men":96.12},
+}
+
 const normalizeEdition = (edition: RaceEdition): RaceEdition => ({
   ...edition,
   gender: normalizeRaceGender(edition.gender),
@@ -29,6 +53,7 @@ const currentSeasonEditions: RaceEdition[] = legacyRaces.map((race) => ({
   description: race.description,
   gender: normalizeRaceGender(race.gender),
   sourceUrl: race.sourceUrl,
+  sof: currentSeasonSofByRaceId[getRaceId(race.id)],
 }))
 
 const challengeRoth2026Edition = challengeRothEditions.find((edition) => edition.year === CURRENT_SEASON)!
@@ -63,6 +88,7 @@ export const currentRaceEditions: RaceEditionView[] = [
     editionId: getRaceEditionId(race.id, CURRENT_SEASON),
     year: CURRENT_SEASON,
     statsPtoUrl: getStatsPtoUrl(getRaceId(race.id), CURRENT_SEASON),
+    sof: currentSeasonSofByRaceId[getRaceId(race.id)],
   })),
   challengeRoth2026View,
 ]
