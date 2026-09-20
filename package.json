@@ -14,7 +14,8 @@
     "import:athlete-photos": "node scripts/import-athlete-photos.mjs",
     "import:athlete-photos:all": "node scripts/import-athlete-photos.mjs --all",
     "preview": "vite preview",
-    "audit:athletes": "node scripts/audit-athletes.mjs"
+    "audit:athletes": "node scripts/audit-athletes.mjs",
+    "enrich:athlete-countries": "node scripts/enrich-athlete-countries.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
