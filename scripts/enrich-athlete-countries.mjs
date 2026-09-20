@@ -28,6 +28,13 @@ function extractCountry(html){
   /(?:Nationality|Country)\s*:\s*([^<\n\r]{2,40})/ig
  ]
  for(const re of patterns)for(const m of html.matchAll(re)){const c=code(m[1]);if(c)return c}
+
+ // Stats PTO currently renders the athlete country as plain visible text
+ // between the ranking block and the "Weight" label (not as a labelled field).
+ const visible=clean(html)
+ const between=visible.match(/(?:National\s+\d+|Run\s+\d+|Run)\s+([A-Za-z][A-Za-z .'-]{1,38})\s+Weight\b/i)?.[1]
+ const visibleCode=between?code(between):undefined
+ if(visibleCode)return visibleCode
 }
 function parseRows(src){
  const rows=[]
