@@ -1,7 +1,7 @@
 import type { Athlete } from '../../types/Athlete'
 
 const COUNTRY_NAMES_RU: Record<string, string> = {
-  AR:'Аргентина', AT:'Австрия', AU:'Австралия', BE:'Бельгия', BR:'Бразилия', CA:'Канада',
+  AR:'Аргентина', AT:'Австрия', AU:'Австралия', BM:'Бермуды', BE:'Бельгия', BR:'Бразилия', CA:'Канада',
   CH:'Швейцария', CL:'Чили', CN:'Китай', CO:'Колумбия', CZ:'Чехия', DE:'Германия', DK:'Дания',
   EE:'Эстония', ES:'Испания', FI:'Финляндия', FR:'Франция', GB:'Великобритания', HR:'Хорватия',
   HU:'Венгрия', IE:'Ирландия', IL:'Израиль', IT:'Италия', JP:'Япония', LT:'Литва', LU:'Люксембург',
@@ -10,7 +10,7 @@ const COUNTRY_NAMES_RU: Record<string, string> = {
 }
 
 const COUNTRY_NAMES_EN: Record<string, string> = {
-  AR:'Argentina', AT:'Austria', AU:'Australia', BE:'Belgium', BR:'Brazil', CA:'Canada',
+  AR:'Argentina', AT:'Austria', AU:'Australia', BM:'Bermuda', BE:'Belgium', BR:'Brazil', CA:'Canada',
   CH:'Switzerland', CL:'Chile', CN:'China', CO:'Colombia', CZ:'Czechia', DE:'Germany', DK:'Denmark',
   EE:'Estonia', ES:'Spain', FI:'Finland', FR:'France', GB:'United Kingdom', HR:'Croatia',
   HU:'Hungary', IE:'Ireland', IL:'Israel', IT:'Italy', JP:'Japan', LT:'Lithuania', LU:'Luxembourg',
