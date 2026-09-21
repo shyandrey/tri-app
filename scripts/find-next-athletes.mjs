@@ -3,8 +3,15 @@ import path from 'node:path'
 import { createServer } from 'vite'
 
 const ROOT = process.cwd()
-const EXPORT_PATH = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
+const outputAt = process.argv.indexOf('--output')
+if (outputAt >= 0 && (!process.argv[outputAt + 1] || process.argv[outputAt + 1].startsWith('--'))) {
+  throw new Error('--output requires a file path')
+}
+const EXPORT_PATH = outputAt >= 0
+  ? path.resolve(ROOT, process.argv[outputAt + 1])
+  : path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
 const EXPORT = process.argv.includes('--write')
+const countryEnrichment = JSON.parse(await fs.readFile(path.join(ROOT, 'src/data/athletes/countryEnrichment.json'), 'utf8'))
 
 function normalizeName(value) {
   return value
@@ -122,6 +129,18 @@ async function writeGeneratedProfiles() {
     .filter((item) => inferredGender(item))
     .sort((a,b) => inferredGender(a).localeCompare(inferredGender(b)) || preferredName(a).localeCompare(preferredName(b)))
 
+  const conflicts = rows.flatMap(item => {
+    const name = preferredName(item)
+    const entry = countryEnrichment[name]
+    const codes = [...item.countryCodes.keys()]
+    return codes.length > 1 || (entry && codes.some(code => code !== entry.countryCode))
+      ? [`${name}: results ${codes.join(', ') || '(none)'}, registry ${entry?.countryCode ?? '(none)'}`]
+      : []
+  })
+  if (conflicts.length) {
+    throw new Error(`Country conflicts (${conflicts.length}); no output written:\n${conflicts.join('\n')}`)
+  }
+
   const lines = [
     "import type { Athlete } from '../../types/Athlete'",
     '',
@@ -133,13 +152,15 @@ async function writeGeneratedProfiles() {
   rows.forEach((item, index) => {
     const name = preferredName(item)
     const gender = inferredGender(item)
-    const countryCode = topCountry(item)
+    const enrichment = countryEnrichment[name]
+    const resultCountry = topCountry(item)
+    const countryCode = resultCountry ?? enrichment?.countryCode
     const fields = [
       `id: ${10000 + index}`,
       `name: ${quote(name)}`,
       `nameEn: ${quote(name)}`,
-      countryCode ? `country: ${quote(countryCode)}` : `country: ''`,
-      countryCode ? `countryEn: ${quote(countryCode)}` : `countryEn: ''`,
+      countryCode ? `country: ${quote(enrichment?.country ?? countryCode)}` : `country: ''`,
+      countryCode ? `countryEn: ${quote(enrichment?.countryEn ?? countryCode)}` : `countryEn: ''`,
       countryCode ? `countryCode: ${quote(countryCode)}` : null,
       `flag: ''`,
       `gender: ${quote(gender)}`,
@@ -164,4 +185,4 @@ printGroup('M')
 printGroup('W')
 printUnresolved()
 if (EXPORT) await writeGeneratedProfiles()
-console.log('\nNote: both catalog coverage and result rows are read from the actual runtime modules. Country codes come only from result rows that explicitly contain them.')
+console.log('\nNote: catalog and results come from runtime modules. Generated countries use explicit result codes or countryEnrichment.json (verified or migrated existing data); conflicts stop generation before writing.')
