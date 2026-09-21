@@ -1,4 +1,6 @@
 import { createServer } from 'vite'
+import fs from 'node:fs/promises'
+import { auditAthleteLocalization } from './athlete-localization-audit.mjs'
 
 const server = await createServer({ server:{middlewareMode:true}, appType:'custom', logLevel:'error' })
 
@@ -15,6 +17,10 @@ try {
   const curated=[...maleAthletes,...femaleAthletes], generated=[...resultAthletes,...verifiedResultAthletes]
   const issues=[]
   const info=[]
+  const localizationRegistry = JSON.parse(await fs.readFile(new URL('../src/data/athletes/athleteLocalization.json', import.meta.url), 'utf8'))
+  const localizationIssues = auditAthleteLocalization(localizationRegistry, [...curated, ...generated], athletes)
+  issues.push(...localizationIssues)
+  info.push(`Localization registry: ${Object.keys(localizationRegistry).length} entries; consistency errors: ${localizationIssues.length}`)
   const byId=new Map(), byIdentity=new Map()
   for(const a of athletes){
     if(byId.has(a.id)) issues.push(`DUPLICATE ID: ${a.id} — ${byId.get(a.id)} / ${a.nameEn}`)
@@ -50,10 +56,26 @@ try {
   const generatedIds=new Set(generated.map(a=>a.id))
   const localizedGenerated=athletes.filter(a=>generatedIds.has(a.id))
   const sameDisplay=localizedGenerated.filter(a=>a.name===a.nameEn)
+  // The registry stores nameRu directly as the value of each exact English key.
+  // Missing translations are coverage TODOs, never consistency errors.
+  const hasRegistryNameRu = a => {
+    const key = a.nameEn ?? a.name
+    const value = localizationRegistry[key]
+    return Object.hasOwn(localizationRegistry, key) && typeof value === 'string' &&
+      value === value.trim() && /[А-Яа-яЁё]/.test(value)
+  }
+  const localizationTodo = localizedGenerated.filter(a => !/[А-Яа-яЁё]/.test(a.name))
+  const coverage = profiles => {
+    const ids = new Set(profiles.map(a => a.id))
+    return `total ${profiles.length}; registry nameRu ${profiles.filter(hasRegistryNameRu).length}; without registry nameRu ${profiles.filter(a => !hasRegistryNameRu(a)).length}; without Russian display name (TODO) ${localizationTodo.filter(a => ids.has(a.id)).length}`
+  }
   const rawCountryLabels=athletes.filter(a=>isoLike(a.country)||isoLike(a.countryEn))
   const noPhoto=athletes.filter(a=>!a.image)
 
   info.push(`Profiles: ${athletes.length} (curated ${curated.length}, generated ${generated.length})`)
+  info.push(`Generated localization coverage: ${coverage(generated)}`)
+  info.push(`  resultAthletes: ${coverage(resultAthletes)}`)
+  info.push(`  verifiedResultAthletes: ${coverage(verifiedResultAthletes)}`)
   info.push(`Generated with English-only display name: ${sameDisplay.length}`)
   info.push(`Profiles still showing code-like country labels: ${rawCountryLabels.length}`)
   info.push(`Profiles without countryCode: ${athletes.filter(a=>!a.countryCode).length}`)
@@ -68,8 +90,8 @@ try {
   else if(VERBOSE) issues.forEach(x=>console.log(`  - ${x}`))
   else console.log('  Run npm run audit:athletes -- --verbose to list all issues.')
   if(VERBOSE){
-    console.log(`\nLOCALIZATION TODO (${sameDisplay.length})`)
-    sameDisplay.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}] — ${a.countryCode||'?'}`))
+    console.log(`\nLOCALIZATION TODO (${localizationTodo.length})`)
+    localizationTodo.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}] — ${a.countryCode||'?'}`))
     console.log(`\nMISSING COUNTRY (${generated.filter(a=>!a.countryCode).length})`)
     generated.filter(a=>!a.countryCode).forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
     console.log(`\nNO LINKED RESULTS (${noResults.length})`)

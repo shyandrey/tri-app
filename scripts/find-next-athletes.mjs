@@ -13,6 +13,9 @@ const EXPORT_PATH = outputAt >= 0
 const EXPORT = process.argv.includes('--write')
 const countryEnrichment = JSON.parse(await fs.readFile(path.join(ROOT, 'src/data/athletes/countryEnrichment.json'), 'utf8'))
 
+// Persistent, manually reviewed names keyed by exact English identity.
+const athleteLocalization = JSON.parse(await fs.readFile(path.join(ROOT, 'src/data/athletes/athleteLocalization.json'), 'utf8'))
+
 function normalizeName(value) {
   return value
     .normalize('NFKD')
@@ -145,7 +148,7 @@ async function writeGeneratedProfiles() {
     "import type { Athlete } from '../../types/Athlete'",
     '',
     '// Generated from runtime result rows by: npm run find:next-athletes -- --write',
-    '// Do not curate names, photos or biographies here; add a normal profile instead.',
+    '// Do not edit here. Russian names belong in athleteLocalization.json; photos/bios in normal profiles.',
     'export const resultAthletes: Athlete[] = [',
   ]
 
@@ -157,7 +160,7 @@ async function writeGeneratedProfiles() {
     const countryCode = resultCountry ?? enrichment?.countryCode
     const fields = [
       `id: ${10000 + index}`,
-      `name: ${quote(name)}`,
+      `name: ${quote(athleteLocalization[name] ?? name)}`,
       `nameEn: ${quote(name)}`,
       countryCode ? `country: ${quote(enrichment?.country ?? countryCode)}` : `country: ''`,
       countryCode ? `countryEn: ${quote(enrichment?.countryEn ?? countryCode)}` : `countryEn: ''`,

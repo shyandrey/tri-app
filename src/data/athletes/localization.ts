@@ -1,4 +1,5 @@
 import type { Athlete } from '../../types/Athlete'
+import athleteLocalization from './athleteLocalization.json'
 
 const COUNTRY_NAMES_RU: Record<string, string> = {
   AR:'Аргентина', AT:'Австрия', AU:'Австралия', BM:'Бермуды', BE:'Бельгия', BR:'Бразилия', CA:'Канада',
@@ -26,23 +27,8 @@ const ISO3_TO_ISO2: Record<string, string> = {
   SVK:'SK', USA:'US', RSA:'ZA',
 }
 
-const ATHLETE_NAMES_RU: Record<string, string> = {
-  'Justus Nieschlag':'Юстус Нишлаг',
-  'Nick Thompson':'Ник Томпсон',
-  'Cameron Main':'Кэмерон Мэйн',
-  'Alice Alberts':'Элис Альбертс',
-  'Henri Schoeman':'Анри Шуман',
-  'Jannik Schaufler':'Янник Шауфлер',
-  'Carlos Oliver Vives':'Карлос Оливер Вивес',
-  'Dylan Magnien':'Дилан Маньен',
-  'Marcel Bolbat':'Марсель Болбат',
-  'Will Draper':'Уилл Дрейпер',
-  'Chloe Hartnett':'Хлоя Хартнетт',
-  'Danielle De Francesco':'Даниэль Де Франческо',
-  'Jessica Fullagar':'Джессика Фуллагар',
-  'Lisa-Maria Dornauer':'Лиза-Мария Дорнауэр',
-  'Sam Laidlow':'Сэм Лэйдлоу',
-}
+// Exact English identity keys; existing curated display names take precedence.
+const ATHLETE_NAMES_RU: Record<string, string> = athleteLocalization
 
 export function localizeAthlete(athlete: Athlete): Athlete {
   const rawCode = athlete.countryCode?.trim().toUpperCase()
@@ -54,6 +40,5 @@ export function localizeAthlete(athlete: Athlete): Athlete {
     countryCode: code ?? athlete.countryCode,
     country: code ? (COUNTRY_NAMES_RU[code] ?? athlete.country) : athlete.country,
     countryEn: code ? (COUNTRY_NAMES_EN[code] ?? athlete.countryEn) : athlete.countryEn,
-    countryCode: code ?? athlete.countryCode,
   }
 }

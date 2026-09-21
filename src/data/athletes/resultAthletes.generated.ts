@@ -1,7 +1,7 @@
 import type { Athlete } from '../../types/Athlete'
 
 // Generated from runtime result rows by: npm run find:next-athletes -- --write
-// Do not curate names, photos or biographies here; add a normal profile instead.
+// Do not edit here. Russian names belong in athleteLocalization.json; photos/bios in normal profiles.
 export const resultAthletes: Athlete[] = [
   { id: 10000, name: "Aaron Belcher", nameEn: "Aaron Belcher", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10001, name: "Aaron Kolk", nameEn: "Aaron Kolk", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
@@ -81,7 +81,7 @@ export const resultAthletes: Athlete[] = [
   { id: 10075, name: "Caleb Noble", nameEn: "Caleb Noble", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10076, name: "Calvin Amos", nameEn: "Calvin Amos", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10077, name: "Cameron MacNair", nameEn: "Cameron MacNair", country: "ZA", countryEn: "ZA", countryCode: "ZA", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
-  { id: 10078, name: "Cameron Main", nameEn: "Cameron Main", country: "GB", countryEn: "GB", countryCode: "GB", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
+  { id: 10078, name: "Кэмерон Мэйн", nameEn: "Cameron Main", country: "GB", countryEn: "GB", countryCode: "GB", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10079, name: "Cameron Wilson", nameEn: "Cameron Wilson", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10080, name: "Casimir Moine", nameEn: "Casimir Moine", country: "FR", countryEn: "FR", countryCode: "FR", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10081, name: "Cédric Ludet", nameEn: "Cédric Ludet", country: "FR", countryEn: "FR", countryCode: "FR", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
@@ -281,7 +281,7 @@ export const resultAthletes: Athlete[] = [
   { id: 10275, name: "Jumpei Furuya", nameEn: "Jumpei Furuya", country: "JP", countryEn: "JP", countryCode: "JP", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10276, name: "Justin Metzler", nameEn: "Justin Metzler", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10277, name: "Justus Bennewitz", nameEn: "Justus Bennewitz", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
-  { id: 10278, name: "Justus Nieschlag", nameEn: "Justus Nieschlag", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
+  { id: 10278, name: "Юстус Нишлаг", nameEn: "Justus Nieschlag", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10279, name: "Justus Töpper", nameEn: "Justus Töpper", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10280, name: "Juuso Manninen", nameEn: "Juuso Manninen", country: "FI", countryEn: "FI", countryCode: "FI", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10281, name: "Jye Spriggs", nameEn: "Jye Spriggs", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
@@ -438,7 +438,7 @@ export const resultAthletes: Athlete[] = [
   { id: 10432, name: "Nick Cosman", nameEn: "Nick Cosman", country: "CA", countryEn: "CA", countryCode: "CA", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10433, name: "Nick Emde", nameEn: "Nick Emde", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10434, name: "Nick Thijs", nameEn: "Nick Thijs", country: "BE", countryEn: "BE", countryCode: "BE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
-  { id: 10435, name: "Nick Thompson", nameEn: "Nick Thompson", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
+  { id: 10435, name: "Ник Томпсон", nameEn: "Nick Thompson", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10436, name: "Nicola Duchi", nameEn: "Nicola Duchi", country: "IT", countryEn: "IT", countryCode: "IT", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10437, name: "Nicola Piccinin", nameEn: "Nicola Piccinin", country: "IT", countryEn: "IT", countryCode: "IT", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10438, name: "Nicolas Gilbert", nameEn: "Nicolas Gilbert", country: "CA", countryEn: "CA", countryCode: "CA", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
@@ -524,7 +524,7 @@ export const resultAthletes: Athlete[] = [
   { id: 10518, name: "Ryan Sedivec", nameEn: "Ryan Sedivec", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10519, name: "Sam Appleton", nameEn: "Sam Appleton", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10520, name: "Sam Hartle", nameEn: "Sam Hartle", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
-  { id: 10521, name: "Sam Laidlow", nameEn: "Sam Laidlow", country: "FR", countryEn: "FR", countryCode: "FR", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
+  { id: 10521, name: "Сэм Лэйдлоу", nameEn: "Sam Laidlow", country: "FR", countryEn: "FR", countryCode: "FR", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10522, name: "Sam Musgrove", nameEn: "Sam Musgrove", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10523, name: "Sam Wordley", nameEn: "Sam Wordley", country: "GB", countryEn: "GB", countryCode: "GB", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10524, name: "Samuel Boettinger", nameEn: "Samuel Boettinger", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "M", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
@@ -647,7 +647,7 @@ export const resultAthletes: Athlete[] = [
   { id: 10641, name: "Alayna Szuch", nameEn: "Alayna Szuch", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10642, name: "Alexandra Tondeur", nameEn: "Alexandra Tondeur", country: "BE", countryEn: "BE", countryCode: "BE", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10643, name: "Alexandra Watt", nameEn: "Alexandra Watt", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
-  { id: 10644, name: "Alice Alberts", nameEn: "Alice Alberts", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
+  { id: 10644, name: "Элис Альбертс", nameEn: "Alice Alberts", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10645, name: "Alice Betto", nameEn: "Alice Betto", country: "IT", countryEn: "IT", countryCode: "IT", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10646, name: "Alice Cote-Allard", nameEn: "Alice Cote-Allard", country: "CA", countryEn: "CA", countryCode: "CA", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10647, name: "Alice Fritzsche", nameEn: "Alice Fritzsche", country: "CH", countryEn: "CH", countryCode: "CH", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
