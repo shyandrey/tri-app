@@ -4,7 +4,11 @@ export function auditAthleteLocalization(registry, rawAthletes, localizedAthlete
   if (!registry || typeof registry !== 'object' || Array.isArray(registry)) {
     return ['LOCALIZATION REGISTRY INVALID: expected an object']
   }
-  for (const [nameEn, nameRu] of Object.entries(registry)) {
+  for (const [nameEn, entry] of Object.entries(registry)) {
+    const nameRu = typeof entry === 'string' ? entry : entry?.nameRu
+    if (typeof entry !== 'string' && entry?.provenance !== 'generated-reviewed') {
+      issues.push(`LOCALIZATION PROVENANCE INVALID: ${nameEn}`)
+    }
     if (!nameEn.trim() || nameEn !== nameEn.trim() || typeof nameRu !== 'string' ||
         nameRu !== nameRu.trim() || !/[А-Яа-яЁё]/.test(nameRu)) {
       issues.push(`LOCALIZATION ENTRY INVALID: ${nameEn}`)

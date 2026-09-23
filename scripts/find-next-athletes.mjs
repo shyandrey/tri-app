@@ -155,12 +155,14 @@ async function writeGeneratedProfiles() {
   rows.forEach((item, index) => {
     const name = preferredName(item)
     const gender = inferredGender(item)
+    const localization = athleteLocalization[name]
+    const nameRu = typeof localization === 'string' ? localization : localization?.nameRu
     const enrichment = countryEnrichment[name]
     const resultCountry = topCountry(item)
     const countryCode = resultCountry ?? enrichment?.countryCode
     const fields = [
       `id: ${10000 + index}`,
-      `name: ${quote(athleteLocalization[name] ?? name)}`,
+      `name: ${quote(nameRu ?? name)}`,
       `nameEn: ${quote(name)}`,
       countryCode ? `country: ${quote(enrichment?.country ?? countryCode)}` : `country: ''`,
       countryCode ? `countryEn: ${quote(enrichment?.countryEn ?? countryCode)}` : `countryEn: ''`,

@@ -56,11 +56,12 @@ try {
   const generatedIds=new Set(generated.map(a=>a.id))
   const localizedGenerated=athletes.filter(a=>generatedIds.has(a.id))
   const sameDisplay=localizedGenerated.filter(a=>a.name===a.nameEn)
-  // The registry stores nameRu directly as the value of each exact English key.
+  // Legacy entries are strings; reviewed entries carry nameRu and provenance.
   // Missing translations are coverage TODOs, never consistency errors.
   const hasRegistryNameRu = a => {
     const key = a.nameEn ?? a.name
-    const value = localizationRegistry[key]
+    const entry = localizationRegistry[key]
+    const value = typeof entry === 'string' ? entry : entry?.nameRu
     return Object.hasOwn(localizationRegistry, key) && typeof value === 'string' &&
       value === value.trim() && /[А-Яа-яЁё]/.test(value)
   }
@@ -76,6 +77,13 @@ try {
   info.push(`Generated localization coverage: ${coverage(generated)}`)
   info.push(`  resultAthletes: ${coverage(resultAthletes)}`)
   info.push(`  verifiedResultAthletes: ${coverage(verifiedResultAthletes)}`)
+  const provenanceCounts = new Map()
+  for (const athlete of generated.filter(hasRegistryNameRu)) {
+    const entry = localizationRegistry[athlete.nameEn ?? athlete.name]
+    const provenance = typeof entry === 'string' ? 'legacy-override' : entry.provenance
+    provenanceCounts.set(provenance, (provenanceCounts.get(provenance) ?? 0) + 1)
+  }
+  for (const [provenance, count] of provenanceCounts) info.push(`  Localization provenance ${provenance}: ${count}`)
   info.push(`Generated with English-only display name: ${sameDisplay.length}`)
   info.push(`Profiles still showing code-like country labels: ${rawCountryLabels.length}`)
   info.push(`Profiles without countryCode: ${athletes.filter(a=>!a.countryCode).length}`)

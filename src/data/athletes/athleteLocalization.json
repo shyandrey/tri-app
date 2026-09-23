@@ -13,5 +13,661 @@
   "Danielle De Francesco": "Даниэль Де Франческо",
   "Jessica Fullagar": "Джессика Фуллагар",
   "Lisa-Maria Dornauer": "Лиза-Мария Дорнауэр",
-  "Sam Laidlow": "Сэм Лэйдлоу"
+  "Sam Laidlow": "Сэм Лэйдлоу",
+  "Harry Palmer": {
+    "nameRu": "Гарри Палмер",
+    "provenance": "generated-reviewed"
+  },
+  "Panagiotis Bitados": {
+    "nameRu": "Панайотис Битадос",
+    "provenance": "generated-reviewed"
+  },
+  "Michele Bortolamedi": {
+    "nameRu": "Микеле Бортоламеди",
+    "provenance": "generated-reviewed"
+  },
+  "Pierre Le Corre": {
+    "nameRu": "Пьер Ле Кор",
+    "provenance": "generated-reviewed"
+  },
+  "Fabian Kraft": {
+    "nameRu": "Фабиан Крафт",
+    "provenance": "generated-reviewed"
+  },
+  "Alistair Brownlee": {
+    "nameRu": "Алистер Браунли",
+    "provenance": "generated-reviewed"
+  },
+  "David McNamee": {
+    "nameRu": "Дэвид Макнэми",
+    "provenance": "generated-reviewed"
+  },
+  "Nicolas Mann": {
+    "nameRu": "Николас Манн",
+    "provenance": "generated-reviewed"
+  },
+  "Aaron Royle": {
+    "nameRu": "Аарон Ройл",
+    "provenance": "generated-reviewed"
+  },
+  "Robert Kallin": {
+    "nameRu": "Роберт Каллин",
+    "provenance": "generated-reviewed"
+  },
+  "Paul Schuster": {
+    "nameRu": "Пауль Шустер",
+    "provenance": "generated-reviewed"
+  },
+  "Sam Appleton": {
+    "nameRu": "Сэм Эпплтон",
+    "provenance": "generated-reviewed"
+  },
+  "Ben Hamilton": {
+    "nameRu": "Бен Хэмилтон",
+    "provenance": "generated-reviewed"
+  },
+  "Jarrod Osborne": {
+    "nameRu": "Джаррод Осборн",
+    "provenance": "generated-reviewed"
+  },
+  "Seth Rider": {
+    "nameRu": "Сет Райдер",
+    "provenance": "generated-reviewed"
+  },
+  "Thomas Bishop": {
+    "nameRu": "Томас Бишоп",
+    "provenance": "generated-reviewed"
+  },
+  "Joran Driesen": {
+    "nameRu": "Йоран Дрисен",
+    "provenance": "generated-reviewed"
+  },
+  "Mike Phillips": {
+    "nameRu": "Майк Филлипс",
+    "provenance": "generated-reviewed"
+  },
+  "Antony Costes": {
+    "nameRu": "Антони Кост",
+    "provenance": "generated-reviewed"
+  },
+  "Wilhelm Hirsch": {
+    "nameRu": "Вильгельм Хирш",
+    "provenance": "generated-reviewed"
+  },
+  "Kevin McDowell": {
+    "nameRu": "Кевин Макдауэлл",
+    "provenance": "generated-reviewed"
+  },
+  "Bradley Weiss": {
+    "nameRu": "Брэдли Вайс",
+    "provenance": "generated-reviewed"
+  },
+  "Josh Amberger": {
+    "nameRu": "Джош Амбергер",
+    "provenance": "generated-reviewed"
+  },
+  "Jack Moody": {
+    "nameRu": "Джек Муди",
+    "provenance": "generated-reviewed"
+  },
+  "Mattia Ceccarelli": {
+    "nameRu": "Маттиа Чеккарелли",
+    "provenance": "generated-reviewed"
+  },
+  "Simon Westermann": {
+    "nameRu": "Симон Вестерманн",
+    "provenance": "generated-reviewed"
+  },
+  "Arnaud Guilloux": {
+    "nameRu": "Арно Гийу",
+    "provenance": "generated-reviewed"
+  },
+  "Michele Sarzilla": {
+    "nameRu": "Микеле Сардзилла",
+    "provenance": "generated-reviewed"
+  },
+  "Benjamin Hill": {
+    "nameRu": "Бенджамин Хилл",
+    "provenance": "generated-reviewed"
+  },
+  "Maximilian Sperl": {
+    "nameRu": "Максимилиан Шперль",
+    "provenance": "generated-reviewed"
+  },
+  "Rasmus Svenningsson": {
+    "nameRu": "Расмус Свеннингссон",
+    "provenance": "generated-reviewed"
+  },
+  "Tayler Reid": {
+    "nameRu": "Тейлор Рид",
+    "provenance": "generated-reviewed"
+  },
+  "Finn Große-Freese": {
+    "nameRu": "Финн Гроссе-Фрезе",
+    "provenance": "generated-reviewed"
+  },
+  "Nick Emde": {
+    "nameRu": "Ник Эмде",
+    "provenance": "generated-reviewed"
+  },
+  "Luke Jones": {
+    "nameRu": "Люк Джонс",
+    "provenance": "generated-reviewed"
+  },
+  "Kenji Nener": {
+    "nameRu": "Кэндзи Ненер",
+    "provenance": "generated-reviewed"
+  },
+  "Johannes Vogel": {
+    "nameRu": "Йоханнес Фогель",
+    "provenance": "generated-reviewed"
+  },
+  "Pierre Dupuy": {
+    "nameRu": "Пьер Дюпюи",
+    "provenance": "generated-reviewed"
+  },
+  "Rafael Lukatsch": {
+    "nameRu": "Рафаэль Лукач",
+    "provenance": "generated-reviewed"
+  },
+  "Josh Ferris": {
+    "nameRu": "Джош Феррис",
+    "provenance": "generated-reviewed"
+  },
+  "Tom Hug": {
+    "nameRu": "Том Хуг",
+    "provenance": "generated-reviewed"
+  },
+  "Andrew Horsfall-Turner": {
+    "nameRu": "Эндрю Хорсфолл-Тёрнер",
+    "provenance": "generated-reviewed"
+  },
+  "Matt Hauser": {
+    "nameRu": "Мэтт Хаузер",
+    "provenance": "generated-reviewed"
+  },
+  "Thor Bendix Madsen": {
+    "nameRu": "Тор Бендикс Мадсен",
+    "provenance": "generated-reviewed"
+  },
+  "Leonard Arnold": {
+    "nameRu": "Леонард Арнольд",
+    "provenance": "generated-reviewed"
+  },
+  "Caleb Noble": {
+    "nameRu": "Кейлеб Ноубл",
+    "provenance": "generated-reviewed"
+  },
+  "Florian Angert": {
+    "nameRu": "Флориан Ангерт",
+    "provenance": "generated-reviewed"
+  },
+  "Andre Lopes": {
+    "nameRu": "Андре Лопес",
+    "provenance": "generated-reviewed"
+  },
+  "Matt Burton": {
+    "nameRu": "Мэтт Бёртон",
+    "provenance": "generated-reviewed"
+  },
+  "Mitchell Kibby": {
+    "nameRu": "Митчелл Кибби",
+    "provenance": "generated-reviewed"
+  },
+  "Hunter Lussi": {
+    "nameRu": "Хантер Лусси",
+    "provenance": "generated-reviewed"
+  },
+  "Ruben Zepuntke": {
+    "nameRu": "Рубен Цепунтке",
+    "provenance": "generated-reviewed"
+  },
+  "Piotr Lawicki": {
+    "nameRu": "Пётр Лавицкий",
+    "provenance": "generated-reviewed"
+  },
+  "Ondrej Kubo": {
+    "nameRu": "Ондрей Кубо",
+    "provenance": "generated-reviewed"
+  },
+  "Itamar Eshed": {
+    "nameRu": "Итамар Эшед",
+    "provenance": "generated-reviewed"
+  },
+  "Thomas Davis": {
+    "nameRu": "Томас Дэвис",
+    "provenance": "generated-reviewed"
+  },
+  "Calvin Amos": {
+    "nameRu": "Кэлвин Эймос",
+    "provenance": "generated-reviewed"
+  },
+  "Marc Eggeling": {
+    "nameRu": "Марк Эггелинг",
+    "provenance": "generated-reviewed"
+  },
+  "Michael Weiss": {
+    "nameRu": "Михаэль Вайс",
+    "provenance": "generated-reviewed"
+  },
+  "Robbie Deckard": {
+    "nameRu": "Робби Декард",
+    "provenance": "generated-reviewed"
+  },
+  "Matthew Sharpe": {
+    "nameRu": "Мэттью Шарп",
+    "provenance": "generated-reviewed"
+  },
+  "Connor Weaver": {
+    "nameRu": "Коннор Уивер",
+    "provenance": "generated-reviewed"
+  },
+  "Florent Lefebvre": {
+    "nameRu": "Флоран Лефевр",
+    "provenance": "generated-reviewed"
+  },
+  "Emil Holm": {
+    "nameRu": "Эмиль Хольм",
+    "provenance": "generated-reviewed"
+  },
+  "Matthew McElroy": {
+    "nameRu": "Мэттью Макэлрой",
+    "provenance": "generated-reviewed"
+  },
+  "Greg Harper": {
+    "nameRu": "Грег Харпер",
+    "provenance": "generated-reviewed"
+  },
+  "Simon Davis": {
+    "nameRu": "Саймон Дэвис",
+    "provenance": "generated-reviewed"
+  },
+  "Liam Lloyd": {
+    "nameRu": "Лиам Ллойд",
+    "provenance": "generated-reviewed"
+  },
+  "Malachi Cashmore": {
+    "nameRu": "Малакай Кэшмор",
+    "provenance": "generated-reviewed"
+  },
+  "Tomasz Szala": {
+    "nameRu": "Томаш Шала",
+    "provenance": "generated-reviewed"
+  },
+  "Zack Cooper": {
+    "nameRu": "Зак Купер",
+    "provenance": "generated-reviewed"
+  },
+  "Sven Wies": {
+    "nameRu": "Свен Вис",
+    "provenance": "generated-reviewed"
+  },
+  "Dylan Gillespie": {
+    "nameRu": "Дилан Гиллеспи",
+    "provenance": "generated-reviewed"
+  },
+  "Kieran Storch": {
+    "nameRu": "Киран Сторч",
+    "provenance": "generated-reviewed"
+  },
+  "Timo Schaffeld": {
+    "nameRu": "Тимо Шаффельд",
+    "provenance": "generated-reviewed"
+  },
+  "Martin Ulloa": {
+    "nameRu": "Мартин Ульоа",
+    "provenance": "generated-reviewed"
+  },
+  "Juan Ignacio Villarruel Curra": {
+    "nameRu": "Хуан Игнасио Вильярруэль Курра",
+    "provenance": "generated-reviewed"
+  },
+  "Sebastian Norberg": {
+    "nameRu": "Себастьян Норберг",
+    "provenance": "generated-reviewed"
+  },
+  "Hannes Butters": {
+    "nameRu": "Ханнес Буттерс",
+    "provenance": "generated-reviewed"
+  },
+  "Devin Volk": {
+    "nameRu": "Девин Волк",
+    "provenance": "generated-reviewed"
+  },
+  "Magnus Maenner": {
+    "nameRu": "Магнус Меннер",
+    "provenance": "generated-reviewed"
+  },
+  "Tom Vaelen": {
+    "nameRu": "Том Вален",
+    "provenance": "generated-reviewed"
+  },
+  "Joao Pereira": {
+    "nameRu": "Жуан Перейра",
+    "provenance": "generated-reviewed"
+  },
+  "Tristan Price": {
+    "nameRu": "Тристан Прайс",
+    "provenance": "generated-reviewed"
+  },
+  "Roland Crantock": {
+    "nameRu": "Роланд Крэнток",
+    "provenance": "generated-reviewed"
+  },
+  "Emma Pallant-Browne": {
+    "nameRu": "Эмма Паллант-Браун",
+    "provenance": "generated-reviewed"
+  },
+  "Anne Reischmann": {
+    "nameRu": "Анне Райшманн",
+    "provenance": "generated-reviewed"
+  },
+  "Kirsten Kasper": {
+    "nameRu": "Кирстен Каспер",
+    "provenance": "generated-reviewed"
+  },
+  "Nikki Bartlett": {
+    "nameRu": "Никки Бартлетт",
+    "provenance": "generated-reviewed"
+  },
+  "Laura Madsen": {
+    "nameRu": "Лаура Мадсен",
+    "provenance": "generated-reviewed"
+  },
+  "Anne Haug": {
+    "nameRu": "Анне Хауг",
+    "provenance": "generated-reviewed"
+  },
+  "Flora Duffy": {
+    "nameRu": "Флора Даффи",
+    "provenance": "generated-reviewed"
+  },
+  "Laura Jansen": {
+    "nameRu": "Лаура Янсен",
+    "provenance": "generated-reviewed"
+  },
+  "Haley Chura": {
+    "nameRu": "Хейли Чура",
+    "provenance": "generated-reviewed"
+  },
+  "Chelsea Sodaro": {
+    "nameRu": "Челси Содаро",
+    "provenance": "generated-reviewed"
+  },
+  "Charlene Clavel": {
+    "nameRu": "Шарлен Клавель",
+    "provenance": "generated-reviewed"
+  },
+  "Daniela Bleymehl": {
+    "nameRu": "Даниэла Блеймель",
+    "provenance": "generated-reviewed"
+  },
+  "Rachel Zilinskas": {
+    "nameRu": "Рэйчел Зилинскас",
+    "provenance": "generated-reviewed"
+  },
+  "Kylie Simpson": {
+    "nameRu": "Кайли Симпсон",
+    "provenance": "generated-reviewed"
+  },
+  "Marlene De Boer": {
+    "nameRu": "Марлене де Бур",
+    "provenance": "generated-reviewed"
+  },
+  "Nina Derron": {
+    "nameRu": "Нина Деррон",
+    "provenance": "generated-reviewed"
+  },
+  "Katharina Wolff": {
+    "nameRu": "Катарина Вольф",
+    "provenance": "generated-reviewed"
+  },
+  "Amelia Watkinson": {
+    "nameRu": "Амелия Уоткинсон",
+    "provenance": "generated-reviewed"
+  },
+  "Tanja Neubert": {
+    "nameRu": "Таня Нойберт",
+    "provenance": "generated-reviewed"
+  },
+  "Simone Dailey": {
+    "nameRu": "Симон Дейли",
+    "provenance": "generated-reviewed"
+  },
+  "Sif Bendix Madsen": {
+    "nameRu": "Сиф Бендикс Мадсен",
+    "provenance": "generated-reviewed"
+  },
+  "Gurutze Frades Larralde": {
+    "nameRu": "Гурутце Фрадес Ларральде",
+    "provenance": "generated-reviewed"
+  },
+  "Jocelyn McCauley": {
+    "nameRu": "Джоселин Макколи",
+    "provenance": "generated-reviewed"
+  },
+  "Elisabetta Curridori": {
+    "nameRu": "Элизабетта Курридори",
+    "provenance": "generated-reviewed"
+  },
+  "Lauren Brandon": {
+    "nameRu": "Лорен Брэндон",
+    "provenance": "generated-reviewed"
+  },
+  "Giorgia Priarone": {
+    "nameRu": "Джорджия Приароне",
+    "provenance": "generated-reviewed"
+  },
+  "Danielle Fauteux": {
+    "nameRu": "Даниэль Фотё",
+    "provenance": "generated-reviewed"
+  },
+  "Daniela Ryf": {
+    "nameRu": "Даниэла Риф",
+    "provenance": "generated-reviewed"
+  },
+  "Richelle Hill": {
+    "nameRu": "Ришель Хилл",
+    "provenance": "generated-reviewed"
+  },
+  "Jeanni Metzler": {
+    "nameRu": "Джинни Метцлер",
+    "provenance": "generated-reviewed"
+  },
+  "Jeanne Collonge": {
+    "nameRu": "Жанна Коллонж",
+    "provenance": "generated-reviewed"
+  },
+  "Anna Bergsten": {
+    "nameRu": "Анна Бергстен",
+    "provenance": "generated-reviewed"
+  },
+  "Cecilia Perez": {
+    "nameRu": "Сесилия Перес",
+    "provenance": "generated-reviewed"
+  },
+  "Sarah Schoenfelder": {
+    "nameRu": "Сара Шёнфельдер",
+    "provenance": "generated-reviewed"
+  },
+  "Kristen Marchant": {
+    "nameRu": "Кристен Марчант",
+    "provenance": "generated-reviewed"
+  },
+  "Miranda Tomenson": {
+    "nameRu": "Миранда Томенсон",
+    "provenance": "generated-reviewed"
+  },
+  "Arlette Mariana Gonzalez Hurtado": {
+    "nameRu": "Арлетт Мариана Гонсалес Уртадо",
+    "provenance": "generated-reviewed"
+  },
+  "Emilie Morier": {
+    "nameRu": "Эмили Морье",
+    "provenance": "generated-reviewed"
+  },
+  "Merle Brunnee": {
+    "nameRu": "Мерле Брюнне",
+    "provenance": "generated-reviewed"
+  },
+  "Anna Pabinger": {
+    "nameRu": "Анна Пабингер",
+    "provenance": "generated-reviewed"
+  },
+  "Ai Ueda": {
+    "nameRu": "Ай Уэда",
+    "provenance": "generated-reviewed"
+  },
+  "Sophie Evans": {
+    "nameRu": "Софи Эванс",
+    "provenance": "generated-reviewed"
+  },
+  "Samantha Kingsford": {
+    "nameRu": "Саманта Кингсфорд",
+    "provenance": "generated-reviewed"
+  },
+  "Pamella Oliveira": {
+    "nameRu": "Памелла Оливейра",
+    "provenance": "generated-reviewed"
+  },
+  "Laura Kessler": {
+    "nameRu": "Лаура Кесслер",
+    "provenance": "generated-reviewed"
+  },
+  "Julia Skala": {
+    "nameRu": "Юлия Скала",
+    "provenance": "generated-reviewed"
+  },
+  "Kate Gillespie-Jones": {
+    "nameRu": "Кейт Гиллеспи-Джонс",
+    "provenance": "generated-reviewed"
+  },
+  "Justine Mathieux": {
+    "nameRu": "Жюстин Матьё",
+    "provenance": "generated-reviewed"
+  },
+  "Alexandra Watt": {
+    "nameRu": "Александра Уотт",
+    "provenance": "generated-reviewed"
+  },
+  "Sabrina Exenberger": {
+    "nameRu": "Сабрина Эксенбергер",
+    "provenance": "generated-reviewed"
+  },
+  "Rachel Brown": {
+    "nameRu": "Рэйчел Браун",
+    "provenance": "generated-reviewed"
+  },
+  "Rebecca Robisch": {
+    "nameRu": "Ребекка Робиш",
+    "provenance": "generated-reviewed"
+  },
+  "Lesley Smith": {
+    "nameRu": "Лесли Смит",
+    "provenance": "generated-reviewed"
+  },
+  "Laura Zimmermann": {
+    "nameRu": "Лаура Циммерманн",
+    "provenance": "generated-reviewed"
+  },
+  "Mareike Guhl": {
+    "nameRu": "Марейке Гуль",
+    "provenance": "generated-reviewed"
+  },
+  "Lisa Norden": {
+    "nameRu": "Лиза Норден",
+    "provenance": "generated-reviewed"
+  },
+  "Diana Castillo Franco": {
+    "nameRu": "Диана Кастильо Франко",
+    "provenance": "generated-reviewed"
+  },
+  "Valerie Barthelemy": {
+    "nameRu": "Валери Бартелеми",
+    "provenance": "generated-reviewed"
+  },
+  "Erika Ackerlund": {
+    "nameRu": "Эрика Акерлунд",
+    "provenance": "generated-reviewed"
+  },
+  "Sarah True": {
+    "nameRu": "Сара Тру",
+    "provenance": "generated-reviewed"
+  },
+  "Saskia Haug": {
+    "nameRu": "Саския Хауг",
+    "provenance": "generated-reviewed"
+  },
+  "Lara Hernandez-Tome": {
+    "nameRu": "Лара Эрнандес-Томе",
+    "provenance": "generated-reviewed"
+  },
+  "Allison Jacob": {
+    "nameRu": "Эллисон Джейкоб",
+    "provenance": "generated-reviewed"
+  },
+  "Laura Siddall": {
+    "nameRu": "Лаура Сиддалл",
+    "provenance": "generated-reviewed"
+  },
+  "Stephanie Wunderle": {
+    "nameRu": "Штефани Вундерле",
+    "provenance": "generated-reviewed"
+  },
+  "Caterina Mariani": {
+    "nameRu": "Катерина Мариани",
+    "provenance": "generated-reviewed"
+  },
+  "Jodie Stimpson": {
+    "nameRu": "Джоди Стимпсон",
+    "provenance": "generated-reviewed"
+  },
+  "Lucy Buckingham": {
+    "nameRu": "Люси Бакингем",
+    "provenance": "generated-reviewed"
+  },
+  "Tara Rooney": {
+    "nameRu": "Тара Руни",
+    "provenance": "generated-reviewed"
+  },
+  "Carolina Fernandez Ortuno": {
+    "nameRu": "Каролина Фернандес Ортуньо",
+    "provenance": "generated-reviewed"
+  },
+  "Katie Colville": {
+    "nameRu": "Кэти Колвилл",
+    "provenance": "generated-reviewed"
+  },
+  "Melanie McQuaid": {
+    "nameRu": "Мелани Маккуэйд",
+    "provenance": "generated-reviewed"
+  },
+  "Teresa Adam": {
+    "nameRu": "Тереза Адам",
+    "provenance": "generated-reviewed"
+  },
+  "Amelie Kretz": {
+    "nameRu": "Амели Кретц",
+    "provenance": "generated-reviewed"
+  },
+  "Jessica Cullen": {
+    "nameRu": "Джессика Каллен",
+    "provenance": "generated-reviewed"
+  },
+  "Jasmine Holmes": {
+    "nameRu": "Джасмин Холмс",
+    "provenance": "generated-reviewed"
+  },
+  "Anna Buettner": {
+    "nameRu": "Анна Бюттнер",
+    "provenance": "generated-reviewed"
+  },
+  "Brittani Shappell": {
+    "nameRu": "Бриттани Шаппелл",
+    "provenance": "generated-reviewed"
+  },
+  "Margarita Ryan": {
+    "nameRu": "Маргарита Райан",
+    "provenance": "generated-reviewed"
+  }
 }

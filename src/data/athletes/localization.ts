@@ -28,15 +28,17 @@ const ISO3_TO_ISO2: Record<string, string> = {
 }
 
 // Exact English identity keys; existing curated display names take precedence.
-const ATHLETE_NAMES_RU: Record<string, string> = athleteLocalization
+const ATHLETE_NAMES_RU: Record<string, string | { nameRu: string; provenance: string }> = athleteLocalization
 
 export function localizeAthlete(athlete: Athlete): Athlete {
   const rawCode = athlete.countryCode?.trim().toUpperCase()
   const code = rawCode ? (ISO3_TO_ISO2[rawCode] ?? rawCode) : undefined
   const nameEn = athlete.nameEn ?? athlete.name
+  const entry = ATHLETE_NAMES_RU[nameEn]
+  const nameRu = typeof entry === 'string' ? entry : entry?.nameRu
   return {
     ...athlete,
-    name: athlete.name !== nameEn ? athlete.name : (ATHLETE_NAMES_RU[nameEn] ?? athlete.name),
+    name: athlete.name !== nameEn ? athlete.name : (nameRu ?? athlete.name),
     countryCode: code ?? athlete.countryCode,
     country: code ? (COUNTRY_NAMES_RU[code] ?? athlete.country) : athlete.country,
     countryEn: code ? (COUNTRY_NAMES_EN[code] ?? athlete.countryEn) : athlete.countryEn,
