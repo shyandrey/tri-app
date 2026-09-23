@@ -1,0 +1,2933 @@
+{
+  "asOf": "2026-09-23T12:00:00+03:00",
+  "rankingImplementation": "src/utils/athleteRanking.ts:sortAthletesByRanking",
+  "selection": "Top 100 per gender among generated profiles without localization, excluding all wave 1 participants including REVIEW_REQUIRED; no replacements for unresolved names.",
+  "excludedWaveFiles": [
+    "athlete-localization-wave1.json"
+  ],
+  "originalRegistry": {
+    "Justus Nieschlag": "Юстус Нишлаг",
+    "Nick Thompson": "Ник Томпсон",
+    "Cameron Main": "Кэмерон Мэйн",
+    "Alice Alberts": "Элис Альбертс",
+    "Henri Schoeman": "Анри Шуман",
+    "Jannik Schaufler": "Янник Шауфлер",
+    "Carlos Oliver Vives": "Карлос Оливер Вивес",
+    "Dylan Magnien": "Дилан Маньен",
+    "Marcel Bolbat": "Марсель Болбат",
+    "Will Draper": "Уилл Дрейпер",
+    "Chloe Hartnett": "Хлоя Хартнетт",
+    "Danielle De Francesco": "Даниэль Де Франческо",
+    "Jessica Fullagar": "Джессика Фуллагар",
+    "Lisa-Maria Dornauer": "Лиза-Мария Дорнауэр",
+    "Sam Laidlow": "Сэм Лэйдлоу",
+    "Harry Palmer": {
+      "nameRu": "Гарри Палмер",
+      "provenance": "generated-reviewed"
+    },
+    "Panagiotis Bitados": {
+      "nameRu": "Панайотис Битадос",
+      "provenance": "generated-reviewed"
+    },
+    "Michele Bortolamedi": {
+      "nameRu": "Микеле Бортоламеди",
+      "provenance": "generated-reviewed"
+    },
+    "Pierre Le Corre": {
+      "nameRu": "Пьер Ле Кор",
+      "provenance": "generated-reviewed"
+    },
+    "Fabian Kraft": {
+      "nameRu": "Фабиан Крафт",
+      "provenance": "generated-reviewed"
+    },
+    "Alistair Brownlee": {
+      "nameRu": "Алистер Браунли",
+      "provenance": "generated-reviewed"
+    },
+    "David McNamee": {
+      "nameRu": "Дэвид Макнэми",
+      "provenance": "generated-reviewed"
+    },
+    "Nicolas Mann": {
+      "nameRu": "Николас Манн",
+      "provenance": "generated-reviewed"
+    },
+    "Aaron Royle": {
+      "nameRu": "Аарон Ройл",
+      "provenance": "generated-reviewed"
+    },
+    "Robert Kallin": {
+      "nameRu": "Роберт Каллин",
+      "provenance": "generated-reviewed"
+    },
+    "Paul Schuster": {
+      "nameRu": "Пауль Шустер",
+      "provenance": "generated-reviewed"
+    },
+    "Sam Appleton": {
+      "nameRu": "Сэм Эпплтон",
+      "provenance": "generated-reviewed"
+    },
+    "Ben Hamilton": {
+      "nameRu": "Бен Хэмилтон",
+      "provenance": "generated-reviewed"
+    },
+    "Jarrod Osborne": {
+      "nameRu": "Джаррод Осборн",
+      "provenance": "generated-reviewed"
+    },
+    "Seth Rider": {
+      "nameRu": "Сет Райдер",
+      "provenance": "generated-reviewed"
+    },
+    "Thomas Bishop": {
+      "nameRu": "Томас Бишоп",
+      "provenance": "generated-reviewed"
+    },
+    "Joran Driesen": {
+      "nameRu": "Йоран Дрисен",
+      "provenance": "generated-reviewed"
+    },
+    "Mike Phillips": {
+      "nameRu": "Майк Филлипс",
+      "provenance": "generated-reviewed"
+    },
+    "Antony Costes": {
+      "nameRu": "Антони Кост",
+      "provenance": "generated-reviewed"
+    },
+    "Wilhelm Hirsch": {
+      "nameRu": "Вильгельм Хирш",
+      "provenance": "generated-reviewed"
+    },
+    "Kevin McDowell": {
+      "nameRu": "Кевин Макдауэлл",
+      "provenance": "generated-reviewed"
+    },
+    "Bradley Weiss": {
+      "nameRu": "Брэдли Вайс",
+      "provenance": "generated-reviewed"
+    },
+    "Josh Amberger": {
+      "nameRu": "Джош Амбергер",
+      "provenance": "generated-reviewed"
+    },
+    "Jack Moody": {
+      "nameRu": "Джек Муди",
+      "provenance": "generated-reviewed"
+    },
+    "Mattia Ceccarelli": {
+      "nameRu": "Маттиа Чеккарелли",
+      "provenance": "generated-reviewed"
+    },
+    "Simon Westermann": {
+      "nameRu": "Симон Вестерманн",
+      "provenance": "generated-reviewed"
+    },
+    "Arnaud Guilloux": {
+      "nameRu": "Арно Гийу",
+      "provenance": "generated-reviewed"
+    },
+    "Michele Sarzilla": {
+      "nameRu": "Микеле Сардзилла",
+      "provenance": "generated-reviewed"
+    },
+    "Benjamin Hill": {
+      "nameRu": "Бенджамин Хилл",
+      "provenance": "generated-reviewed"
+    },
+    "Maximilian Sperl": {
+      "nameRu": "Максимилиан Шперль",
+      "provenance": "generated-reviewed"
+    },
+    "Rasmus Svenningsson": {
+      "nameRu": "Расмус Свеннингссон",
+      "provenance": "generated-reviewed"
+    },
+    "Tayler Reid": {
+      "nameRu": "Тейлор Рид",
+      "provenance": "generated-reviewed"
+    },
+    "Finn Große-Freese": {
+      "nameRu": "Финн Гроссе-Фрезе",
+      "provenance": "generated-reviewed"
+    },
+    "Nick Emde": {
+      "nameRu": "Ник Эмде",
+      "provenance": "generated-reviewed"
+    },
+    "Luke Jones": {
+      "nameRu": "Люк Джонс",
+      "provenance": "generated-reviewed"
+    },
+    "Kenji Nener": {
+      "nameRu": "Кэндзи Ненер",
+      "provenance": "generated-reviewed"
+    },
+    "Johannes Vogel": {
+      "nameRu": "Йоханнес Фогель",
+      "provenance": "generated-reviewed"
+    },
+    "Pierre Dupuy": {
+      "nameRu": "Пьер Дюпюи",
+      "provenance": "generated-reviewed"
+    },
+    "Rafael Lukatsch": {
+      "nameRu": "Рафаэль Лукач",
+      "provenance": "generated-reviewed"
+    },
+    "Josh Ferris": {
+      "nameRu": "Джош Феррис",
+      "provenance": "generated-reviewed"
+    },
+    "Tom Hug": {
+      "nameRu": "Том Хуг",
+      "provenance": "generated-reviewed"
+    },
+    "Andrew Horsfall-Turner": {
+      "nameRu": "Эндрю Хорсфолл-Тёрнер",
+      "provenance": "generated-reviewed"
+    },
+    "Matt Hauser": {
+      "nameRu": "Мэтт Хаузер",
+      "provenance": "generated-reviewed"
+    },
+    "Thor Bendix Madsen": {
+      "nameRu": "Тор Бендикс Мадсен",
+      "provenance": "generated-reviewed"
+    },
+    "Leonard Arnold": {
+      "nameRu": "Леонард Арнольд",
+      "provenance": "generated-reviewed"
+    },
+    "Caleb Noble": {
+      "nameRu": "Кейлеб Ноубл",
+      "provenance": "generated-reviewed"
+    },
+    "Florian Angert": {
+      "nameRu": "Флориан Ангерт",
+      "provenance": "generated-reviewed"
+    },
+    "Andre Lopes": {
+      "nameRu": "Андре Лопес",
+      "provenance": "generated-reviewed"
+    },
+    "Matt Burton": {
+      "nameRu": "Мэтт Бёртон",
+      "provenance": "generated-reviewed"
+    },
+    "Mitchell Kibby": {
+      "nameRu": "Митчелл Кибби",
+      "provenance": "generated-reviewed"
+    },
+    "Hunter Lussi": {
+      "nameRu": "Хантер Лусси",
+      "provenance": "generated-reviewed"
+    },
+    "Ruben Zepuntke": {
+      "nameRu": "Рубен Цепунтке",
+      "provenance": "generated-reviewed"
+    },
+    "Piotr Lawicki": {
+      "nameRu": "Пётр Лавицкий",
+      "provenance": "generated-reviewed"
+    },
+    "Ondrej Kubo": {
+      "nameRu": "Ондрей Кубо",
+      "provenance": "generated-reviewed"
+    },
+    "Itamar Eshed": {
+      "nameRu": "Итамар Эшед",
+      "provenance": "generated-reviewed"
+    },
+    "Thomas Davis": {
+      "nameRu": "Томас Дэвис",
+      "provenance": "generated-reviewed"
+    },
+    "Calvin Amos": {
+      "nameRu": "Кэлвин Эймос",
+      "provenance": "generated-reviewed"
+    },
+    "Marc Eggeling": {
+      "nameRu": "Марк Эггелинг",
+      "provenance": "generated-reviewed"
+    },
+    "Michael Weiss": {
+      "nameRu": "Михаэль Вайс",
+      "provenance": "generated-reviewed"
+    },
+    "Robbie Deckard": {
+      "nameRu": "Робби Декард",
+      "provenance": "generated-reviewed"
+    },
+    "Matthew Sharpe": {
+      "nameRu": "Мэттью Шарп",
+      "provenance": "generated-reviewed"
+    },
+    "Connor Weaver": {
+      "nameRu": "Коннор Уивер",
+      "provenance": "generated-reviewed"
+    },
+    "Florent Lefebvre": {
+      "nameRu": "Флоран Лефевр",
+      "provenance": "generated-reviewed"
+    },
+    "Emil Holm": {
+      "nameRu": "Эмиль Хольм",
+      "provenance": "generated-reviewed"
+    },
+    "Matthew McElroy": {
+      "nameRu": "Мэттью Макэлрой",
+      "provenance": "generated-reviewed"
+    },
+    "Greg Harper": {
+      "nameRu": "Грег Харпер",
+      "provenance": "generated-reviewed"
+    },
+    "Simon Davis": {
+      "nameRu": "Саймон Дэвис",
+      "provenance": "generated-reviewed"
+    },
+    "Liam Lloyd": {
+      "nameRu": "Лиам Ллойд",
+      "provenance": "generated-reviewed"
+    },
+    "Malachi Cashmore": {
+      "nameRu": "Малакай Кэшмор",
+      "provenance": "generated-reviewed"
+    },
+    "Tomasz Szala": {
+      "nameRu": "Томаш Шала",
+      "provenance": "generated-reviewed"
+    },
+    "Zack Cooper": {
+      "nameRu": "Зак Купер",
+      "provenance": "generated-reviewed"
+    },
+    "Sven Wies": {
+      "nameRu": "Свен Вис",
+      "provenance": "generated-reviewed"
+    },
+    "Dylan Gillespie": {
+      "nameRu": "Дилан Гиллеспи",
+      "provenance": "generated-reviewed"
+    },
+    "Kieran Storch": {
+      "nameRu": "Киран Сторч",
+      "provenance": "generated-reviewed"
+    },
+    "Timo Schaffeld": {
+      "nameRu": "Тимо Шаффельд",
+      "provenance": "generated-reviewed"
+    },
+    "Martin Ulloa": {
+      "nameRu": "Мартин Ульоа",
+      "provenance": "generated-reviewed"
+    },
+    "Juan Ignacio Villarruel Curra": {
+      "nameRu": "Хуан Игнасио Вильярруэль Курра",
+      "provenance": "generated-reviewed"
+    },
+    "Sebastian Norberg": {
+      "nameRu": "Себастьян Норберг",
+      "provenance": "generated-reviewed"
+    },
+    "Hannes Butters": {
+      "nameRu": "Ханнес Буттерс",
+      "provenance": "generated-reviewed"
+    },
+    "Devin Volk": {
+      "nameRu": "Девин Волк",
+      "provenance": "generated-reviewed"
+    },
+    "Magnus Maenner": {
+      "nameRu": "Магнус Меннер",
+      "provenance": "generated-reviewed"
+    },
+    "Tom Vaelen": {
+      "nameRu": "Том Вален",
+      "provenance": "generated-reviewed"
+    },
+    "Joao Pereira": {
+      "nameRu": "Жуан Перейра",
+      "provenance": "generated-reviewed"
+    },
+    "Tristan Price": {
+      "nameRu": "Тристан Прайс",
+      "provenance": "generated-reviewed"
+    },
+    "Roland Crantock": {
+      "nameRu": "Роланд Крэнток",
+      "provenance": "generated-reviewed"
+    },
+    "Emma Pallant-Browne": {
+      "nameRu": "Эмма Паллант-Браун",
+      "provenance": "generated-reviewed"
+    },
+    "Anne Reischmann": {
+      "nameRu": "Анне Райшманн",
+      "provenance": "generated-reviewed"
+    },
+    "Kirsten Kasper": {
+      "nameRu": "Кирстен Каспер",
+      "provenance": "generated-reviewed"
+    },
+    "Nikki Bartlett": {
+      "nameRu": "Никки Бартлетт",
+      "provenance": "generated-reviewed"
+    },
+    "Laura Madsen": {
+      "nameRu": "Лаура Мадсен",
+      "provenance": "generated-reviewed"
+    },
+    "Anne Haug": {
+      "nameRu": "Анне Хауг",
+      "provenance": "generated-reviewed"
+    },
+    "Flora Duffy": {
+      "nameRu": "Флора Даффи",
+      "provenance": "generated-reviewed"
+    },
+    "Laura Jansen": {
+      "nameRu": "Лаура Янсен",
+      "provenance": "generated-reviewed"
+    },
+    "Haley Chura": {
+      "nameRu": "Хейли Чура",
+      "provenance": "generated-reviewed"
+    },
+    "Chelsea Sodaro": {
+      "nameRu": "Челси Содаро",
+      "provenance": "generated-reviewed"
+    },
+    "Charlene Clavel": {
+      "nameRu": "Шарлен Клавель",
+      "provenance": "generated-reviewed"
+    },
+    "Daniela Bleymehl": {
+      "nameRu": "Даниэла Блеймель",
+      "provenance": "generated-reviewed"
+    },
+    "Rachel Zilinskas": {
+      "nameRu": "Рэйчел Зилинскас",
+      "provenance": "generated-reviewed"
+    },
+    "Kylie Simpson": {
+      "nameRu": "Кайли Симпсон",
+      "provenance": "generated-reviewed"
+    },
+    "Marlene De Boer": {
+      "nameRu": "Марлене де Бур",
+      "provenance": "generated-reviewed"
+    },
+    "Nina Derron": {
+      "nameRu": "Нина Деррон",
+      "provenance": "generated-reviewed"
+    },
+    "Katharina Wolff": {
+      "nameRu": "Катарина Вольф",
+      "provenance": "generated-reviewed"
+    },
+    "Amelia Watkinson": {
+      "nameRu": "Амелия Уоткинсон",
+      "provenance": "generated-reviewed"
+    },
+    "Tanja Neubert": {
+      "nameRu": "Таня Нойберт",
+      "provenance": "generated-reviewed"
+    },
+    "Simone Dailey": {
+      "nameRu": "Симон Дейли",
+      "provenance": "generated-reviewed"
+    },
+    "Sif Bendix Madsen": {
+      "nameRu": "Сиф Бендикс Мадсен",
+      "provenance": "generated-reviewed"
+    },
+    "Gurutze Frades Larralde": {
+      "nameRu": "Гурутце Фрадес Ларральде",
+      "provenance": "generated-reviewed"
+    },
+    "Jocelyn McCauley": {
+      "nameRu": "Джоселин Макколи",
+      "provenance": "generated-reviewed"
+    },
+    "Elisabetta Curridori": {
+      "nameRu": "Элизабетта Курридори",
+      "provenance": "generated-reviewed"
+    },
+    "Lauren Brandon": {
+      "nameRu": "Лорен Брэндон",
+      "provenance": "generated-reviewed"
+    },
+    "Giorgia Priarone": {
+      "nameRu": "Джорджия Приароне",
+      "provenance": "generated-reviewed"
+    },
+    "Danielle Fauteux": {
+      "nameRu": "Даниэль Фотё",
+      "provenance": "generated-reviewed"
+    },
+    "Daniela Ryf": {
+      "nameRu": "Даниэла Риф",
+      "provenance": "generated-reviewed"
+    },
+    "Richelle Hill": {
+      "nameRu": "Ришель Хилл",
+      "provenance": "generated-reviewed"
+    },
+    "Jeanni Metzler": {
+      "nameRu": "Джинни Метцлер",
+      "provenance": "generated-reviewed"
+    },
+    "Jeanne Collonge": {
+      "nameRu": "Жанна Коллонж",
+      "provenance": "generated-reviewed"
+    },
+    "Anna Bergsten": {
+      "nameRu": "Анна Бергстен",
+      "provenance": "generated-reviewed"
+    },
+    "Cecilia Perez": {
+      "nameRu": "Сесилия Перес",
+      "provenance": "generated-reviewed"
+    },
+    "Sarah Schoenfelder": {
+      "nameRu": "Сара Шёнфельдер",
+      "provenance": "generated-reviewed"
+    },
+    "Kristen Marchant": {
+      "nameRu": "Кристен Марчант",
+      "provenance": "generated-reviewed"
+    },
+    "Miranda Tomenson": {
+      "nameRu": "Миранда Томенсон",
+      "provenance": "generated-reviewed"
+    },
+    "Arlette Mariana Gonzalez Hurtado": {
+      "nameRu": "Арлетт Мариана Гонсалес Уртадо",
+      "provenance": "generated-reviewed"
+    },
+    "Emilie Morier": {
+      "nameRu": "Эмили Морье",
+      "provenance": "generated-reviewed"
+    },
+    "Merle Brunnee": {
+      "nameRu": "Мерле Брюнне",
+      "provenance": "generated-reviewed"
+    },
+    "Anna Pabinger": {
+      "nameRu": "Анна Пабингер",
+      "provenance": "generated-reviewed"
+    },
+    "Ai Ueda": {
+      "nameRu": "Ай Уэда",
+      "provenance": "generated-reviewed"
+    },
+    "Sophie Evans": {
+      "nameRu": "Софи Эванс",
+      "provenance": "generated-reviewed"
+    },
+    "Samantha Kingsford": {
+      "nameRu": "Саманта Кингсфорд",
+      "provenance": "generated-reviewed"
+    },
+    "Pamella Oliveira": {
+      "nameRu": "Памелла Оливейра",
+      "provenance": "generated-reviewed"
+    },
+    "Laura Kessler": {
+      "nameRu": "Лаура Кесслер",
+      "provenance": "generated-reviewed"
+    },
+    "Julia Skala": {
+      "nameRu": "Юлия Скала",
+      "provenance": "generated-reviewed"
+    },
+    "Kate Gillespie-Jones": {
+      "nameRu": "Кейт Гиллеспи-Джонс",
+      "provenance": "generated-reviewed"
+    },
+    "Justine Mathieux": {
+      "nameRu": "Жюстин Матьё",
+      "provenance": "generated-reviewed"
+    },
+    "Alexandra Watt": {
+      "nameRu": "Александра Уотт",
+      "provenance": "generated-reviewed"
+    },
+    "Sabrina Exenberger": {
+      "nameRu": "Сабрина Эксенбергер",
+      "provenance": "generated-reviewed"
+    },
+    "Rachel Brown": {
+      "nameRu": "Рэйчел Браун",
+      "provenance": "generated-reviewed"
+    },
+    "Rebecca Robisch": {
+      "nameRu": "Ребекка Робиш",
+      "provenance": "generated-reviewed"
+    },
+    "Lesley Smith": {
+      "nameRu": "Лесли Смит",
+      "provenance": "generated-reviewed"
+    },
+    "Laura Zimmermann": {
+      "nameRu": "Лаура Циммерманн",
+      "provenance": "generated-reviewed"
+    },
+    "Mareike Guhl": {
+      "nameRu": "Марейке Гуль",
+      "provenance": "generated-reviewed"
+    },
+    "Lisa Norden": {
+      "nameRu": "Лиза Норден",
+      "provenance": "generated-reviewed"
+    },
+    "Diana Castillo Franco": {
+      "nameRu": "Диана Кастильо Франко",
+      "provenance": "generated-reviewed"
+    },
+    "Valerie Barthelemy": {
+      "nameRu": "Валери Бартелеми",
+      "provenance": "generated-reviewed"
+    },
+    "Erika Ackerlund": {
+      "nameRu": "Эрика Акерлунд",
+      "provenance": "generated-reviewed"
+    },
+    "Sarah True": {
+      "nameRu": "Сара Тру",
+      "provenance": "generated-reviewed"
+    },
+    "Saskia Haug": {
+      "nameRu": "Саския Хауг",
+      "provenance": "generated-reviewed"
+    },
+    "Lara Hernandez-Tome": {
+      "nameRu": "Лара Эрнандес-Томе",
+      "provenance": "generated-reviewed"
+    },
+    "Allison Jacob": {
+      "nameRu": "Эллисон Джейкоб",
+      "provenance": "generated-reviewed"
+    },
+    "Laura Siddall": {
+      "nameRu": "Лаура Сиддалл",
+      "provenance": "generated-reviewed"
+    },
+    "Stephanie Wunderle": {
+      "nameRu": "Штефани Вундерле",
+      "provenance": "generated-reviewed"
+    },
+    "Caterina Mariani": {
+      "nameRu": "Катерина Мариани",
+      "provenance": "generated-reviewed"
+    },
+    "Jodie Stimpson": {
+      "nameRu": "Джоди Стимпсон",
+      "provenance": "generated-reviewed"
+    },
+    "Lucy Buckingham": {
+      "nameRu": "Люси Бакингем",
+      "provenance": "generated-reviewed"
+    },
+    "Tara Rooney": {
+      "nameRu": "Тара Руни",
+      "provenance": "generated-reviewed"
+    },
+    "Carolina Fernandez Ortuno": {
+      "nameRu": "Каролина Фернандес Ортуньо",
+      "provenance": "generated-reviewed"
+    },
+    "Katie Colville": {
+      "nameRu": "Кэти Колвилл",
+      "provenance": "generated-reviewed"
+    },
+    "Melanie McQuaid": {
+      "nameRu": "Мелани Маккуэйд",
+      "provenance": "generated-reviewed"
+    },
+    "Teresa Adam": {
+      "nameRu": "Тереза Адам",
+      "provenance": "generated-reviewed"
+    },
+    "Amelie Kretz": {
+      "nameRu": "Амели Кретц",
+      "provenance": "generated-reviewed"
+    },
+    "Jessica Cullen": {
+      "nameRu": "Джессика Каллен",
+      "provenance": "generated-reviewed"
+    },
+    "Jasmine Holmes": {
+      "nameRu": "Джасмин Холмс",
+      "provenance": "generated-reviewed"
+    },
+    "Anna Buettner": {
+      "nameRu": "Анна Бюттнер",
+      "provenance": "generated-reviewed"
+    },
+    "Brittani Shappell": {
+      "nameRu": "Бриттани Шаппелл",
+      "provenance": "generated-reviewed"
+    },
+    "Margarita Ryan": {
+      "nameRu": "Маргарита Райан",
+      "provenance": "generated-reviewed"
+    }
+  },
+  "athletes": [
+    {
+      "selectionRank": 1,
+      "genderRank": 191,
+      "id": 10169,
+      "nameEn": "Frederick Webb",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Фредерик Уэбб",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 2,
+      "genderRank": 192,
+      "id": 10181,
+      "nameEn": "Gustav Palm-Henriksen",
+      "countryCode": "DK",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Густав Пальм-Хенриксен",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Датская редакторская транскрипция; сохранён дефис и обе части фамилии, без английского чтения Henriksen."
+    },
+    {
+      "selectionRank": 3,
+      "genderRank": 193,
+      "id": 10172,
+      "nameEn": "Gabriel Sandoer",
+      "countryCode": "SE",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено исходное шведское написание Sandoer и чтение сочетания oe."
+    },
+    {
+      "selectionRank": 4,
+      "genderRank": 194,
+      "id": 10324,
+      "nameEn": "Louis Buttrick",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Нужно подтвердить личное чтение Louis: Луи или Льюис."
+    },
+    {
+      "selectionRank": 5,
+      "genderRank": 196,
+      "id": 10224,
+      "nameEn": "Jannik Stoll",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Янник Штолль",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 6,
+      "genderRank": 197,
+      "id": 10361,
+      "nameEn": "Mathieu Merland",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Матьё Мерлан",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Французская редакторская транскрипция: th → т, ieu → ьё, конечное d не произносится."
+    },
+    {
+      "selectionRank": 7,
+      "genderRank": 198,
+      "id": 10412,
+      "nameEn": "Milan Brons",
+      "countryCode": "NL",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Милан Бронс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 8,
+      "genderRank": 199,
+      "id": 10095,
+      "nameEn": "Clement Grandy",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Клеман Гранди",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 9,
+      "genderRank": 200,
+      "id": 10438,
+      "nameEn": "Nicolas Gilbert",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Канадская принадлежность не определяет французское или английское произношение имени и фамилии."
+    },
+    {
+      "selectionRank": 10,
+      "genderRank": 201,
+      "id": 10366,
+      "nameEn": "Matt Schafer",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено американское чтение Schafer: нельзя автоматически выбирать Шафер или Шейфер."
+    },
+    {
+      "selectionRank": 11,
+      "genderRank": 202,
+      "id": 10310,
+      "nameEn": "Lennart Sievers",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Леннарт Зиверс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 12,
+      "genderRank": 204,
+      "id": 10157,
+      "nameEn": "Felix Hentschel",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Феликс Хенчель",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 13,
+      "genderRank": 205,
+      "id": 10447,
+      "nameEn": "Nils Huckschlag",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Нильс Хукшлаг",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 14,
+      "genderRank": 206,
+      "id": 10030,
+      "nameEn": "Andreas Dreitz",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Андреас Драйц",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 15,
+      "genderRank": 207,
+      "id": 10627,
+      "nameEn": "William Mennesson",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Французское и английское чтение William различаются; нужно подтвердить личное произношение полной формы."
+    },
+    {
+      "selectionRank": 16,
+      "genderRank": 208,
+      "id": 10429,
+      "nameEn": "Nicholas Scott",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Николас Скотт",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 17,
+      "genderRank": 209,
+      "id": 10038,
+      "nameEn": "Antoine Jolicoeur Desroches",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Антуан Жоликёр Дерош",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Редакторская транскрипция французской формы: coeur → кёр, Desroches → Дерош; составная фамилия сохранена без добавления дефиса.",
+      "referenceUrls": [
+        "https://antoinejd.ca/",
+        "https://www.triathlonquebec.org/en/become-a-coach/coach-congress/"
+      ]
+    },
+    {
+      "selectionRank": 18,
+      "genderRank": 210,
+      "id": 10175,
+      "nameEn": "George Goodwin",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Джордж Гудвин",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 19,
+      "genderRank": 211,
+      "id": 10045,
+      "nameEn": "Arne Leiss",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Арне Лайс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 20,
+      "genderRank": 212,
+      "id": 10079,
+      "nameEn": "Cameron Wilson",
+      "countryCode": "AU",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Кэмерон Уилсон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 21,
+      "genderRank": 213,
+      "id": 10432,
+      "nameEn": "Nick Cosman",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Ник Косман",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 22,
+      "genderRank": 214,
+      "id": 10523,
+      "nameEn": "Sam Wordley",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Сэм Уордли",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 23,
+      "genderRank": 217,
+      "id": 10413,
+      "nameEn": "Milosz Sowinski",
+      "countryCode": "PL",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Милош Совиньский",
+      "provenance": "generated-reviewed",
+      "localizationNote": "На сайте спортсмена Miłosz Sowiński; sz → ш, ń → нь. Исходный nameEn Milosz Sowinski не изменён.",
+      "referenceUrls": [
+        "https://miloszsowinski.pl/"
+      ]
+    },
+    {
+      "selectionRank": 24,
+      "genderRank": 218,
+      "id": 10279,
+      "nameEn": "Justus Töpper",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Юстус Тёппер",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Немецкая редакторская транскрипция: J → й, ö → ё; удвоенное pp сохранено."
+    },
+    {
+      "selectionRank": 25,
+      "genderRank": 219,
+      "id": 10388,
+      "nameEn": "Max Stapley",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Макс Стейпли",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 26,
+      "genderRank": 220,
+      "id": 10592,
+      "nameEn": "Todd Wakefield",
+      "countryCode": "AU",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Тодд Уэйкфилд",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 27,
+      "genderRank": 221,
+      "id": 10624,
+      "nameEn": "Will Grace",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Уилл Грейс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 28,
+      "genderRank": 222,
+      "id": 10595,
+      "nameEn": "Tom Somerville",
+      "countryCode": "NZ",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Том Сомервилл",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 29,
+      "genderRank": 223,
+      "id": 10369,
+      "nameEn": "Matthew Guenter",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Нужно подтвердить англизированное или немецкое чтение Guenter, особенно ue."
+    },
+    {
+      "selectionRank": 30,
+      "genderRank": 224,
+      "id": 10500,
+      "nameEn": "Robby Webster",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Робби Уэбстер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 31,
+      "genderRank": 225,
+      "id": 10451,
+      "nameEn": "Ognjen Stojanović",
+      "countryCode": "RS",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Огнен Стоянович",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Сербская форма из личной биографии: nj передано как мягкое н, j как й, ć как ч; диакритика исходного ключа сохранена.",
+      "referenceUrls": [
+        "https://www.ognjenstojanovic.com/biografija/",
+        "https://oks.org.rs/ognjen-stojanovic/"
+      ]
+    },
+    {
+      "selectionRank": 32,
+      "genderRank": 226,
+      "id": 10370,
+      "nameEn": "Matthew Kaminer",
+      "countryCode": "ZA",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное произношение южноафриканской фамилии Kaminer."
+    },
+    {
+      "selectionRank": 33,
+      "genderRank": 227,
+      "id": 10358,
+      "nameEn": "Marty Andrie",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не установлено чтение окончания Andrie в американском употреблении."
+    },
+    {
+      "selectionRank": 34,
+      "genderRank": 229,
+      "id": 10100,
+      "nameEn": "Connor Ford",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Коннор Форд",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 35,
+      "genderRank": 230,
+      "id": 10611,
+      "nameEn": "Valentin Rouvier",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Валантен Рувье",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 36,
+      "genderRank": 231,
+      "id": 10577,
+      "nameEn": "Thomas Page",
+      "countryCode": "AU",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Томас Пейдж",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 37,
+      "genderRank": 232,
+      "id": 10202,
+      "nameEn": "Jack Hutchens",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Джек Хатченс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 38,
+      "genderRank": 233,
+      "id": 10104,
+      "nameEn": "Corentin Chouvelon",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Корантен Шувелон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 39,
+      "genderRank": 234,
+      "id": 10274,
+      "nameEn": "Julien Hagen",
+      "countryCode": "BE",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не установлен язык личного произношения бельгийского имени и фамилии Hagen."
+    },
+    {
+      "selectionRank": 40,
+      "genderRank": 235,
+      "id": 10134,
+      "nameEn": "Edoardo Leone",
+      "countryCode": "IT",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Эдоардо Леоне",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 41,
+      "genderRank": 236,
+      "id": 10572,
+      "nameEn": "Thomas Gordon",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Томас Гордон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 42,
+      "genderRank": 237,
+      "id": 10159,
+      "nameEn": "Finn Arentz",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено британское личное чтение фамилии Arentz."
+    },
+    {
+      "selectionRank": 43,
+      "genderRank": 238,
+      "id": 10096,
+      "nameEn": "Cody Beals",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Коди Билс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 44,
+      "genderRank": 240,
+      "id": 10068,
+      "nameEn": "Brecht Van Vooren",
+      "countryCode": "BE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Брехт ван Ворен",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Нидерландская редакторская транскрипция: ch → х, oo → о; частица van сохранена."
+    },
+    {
+      "selectionRank": 45,
+      "genderRank": 241,
+      "id": 10375,
+      "nameEn": "Matthew Ralphs",
+      "countryCode": "ZA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Мэттью Ралфс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 46,
+      "genderRank": 242,
+      "id": 10469,
+      "nameEn": "Paulin Philippe",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Полен Филипп",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 47,
+      "genderRank": 243,
+      "id": 10618,
+      "nameEn": "Vincent Clavel",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Венсан Клавель",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 48,
+      "genderRank": 244,
+      "id": 10463,
+      "nameEn": "Patrick Cometta",
+      "countryCode": "CH",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Патрик Кометта",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 49,
+      "genderRank": 245,
+      "id": 10638,
+      "nameEn": "Zed Roy",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Для канадской фамилии Roy нужно подтвердить чтение Рой или Руа."
+    },
+    {
+      "selectionRank": 50,
+      "genderRank": 246,
+      "id": 10513,
+      "nameEn": "Romain Rezsohazy",
+      "countryCode": "BE",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение фамилии венгерского происхождения в бельгийском употреблении."
+    },
+    {
+      "selectionRank": 51,
+      "genderRank": 247,
+      "id": 10126,
+      "nameEn": "Diego Mentrida Zamarra",
+      "countryCode": "ES",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Диего Ментрида Самарра",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 52,
+      "genderRank": 248,
+      "id": 10276,
+      "nameEn": "Justin Metzler",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Джастин Метцлер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 53,
+      "genderRank": 250,
+      "id": 10380,
+      "nameEn": "Matthieu Bolzer",
+      "countryCode": "FR",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Французское имя не определяет личное чтение фамилии Bolzer; требуется подтверждение."
+    },
+    {
+      "selectionRank": 54,
+      "genderRank": 251,
+      "id": 10576,
+      "nameEn": "Thomas Ott",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Томас Отт",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 55,
+      "genderRank": 252,
+      "id": 10404,
+      "nameEn": "Miguel Mattox",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Мигель Мэттокс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 56,
+      "genderRank": 253,
+      "id": 10091,
+      "nameEn": "Christophe De Keyser",
+      "countryCode": "BE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Кристоф де Кейзер",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Нидерландская редакторская передача фамилии: ey → ей; частица de сохранена. Christophe передано как Кристоф."
+    },
+    {
+      "selectionRank": 57,
+      "genderRank": 254,
+      "id": 10193,
+      "nameEn": "Iestyn Harrett",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Нужно подтвердить валлийское имя Iestyn и личное чтение Harrett."
+    },
+    {
+      "selectionRank": 58,
+      "genderRank": 255,
+      "id": 10506,
+      "nameEn": "Robin Hermann",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Робин Херманн",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 59,
+      "genderRank": 256,
+      "id": 10544,
+      "nameEn": "Shachar Sagiv",
+      "countryCode": "IL",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Шахар Сагив",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 60,
+      "genderRank": 257,
+      "id": 10155,
+      "nameEn": "Felipe Bergamini",
+      "countryCode": "BR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Фелипе Бергамини",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 61,
+      "genderRank": 258,
+      "id": 10329,
+      "nameEn": "Luciano Taccone",
+      "countryCode": "AR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Лусиано Такконе",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 62,
+      "genderRank": 259,
+      "id": 10443,
+      "nameEn": "Niek Heldoorn",
+      "countryCode": "NL",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Ник Хелдорн",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 63,
+      "genderRank": 260,
+      "id": 10402,
+      "nameEn": "Michiel Stockman",
+      "countryCode": "BE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Михил Стокман",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 64,
+      "genderRank": 262,
+      "id": 10524,
+      "nameEn": "Samuel Boettinger",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Самуэль Бёттингер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 65,
+      "genderRank": 263,
+      "id": 10399,
+      "nameEn": "Michal Grabowski",
+      "countryCode": "PL",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Михал Грабовский",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 66,
+      "genderRank": 264,
+      "id": 10498,
+      "nameEn": "Rinel Pius",
+      "countryCode": "EE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Ринель Пиус",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 67,
+      "genderRank": 265,
+      "id": 10364,
+      "nameEn": "Matt Jackson",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Мэтт Джексон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 68,
+      "genderRank": 266,
+      "id": 10387,
+      "nameEn": "Max Neumann",
+      "countryCode": "AU",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Макс Нойманн",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 69,
+      "genderRank": 268,
+      "id": 10622,
+      "nameEn": "Will Clarke",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Уилл Кларк",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 70,
+      "genderRank": 269,
+      "id": 10542,
+      "nameEn": "Sebastian Wernersen",
+      "countryCode": "NO",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Себастьян Вернерсен",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 71,
+      "genderRank": 270,
+      "id": 10275,
+      "nameEn": "Jumpei Furuya",
+      "countryCode": "JP",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Дзюмпэй Фуруя",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Японская форма 古谷 純平 подтверждена федерацией; нормативная русская транскрипция Дзюмпэй Фуруя, без английского чтения j.",
+      "referenceUrls": [
+        "https://www.jtu.or.jp/athlete/jumpeifuruya/"
+      ]
+    },
+    {
+      "selectionRank": 72,
+      "genderRank": 271,
+      "id": 10296,
+      "nameEn": "Kit Walker",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Кит Уокер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 73,
+      "genderRank": 272,
+      "id": 10326,
+      "nameEn": "Louis Woodgate",
+      "countryCode": "GR",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение Louis: Луи или Льюис; код страны не решает вопрос."
+    },
+    {
+      "selectionRank": 74,
+      "genderRank": 273,
+      "id": 10549,
+      "nameEn": "Simon Shi",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Саймон Ши",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 75,
+      "genderRank": 274,
+      "id": 10394,
+      "nameEn": "Michael Arishita",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное американское чтение фамилии японского происхождения Arishita."
+    },
+    {
+      "selectionRank": 76,
+      "genderRank": 275,
+      "id": 10176,
+      "nameEn": "Gonzalo Fuentes",
+      "countryCode": "ES",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Гонсало Фуэнтес",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 77,
+      "genderRank": 276,
+      "id": 10333,
+      "nameEn": "Lukas Schnoedewind",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Лукас Шнёдевинд",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Немецкое Schnödewind подтверждено клубом: sch → ш, ö → ё, w → в; исходный ключ Schnoedewind сохранён.",
+      "referenceUrls": [
+        "https://trizack.de/triteam/ueber-uns/"
+      ]
+    },
+    {
+      "selectionRank": 78,
+      "genderRank": 277,
+      "id": 10262,
+      "nameEn": "Jose Cordova Perez",
+      "countryCode": "MX",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Хосе Кордова Перес",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 79,
+      "genderRank": 278,
+      "id": 10267,
+      "nameEn": "Joshua Monda",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Джошуа Монда",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 80,
+      "genderRank": 279,
+      "id": 10230,
+      "nameEn": "Javier Gomez",
+      "countryCode": "ES",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Хавьер Гомес",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 81,
+      "genderRank": 280,
+      "id": 10583,
+      "nameEn": "Tim Van Hemel",
+      "countryCode": "BE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Тим ван Хемел",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 82,
+      "genderRank": 281,
+      "id": 10351,
+      "nameEn": "Mark Romano",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Марк Романо",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 83,
+      "genderRank": 283,
+      "id": 10152,
+      "nameEn": "Fabian Meeusen",
+      "countryCode": "CH",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено чтение Meeusen в швейцарском употреблении; сочетание eeu требует уточнения."
+    },
+    {
+      "selectionRank": 84,
+      "genderRank": 284,
+      "id": 10069,
+      "nameEn": "Brendan Gribbons",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Брендан Гриббонс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 85,
+      "genderRank": 285,
+      "id": 10102,
+      "nameEn": "Connor Readman",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Readman допускает разные чтения гласной; личное произношение фамилии не подтверждено."
+    },
+    {
+      "selectionRank": 86,
+      "genderRank": 286,
+      "id": 10495,
+      "nameEn": "Rhys Corbishley",
+      "countryCode": "AU",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Рис Корбишли",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 87,
+      "genderRank": 287,
+      "id": 10426,
+      "nameEn": "Nicholas Holmes",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Николас Холмс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 88,
+      "genderRank": 288,
+      "id": 10268,
+      "nameEn": "Josiah Middaugh",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное произношение фамилии Middaugh, особенно окончания augh."
+    },
+    {
+      "selectionRank": 89,
+      "genderRank": 289,
+      "id": 10253,
+      "nameEn": "Jonathan Fecik",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не установлено личное чтение согласной c в фамилии Fecik."
+    },
+    {
+      "selectionRank": 90,
+      "genderRank": 290,
+      "id": 10454,
+      "nameEn": "Oliver Terry",
+      "countryCode": "AU",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Оливер Терри",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 91,
+      "genderRank": 291,
+      "id": 10607,
+      "nameEn": "Tyler Mislawchuk",
+      "countryCode": "CA",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Тайлер Миславчук",
+      "provenance": "generated-reviewed",
+      "referenceUrls": [
+        "https://iron-star.com/news/vinsent-luis-pogonya-za-pobedoy/"
+      ],
+      "localizationNote": "Русское употребление Тайлер Миславчук найдено у организатора IRONSTAR; provenance оставлен generated-reviewed, как для всей волны."
+    },
+    {
+      "selectionRank": 92,
+      "genderRank": 292,
+      "id": 10384,
+      "nameEn": "Max Kohll",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное американское чтение Kohll; немецкое написание не гарантирует немецкого произношения."
+    },
+    {
+      "selectionRank": 93,
+      "genderRank": 293,
+      "id": 10071,
+      "nameEn": "Brian Reynolds",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Брайан Рейнольдс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 94,
+      "genderRank": 294,
+      "id": 10056,
+      "nameEn": "Ben Phillips",
+      "countryCode": "NZ",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Бен Филлипс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 95,
+      "genderRank": 295,
+      "id": 10403,
+      "nameEn": "Miguel Hidalgo",
+      "countryCode": "BR",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Мигел Идалго",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 96,
+      "genderRank": 296,
+      "id": 10420,
+      "nameEn": "Morten Schmidt",
+      "countryCode": "DE",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Мортен Шмидт",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 97,
+      "genderRank": 297,
+      "id": 10614,
+      "nameEn": "Vicenç Castellà Serra",
+      "countryCode": "ES",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Висенс Кастелья Серра",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Каталонская форма подтверждена личным сайтом: ç → с, ll → ль; сохранены обе фамилии и диакритика nameEn.",
+      "referenceUrls": [
+        "https://vcastella.wordpress.com/curriculum-deportivo/"
+      ]
+    },
+    {
+      "selectionRank": 98,
+      "genderRank": 298,
+      "id": 10509,
+      "nameEn": "Roee Zoarets",
+      "countryCode": "IS",
+      "gender": "M",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не установлена исходная форма имени и фамилии и личное произношение; транскрипция по одному латинскому ключу ненадёжна."
+    },
+    {
+      "selectionRank": 99,
+      "genderRank": 299,
+      "id": 10248,
+      "nameEn": "John Thelwell",
+      "countryCode": "GB",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Джон Телуэлл",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 100,
+      "genderRank": 300,
+      "id": 10290,
+      "nameEn": "Kevin Bishop",
+      "countryCode": "US",
+      "gender": "M",
+      "status": "LOCALIZED",
+      "nameRu": "Кевин Бишоп",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 1,
+      "genderRank": 191,
+      "id": 10822,
+      "nameEn": "Lilli Gelmini",
+      "countryCode": "IT",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Лилли Джельмини",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Итальянская редакторская транскрипция: ge → дже; Lilli сохраняет удвоенное л."
+    },
+    {
+      "selectionRank": 2,
+      "genderRank": 192,
+      "id": 10761,
+      "nameEn": "Heini Hartikainen",
+      "countryCode": "FI",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Хейни Хартикайнен",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Финская исходная форма подтверждена федерацией; ei → ей, ai → ай. Русская форма редакторская.",
+      "referenceUrls": [
+        "https://www.triathlon.fi/huippu-urheilu/aikuisten-maajoukkue/urheilijaesittelyt/heini-hartikainen/"
+      ]
+    },
+    {
+      "selectionRank": 3,
+      "genderRank": 193,
+      "id": 10867,
+      "nameEn": "Mizuki Hirayanagi",
+      "countryCode": "JP",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Мидзуки Хираянаги",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Японская форма 平柳 美月 подтверждена федерацией; редакторская транскрипция: zu → дзу, hi → хи, gi → ги.",
+      "referenceUrls": [
+        "https://www.jtu.or.jp/athlete/mizukihirayanagi/"
+      ]
+    },
+    {
+      "selectionRank": 4,
+      "genderRank": 194,
+      "id": 10804,
+      "nameEn": "Larissa Jasper",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Ларисса Яспер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 5,
+      "genderRank": 196,
+      "id": 10811,
+      "nameEn": "Laura Mathews",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Лаура Мэтьюз",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 6,
+      "genderRank": 197,
+      "id": 10823,
+      "nameEn": "Linda Brännlund",
+      "countryCode": "SE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Линда Бреннлунд",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 7,
+      "genderRank": 199,
+      "id": 10941,
+      "nameEn": "Tiina Pohjalainen",
+      "countryCode": "FI",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Тийна Похьялайнен",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Финская исходная форма подтверждена федерацией; ii → ий, hj → хь, ai → ай. Русская форма редакторская.",
+      "referenceUrls": [
+        "https://www.triathlon.fi/huippu-urheilu/aikuisten-maajoukkue/urheilijaesittelyt/tiina-pohjalainen/"
+      ]
+    },
+    {
+      "selectionRank": 8,
+      "genderRank": 201,
+      "id": 10877,
+      "nameEn": "Nicole Pelin",
+      "countryCode": "SE",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение имени Nicole и фамилии Pelin в шведском употреблении."
+    },
+    {
+      "selectionRank": 9,
+      "genderRank": 203,
+      "id": 10738,
+      "nameEn": "Erika Danckers",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Эрика Дэнкерс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 10,
+      "genderRank": 204,
+      "id": 10645,
+      "nameEn": "Alice Betto",
+      "countryCode": "IT",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Аличе Бетто",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 11,
+      "genderRank": 205,
+      "id": 10925,
+      "nameEn": "Sina Ziegler",
+      "countryCode": "CH",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Требуется подтвердить швейцарское личное произношение Sina, чтобы выбрать начальное с или з."
+    },
+    {
+      "selectionRank": 12,
+      "genderRank": 206,
+      "id": 10902,
+      "nameEn": "Sabrina Roth",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Сабрина Рот",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 13,
+      "genderRank": 208,
+      "id": 10854,
+      "nameEn": "Megan Foley",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Меган Фоули",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 14,
+      "genderRank": 209,
+      "id": 10699,
+      "nameEn": "Chelsea Bingham",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Челси Бингем",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 15,
+      "genderRank": 210,
+      "id": 10793,
+      "nameEn": "Kayla Bowker",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено чтение Bowker: возможны разные гласные в первом слоге."
+    },
+    {
+      "selectionRank": 16,
+      "genderRank": 211,
+      "id": 10874,
+      "nameEn": "Nicole Falcaro",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Николь Фалькаро",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 17,
+      "genderRank": 212,
+      "id": 10743,
+      "nameEn": "Ewelina Wolos",
+      "countryCode": "PL",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Источники расходятся в исходной форме: World Triathlon использует Wołoś, другие протоколы Wołos; мягкость конечного согласного требует уточнения.",
+      "referenceUrls": [
+        "https://triathlon.org/athletes/profile/169532/ewelina-wolos",
+        "https://open-water.pl/pobieralnia/wyniki/2025/slesin_2025_06_14_wyniki.pdf"
+      ]
+    },
+    {
+      "selectionRank": 18,
+      "genderRank": 213,
+      "id": 10670,
+      "nameEn": "Ansley Queen",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Энсли Куин",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 19,
+      "genderRank": 214,
+      "id": 10905,
+      "nameEn": "Samantha Skold",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено американское чтение Skold; нельзя автоматически применять шведское чтение фамилии."
+    },
+    {
+      "selectionRank": 20,
+      "genderRank": 215,
+      "id": 10664,
+      "nameEn": "Anna Guzman",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Анна Гусман",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 21,
+      "genderRank": 216,
+      "id": 10751,
+      "nameEn": "Gabriele Maria Obmann",
+      "countryCode": "AT",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Габриэле Мария Обман",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 22,
+      "genderRank": 217,
+      "id": 10677,
+      "nameEn": "Bridget Theunissen",
+      "countryCode": "ZA",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное южноафриканское чтение Theunissen и сочетания eu."
+    },
+    {
+      "selectionRank": 23,
+      "genderRank": 218,
+      "id": 10864,
+      "nameEn": "Milan Agnew",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Милан Эгню",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 24,
+      "genderRank": 220,
+      "id": 10835,
+      "nameEn": "Madlen Kappeler",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Мадлен Каппелер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 25,
+      "genderRank": 221,
+      "id": 10796,
+      "nameEn": "Kelly Barton",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Келли Бартон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 26,
+      "genderRank": 222,
+      "id": 10727,
+      "nameEn": "Elena Illeditsch",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Елена Илледич",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 27,
+      "genderRank": 223,
+      "id": 10689,
+      "nameEn": "Carolina Laurentiu",
+      "countryCode": "RO",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Нужно подтвердить личное чтение Laurentiu: румынское и испанское чтения различаются; страна из каталога не является достаточным основанием.",
+      "referenceUrls": [
+        "https://cadenaser.com/castillayleon/2025/02/04/carolina-laurentiu-triatleta-el-triatlon-es-un-deporte-minoritario-del-que-viven-muy-poquitos-y-menos-las-chicas-radio-bierzo/"
+      ]
+    },
+    {
+      "selectionRank": 28,
+      "genderRank": 224,
+      "id": 10845,
+      "nameEn": "Maria Florencia Diaz Philippi",
+      "countryCode": "ES",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Мария Флоренсия Диас Филиппи",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Испанская редакторская транскрипция; сохранены оба имени и обе фамилии; z → с, ph → ф."
+    },
+    {
+      "selectionRank": 29,
+      "genderRank": 225,
+      "id": 10660,
+      "nameEn": "Anja Koller",
+      "countryCode": "CH",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Аня Коллер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 30,
+      "genderRank": 226,
+      "id": 10934,
+      "nameEn": "Stephanie Demestichas",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное австралийское чтение фамилии греческого происхождения Demestichas."
+    },
+    {
+      "selectionRank": 31,
+      "genderRank": 227,
+      "id": 10899,
+      "nameEn": "Ruth Astle",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Рут Эстл",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 32,
+      "genderRank": 228,
+      "id": 10851,
+      "nameEn": "Mathilde Cartier",
+      "countryCode": "CH",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Матильд Картье",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Французская редакторская транскрипция: th → т, Cartier → Картье; конечное e в имени не озвучивается."
+    },
+    {
+      "selectionRank": 33,
+      "genderRank": 229,
+      "id": 10641,
+      "nameEn": "Alayna Szuch",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное американское чтение Szuch; исходная орфография не определяет произношение."
+    },
+    {
+      "selectionRank": 34,
+      "genderRank": 230,
+      "id": 10832,
+      "nameEn": "Lydia Dant",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Лидия Дэнт",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 35,
+      "genderRank": 231,
+      "id": 10929,
+      "nameEn": "Sophia Green",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "София Грин",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 36,
+      "genderRank": 232,
+      "id": 10839,
+      "nameEn": "Maja Betz",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Майя Бец",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 37,
+      "genderRank": 233,
+      "id": 10794,
+      "nameEn": "Kayla Pokorny",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено американское чтение фамилии Pokorny и её окончания."
+    },
+    {
+      "selectionRank": 38,
+      "genderRank": 234,
+      "id": 10907,
+      "nameEn": "Sandra Huon",
+      "countryCode": "FR",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Фамилия Huon требует подтверждения личного произношения; русская форма по одному написанию не принята."
+    },
+    {
+      "selectionRank": 39,
+      "genderRank": 235,
+      "id": 10855,
+      "nameEn": "Megan Tuncer",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено, сохраняется ли турецкое чтение Tuncer в американском употреблении."
+    },
+    {
+      "selectionRank": 40,
+      "genderRank": 236,
+      "id": 10784,
+      "nameEn": "Katharina Krüger",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Катарина Крюгер",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Немецкая форма подтверждена World Triathlon; th → т, ü → ю, конечное e в Katharina отсутствует и не добавляется.",
+      "referenceUrls": [
+        "https://triathlon.org/athletes/profile/93546/katharina-krueger"
+      ]
+    },
+    {
+      "selectionRank": 41,
+      "genderRank": 237,
+      "id": 10828,
+      "nameEn": "Liz Licea",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение Licea, особенно c и сочетания гласных."
+    },
+    {
+      "selectionRank": 42,
+      "genderRank": 239,
+      "id": 10718,
+      "nameEn": "Deborah Eckhouse",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Дебора Экхаус",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 43,
+      "genderRank": 240,
+      "id": 10700,
+      "nameEn": "Chelsea Hollingsworth",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Челси Холлингсворт",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 44,
+      "genderRank": 241,
+      "id": 10694,
+      "nameEn": "Cassie Heaslip",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение гласной в Heaslip."
+    },
+    {
+      "selectionRank": 45,
+      "genderRank": 242,
+      "id": 10720,
+      "nameEn": "Denise Hiemann",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Дениз Химанн",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 46,
+      "genderRank": 244,
+      "id": 10869,
+      "nameEn": "Molly Savill",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Молли Сэвилл",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 47,
+      "genderRank": 245,
+      "id": 10746,
+      "nameEn": "Francesca Crestani",
+      "countryCode": "IT",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Франческа Крестани",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 48,
+      "genderRank": 246,
+      "id": 10863,
+      "nameEn": "Michelle Stratton",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Мишель Страттон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 49,
+      "genderRank": 247,
+      "id": 10807,
+      "nameEn": "Laura Gillard",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Лаура Гиллард",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 50,
+      "genderRank": 248,
+      "id": 10818,
+      "nameEn": "Leonie Kleine-Bley",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение второй части Bley; требуется выбрать между традиционной русской передачей и немецким дифтонгом ey.",
+      "referenceUrls": [
+        "https://muenster-triathlon.de/team/",
+        "https://stats.protriathletes.org/athlete/leonie-zumhasch"
+      ]
+    },
+    {
+      "selectionRank": 51,
+      "genderRank": 249,
+      "id": 10913,
+      "nameEn": "Sarah Thomas",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Сара Томас",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 52,
+      "genderRank": 250,
+      "id": 10693,
+      "nameEn": "Carolyn Carter",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Кэролин Картер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 53,
+      "genderRank": 251,
+      "id": 10792,
+      "nameEn": "Katie Treston-Tomey",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено произношение обеих частей составной фамилии Treston-Tomey."
+    },
+    {
+      "selectionRank": 54,
+      "genderRank": 253,
+      "id": 10646,
+      "nameEn": "Alice Cote-Allard",
+      "countryCode": "CA",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Алис Коте-Аллар",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Команда Университета Лаваля использует Alice Côté-Allard; французское Alice → Алис, Côté → Коте, Allard → Аллар; дефис сохранён.",
+      "referenceUrls": [
+        "https://rougeetor.ulaval.ca/athletes/alice-cote-allard-2/"
+      ]
+    },
+    {
+      "selectionRank": 55,
+      "genderRank": 255,
+      "id": 10859,
+      "nameEn": "Mena Suter",
+      "countryCode": "CH",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное произношение Mena и швейцарской фамилии Suter."
+    },
+    {
+      "selectionRank": 56,
+      "genderRank": 256,
+      "id": 10789,
+      "nameEn": "Katie Lance",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Кэти Лэнс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 57,
+      "genderRank": 257,
+      "id": 10870,
+      "nameEn": "Morena Stevens",
+      "countryCode": "NL",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Морена Стевенс",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 58,
+      "genderRank": 258,
+      "id": 10860,
+      "nameEn": "Meredith Hill",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Мередит Хилл",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 59,
+      "genderRank": 259,
+      "id": 10759,
+      "nameEn": "Hannah Walz",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное американское чтение Walz; немецкий вариант нельзя назначать по происхождению фамилии."
+    },
+    {
+      "selectionRank": 60,
+      "genderRank": 260,
+      "id": 10852,
+      "nameEn": "Maya Kingma",
+      "countryCode": "NL",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Майя Кингма",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 61,
+      "genderRank": 261,
+      "id": 10801,
+      "nameEn": "Kristina Grieger",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Кристина Григер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 62,
+      "genderRank": 262,
+      "id": 10847,
+      "nameEn": "Marie Luyckx",
+      "countryCode": "BE",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное фламандское чтение Luyckx; сочетание uyckx требует уточнения."
+    },
+    {
+      "selectionRank": 63,
+      "genderRank": 263,
+      "id": 10724,
+      "nameEn": "Djenyfer Arnold",
+      "countryCode": "BR",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Официальная федерация подтверждает написание Djenyfer Arnold, но личное чтение необычного имени и фамилии не проверено.",
+      "referenceUrls": [
+        "https://cbtri.org.br/insc_bras_spt_2025/"
+      ]
+    },
+    {
+      "selectionRank": 64,
+      "genderRank": 264,
+      "id": 10687,
+      "nameEn": "Carolin Meyer",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Каролин Майер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 65,
+      "genderRank": 265,
+      "id": 10900,
+      "nameEn": "Ruth Brito Curbelo",
+      "countryCode": "ES",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Рут Брито Курбело",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 66,
+      "genderRank": 267,
+      "id": 10733,
+      "nameEn": "Emely Ravn",
+      "countryCode": "DK",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Датское произношение Ravn не подтверждено; буквальная передача Равн может не отражать личное чтение."
+    },
+    {
+      "selectionRank": 67,
+      "genderRank": 268,
+      "id": 10817,
+      "nameEn": "Lea Riccoboni",
+      "countryCode": "FR",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Леа Риккобони",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 68,
+      "genderRank": 269,
+      "id": 10771,
+      "nameEn": "Jessica Smith",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Джессика Смит",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 69,
+      "genderRank": 270,
+      "id": 10861,
+      "nameEn": "Meredith Kessler",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Мередит Кесслер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 70,
+      "genderRank": 272,
+      "id": 10846,
+      "nameEn": "Marie Ingerhed",
+      "countryCode": "SE",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено шведское личное чтение Marie и фамилии Ingerhed."
+    },
+    {
+      "selectionRank": 71,
+      "genderRank": 273,
+      "id": 10933,
+      "nameEn": "Steffie Le Benezic",
+      "countryCode": "ES",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение фамилии Le Benezic; код страны не устанавливает язык фамилии."
+    },
+    {
+      "selectionRank": 72,
+      "genderRank": 274,
+      "id": 10884,
+      "nameEn": "Rachael Mccarthy",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Рэйчел Маккарти",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 73,
+      "genderRank": 275,
+      "id": 10875,
+      "nameEn": "Nicole Levenson",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Николь Левенсон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 74,
+      "genderRank": 276,
+      "id": 10830,
+      "nameEn": "Lottie Lucas",
+      "countryCode": "AE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Лотти Лукас",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 75,
+      "genderRank": 277,
+      "id": 10747,
+      "nameEn": "Francesca Smith",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Франческа Смит",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 76,
+      "genderRank": 278,
+      "id": 10943,
+      "nameEn": "Tyler Hudacek",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено американское чтение фамилии Hudacek, особенно c."
+    },
+    {
+      "selectionRank": 77,
+      "genderRank": 279,
+      "id": 10774,
+      "nameEn": "Jodie Robertson",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Джоди Робертсон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 78,
+      "genderRank": 280,
+      "id": 10820,
+      "nameEn": "Lesley Paterson",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Лесли Патерсон",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 79,
+      "genderRank": 281,
+      "id": 10669,
+      "nameEn": "Annika Timm",
+      "countryCode": "DE",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Анника Тимм",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 80,
+      "genderRank": 282,
+      "id": 10837,
+      "nameEn": "Magda Nieuwoudt",
+      "countryCode": "ZA",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное африкаанс-произношение Nieuwoudt; сложное сочетание гласных требует образца."
+    },
+    {
+      "selectionRank": 81,
+      "genderRank": 283,
+      "id": 10680,
+      "nameEn": "Brittany Vocke",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено американское чтение Vocke и произношение конечного e."
+    },
+    {
+      "selectionRank": 82,
+      "genderRank": 284,
+      "id": 10768,
+      "nameEn": "Jenna Haufler",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное американское чтение сочетания au в Haufler."
+    },
+    {
+      "selectionRank": 83,
+      "genderRank": 285,
+      "id": 10671,
+      "nameEn": "Aoibh Clarke",
+      "countryCode": "IE",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Ирландское имя Aoibh требует подтверждения личного произношения; догадка по написанию не принята."
+    },
+    {
+      "selectionRank": 84,
+      "genderRank": 286,
+      "id": 10706,
+      "nameEn": "Christine Mckinley",
+      "countryCode": "CA",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Кристин Маккинли",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 85,
+      "genderRank": 287,
+      "id": 10856,
+      "nameEn": "Meghan Dirito",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное чтение Dirito, в частности гласной i."
+    },
+    {
+      "selectionRank": 86,
+      "genderRank": 288,
+      "id": 10704,
+      "nameEn": "Chloe Nicolas",
+      "countryCode": "FR",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Клоэ Николя",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 87,
+      "genderRank": 289,
+      "id": 10742,
+      "nameEn": "Ewa Komander",
+      "countryCode": "PL",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Эва Командер",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 88,
+      "genderRank": 290,
+      "id": 10850,
+      "nameEn": "Marta Menditto",
+      "countryCode": "IT",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Марта Мендитто",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 89,
+      "genderRank": 291,
+      "id": 10782,
+      "nameEn": "Karol Ann Roy",
+      "countryCode": "CA",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Для канадского имени и фамилии требуется уточнить французское или английское чтение."
+    },
+    {
+      "selectionRank": 90,
+      "genderRank": 292,
+      "id": 10833,
+      "nameEn": "Maaike Vooren",
+      "countryCode": "NL",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Майке Ворен",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 91,
+      "genderRank": 293,
+      "id": 10757,
+      "nameEn": "Hannah Munday",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Ханна Мандей",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 92,
+      "genderRank": 294,
+      "id": 10702,
+      "nameEn": "Chino Iwabuchi",
+      "countryCode": "JP",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Тино Ивабути",
+      "provenance": "generated-reviewed",
+      "localizationNote": "Японская форма 巖淵 知乃 подтверждена федерацией; chi → ти по системе русской транскрипции японского, а не буквальное ч.",
+      "referenceUrls": [
+        "https://www.jtu.or.jp/athlete/chinoiwabuchi/"
+      ]
+    },
+    {
+      "selectionRank": 93,
+      "genderRank": 295,
+      "id": 10871,
+      "nameEn": "Natasha Harris-White",
+      "countryCode": "GB",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Наташа Харрис-Уайт",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 94,
+      "genderRank": 296,
+      "id": 10760,
+      "nameEn": "Heather Low",
+      "countryCode": "CA",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Хезер Лоу",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 95,
+      "genderRank": 297,
+      "id": 10657,
+      "nameEn": "Ana Torres",
+      "countryCode": "EC",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Ана Торрес",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 96,
+      "genderRank": 298,
+      "id": 10923,
+      "nameEn": "Silvia Toscas Frade",
+      "countryCode": "ES",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Сильвия Тоскас Фраде",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 97,
+      "genderRank": 299,
+      "id": 10777,
+      "nameEn": "Jonie Vanhoutte",
+      "countryCode": "BE",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено личное произношение Jonie и фламандской фамилии Vanhoutte."
+    },
+    {
+      "selectionRank": 98,
+      "genderRank": 300,
+      "id": 10709,
+      "nameEn": "Corinne Mouw",
+      "countryCode": "US",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Не подтверждено американское чтение Mouw и сочетания ouw."
+    },
+    {
+      "selectionRank": 99,
+      "genderRank": 301,
+      "id": 10744,
+      "nameEn": "Fabia Maramotti",
+      "countryCode": "IT",
+      "gender": "W",
+      "status": "LOCALIZED",
+      "nameRu": "Фабия Марамотти",
+      "provenance": "generated-reviewed"
+    },
+    {
+      "selectionRank": 100,
+      "genderRank": 302,
+      "id": 10920,
+      "nameEn": "Sian Munks",
+      "countryCode": "AU",
+      "gender": "W",
+      "status": "REVIEW_REQUIRED",
+      "reason": "Нужно подтвердить личное чтение Sian у австралийской спортсменки; валлийское происхождение написания недостаточно."
+    }
+  ],
+  "beforeHashes": {
+    "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+    "rankingScores": "74f6f89bff392a84162c20d798d43904f910e8ae7e32eae29bfa369b5fc0b10a",
+    "generatedNonDisplayData": "a2aa3c91d5db78b83a7303b44c7e20961c2af985288eaadf91eca17b34e975f4",
+    "linkedResults": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3"
+  },
+  "provenanceNote": "New entries are editorial Russian transcriptions (generated-reviewed), not externally verified Russian names. Reference URLs support original spelling/language unless specifically described otherwise. No audio pronunciation is claimed to have been listened to.",
+  "complexAccepted": [
+    "Antoine Jolicoeur Desroches",
+    "Milosz Sowinski",
+    "Ognjen Stojanović",
+    "Justus Töpper",
+    "Lukas Schnoedewind",
+    "Jumpei Furuya",
+    "Mizuki Hirayanagi",
+    "Chino Iwabuchi",
+    "Tiina Pohjalainen",
+    "Heini Hartikainen",
+    "Vicenç Castellà Serra",
+    "Alice Cote-Allard",
+    "Katharina Krüger",
+    "Mathieu Merland",
+    "Christophe De Keyser",
+    "Brecht Van Vooren",
+    "Gustav Palm-Henriksen",
+    "Lilli Gelmini",
+    "Mathilde Cartier",
+    "Maria Florencia Diaz Philippi"
+  ]
+}
