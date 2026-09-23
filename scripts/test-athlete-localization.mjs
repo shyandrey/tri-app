@@ -20,6 +20,15 @@ try {
     await fs.readFile(`scripts/fixtures/athlete-localization-wave${number}.json`, 'utf8')
   )))
   const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex')
+  const review = JSON.parse(await fs.readFile('scripts/fixtures/athlete-localization-priority-a-review.json', 'utf8'))
+  const priorities = JSON.parse(await fs.readFile('scripts/fixtures/athlete-localization-review-priorities.json', 'utf8'))
+  assert.equal(review.selectionMode, 'priority-a-review')
+  assert.equal(hash(priorities), review.sourcePriorityReportHash, 'Priority selection snapshot changed')
+  const priorityA = priorities.athletes.filter(a => a.priority === 'A')
+  assert.equal(priorityA.length, 31)
+  assert.deepEqual(review.athletes.map(({ proposedNameRu, confidence, status, evidence, rationale, ...original }) => original),
+    priorityA, 'Review must cover exactly Priority A, preserving the original identities and reasons')
+  const resolvedNames = new Set(review.athletes.filter(a => a.status === 'LOCALIZED').map(a => a.nameEn))
   const { raceResults } = await server.ssrLoadModule('/src/data/results/index.ts')
   const { allRaceEditionViews } = await server.ssrLoadModule('/src/data/raceEditions.ts')
   const { linkResultsToAthletes } = await server.ssrLoadModule('/src/utils/raceResults.ts')
@@ -61,7 +70,9 @@ try {
       previousParticipants.add(row.nameEn)
       if (row.status === 'REVIEW_REQUIRED') {
         assert.ok(row.reason)
-        assert.equal(Object.hasOwn(registry, row.nameEn), false, `Unresolved name added: ${row.nameEn}`)
+        if (!resolvedNames.has(row.nameEn)) {
+          assert.equal(Object.hasOwn(registry, row.nameEn), false, `Unresolved name added: ${row.nameEn}`)
+        }
       } else {
         assert.equal(row.status, 'LOCALIZED')
         assert.match(row.nameRu, /^[А-Яа-яЁё '\-]+$/, 'Russian display name must not contain Latin letters; particles may retain apostrophes')
@@ -78,20 +89,63 @@ try {
       }
     }
   }
-  assert.deepEqual(registry, expectedRegistry, 'No names outside the selected waves')
   const allReviews = waves.flatMap(wave => wave.athletes.filter(a => a.status === 'REVIEW_REQUIRED'))
   const unlocalized = [...resultAthletes, ...verifiedResultAthletes].filter(a => !Object.hasOwn(registry, a.nameEn))
-  assert.deepEqual(unlocalized.map(a => a.nameEn).sort(), allReviews.map(a => a.nameEn).sort(),
-    'Every remaining unlocalized generated profile must have an explicit review decision; old reviews stay excluded')
+  assert.deepEqual(unlocalized.map(a => a.nameEn).sort(), allReviews.filter(a => !resolvedNames.has(a.nameEn)).map(a => a.nameEn).sort(),
+    'Only explicitly resolved Priority A reviews may leave the unresolved set')
+  // Wave 3 coverage is a historical snapshot, before the subsequent Priority A review.
   assert.deepEqual(waves[2].coverage, {
     generatedTotal: generatedIds.size,
     registryBefore: Object.keys(waves[2].originalRegistry).length,
-    registryAfter: Object.keys(registry).length,
+    registryAfter: Object.keys(expectedRegistry).length,
     unlocalizedBefore: [...resultAthletes, ...verifiedResultAthletes].filter(a => !Object.hasOwn(waves[2].originalRegistry, a.nameEn)).length,
-    unlocalizedAfter: unlocalized.length,
+    unlocalizedAfter: allReviews.length,
     priorReviewRequiredExcluded: waves.slice(0, 2).flatMap(wave => wave.athletes.filter(a => a.status === 'REVIEW_REQUIRED')).length,
     allWavesReviewRequired: allReviews.length,
   })
+  assert.equal(hash(expectedRegistry), review.beforeHashes.registry, 'All 656 earlier entries must remain unchanged')
+  const generated = [...resultAthletes, ...verifiedResultAthletes]
+  const count = rows => ({ MEN: rows.filter(a => a.gender === 'M').length, WOMEN: rows.filter(a => a.gender === 'W').length, total: rows.length })
+  const localizedBefore = generated.filter(a => Object.hasOwn(expectedRegistry, a.nameEn))
+  for (const row of review.athletes) {
+    const original = allReviews.find(a => a.nameEn === row.nameEn)
+    assert.ok(original, 'Reviewed athlete must have a historical REVIEW_REQUIRED decision')
+    assert.equal(row.athleteId, original.id)
+    assert.equal(Object.hasOwn(expectedRegistry, row.nameEn), false, 'Review cannot overwrite an existing localization')
+    assert.ok(row.rationale && row.evidence.length)
+    for (const source of row.evidence) {
+      assert.match(source.url, /^https:\/\//)
+      assert.ok(source.title && source.type && source.observation)
+    }
+    if (row.status === 'LOCALIZED') {
+      assert.ok(['HIGH', 'MEDIUM'].includes(row.confidence))
+      assert.match(row.proposedNameRu, /^[А-Яа-яЁё '\-]+$/)
+      expectedRegistry[row.nameEn] = { nameRu: row.proposedNameRu, provenance: 'generated-reviewed' }
+    } else {
+      assert.equal(row.status, 'REVIEW_REQUIRED')
+      assert.equal(row.confidence, 'UNRESOLVED')
+      assert.equal(row.proposedNameRu, null)
+      assert.equal(Object.hasOwn(registry, row.nameEn), false)
+    }
+  }
+  assert.deepEqual(registry, expectedRegistry, 'No additions outside the waves and explicitly accepted Priority A decisions')
+  assert.deepEqual(review.summary, {
+    candidates: count(review.athletes),
+    localized: count(review.athletes.filter(a => a.status === 'LOCALIZED')),
+    reviewRequired: count(review.athletes.filter(a => a.status === 'REVIEW_REQUIRED')),
+    HIGH: review.athletes.filter(a => a.confidence === 'HIGH').length,
+    MEDIUM: review.athletes.filter(a => a.confidence === 'MEDIUM').length,
+  })
+  assert.deepEqual(review.coverage, {
+    generatedTotal: generated.length, localizedBefore: count(localizedBefore),
+    localizedAfter: count(generated.filter(a => Object.hasOwn(registry, a.nameEn))),
+    unlocalizedBefore: allReviews.length, unlocalizedAfter: unlocalized.length,
+  })
+  const reviewDate = new Date(review.asOf)
+  assert.equal(hash(sortAthletesByRanking(athletes, linked, allRaceEditionViews, reviewDate).map(a => a.id)), review.beforeHashes.rankingOrder)
+  assert.equal(hash(calculateAthleteRanking(athletes, linked, allRaceEditionViews, reviewDate)), review.beforeHashes.rankingScores)
+  assert.equal(hash(resultAthletes.map(({ name, ...rest }) => rest)), review.beforeHashes.generatedNonDisplayData)
+  assert.equal(hash(linked), review.beforeHashes.linkedResults)
   // Execute the real full generator: output starts absent, no copying of generated names.
   execFileSync(process.execPath, ['scripts/find-next-athletes.mjs', '--write', '--output', output], { stdio: 'pipe' })
   const firstOutput = await fs.readFile(output, 'utf8')
@@ -102,7 +156,7 @@ try {
   assert.deepEqual(regenerated.map(localizeAthlete), resultAthletes.map(localizeAthlete), 'All display names must survive full regeneration')
   const regeneratedById = new Map(regenerated.map(a => [a.id, localizeAthlete(a)]))
   const regeneratedCatalog = athletes.map(a => regeneratedById.get(a.id) ?? a)
-  for (const wave of waves) {
+  for (const wave of [...waves, review]) {
     assert.equal(hash(sortAthletesByRanking(regeneratedCatalog, linked, allRaceEditionViews, new Date(wave.asOf)).map(a => a.id)), wave.beforeHashes.rankingOrder, 'Regeneration changed production ranking order')
     assert.equal(hash(calculateAthleteRanking(regeneratedCatalog, linked, allRaceEditionViews, new Date(wave.asOf))), wave.beforeHashes.rankingScores, 'Regeneration changed production ranking scores')
   }
@@ -134,6 +188,7 @@ try {
   assert.equal(localizeAthlete(raw).name, raw.name, 'Unknown names must remain unchanged')
   console.log(`PASS: ${registry && Object.keys(registry).length} registry names preserved across full regeneration of ${regenerated.length} profiles; data/order unchanged; repeat output identical; audit failures detected.`)
   console.log('PASS: waves 1 and 2 each TOP-100 MEN + TOP-100 WOMEN; wave 3 covers all remaining candidates excluding earlier reviews; no overlap; earlier localizations unchanged; production ranking order/scores and result links match all three pre-localization snapshots.')
+  console.log(`PASS: exactly 31 Priority A decisions; ${resolvedNames.size} explicit resolutions, ${review.athletes.length - resolvedNames.size} still unresolved; all earlier entries and other reviews unchanged; ranking order/scores and result links match the pre-review snapshot, including after regeneration.`)
 } finally {
   await server.close()
   await fs.rm(temporaryDirectory, { recursive: true, force: true })

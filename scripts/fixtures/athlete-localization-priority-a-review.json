@@ -1,0 +1,1630 @@
+{
+  "selectionMode": "priority-a-review",
+  "sourcePriorityReport": "scripts/fixtures/athlete-localization-review-priorities.json",
+  "sourcePriorityReportHash": "8daa75370cf6ca6d047935eccde4ed734ef78ba243b1dc76ecc42560a59b0c09",
+  "repositoryCommit": "aff1413f366bc5682a66f27caa5c05d7edc05f23",
+  "asOf": "2026-09-23T12:02:49.121Z",
+  "reviewedOn": "2026-09-23",
+  "methodology": {
+    "selection": "Exactly the 31 Priority A rows in the frozen priority report; Priority B/C are not reviewed.",
+    "evidence": "Russian editorial usage first; athlete-written pronunciation; original spelling and established language context. MEDIUM language-based forms are editorial inferences, not verified Russian quotations.",
+    "audio": "Audio/video leads were found but not listened to. No decision claims first-hand audio verification. Tjebbe secondary IPA remains unresolved without checking its primary recording.",
+    "unresolved": "null proposedNameRu means no sufficiently supported complete Russian form; no speculative alternatives are added to registry.",
+    "persistence": "Historical wave fixtures remain unchanged. This fixture explicitly resolves selected old REVIEW_REQUIRED entries; every other old review stays unresolved.",
+    "provenance": "All six additions retain supported registry provenance generated-reviewed; stronger individual evidence is recorded here, without expanding the registry schema."
+  },
+  "beforeHashes": {
+    "registry": "2c2a0fa16d7d2548acfb5353602e4b38e719600a6bbcb41d8914d20746289551",
+    "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+    "rankingScores": "f592b34196509e0707d1883903feaa00cb08e206b4c55ecf7d0b84068ffc7708",
+    "generatedNonDisplayData": "a2aa3c91d5db78b83a7303b44c7e20961c2af985288eaadf91eca17b34e975f4",
+    "linkedResults": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3"
+  },
+  "summary": {
+    "candidates": {
+      "MEN": 22,
+      "WOMEN": 9,
+      "total": 31
+    },
+    "localized": {
+      "MEN": 4,
+      "WOMEN": 2,
+      "total": 6
+    },
+    "reviewRequired": {
+      "MEN": 18,
+      "WOMEN": 7,
+      "total": 25
+    },
+    "HIGH": 2,
+    "MEDIUM": 4
+  },
+  "coverage": {
+    "generatedTotal": 961,
+    "localizedBefore": {
+      "MEN": 443,
+      "WOMEN": 213,
+      "total": 656
+    },
+    "localizedAfter": {
+      "MEN": 447,
+      "WOMEN": 215,
+      "total": 662
+    },
+    "unlocalizedBefore": 305,
+    "unlocalizedAfter": 299
+  },
+  "athletes": [
+    {
+      "nameEn": "Maja Stage Nielsen",
+      "athleteId": 10840,
+      "gender": "W",
+      "countryCode": "DK",
+      "rank": 56,
+      "globalRank": 112,
+      "score": 25.53240917628154,
+      "rankingStarts": 13,
+      "resultRows": 13,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 7,
+        "2025": 5,
+        "2026": 1
+      },
+      "resultIds": [
+        108,
+        430,
+        677,
+        976,
+        1133,
+        1229,
+        1306,
+        1781,
+        2021,
+        2505,
+        2704,
+        2767,
+        3307
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Датское Stage нельзя читать по английским правилам; нужно подтвердить произношение и принятую русскую передачу.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100",
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": "Майя Стаге Нильсен",
+      "confidence": "HIGH",
+      "status": "LOCALIZED",
+      "evidence": [
+        {
+          "url": "https://rus.postimees.ee/8082591/startuet-festival-triatlona-ironman-sredi-uchastnikov-i-taavi-ryyvas-s-yurgenom-ligi",
+          "title": "Postimees, спорт, 23.08.2024",
+          "type": "russian-editorial",
+          "observation": "В тексте названа Майя Стаге Нильсен (Дания), участница профессиональной гонки."
+        },
+        {
+          "url": "https://www.triatlon.dk/artikel/efter-mere-end-et-arti-i-verdenseliten-maja-stage-nielsen-stopper-karrieren",
+          "title": "Triatlon Danmark",
+          "type": "federation",
+          "observation": "Датская федерация подтверждает исходное полное написание Maja Stage Nielsen."
+        }
+      ],
+      "rationale": "Русская спортивная редакция Postimees прямо использует полную форму в анонсе IRONMAN Tallinn от 23.08.2024. Это подтверждённое редакционное употребление, а не доказательство повсеместной устоявшейся нормы."
+    },
+    {
+      "nameEn": "Leonie Konczalla",
+      "athleteId": 10819,
+      "gender": "W",
+      "countryCode": "DE",
+      "rank": 57,
+      "globalRank": 115,
+      "score": 24.4034852768427,
+      "rankingStarts": 3,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2025": 2,
+        "2026": 1
+      },
+      "resultIds": [
+        2267,
+        2694,
+        4059
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Немецкая фамилия с сочетанием cz: польское и немецкое чтение различаются, требуется подтверждение.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://supplivit.com/pages/dr-leonie-konczalla",
+          "title": "Supplivit: Dr. Leonie Konczalla",
+          "type": "sponsor-profile",
+          "observation": "Профиль спортсменки-врача подтверждает латинское написание; фонетической подсказки в доступном тексте нет."
+        },
+        {
+          "url": "https://pushing-limits.de/blog/pushinglimits-blog/saison-geschichten-1-leonie-konzcalla-hawaii/",
+          "title": "Pushing Limits: интервью Leonie Konczalla",
+          "type": "interview-text",
+          "observation": "Немецкое интервью о квалификации на Kona; текст не объясняет произношение фамилии."
+        }
+      ],
+      "rationale": "Немецкая биография не устанавливает семейное чтение cz. Между немецкой адаптацией и польским чтением нельзя выбрать только по гражданству."
+    },
+    {
+      "nameEn": "Nathan Guerbeur",
+      "athleteId": 10422,
+      "gender": "M",
+      "countryCode": "FR",
+      "rank": 65,
+      "globalRank": 137,
+      "score": 22.722319381338167,
+      "rankingStarts": 7,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 2,
+        "2025": 3,
+        "2026": 2
+      },
+      "resultIds": [
+        649,
+        729,
+        2048,
+        2211,
+        2652,
+        3612,
+        3826
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Текст интервью подтверждает латинское имя. Русская форма из любительского блога недостаточна; произношение Guerbeur не подтверждено.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100",
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": "Натан Гербёр",
+      "confidence": "MEDIUM",
+      "status": "LOCALIZED",
+      "evidence": [
+        {
+          "url": "https://www.fftri.com/actualite/presentation-du-grand-prix-de-duathlon-2025/",
+          "title": "FFTRI: Grand Prix de Duathlon 2025",
+          "type": "federation",
+          "observation": "Федерация использует Nathan Guerbeur, Fra, Metz Triathlon."
+        },
+        {
+          "url": "https://www.cafeducycliste.com/blogs/la-vie/nathan-guerbeur-pedalling-is-freedom",
+          "title": "Café du Cycliste: интервью Nathan Guerbeur",
+          "type": "interview-text",
+          "observation": "Интервью подтверждает имя и французский спортивный/биографический контекст; готовой русской формы или фонетической записи нет."
+        }
+      ],
+      "rationale": "Редакционный вывод по французскому чтению в установленном французском контексте: Nathan → Натан; gu перед e сохраняет /g/, Guer- → Гер-, -beur → -бёр. Собственное произношение не прослушано; русская публикация надёжного уровня не найдена."
+    },
+    {
+      "nameEn": "Lisa Becharas",
+      "athleteId": 10825,
+      "gender": "W",
+      "countryCode": "US",
+      "rank": 68,
+      "globalRank": 129,
+      "score": 23.527770084112,
+      "rankingStarts": 10,
+      "resultRows": 10,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 6,
+        "2026": 1
+      },
+      "resultIds": [
+        9,
+        342,
+        1302,
+        1848,
+        2104,
+        2286,
+        2766,
+        2903,
+        2944,
+        3989
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Не установлено личное произношение американской фамилии Becharas, особенно сочетания ch.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100",
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": "Лиза Бакэрис",
+      "confidence": "HIGH",
+      "status": "LOCALIZED",
+      "evidence": [
+        {
+          "url": "https://realtrisquad.beehiiv.com/p/the-real-tri-squad-march-newsletter",
+          "title": "Real Triathlon Squad, 21.03.2025, Get to Know the Pro: Lisa Becharas",
+          "type": "athlete-written-pronunciation",
+          "observation": "На прямой вопрос о произношении фамилии Lisa отвечает: Bah-care-issss."
+        },
+        {
+          "url": "https://www.lisabecharas.com/",
+          "title": "Lisa Becharas, персональный сайт",
+          "type": "personal-site",
+          "observation": "Подтверждает идентичность американской профессиональной триатлонистки."
+        }
+      ],
+      "rationale": "Сама спортсменка письменно объясняет фамилию как Bah-care-issss: Ба-кэр-ис. Это снимает неоднозначность ch и гласных; русская форма — редакционная передача её подсказки, не заимствование из русского СМИ."
+    },
+    {
+      "nameEn": "Tjebbe Kaindl",
+      "athleteId": 10585,
+      "gender": "M",
+      "countryCode": "AT",
+      "rank": 74,
+      "globalRank": 150,
+      "score": 21.559790091767578,
+      "rankingStarts": 1,
+      "resultRows": 1,
+      "seasons": [
+        2026
+      ],
+      "resultsBySeason": {
+        "2026": 1
+      },
+      "resultIds": [
+        4178
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Нидерландское имя у австрийского спортсмена: требуется подтвердить личное произношение Tjebbe.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Tjebbe_Kaindl",
+          "title": "Wikipedia DE: Tjebbe Kaindl",
+          "type": "secondary-pronunciation-lead",
+          "observation": "Есть IPA [ˈd͡ʒɛpə] и ссылка на профиль Paris 2024; вторичная подсказка."
+        },
+        {
+          "url": "https://olympics.com/en/paris-2024/athlete/tjebbe-kaindl_1558237",
+          "title": "Paris 2024: KAINDL Tjebbe",
+          "type": "audio-lead-not-verified",
+          "observation": "В доступной веб-версии только оболочка страницы, исходное произношение не проверено."
+        }
+      ],
+      "rationale": "Немецкая Wikipedia приводит для Tjebbe [ˈd͡ʒɛpə] со ссылкой на олимпийское самопредставление. Это существенная зацепка, но исходное аудио не проверено: доступная страница Paris 2024 требует JavaScript. Не закрепляю ни буквенное чтение, ни вторичную IPA как проверенную русскую форму."
+    },
+    {
+      "nameEn": "Valdemar Solok",
+      "athleteId": 10610,
+      "gender": "M",
+      "countryCode": "DK",
+      "rank": 92,
+      "globalRank": 186,
+      "score": 18.65410106605663,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2025": 2,
+        "2026": 3
+      },
+      "resultIds": [
+        2047,
+        2844,
+        3436,
+        3775,
+        4221
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Требуется уточнить исходную датскую форму и произношение фамилии Solok; возможные утраченные диакритические знаки не восстанавливались.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100",
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.triatlon.dk/artikel/katrine-graesboll-christensen-og-valdemar-solok-pa-podiet-ved-ironman-703-elsinore",
+          "title": "Triatlon Danmark: Elsinore 2026",
+          "type": "federation",
+          "observation": "Официальная публикация и датская прямая речь спортсмена; фонетической записи фамилии нет."
+        }
+      ],
+      "rationale": "Федерация подтверждает Solok без дополнительных диакритик, но не происхождение и личное чтение редкой фамилии. Датское гражданство само по себе недостаточно для выбора её гласных."
+    },
+    {
+      "nameEn": "Ben Faeh",
+      "athleteId": 10053,
+      "gender": "M",
+      "countryCode": "CH",
+      "rank": 94,
+      "globalRank": 189,
+      "score": 18.227120447012616,
+      "rankingStarts": 2,
+      "resultRows": 2,
+      "seasons": [
+        2026
+      ],
+      "resultsBySeason": {
+        "2026": 2
+      },
+      "resultIds": [
+        3779,
+        4011
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Официальный профиль подтверждает Fäh, но не русскую форму Фэ и не личное произношение; автоматическая передача по написанию не принята.",
+      "priority": "A",
+      "priorityReasons": [
+        "genderRank <= 100"
+      ],
+      "proposedNameRu": "Бен Фэ",
+      "confidence": "MEDIUM",
+      "status": "LOCALIZED",
+      "evidence": [
+        {
+          "url": "https://zurichcitytriathlon.ch/en/2022/03/01/ambassadors/",
+          "title": "Zurich City Triathlon: ambassadors",
+          "type": "organizer-original-spelling",
+          "observation": "Организатор печатает Ben Fäh и немецкую прямую речь спортсмена."
+        }
+      ],
+      "rationale": "Установлено исходное Fäh, а не буквенное английское Faeh. Немецкое ä перед немым h передаю через э; немецкоязычный контекст подтверждён прямой цитатой на сайте организатора. Собственное аудио не проверено."
+    },
+    {
+      "nameEn": "Erin Schenkels",
+      "athleteId": 10740,
+      "gender": "W",
+      "countryCode": "CA",
+      "rank": 101,
+      "globalRank": 200,
+      "score": 17.63314007137887,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024
+      ],
+      "resultsBySeason": {
+        "2024": 6
+      },
+      "resultIds": [
+        202,
+        438,
+        482,
+        596,
+        811,
+        1148
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Нужно уточнить канадское личное произношение фамилии Schenkels; чтение sch по происхождению фамилии может отличаться.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.ironman.com/proseries/triathletes/erin-schenkels?order=wtc_swimtime&page=1&sort=asc&title_1=",
+          "title": "IRONMAN: Erin Schenkels",
+          "type": "organizer-profile",
+          "observation": "Биография прямо связывает возвращение в 2024 под фамилией Schenkels со свадьбой 2023; произношение не дано."
+        }
+      ],
+      "rationale": "Официальная биография подтверждает нынешнюю фамилию после свадьбы, но не её чтение. Для Schenkels нельзя уверенно выбрать английскую/нидерландскую адаптацию; прежнюю фамилию не подставляю."
+    },
+    {
+      "nameEn": "Julie Iemmolo",
+      "athleteId": 10779,
+      "gender": "W",
+      "countryCode": "FR",
+      "rank": 103,
+      "globalRank": 206,
+      "score": 17.263178620723448,
+      "rankingStarts": 10,
+      "resultRows": 10,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 5,
+        "2025": 5
+      },
+      "resultIds": [
+        281,
+        434,
+        684,
+        1151,
+        1571,
+        1956,
+        2029,
+        2195,
+        2723,
+        3023
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Французское имя и фамилия итальянского происхождения: начало Iemmolo требует подтверждения личного произношения.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://julie-iemmolo.jimdofree.com/bio/",
+          "title": "Julie Iemmolo: личная биография",
+          "type": "personal-site",
+          "observation": "Подтверждены Iemmolo, рождение в Aix-en-Provence и французский контекст; нет произносительной подсказки."
+        },
+        {
+          "url": "https://www.monacotriathlon.com/",
+          "title": "AS Monaco Triathlon",
+          "type": "club",
+          "observation": "Клуб также использует Julie Iemmolo."
+        }
+      ],
+      "rationale": "Французское Julie передаётся уверенно, но начальное Ie- фамилии и её семейное чтение не установлены. Французская биография не доказывает, что фамилия читается только по французским правилам."
+    },
+    {
+      "nameEn": "Katie Remond",
+      "athleteId": 10790,
+      "gender": "W",
+      "countryCode": "AU",
+      "rank": 110,
+      "globalRank": 219,
+      "score": 16.656424123417395,
+      "rankingStarts": 7,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2,
+        "2026": 2
+      },
+      "resultIds": [
+        558,
+        1068,
+        1237,
+        2362,
+        2725,
+        3488,
+        4327
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Неочевидно англоязычное произношение Remond; не заменять автоматически на Raymond.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.triathlon.org.au/news/aussie-women-set-to-take-on-kona-at-ironman-world-championship/",
+          "title": "AusTriathlon: женщины на Kona",
+          "type": "federation",
+          "observation": "Федерация называет Katie Remond, спортсменку из NSW; произношение не указано."
+        }
+      ],
+      "rationale": "Австралийская федерация подтверждает написание, но не снимает неоднозначность гласных Remond и возможной французской семейной традиции. Не заменяю фамилию более знакомым Raymond."
+    },
+    {
+      "nameEn": "Tristan Olij",
+      "athleteId": 10604,
+      "gender": "M",
+      "countryCode": "NL",
+      "rank": 114,
+      "globalRank": 229,
+      "score": 16.154153243997243,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2,
+        "2026": 1
+      },
+      "resultIds": [
+        567,
+        950,
+        1186,
+        2009,
+        3237,
+        4341
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Найдено интервью с латинским написанием, но надёжное подтверждение русской формы или личного произношения Olij не получено.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": "Тристан Олей",
+      "confidence": "MEDIUM",
+      "status": "LOCALIZED",
+      "evidence": [
+        {
+          "url": "https://tristanolij.com/",
+          "title": "Tristan Olij: персональный сайт",
+          "type": "personal-site",
+          "observation": "Нидерландская автобиография под именем Tristan Olij."
+        },
+        {
+          "url": "https://www.rodi.nl/hollandskroon/nieuws/458371/de-10-vragen-aan-tristan-olij",
+          "title": "Rodi: De 10 vragen aan Tristan Olij, 19.08.2025",
+          "type": "interview-text",
+          "observation": "Спортсмен представляется и рассказывает о рождении и жизни в Winkel, Noord-Holland."
+        }
+      ],
+      "rationale": "Личный нидерландский сайт и интервью о рождении и жизни в Winkel устанавливают языковой контекст. Применена нидерландская передача ij → ей, без английского чтения j. Это редакционный вывод по языковым правилам, не подтверждённая русская цитата."
+    },
+    {
+      "nameEn": "Benjamin Zorgnotti",
+      "athleteId": 10061,
+      "gender": "M",
+      "countryCode": "FR",
+      "rank": 135,
+      "globalRank": 265,
+      "score": 14.530355287145008,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 1,
+        "2025": 4,
+        "2026": 1
+      },
+      "resultIds": [
+        45,
+        1885,
+        2221,
+        2622,
+        2670,
+        4289
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Французское имя и фамилия итальянского происхождения: произношение gn и окончания требует подтверждения.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://fr.airtahitinui.com/actualites/ambassador/benjamin-zorgnotti-les-jeux-du-pacifique-en-ligne-de-mire",
+          "title": "Air Tahiti Nui: интервью Benjamin Zorgnotti",
+          "type": "interview-text",
+          "observation": "Французская прямая речь и точное написание; объяснения фамилии нет."
+        }
+      ],
+      "rationale": "Франкоязычное интервью устанавливает контекст, но не семейное чтение gn и удвоенного tt в Zorgnotti. Французское/итальянское происхождение фамилии не доказано; форму не фиксирую."
+    },
+    {
+      "nameEn": "Dieter Comhair",
+      "athleteId": 10127,
+      "gender": "M",
+      "countryCode": "BE",
+      "rank": 136,
+      "globalRank": 267,
+      "score": 14.439827525857673,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 4,
+        "2025": 2
+      },
+      "resultIds": [
+        1093,
+        1261,
+        1347,
+        1676,
+        2612,
+        2830
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Неочевидное произношение бельгийской фамилии Comhair; нельзя выбирать чтение только по стране.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.3athlon.be/2024/12/15/dieter-comhair-na-26ste-plaats-in-wk-70-3-ironman-een-lange-solo-dag-in-de-achtervolging/",
+          "title": "3athlon.be: интервью Dieter Comhair",
+          "type": "interview-text",
+          "observation": "Письменная прямая речь и ссылка на интервью; собственное произношение имени не проверено."
+        }
+      ],
+      "rationale": "Нидерландское интервью не устанавливает происхождение Comhair и чтение hair. Не переношу на фамилию английские или ирландские правила по сходству букв."
+    },
+    {
+      "nameEn": "Stenn Goetstouwers",
+      "athleteId": 10553,
+      "gender": "M",
+      "countryCode": "BE",
+      "rank": 145,
+      "globalRank": 288,
+      "score": 13.690254669092186,
+      "rankingStarts": 8,
+      "resultRows": 8,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 5,
+        "2025": 2,
+        "2026": 1
+      },
+      "resultIds": [
+        142,
+        708,
+        765,
+        1089,
+        1190,
+        1833,
+        2096,
+        4102
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Фламандская фамилия с неоднозначным для русской передачи сочетанием Goetstouwers; требуется образец произношения.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.185.be/coaches/stenn-goetstouwers",
+          "title": "185: Stenn Goetstouwers",
+          "type": "coach-profile",
+          "observation": "Нидерландская страница спортсмена-тренера подтверждает исходное имя."
+        },
+        {
+          "url": "https://www.3athlon.be/2019/01/17/stenn-goetstouwers-klaar-voor-2019-kijk-uit-naar-race-met-marten-van-riel/",
+          "title": "3athlon.be: Stenn Goetstouwers klaar voor 2019",
+          "type": "interview-text",
+          "observation": "Интервью подтверждает фламандский спортивный контекст; аудио имени не проверено."
+        }
+      ],
+      "rationale": "Фламандский контекст подтверждён, но для этой необычной фамилии не найдено достаточно надёжного личного произносительного основания. Сочетания oe/ou и полное семейное чтение требуют проверки аудио; форму из любительского русского блога не принимаю."
+    },
+    {
+      "nameEn": "Rebecca Yunginger",
+      "athleteId": 10893,
+      "gender": "W",
+      "countryCode": "US",
+      "rank": 159,
+      "globalRank": 316,
+      "score": 12.873006919332836,
+      "rankingStarts": 7,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2,
+        "2026": 2
+      },
+      "resultIds": [
+        31,
+        211,
+        610,
+        2116,
+        2293,
+        3697,
+        3999
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Неочевидное личное произношение фамилии Yunginger, в частности согласных g.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://zootsports.com/en-ca/pages/athletes",
+          "title": "Zoot Sports: athletes, Rebecca Yunginger",
+          "type": "sponsor-profile",
+          "observation": "Профиль подтверждает латинское написание и американскую биографию; фонетической подсказки нет."
+        },
+        {
+          "url": "https://stats.protriathletes.org/athlete/rebecca-yunginger",
+          "title": "PTO: Rebecca Yunginger",
+          "type": "identity-only",
+          "observation": "Профиль подтверждает точное имя спортсменки, не произношение."
+        }
+      ],
+      "rationale": "Американская биография не решает чтение двух g и гласных необычной фамилии Yunginger. Нельзя восстановить семейное произношение только по написанию."
+    },
+    {
+      "nameEn": "Katie Spoelman-Vanacker",
+      "athleteId": 10791,
+      "gender": "W",
+      "countryCode": "US",
+      "rank": 184,
+      "globalRank": 364,
+      "score": 11.625614493556755,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2025": 3,
+        "2026": 2
+      },
+      "resultIds": [
+        2117,
+        2302,
+        2515,
+        3701,
+        4001
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Составная фамилия нидерландского происхождения у американской спортсменки: нужно подтвердить англизированное произношение обеих частей.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://miamiredhawks.com/sports/womens-swimming-and-diving/roster/2009-10?path=wswim",
+          "title": "Miami University: roster 2009–10, Katie Spoelman",
+          "type": "historical-name-lead",
+          "observation": "В официальном списке пловчих есть Katie Spoelman; это не доказательство чтения текущей составной фамилии."
+        },
+        {
+          "url": "https://stats.protriathletes.org/athlete/katie-spoelman-vana",
+          "title": "PTO: Katie Spoelman-Vanacker",
+          "type": "identity-only",
+          "observation": "Профиль текущей спортсменки; произносительной подсказки нет."
+        }
+      ],
+      "rationale": "Сохранена составная фамилия из базы. Университетский roster подтверждает только Spoelman; чтение oe и нынешнего Vanacker не установлено. Не сокращаю имя и не вывожу семейное произношение из страны."
+    },
+    {
+      "nameEn": "Gabrielle Suver",
+      "athleteId": 10752,
+      "gender": "W",
+      "countryCode": "US",
+      "rank": 188,
+      "globalRank": 370,
+      "score": 11.385639765165417,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 4,
+        "2025": 1
+      },
+      "resultIds": [
+        126,
+        366,
+        480,
+        824,
+        2366
+      ],
+      "reviewWave": 1,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave1.json",
+      "reviewReason": "Нужно уточнить гласную в фамилии Suver и личное произношение Gabrielle.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.trainingpeaks.com/coach/gabriellesuver",
+          "title": "TrainingPeaks: Gabrielle Suver",
+          "type": "athlete-coach-profile",
+          "observation": "Собственная тренерская биография, язык English, точное имя; фонетическая запись отсутствует."
+        }
+      ],
+      "rationale": "Англоязычный профиль тренера не устанавливает качество гласной u в Suver и личное произношение Gabrielle. Недостаточно основания для полной русской формы."
+    },
+    {
+      "nameEn": "Matt Schafer",
+      "athleteId": 10366,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 201,
+      "globalRank": 411,
+      "score": 10.513029834350885,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 2,
+        "2025": 1,
+        "2026": 2
+      },
+      "resultIds": [
+        98,
+        257,
+        2536,
+        3734,
+        3959
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Не подтверждено американское чтение Schafer: нельзя автоматически выбирать Шафер или Шейфер.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://michigantriathlon.org/",
+          "title": "University of Michigan Triathlon",
+          "type": "club",
+          "observation": "В истории команды указан Matt Schafer."
+        },
+        {
+          "url": "https://stats.protriathletes.org/athlete/matt-schafer",
+          "title": "PTO: Matt Schafer",
+          "type": "identity-only",
+          "observation": "Подтверждено написание Matt Schafer; произношение не дано."
+        }
+      ],
+      "rationale": "Подтверждён американский триатлет, но Schafer может иметь разные англизированные гласные. Немецкое чтение или добавление умлаута без источника недопустимо."
+    },
+    {
+      "nameEn": "William Mennesson",
+      "athleteId": 10627,
+      "gender": "M",
+      "countryCode": "FR",
+      "rank": 207,
+      "globalRank": 421,
+      "score": 10.340381657120773,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2025
+      ],
+      "resultsBySeason": {
+        "2025": 6
+      },
+      "resultIds": [
+        1834,
+        1980,
+        2068,
+        2236,
+        2424,
+        2472
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Французское и английское чтение William различаются; нужно подтвердить личное произношение полной формы.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.teamvoussert.com/triathlon-haut-niveau/william-mennesson/",
+          "title": "Team Voussert: William Mennesson",
+          "type": "team-profile",
+          "observation": "Команда указывает раздельно фамилию MENNESSON, имя William и клуб AS Monaco."
+        },
+        {
+          "url": "https://www.monacotriathlon.com/",
+          "title": "AS Monaco Triathlon",
+          "type": "club",
+          "observation": "Клуб использует William Mennesson."
+        }
+      ],
+      "rationale": "Клуб и французское интервью подтверждают идентичность. Заимствованное William и личное чтение Mennesson не проверены; между русскими адаптациями имени без дополнительного основания не выбираю."
+    },
+    {
+      "nameEn": "Matthew Guenter",
+      "athleteId": 10369,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 223,
+      "globalRank": 454,
+      "score": 9.809834169878405,
+      "rankingStarts": 7,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2,
+        "2026": 2
+      },
+      "resultIds": [
+        71,
+        252,
+        545,
+        1914,
+        2160,
+        3726,
+        3964
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Нужно подтвердить англизированное или немецкое чтение Guenter, особенно ue.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://gopsusports.com/sports/mens-swimming-and-diving/roster/player/matthew-guenter",
+          "title": "Penn State: Matthew Guenter, 2015–16",
+          "type": "university-profile",
+          "observation": "Официальная биография пловца из Pennsylvania; фонетического руководства на странице нет."
+        },
+        {
+          "url": "https://stats.protriathletes.org/athlete/matthew-guenter",
+          "title": "PTO: Matthew Guenter",
+          "type": "identity-only",
+          "observation": "Точное текущее имя триатлета; произношение фамилии не указано."
+        }
+      ],
+      "rationale": "Penn State подтверждает американский биографический контекст и Guenter. Это не доказывает немецкое ü или англизированную гласную; самостоятельно заменять ue на ю нельзя."
+    },
+    {
+      "nameEn": "Finn Arentz",
+      "athleteId": 10159,
+      "gender": "M",
+      "countryCode": "GB",
+      "rank": 237,
+      "globalRank": 475,
+      "score": 9.50346652475903,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 4,
+        "2025": 1
+      },
+      "resultIds": [
+        154,
+        732,
+        772,
+        937,
+        2481
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Не подтверждено британское личное чтение фамилии Arentz.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://finnarentztriathlete.wordpress.com/about/",
+          "title": "Finn Arentz: About Me",
+          "type": "personal-site",
+          "observation": "Собственная биография и имя Finn Arentz; нет подсказки к произношению фамилии."
+        },
+        {
+          "url": "https://www.sundried.com/blogs/triathlon/finn-arentz-athlete-ambassador",
+          "title": "Sundried: Finn Arentz",
+          "type": "interview-text",
+          "observation": "Интервью спортсмена подтверждает идентичность, не фонетику фамилии."
+        }
+      ],
+      "rationale": "Личная биография устанавливает британский контекст, но не семейное чтение Arentz. По валлийскому месту рождения нельзя выбирать немецкую или английскую передачу фамилии."
+    },
+    {
+      "nameEn": "Michael Arishita",
+      "athleteId": 10394,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 274,
+      "globalRank": 540,
+      "score": 8.656880358591327,
+      "rankingStarts": 7,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 4,
+        "2025": 2,
+        "2026": 1
+      },
+      "resultIds": [
+        52,
+        249,
+        1359,
+        1692,
+        1911,
+        1992,
+        3566
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Не подтверждено личное американское чтение фамилии японского происхождения Arishita.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://tridocpodcast.beehiiv.com/p/episode-170-breather-rmt-michael-arishita-blank-labels-big-dreams-the-rise-of-blanks-nutrition-c1eaf",
+          "title": "TriDoc Podcast, episode 170",
+          "type": "conflicting-text-audio-lead",
+          "observation": "Заголовок и текст расходятся в написании Arishita/Arashida; звук не проверен."
+        },
+        {
+          "url": "https://triathlon.org/athletes/profile/103873/michael-arishita",
+          "title": "World Triathlon: Michael Arishita",
+          "type": "federation",
+          "observation": "Официальный профиль сохраняет Michael Arishita."
+        }
+      ],
+      "rationale": "В заголовке интервью Arishita, а в сопровождающем тексте встречается Arashida. Такое расхождение не является фонетическим доказательством. Не вывожу японское чтение и не принимаю ошибку транскрипта за самопроизношение."
+    },
+    {
+      "nameEn": "Jonathan Fecik",
+      "athleteId": 10253,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 289,
+      "globalRank": 565,
+      "score": 8.375166899721762,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2,
+        "2026": 1
+      },
+      "resultIds": [
+        528,
+        652,
+        867,
+        1927,
+        2347,
+        4046
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Не установлено личное чтение согласной c в фамилии Fecik.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://stats.protriathletes.org/athlete/jonathan-fecik",
+          "title": "PTO: Jonathan Fecik",
+          "type": "identity-only",
+          "observation": "Точное имя и спортивная идентичность, без произносительной информации."
+        }
+      ],
+      "rationale": "PTO подтверждает имя, но не происхождение и семейное чтение c в Fecik. Американское представительство не даёт выбрать между возможными традициями."
+    },
+    {
+      "nameEn": "Max Kohll",
+      "athleteId": 10384,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 292,
+      "globalRank": 570,
+      "score": 8.3274449932938,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 2,
+        "2025": 2,
+        "2026": 2
+      },
+      "resultIds": [
+        81,
+        523,
+        1920,
+        2166,
+        3741,
+        4039
+      ],
+      "reviewWave": 2,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave2.json",
+      "reviewReason": "Не подтверждено личное американское чтение Kohll; немецкое написание не гарантирует немецкого произношения.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://stats.protriathletes.org/athlete/max-kohll",
+          "title": "PTO: Max Kohll",
+          "type": "identity-only",
+          "observation": "Подтверждает Kohll с двумя l; не содержит произносительной подсказки."
+        }
+      ],
+      "rationale": "Редкая фамилия Kohll подтверждена, но личная гласная и языковая адаптация не установлены. Не исправляю её до Kohl и не выбираю немецкое чтение только по внешнему виду."
+    },
+    {
+      "nameEn": "Yang Pan",
+      "athleteId": 10629,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 309,
+      "globalRank": 592,
+      "score": 8.03880998564475,
+      "rankingStarts": 8,
+      "resultRows": 8,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 3,
+        "2026": 2
+      },
+      "resultIds": [
+        409,
+        519,
+        865,
+        1923,
+        2164,
+        2543,
+        3738,
+        3975
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Yang Pan: нет подтверждённой исходной китайской формы и порядка компонентов.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://stats.protriathletes.org/athlete/yang-pan",
+          "title": "PTO: Yang Pan",
+          "type": "identity-only",
+          "observation": "Yang Pan, USA; исходное китайское написание и произношение не приведены."
+        }
+      ],
+      "rationale": "Найден только латинский вариант при представительстве USA. Нет надёжно связанных исходных иероглифов, языковой системы и порядка фамилия/имя; китайскую форму не восстанавливаю по догадке."
+    },
+    {
+      "nameEn": "Jacob Osswald",
+      "athleteId": 10207,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 348,
+      "globalRank": 652,
+      "score": 7.2667008334930046,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2
+      },
+      "resultIds": [
+        182,
+        651,
+        870,
+        1921,
+        2342
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Osswald в американском употреблении: не подтверждено чтение w.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://stats.protriathletes.org/athlete/jacob-osswald",
+          "title": "PTO: Jacob Osswald",
+          "type": "identity-only",
+          "observation": "Подтверждено точное имя; произношение не дано."
+        }
+      ],
+      "rationale": "Латинская форма и USA подтверждены. Немецкое и англизированное чтение Osswald различаются; источника о личном произношении не найдено."
+    },
+    {
+      "nameEn": "Ryan Sedivec",
+      "athleteId": 10518,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 377,
+      "globalRank": 693,
+      "score": 6.878336195064027,
+      "rankingStarts": 6,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 4,
+        "2025": 2
+      },
+      "resultIds": [
+        259,
+        407,
+        542,
+        1110,
+        1924,
+        2177
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Sedivec в американском употреблении: не подтверждено чтение c.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://stats.protriathletes.org/athlete/ryan-sedivec",
+          "title": "PTO: Ryan Sedivec",
+          "type": "identity-only",
+          "observation": "Латинское имя и спортивная идентичность подтверждены; произношение не дано."
+        }
+      ],
+      "rationale": "Не установлена семейная адаптация Sedivec и чтение конечного c. Не восстанавливаю славянские диакритики или английскую фонетику без основания."
+    },
+    {
+      "nameEn": "Branden Scheel",
+      "athleteId": 10065,
+      "gender": "M",
+      "countryCode": "US",
+      "rank": 410,
+      "globalRank": 734,
+      "score": 6.461619267679464,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 3,
+        "2025": 2
+      },
+      "resultIds": [
+        87,
+        255,
+        522,
+        1985,
+        2558
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Scheel в американском употреблении: не подтверждено личное чтение.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.brandenscheelracing.com/coach-branden",
+          "title": "Branden Scheel Racing",
+          "type": "personal-site",
+          "observation": "Спортсмен описывает переход из бега NDSU в триатлон."
+        },
+        {
+          "url": "https://gobison.com/sports/mens-cross-country/roster/branden-scheel/7084",
+          "title": "NDSU: Branden Scheel, 2016",
+          "type": "university-profile",
+          "observation": "Официальный roster подтверждает Branden Scheel, но не объясняет произношение."
+        }
+      ],
+      "rationale": "Личный тренерский сайт и NDSU подтверждают идентичность. Для Scheel остаётся выбор немецкой/американской гласной; найденная биография не содержит произносительного руководства."
+    },
+    {
+      "nameEn": "Garrick Loewen",
+      "athleteId": 10173,
+      "gender": "M",
+      "countryCode": "CA",
+      "rank": 426,
+      "globalRank": 755,
+      "score": 6.262245619187015,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 2,
+        "2025": 3
+      },
+      "resultIds": [
+        646,
+        780,
+        2012,
+        2335,
+        3279
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Loewen в канадском употреблении: не подтверждено немецкое или английское чтение.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://podcasts.apple.com/us/podcast/the-real-triathlon-podcast/id1503901201",
+          "title": "The REAL Triathlon Podcast",
+          "type": "audio-lead-not-verified",
+          "observation": "Garrick Loewen указан среди ведущих; наличие аудио не принято за прослушанное доказательство."
+        },
+        {
+          "url": "https://realtrisquad.beehiiv.com/p/the-real-tri-squad-march-newsletter",
+          "title": "Real Triathlon Squad, March 2025",
+          "type": "team-newsletter",
+          "observation": "Garrick назван среди участников гонок; произносительная подсказка Bah-care-issss относится к Lisa, не к нему."
+        }
+      ],
+      "rationale": "Подкаст и командные материалы подтверждают имя, но звук не проверен. Не приравниваю oe автоматически к немецкому ö или к английскому дифтонгу."
+    },
+    {
+      "nameEn": "Trevor Delsaut",
+      "athleteId": 10603,
+      "gender": "M",
+      "countryCode": "FR",
+      "rank": 499,
+      "globalRank": 860,
+      "score": 5.384656107971887,
+      "rankingStarts": 5,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "resultsBySeason": {
+        "2024": 2,
+        "2025": 3
+      },
+      "resultIds": [
+        413,
+        887,
+        1996,
+        2343,
+        2559
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Trevor Delsaut: не подтверждено личное французское чтение фамилии.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": "Тревор Дельсо",
+      "confidence": "MEDIUM",
+      "status": "LOCALIZED",
+      "evidence": [
+        {
+          "url": "https://www.trevor-delsaut.com/about-trevor",
+          "title": "Trevor Delsaut: About Trevor",
+          "type": "personal-site",
+          "observation": "Личный сайт сохраняет DELSAUT; биография связывает начало карьеры с Paris и Racing Club de France."
+        },
+        {
+          "url": "https://www.triathlon-spirit.com/article/actus/2011/06/22/18139/ironman-nice-les-challengers-et-favoris-de-la-7e-edition/",
+          "title": "Triathlon-spirit: Ironman Nice, 22.06.2011",
+          "type": "sports-profile",
+          "observation": "Французский спортивный материал о Trevor Delsaut содержит его прямую речь и подтверждает контекст."
+        }
+      ],
+      "rationale": "Личный сайт и французская спортивная публикация устанавливают французский контекст. Применена французская передача Delsaut: -aut → о, конечный t не передаётся, l → ль. Это редакционный фонетический вывод, не прослушанное самопредставление."
+    },
+    {
+      "nameEn": "Jason Pohl",
+      "athleteId": 10228,
+      "gender": "M",
+      "countryCode": "CA",
+      "rank": 500,
+      "globalRank": 863,
+      "score": 5.374820742271274,
+      "rankingStarts": 8,
+      "resultRows": 8,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "resultsBySeason": {
+        "2024": 5,
+        "2025": 2,
+        "2026": 1
+      },
+      "resultIds": [
+        100,
+        178,
+        512,
+        860,
+        1201,
+        1898,
+        2013,
+        3572
+      ],
+      "reviewWave": 3,
+      "reviewFixture": "scripts/fixtures/athlete-localization-wave3.json",
+      "reviewReason": "Pohl в канадском употреблении: не установлено личное чтение.",
+      "priority": "A",
+      "priorityReasons": [
+        "resultRows >= 5"
+      ],
+      "proposedNameRu": null,
+      "confidence": "UNRESOLVED",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://yoursole.com/blog/us/meet-jason-pohl",
+          "title": "SOLE: Meet Jason Pohl",
+          "type": "interview-text",
+          "observation": "Интервью канадского триатлета с хоккейным прошлым, без фонетической подсказки."
+        },
+        {
+          "url": "https://www.precisionhydration.com/athletes/profiles/triathlon/jason-pohl/",
+          "title": "Precision Fuel & Hydration: Jason Pohl",
+          "type": "sponsor-profile",
+          "observation": "Подтверждена идентичность спортсмена; произношение не установлено."
+        }
+      ],
+      "rationale": "Канадская биография не определяет личную адаптацию Pohl. Английское или немецкое чтение по написанию не закрепляю; однофамильцы из дизайна и журналистики не служат доказательством."
+    }
+  ]
+}
