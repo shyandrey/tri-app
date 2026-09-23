@@ -16,7 +16,7 @@ try {
   const { localizeAthlete } = await server.ssrLoadModule('/src/data/athletes/localization.ts')
   const curated = [...maleAthletes, ...femaleAthletes, ...verifiedResultAthletes]
   // Frozen selections and hashes are captured before adding each wave.
-  const waves = await Promise.all([1, 2].map(async number => JSON.parse(
+  const waves = await Promise.all([1, 2, 3].map(async number => JSON.parse(
     await fs.readFile(`scripts/fixtures/athlete-localization-wave${number}.json`, 'utf8')
   )))
   const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex')
@@ -27,8 +27,9 @@ try {
   const linked = linkResultsToAthletes(raceResults)
   const generatedIds = new Set([...resultAthletes, ...verifiedResultAthletes].map(a => a.id))
   const previousParticipants = new Set()
-  let expectedRegistry = { ...waves[0].originalRegistry }
+  const expectedRegistry = { ...waves[0].originalRegistry }
   for (const [index, wave] of waves.entries()) {
+    if (index === 2) assert.equal(wave.selectionMode, 'all-remaining')
     assert.deepEqual(wave.originalRegistry, expectedRegistry, `Wave ${index + 1} baseline must match earlier accepted entries`)
     for (const [nameEn, original] of Object.entries(wave.originalRegistry)) {
       assert.deepEqual(registry[nameEn], original, `Earlier localization changed: ${nameEn}`)
@@ -42,9 +43,14 @@ try {
     for (const gender of ['M', 'W']) {
       const genderRanked = ranked.filter(a => a.gender === gender)
       const selected = genderRanked.filter(a => generatedIds.has(a.id) &&
-        !Object.hasOwn(wave.originalRegistry, a.nameEn) && !previousParticipants.has(a.nameEn)).slice(0, 100)
+        !Object.hasOwn(wave.originalRegistry, a.nameEn) && !previousParticipants.has(a.nameEn)).slice(0, index < 2 ? 100 : undefined)
       const expected = wave.athletes.filter(a => a.gender === gender)
-      assert.equal(expected.length, 100)
+      if (index < 2) assert.equal(expected.length, 100)
+      else assert.deepEqual(wave.summary[gender], {
+        candidates: selected.length,
+        localized: expected.filter(a => a.status === 'LOCALIZED').length,
+        reviewRequired: expected.filter(a => a.status === 'REVIEW_REQUIRED').length,
+      })
       assert.deepEqual(selected.map((a, i) => ({ id: a.id, nameEn: a.nameEn, countryCode: a.countryCode,
         selectionRank: i + 1, genderRank: genderRanked.findIndex(b => b.id === a.id) + 1 })),
       expected.map(({ id, nameEn, countryCode, selectionRank, genderRank }) => ({ id, nameEn, countryCode, selectionRank, genderRank })),
@@ -58,13 +64,13 @@ try {
         assert.equal(Object.hasOwn(registry, row.nameEn), false, `Unresolved name added: ${row.nameEn}`)
       } else {
         assert.equal(row.status, 'LOCALIZED')
-        assert.match(row.nameRu, /^[А-Яа-яЁё -]+$/, 'Russian display name must not contain Latin letters')
+        assert.match(row.nameRu, /^[А-Яа-яЁё '\-]+$/, 'Russian display name must not contain Latin letters; particles may retain apostrophes')
         assert.deepEqual(registry[row.nameEn], { nameRu: row.nameRu, provenance: 'generated-reviewed' })
         expectedRegistry[row.nameEn] = registry[row.nameEn]
       }
     }
     if (wave.complexAccepted) {
-      assert.equal(new Set(wave.complexAccepted).size, 20)
+      assert.equal(new Set(wave.complexAccepted).size, index === 2 ? 25 : 20)
       for (const nameEn of wave.complexAccepted) {
         const row = wave.athletes.find(a => a.nameEn === nameEn)
         assert.equal(row?.status, 'LOCALIZED', 'Complex examples must be accepted forms')
@@ -73,6 +79,19 @@ try {
     }
   }
   assert.deepEqual(registry, expectedRegistry, 'No names outside the selected waves')
+  const allReviews = waves.flatMap(wave => wave.athletes.filter(a => a.status === 'REVIEW_REQUIRED'))
+  const unlocalized = [...resultAthletes, ...verifiedResultAthletes].filter(a => !Object.hasOwn(registry, a.nameEn))
+  assert.deepEqual(unlocalized.map(a => a.nameEn).sort(), allReviews.map(a => a.nameEn).sort(),
+    'Every remaining unlocalized generated profile must have an explicit review decision; old reviews stay excluded')
+  assert.deepEqual(waves[2].coverage, {
+    generatedTotal: generatedIds.size,
+    registryBefore: Object.keys(waves[2].originalRegistry).length,
+    registryAfter: Object.keys(registry).length,
+    unlocalizedBefore: [...resultAthletes, ...verifiedResultAthletes].filter(a => !Object.hasOwn(waves[2].originalRegistry, a.nameEn)).length,
+    unlocalizedAfter: unlocalized.length,
+    priorReviewRequiredExcluded: waves.slice(0, 2).flatMap(wave => wave.athletes.filter(a => a.status === 'REVIEW_REQUIRED')).length,
+    allWavesReviewRequired: allReviews.length,
+  })
   // Execute the real full generator: output starts absent, no copying of generated names.
   execFileSync(process.execPath, ['scripts/find-next-athletes.mjs', '--write', '--output', output], { stdio: 'pipe' })
   const firstOutput = await fs.readFile(output, 'utf8')
@@ -85,6 +104,7 @@ try {
   const regeneratedCatalog = athletes.map(a => regeneratedById.get(a.id) ?? a)
   for (const wave of waves) {
     assert.equal(hash(sortAthletesByRanking(regeneratedCatalog, linked, allRaceEditionViews, new Date(wave.asOf)).map(a => a.id)), wave.beforeHashes.rankingOrder, 'Regeneration changed production ranking order')
+    assert.equal(hash(calculateAthleteRanking(regeneratedCatalog, linked, allRaceEditionViews, new Date(wave.asOf))), wave.beforeHashes.rankingScores, 'Regeneration changed production ranking scores')
   }
   const after = [...curated, ...regenerated].map(localizeAthlete)
   assert.deepEqual(auditAthleteLocalization(registry, [...curated, ...regenerated], after), [])
@@ -113,7 +133,7 @@ try {
   assert.equal(localizeAthlete({ ...registered, name: 'Ручное имя' }).name, 'Ручное имя')
   assert.equal(localizeAthlete(raw).name, raw.name, 'Unknown names must remain unchanged')
   console.log(`PASS: ${registry && Object.keys(registry).length} registry names preserved across full regeneration of ${regenerated.length} profiles; data/order unchanged; repeat output identical; audit failures detected.`)
-  console.log('PASS: waves 1 and 2 each TOP-100 MEN + TOP-100 WOMEN; no overlap; earlier localizations unchanged; production ranking order/scores and result links match both pre-localization snapshots.')
+  console.log('PASS: waves 1 and 2 each TOP-100 MEN + TOP-100 WOMEN; wave 3 covers all remaining candidates excluding earlier reviews; no overlap; earlier localizations unchanged; production ranking order/scores and result links match all three pre-localization snapshots.')
 } finally {
   await server.close()
   await fs.rm(temporaryDirectory, { recursive: true, force: true })
