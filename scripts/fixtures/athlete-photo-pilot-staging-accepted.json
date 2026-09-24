@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "discoverySha256": "7b781d7b26837af6439ea462c0f3e3d422f9896d81337f2350b6b3d169ca0411",
+  "purpose": "User-authorized staging of 16 HIGH URLs; not visual approval or publish authorization",
+  "candidates": [
+    {
+      "athleteId": 10185,
+      "nameEn": "Harry Palmer",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/08/5c1bfcc9-a1ea-4304-b2e0-f04fa3a5fcd1.png"
+    },
+    {
+      "athleteId": 10458,
+      "nameEn": "Panagiotis Bitados",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/869a5af7-8254-4c89-99a3-c6de23c7903c.png"
+    },
+    {
+      "athleteId": 10278,
+      "nameEn": "Justus Nieschlag",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/afa73a35-c641-47eb-a606-9186ee196df3.png"
+    },
+    {
+      "athleteId": 10475,
+      "nameEn": "Pierre Le Corre",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2022/03/89db4504-5d87-4ac6-8ac4-a4eaaf9d0bd1.png"
+    },
+    {
+      "athleteId": 10021,
+      "nameEn": "Alistair Brownlee",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/9776922b-7e95-4ac0-a8d6-55d75a03bfbf.png"
+    },
+    {
+      "athleteId": 10116,
+      "nameEn": "David McNamee",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/5be2725b-b240-49a7-87ad-bad361e60c10.png"
+    },
+    {
+      "athleteId": 10439,
+      "nameEn": "Nicolas Mann",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/192fbccd-21f7-4e0a-94a0-bce23548616f.png"
+    },
+    {
+      "athleteId": 10736,
+      "nameEn": "Emma Pallant-Browne",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/49ac13ff-9260-4c0e-8de7-2e696a52d7a0.png"
+    },
+    {
+      "athleteId": 10668,
+      "nameEn": "Anne Reischmann",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/22925643-29a0-4415-a68b-aa2ec58501ae.png"
+    },
+    {
+      "athleteId": 10878,
+      "nameEn": "Nikki Bartlett",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/ef02113d-bb28-41db-a486-9490fee00f2b.png"
+    },
+    {
+      "athleteId": 10810,
+      "nameEn": "Laura Madsen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/08/e99c31fe-eeb8-482a-a3a5-ec1b717a86ee.png"
+    },
+    {
+      "athleteId": 10667,
+      "nameEn": "Anne Haug",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/420237b9-0252-43e8-82fc-2eba20968394.png"
+    },
+    {
+      "athleteId": 10644,
+      "nameEn": "Alice Alberts",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/09/7cd9a5ef-16fb-4686-84c7-f13687b06302.png"
+    },
+    {
+      "athleteId": 10808,
+      "nameEn": "Laura Jansen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/04/647719c7-8794-4163-8d77-6f061334322f.png"
+    },
+    {
+      "athleteId": 10825,
+      "nameEn": "Lisa Becharas",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/e66840df-5433-4ad3-9583-27315d71fd09.png"
+    },
+    {
+      "athleteId": 10879,
+      "nameEn": "Nina Derron",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/05/cfd1a3d6-9cb0-4fe9-857e-80ffc4bdfd38.png"
+    }
+  ]
+}

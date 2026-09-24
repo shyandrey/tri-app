@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "batchId": "photo-pilot-20",
+  "athletes": [
+    {
+      "athleteId": 10185,
+      "nameEn": "Harry Palmer",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10458,
+      "nameEn": "Panagiotis Bitados",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10278,
+      "nameEn": "Justus Nieschlag",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10435,
+      "nameEn": "Nick Thompson",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10078,
+      "nameEn": "Cameron Main",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10475,
+      "nameEn": "Pierre Le Corre",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10021,
+      "nameEn": "Alistair Brownlee",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10116,
+      "nameEn": "David McNamee",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10439,
+      "nameEn": "Nicolas Mann",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10621,
+      "nameEn": "Wilhelm Hirsch",
+      "gender": "M"
+    },
+    {
+      "athleteId": 10736,
+      "nameEn": "Emma Pallant-Browne",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10668,
+      "nameEn": "Anne Reischmann",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10878,
+      "nameEn": "Nikki Bartlett",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10810,
+      "nameEn": "Laura Madsen",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10667,
+      "nameEn": "Anne Haug",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10644,
+      "nameEn": "Alice Alberts",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10840,
+      "nameEn": "Maja Stage Nielsen",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10808,
+      "nameEn": "Laura Jansen",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10825,
+      "nameEn": "Lisa Becharas",
+      "gender": "W"
+    },
+    {
+      "athleteId": 10879,
+      "nameEn": "Nina Derron",
+      "gender": "W"
+    }
+  ]
+}

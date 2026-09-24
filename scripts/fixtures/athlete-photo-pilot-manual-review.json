@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "approvalBasis": "Explicit user approval of all 16 already downloaded pilot photographs and their current SHA-256; no rediscovery or replacement",
+  "manifestSha256": "446f29a7ba1a84196f26596307666a3e07f66780de57c8ca99e5bad0033052f2",
+  "entries": [
+    {
+      "athleteId": 10185,
+      "athlete": {
+        "athleteId": 10185,
+        "nameEn": "Harry Palmer",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/harry-palmer",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/08/5c1bfcc9-a1ea-4304-b2e0-f04fa3a5fcd1.png",
+      "sha256": "32bc7361c3496774d861c2b8446a2b42d7e448318016385993e375a41b577d8a",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "athleteId": 10458,
+      "athlete": {
+        "athleteId": 10458,
+        "nameEn": "Panagiotis Bitados",
+        "gender": "M",
+        "countryCode": "GR",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/panagiotis-bitados",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/869a5af7-8254-4c89-99a3-c6de23c7903c.png",
+      "sha256": "20b1a4b67df51c762a5d7860a4ba7c1ab463b1db3422113dd97bc07552ec21bc",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "20b1a4b67df51c762a5d7860a4ba7c1ab463b1db3422113dd97bc07552ec21bc",
+        "findingsSha256": "729558d76553a015de818fed2587e59c95fdb71c03e681c81336cc94f259dbcc",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10278,
+      "athlete": {
+        "athleteId": 10278,
+        "nameEn": "Justus Nieschlag",
+        "gender": "M",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/justus-nieschlag",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/afa73a35-c641-47eb-a606-9186ee196df3.png",
+      "sha256": "36a7cc10fbc0ffdd253b1d299aa488c38c4c8e7beb59614e6efecd2f42ee0360",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "36a7cc10fbc0ffdd253b1d299aa488c38c4c8e7beb59614e6efecd2f42ee0360",
+        "findingsSha256": "12986fda0d15ea9d1271eb352432e6ccd4d0b2138b86f0582ff4c0689c62d3e6",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10475,
+      "athlete": {
+        "athleteId": 10475,
+        "nameEn": "Pierre Le Corre",
+        "gender": "M",
+        "countryCode": "FR",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/pierre-le-corre",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2022/03/89db4504-5d87-4ac6-8ac4-a4eaaf9d0bd1.png",
+      "sha256": "67f8e7e208603f4aa6d208cbd12a7d17431aa68a15dc0167d60b2c4a440aa8a7",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "67f8e7e208603f4aa6d208cbd12a7d17431aa68a15dc0167d60b2c4a440aa8a7",
+        "findingsSha256": "d48a200373b585fa49e19e23028faf8b8fc89d265bc63eeea11b3c9db4ac14f2",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10021,
+      "athlete": {
+        "athleteId": 10021,
+        "nameEn": "Alistair Brownlee",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/alistair-brownlee",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/9776922b-7e95-4ac0-a8d6-55d75a03bfbf.png",
+      "sha256": "da5aa5719baf9bde507d83d763025570aa7b4733efd7d185c3e990f1647e57a4",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "da5aa5719baf9bde507d83d763025570aa7b4733efd7d185c3e990f1647e57a4",
+        "findingsSha256": "09bb45ce4c1d19a31d99b3e92930b960bce483e2a979f3d961280d427919f224",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10116,
+      "athlete": {
+        "athleteId": 10116,
+        "nameEn": "David McNamee",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/david-mcnamee",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/5be2725b-b240-49a7-87ad-bad361e60c10.png",
+      "sha256": "7c9d48d15bf259e174cc7824ee0c5df9daf406a449910d473a22d69b0cf9b9e7",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "7c9d48d15bf259e174cc7824ee0c5df9daf406a449910d473a22d69b0cf9b9e7",
+        "findingsSha256": "bf54d3f58b81916d650142bdedfcde6b47ca1e85bf53721cbae723b52b4e5856",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10439,
+      "athlete": {
+        "athleteId": 10439,
+        "nameEn": "Nicolas Mann",
+        "gender": "M",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/nicolas-mann",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/192fbccd-21f7-4e0a-94a0-bce23548616f.png",
+      "sha256": "013a30a6307fe3bc773343b034a7ecaada7ad42765cd03a73fe3ce046807904b",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "013a30a6307fe3bc773343b034a7ecaada7ad42765cd03a73fe3ce046807904b",
+        "findingsSha256": "a52edd69ca26301e509511b3bab9bde7c6020dfa842b10b1f414c30e3a020a07",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10736,
+      "athlete": {
+        "athleteId": 10736,
+        "nameEn": "Emma Pallant-Browne",
+        "gender": "W",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/emma-pallant-browne",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/49ac13ff-9260-4c0e-8de7-2e696a52d7a0.png",
+      "sha256": "1480a61ed60cd2c62f803d003111262d93a5bd41dd229dd09a260bf0c151dc7e",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "1480a61ed60cd2c62f803d003111262d93a5bd41dd229dd09a260bf0c151dc7e",
+        "findingsSha256": "bf180c9971dc54f585386c98baf67b98164bf8e78c9c361cc9e01827ee53f063",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10668,
+      "athlete": {
+        "athleteId": 10668,
+        "nameEn": "Anne Reischmann",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/anne-reischmann",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/22925643-29a0-4415-a68b-aa2ec58501ae.png",
+      "sha256": "d9717e69e0120823a5158120a89074f673a7206c92c255a7e6e131e433b27de5",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "d9717e69e0120823a5158120a89074f673a7206c92c255a7e6e131e433b27de5",
+        "findingsSha256": "192fbbd11cdfeeac89e1858d21c3a767deb75c19d89044293aaddfd0a1d3b384",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10878,
+      "athlete": {
+        "athleteId": 10878,
+        "nameEn": "Nikki Bartlett",
+        "gender": "W",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/nikki-bartlett",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/ef02113d-bb28-41db-a486-9490fee00f2b.png",
+      "sha256": "6222909c5c86a88e58572fd98af78bbdf36b36daf3af4c12f854d6aa9b10ee55",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "athleteId": 10810,
+      "athlete": {
+        "athleteId": 10810,
+        "nameEn": "Laura Madsen",
+        "gender": "W",
+        "countryCode": "DK",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/laura-madsen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/08/e99c31fe-eeb8-482a-a3a5-ec1b717a86ee.png",
+      "sha256": "80b74cff4861128337412649c799b520e9c0f1ac85030b9cbea176256d6715fb",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "athleteId": 10667,
+      "athlete": {
+        "athleteId": 10667,
+        "nameEn": "Anne Haug",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/anne-haug",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/420237b9-0252-43e8-82fc-2eba20968394.png",
+      "sha256": "2357b451a9aff4e6b179c3d5f85f8aac244c559b28e6c722dc0b185b6cb40ec2",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "2357b451a9aff4e6b179c3d5f85f8aac244c559b28e6c722dc0b185b6cb40ec2",
+        "findingsSha256": "8af0ae3d7204ee30ab56395dcfd41d59d7626e2376c49dfb5bf9eb26a4b5ee00",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    },
+    {
+      "athleteId": 10644,
+      "athlete": {
+        "athleteId": 10644,
+        "nameEn": "Alice Alberts",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/alice-alberts",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/09/7cd9a5ef-16fb-4686-84c7-f13687b06302.png",
+      "sha256": "159ce04fd9745ad39fd0a7e96ddf0ecad7004b4751dbb07f378c51d217bb7ac1",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "athleteId": 10808,
+      "athlete": {
+        "athleteId": 10808,
+        "nameEn": "Laura Jansen",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/laura-jansen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/04/647719c7-8794-4163-8d77-6f061334322f.png",
+      "sha256": "876e599237e667dc4ab0440ae6366a605eeda6a6cadbdcc3653accd3860e2d7e",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "athleteId": 10825,
+      "athlete": {
+        "athleteId": 10825,
+        "nameEn": "Lisa Becharas",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/lisa-becharas",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/e66840df-5433-4ad3-9583-27315d71fd09.png",
+      "sha256": "8637343144e3205570ec85077db311d1bc2c9c0606a9b3c11ff362935765f9b4",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "athleteId": 10879,
+      "athlete": {
+        "athleteId": 10879,
+        "nameEn": "Nina Derron",
+        "gender": "W",
+        "countryCode": "CH",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/nina-derron",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/05/cfd1a3d6-9cb0-4fe9-857e-80ffc4bdfd38.png",
+      "sha256": "abe0ac980a7df6709300175162f4513436f5685bf14c39fc0d6dd244cd469c5c",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "reviewedAtSource": "Time user approval was recorded; exact visual inspection time not supplied",
+      "reviewMethod": "manual-visual-review",
+      "reviewer": "user",
+      "reviewStatus": "APPROVED",
+      "similarityReview": {
+        "decision": "ACCEPT_WEAK_SIMILARITY",
+        "reviewedSha256": "abe0ac980a7df6709300175162f4513436f5685bf14c39fc0d6dd244cd469c5c",
+        "findingsSha256": "e999750c911ede948a4ef2590f9a2c1740d1746d9dda16313c4ecee9a2bac837",
+        "reason": "User explicitly visually approved this athlete portrait and these exact staged bytes. Weak dHash composition similarity is retained as evidence, not an exact-content collision."
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-09-24T14:04:42.411Z",
+  "downloadCount": 16,
+  "totalBytes": 5323427,
+  "allReviewStatus": "PENDING_MANUAL_REVIEW",
+  "allImagesDecoded": true,
+  "allDimensions": "600x600",
+  "validationCounts": {
+    "VALIDATED": 6,
+    "REVIEW_REQUIRED": 10
+  },
+  "duplicates": {
+    "exactBytes": 0,
+    "identicalDecodedPixels": 0,
+    "possibleStagingPairs": 5,
+    "possibleProductionPairs": 57,
+    "method": "dHash Hamming distance <=6; weak composition-similarity screen, not identity recognition"
+  },
+  "production": {
+    "audit": {
+      "entries": 149,
+      "files": 149,
+      "issues": [],
+      "dualSourceCases": [
+        {
+          "nameEn": "Kristian Blummenfelt",
+          "runtimePath": "/src/assets/athletes/blummenfelt.jpg",
+          "registryPath": "/athletes/kristian-blummenfelt.png"
+        }
+      ]
+    },
+    "protectedPhotoPaths": 153,
+    "beforeSha256": "0ac70e0ce0a66f38de12b272b232381319fc0542ea7f3e282e3fb6e55435152c",
+    "afterSha256": "0ac70e0ce0a66f38de12b272b232381319fc0542ea7f3e282e3fb6e55435152c",
+    "unchanged": true
+  },
+  "runtime": {
+    "before": {
+      "asOf": "2026-09-24T13:52:43.502Z",
+      "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+      "rankingScores": "d9ef80fcbd3375abf867d6e7d19453d0ef1418afd852ae9f6a7d658ac87010f9",
+      "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+      "registry": "7b2955fb3374054ff2ed0999009e067bc06cc913b5f5cf0bea5de5d29a3a1721"
+    },
+    "after": {
+      "asOf": "2026-09-24T13:52:43.502Z",
+      "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+      "rankingScores": "d9ef80fcbd3375abf867d6e7d19453d0ef1418afd852ae9f6a7d658ac87010f9",
+      "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+      "registry": "7b2955fb3374054ff2ed0999009e067bc06cc913b5f5cf0bea5de5d29a3a1721"
+    },
+    "unchanged": true
+  },
+  "existingChanges": [
+    "scripts/athlete-photo-core.mjs",
+    "scripts/athlete-photo-import.md",
+    "scripts/test-athlete-photos.mjs"
+  ],
+  "tests": {
+    "passed": 24,
+    "failed": 0
+  },
+  "audits": {
+    "athletes": {
+      "existingIssues": 2,
+      "issues": [
+        "Erik Olsson: missing countryCode",
+        "Sebastian Schober: missing countryCode"
+      ]
+    },
+    "results": {
+      "errors": 0,
+      "warnings": 0,
+      "documentedSourceAnomalies": 52
+    }
+  },
+  "reviewPage": ".athlete-photo-staging/review.html",
+  "manifest": ".athlete-photo-staging/manifest.json",
+  "publishExecutedOnRepository": false
+}

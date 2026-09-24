@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local photo review/download artifacts; never commit staged images.
+/.athlete-photo-staging/

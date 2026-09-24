@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-24T14:56:16.430Z",
+  "pipeline": {
+    "discovery": "athlete-photo-pilot-discovery.json",
+    "staging": "athlete-photo-staging-validation.json",
+    "approval": "athlete-photo-pilot-manual-review.json",
+    "reviewedManifest": "athlete-photo-pilot-reviewed-manifest.json",
+    "evidence": "src/data/athletes/athletePhotoEvidence.json"
+  },
+  "publishedCount": 16,
+  "registry": {
+    "before": 149,
+    "after": 165
+  },
+  "files": {
+    "before": 149,
+    "after": 165
+  },
+  "coverage": {
+    "total": 1161,
+    "beforeWithPhoto": 149,
+    "afterWithPhoto": 165,
+    "beforeWithoutPhoto": 1012,
+    "afterWithoutPhoto": 996,
+    "beforePercent": 12.833763996554696,
+    "afterPercent": 14.21188630490956
+  },
+  "photoAudit": {
+    "entries": 165,
+    "files": 165,
+    "issues": [],
+    "dualSourceCases": [
+      {
+        "nameEn": "Kristian Blummenfelt",
+        "runtimePath": "/src/assets/athletes/blummenfelt.jpg",
+        "registryPath": "/athletes/kristian-blummenfelt.png"
+      }
+    ]
+  },
+  "published": [
+    {
+      "athlete": {
+        "athleteId": 10185,
+        "nameEn": "Harry Palmer",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/harry-palmer.png",
+      "sha256": "32bc7361c3496774d861c2b8446a2b42d7e448318016385993e375a41b577d8a",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.875Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 396641,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10458,
+        "nameEn": "Panagiotis Bitados",
+        "gender": "M",
+        "countryCode": "GR",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/panagiotis-bitados.png",
+      "sha256": "20b1a4b67df51c762a5d7860a4ba7c1ab463b1db3422113dd97bc07552ec21bc",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.876Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 326492,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10278,
+        "nameEn": "Justus Nieschlag",
+        "gender": "M",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/justus-nieschlag.png",
+      "sha256": "36a7cc10fbc0ffdd253b1d299aa488c38c4c8e7beb59614e6efecd2f42ee0360",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.876Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 365668,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10475,
+        "nameEn": "Pierre Le Corre",
+        "gender": "M",
+        "countryCode": "FR",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/pierre-le-corre.png",
+      "sha256": "67f8e7e208603f4aa6d208cbd12a7d17431aa68a15dc0167d60b2c4a440aa8a7",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.877Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 230729,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10021,
+        "nameEn": "Alistair Brownlee",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/alistair-brownlee.png",
+      "sha256": "da5aa5719baf9bde507d83d763025570aa7b4733efd7d185c3e990f1647e57a4",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.877Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 349021,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10116,
+        "nameEn": "David McNamee",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/david-mcnamee.png",
+      "sha256": "7c9d48d15bf259e174cc7824ee0c5df9daf406a449910d473a22d69b0cf9b9e7",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.877Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 299384,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10439,
+        "nameEn": "Nicolas Mann",
+        "gender": "M",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/nicolas-mann.png",
+      "sha256": "013a30a6307fe3bc773343b034a7ecaada7ad42765cd03a73fe3ce046807904b",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.877Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 329801,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10736,
+        "nameEn": "Emma Pallant-Browne",
+        "gender": "W",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/emma-pallant-browne.png",
+      "sha256": "1480a61ed60cd2c62f803d003111262d93a5bd41dd229dd09a260bf0c151dc7e",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.877Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 309474,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10668,
+        "nameEn": "Anne Reischmann",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/anne-reischmann.png",
+      "sha256": "d9717e69e0120823a5158120a89074f673a7206c92c255a7e6e131e433b27de5",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.878Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 287390,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10878,
+        "nameEn": "Nikki Bartlett",
+        "gender": "W",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/nikki-bartlett.png",
+      "sha256": "6222909c5c86a88e58572fd98af78bbdf36b36daf3af4c12f854d6aa9b10ee55",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.878Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 278028,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10810,
+        "nameEn": "Laura Madsen",
+        "gender": "W",
+        "countryCode": "DK",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/laura-madsen.png",
+      "sha256": "80b74cff4861128337412649c799b520e9c0f1ac85030b9cbea176256d6715fb",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.878Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 510715,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10667,
+        "nameEn": "Anne Haug",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/anne-haug.png",
+      "sha256": "2357b451a9aff4e6b179c3d5f85f8aac244c559b28e6c722dc0b185b6cb40ec2",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.878Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 314316,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10644,
+        "nameEn": "Alice Alberts",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/alice-alberts.png",
+      "sha256": "159ce04fd9745ad39fd0a7e96ddf0ecad7004b4751dbb07f378c51d217bb7ac1",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.879Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 262697,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10808,
+        "nameEn": "Laura Jansen",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/laura-jansen.png",
+      "sha256": "876e599237e667dc4ab0440ae6366a605eeda6a6cadbdcc3653accd3860e2d7e",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.879Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 303589,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10825,
+        "nameEn": "Lisa Becharas",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/lisa-becharas.png",
+      "sha256": "8637343144e3205570ec85077db311d1bc2c9c0606a9b3c11ff362935765f9b4",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.879Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 420430,
+      "publishedBytesEqualReviewedBytes": true
+    },
+    {
+      "athlete": {
+        "athleteId": 10879,
+        "nameEn": "Nina Derron",
+        "gender": "W",
+        "countryCode": "CH",
+        "catalogType": "generated"
+      },
+      "localPath": "/athletes/nina-derron.png",
+      "sha256": "abe0ac980a7df6709300175162f4513436f5685bf14c39fc0d6dd244cd469c5c",
+      "reviewedAt": "2026-09-24T14:53:28.135Z",
+      "publishedAt": "2026-09-24T14:53:30.880Z",
+      "reviewStatus": "APPROVED",
+      "byteSize": 339052,
+      "publishedBytesEqualReviewedBytes": true
+    }
+  ],
+  "old149": {
+    "unchanged": true,
+    "checkedFiles": 149,
+    "beforeSha256": "b7e0d11a2e13249c86f0f8a142b6741dded3bb11295a09c68e99d4d84222ebcb",
+    "afterSha256": "b7e0d11a2e13249c86f0f8a142b6741dded3bb11295a09c68e99d4d84222ebcb",
+    "alsoMatchesPreStagingBaseline": true
+  },
+  "bundledAssetsUnchanged": true,
+  "protectedDataFilesUnchanged": 157,
+  "protectedLocalArtifactsUnchanged": true,
+  "runtime": {
+    "asOf": "2026-09-24T14:49:55.153Z",
+    "before": {
+      "asOf": "2026-09-24T14:49:55.153Z",
+      "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+      "rankingScores": "b481f6c267d89e88b0c0b7caa628b9ebe3b5a6f8fb81de2e0b0c0035b19714af",
+      "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+      "registry": "7b2955fb3374054ff2ed0999009e067bc06cc913b5f5cf0bea5de5d29a3a1721"
+    },
+    "after": {
+      "asOf": "2026-09-24T14:49:55.153Z",
+      "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+      "rankingScores": "b481f6c267d89e88b0c0b7caa628b9ebe3b5a6f8fb81de2e0b0c0035b19714af",
+      "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+      "registry": "8950a538e99f25d7de1f7903e7ebf0a07b265c3ba70171903ec8a05fc9b14ad4"
+    },
+    "rankingOrderScoresAndLinkageUnchanged": true,
+    "catalogExceptImagesUnchanged": true
+  },
+  "tests": {
+    "athletePhotos": {
+      "passed": 27,
+      "failed": 0
+    },
+    "athletePhotoStaging": {
+      "passed": 11,
+      "failed": 0
+    }
+  },
+  "audits": {
+    "athletes": {
+      "exitCode": 0,
+      "existingIssues": [
+        "Erik Olsson: missing countryCode",
+        "Sebastian Schober: missing countryCode"
+      ],
+      "withoutPhoto": 996
+    },
+    "results": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0,
+      "documentedSourceAnomalies": 52
+    }
+  },
+  "changedExistingFilesThisTask": [
+    ".athlete-photo-staging/manifest.json",
+    ".athlete-photo-staging/review.html",
+    ".gitignore",
+    "scripts/athlete-photo-import.md",
+    "scripts/athlete-photo-publish.mjs",
+    "scripts/athlete-photo-staging.mjs",
+    "scripts/test-athlete-photo-staging.mjs",
+    "scripts/test-athlete-photos.mjs",
+    "src/data/athletes/athletePhotos.generated.ts"
+  ],
+  "stagingRetained": true,
+  "stagingIgnoredByGit": true,
+  "gitAddCommitPush": false
+}

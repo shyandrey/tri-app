@@ -1,61 +1,59 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
+import assert from 'node:assert/strict'
+import { loadPhotoRuntime, digest } from './athlete-photo-runtime.mjs'
+import { selectBatch, discoverBatch, snapshotTree, auditPhotoFiles } from './athlete-photo-core.mjs'
 
-const ROOT = process.cwd()
-const MEN_FILE = path.join(ROOT, 'src/data/athletes/men.ts')
-const WOMEN_FILE = path.join(ROOT, 'src/data/athletes/women.ts')
-const RESULT_ATHLETES_FILE = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
-const VERIFIED_RESULT_ATHLETES_FILE = path.join(ROOT, 'src/data/athletes/verifiedResultAthletes.ts')
-const OUTPUT_DIR = path.join(ROOT, 'public/athletes')
-const REGISTRY_FILE = path.join(ROOT, 'src/data/athletes/athletePhotos.generated.ts')
-const BASE_URL = 'https://stats.protriathletes.org/athlete/'
-
-const SAMPLE_NAMES = ['Mika Noodt']
-const MANUAL_PHOTO_NAMES = new Set(['Mika Noodt', 'Jelle Geens'])
-const VERIFIED_NO_PHOTO_NAMES = new Set([
-  'Andy Krueger','Matt Kerr','Brock Hoel','Matthew Richard','Blake Selm',
-  'Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen',
-  'Tommy Doubleday','Yvan Jarrige','Albert Askengren',
-  'Ari Klau','Benjamin Randall','Brad Bischoff','Brian Folts','David Reynolds',
-  'Dries Matthys','Dylan Clough','Dylan Thissen','Erwan Jacobi','Florin Parfuss',
-  'Fraser Minnican','Jack Sosinski','Jens Emil Nielsen','Joona Lehtonen','Stephanie Clutterbuck',
-  'Abbie Sullivan','Adele Likin','Charlotte McShane','Nikita Paskiewiez','Sarah Karpinski',
-  'Annette Rogers','Carolyn Olsen','Leslie Homol','Luisa Iogna Prat','Marissa Lovell',
-  'Rebecca Kawaoka','Shiva Leisner','Amber Ferreira','Anne Basso','Antonia Milowsky','Jana Uderstadt',
-  'Baiba Medne','Desiree Knecht','Emily Pincus','Eva Marsac','Freya Mckinley',
-  'Gabriela Kaczka-Sanak','Hannah Knighton','Henrike Gueber','Jenna Campbell',
-])
-const PROFILE_SLUG_OVERRIDES = {
-  'Magnus Ditlev': 'magnus-elbaek-ditlev', 'Daniel Bækkegård': 'daniel-baekkegard', 'Kristian Høgenhaug': 'kristian-hogenhaug',
-  'Guillem Montiel': 'montiel-moreno-guillem', 'Solveig Løvseth': 'solveig-loevseth', 'Hannah Berry': 'hannah-wells',
-  'Caroline Pohle': 'carolin-pohle', 'Katrine Græsbøll Christensen': 'katrine-graesboell-christensen', 'Lena Meißner': 'lena-meißner',
-  'Benjamin Randall': 'ben-randall', 'Henry Räppo': 'henry-raeppo', 'Mathias Petersen': 'mathias-lyngsoe-petersen',
-  'Franzi Hofmann': 'franzi-reng', 'Jamie Besse': 'jamie-albert',
+export function parseOptions(argv) {
+  const options = { dryRun: false, recheck: false, auditWeak: false, refresh: false, replace: false }
+  const flags = { '--dry-run': 'dryRun', '--recheck': 'recheck', '--audit-weak': 'auditWeak', '--refresh': 'refresh', '--replace': 'replace', '--clean-no-photo': 'clean', '--stage': 'stage', '--publish': 'publish' }
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i]
+    if (arg === '--batch') {
+      if (options.batch || !argv[i + 1] || argv[i + 1].startsWith('--')) throw new Error('Exactly one --batch manifest is required')
+      options.batch = argv[++i]
+    } else if (flags[arg]) options[flags[arg]] = true
+    else throw new Error(`Unsupported option ${arg}; use an explicit --batch (unbounded --all and implicit sample mode removed)`)
+  }
+  if (!options.batch) throw new Error('Explicit --batch is mandatory')
+  if (!options.dryRun && (options.clean || options.stage || options.publish)) throw new Error('Cleanup/download/publish disabled in discovery-only phase; no files changed')
+  return options
 }
-const LOW_CONFIDENCE_NAMES = [
-  'Andy Krueger','Matt Kerr','Brock Hoel','Matthew Richard','Blake Selm','Ethan Sunseri','Federico Scarabino','James Hayes','John Killeen','Tommy Doubleday','Yvan Jarrige','Ari Klau','Benjamin Randall','Brad Bischoff','Brian Folts','David Reynolds','Dries Matthys','Dylan Clough','Dylan Thissen','Erwan Jacobi','Florin Parfuss','Fraser Minnican','Jack Sosinski','Jens Emil Nielsen','Joona Lehtonen',
-  'Stephanie Clutterbuck','Abbie Sullivan','Adele Likin','Charlotte McShane','Nikita Paskiewiez','Sarah Karpinski','Annette Rogers','Carolyn Olsen','Leslie Homol','Luisa Iogna Prat','Marissa Lovell','Rebecca Kawaoka','Shiva Leisner','Amber Ferreira','Anne Basso','Antonia Milowsky','Baiba Medne','Desiree Knecht','Emily Pincus','Eva Marsac','Freya Mckinley','Gabriela Kaczka-Sanak','Hannah Knighton','Henrike Gueber','Jenna Campbell',
-]
-const cli=process.argv.slice(2), args=new Set(cli)
-const importAll=args.has('--all'), refresh=args.has('--refresh'), dryRun=args.has('--dry-run'), auditWeak=args.has('--audit-weak'), cleanNoPhoto=args.has('--clean-no-photo')
-const onlyIndex=cli.indexOf('--only'), onlyName=onlyIndex>=0?cli[onlyIndex+1]:undefined
-function slugify(v){return v.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
-function profileSlugForName(n){return PROFILE_SLUG_OVERRIDES[n]??slugify(n)}
-function decodeHtml(v){return v.replace(/\\u0026/g,'&').replace(/\\u002F/g,'/').replace(/\\\//g,'/').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
-function attr(tag,n){return tag.match(new RegExp(`${n}\\s*=\\s*["']([^"']+)["']`,'i'))?.[1]}
-function collect(source){const s=new Set();for(const m of source.matchAll(/makeAthlete\(\s*\d+\s*,\s*'[^']*'\s*,\s*'([^']+)'/g))s.add(m[1]);for(const m of source.matchAll(/nameEn:\s*["']([^"']+)["']/g))s.add(m[1]);return [...s]}
-function imageLike(u){return /\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(u)||/(?:image|img|photo|portrait|profile|athlete)[=/\-_]/i.test(u)}
-function text(v){return decodeHtml(v).replace(/<[^>]*>/g,' ').replace(/\\[nrt]/g,' ').replace(/\s+/g,' ').toLowerCase()}
-function contextScore(html,pos,name){const c=text(`${html.slice(Math.max(0,pos-650),pos)} ${html.slice(pos,Math.min(html.length,pos+350))}`),n=name.toLowerCase();let s=c.includes(n)?55:0;if(/biography|overview|world rank|national|weight|height|born/.test(c))s+=12;if(/rivals|results|youtube|upcoming races|background|sponsor/.test(c))s-=40;return s}
-function score(c,slug){const u=c.url.toLowerCase();let s=c.base+c.context;if(imageLike(u))s+=16;if(/\.(?:jpe?g|png|webp|avif)(?:[?#]|$)/i.test(u))s+=12;if(u.includes(slug))s+=28;if(/content\.protriathletes\.org\/content\/images\//.test(u))s+=8;if(/logo|icon|flag|sponsor|pattern|ranking|t100-triathlon-world-tour|favicon|background|all-race-results|all-upcoming-races|pto-triathlon-stats|ytimg|youtube/.test(u))s-=100;return s}
-function candidates(html,name,page){const out=[];let seq=0;const push=(raw,base=0,pos=-1)=>{if(!raw)return;const clean=decodeHtml(raw.trim());if(!clean||clean.startsWith('data:'))return;let url;try{url=new URL(clean,page).href}catch{return}if(!imageLike(url))return;out.push({url,base,context:pos>=0?contextScore(html,pos,name):0,seq:seq++})};for(const m of html.matchAll(/<img\b[^>]*>/gi)){const tag=m[0],pos=m.index??-1;push(attr(tag,'src'),18,pos);push(attr(tag,'data-src'),16,pos);push(attr(tag,'data-lazy-src'),16,pos);const set=attr(tag,'srcset')??attr(tag,'data-srcset');if(set)for(const p of set.split(','))push(p.trim().split(/\s+/)[0],22,pos)}for(const m of html.matchAll(/(?:https?:\\?\/\\?\/|\/)[^"'<>\s]+?\.(?:jpe?g|png|webp|avif)(?:\?[^"'<>\s]*)?/gi))push(m[0],4,m.index??-1);const map=new Map();for(const x of out){const old=map.get(x.url);if(!old||x.base+x.context>old.base+old.context)map.set(x.url,x)}const slug=slugify(name);return [...map.values()].map(x=>({...x,score:score(x,slug)})).sort((a,b)=>b.score-a.score||a.seq-b.seq)}
-function ext(type,url){if(type.includes('webp'))return'webp';if(type.includes('png'))return'png';if(type.includes('avif'))return'avif';if(type.includes('jpeg')||type.includes('jpg'))return'jpg';const e=new URL(url).pathname.match(/\.(jpe?g|png|webp|avif)$/i)?.[1]?.toLowerCase();return e==='jpeg'?'jpg':e??'jpg'}
-async function page(url){const r=await fetch(url,{headers:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36',accept:'text/html,application/xhtml+xml'}});if(!r.ok)throw new Error(`HTTP ${r.status} for ${url}`);return r.text()}
-async function downloadable(cs){for(const c of cs.slice(0,12)){if(c.score<35)continue;try{const r=await fetch(c.url,{headers:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/130 Safari/537.36',referer:'https://stats.protriathletes.org/'}}),type=r.headers.get('content-type')??'';if(!r.ok||!type.startsWith('image/'))continue;const bytes=new Uint8Array(await r.arrayBuffer());if(bytes.byteLength<8000)continue;return{c,bytes,type}}catch{}}return null}
-async function existing(slug){try{return(await fs.readdir(OUTPUT_DIR)).find(e=>e.startsWith(`${slug}.`))??null}catch{return null}}
-async function removeExisting(slug){try{const files=(await fs.readdir(OUTPUT_DIR)).filter(e=>e.startsWith(`${slug}.`));for(const file of files)await fs.unlink(path.join(OUTPUT_DIR,file));return files}catch{return[]}}
-async function readRegistry(){try{const src=await fs.readFile(REGISTRY_FILE,'utf8'),r=[];for(const m of src.matchAll(/^\s*"([^"]+)":\s*"([^"]+)",?$/gm))r.push({name:m[1],publicPath:m[2]});return r}catch{return[]}}
-async function writeRegistry(records){const lines=['// Generated by scripts/import-athlete-photos.mjs.','// Keep this file in git so the app has a stable photo registry after imports.','export const athletePhotosByName: Record<string, string> = {',...records.sort((a,b)=>a.name.localeCompare(b.name)).map(x=>`  ${JSON.stringify(x.name)}: ${JSON.stringify(x.publicPath)},`),'}',''];await fs.writeFile(REGISTRY_FILE,lines.join('\n'),'utf8')}
-async function sharedAssets(names){const occurrences=new Map(), pages=new Map();console.log(`Scanning ${names.length} profile pages for shared image assets...`);for(const [i,name]of names.entries()){const url=new URL(encodeURI(profileSlugForName(name)),BASE_URL).href;try{const html=await page(url);pages.set(name,{url,html});const urls=new Set(candidates(html,name,url).map(c=>c.url));for(const u of urls)occurrences.set(u,(occurrences.get(u)??0)+1)}catch(e){console.warn(`  ! ${name}: ${e instanceof Error?e.message:String(e)}`)}if((i+1)%25===0||i+1===names.length)console.log(`  ${i+1}/${names.length} profiles scanned`)}const shared=new Set([...occurrences].filter(([,count])=>count>=3).map(([url])=>url));console.log(`Excluded ${shared.size} image asset(s) repeated on 3+ athlete pages.`);return{shared,pages,occurrences}}
-async function main(){const [m,w,r,v]=await Promise.all([fs.readFile(MEN_FILE,'utf8'),fs.readFile(WOMEN_FILE,'utf8'),fs.readFile(RESULT_ATHLETES_FILE,'utf8'),fs.readFile(VERIFIED_RESULT_ATHLETES_FILE,'utf8')]),all=[...new Set([...collect(m),...collect(w),...collect(r),...collect(v)])];let selected=importAll?all:SAMPLE_NAMES.filter(n=>all.includes(n));if(auditWeak)selected=LOW_CONFIDENCE_NAMES.filter(n=>all.includes(n));if(onlyName)selected=all.filter(n=>n.toLowerCase()===onlyName.toLowerCase());const registry=new Map((await readRegistry()).map(x=>[x.name,x.publicPath]));await fs.mkdir(OUTPUT_DIR,{recursive:true});if(cleanNoPhoto){console.log(`Cleaning ${VERIFIED_NO_PHOTO_NAMES.size} verified no-photo profile(s)...`);for(const name of VERIFIED_NO_PHOTO_NAMES){const removed=await removeExisting(slugify(name));registry.delete(name);console.log(`  ${name}: ${removed.length?`removed ${removed.join(', ')}`:'no local photo'}; no photo`)}await writeRegistry([...registry].map(([name,publicPath])=>({name,publicPath})));console.log(`Updated ${path.relative(ROOT,REGISTRY_FILE)}`);return}const needsSharedFilter=auditWeak||dryRun||refresh,{shared,pages,occurrences}=needsSharedFilter?await sharedAssets(all):{shared:new Set(),pages:new Map(),occurrences:new Map()};console.log(`Stats PTO athlete photo import: ${selected.length} athlete(s)${auditWeak?' (weak-candidate audit)':onlyName?` (--only ${onlyName})`:importAll?' (--all)':' (Mika test)'}`);for(const [i,name]of selected.entries()){const fileSlug=slugify(name),profileSlug=profileSlugForName(name),url=new URL(encodeURI(profileSlug),BASE_URL).href,old=await existing(fileSlug);console.log(`[${i+1}/${selected.length}] ${name}: ${url}${old?` | local /athletes/${old}`:''}`);try{if(VERIFIED_NO_PHOTO_NAMES.has(name)){registry.delete(name);console.log('  verified no-photo profile: no image');continue}if(MANUAL_PHOTO_NAMES.has(name)&&old){registry.set(name,`/athletes/${old}`);console.log('  manual photo: protected from automated replacement');continue}const html=pages.get(name)?.html??await page(url),raw=candidates(html,name,url),cs=raw.filter(c=>!shared.has(c.url));if(auditWeak||dryRun){for(const c of cs.slice(0,5))console.log(`  candidate | score ${c.score} | seen on ${occurrences.get(c.url)??1} profile(s)\n    ${c.url}`);if(!cs.length)console.log('  ! No profile-unique candidate found after shared-asset filtering.');continue}if(old&&!refresh){registry.set(name,`/athletes/${old}`);console.log('  already exists');continue}const r=await downloadable(cs);if(!r){console.warn('  ! No sufficiently strong downloadable profile candidate found.');continue}const extension=ext(r.type,r.c.url),file=`${fileSlug}.${extension}`,publicPath=`/athletes/${file}`;await fs.writeFile(path.join(OUTPUT_DIR,file),r.bytes);registry.set(name,publicPath);console.log(`  ✓ ${publicPath} (${Math.round(r.bytes.byteLength/1024)} KB, score ${r.c.score})`)}catch(e){console.warn(`  ! ${e instanceof Error?e.message:String(e)}`)}}if(!dryRun&&!auditWeak){await writeRegistry([...registry].map(([name,publicPath])=>({name,publicPath})));console.log(`Updated ${path.relative(ROOT,REGISTRY_FILE)}`)}}
-await main()
+
+export async function runImporter(argv, dependencies = {}) {
+  const root = dependencies.root ?? process.cwd()
+  // Also covers invalid/conflicting flag combinations, error paths and empty staging directories.
+  const before = await snapshotTree(root)
+  let report
+  try {
+    const options = parseOptions(argv)
+    const manifest = JSON.parse(await fs.readFile(path.resolve(root, options.batch), 'utf8'))
+    const runtime = dependencies.runtime ?? await loadPhotoRuntime()
+    const targets = selectBatch(runtime.athletes, manifest)
+    const fileAudit = await auditPhotoFiles(root, runtime.registry)
+    if (fileAudit.issues.length) throw new Error(`Photo filesystem inconsistent: ${fileAudit.issues.join('; ')}`)
+    const decisions = await discoverBatch(targets, runtime.registry, {
+      ...options, fetchPage: dependencies.fetchPage, delayMs: dependencies.delayMs ?? 300,
+    })
+    report = {
+      schemaVersion: 1, batchId: manifest.batchId, mode: options.dryRun ? 'dry-run' : 'discovery',
+      targetCount: targets.length, scope: 'Only explicit batch profiles; no image requests',
+      disabledActions: ['image-download', 'staging-write', 'publish', 'cleanup'],
+      ignoredMutationFlags: ['clean', 'stage', 'publish'].filter(k => options[k]),
+      fileAudit, runtimeInvariants: runtime.invariants,
+      summary: Object.fromEntries(['HIGH', 'MEDIUM', 'LOW', 'NO_PHOTO', 'RETRY_UNRESOLVED'].map(c => [c, decisions.filter(d => d.confidence === c).length])),
+      decisions,
+    }
+  } finally {
+    const after = await snapshotTree(root)
+    assert.deepEqual(after, before, 'Discovery/dry-run mutated repository files, staging or directory structure')
+    if (report) report.immutability = { passed: true, before: digest(before), after: digest(after), checkedEntries: Object.keys(before).length, excludes: ['.git', 'node_modules'] }
+  }
+  return report
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  try { console.log(JSON.stringify(await runImporter(process.argv.slice(2)), null, 2)) }
+  catch (e) { console.error(e.message); process.exitCode = 1 }
+}

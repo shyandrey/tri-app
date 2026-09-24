@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-09-24T13:35:48.450Z",
+  "runtimeComparison": {
+    "before": {
+      "asOf": "2026-09-24T13:26:04.490Z",
+      "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+      "rankingScores": "e6822b584d482884c33f68520dd21a6c9e8c21dee2560e724e149eec4394b52d",
+      "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+      "registry": "7b2955fb3374054ff2ed0999009e067bc06cc913b5f5cf0bea5de5d29a3a1721"
+    },
+    "after": {
+      "asOf": "2026-09-24T13:26:04.490Z",
+      "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+      "rankingScores": "e6822b584d482884c33f68520dd21a6c9e8c21dee2560e724e149eec4394b52d",
+      "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+      "registry": "7b2955fb3374054ff2ed0999009e067bc06cc913b5f5cf0bea5de5d29a3a1721"
+    },
+    "passed": true
+  },
+  "fileComparison": {
+    "checkedFiles": 336,
+    "changedExistingFiles": [
+      "scripts/import-athlete-photos.mjs"
+    ],
+    "allOtherSnapshotFilesUnchanged": true
+  },
+  "photoRegistryEntries": 149,
+  "productionPhotoFiles": 149,
+  "photoFileIssues": [],
+  "dryRun": {
+    "passed": true,
+    "before": "db35db95dc0ea3a3ddb427a446c7cc1b816f0f43883d664e4e43f45973472418",
+    "after": "db35db95dc0ea3a3ddb427a446c7cc1b816f0f43883d664e4e43f45973472418",
+    "checkedEntries": 381,
+    "excludes": [
+      ".git",
+      "node_modules"
+    ]
+  },
+  "tests": {
+    "command": "node --test scripts/test-athlete-photos.mjs",
+    "passed": 15,
+    "failed": 0,
+    "dryRunFlagCombinations": 128
+  },
+  "audits": {
+    "athletes": {
+      "exitCode": 0,
+      "existingIssues": [
+        "GENERATED MISSING COUNTRY: Erik Olsson [10144]",
+        "GENERATED MISSING COUNTRY: Sebastian Schober [10541]"
+      ],
+      "localizationConsistencyErrors": 0,
+      "withoutPhoto": 1012
+    },
+    "results": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0,
+      "documentedSourceAnomalies": 52,
+      "linkedRows": 4367
+    }
+  },
+  "notes": [
+    "Report files saved separately after importer snapshot completed.",
+    "Ranking compared at identical asOf to avoid time-decay differences.",
+    "No images fetched, staging writes or registry writes; no git add/commit/push."
+  ]
+}
