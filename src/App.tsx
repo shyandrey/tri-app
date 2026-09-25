@@ -8,7 +8,10 @@ import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
 import CalendarPage, { type CalendarViewState } from './pages/CalendarPage'
 import TopAthletesPage from './pages/TopAthletesPage'
-import { useEffect, useState } from 'react'
+import { NavigationRoot } from './navigation/Navigation'
+import { usePageState } from './navigation/usePageState'
+import { fallback } from './navigation/history'
+import type { Route } from './navigation/history'
 import './App.css'
 import './refinements.css'
 import './series-colors.css'
@@ -31,14 +34,6 @@ import { sortAthletesByRanking } from './utils/athleteRanking'
 
 const linkedRaceResults = linkResultsToAthletes(raceResults)
 const rankedAthletes = sortAthletesByRanking(athletes, linkedRaceResults, allRaceEditionViews)
-
-const initialCalendarViewState: CalendarViewState = {
-  search: '',
-  filter: 'Все',
-  timeFilter: 'upcoming',
-  openArchiveYears: [],
-  scrollY: 0,
-}
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
 
@@ -83,78 +78,26 @@ function getShowcaseRaceName(name: string) {
   return cleanName
 }
 
+function resolveRoute(route: Route): Route {
+  if (route.page === 'race' && !allRaceEditionViews.some(r => r.editionId === route.id)) return fallback(route)
+  if (route.page === 'athlete' && !athletes.some(a => String(a.id) === route.id)) return fallback(route)
+  return route
+}
+
 function App() {
-  const [page, setPage] = useState<Page>('home')
-  const [selectedRace, setSelectedRace] = useState<Race | null>(null)
-  const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null)
-  const [calendarEntryMode, setCalendarEntryMode] = useState<'top' | 'restore'>('top')
-  const [athletesBackPage, setAthletesBackPage] = useState<Page>('home')
-  const [athletesScrollY, setAthletesScrollY] = useState(0)
-  const [restoreAthletesScroll, setRestoreAthletesScroll] = useState(false)
-  const [calendarViewState, setCalendarViewState] = useState<CalendarViewState>(initialCalendarViewState)
+  return <NavigationRoot resolve={resolveRoute}>{(route, navigate, back) => <AppScreen route={route} navigate={navigate} back={back} />}</NavigationRoot>
+}
 
-  const captureCalendarPosition = () => {
-    if (page !== 'calendar') return
-    setCalendarViewState((current) => ({ ...current, scrollY: window.scrollY }))
-  }
-
-  const navigateSection = (target: Page) => {
-    if (target === page) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      return
-    }
-    if (page === 'calendar') captureCalendarPosition()
-    if (target === 'calendar') {
-      setCalendarEntryMode('top')
-      setSelectedRace(null)
-      setSelectedAthlete(null)
-    }
-    if (target === 'athletes') {
-      setAthletesBackPage(page)
-      setSelectedAthlete(null)
-      setSelectedRace(null)
-    }
-    setPage(target)
-  }
-
-  const openRace = (race: Race) => {
-    if (page === 'calendar') {
-      captureCalendarPosition()
-      setCalendarEntryMode('restore')
-    }
-    setSelectedRace(race)
-    setPage('raceDetail')
-    window.scrollTo(0, 0)
-  }
-
-  const openAthlete = (athlete: Athlete) => {
-    if (page === 'athletes') setAthletesScrollY(window.scrollY)
-    setAthletesBackPage(page)
-    setSelectedAthlete(athlete)
-    setPage('athleteDetail')
-    window.scrollTo(0, 0)
-  }
-
-  const backFromRace = () => {
-    setSelectedRace(null)
-    setPage('calendar')
-    setCalendarEntryMode('restore')
-  }
-
-  const backFromAthlete = () => {
-    setSelectedAthlete(null)
-    if (athletesBackPage === 'athletes') setRestoreAthletesScroll(true)
-    setPage(athletesBackPage)
-  }
-
-  useEffect(() => {
-    if (page !== 'athletes' || !restoreAthletesScroll) return
-    const frame = requestAnimationFrame(() => {
-      window.scrollTo(0, athletesScrollY)
-      setRestoreAthletesScroll(false)
-    })
-    return () => cancelAnimationFrame(frame)
-  }, [page, restoreAthletesScroll, athletesScrollY])
+function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: Route) => void; back: () => void }) {
+  const page = route.page
+  const selectedRace = allRaceEditionViews.find(r => r.editionId === route.id)
+  const selectedAthlete = athletes.find(a => String(a.id) === route.id)
+  const navigateSection = (page: Page) => navigate({ page })
+  const openRace = (race: Race) => navigate({ page: 'race', id: race.editionId })
+  const openAthlete = (athlete: Athlete) => navigate({ page: 'athlete', id: String(athlete.id) })
+  const [calendarViewState, setCalendarViewState] = usePageState<CalendarViewState>('calendar', {
+    search: '', filter: 'Все', timeFilter: 'upcoming', openArchiveYears: [],
+  })
 
   const futureHomeRaces = groupRacesForHome(races)
     .filter((race) => race.dateISO > getMoscowTodayISO())
@@ -163,22 +106,22 @@ function App() {
   const upcomingRaces = futureHomeRaces.slice(0, 3)
 
   if (page === 'calendar') {
-    return <CalendarPage races={allRaceEditionViews} onBack={() => setPage('home')} onRaceClick={openRace} onNavigate={navigateSection} viewState={calendarViewState} onViewStateChange={setCalendarViewState} restoreScroll={calendarEntryMode === 'restore'} />
+    return <CalendarPage races={allRaceEditionViews} onBack={back} onRaceClick={openRace} onNavigate={navigateSection} viewState={calendarViewState} onViewStateChange={setCalendarViewState} />
   }
 
   if (page === 'athletes') {
-    return <AthletesPage athletes={rankedAthletes} onBack={() => setPage(athletesBackPage)} onAthleteClick={openAthlete} onNavigate={navigateSection} />
+    return <AthletesPage athletes={rankedAthletes} onBack={back} onAthleteClick={openAthlete} onNavigate={navigateSection} />
   }
 
-  if (page === 'top') return <TopAthletesPage athletes={athletes} onBack={() => setPage('home')} onNavigate={navigateSection} />
-  if (page === 'more') return <MorePage onBack={() => setPage('home')} onNavigate={navigateSection} />
+  if (page === 'top') return <TopAthletesPage athletes={athletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
+  if (page === 'more') return <MorePage onNavigate={navigateSection} />
 
-  if (page === 'raceDetail' && selectedRace) {
-    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={backFromRace} onNavigate={navigateSection} onAthleteClick={openAthlete} />
+  if (page === 'race' && selectedRace) {
+    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={back} onNavigate={navigateSection} onAthleteClick={openAthlete} />
   }
 
-  if (page === 'athleteDetail' && selectedAthlete) {
-    return <AthleteDetailPage athlete={selectedAthlete} results={getResultsByAthlete(linkedRaceResults, selectedAthlete.id)} races={allRaceEditionViews} onBack={backFromAthlete} onNavigate={navigateSection} onRaceClick={openRace} />
+  if (page === 'athlete' && selectedAthlete) {
+    return <AthleteDetailPage athlete={selectedAthlete} results={getResultsByAthlete(linkedRaceResults, selectedAthlete.id)} races={allRaceEditionViews} onBack={back} onNavigate={navigateSection} onRaceClick={openRace} />
   }
 
   return (
@@ -186,7 +129,7 @@ function App() {
       <header className="home-header">
         <div className="home-header__top-row">
           <h1>TRI APP</h1>
-          <button className="home-header__settings" type="button" aria-label="Настройки" onClick={() => setPage('more')}>
+          <button className="home-header__settings" type="button" aria-label="Настройки" onClick={() => navigateSection('more')}>
             <GearIcon />
           </button>
         </div>

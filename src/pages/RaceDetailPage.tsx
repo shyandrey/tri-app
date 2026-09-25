@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
+import { usePageState } from '../navigation/usePageState'
 import type { Race } from '../types/Race'
 import BottomNav from '../components/BottomNav'
 import RaceResultsTable from '../components/RaceResultsTable'
@@ -60,14 +61,12 @@ const getDaysLabel = (days: number) => {
 function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
   const championshipGroup = getChampionshipNavigationGroup(race)
   const initialGender = genderFromEdition(race) ?? (championshipGroup ? 'M' : undefined)
-  const [activeRace, setActiveRace] = useState(race)
-  const [activeGender, setActiveGender] = useState<ResultGender | undefined>(initialGender)
-
-  useEffect(() => {
-    const nextGroup = getChampionshipNavigationGroup(race)
-    setActiveRace(race)
-    setActiveGender(genderFromEdition(race) ?? (nextGroup ? 'M' : undefined))
-  }, [race])
+  const [activeEditionId, setActiveEditionId] = usePageState<string>('activeEditionId', race.editionId ?? '')
+  const activeRace = raceEditions.find(e => e.editionId === activeEditionId) ?? race
+  const setActiveRace = (edition: Race) => setActiveEditionId(edition.editionId ?? '')
+  const [savedGender, saveGender] = usePageState<ResultGender | null>('activeGender', initialGender ?? null)
+  const activeGender = savedGender ?? undefined
+  const setActiveGender = (gender: ResultGender | undefined) => saveGender(gender ?? null)
 
   const siblingEditions = useMemo(() => {
     const group = getChampionshipNavigationGroup(race)

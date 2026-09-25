@@ -12,6 +12,7 @@ function HorizontalScroller({ children, className = '', ariaLabel }: HorizontalS
     <div
       className={`horizontal-scroller ${className}`.trim()}
       aria-label={ariaLabel}
+      data-navigation-scroll={ariaLabel}
     >
       {children}
     </div>

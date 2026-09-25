@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import RaceCard from '../components/RaceCard'
 import type { RaceEditionView, RaceGender } from '../types/Race'
 import type { Page } from '../types/Page'
@@ -11,7 +10,6 @@ export type CalendarViewState = {
   filter: string
   timeFilter: 'upcoming' | 'finished' | 'all'
   openArchiveYears: number[]
-  scrollY: number
 }
 
 type CalendarPageProps = {
@@ -22,7 +20,6 @@ type CalendarPageProps = {
   onBack: () => void
   onRaceClick: (race: RaceEditionView) => void
   onNavigate: (page: Page) => void
-  restoreScroll?: boolean
 }
 
 type RaceCardItem = {
@@ -133,13 +130,8 @@ const groupRaceEventCards = (source: RaceEditionView[]): RaceCardItem[] => {
   return items
 }
 
-function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate, restoreScroll = true }: CalendarPageProps) {
+function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
   const { search, filter, timeFilter, openArchiveYears } = viewState
-
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => window.scrollTo(0, restoreScroll ? viewState.scrollY : 0))
-    return () => cancelAnimationFrame(frame)
-  }, [])
 
   const updateViewState = (patch: Partial<CalendarViewState>) => {
     onViewStateChange({ ...viewState, ...patch })
@@ -198,12 +190,10 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
   }
 
   const openRace = (race: RaceEditionView) => {
-    updateViewState({ scrollY: window.scrollY })
     onRaceClick(race)
   }
 
   const navigateFromCalendar = (target: Page) => {
-    updateViewState({ scrollY: window.scrollY })
     onNavigate(target)
   }
 
@@ -230,19 +220,19 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
       <section className="section">
         <div className="section__header"><h1>Календарь и результаты</h1></div>
         <div className="calendar-search-wrap">
-          <input className="calendar-search" type="text" placeholder="Найти старт..." value={search} onChange={(event) => updateViewState({ search: event.target.value, scrollY: 0 })} />
+          <input className="calendar-search" type="text" placeholder="Найти старт..." value={search} onChange={(event) => updateViewState({ search: event.target.value })} />
           {search && (
-            <button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={() => updateViewState({ search: '', scrollY: 0 })}>×</button>
+            <button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={() => updateViewState({ search: '' })}>×</button>
           )}
         </div>
         <div className="calendar-time-filters">
-          <button className={timeFilter === 'upcoming' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'upcoming', scrollY: 0 })}>Предстоящие</button>
-          <button className={timeFilter === 'finished' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'finished', scrollY: 0 })}>Прошедшие</button>
-          <button className={timeFilter === 'all' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'all', scrollY: 0 })}>Все</button>
+          <button className={timeFilter === 'upcoming' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'upcoming' })}>Предстоящие</button>
+          <button className={timeFilter === 'finished' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'finished' })}>Прошедшие</button>
+          <button className={timeFilter === 'all' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'all' })}>Все</button>
         </div>
         <div className="calendar-filters calendar-filters--series">
           {seriesFilters.map((item) => (
-            <button key={item.value} className={filter === item.value ? 'filter-active' : ''} onClick={() => updateViewState({ filter: item.value, scrollY: 0 })} aria-pressed={filter === item.value} aria-label={item.value}>
+            <button key={item.value} className={filter === item.value ? 'filter-active' : ''} onClick={() => updateViewState({ filter: item.value })} aria-pressed={filter === item.value} aria-label={item.value}>
               <span className="series-filter__circle">{item.short}</span>
               <span className="series-filter__label">{item.label.split('\n').map((line, index) => <span key={line}>{line}{index === 0 && item.label.includes('\n') ? <br /> : null}</span>)}</span>
               <span className="series-filter__desktop-label">{item.desktopLabel}</span>

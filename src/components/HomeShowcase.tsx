@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
+import { usePageState } from '../navigation/usePageState'
 import type { CSSProperties } from 'react'
 import type { RaceEditionView } from '../types/Race'
 import { CalendarIcon, LocationIcon } from './AppIcons'
@@ -36,7 +37,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
   const cardRefs = useRef<Array<HTMLElement | null>>([])
   const activeIndexRef = useRef(0)
   const manualPauseUntilRef = useRef(0)
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = usePageState<number>('showcaseIndex',0)
 
   const imageByRaceId = useMemo(() => {
     const selected = new Map<string, string | undefined>()
@@ -105,7 +106,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
     <section className="home-showcase" aria-label="Ближайшие старты">
       <div
         className="home-showcase__track"
-        ref={trackRef}
+        ref={trackRef} data-navigation-scroll="showcase"
         onScroll={handleScroll}
         onPointerDown={pauseAutoScroll}
         onWheel={pauseAutoScroll}
