@@ -160,3 +160,37 @@ The transaction added 16 files and evidence entries, retaining the historical 14
 files unchanged and without fabricated provenance. `.athlete-photo-staging/` is
 retained locally and ignored by Git. The original discovery/staging reports remain
 historical snapshots; the publication report records current production state.
+
+## Batch 2: discovery and isolated staging only
+
+`select-athlete-photo-batch.mjs` selects 25 MEN / 25 WOMEN without runtime or
+registry photos using the production ranking at a fixed recorded `asOf`. The
+published pilot and its four unresolved/no-photo exceptions are excluded.
+`fixtures/athlete-photo-batch2-batch.json` preserves ranks, scores and result rows.
+All 50 selected athletes are TOP-100 within their gender.
+
+```sh
+node scripts/import-athlete-photos.mjs --batch scripts/fixtures/athlete-photo-batch2-batch.json --dry-run --recheck
+node scripts/stage-athlete-photos.mjs --discovery scripts/fixtures/athlete-photo-batch2-discovery.json --accepted scripts/fixtures/athlete-photo-batch2-download-candidates.json --batch-id photo-batch-2
+```
+
+Discovery stdout must be captured outside the repository during its snapshot
+check, then saved separately. The download list is authorization for HIGH-only
+staging, NOT visual approval. Its hash binds the discovery file and URLs. Named
+staging is isolated at `.athlete-photo-staging/photo-batch-2/`; the original pilot
+manifest, images, page and evidence are preserved. Review HTML adds production
+rank, result rows and full SHA-256 alongside the existing photo/source evidence.
+Similarity signals remain warnings for manual review, not wrong-person findings.
+All Batch 2 photos remain PENDING_MANUAL_REVIEW; no production publish occurred.
+
+## Published Batch 2
+
+The user personally reviewed and approved all 28 staged HIGH portraits, bound to
+original staging SHA-256 values. `athlete-photo-batch2-manual-review.json` records
+that authorization; `athlete-photo-batch2-reviewed-manifest.json` is the approved
+copy. Original discovery/staging evidence and staging bytes remain unchanged.
+The publisher now validates named batch paths and matching review batch IDs, and
+records explicit reviewed/published SHA-256 values. All 28 were published through
+the existing rollback transaction, bringing production to 193 photos. Baseline,
+validation and the full path/hash table are saved in the Batch 2 publish records.
+Historical selection tests replay the captured pre-publish photo baseline.

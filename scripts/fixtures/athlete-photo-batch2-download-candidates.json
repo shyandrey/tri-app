@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 1,
+  "batchId": "photo-batch-2",
+  "discoverySha256": "2d8804cc666f05233e1b17eb86ece75d819d3e95bf8eec8b8b71ced6b3fb5959",
+  "purpose": "User-authorized HIGH-only staging discovery selection; NOT manual visual approval; no production publish",
+  "candidates": [
+    {
+      "athleteId": 10002,
+      "nameEn": "Aaron Royle",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/61ceb970-740b-46fc-9363-1d7340ebccf6.png",
+      "selection": {
+        "athleteId": 10002,
+        "nameEn": "Aaron Royle",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 61,
+        "rankingScore": 23.818050833532133,
+        "resultRows": 10,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10502,
+      "nameEn": "Robert Kallin",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/48636403-a408-490e-9365-e075fe25573b.png",
+      "selection": {
+        "athleteId": 10502,
+        "nameEn": "Robert Kallin",
+        "gender": "M",
+        "countryCode": "SE",
+        "rankingPosition": 63,
+        "rankingScore": 22.91854651744446,
+        "resultRows": 12,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10467,
+      "nameEn": "Paul Schuster",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/6770cf68-5684-494b-acdd-8692e92947fc.png",
+      "selection": {
+        "athleteId": 10467,
+        "nameEn": "Paul Schuster",
+        "gender": "M",
+        "countryCode": "DE",
+        "rankingPosition": 66,
+        "rankingScore": 22.644304875364885,
+        "resultRows": 13,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10054,
+      "nameEn": "Ben Hamilton",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/d696a943-8cef-4c45-b16c-d69ef75f3090.png",
+      "selection": {
+        "athleteId": 10054,
+        "nameEn": "Ben Hamilton",
+        "gender": "M",
+        "countryCode": "NZ",
+        "rankingPosition": 69,
+        "rankingScore": 22.209175108484168,
+        "resultRows": 12,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10226,
+      "nameEn": "Jarrod Osborne",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/7629bba4-aa1a-4ed8-a5da-be88c8917a09.png",
+      "selection": {
+        "athleteId": 10226,
+        "nameEn": "Jarrod Osborne",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 71,
+        "rankingScore": 22.115604332711754,
+        "resultRows": 8,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 20005,
+      "nameEn": "Will Draper",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/06/fd9178b2-b109-4973-a9e7-913bcb0c98cd.png",
+      "selection": {
+        "athleteId": 20005,
+        "nameEn": "Will Draper",
+        "gender": "M",
+        "countryCode": "GB",
+        "rankingPosition": 73,
+        "rankingScore": 21.569609728744236,
+        "resultRows": 5,
+        "seasons": [
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10569,
+      "nameEn": "Thomas Bishop",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/99c3c560-4747-4650-b29a-08e664d50d4c.png",
+      "selection": {
+        "athleteId": 10569,
+        "nameEn": "Thomas Bishop",
+        "gender": "M",
+        "countryCode": "GB",
+        "rankingPosition": 77,
+        "rankingScore": 21.307960170088894,
+        "resultRows": 4,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10041,
+      "nameEn": "Antony Costes",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2022/06/5b814796-1983-413a-95f2-1c4082a00128.png",
+      "selection": {
+        "athleteId": 10041,
+        "nameEn": "Antony Costes",
+        "gender": "M",
+        "countryCode": "FR",
+        "rankingPosition": 80,
+        "rankingScore": 20.918219815652346,
+        "resultRows": 11,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10064,
+      "nameEn": "Bradley Weiss",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/a60f8a1e-0589-4060-85c4-3dfa466b81fe.png",
+      "selection": {
+        "athleteId": 10064,
+        "nameEn": "Bradley Weiss",
+        "gender": "M",
+        "countryCode": "ZA",
+        "rankingPosition": 87,
+        "rankingScore": 19.703469359764554,
+        "resultRows": 13,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10263,
+      "nameEn": "Josh Amberger",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/c0161b21-a5b6-40ad-bdf9-231bf4096888.png",
+      "selection": {
+        "athleteId": 10263,
+        "nameEn": "Josh Amberger",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 88,
+        "rankingScore": 19.51833629206849,
+        "resultRows": 8,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10610,
+      "nameEn": "Valdemar Solok",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/09/e66d555e-012a-41dc-a2b7-13ee0351384c.png",
+      "selection": {
+        "athleteId": 10610,
+        "nameEn": "Valdemar Solok",
+        "gender": "M",
+        "countryCode": "DK",
+        "rankingPosition": 92,
+        "rankingScore": 18.65410106605663,
+        "resultRows": 5,
+        "seasons": [
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10382,
+      "nameEn": "Mattia Ceccarelli",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/04/8dba2b60-12a5-4de3-98d0-ab790e455a17.png",
+      "selection": {
+        "athleteId": 10382,
+        "nameEn": "Mattia Ceccarelli",
+        "gender": "M",
+        "countryCode": "IT",
+        "rankingPosition": 95,
+        "rankingScore": 18.029151064930826,
+        "resultRows": 10,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10798,
+      "nameEn": "Kirsten Kasper",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/02/085aa8dd-3d6c-48fa-a0dd-c1afb25ffbe9.png",
+      "selection": {
+        "athleteId": 10798,
+        "nameEn": "Kirsten Kasper",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 26,
+        "rankingScore": 37.471696732138035,
+        "resultRows": 2,
+        "seasons": [
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 20008,
+      "nameEn": "Jessica Fullagar",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/03/c6340d30-2f4d-4420-a654-90b972a05d64.png",
+      "selection": {
+        "athleteId": 20008,
+        "nameEn": "Jessica Fullagar",
+        "gender": "W",
+        "countryCode": "GB",
+        "rankingPosition": 37,
+        "rankingScore": 31.911301882255103,
+        "resultRows": 1,
+        "seasons": [
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10745,
+      "nameEn": "Flora Duffy",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/fe197357-bcad-48b6-b2e4-6d92214a6c27.png",
+      "selection": {
+        "athleteId": 10745,
+        "nameEn": "Flora Duffy",
+        "gender": "W",
+        "countryCode": "BM",
+        "rankingPosition": 52,
+        "rankingScore": 26.816922375218518,
+        "resultRows": 4,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10701,
+      "nameEn": "Chelsea Sodaro",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/daced089-1ab5-4e83-bb9d-095b6bd00fb1.png",
+      "selection": {
+        "athleteId": 10701,
+        "nameEn": "Chelsea Sodaro",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 66,
+        "rankingScore": 23.583371441228486,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10698,
+      "nameEn": "Charlene Clavel",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/06/e11045de-d78d-4ddc-b391-df440fa28fe5.png",
+      "selection": {
+        "athleteId": 10698,
+        "nameEn": "Charlene Clavel",
+        "gender": "W",
+        "countryCode": "FR",
+        "rankingPosition": 67,
+        "rankingScore": 23.553827430666477,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10712,
+      "nameEn": "Daniela Bleymehl",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/32f0e951-d383-46f5-a9c6-d0213570e824.png",
+      "selection": {
+        "athleteId": 10712,
+        "nameEn": "Daniela Bleymehl",
+        "gender": "W",
+        "countryCode": "DE",
+        "rankingPosition": 69,
+        "rankingScore": 23.21746342493465,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10889,
+      "nameEn": "Rachel Zilinskas",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/01/5f49650c-8522-4cd2-bea7-8684a3a0f0af.png",
+      "selection": {
+        "athleteId": 10889,
+        "nameEn": "Rachel Zilinskas",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 72,
+        "rankingScore": 22.841585284863616,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10802,
+      "nameEn": "Kylie Simpson",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/04/dafd79a2-3587-45ca-b15a-1388ef22f98c.png",
+      "selection": {
+        "athleteId": 10802,
+        "nameEn": "Kylie Simpson",
+        "gender": "W",
+        "countryCode": "AU",
+        "rankingPosition": 73,
+        "rankingScore": 22.697900275836638,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10849,
+      "nameEn": "Marlene De Boer",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/214d916d-e611-46c2-81db-ac03006a7b70.png",
+      "selection": {
+        "athleteId": 10849,
+        "nameEn": "Marlene De Boer",
+        "gender": "W",
+        "countryCode": "NL",
+        "rankingPosition": 74,
+        "rankingScore": 22.516920048543895,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 20006,
+      "nameEn": "Chloe Hartnett",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/03/5fdabab6-29c6-4778-bd39-cd3a5481b7ea.png",
+      "selection": {
+        "athleteId": 20006,
+        "nameEn": "Chloe Hartnett",
+        "gender": "W",
+        "countryCode": "AU",
+        "rankingPosition": 78,
+        "rankingScore": 21.19231354426164,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10653,
+      "nameEn": "Amelia Watkinson",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/bd87c374-7337-4040-ae98-951044b2e838.png",
+      "selection": {
+        "athleteId": 10653,
+        "nameEn": "Amelia Watkinson",
+        "gender": "W",
+        "countryCode": "NZ",
+        "rankingPosition": 84,
+        "rankingScore": 20.670078343099114,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10922,
+      "nameEn": "Sif Bendix Madsen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/600eb6c6-9645-474f-9a53-f6a2ef66564f.png",
+      "selection": {
+        "athleteId": 10922,
+        "nameEn": "Sif Bendix Madsen",
+        "gender": "W",
+        "countryCode": "DK",
+        "rankingPosition": 88,
+        "rankingScore": 20.174247136728916,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10754,
+      "nameEn": "Gurutze Frades Larralde",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/03/a9bfe739-d52b-40ca-b7d4-187aa357b148.png",
+      "selection": {
+        "athleteId": 10754,
+        "nameEn": "Gurutze Frades Larralde",
+        "gender": "W",
+        "countryCode": "ES",
+        "rankingPosition": 91,
+        "rankingScore": 19.606721650221964,
+        "resultRows": 4,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10773,
+      "nameEn": "Jocelyn McCauley",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/a3064680-b5f3-4dc8-a2b2-a52b5f1f90ba.png",
+      "selection": {
+        "athleteId": 10773,
+        "nameEn": "Jocelyn McCauley",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 92,
+        "rankingScore": 19.319608868402973,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10728,
+      "nameEn": "Elisabetta Curridori",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/04/0e3bf26a-867c-4118-97cc-c8499884cb71.png",
+      "selection": {
+        "athleteId": 10728,
+        "nameEn": "Elisabetta Curridori",
+        "gender": "W",
+        "countryCode": "IT",
+        "rankingPosition": 94,
+        "rankingScore": 18.66647016934741,
+        "resultRows": 4,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      }
+    },
+    {
+      "athleteId": 10814,
+      "nameEn": "Lauren Brandon",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/04/63f5adfb-24e6-4732-9989-3775ee7a342f.png",
+      "selection": {
+        "athleteId": 10814,
+        "nameEn": "Lauren Brandon",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 96,
+        "rankingScore": 18.21551780932533,
+        "resultRows": 6,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "TOP100"
+      }
+    }
+  ]
+}

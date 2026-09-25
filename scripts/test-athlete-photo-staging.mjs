@@ -165,3 +165,47 @@ test('fresh weak collision is accepted only when the same finding was explicitly
     assert.equal((await publishApproved(options)).published,1)
   }finally{await fs.rm(r,{recursive:true})}
 })
+
+test('batch staging is isolated from pilot, paths/HTML stay local, identity and rank metadata retained',async()=>{
+  const r=await root();try{
+    await staged(r)
+    await fs.writeFile(path.join(r,STAGING,'review.html'),'unchanged pilot page')
+    const before=await snapshotTree(r),batchId='photo-batch-2'
+    const selection={rankingPosition:27,resultRows:4}
+    const namedAccepted={...single(),batchId,candidates:[{...single().candidates[0],selection}]}
+    const opts={root:r,discovery:{...discovery,batchId},accepted:namedAccepted,discoveryHash,registry:{},decoder,fetchImpl:mockFetch,batchId}
+    const m=await stageDownloads(opts)
+    assert.equal(m.batchId,batchId);assert.ok(m.entries[0].localStagingPath.startsWith(STAGING+'/'+batchId+'/'))
+    assert.deepEqual(m.entries[0].selection,selection);assert.equal(m.entries[0].reviewStatus,'PENDING_MANUAL_REVIEW')
+    const {writeReviewPage,stagingBase}=await import('./athlete-photo-staging.mjs')
+    await writeReviewPage(r,m)
+    const after=await snapshotTree(r)
+    for(const [p,h]of Object.entries(before))assert.equal(after[p],h,p)
+    const html=await fs.readFile(path.join(r,STAGING,batchId,'review.html'),'utf8')
+    assert.match(html,/TRI Ranking: 27/);assert.match(html,/Result rows: 4/);assert.ok(html.includes(m.entries[0].sha256));assert.ok(!html.includes('data:image'))
+    for(const match of html.matchAll(/<img[^>]+src="([^"]+)"/g))await fs.access(path.resolve(r,STAGING,batchId,match[1]))
+    assert.throws(()=>stagingBase('../pilot'),/Invalid/)
+    await assert.rejects(stageDownloads({...opts,accepted:{...namedAccepted,batchId:'other'}}),/batch identity mismatch/)
+    await stageDownloads({...opts,fetchImpl:()=>{throw Error('No repeated downloads')}})
+  }finally{await fs.rm(r,{recursive:true})}
+})
+
+test('named batch publish binds review namespace, preserves pilot, and rolls back transaction',async()=>{
+  const r=await root();try{
+    await staged(r)
+    const batchId='photo-batch-2'
+    const m=await stageDownloads({root:r,discovery:{...discovery,batchId},accepted:{...single(),batchId},discoveryHash,registry:{},decoder,fetchImpl:mockFetch,batchId})
+    const reviews={...approvals(m),batchId},options={root:r,manifest:m,reviews,registry:{},athletes:athletes(m),decoder}
+    const before=await snapshotTree(r)
+    await assert.rejects(publishApproved({...options,reviews:{...reviews,batchId:'other'}}),/batch identity mismatch/)
+    const wrong=structuredClone(m);wrong.entries[0].localStagingPath=wrong.entries[0].localStagingPath.replace('/photo-batch-2/','/')
+    await assert.rejects(publishApproved({...options,manifest:wrong,reviews:{...reviews,manifestSha256:sha256(Buffer.from(JSON.stringify(wrong)))}}),/staging path/)
+    await assert.rejects(publishApproved({...options,injectFailure:()=>{throw Error('Injected failure')}}),/Injected/)
+    assert.deepEqual(await snapshotTree(r),before)
+    assert.equal((await publishApproved(options)).published,1)
+    const evidence=JSON.parse(await fs.readFile(path.join(r,EVIDENCE),'utf8')).entries[m.entries[0].athlete.athleteId]
+    assert.equal(evidence.batchId,batchId);assert.equal(evidence.reviewedSha256,m.entries[0].sha256);assert.equal(evidence.publishedSha256,evidence.reviewedSha256)
+    const after=await snapshotTree(r)
+    for(const [p,h]of Object.entries(before).filter(([p])=>p.startsWith(STAGING+'/')))assert.equal(after[p],h,p)
+  }finally{await fs.rm(r,{recursive:true})}
+})

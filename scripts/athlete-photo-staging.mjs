@@ -12,6 +12,13 @@ export const REGISTRY = 'src/data/athletes/athletePhotos.generated.ts'
 export const EVIDENCE = 'src/data/athletes/athletePhotoEvidence.json'
 export const REVIEW_STATUSES = ['PENDING_MANUAL_REVIEW', 'APPROVED', 'REJECTED_WRONG_PERSON', 'REJECTED_NOT_PORTRAIT', 'REJECTED_LOW_QUALITY', 'REVIEW_REQUIRED']
 
+// A namespace is explicit and cannot escape the ignored staging root.
+export function stagingBase(batchId = null) {
+  if (batchId === null) return STAGING
+  if (typeof batchId !== 'string' || !/^[a-z0-9][a-z0-9-]{0,63}$/.test(batchId)) throw new Error('Invalid staging batch ID')
+  return `${STAGING}/${batchId}`
+}
+
 export async function safePath(root, relative) {
   if (!relative || path.isAbsolute(relative) || relative.split(/[\\/]/).some(p => p === '..' || p === '.')) throw new Error('Unsafe relative path')
   let current = await fs.realpath(root)
@@ -109,11 +116,13 @@ export async function inspectProduction(root,registry,decoder) {
     return {...decoded[i],path:p,athlete:{nameEn:name},sha256:sha256(await fs.readFile(paths[i]))}
   }))
 }
-export async function stageDownloads({root,discovery,accepted,discoveryHash,registry,decoder,fetchImpl=fetch}) {
+export async function stageDownloads({root,discovery,accepted,discoveryHash,registry,decoder,fetchImpl=fetch,batchId=null}) {
+  const relativeBase=stagingBase(batchId)
+  if(batchId!==null && (accepted.batchId!==batchId || discovery.batchId!==batchId))throw new Error('Staging batch identity mismatch')
   const decisions=selectAccepted(discovery,accepted,discoveryHash)
   const audit=await auditPhotoFiles(root,registry);if(audit.issues.length)throw new Error('Production preflight failed')
   const before=await snapshotTree(root)
-  const base=await safePath(root,STAGING);await fs.mkdir(base,{recursive:true})
+  const base=await safePath(root,relativeBase);await fs.mkdir(base,{recursive:true})
   const lock=await fs.open(path.join(base,'.download.lock'),'wx')
   try {
     const manifestFile=path.join(base,'manifest.json')
@@ -123,22 +132,23 @@ export async function stageDownloads({root,discovery,accepted,discoveryHash,regi
     for(const d of decisions){
       const old=previous?.entries.find(e=>e.athlete.athleteId===d.athlete.athleteId)
       if(old){
-        if(JSON.stringify(old.athlete)!==JSON.stringify(d.athlete)||old.verifiedProfileUrl!==d.verifiedProfileUrl||old.discoveryConfidence!=='HIGH'||!old.localStagingPath.startsWith(`${STAGING}/${d.athlete.athleteId}/`)||old.sourceImageUrl!==d.bestCandidateUrl||old.reviewStatus!=='PENDING_MANUAL_REVIEW')throw new Error('Existing staging decision changed')
+        if(JSON.stringify(old.athlete)!==JSON.stringify(d.athlete)||old.verifiedProfileUrl!==d.verifiedProfileUrl||old.discoveryConfidence!=='HIGH'||!old.localStagingPath.startsWith(`${relativeBase}/${d.athlete.athleteId}/`)||old.sourceImageUrl!==d.bestCandidateUrl||old.reviewStatus!=='PENDING_MANUAL_REVIEW')throw new Error('Existing staging decision changed')
         const file=await safePath(root,old.localStagingPath)
         if(sha256(await fs.readFile(file))!==old.sha256)throw new Error('Staging checksum changed')
         const [decoded]=await decoder.inspect([file]);if(decoded.error||decoded.pixelSha256!==old.pixelSha256||decoded.dHash!==old.dHash||decoded.width!==old.width||decoded.height!==old.height)throw new Error('Staging decode changed')
         entries.push(old);continue
       }
       const result=await fetchImage(d.bestCandidateUrl,fetchImpl)
-      const relative=`${STAGING}/${d.athlete.athleteId}/${sha256(result.bytes)}.${result.extension}`
+      const relative=`${relativeBase}/${d.athlete.athleteId}/${sha256(result.bytes)}.${result.extension}`
       const file=await safePath(root,relative);await fs.mkdir(path.dirname(file),{recursive:true})
       // Failed decodes are removed; never leave invalid bytes as an accepted staged file.
       await fs.writeFile(file,result.bytes,{flag:'wx'})
       const [decoded]=await decoder.inspect([file])
       if(decoded.error){await fs.unlink(file);throw new Error(`Invalid decoded image: ${decoded.error}`)}
       const {path:unused,...image}=decoded
-      entries.push({athlete:d.athlete,verifiedProfileUrl:d.verifiedProfileUrl,sourceImageUrl:d.bestCandidateUrl,finalDownloadedUrl:result.finalDownloadedUrl,checkedAt:new Date().toISOString(),discoveryCheckedAt:d.checkedAt,discoveryConfidence:d.confidence,localStagingPath:relative,httpStatus:result.httpStatus,contentType:result.contentType,byteSize:result.bytes.length,extension:result.extension,...image,sha256:sha256(result.bytes),validationStatus:'VALIDATED',reviewStatus:'PENDING_MANUAL_REVIEW'})
-      await atomicJson(manifestFile,{schemaVersion:1,complete:false,discoverySha256:discoveryHash,acceptedSha256:sha256(Buffer.from(JSON.stringify(accepted))),productionPhotosCompared:production.length,entries,duplicates:[]})
+      const selection=accepted.candidates.find(c=>c.athleteId===d.athlete.athleteId)?.selection
+      entries.push({...(selection?{selection}:{}),athlete:d.athlete,verifiedProfileUrl:d.verifiedProfileUrl,sourceImageUrl:d.bestCandidateUrl,finalDownloadedUrl:result.finalDownloadedUrl,checkedAt:new Date().toISOString(),discoveryCheckedAt:d.checkedAt,discoveryConfidence:d.confidence,localStagingPath:relative,httpStatus:result.httpStatus,contentType:result.contentType,byteSize:result.bytes.length,extension:result.extension,...image,sha256:sha256(result.bytes),validationStatus:'VALIDATED',reviewStatus:'PENDING_MANUAL_REVIEW'})
+      await atomicJson(manifestFile,{schemaVersion:1,...(batchId?{batchId}:{}),complete:false,discoverySha256:discoveryHash,acceptedSha256:sha256(Buffer.from(JSON.stringify(accepted))),productionPhotosCompared:production.length,entries,duplicates:[]})
     }
     const duplicates=compareImages(entries,production)
     for(const match of duplicates.filter(d=>d.kind==='EXACT_BYTES')){
@@ -148,19 +158,20 @@ export async function stageDownloads({root,discovery,accepted,discoveryHash,regi
       if(!match.byteEqualityConfirmed)throw new Error('SHA-256 collision; manual investigation required')
     }
     for(const e of entries){e.duplicateFindings=duplicates.filter(m=>m.athleteId===e.athlete.athleteId || (m.scope==='staging'&&m.otherAthlete.athleteId===e.athlete.athleteId));e.validationStatus=e.duplicateFindings.length?'REVIEW_REQUIRED':'VALIDATED'}
-    const manifest={schemaVersion:1,complete:true,discoverySha256:discoveryHash,acceptedSha256:sha256(Buffer.from(JSON.stringify(accepted))),productionPhotosCompared:production.length,entries,duplicates}
+    const manifest={schemaVersion:1,...(batchId?{batchId}:{}),complete:true,discoverySha256:discoveryHash,acceptedSha256:sha256(Buffer.from(JSON.stringify(accepted))),productionPhotosCompared:production.length,entries,duplicates}
     if(!previous || JSON.stringify(previous)!==JSON.stringify(manifest))await atomicJson(manifestFile,manifest)
     return manifest
   } finally {
     await lock.close();await fs.unlink(path.join(base,'.download.lock'))
     const after=await snapshotTree(root)
-    const exclude=s=>Object.fromEntries(Object.entries(s).filter(([p])=>!p.startsWith(STAGING+'/')))
+    const exclude=s=>Object.fromEntries(Object.entries(s).filter(([p])=>p!==STAGING+'/' && !p.startsWith(relativeBase+'/')))
     assert.deepEqual(exclude(after),exclude(before),'Staging changed files outside its dedicated directory')
   }
 }
 export async function writeReviewPage(root,manifest) {
+  const relativeBase=stagingBase(manifest.batchId ?? null)
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
-  const cards=manifest.entries.map(e=>`<article><img src="${esc(e.localStagingPath.slice(STAGING.length+1))}" alt="Candidate for ${esc(e.athlete.nameEn)}"><h2>${esc(e.athlete.nameEn)}</h2><p>${esc(e.athlete.gender)} / ${esc(e.athlete.countryCode)} · ${e.width} × ${e.height} · ${e.byteSize} bytes</p><p>Discovery: ${esc(e.discoveryConfidence)} · ${esc(e.validationStatus)}</p><p><a href="${esc(e.verifiedProfileUrl)}">Stats PTO profile</a> · <a href="${esc(e.sourceImageUrl)}">Source image</a></p><p class="status">${esc(e.reviewStatus)}</p><label><input type="checkbox"> Визуально проверено (только пометка на странице)</label><p>${esc(e.duplicateFindings.map(d=>d.kind+' / '+d.otherAthlete.nameEn).join('; '))}</p></article>`).join('\n')
-  const comparisons=manifest.duplicates.map(d=>{const e=manifest.entries.find(e=>e.athlete.athleteId===d.athleteId);const other=d.scope==='production'?'../public'+d.otherPath:d.otherPath.slice(STAGING.length+1);return `<details><summary>${esc(e.athlete.nameEn)} / ${esc(d.otherAthlete.nameEn)} — ${esc(d.kind)} (dHash ${d.hammingDistance})</summary><img loading="lazy" src="${esc(e.localStagingPath.slice(STAGING.length+1))}" alt="${esc(e.athlete.nameEn)}"><img loading="lazy" src="${esc(other)}" alt="${esc(d.otherAthlete.nameEn)}"></details>`}).join('\n')
-  await fs.writeFile(await safePath(root,STAGING+'/review.html'),`<!doctype html><html lang="ru"><meta charset="utf-8"><title>Athlete photo pilot — manual review</title><style>body{font:16px system-ui;margin:28px;background:#eee;color:#18202a}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}article{background:white;padding:18px;border-radius:12px}img{width:100%;height:320px;object-fit:contain;background:#e6e6e6}h2{font-size:21px}.status{font-weight:bold}a{color:#165eb4}</style><h1>16 photo candidates: manual identity review</h1><p>Проверяйте: действительно ли это указанный спортсмен? Успешное скачивание не подтверждает личность. Статусы взяты из staging manifest. Checkbox не сохраняет approval и не разрешает publish.</p><main>${cards}</main><h2>Возможное сходство: пары для сравнения</h2><p>dHash — слабый сигнал сходства композиции, не доказательство одинакового изображения или личности.</p>${comparisons}</html>\n`)
+  const cards=manifest.entries.map(e=>`<article><img src="${esc(path.relative(relativeBase,e.localStagingPath))}" alt="Candidate for ${esc(e.athlete.nameEn)}"><h2>${esc(e.athlete.nameEn)}</h2><p>${esc(e.athlete.gender)} / ${esc(e.athlete.countryCode)} · ${e.width} × ${e.height} · ${e.byteSize} bytes</p><p>TRI Ranking: ${esc(e.selection?.rankingPosition ?? "—")} · Result rows: ${esc(e.selection?.resultRows ?? "—")}</p><p style="overflow-wrap:anywhere">SHA-256: <code>${esc(e.sha256)}</code></p><p>Discovery: ${esc(e.discoveryConfidence)} · ${esc(e.validationStatus)}</p><p><a href="${esc(e.verifiedProfileUrl)}">Stats PTO profile</a> · <a href="${esc(e.sourceImageUrl)}">Source image</a></p><p class="status">${esc(e.reviewStatus)}</p><label><input type="checkbox"> Визуально проверено (только пометка на странице)</label><p>${esc(e.duplicateFindings.map(d=>d.kind+' / '+d.otherAthlete.nameEn).join('; '))}</p></article>`).join('\n')
+  const comparisons=manifest.duplicates.map(d=>{const e=manifest.entries.find(e=>e.athlete.athleteId===d.athleteId);const other=path.relative(relativeBase,d.scope==='production'?'public'+d.otherPath:d.otherPath);return `<details><summary>${esc(e.athlete.nameEn)} / ${esc(d.otherAthlete.nameEn)} — ${esc(d.kind)} (dHash ${d.hammingDistance})</summary><img loading="lazy" src="${esc(path.relative(relativeBase,e.localStagingPath))}" alt="${esc(e.athlete.nameEn)}"><img loading="lazy" src="${esc(other)}" alt="${esc(d.otherAthlete.nameEn)}"></details>`}).join('\n')
+  await fs.writeFile(await safePath(root,relativeBase+'/review.html'),`<!doctype html><html lang="ru"><meta charset="utf-8"><title>${esc(manifest.batchId ?? "Photo pilot")} — manual review</title><style>body{font:16px system-ui;margin:28px;background:#eee;color:#18202a}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}article{background:white;padding:18px;border-radius:12px}img{width:100%;height:320px;object-fit:contain;background:#e6e6e6}h2{font-size:21px}.status{font-weight:bold}a{color:#165eb4}</style><h1>${esc(manifest.batchId ?? "Photo pilot")}: ${manifest.entries.length} candidates for manual review</h1><p>Проверяйте: действительно ли это указанный спортсмен? Успешное скачивание не подтверждает личность. Статусы взяты из staging manifest. Checkbox не сохраняет approval и не разрешает publish.</p><main>${cards}</main><h2>Возможное сходство: пары для сравнения</h2><p>dHash — слабый сигнал сходства композиции, не доказательство одинакового изображения или личности.</p>${comparisons}</html>\n`)
 }

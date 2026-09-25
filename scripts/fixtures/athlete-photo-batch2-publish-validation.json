@@ -1,0 +1,325 @@
+{
+  "checkedAt": "2026-09-25T06:17:56.427Z",
+  "published": 28,
+  "before": {
+    "registry": 165,
+    "files": 165,
+    "withPhoto": 165,
+    "withoutPhoto": 996,
+    "total": 1161
+  },
+  "after": {
+    "registry": 193,
+    "files": 193,
+    "withPhoto": 193,
+    "withoutPhoto": 968,
+    "total": 1161
+  },
+  "photoAudit": {
+    "entries": 193,
+    "files": 193,
+    "issues": [],
+    "dualSourceCases": [
+      {
+        "nameEn": "Kristian Blummenfelt",
+        "runtimePath": "/src/assets/athletes/blummenfelt.jpg",
+        "registryPath": "/athletes/kristian-blummenfelt.png"
+      }
+    ]
+  },
+  "unchangedPreviousPhotos": 165,
+  "previousRegistryAndRuntimeImagesUnchanged": true,
+  "pilotEvidenceUnchanged": true,
+  "stagingUnchanged": true,
+  "sourceAndUIHashesUnchanged": true,
+  "nonPhotoAthletesUnchanged": true,
+  "invariantsBefore": {
+    "asOf": "2026-09-25T06:15:04.834Z",
+    "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+    "rankingScores": "cd5d9594ba28f0f2a520628bb878c3359b639b4385bf0f3546f92b4abbd1fee5",
+    "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+    "registry": "8950a538e99f25d7de1f7903e7ebf0a07b265c3ba70171903ec8a05fc9b14ad4"
+  },
+  "invariantsAfter": {
+    "asOf": "2026-09-25T06:15:04.834Z",
+    "rankingOrder": "208d3afd481843e8e6c419a4623c66575052b6c153ebeff19a94297bee266d26",
+    "rankingScores": "cd5d9594ba28f0f2a520628bb878c3359b639b4385bf0f3546f92b4abbd1fee5",
+    "resultLinkage": "f9d2f29af440674dc46b60b0afccd53a655e9d3558419a778da79b765970c8a3",
+    "registry": "5a5fe07904849ea157090a0658d533e28fa32ff697e1231e94fb1437cf035bd3"
+  },
+  "allReviewedBytesEqualPublishedBytes": true,
+  "rows": [
+    {
+      "athleteId": 10002,
+      "nameEn": "Aaron Royle",
+      "productionPath": "/athletes/aaron-royle.png",
+      "reviewedSha256": "989d35fa0c9243eade83275050f41c45f23ab74c1e920942955d417ea80a340d",
+      "publishedSha256": "989d35fa0c9243eade83275050f41c45f23ab74c1e920942955d417ea80a340d"
+    },
+    {
+      "athleteId": 10502,
+      "nameEn": "Robert Kallin",
+      "productionPath": "/athletes/robert-kallin.png",
+      "reviewedSha256": "52375c3d0d125d88518292f2d48c57bcca3b0fd6a7af9c45b1f0ae3b4793cd42",
+      "publishedSha256": "52375c3d0d125d88518292f2d48c57bcca3b0fd6a7af9c45b1f0ae3b4793cd42"
+    },
+    {
+      "athleteId": 10467,
+      "nameEn": "Paul Schuster",
+      "productionPath": "/athletes/paul-schuster.png",
+      "reviewedSha256": "7c54573f8a7df9ab9955269f5fbc851f374bdf468c5d0e404fa02ba384e838f1",
+      "publishedSha256": "7c54573f8a7df9ab9955269f5fbc851f374bdf468c5d0e404fa02ba384e838f1"
+    },
+    {
+      "athleteId": 10054,
+      "nameEn": "Ben Hamilton",
+      "productionPath": "/athletes/ben-hamilton.png",
+      "reviewedSha256": "917fd2837211a05c6662ed38e82061890a8c730d07c4270af50053b54c685549",
+      "publishedSha256": "917fd2837211a05c6662ed38e82061890a8c730d07c4270af50053b54c685549"
+    },
+    {
+      "athleteId": 10226,
+      "nameEn": "Jarrod Osborne",
+      "productionPath": "/athletes/jarrod-osborne.png",
+      "reviewedSha256": "e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b",
+      "publishedSha256": "e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b"
+    },
+    {
+      "athleteId": 20005,
+      "nameEn": "Will Draper",
+      "productionPath": "/athletes/will-draper.png",
+      "reviewedSha256": "a1ba15f0249b478411fd3e8f13416174b4f3862666d0ccc2128fd2974336e46b",
+      "publishedSha256": "a1ba15f0249b478411fd3e8f13416174b4f3862666d0ccc2128fd2974336e46b"
+    },
+    {
+      "athleteId": 10569,
+      "nameEn": "Thomas Bishop",
+      "productionPath": "/athletes/thomas-bishop.png",
+      "reviewedSha256": "d8d12664461f6a889fa5d93397b376e3fcf06ca3cb6566e4770a2652f339b5a2",
+      "publishedSha256": "d8d12664461f6a889fa5d93397b376e3fcf06ca3cb6566e4770a2652f339b5a2"
+    },
+    {
+      "athleteId": 10041,
+      "nameEn": "Antony Costes",
+      "productionPath": "/athletes/antony-costes.png",
+      "reviewedSha256": "5de8027d7cdb9002567042d8d9d4328e5fe9ed7b7262f28e17914b080e30e631",
+      "publishedSha256": "5de8027d7cdb9002567042d8d9d4328e5fe9ed7b7262f28e17914b080e30e631"
+    },
+    {
+      "athleteId": 10064,
+      "nameEn": "Bradley Weiss",
+      "productionPath": "/athletes/bradley-weiss.png",
+      "reviewedSha256": "7bd636a34121ff1ddbfd4706a2890fecb56911a4b85fa32c718979bcb43c0138",
+      "publishedSha256": "7bd636a34121ff1ddbfd4706a2890fecb56911a4b85fa32c718979bcb43c0138"
+    },
+    {
+      "athleteId": 10263,
+      "nameEn": "Josh Amberger",
+      "productionPath": "/athletes/josh-amberger.png",
+      "reviewedSha256": "d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a",
+      "publishedSha256": "d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a"
+    },
+    {
+      "athleteId": 10610,
+      "nameEn": "Valdemar Solok",
+      "productionPath": "/athletes/valdemar-solok.png",
+      "reviewedSha256": "fe30033eabd25dc56f54222568b5233e98ac4695be2b8cf889d3470b3dfbe383",
+      "publishedSha256": "fe30033eabd25dc56f54222568b5233e98ac4695be2b8cf889d3470b3dfbe383"
+    },
+    {
+      "athleteId": 10382,
+      "nameEn": "Mattia Ceccarelli",
+      "productionPath": "/athletes/mattia-ceccarelli.png",
+      "reviewedSha256": "805fb5d295cae4ae5c58d018f97341fd885d116d682b8c1088c04353a856e387",
+      "publishedSha256": "805fb5d295cae4ae5c58d018f97341fd885d116d682b8c1088c04353a856e387"
+    },
+    {
+      "athleteId": 10798,
+      "nameEn": "Kirsten Kasper",
+      "productionPath": "/athletes/kirsten-kasper.png",
+      "reviewedSha256": "73ef6d8f4c37fea19285f66c9d2db2e242e77970e1621bd74eeaf22cd2bb7708",
+      "publishedSha256": "73ef6d8f4c37fea19285f66c9d2db2e242e77970e1621bd74eeaf22cd2bb7708"
+    },
+    {
+      "athleteId": 20008,
+      "nameEn": "Jessica Fullagar",
+      "productionPath": "/athletes/jessica-fullagar.png",
+      "reviewedSha256": "3fc3545b132e3b0b7b3fba445d29b2cc795e5fa263fa6475f27974a626f3b35e",
+      "publishedSha256": "3fc3545b132e3b0b7b3fba445d29b2cc795e5fa263fa6475f27974a626f3b35e"
+    },
+    {
+      "athleteId": 10745,
+      "nameEn": "Flora Duffy",
+      "productionPath": "/athletes/flora-duffy.png",
+      "reviewedSha256": "3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5",
+      "publishedSha256": "3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5"
+    },
+    {
+      "athleteId": 10701,
+      "nameEn": "Chelsea Sodaro",
+      "productionPath": "/athletes/chelsea-sodaro.png",
+      "reviewedSha256": "1595a2e80d50e829fb7a15686d83de0530459f3c38dee9c7706991d1f0144c78",
+      "publishedSha256": "1595a2e80d50e829fb7a15686d83de0530459f3c38dee9c7706991d1f0144c78"
+    },
+    {
+      "athleteId": 10698,
+      "nameEn": "Charlene Clavel",
+      "productionPath": "/athletes/charlene-clavel.png",
+      "reviewedSha256": "ec5e330088ab24aab890b909ee1147db0b68f230b07596716d03e80e52dbd041",
+      "publishedSha256": "ec5e330088ab24aab890b909ee1147db0b68f230b07596716d03e80e52dbd041"
+    },
+    {
+      "athleteId": 10712,
+      "nameEn": "Daniela Bleymehl",
+      "productionPath": "/athletes/daniela-bleymehl.png",
+      "reviewedSha256": "9bea8918fdff52991ee719c46bd6a4f0f0a4b781a8ceeb4f9f69ffde4ced896b",
+      "publishedSha256": "9bea8918fdff52991ee719c46bd6a4f0f0a4b781a8ceeb4f9f69ffde4ced896b"
+    },
+    {
+      "athleteId": 10889,
+      "nameEn": "Rachel Zilinskas",
+      "productionPath": "/athletes/rachel-zilinskas.png",
+      "reviewedSha256": "669d013461699e264b0bd0d348fa11c096f231c6e5622766cf9cc473121a58b0",
+      "publishedSha256": "669d013461699e264b0bd0d348fa11c096f231c6e5622766cf9cc473121a58b0"
+    },
+    {
+      "athleteId": 10802,
+      "nameEn": "Kylie Simpson",
+      "productionPath": "/athletes/kylie-simpson.png",
+      "reviewedSha256": "7b99f16de7127550c24473145a6e5ed5d44f1722336d96a3eef92d94cdfcc9ed",
+      "publishedSha256": "7b99f16de7127550c24473145a6e5ed5d44f1722336d96a3eef92d94cdfcc9ed"
+    },
+    {
+      "athleteId": 10849,
+      "nameEn": "Marlene De Boer",
+      "productionPath": "/athletes/marlene-de-boer.png",
+      "reviewedSha256": "aaf26b310f35cc329c930d5f0c2d994c24baf28d9900fdb900cf62274f72df67",
+      "publishedSha256": "aaf26b310f35cc329c930d5f0c2d994c24baf28d9900fdb900cf62274f72df67"
+    },
+    {
+      "athleteId": 20006,
+      "nameEn": "Chloe Hartnett",
+      "productionPath": "/athletes/chloe-hartnett.png",
+      "reviewedSha256": "e3c42b3f3be689cdfeb8be1a7cc4c418935cf73d350a800226e9febe5f0ca8c8",
+      "publishedSha256": "e3c42b3f3be689cdfeb8be1a7cc4c418935cf73d350a800226e9febe5f0ca8c8"
+    },
+    {
+      "athleteId": 10653,
+      "nameEn": "Amelia Watkinson",
+      "productionPath": "/athletes/amelia-watkinson.png",
+      "reviewedSha256": "594e2fd7e9cc859f73c9882557ca63a66274807fe6691775f3e127be939453dc",
+      "publishedSha256": "594e2fd7e9cc859f73c9882557ca63a66274807fe6691775f3e127be939453dc"
+    },
+    {
+      "athleteId": 10922,
+      "nameEn": "Sif Bendix Madsen",
+      "productionPath": "/athletes/sif-bendix-madsen.png",
+      "reviewedSha256": "10916c15381a56a2c13091fa8196587a595e1d0efe10dc9d66fc6f1f6c9a18a5",
+      "publishedSha256": "10916c15381a56a2c13091fa8196587a595e1d0efe10dc9d66fc6f1f6c9a18a5"
+    },
+    {
+      "athleteId": 10754,
+      "nameEn": "Gurutze Frades Larralde",
+      "productionPath": "/athletes/gurutze-frades-larralde.png",
+      "reviewedSha256": "b8ca1fdb86261a902618dfa3f7277e6c2b0caafa223c3692627481e2b62ecaf7",
+      "publishedSha256": "b8ca1fdb86261a902618dfa3f7277e6c2b0caafa223c3692627481e2b62ecaf7"
+    },
+    {
+      "athleteId": 10773,
+      "nameEn": "Jocelyn McCauley",
+      "productionPath": "/athletes/jocelyn-mccauley.png",
+      "reviewedSha256": "6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75",
+      "publishedSha256": "6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75"
+    },
+    {
+      "athleteId": 10728,
+      "nameEn": "Elisabetta Curridori",
+      "productionPath": "/athletes/elisabetta-curridori.png",
+      "reviewedSha256": "b2d810aa13aec4707fbed7185af7459b9037f33cee9af2efddcddc36cb389d3a",
+      "publishedSha256": "b2d810aa13aec4707fbed7185af7459b9037f33cee9af2efddcddc36cb389d3a"
+    },
+    {
+      "athleteId": 10814,
+      "nameEn": "Lauren Brandon",
+      "productionPath": "/athletes/lauren-brandon.png",
+      "reviewedSha256": "cc032931e6118d4c95e62fd324284152263328ce054a9aac2e7aa449700b04ad",
+      "publishedSha256": "cc032931e6118d4c95e62fd324284152263328ce054a9aac2e7aa449700b04ad"
+    }
+  ],
+  "checks": {
+    "photoTests": {
+      "command": "node --test scripts/test-athlete-photos.mjs",
+      "passed": 31,
+      "failed": 0
+    },
+    "stagingTests": {
+      "command": "node --test scripts/test-athlete-photo-staging.mjs",
+      "passed": 13,
+      "failed": 0
+    },
+    "athleteAudit": {
+      "command": "npm run audit:athletes -- --verbose",
+      "exitCode": 0,
+      "issues": [
+        "GENERATED MISSING COUNTRY: Erik Olsson [10144]",
+        "GENERATED MISSING COUNTRY: Sebastian Schober [10541]"
+      ],
+      "withoutPhoto": 968
+    },
+    "resultsAudit": {
+      "command": "npm run audit:results",
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 0,
+      "linkedRows": 4367,
+      "verifiedSourceNotes": 52
+    },
+    "environmentNote": "Both audits emitted Vite WebSocket listen EPERM on port 24678; audits completed with exit code 0.",
+    "diffCheck": {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  },
+  "filesChangedThisTask": [
+    "public/athletes/aaron-royle.png",
+    "public/athletes/amelia-watkinson.png",
+    "public/athletes/antony-costes.png",
+    "public/athletes/ben-hamilton.png",
+    "public/athletes/bradley-weiss.png",
+    "public/athletes/charlene-clavel.png",
+    "public/athletes/chelsea-sodaro.png",
+    "public/athletes/chloe-hartnett.png",
+    "public/athletes/daniela-bleymehl.png",
+    "public/athletes/elisabetta-curridori.png",
+    "public/athletes/flora-duffy.png",
+    "public/athletes/gurutze-frades-larralde.png",
+    "public/athletes/jarrod-osborne.png",
+    "public/athletes/jessica-fullagar.png",
+    "public/athletes/jocelyn-mccauley.png",
+    "public/athletes/josh-amberger.png",
+    "public/athletes/kirsten-kasper.png",
+    "public/athletes/kylie-simpson.png",
+    "public/athletes/lauren-brandon.png",
+    "public/athletes/marlene-de-boer.png",
+    "public/athletes/mattia-ceccarelli.png",
+    "public/athletes/paul-schuster.png",
+    "public/athletes/rachel-zilinskas.png",
+    "public/athletes/robert-kallin.png",
+    "public/athletes/sif-bendix-madsen.png",
+    "public/athletes/thomas-bishop.png",
+    "public/athletes/valdemar-solok.png",
+    "public/athletes/will-draper.png",
+    "scripts/athlete-photo-import.md",
+    "scripts/athlete-photo-publish.mjs",
+    "scripts/fixtures/athlete-photo-batch2-manual-review.json",
+    "scripts/fixtures/athlete-photo-batch2-production-baseline.json",
+    "scripts/fixtures/athlete-photo-batch2-publish-validation.json",
+    "scripts/fixtures/athlete-photo-batch2-reviewed-manifest.json",
+    "scripts/select-athlete-photo-batch.mjs",
+    "scripts/test-athlete-photo-staging.mjs",
+    "scripts/test-athlete-photos.mjs",
+    "src/data/athletes/athletePhotoEvidence.json",
+    "src/data/athletes/athletePhotos.generated.ts"
+  ],
+  "filesDeletedThisTask": []
+}

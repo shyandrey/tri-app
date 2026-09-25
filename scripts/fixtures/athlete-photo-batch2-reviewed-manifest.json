@@ -1,0 +1,3335 @@
+{
+  "schemaVersion": 1,
+  "batchId": "photo-batch-2",
+  "complete": true,
+  "discoverySha256": "2d8804cc666f05233e1b17eb86ece75d819d3e95bf8eec8b8b71ced6b3fb5959",
+  "acceptedSha256": "26dcfdbd46092b66347722ec5819b86beebbfe12a3c7732b5633948a80e81f8a",
+  "productionPhotosCompared": 165,
+  "entries": [
+    {
+      "selection": {
+        "athleteId": 10002,
+        "nameEn": "Aaron Royle",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 61,
+        "rankingScore": 23.818050833532133,
+        "resultRows": 10,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10002,
+        "nameEn": "Aaron Royle",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/aaron-royle",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/61ceb970-740b-46fc-9363-1d7340ebccf6.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/05/61ceb970-740b-46fc-9363-1d7340ebccf6.png",
+      "checkedAt": "2026-09-24T15:26:14.940Z",
+      "discoveryCheckedAt": "2026-09-24T15:22:58.954Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10002/989d35fa0c9243eade83275050f41c45f23ab74c1e920942955d417ea80a340d.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 383021,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "707078787030eec6",
+      "height": 600,
+      "pixelSha256": "3fd992a70dd98b928d10b1e64c5441e77cba592ccd94f6e926a47a91ec9119fb",
+      "width": 600,
+      "sha256": "989d35fa0c9243eade83275050f41c45f23ab74c1e920942955d417ea80a340d",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "athleteId": 10226,
+            "nameEn": "Jarrod Osborne",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "athleteId": 10263,
+            "nameEn": "Josh Amberger",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "athleteId": 10745,
+            "nameEn": "Flora Duffy",
+            "gender": "W",
+            "countryCode": "BM",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10745/3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Antonio Benito López"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/antonio-benito-lopez.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Audrey Merle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/audrey-merle.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Frederic Funk"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/frederic-funk.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Jamie Riddle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/jamie-riddle.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Jelle Geens"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/jelle-geens.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Lucy Byram"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/lucy-byram.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Natalie Van Coevorden"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/natalie-van-coevorden.png"
+        },
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "nameEn": "Taylor Knibb"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/taylor-knibb.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10502,
+        "nameEn": "Robert Kallin",
+        "gender": "M",
+        "countryCode": "SE",
+        "rankingPosition": 63,
+        "rankingScore": 22.91854651744446,
+        "resultRows": 12,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10502,
+        "nameEn": "Robert Kallin",
+        "gender": "M",
+        "countryCode": "SE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/robert-kallin",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/48636403-a408-490e-9365-e075fe25573b.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2023/05/48636403-a408-490e-9365-e075fe25573b.png",
+      "checkedAt": "2026-09-24T15:26:15.780Z",
+      "discoveryCheckedAt": "2026-09-24T15:22:59.347Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10502/52375c3d0d125d88518292f2d48c57bcca3b0fd6a7af9c45b1f0ae3b4793cd42.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 327319,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30786830f0f0c82a",
+      "height": 600,
+      "pixelSha256": "8ce66d2bf2d486e035a7b7acf747bc57be3d3eba923053da9c31535c1085f638",
+      "width": 600,
+      "sha256": "52375c3d0d125d88518292f2d48c57bcca3b0fd6a7af9c45b1f0ae3b4793cd42",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10467,
+        "nameEn": "Paul Schuster",
+        "gender": "M",
+        "countryCode": "DE",
+        "rankingPosition": 66,
+        "rankingScore": 22.644304875364885,
+        "resultRows": 13,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10467,
+        "nameEn": "Paul Schuster",
+        "gender": "M",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/paul-schuster",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/6770cf68-5684-494b-acdd-8692e92947fc.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2024/07/6770cf68-5684-494b-acdd-8692e92947fc.png",
+      "checkedAt": "2026-09-24T15:26:16.133Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:01.150Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10467/7c54573f8a7df9ab9955269f5fbc851f374bdf468c5d0e404fa02ba384e838f1.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 273882,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "303030706c6ceccc",
+      "height": 600,
+      "pixelSha256": "27b8eea4e0e706863fb9d5ce0819ad395abc6bafbb4389783ec5cfb91bdd17c3",
+      "width": 600,
+      "sha256": "7c54573f8a7df9ab9955269f5fbc851f374bdf468c5d0e404fa02ba384e838f1",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10467,
+          "otherAthlete": {
+            "nameEn": "Laura Jansen"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/laura-jansen.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10054,
+        "nameEn": "Ben Hamilton",
+        "gender": "M",
+        "countryCode": "NZ",
+        "rankingPosition": 69,
+        "rankingScore": 22.209175108484168,
+        "resultRows": 12,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10054,
+        "nameEn": "Ben Hamilton",
+        "gender": "M",
+        "countryCode": "NZ",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/ben-hamilton",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/d696a943-8cef-4c45-b16c-d69ef75f3090.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/10/d696a943-8cef-4c45-b16c-d69ef75f3090.png",
+      "checkedAt": "2026-09-24T15:26:16.489Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:02.893Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10054/917fd2837211a05c6662ed38e82061890a8c730d07c4270af50053b54c685549.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 360281,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "307878707038ee9e",
+      "height": 600,
+      "pixelSha256": "5a033c764bf6834b5bb8027f19e89bc559cbcfa025dd8d46b88c5e54cd06eafb",
+      "width": 600,
+      "sha256": "917fd2837211a05c6662ed38e82061890a8c730d07c4270af50053b54c685549",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "athleteId": 10226,
+            "nameEn": "Jarrod Osborne",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "athleteId": 10263,
+            "nameEn": "Josh Amberger",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Alanis Siffert"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/alanis-siffert.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Grace Alexander"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/grace-alexander.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Jessica Learmonth"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/jessica-learmonth.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Lisa Perterer"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/lisa-perterer.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Lizzie Rayner"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/lizzie-rayner.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Lucy Byram"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/lucy-byram.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Marta Sánchez"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/marta-sanchez.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Mika Noodt"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/mika-noodt.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Samuel Dickinson"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/samuel-dickinson.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "nameEn": "Vincent Luis"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/vincent-luis.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10226,
+        "nameEn": "Jarrod Osborne",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 71,
+        "rankingScore": 22.115604332711754,
+        "resultRows": 8,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10226,
+        "nameEn": "Jarrod Osborne",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/jarrod-osborne",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/7629bba4-aa1a-4ed8-a5da-be88c8917a09.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/10/7629bba4-aa1a-4ed8-a5da-be88c8917a09.png",
+      "checkedAt": "2026-09-24T15:26:16.837Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:04.878Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 421139,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "307070707030eed6",
+      "height": 600,
+      "pixelSha256": "37294cb174fe3ced047c625765fa48f347d1835c3add09f7f3fb3d5fec990015",
+      "width": 600,
+      "sha256": "e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "athleteId": 10226,
+            "nameEn": "Jarrod Osborne",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "athleteId": 10226,
+            "nameEn": "Jarrod Osborne",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png"
+        },
+        {
+          "athleteId": 10226,
+          "otherAthlete": {
+            "athleteId": 10263,
+            "nameEn": "Josh Amberger",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+        },
+        {
+          "athleteId": 10226,
+          "otherAthlete": {
+            "nameEn": "Blake Harris"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/blake-harris.png"
+        },
+        {
+          "athleteId": 10226,
+          "otherAthlete": {
+            "nameEn": "Jamie Riddle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/jamie-riddle.png"
+        },
+        {
+          "athleteId": 10226,
+          "otherAthlete": {
+            "nameEn": "Jessica Learmonth"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/jessica-learmonth.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 20005,
+        "nameEn": "Will Draper",
+        "gender": "M",
+        "countryCode": "GB",
+        "rankingPosition": 73,
+        "rankingScore": 21.569609728744236,
+        "resultRows": 5,
+        "seasons": [
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 20005,
+        "nameEn": "Will Draper",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "verified generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/will-draper",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/06/fd9178b2-b109-4973-a9e7-913bcb0c98cd.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2026/06/fd9178b2-b109-4973-a9e7-913bcb0c98cd.png",
+      "checkedAt": "2026-09-24T15:26:17.753Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:06.074Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/20005/a1ba15f0249b478411fd3e8f13416174b4f3862666d0ccc2128fd2974336e46b.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 350715,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "3070687030f0e03a",
+      "height": 600,
+      "pixelSha256": "f9d4c92112f1e518ea42a6bf293af950fadf647354ffbfb19ddac8507a6f7c5c",
+      "width": 600,
+      "sha256": "a1ba15f0249b478411fd3e8f13416174b4f3862666d0ccc2128fd2974336e46b",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10569,
+        "nameEn": "Thomas Bishop",
+        "gender": "M",
+        "countryCode": "GB",
+        "rankingPosition": 77,
+        "rankingScore": 21.307960170088894,
+        "resultRows": 4,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10569,
+        "nameEn": "Thomas Bishop",
+        "gender": "M",
+        "countryCode": "GB",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/thomas-bishop",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/99c3c560-4747-4650-b29a-08e664d50d4c.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2023/05/99c3c560-4747-4650-b29a-08e664d50d4c.png",
+      "checkedAt": "2026-09-24T15:26:18.083Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:09.071Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10569/d8d12664461f6a889fa5d93397b376e3fcf06ca3cb6566e4770a2652f339b5a2.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 399664,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30687830b0f0456d",
+      "height": 600,
+      "pixelSha256": "f902e871235ae64940d89a3ae6bdd5121afeca658ffaf6a798d2bc4850904a22",
+      "width": 600,
+      "sha256": "d8d12664461f6a889fa5d93397b376e3fcf06ca3cb6566e4770a2652f339b5a2",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10041,
+        "nameEn": "Antony Costes",
+        "gender": "M",
+        "countryCode": "FR",
+        "rankingPosition": 80,
+        "rankingScore": 20.918219815652346,
+        "resultRows": 11,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10041,
+        "nameEn": "Antony Costes",
+        "gender": "M",
+        "countryCode": "FR",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/antony-costes",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2022/06/5b814796-1983-413a-95f2-1c4082a00128.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2022/06/5b814796-1983-413a-95f2-1c4082a00128.png",
+      "checkedAt": "2026-09-24T15:26:18.554Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:12.068Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10041/5de8027d7cdb9002567042d8d9d4328e5fe9ed7b7262f28e17914b080e30e631.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 320059,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30303070f8e27870",
+      "height": 600,
+      "pixelSha256": "a74aabdc2fe9d04ca801c463f2093739dae3ad7602e57fd66621f62eda77be61",
+      "width": 600,
+      "sha256": "5de8027d7cdb9002567042d8d9d4328e5fe9ed7b7262f28e17914b080e30e631",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10041,
+          "otherAthlete": {
+            "nameEn": "Jackie Hering"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/jackie-hering.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10064,
+        "nameEn": "Bradley Weiss",
+        "gender": "M",
+        "countryCode": "ZA",
+        "rankingPosition": 87,
+        "rankingScore": 19.703469359764554,
+        "resultRows": 13,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10064,
+        "nameEn": "Bradley Weiss",
+        "gender": "M",
+        "countryCode": "ZA",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/bradley-weiss",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/a60f8a1e-0589-4060-85c4-3dfa466b81fe.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2024/05/a60f8a1e-0589-4060-85c4-3dfa466b81fe.png",
+      "checkedAt": "2026-09-24T15:26:19.093Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:14.432Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10064/7bd636a34121ff1ddbfd4706a2890fecb56911a4b85fa32c718979bcb43c0138.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 321946,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "103030306c687870",
+      "height": 600,
+      "pixelSha256": "ae2c1f5a6aa34168bb842dfb1d8cebc0b47028fa9482cb197fb0dc44877d274f",
+      "width": 600,
+      "sha256": "7bd636a34121ff1ddbfd4706a2890fecb56911a4b85fa32c718979bcb43c0138",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10064,
+          "otherAthlete": {
+            "nameEn": "Ben Kanute"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/ben-kanute.png"
+        },
+        {
+          "athleteId": 10064,
+          "otherAthlete": {
+            "nameEn": "Kat Matthews"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/kat-matthews.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10263,
+        "nameEn": "Josh Amberger",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 88,
+        "rankingScore": 19.51833629206849,
+        "resultRows": 8,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10263,
+        "nameEn": "Josh Amberger",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/josh-amberger",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/c0161b21-a5b6-40ad-bdf9-231bf4096888.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/10/c0161b21-a5b6-40ad-bdf9-231bf4096888.png",
+      "checkedAt": "2026-09-24T15:26:19.554Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:15.474Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 513116,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "307078787038ee8e",
+      "height": 600,
+      "pixelSha256": "217060089d21eff95df3a61edb19b8db2a6b556637712b8a5b60a15dcd5276c3",
+      "width": 600,
+      "sha256": "d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "athleteId": 10263,
+            "nameEn": "Josh Amberger",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+        },
+        {
+          "athleteId": 10054,
+          "otherAthlete": {
+            "athleteId": 10263,
+            "nameEn": "Josh Amberger",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+        },
+        {
+          "athleteId": 10226,
+          "otherAthlete": {
+            "athleteId": 10263,
+            "nameEn": "Josh Amberger",
+            "gender": "M",
+            "countryCode": "AU",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Alanis Siffert"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/alanis-siffert.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Ashleigh Gentle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/ashleigh-gentle.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Frederic Funk"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/frederic-funk.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Jessica Learmonth"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/jessica-learmonth.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Lucy Byram"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/lucy-byram.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Mika Noodt"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/mika-noodt.png"
+        },
+        {
+          "athleteId": 10263,
+          "otherAthlete": {
+            "nameEn": "Samuel Dickinson"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/samuel-dickinson.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10610,
+        "nameEn": "Valdemar Solok",
+        "gender": "M",
+        "countryCode": "DK",
+        "rankingPosition": 92,
+        "rankingScore": 18.65410106605663,
+        "resultRows": 5,
+        "seasons": [
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10610,
+        "nameEn": "Valdemar Solok",
+        "gender": "M",
+        "countryCode": "DK",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/valdemar-solok",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/09/e66d555e-012a-41dc-a2b7-13ee0351384c.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2026/09/e66d555e-012a-41dc-a2b7-13ee0351384c.png",
+      "checkedAt": "2026-09-24T15:26:19.754Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:18.200Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10610/fe30033eabd25dc56f54222568b5233e98ac4695be2b8cf889d3470b3dfbe383.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 324935,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "607878707030f8d4",
+      "height": 600,
+      "pixelSha256": "87db0349e9d0ec1327d9ccd3d7e7cbe9dbc84127dad1d8431152ba578202bdf3",
+      "width": 600,
+      "sha256": "fe30033eabd25dc56f54222568b5233e98ac4695be2b8cf889d3470b3dfbe383",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10610,
+          "otherAthlete": {
+            "nameEn": "Lisa Perterer"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/lisa-perterer.png"
+        },
+        {
+          "athleteId": 10610,
+          "otherAthlete": {
+            "nameEn": "Nicolas Mann"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/nicolas-mann.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10382,
+        "nameEn": "Mattia Ceccarelli",
+        "gender": "M",
+        "countryCode": "IT",
+        "rankingPosition": 95,
+        "rankingScore": 18.029151064930826,
+        "resultRows": 10,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10382,
+        "nameEn": "Mattia Ceccarelli",
+        "gender": "M",
+        "countryCode": "IT",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/mattia-ceccarelli",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/04/8dba2b60-12a5-4de3-98d0-ab790e455a17.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2021/04/8dba2b60-12a5-4de3-98d0-ab790e455a17.png",
+      "checkedAt": "2026-09-24T15:26:20.087Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:20.150Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10382/805fb5d295cae4ae5c58d018f97341fd885d116d682b8c1088c04353a856e387.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 261734,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "10706870f0c8c6b4",
+      "height": 600,
+      "pixelSha256": "97f509d2cbbe5e28e498e4c805fc1ce7c9aea0e5edab34c338a42ad8445f16cd",
+      "width": 600,
+      "sha256": "805fb5d295cae4ae5c58d018f97341fd885d116d682b8c1088c04353a856e387",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10798,
+        "nameEn": "Kirsten Kasper",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 26,
+        "rankingScore": 37.471696732138035,
+        "resultRows": 2,
+        "seasons": [
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10798,
+        "nameEn": "Kirsten Kasper",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/kirsten-kasper",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/02/085aa8dd-3d6c-48fa-a0dd-c1afb25ffbe9.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/02/085aa8dd-3d6c-48fa-a0dd-c1afb25ffbe9.png",
+      "checkedAt": "2026-09-24T15:26:20.700Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:22.161Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10798/73ef6d8f4c37fea19285f66c9d2db2e242e77970e1621bd74eeaf22cd2bb7708.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 403649,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30382870e0f29016",
+      "height": 600,
+      "pixelSha256": "23b7d902455ab05e503fff4499d91b995d1b15f068111ca97f5b0d20fc1278ff",
+      "width": 600,
+      "sha256": "73ef6d8f4c37fea19285f66c9d2db2e242e77970e1621bd74eeaf22cd2bb7708",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 20008,
+        "nameEn": "Jessica Fullagar",
+        "gender": "W",
+        "countryCode": "GB",
+        "rankingPosition": 37,
+        "rankingScore": 31.911301882255103,
+        "resultRows": 1,
+        "seasons": [
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 20008,
+        "nameEn": "Jessica Fullagar",
+        "gender": "W",
+        "countryCode": "GB",
+        "catalogType": "verified generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/jessica-fullagar",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/03/c6340d30-2f4d-4420-a654-90b972a05d64.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2026/03/c6340d30-2f4d-4420-a654-90b972a05d64.png",
+      "checkedAt": "2026-09-24T15:26:21.140Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:23.111Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/20008/3fc3545b132e3b0b7b3fba445d29b2cc795e5fa263fa6475f27974a626f3b35e.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 452063,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "3068787c7868cede",
+      "height": 600,
+      "pixelSha256": "6852695f11345817b960c6dba7f16432f6730ce7f1be863b0a7c8214d68662c4",
+      "width": 600,
+      "sha256": "3fc3545b132e3b0b7b3fba445d29b2cc795e5fa263fa6475f27974a626f3b35e",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 20008,
+          "otherAthlete": {
+            "nameEn": "Alanis Siffert"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/alanis-siffert.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10745,
+        "nameEn": "Flora Duffy",
+        "gender": "W",
+        "countryCode": "BM",
+        "rankingPosition": 52,
+        "rankingScore": 26.816922375218518,
+        "resultRows": 4,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10745,
+        "nameEn": "Flora Duffy",
+        "gender": "W",
+        "countryCode": "BM",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/flora-duffy",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/fe197357-bcad-48b6-b2e4-6d92214a6c27.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/04/fe197357-bcad-48b6-b2e4-6d92214a6c27.png",
+      "checkedAt": "2026-09-24T15:26:21.420Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:24.077Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10745/3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 314079,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "707878787038f2e6",
+      "height": 600,
+      "pixelSha256": "204953b5a54bf311919306bc8c770ac8ac07a8f6fd91613e8ac30a04ebf1af59",
+      "width": 600,
+      "sha256": "3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10002,
+          "otherAthlete": {
+            "athleteId": 10745,
+            "nameEn": "Flora Duffy",
+            "gender": "W",
+            "countryCode": "BM",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10745/3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Antonio Benito López"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/antonio-benito-lopez.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Frederic Funk"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/frederic-funk.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Grace Alexander"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/grace-alexander.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Jelle Geens"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": "/athletes/jelle-geens.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Jessica Learmonth"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/jessica-learmonth.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Jonas Schomburg"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/jonas-schomburg.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Kyle Smith"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/kyle-smith.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Lena Meißner"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/lena-mei-ner.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Marten Van Riel"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": "/athletes/marten-van-riel.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Menno Koolhaas"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/menno-koolhaas.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Mika Noodt"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/mika-noodt.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Nicolas Mann"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/nicolas-mann.png"
+        },
+        {
+          "athleteId": 10745,
+          "otherAthlete": {
+            "nameEn": "Samuel Dickinson"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": "/athletes/samuel-dickinson.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10701,
+        "nameEn": "Chelsea Sodaro",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 66,
+        "rankingScore": 23.583371441228486,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10701,
+        "nameEn": "Chelsea Sodaro",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/chelsea-sodaro",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/daced089-1ab5-4e83-bb9d-095b6bd00fb1.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2024/07/daced089-1ab5-4e83-bb9d-095b6bd00fb1.png",
+      "checkedAt": "2026-09-24T15:26:21.811Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:26.846Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10701/1595a2e80d50e829fb7a15686d83de0530459f3c38dee9c7706991d1f0144c78.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 379836,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "3030303060e8e0f0",
+      "height": 600,
+      "pixelSha256": "5711ee191c2036ae3e09d054030366a88b6d6c8548e69115909c2206cca8d201",
+      "width": 600,
+      "sha256": "1595a2e80d50e829fb7a15686d83de0530459f3c38dee9c7706991d1f0144c78",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "athleteId": 10773,
+            "nameEn": "Jocelyn McCauley",
+            "gender": "W",
+            "countryCode": "US",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10773/6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Alistair Brownlee"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/alistair-brownlee.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Anne Haug"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/anne-haug.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "David McNamee"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/david-mcnamee.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Emma Pallant-Browne"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/emma-pallant-browne.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Jackie Hering"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/jackie-hering.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "James Teagle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/james-teagle.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Jan Stratmann"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/jan-stratmann.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Kacper Stepniak"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/kacper-stepniak.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Kat Matthews"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/kat-matthews.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Kate Curran"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/kate-curran.png"
+        },
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "nameEn": "Laura Philipp"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/laura-philipp.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10698,
+        "nameEn": "Charlene Clavel",
+        "gender": "W",
+        "countryCode": "FR",
+        "rankingPosition": 67,
+        "rankingScore": 23.553827430666477,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10698,
+        "nameEn": "Charlene Clavel",
+        "gender": "W",
+        "countryCode": "FR",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/charlene-clavel",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/06/e11045de-d78d-4ddc-b391-df440fa28fe5.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2023/06/e11045de-d78d-4ddc-b391-df440fa28fe5.png",
+      "checkedAt": "2026-09-24T15:26:22.433Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:27.401Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10698/ec5e330088ab24aab890b909ee1147db0b68f230b07596716d03e80e52dbd041.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 358390,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30787830f0ccd6f0",
+      "height": 600,
+      "pixelSha256": "21f5efd0232022a405be8bd685bc7ecb055d37b12f29c28bfa7654fcc9dd33a9",
+      "width": 600,
+      "sha256": "ec5e330088ab24aab890b909ee1147db0b68f230b07596716d03e80e52dbd041",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10698,
+          "otherAthlete": {
+            "nameEn": "Kristian Høgenhaug"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/kristian-h-genhaug.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10712,
+        "nameEn": "Daniela Bleymehl",
+        "gender": "W",
+        "countryCode": "DE",
+        "rankingPosition": 69,
+        "rankingScore": 23.21746342493465,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10712,
+        "nameEn": "Daniela Bleymehl",
+        "gender": "W",
+        "countryCode": "DE",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/daniela-bleymehl",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/32f0e951-d383-46f5-a9c6-d0213570e824.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2023/05/32f0e951-d383-46f5-a9c6-d0213570e824.png",
+      "checkedAt": "2026-09-24T15:26:23.003Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:28.356Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10712/9bea8918fdff52991ee719c46bd6a4f0f0a4b781a8ceeb4f9f69ffde4ced896b.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 345763,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30707870f0f8dcdc",
+      "height": 600,
+      "pixelSha256": "92beb878da77ac98e0900a0652eb090665c861a89e44ce13d74b2d0c5cd84e91",
+      "width": 600,
+      "sha256": "9bea8918fdff52991ee719c46bd6a4f0f0a4b781a8ceeb4f9f69ffde4ced896b",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10712,
+          "otherAthlete": {
+            "nameEn": "Braden Currie"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/braden-currie.png"
+        },
+        {
+          "athleteId": 10712,
+          "otherAthlete": {
+            "nameEn": "Lionel Sanders"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/lionel-sanders.png"
+        },
+        {
+          "athleteId": 10712,
+          "otherAthlete": {
+            "nameEn": "Matt Hanson"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/matt-hanson.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10889,
+        "nameEn": "Rachel Zilinskas",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 72,
+        "rankingScore": 22.841585284863616,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10889,
+        "nameEn": "Rachel Zilinskas",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/rachel-zilinskas",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/01/5f49650c-8522-4cd2-bea7-8684a3a0f0af.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2024/01/5f49650c-8522-4cd2-bea7-8684a3a0f0af.png",
+      "checkedAt": "2026-09-24T15:26:23.387Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:29.375Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10889/669d013461699e264b0bd0d348fa11c096f231c6e5622766cf9cc473121a58b0.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 253787,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30203030f0b27161",
+      "height": 600,
+      "pixelSha256": "03220f005ccc66658fca6019d2bcdd1edc7757a3ff0d16904471ef26eb086db3",
+      "width": 600,
+      "sha256": "669d013461699e264b0bd0d348fa11c096f231c6e5622766cf9cc473121a58b0",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10802,
+        "nameEn": "Kylie Simpson",
+        "gender": "W",
+        "countryCode": "AU",
+        "rankingPosition": 73,
+        "rankingScore": 22.697900275836638,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10802,
+        "nameEn": "Kylie Simpson",
+        "gender": "W",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/kylie-simpson",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/04/dafd79a2-3587-45ca-b15a-1388ef22f98c.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2024/04/dafd79a2-3587-45ca-b15a-1388ef22f98c.png",
+      "checkedAt": "2026-09-24T15:26:23.901Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:30.271Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10802/7b99f16de7127550c24473145a6e5ed5d44f1722336d96a3eef92d94cdfcc9ed.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 331208,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30303030e8ccb0b2",
+      "height": 600,
+      "pixelSha256": "35bf163e3d3342458e643090e866b85fcf36d26c02367c43bf546b024e113e78",
+      "width": 600,
+      "sha256": "7b99f16de7127550c24473145a6e5ed5d44f1722336d96a3eef92d94cdfcc9ed",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10802,
+          "otherAthlete": {
+            "nameEn": "Nikki Bartlett"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/nikki-bartlett.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10849,
+        "nameEn": "Marlene De Boer",
+        "gender": "W",
+        "countryCode": "NL",
+        "rankingPosition": 74,
+        "rankingScore": 22.516920048543895,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10849,
+        "nameEn": "Marlene De Boer",
+        "gender": "W",
+        "countryCode": "NL",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/marlene-de-boer",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/214d916d-e611-46c2-81db-ac03006a7b70.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/04/214d916d-e611-46c2-81db-ac03006a7b70.png",
+      "checkedAt": "2026-09-24T15:26:24.542Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:31.222Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10849/aaf26b310f35cc329c930d5f0c2d994c24baf28d9900fdb900cf62274f72df67.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 485653,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "307878787868a63c",
+      "height": 600,
+      "pixelSha256": "98a515aa6f58b5305860ba89dd62fd4aa6d3a9ec92796b03d2612a2d79d28925",
+      "width": 600,
+      "sha256": "aaf26b310f35cc329c930d5f0c2d994c24baf28d9900fdb900cf62274f72df67",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10849,
+          "otherAthlete": {
+            "nameEn": "Alanis Siffert"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/alanis-siffert.png"
+        },
+        {
+          "athleteId": 10849,
+          "otherAthlete": {
+            "nameEn": "Regan Hollioake"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/regan-hollioake.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 20006,
+        "nameEn": "Chloe Hartnett",
+        "gender": "W",
+        "countryCode": "AU",
+        "rankingPosition": 78,
+        "rankingScore": 21.19231354426164,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 20006,
+        "nameEn": "Chloe Hartnett",
+        "gender": "W",
+        "countryCode": "AU",
+        "catalogType": "verified generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/chloe-hartnett",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/03/5fdabab6-29c6-4778-bd39-cd3a5481b7ea.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2026/03/5fdabab6-29c6-4778-bd39-cd3a5481b7ea.png",
+      "checkedAt": "2026-09-24T15:26:24.986Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:33.094Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/20006/e3c42b3f3be689cdfeb8be1a7cc4c418935cf73d350a800226e9febe5f0ca8c8.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 369224,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "307868783878c68a",
+      "height": 600,
+      "pixelSha256": "383a3315c43402587807ed59805dcfae7c9927cf6a10a8e54d2eb291478dc713",
+      "width": 600,
+      "sha256": "e3c42b3f3be689cdfeb8be1a7cc4c418935cf73d350a800226e9febe5f0ca8c8",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 20006,
+          "otherAthlete": {
+            "nameEn": "Georgia Taylor-Brown"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/georgia-taylor-brown.png"
+        },
+        {
+          "athleteId": 20006,
+          "otherAthlete": {
+            "nameEn": "Hayden Wilde"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/hayden-wilde.png"
+        },
+        {
+          "athleteId": 20006,
+          "otherAthlete": {
+            "nameEn": "Justine Guerard"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/justine-guerard.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10653,
+        "nameEn": "Amelia Watkinson",
+        "gender": "W",
+        "countryCode": "NZ",
+        "rankingPosition": 84,
+        "rankingScore": 20.670078343099114,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10653,
+        "nameEn": "Amelia Watkinson",
+        "gender": "W",
+        "countryCode": "NZ",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/amelia-watkinson",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/bd87c374-7337-4040-ae98-951044b2e838.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2025/10/bd87c374-7337-4040-ae98-951044b2e838.png",
+      "checkedAt": "2026-09-24T15:26:25.424Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:36.000Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10653/594e2fd7e9cc859f73c9882557ca63a66274807fe6691775f3e127be939453dc.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 395169,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30787878783878f8",
+      "height": 600,
+      "pixelSha256": "6894c9e5906d6f9748bba797db3375878e9f8842142ce749469a9334b3841125",
+      "width": 600,
+      "sha256": "594e2fd7e9cc859f73c9882557ca63a66274807fe6691775f3e127be939453dc",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Ashleigh Gentle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/ashleigh-gentle.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Colin Szuch"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/colin-szuch.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Ellie Salthouse"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/ellie-salthouse.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Grace Thek"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/grace-thek.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Jackson Laundry"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/jackson-laundry.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Justus Nieschlag"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/justus-nieschlag.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Lisa Perterer"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/lisa-perterer.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Marc Dubrick"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/marc-dubrick.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Marta Sánchez"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/marta-sanchez.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Mika Noodt"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/mika-noodt.png"
+        },
+        {
+          "athleteId": 10653,
+          "otherAthlete": {
+            "nameEn": "Sam Long"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/sam-long.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10922,
+        "nameEn": "Sif Bendix Madsen",
+        "gender": "W",
+        "countryCode": "DK",
+        "rankingPosition": 88,
+        "rankingScore": 20.174247136728916,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10922,
+        "nameEn": "Sif Bendix Madsen",
+        "gender": "W",
+        "countryCode": "DK",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/sif-bendix-madsen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/05/600eb6c6-9645-474f-9a53-f6a2ef66564f.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2023/05/600eb6c6-9645-474f-9a53-f6a2ef66564f.png",
+      "checkedAt": "2026-09-24T15:26:25.827Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:39.805Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10922/10916c15381a56a2c13091fa8196587a595e1d0efe10dc9d66fc6f1f6c9a18a5.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 344951,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "30707070f0d2c8ea",
+      "height": 600,
+      "pixelSha256": "e829a8d1cf038c0ec6eaf3792fa10087608debbda2d7dc9d8cabf338d604c221",
+      "width": 600,
+      "sha256": "10916c15381a56a2c13091fa8196587a595e1d0efe10dc9d66fc6f1f6c9a18a5",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10754,
+        "nameEn": "Gurutze Frades Larralde",
+        "gender": "W",
+        "countryCode": "ES",
+        "rankingPosition": 91,
+        "rankingScore": 19.606721650221964,
+        "resultRows": 4,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10754,
+        "nameEn": "Gurutze Frades Larralde",
+        "gender": "W",
+        "countryCode": "ES",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/gurutze-frades-larralde",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/03/a9bfe739-d52b-40ca-b7d4-187aa357b148.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2021/03/a9bfe739-d52b-40ca-b7d4-187aa357b148.png",
+      "checkedAt": "2026-09-24T15:26:26.274Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:40.956Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10754/b8ca1fdb86261a902618dfa3f7277e6c2b0caafa223c3692627481e2b62ecaf7.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 299977,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "1070707030f0cce4",
+      "height": 600,
+      "pixelSha256": "02a9802f3ab8091b799e7e7d87f330e71390dd9ecc6b23044b7ec79e2d2e16b5",
+      "width": 600,
+      "sha256": "b8ca1fdb86261a902618dfa3f7277e6c2b0caafa223c3692627481e2b62ecaf7",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10773,
+        "nameEn": "Jocelyn McCauley",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 92,
+        "rankingScore": 19.319608868402973,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10773,
+        "nameEn": "Jocelyn McCauley",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/jocelyn-mccauley",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/a3064680-b5f3-4dc8-a2b2-a52b5f1f90ba.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2024/05/a3064680-b5f3-4dc8-a2b2-a52b5f1f90ba.png",
+      "checkedAt": "2026-09-24T15:26:27.237Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:42.611Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10773/6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 332619,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "3030303060e0e060",
+      "height": 600,
+      "pixelSha256": "84cf89f3a4dc4870eb301d095aeb50dfcb3160cbcd0de1ba4d7470dd2b89a8d0",
+      "width": 600,
+      "sha256": "6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10701,
+          "otherAthlete": {
+            "athleteId": 10773,
+            "nameEn": "Jocelyn McCauley",
+            "gender": "W",
+            "countryCode": "US",
+            "catalogType": "generated"
+          },
+          "scope": "staging",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": ".athlete-photo-staging/photo-batch-2/10773/6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Anne Reischmann"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/anne-reischmann.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Jackie Hering"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/jackie-hering.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "James Teagle"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 4,
+          "otherPath": "/athletes/james-teagle.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Jan Stratmann"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": "/athletes/jan-stratmann.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Kacper Stepniak"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/kacper-stepniak.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Kat Matthews"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 5,
+          "otherPath": "/athletes/kat-matthews.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Kate Curran"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 3,
+          "otherPath": "/athletes/kate-curran.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Laura Philipp"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/laura-philipp.png"
+        },
+        {
+          "athleteId": 10773,
+          "otherAthlete": {
+            "nameEn": "Simon Viain"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/simon-viain.png"
+        }
+      ]
+    },
+    {
+      "selection": {
+        "athleteId": 10728,
+        "nameEn": "Elisabetta Curridori",
+        "gender": "W",
+        "countryCode": "IT",
+        "rankingPosition": 94,
+        "rankingScore": 18.66647016934741,
+        "resultRows": 4,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10728,
+        "nameEn": "Elisabetta Curridori",
+        "gender": "W",
+        "countryCode": "IT",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/elisabetta-curridori",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/04/0e3bf26a-867c-4118-97cc-c8499884cb71.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2021/04/0e3bf26a-867c-4118-97cc-c8499884cb71.png",
+      "checkedAt": "2026-09-24T15:26:27.625Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:45.154Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10728/b2d810aa13aec4707fbed7185af7459b9037f33cee9af2efddcddc36cb389d3a.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 342982,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "1030687070e0d4ec",
+      "height": 600,
+      "pixelSha256": "18cecdf16c894525fa92fd343197487896a7a3bbf8269001216ed94ac8dd11c7",
+      "width": 600,
+      "sha256": "b2d810aa13aec4707fbed7185af7459b9037f33cee9af2efddcddc36cb389d3a",
+      "validationStatus": "VALIDATED",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": []
+    },
+    {
+      "selection": {
+        "athleteId": 10814,
+        "nameEn": "Lauren Brandon",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 96,
+        "rankingScore": 18.21551780932533,
+        "resultRows": 6,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "TOP100"
+      },
+      "athlete": {
+        "athleteId": 10814,
+        "nameEn": "Lauren Brandon",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "verifiedProfileUrl": "https://stats.protriathletes.org/athlete/lauren-brandon",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/04/63f5adfb-24e6-4732-9989-3775ee7a342f.png",
+      "finalDownloadedUrl": "https://content.protriathletes.org/content/images/2021/04/63f5adfb-24e6-4732-9989-3775ee7a342f.png",
+      "checkedAt": "2026-09-24T15:26:28.258Z",
+      "discoveryCheckedAt": "2026-09-24T15:23:48.052Z",
+      "discoveryConfidence": "HIGH",
+      "localStagingPath": ".athlete-photo-staging/photo-batch-2/10814/cc032931e6118d4c95e62fd324284152263328ce054a9aac2e7aa449700b04ad.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "byteSize": 366854,
+      "extension": "png",
+      "decoded": true,
+      "dHash": "1030687030e8e8d4",
+      "height": 600,
+      "pixelSha256": "ab9205d2fd1ae10017f12416b80f3984ff427e4eb4fab9d194406084f37bf341",
+      "width": 600,
+      "sha256": "cc032931e6118d4c95e62fd324284152263328ce054a9aac2e7aa449700b04ad",
+      "validationStatus": "VALIDATED_AFTER_MANUAL_REVIEW",
+      "reviewStatus": "APPROVED",
+      "duplicateFindings": [
+        {
+          "athleteId": 10814,
+          "otherAthlete": {
+            "nameEn": "Casper Stornes"
+          },
+          "scope": "production",
+          "kind": "POSSIBLE_VISUAL_MATCH",
+          "hammingDistance": 6,
+          "otherPath": "/athletes/casper-stornes.png"
+        }
+      ]
+    }
+  ],
+  "duplicates": [
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "athleteId": 10226,
+        "nameEn": "Jarrod Osborne",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "athleteId": 10263,
+        "nameEn": "Josh Amberger",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "athleteId": 10745,
+        "nameEn": "Flora Duffy",
+        "gender": "W",
+        "countryCode": "BM",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10745/3246f2d24ebbb9e74768a4342e9592e9cac758576d9dc991e4991581b1341cc5.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Antonio Benito López"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/antonio-benito-lopez.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Audrey Merle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/audrey-merle.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Frederic Funk"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/frederic-funk.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Jamie Riddle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/jamie-riddle.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Jelle Geens"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/jelle-geens.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Lucy Byram"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/lucy-byram.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Natalie Van Coevorden"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/natalie-van-coevorden.png"
+    },
+    {
+      "athleteId": 10002,
+      "otherAthlete": {
+        "nameEn": "Taylor Knibb"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/taylor-knibb.png"
+    },
+    {
+      "athleteId": 10467,
+      "otherAthlete": {
+        "nameEn": "Laura Jansen"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/laura-jansen.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "athleteId": 10226,
+        "nameEn": "Jarrod Osborne",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10226/e82ec65e8ca424a5ddcc44276eb0b656fbaea4d8667add0366a8fd88d512c27b.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "athleteId": 10263,
+        "nameEn": "Josh Amberger",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Alanis Siffert"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/alanis-siffert.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Grace Alexander"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/grace-alexander.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Jessica Learmonth"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/jessica-learmonth.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Lisa Perterer"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/lisa-perterer.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Lizzie Rayner"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/lizzie-rayner.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Lucy Byram"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/lucy-byram.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Marta Sánchez"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/marta-sanchez.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Mika Noodt"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/mika-noodt.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Samuel Dickinson"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/samuel-dickinson.png"
+    },
+    {
+      "athleteId": 10054,
+      "otherAthlete": {
+        "nameEn": "Vincent Luis"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/vincent-luis.png"
+    },
+    {
+      "athleteId": 10226,
+      "otherAthlete": {
+        "athleteId": 10263,
+        "nameEn": "Josh Amberger",
+        "gender": "M",
+        "countryCode": "AU",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10263/d7a9eb27488739b299def108b3cf0f07cd6b3d9730e95079fba896b415cd3e0a.png"
+    },
+    {
+      "athleteId": 10226,
+      "otherAthlete": {
+        "nameEn": "Blake Harris"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/blake-harris.png"
+    },
+    {
+      "athleteId": 10226,
+      "otherAthlete": {
+        "nameEn": "Jamie Riddle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/jamie-riddle.png"
+    },
+    {
+      "athleteId": 10226,
+      "otherAthlete": {
+        "nameEn": "Jessica Learmonth"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/jessica-learmonth.png"
+    },
+    {
+      "athleteId": 10041,
+      "otherAthlete": {
+        "nameEn": "Jackie Hering"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/jackie-hering.png"
+    },
+    {
+      "athleteId": 10064,
+      "otherAthlete": {
+        "nameEn": "Ben Kanute"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/ben-kanute.png"
+    },
+    {
+      "athleteId": 10064,
+      "otherAthlete": {
+        "nameEn": "Kat Matthews"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/kat-matthews.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Alanis Siffert"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/alanis-siffert.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Ashleigh Gentle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/ashleigh-gentle.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Frederic Funk"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/frederic-funk.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Jessica Learmonth"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/jessica-learmonth.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Lucy Byram"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/lucy-byram.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Mika Noodt"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/mika-noodt.png"
+    },
+    {
+      "athleteId": 10263,
+      "otherAthlete": {
+        "nameEn": "Samuel Dickinson"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/samuel-dickinson.png"
+    },
+    {
+      "athleteId": 10610,
+      "otherAthlete": {
+        "nameEn": "Lisa Perterer"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/lisa-perterer.png"
+    },
+    {
+      "athleteId": 10610,
+      "otherAthlete": {
+        "nameEn": "Nicolas Mann"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/nicolas-mann.png"
+    },
+    {
+      "athleteId": 20008,
+      "otherAthlete": {
+        "nameEn": "Alanis Siffert"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/alanis-siffert.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Antonio Benito López"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/antonio-benito-lopez.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Frederic Funk"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/frederic-funk.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Grace Alexander"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/grace-alexander.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Jelle Geens"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": "/athletes/jelle-geens.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Jessica Learmonth"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/jessica-learmonth.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Jonas Schomburg"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/jonas-schomburg.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Kyle Smith"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/kyle-smith.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Lena Meißner"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/lena-mei-ner.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Marten Van Riel"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": "/athletes/marten-van-riel.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Menno Koolhaas"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/menno-koolhaas.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Mika Noodt"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/mika-noodt.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Nicolas Mann"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/nicolas-mann.png"
+    },
+    {
+      "athleteId": 10745,
+      "otherAthlete": {
+        "nameEn": "Samuel Dickinson"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": "/athletes/samuel-dickinson.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "athleteId": 10773,
+        "nameEn": "Jocelyn McCauley",
+        "gender": "W",
+        "countryCode": "US",
+        "catalogType": "generated"
+      },
+      "scope": "staging",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": ".athlete-photo-staging/photo-batch-2/10773/6d16ac37c56fecc3cddf6de564987fd59130187a8b35eae2ba36823e01d07d75.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Alistair Brownlee"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/alistair-brownlee.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Anne Haug"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/anne-haug.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "David McNamee"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/david-mcnamee.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Emma Pallant-Browne"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/emma-pallant-browne.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Jackie Hering"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/jackie-hering.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "James Teagle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/james-teagle.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Jan Stratmann"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/jan-stratmann.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Kacper Stepniak"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/kacper-stepniak.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Kat Matthews"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/kat-matthews.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Kate Curran"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/kate-curran.png"
+    },
+    {
+      "athleteId": 10701,
+      "otherAthlete": {
+        "nameEn": "Laura Philipp"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/laura-philipp.png"
+    },
+    {
+      "athleteId": 10698,
+      "otherAthlete": {
+        "nameEn": "Kristian Høgenhaug"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/kristian-h-genhaug.png"
+    },
+    {
+      "athleteId": 10712,
+      "otherAthlete": {
+        "nameEn": "Braden Currie"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/braden-currie.png"
+    },
+    {
+      "athleteId": 10712,
+      "otherAthlete": {
+        "nameEn": "Lionel Sanders"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/lionel-sanders.png"
+    },
+    {
+      "athleteId": 10712,
+      "otherAthlete": {
+        "nameEn": "Matt Hanson"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/matt-hanson.png"
+    },
+    {
+      "athleteId": 10802,
+      "otherAthlete": {
+        "nameEn": "Nikki Bartlett"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/nikki-bartlett.png"
+    },
+    {
+      "athleteId": 10849,
+      "otherAthlete": {
+        "nameEn": "Alanis Siffert"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/alanis-siffert.png"
+    },
+    {
+      "athleteId": 10849,
+      "otherAthlete": {
+        "nameEn": "Regan Hollioake"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/regan-hollioake.png"
+    },
+    {
+      "athleteId": 20006,
+      "otherAthlete": {
+        "nameEn": "Georgia Taylor-Brown"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/georgia-taylor-brown.png"
+    },
+    {
+      "athleteId": 20006,
+      "otherAthlete": {
+        "nameEn": "Hayden Wilde"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/hayden-wilde.png"
+    },
+    {
+      "athleteId": 20006,
+      "otherAthlete": {
+        "nameEn": "Justine Guerard"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/justine-guerard.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Ashleigh Gentle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/ashleigh-gentle.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Colin Szuch"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/colin-szuch.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Ellie Salthouse"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/ellie-salthouse.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Grace Thek"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/grace-thek.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Jackson Laundry"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/jackson-laundry.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Justus Nieschlag"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/justus-nieschlag.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Lisa Perterer"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/lisa-perterer.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Marc Dubrick"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/marc-dubrick.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Marta Sánchez"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/marta-sanchez.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Mika Noodt"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/mika-noodt.png"
+    },
+    {
+      "athleteId": 10653,
+      "otherAthlete": {
+        "nameEn": "Sam Long"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/sam-long.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Anne Reischmann"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/anne-reischmann.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Jackie Hering"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/jackie-hering.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "James Teagle"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 4,
+      "otherPath": "/athletes/james-teagle.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Jan Stratmann"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": "/athletes/jan-stratmann.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Kacper Stepniak"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/kacper-stepniak.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Kat Matthews"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 5,
+      "otherPath": "/athletes/kat-matthews.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Kate Curran"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 3,
+      "otherPath": "/athletes/kate-curran.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Laura Philipp"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/laura-philipp.png"
+    },
+    {
+      "athleteId": 10773,
+      "otherAthlete": {
+        "nameEn": "Simon Viain"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/simon-viain.png"
+    },
+    {
+      "athleteId": 10814,
+      "otherAthlete": {
+        "nameEn": "Casper Stornes"
+      },
+      "scope": "production",
+      "kind": "POSSIBLE_VISUAL_MATCH",
+      "hammingDistance": 6,
+      "otherPath": "/athletes/casper-stornes.png"
+    }
+  ]
+}

@@ -226,10 +226,11 @@ test('published pilot preserves baseline photos and binds all 16 runtime images 
   const { sha256 } = await import('./athlete-photo-core.mjs')
   assert.equal(approvals.manifestSha256, sha256(Buffer.from(JSON.stringify(reviewed))))
   assert.equal(reviewed.entries.length, 16)
-  assert.equal(Object.keys(runtime.registry).length, baseline.registryCount + 16)
-  assert.equal(runtime.athletes.filter(a => a.image).length, 165)
-  assert.equal(runtime.athletes.filter(a => !a.image).length, 996)
-  assert.deepEqual(Object.keys(evidence.entries).sort(), reviewed.entries.map(e => String(e.athlete.athleteId)).sort())
+  assert.equal(Object.keys(runtime.registry).length, baseline.registryCount + 16 + 28)
+  assert.equal(runtime.athletes.filter(a => a.image).length, 193)
+  assert.equal(runtime.athletes.filter(a => !a.image).length, 968)
+  const batch2 = JSON.parse(await fs.readFile('scripts/fixtures/athlete-photo-batch2-reviewed-manifest.json', 'utf8'))
+  assert.deepEqual(Object.keys(evidence.entries).sort(), [...reviewed.entries, ...batch2.entries].map(e => String(e.athlete.athleteId)).sort())
   for (const [name, oldPath] of Object.entries(baseline.registry)) assert.equal(runtime.registry[name], oldPath)
   for (const [file, hash] of Object.entries({ ...baseline.existingPhotoHashes, ...baseline.bundledPhotoHashes })) assert.equal(sha256(await fs.readFile(file)), hash, file)
   for (const entry of reviewed.entries) {
@@ -242,5 +243,51 @@ test('published pilot preserves baseline photos and binds all 16 runtime images 
     assert.equal(runtime.registry[entry.athlete.nameEn], published.localPath)
     assert.equal(runtime.athletes.find(a => a.id === entry.athlete.athleteId).image, published.localPath)
     assert.deepEqual(published.review, approved)
+  }
+})
+
+test('Batch 2 selection replays production ranking at saved asOf and isolates 50 missing-photo identities',async()=>{
+  const batch=JSON.parse(await fs.readFile('scripts/fixtures/athlete-photo-batch2-batch.json','utf8'))
+  const {selectPhotoBatch2}=await import('./select-athlete-photo-batch.mjs')
+  const baseline=JSON.parse(await fs.readFile('scripts/fixtures/athlete-photo-batch2-production-baseline.json','utf8'))
+  assert.deepEqual(await selectPhotoBatch2(new Date(batch.asOf),baseline),batch)
+  assert.equal(batch.athletes.length,50);assert.equal(new Set(batch.athletes.map(a=>a.athleteId)).size,50)
+  for(const gender of ['M','W']){
+    const group=batch.athletes.filter(a=>a.gender===gender);assert.equal(group.length,25)
+    assert.ok(group.every(a=>a.rankingPosition<=100&&a.selectionPriority==='TOP100'))
+    assert.deepEqual(group.map(a=>a.rankingPosition),group.map(a=>a.rankingPosition).sort((a,b)=>a-b))
+  }
+  for(const row of batch.athletes){
+    const athlete=runtime.athletes.find(a=>a.id===row.athleteId)
+    assert.equal(athlete.nameEn,row.nameEn);assert.equal(athlete.gender,row.gender)
+    assert.ok(!baseline.runtimeImages.find(a=>a.id===row.athleteId).image);assert.ok(!baseline.registry[row.nameEn]);assert.ok(!batch.exclusions.includes(row.nameEn))
+  }
+  const discovery=JSON.parse(await fs.readFile('scripts/fixtures/athlete-photo-batch2-discovery.json','utf8'))
+  const staged=JSON.parse(await fs.readFile('scripts/fixtures/athlete-photo-batch2-staging-manifest.json','utf8'))
+  const high=discovery.decisions.filter(d=>d.confidence==='HIGH')
+  assert.deepEqual(staged.entries.map(e=>[e.athlete.athleteId,e.sourceImageUrl]),high.map(d=>[d.athlete.athleteId,d.bestCandidateUrl]))
+  assert.ok(staged.entries.every(e=>e.reviewStatus==='PENDING_MANUAL_REVIEW'&&!e.manualReview&&!e.reviewedAt&&!e.localPath))
+  assert.equal(staged.productionPhotosCompared,165)
+})
+
+test('published Batch 2 preserves all 165 photos and binds exactly 28 runtime portraits to user-reviewed bytes',async()=>{
+  const read=async suffix=>JSON.parse(await fs.readFile('scripts/fixtures/athlete-photo-batch2-'+suffix+'.json','utf8'))
+  const baseline=await read('production-baseline'),manifest=await read('reviewed-manifest'),reviews=await read('manual-review')
+  const evidence=JSON.parse(await fs.readFile('src/data/athletes/athletePhotoEvidence.json','utf8'))
+  const {sha256}=await import('./athlete-photo-core.mjs')
+  assert.equal(manifest.entries.length,28);assert.equal(reviews.entries.length,28)
+  assert.equal(reviews.manifestSha256,sha256(Buffer.from(JSON.stringify(manifest))))
+  const audit=await auditPhotoFiles(process.cwd(),runtime.registry)
+  assert.equal(audit.entries,193);assert.equal(audit.files,193);assert.deepEqual(audit.issues,[])
+  for(const [p,h]of Object.entries(baseline.photos))assert.equal(sha256(await fs.readFile('public'+p)),h,p)
+  for(const [id,e]of Object.entries(baseline.evidence.entries))assert.deepEqual(evidence.entries[id],e)
+  for(const old of baseline.runtimeImages.filter(a=>a.image))assert.equal(runtime.athletes.find(a=>a.id===old.id).image,old.image)
+  for(const e of manifest.entries){
+    const review=reviews.entries.find(r=>r.athleteId===e.athlete.athleteId),published=evidence.entries[e.athlete.athleteId]
+    assert.equal(e.discoveryConfidence,'HIGH');assert.equal(e.reviewStatus,'APPROVED');assert.equal(review.reviewStatus,'APPROVED');assert.equal(review.reviewMethod,'manual-visual-review')
+    assert.deepEqual(review.athlete,e.athlete);assert.equal(review.sha256,e.sha256);assert.equal(review.sourceImageUrl,e.sourceImageUrl);assert.equal(review.verifiedProfileUrl,e.verifiedProfileUrl)
+    assert.equal(published.batchId,'photo-batch-2');assert.equal(published.reviewedSha256,e.sha256);assert.equal(published.publishedSha256,e.sha256);assert.deepEqual(published.review,review)
+    assert.equal(sha256(await fs.readFile(e.localStagingPath)),e.sha256);assert.equal(sha256(await fs.readFile('public'+published.localPath)),e.sha256)
+    assert.equal(runtime.registry[e.athlete.nameEn],published.localPath);assert.equal(runtime.athletes.find(a=>a.id===e.athlete.athleteId).image,published.localPath)
   }
 })
