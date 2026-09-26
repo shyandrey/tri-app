@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "batchId": "photo-batch-3",
+  "discoverySha256": "c7630dd3af702af9873c8f39646c070eda87590cf55e90f3ded5cf89951bf742",
+  "purpose": "User-authorized HIGH-only staging; NOT manual approval; no production publish",
+  "candidates": [
+    {
+      "athleteId": 20001,
+      "nameEn": "Jannik Schaufler",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/04/41714113-2e61-4bb8-97d9-22967802462f.png",
+      "selection": {
+        "athleteId": 20001,
+        "nameEn": "Jannik Schaufler",
+        "gender": "M",
+        "countryCode": "DE",
+        "rankingPosition": 97,
+        "rankingScore": 17.858452251383877,
+        "resultRows": 9,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100",
+        "nameRu": "Янник Шауфлер"
+      }
+    },
+    {
+      "athleteId": 10392,
+      "nameEn": "Maximilian Sperl",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/09/a2ad8309-c4f8-402a-95f5-cf5a4aa4578a.png",
+      "selection": {
+        "athleteId": 10392,
+        "nameEn": "Maximilian Sperl",
+        "gender": "M",
+        "countryCode": "DE",
+        "rankingPosition": 103,
+        "rankingScore": 17.366819352481837,
+        "resultRows": 9,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Максимилиан Шперль"
+      }
+    },
+    {
+      "athleteId": 10485,
+      "nameEn": "Rasmus Svenningsson",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/08/41f5c4f8-53bf-43fa-af50-957774fc1504.png",
+      "selection": {
+        "athleteId": 10485,
+        "nameEn": "Rasmus Svenningsson",
+        "gender": "M",
+        "countryCode": "SE",
+        "rankingPosition": 107,
+        "rankingScore": 16.92401075817216,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Расмус Свеннингссон"
+      }
+    },
+    {
+      "athleteId": 20000,
+      "nameEn": "Henri Schoeman",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/04/aa4baf56-385d-4a9c-8df9-4d48a76a7bfa.png",
+      "selection": {
+        "athleteId": 20000,
+        "nameEn": "Henri Schoeman",
+        "gender": "M",
+        "countryCode": "ZA",
+        "rankingPosition": 109,
+        "rankingScore": 16.66149132916458,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Анри Шуман"
+      }
+    },
+    {
+      "athleteId": 10287,
+      "nameEn": "Kenji Nener",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/05/f2e4a7c9-5462-48c3-b6b1-6f195cff1d4d.png",
+      "selection": {
+        "athleteId": 10287,
+        "nameEn": "Kenji Nener",
+        "gender": "M",
+        "countryCode": "JP",
+        "rankingPosition": 116,
+        "rankingScore": 16.10985775808095,
+        "resultRows": 3,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Кэндзи Ненер"
+      }
+    },
+    {
+      "athleteId": 20003,
+      "nameEn": "Dylan Magnien",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/04/31ba216f-4d66-4b1c-9d63-5e43bcd2de1d.png",
+      "selection": {
+        "athleteId": 20003,
+        "nameEn": "Dylan Magnien",
+        "gender": "M",
+        "countryCode": "FR",
+        "rankingPosition": 122,
+        "rankingScore": 15.366557662558618,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Дилан Маньен"
+      }
+    },
+    {
+      "athleteId": 10581,
+      "nameEn": "Thor Bendix Madsen",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/02/e5c518a4-6053-457e-8d99-d17489bf77f2.png",
+      "selection": {
+        "athleteId": 10581,
+        "nameEn": "Thor Bendix Madsen",
+        "gender": "M",
+        "countryCode": "DK",
+        "rankingPosition": 130,
+        "rankingScore": 14.656574597778972,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Тор Бендикс Мадсен"
+      }
+    },
+    {
+      "athleteId": 10075,
+      "nameEn": "Caleb Noble",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/0b55ef95-673b-4d66-be1d-5e86452c89db.png",
+      "selection": {
+        "athleteId": 10075,
+        "nameEn": "Caleb Noble",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 132,
+        "rankingScore": 14.630427238954764,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Кейлеб Ноубл"
+      }
+    },
+    {
+      "athleteId": 10163,
+      "nameEn": "Florian Angert",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/06/3a400e87-d7bf-4867-9bfe-2d8bb842ea51.png",
+      "selection": {
+        "athleteId": 10163,
+        "nameEn": "Florian Angert",
+        "gender": "M",
+        "countryCode": "DE",
+        "rankingPosition": 133,
+        "rankingScore": 14.618642355129655,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Флориан Ангерт"
+      }
+    },
+    {
+      "athleteId": 10061,
+      "nameEn": "Benjamin Zorgnotti",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/06/f1d7314c-8677-4970-bd2a-99d92bff0a9a.png",
+      "selection": {
+        "athleteId": 10061,
+        "nameEn": "Benjamin Zorgnotti",
+        "gender": "M",
+        "countryCode": "FR",
+        "rankingPosition": 135,
+        "rankingScore": 14.530355287145014,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": null
+      }
+    },
+    {
+      "athleteId": 10362,
+      "nameEn": "Matt Burton",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/05/654f031e-116c-4f1a-8cf0-601378febff5.png",
+      "selection": {
+        "athleteId": 10362,
+        "nameEn": "Matt Burton",
+        "gender": "M",
+        "countryCode": "AU",
+        "rankingPosition": 137,
+        "rankingScore": 14.391642691069935,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Мэтт Бёртон"
+      }
+    },
+    {
+      "athleteId": 10428,
+      "nameEn": "Nicholas Quenet",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/11/3b0a6b67-fd3c-4bdb-9b7d-f92f1ddcf5d8.png",
+      "selection": {
+        "athleteId": 10428,
+        "nameEn": "Nicholas Quenet",
+        "gender": "M",
+        "countryCode": "ZA",
+        "rankingPosition": 138,
+        "rankingScore": 14.378603578075767,
+        "resultRows": 4,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": null
+      }
+    },
+    {
+      "athleteId": 10457,
+      "nameEn": "Ondrej Kubo",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/10/ab2a37ee-0b63-4b64-8440-36299ba7c810.png",
+      "selection": {
+        "athleteId": 10457,
+        "nameEn": "Ondrej Kubo",
+        "gender": "M",
+        "countryCode": "SK",
+        "rankingPosition": 148,
+        "rankingScore": 13.528449997365891,
+        "resultRows": 3,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Ондрей Кубо"
+      }
+    },
+    {
+      "athleteId": 10715,
+      "nameEn": "Danielle Fauteux",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/08/2dbbbe13-f30c-452f-9b70-db2da76c969f.png",
+      "selection": {
+        "athleteId": 10715,
+        "nameEn": "Danielle Fauteux",
+        "gender": "W",
+        "countryCode": "CA",
+        "rankingPosition": 99,
+        "rankingScore": 17.67714718213354,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "TOP100",
+        "nameRu": "Даниэль Фотё"
+      }
+    },
+    {
+      "athleteId": 10713,
+      "nameEn": "Daniela Ryf",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/8b3ca8e4-11f5-4829-8a99-53e0ade8ff98.png",
+      "selection": {
+        "athleteId": 10713,
+        "nameEn": "Daniela Ryf",
+        "gender": "W",
+        "countryCode": "CH",
+        "rankingPosition": 100,
+        "rankingScore": 17.655055303264852,
+        "resultRows": 1,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "TOP100",
+        "nameRu": "Даниэла Риф"
+      }
+    },
+    {
+      "athleteId": 10779,
+      "nameEn": "Julie Iemmolo",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/08/956c2e99-1fc7-46c7-a9c7-ec4b2ca6de0e.png",
+      "selection": {
+        "athleteId": 10779,
+        "nameEn": "Julie Iemmolo",
+        "gender": "W",
+        "countryCode": "FR",
+        "rankingPosition": 103,
+        "rankingScore": 17.263178620723448,
+        "resultRows": 10,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": null
+      }
+    },
+    {
+      "athleteId": 10767,
+      "nameEn": "Jeanni Metzler",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2022/01/1a360abd-2b07-4120-88c3-5dfd2b81a1b2.png",
+      "selection": {
+        "athleteId": 10767,
+        "nameEn": "Jeanni Metzler",
+        "gender": "W",
+        "countryCode": "ZA",
+        "rankingPosition": 104,
+        "rankingScore": 17.257723602281846,
+        "resultRows": 1,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Джинни Метцлер"
+      }
+    },
+    {
+      "athleteId": 10661,
+      "nameEn": "Anna Bergsten",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/fcd96714-afe8-44f3-9d1e-1ba477b47941.png",
+      "selection": {
+        "athleteId": 10661,
+        "nameEn": "Anna Bergsten",
+        "gender": "W",
+        "countryCode": "SE",
+        "rankingPosition": 106,
+        "rankingScore": 17.143135942960072,
+        "resultRows": 7,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Анна Бергстен"
+      }
+    },
+    {
+      "athleteId": 10697,
+      "nameEn": "Cecilia Perez",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/04/c53dea22-60b8-4a62-96cd-798a522eb672.png",
+      "selection": {
+        "athleteId": 10697,
+        "nameEn": "Cecilia Perez",
+        "gender": "W",
+        "countryCode": "MX",
+        "rankingPosition": 107,
+        "rankingScore": 17.104423050316758,
+        "resultRows": 6,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Сесилия Перес"
+      }
+    },
+    {
+      "athleteId": 10928,
+      "nameEn": "Solenne Billouin",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/03/810483e3-93fe-40d4-af0c-e157d90e9b65.png",
+      "selection": {
+        "athleteId": 10928,
+        "nameEn": "Solenne Billouin",
+        "gender": "W",
+        "countryCode": "FR",
+        "rankingPosition": 112,
+        "rankingScore": 16.428260491702904,
+        "resultRows": 3,
+        "seasons": [
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": null
+      }
+    },
+    {
+      "athleteId": 10862,
+      "nameEn": "Merle Brunnee",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2026/03/e2060b85-abf4-4e59-ab25-ed9a461d57d6.png",
+      "selection": {
+        "athleteId": 10862,
+        "nameEn": "Merle Brunnee",
+        "gender": "W",
+        "countryCode": "DE",
+        "rankingPosition": 121,
+        "rankingScore": 15.418133721810108,
+        "resultRows": 5,
+        "seasons": [
+          2024,
+          2025,
+          2026
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Мерле Брюнне"
+      }
+    },
+    {
+      "athleteId": 10640,
+      "nameEn": "Ai Ueda",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/01/f48fba01-adb9-4730-ac34-704bb2cba3b8.png",
+      "selection": {
+        "athleteId": 10640,
+        "nameEn": "Ai Ueda",
+        "gender": "W",
+        "countryCode": "JP",
+        "rankingPosition": 125,
+        "rankingScore": 15.012493620396622,
+        "resultRows": 3,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Ай Уэда"
+      }
+    },
+    {
+      "athleteId": 10881,
+      "nameEn": "Pamella Oliveira",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/505466f3-1ee4-494e-bcf6-6c67cf403317.png",
+      "selection": {
+        "athleteId": 10881,
+        "nameEn": "Pamella Oliveira",
+        "gender": "W",
+        "countryCode": "BR",
+        "rankingPosition": 128,
+        "rankingScore": 14.919078877146541,
+        "resultRows": 5,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Памелла Оливейра"
+      }
+    },
+    {
+      "athleteId": 10780,
+      "nameEn": "Justine Mathieux",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2025/09/044b45cc-1231-4009-ad4e-c5d1cc0161df.png",
+      "selection": {
+        "athleteId": 10780,
+        "nameEn": "Justine Mathieux",
+        "gender": "W",
+        "countryCode": "FR",
+        "rankingPosition": 136,
+        "rankingScore": 14.060995860146772,
+        "resultRows": 3,
+        "seasons": [
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Жюстин Матьё"
+      }
+    },
+    {
+      "athleteId": 10821,
+      "nameEn": "Lesley Smith",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2022/12/c67605bb-d605-47bc-97db-825531a9a311.png",
+      "selection": {
+        "athleteId": 10821,
+        "nameEn": "Lesley Smith",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 143,
+        "rankingScore": 13.69058621176494,
+        "resultRows": 4,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Лесли Смит"
+      }
+    },
+    {
+      "athleteId": 10813,
+      "nameEn": "Laura Zimmermann",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2021/05/43e11f8d-567b-45ad-8084-d417310fe9cf.png",
+      "selection": {
+        "athleteId": 10813,
+        "nameEn": "Laura Zimmermann",
+        "gender": "W",
+        "countryCode": "DE",
+        "rankingPosition": 145,
+        "rankingScore": 13.631748974363827,
+        "resultRows": 2,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Лаура Циммерманн"
+      }
+    },
+    {
+      "athleteId": 10926,
+      "nameEn": "Skye Moench",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/05/ccbd4bc9-c738-4cdf-b8f8-4869b87d95c1.png",
+      "selection": {
+        "athleteId": 10926,
+        "nameEn": "Skye Moench",
+        "gender": "W",
+        "countryCode": "US",
+        "rankingPosition": 149,
+        "rankingScore": 13.373503646677616,
+        "resultRows": 2,
+        "seasons": [
+          2024,
+          2025
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": null
+      }
+    },
+    {
+      "athleteId": 10827,
+      "nameEn": "Lisa Norden",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2024/07/aa94ba46-e204-492f-a831-d77f4b9d8b15.png",
+      "selection": {
+        "athleteId": 10827,
+        "nameEn": "Lisa Norden",
+        "gender": "W",
+        "countryCode": "SE",
+        "rankingPosition": 150,
+        "rankingScore": 13.350596783373856,
+        "resultRows": 4,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Лиза Норден"
+      }
+    },
+    {
+      "athleteId": 10721,
+      "nameEn": "Diana Castillo Franco",
+      "sourceImageUrl": "https://content.protriathletes.org/content/images/2023/03/b09f1c9e-8cdf-491a-8525-eb60a622fd04.png",
+      "selection": {
+        "athleteId": 10721,
+        "nameEn": "Diana Castillo Franco",
+        "gender": "W",
+        "countryCode": "CO",
+        "rankingPosition": 151,
+        "rankingScore": 13.196907293312648,
+        "resultRows": 4,
+        "seasons": [
+          2024
+        ],
+        "selectionPriority": "OTHER_PRIORITY_A",
+        "nameRu": "Диана Кастильо Франко"
+      }
+    }
+  ]
+}

@@ -171,7 +171,7 @@ test('batch staging is isolated from pilot, paths/HTML stay local, identity and 
     await staged(r)
     await fs.writeFile(path.join(r,STAGING,'review.html'),'unchanged pilot page')
     const before=await snapshotTree(r),batchId='photo-batch-2'
-    const selection={rankingPosition:27,resultRows:4}
+    const selection={rankingPosition:27,resultRows:4,nameRu:'Тест <имени>'}
     const namedAccepted={...single(),batchId,candidates:[{...single().candidates[0],selection}]}
     const opts={root:r,discovery:{...discovery,batchId},accepted:namedAccepted,discoveryHash,registry:{},decoder,fetchImpl:mockFetch,batchId}
     const m=await stageDownloads(opts)
@@ -182,7 +182,7 @@ test('batch staging is isolated from pilot, paths/HTML stay local, identity and 
     const after=await snapshotTree(r)
     for(const [p,h]of Object.entries(before))assert.equal(after[p],h,p)
     const html=await fs.readFile(path.join(r,STAGING,batchId,'review.html'),'utf8')
-    assert.match(html,/TRI Ranking: 27/);assert.match(html,/Result rows: 4/);assert.ok(html.includes(m.entries[0].sha256));assert.ok(!html.includes('data:image'))
+    assert.match(html,/Тест &lt;имени&gt;/);assert.match(html,/TRI Ranking: 27/);assert.match(html,/Result rows: 4/);assert.ok(html.includes(m.entries[0].sha256));assert.ok(!html.includes('data:image'))
     for(const match of html.matchAll(/<img[^>]+src="([^"]+)"/g))await fs.access(path.resolve(r,STAGING,batchId,match[1]))
     assert.throws(()=>stagingBase('../pilot'),/Invalid/)
     await assert.rejects(stageDownloads({...opts,accepted:{...namedAccepted,batchId:'other'}}),/batch identity mismatch/)

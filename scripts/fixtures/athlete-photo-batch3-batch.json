@@ -1,0 +1,1613 @@
+{
+  "schemaVersion": 1,
+  "batchId": "photo-batch-3",
+  "asOf": "2026-09-25T09:00:43.574Z",
+  "rankingSource": "src/utils/athleteRanking.ts: calculateAthleteRanking + sortAthletesByRanking; actual ranked members, 1-based within gender",
+  "selectionRule": "TOP100 without photo, then other Priority A (TOP-200 or >=5 result rows); production rank ascending, result rows descending; 50 per gender",
+  "exclusions": [
+    "Maja Stage Nielsen",
+    "Nick Thompson",
+    "Cameron Main",
+    "Wilhelm Hirsch",
+    "Michele Bortolamedi",
+    "Fabian Kraft",
+    "Ari Klau",
+    "Nathan Guerbeur",
+    "Sam Appleton",
+    "Tjebbe Kaindl",
+    "Seth Rider",
+    "Joran Driesen",
+    "Mike Phillips",
+    "Kevin McDowell",
+    "Jack Moody",
+    "Ben Faeh",
+    "Simon Westermann",
+    "Leonie Konczalla",
+    "Haley Chura",
+    "Adele Likin",
+    "Katharina Wolff",
+    "Jana Uderstadt",
+    "Tanja Neubert",
+    "Simone Dailey",
+    "Henrike Gueber",
+    "Charlotte McShane",
+    "Aaron Royle",
+    "Robert Kallin",
+    "Paul Schuster",
+    "Ben Hamilton",
+    "Jarrod Osborne",
+    "Will Draper",
+    "Thomas Bishop",
+    "Antony Costes",
+    "Bradley Weiss",
+    "Josh Amberger",
+    "Valdemar Solok",
+    "Mattia Ceccarelli",
+    "Kirsten Kasper",
+    "Jessica Fullagar",
+    "Flora Duffy",
+    "Chelsea Sodaro",
+    "Charlene Clavel",
+    "Daniela Bleymehl",
+    "Rachel Zilinskas",
+    "Kylie Simpson",
+    "Marlene De Boer",
+    "Chloe Hartnett",
+    "Amelia Watkinson",
+    "Sif Bendix Madsen",
+    "Gurutze Frades Larralde",
+    "Jocelyn McCauley",
+    "Elisabetta Curridori",
+    "Lauren Brandon",
+    "Harry Palmer",
+    "Panagiotis Bitados",
+    "Justus Nieschlag",
+    "Pierre Le Corre",
+    "Alistair Brownlee",
+    "David McNamee",
+    "Nicolas Mann",
+    "Emma Pallant-Browne",
+    "Anne Reischmann",
+    "Nikki Bartlett",
+    "Laura Madsen",
+    "Anne Haug",
+    "Alice Alberts",
+    "Laura Jansen",
+    "Lisa Becharas",
+    "Nina Derron"
+  ],
+  "proof": {
+    "uniqueAthletes": 100,
+    "runtimeCatalogProfiles": 1161,
+    "missingRuntimeOrProductionPhoto": true,
+    "excludedPilotIncluded": 0,
+    "men": 50,
+    "women": 50,
+    "top100Men": 3,
+    "top100Women": 3,
+    "eligibleByGender": {
+      "M": 136,
+      "W": 98
+    }
+  },
+  "athletes": [
+    {
+      "athleteId": 20001,
+      "nameEn": "Jannik Schaufler",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 97,
+      "rankingScore": 17.858452251383877,
+      "resultRows": 9,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "TOP100",
+      "nameRu": "Янник Шауфлер"
+    },
+    {
+      "athleteId": 10044,
+      "nameEn": "Arnaud Guilloux",
+      "gender": "M",
+      "countryCode": "FR",
+      "rankingPosition": 98,
+      "rankingScore": 17.782621862897916,
+      "resultRows": 8,
+      "seasons": [
+        2024,
+        2026
+      ],
+      "selectionPriority": "TOP100",
+      "nameRu": "Арно Гийу"
+    },
+    {
+      "athleteId": 10401,
+      "nameEn": "Michele Sarzilla",
+      "gender": "M",
+      "countryCode": "IT",
+      "rankingPosition": 100,
+      "rankingScore": 17.53400509154945,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "TOP100",
+      "nameRu": "Микеле Сардзилла"
+    },
+    {
+      "athleteId": 10060,
+      "nameEn": "Benjamin Hill",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 101,
+      "rankingScore": 17.49893094555303,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Бенджамин Хилл"
+    },
+    {
+      "athleteId": 10392,
+      "nameEn": "Maximilian Sperl",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 103,
+      "rankingScore": 17.366819352481837,
+      "resultRows": 9,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Максимилиан Шперль"
+    },
+    {
+      "athleteId": 58,
+      "nameEn": "Brock Hoel",
+      "gender": "M",
+      "countryCode": "CA",
+      "rankingPosition": 104,
+      "rankingScore": 17.25021446191699,
+      "resultRows": 5,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Брок Хоэл"
+    },
+    {
+      "athleteId": 10485,
+      "nameEn": "Rasmus Svenningsson",
+      "gender": "M",
+      "countryCode": "SE",
+      "rankingPosition": 107,
+      "rankingScore": 16.92401075817216,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Расмус Свеннингссон"
+    },
+    {
+      "athleteId": 10564,
+      "nameEn": "Tayler Reid",
+      "gender": "M",
+      "countryCode": "NZ",
+      "rankingPosition": 108,
+      "rankingScore": 16.797546005566986,
+      "resultRows": 2,
+      "seasons": [
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Тейлор Рид"
+    },
+    {
+      "athleteId": 20000,
+      "nameEn": "Henri Schoeman",
+      "gender": "M",
+      "countryCode": "ZA",
+      "rankingPosition": 109,
+      "rankingScore": 16.66149132916458,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Анри Шуман"
+    },
+    {
+      "athleteId": 10160,
+      "nameEn": "Finn Große-Freese",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 110,
+      "rankingScore": 16.36746259755953,
+      "resultRows": 8,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Финн Гроссе-Фрезе"
+    },
+    {
+      "athleteId": 51,
+      "nameEn": "Andy Krueger",
+      "gender": "M",
+      "countryCode": "US",
+      "rankingPosition": 111,
+      "rankingScore": 16.348490371243145,
+      "resultRows": 12,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Энди Крюгер"
+    },
+    {
+      "athleteId": 94,
+      "nameEn": "Jack Sosinski",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 112,
+      "rankingScore": 16.286235034378414,
+      "resultRows": 4,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Джек Сосински"
+    },
+    {
+      "athleteId": 10433,
+      "nameEn": "Nick Emde",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 113,
+      "rankingScore": 16.20639845094538,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ник Эмде"
+    },
+    {
+      "athleteId": 10604,
+      "nameEn": "Tristan Olij",
+      "gender": "M",
+      "countryCode": "NL",
+      "rankingPosition": 114,
+      "rankingScore": 16.15415324399724,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Тристан Олей"
+    },
+    {
+      "athleteId": 10338,
+      "nameEn": "Luke Jones",
+      "gender": "M",
+      "countryCode": "US",
+      "rankingPosition": 115,
+      "rankingScore": 16.11457850341227,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Люк Джонс"
+    },
+    {
+      "athleteId": 10287,
+      "nameEn": "Kenji Nener",
+      "gender": "M",
+      "countryCode": "JP",
+      "rankingPosition": 116,
+      "rankingScore": 16.10985775808095,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Кэндзи Ненер"
+    },
+    {
+      "athleteId": 10246,
+      "nameEn": "Johannes Vogel",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 117,
+      "rankingScore": 15.89924234000096,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Йоханнес Фогель"
+    },
+    {
+      "athleteId": 10108,
+      "nameEn": "Damien Le Mesnager",
+      "gender": "M",
+      "countryCode": "FR",
+      "rankingPosition": 118,
+      "rankingScore": 15.866289533857005,
+      "resultRows": 2,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10474,
+      "nameEn": "Pierre Dupuy",
+      "gender": "M",
+      "countryCode": "FR",
+      "rankingPosition": 120,
+      "rankingScore": 15.569653362799208,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Пьер Дюпюи"
+    },
+    {
+      "athleteId": 10482,
+      "nameEn": "Rafael Lukatsch",
+      "gender": "M",
+      "countryCode": "AT",
+      "rankingPosition": 121,
+      "rankingScore": 15.425289538787917,
+      "resultRows": 4,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Рафаэль Лукач"
+    },
+    {
+      "athleteId": 20003,
+      "nameEn": "Dylan Magnien",
+      "gender": "M",
+      "countryCode": "FR",
+      "rankingPosition": 122,
+      "rankingScore": 15.366557662558618,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Дилан Маньен"
+    },
+    {
+      "athleteId": 10265,
+      "nameEn": "Josh Ferris",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 123,
+      "rankingScore": 15.230181156069683,
+      "resultRows": 2,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Джош Феррис"
+    },
+    {
+      "athleteId": 10250,
+      "nameEn": "Jon Sæverås Breivold",
+      "gender": "M",
+      "countryCode": "NO",
+      "rankingPosition": 124,
+      "rankingScore": 15.105847527274788,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10593,
+      "nameEn": "Tom Hug",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 125,
+      "rankingScore": 15.043640307983937,
+      "resultRows": 2,
+      "seasons": [
+        2024,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Том Хуг"
+    },
+    {
+      "athleteId": 10031,
+      "nameEn": "Andrew Horsfall-Turner",
+      "gender": "M",
+      "countryCode": "GB",
+      "rankingPosition": 126,
+      "rankingScore": 15.008012655912426,
+      "resultRows": 9,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Эндрю Хорсфолл-Тёрнер"
+    },
+    {
+      "athleteId": 10363,
+      "nameEn": "Matt Hauser",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 128,
+      "rankingScore": 14.854698456258122,
+      "resultRows": 2,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Мэтт Хаузер"
+    },
+    {
+      "athleteId": 10581,
+      "nameEn": "Thor Bendix Madsen",
+      "gender": "M",
+      "countryCode": "DK",
+      "rankingPosition": 130,
+      "rankingScore": 14.656574597778972,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Тор Бендикс Мадсен"
+    },
+    {
+      "athleteId": 10312,
+      "nameEn": "Leonard Arnold",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 131,
+      "rankingScore": 14.640600320752954,
+      "resultRows": 11,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Леонард Арнольд"
+    },
+    {
+      "athleteId": 10075,
+      "nameEn": "Caleb Noble",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 132,
+      "rankingScore": 14.630427238954764,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Кейлеб Ноубл"
+    },
+    {
+      "athleteId": 10163,
+      "nameEn": "Florian Angert",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 133,
+      "rankingScore": 14.618642355129655,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Флориан Ангерт"
+    },
+    {
+      "athleteId": 10027,
+      "nameEn": "Andre Lopes",
+      "gender": "M",
+      "countryCode": "BR",
+      "rankingPosition": 134,
+      "rankingScore": 14.581946413549343,
+      "resultRows": 9,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Андре Лопес"
+    },
+    {
+      "athleteId": 10061,
+      "nameEn": "Benjamin Zorgnotti",
+      "gender": "M",
+      "countryCode": "FR",
+      "rankingPosition": 135,
+      "rankingScore": 14.530355287145014,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10127,
+      "nameEn": "Dieter Comhair",
+      "gender": "M",
+      "countryCode": "BE",
+      "rankingPosition": 136,
+      "rankingScore": 14.439827525857673,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10362,
+      "nameEn": "Matt Burton",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 137,
+      "rankingScore": 14.391642691069935,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Мэтт Бёртон"
+    },
+    {
+      "athleteId": 10428,
+      "nameEn": "Nicholas Quenet",
+      "gender": "M",
+      "countryCode": "ZA",
+      "rankingPosition": 138,
+      "rankingScore": 14.378603578075767,
+      "resultRows": 4,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10552,
+      "nameEn": "Stefan Zachaeus",
+      "gender": "M",
+      "countryCode": "LU",
+      "rankingPosition": 139,
+      "rankingScore": 14.158955990325776,
+      "resultRows": 2,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10415,
+      "nameEn": "Mitchell Kibby",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 140,
+      "rankingScore": 14.064026704304005,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Митчелл Кибби"
+    },
+    {
+      "athleteId": 10192,
+      "nameEn": "Hunter Lussi",
+      "gender": "M",
+      "countryCode": "US",
+      "rankingPosition": 142,
+      "rankingScore": 13.895652805905913,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Хантер Лусси"
+    },
+    {
+      "athleteId": 10156,
+      "nameEn": "Felix Forissier",
+      "gender": "M",
+      "countryCode": "FR",
+      "rankingPosition": 143,
+      "rankingScore": 13.791583425465264,
+      "resultRows": 1,
+      "seasons": [
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 69,
+      "nameEn": "John Killeen",
+      "gender": "M",
+      "countryCode": "US",
+      "rankingPosition": 144,
+      "rankingScore": 13.775423229736543,
+      "resultRows": 10,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Джон Киллин"
+    },
+    {
+      "athleteId": 10553,
+      "nameEn": "Stenn Goetstouwers",
+      "gender": "M",
+      "countryCode": "BE",
+      "rankingPosition": 145,
+      "rankingScore": 13.690254669092186,
+      "resultRows": 8,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10517,
+      "nameEn": "Ruben Zepuntke",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 146,
+      "rankingScore": 13.660821622434673,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Рубен Цепунтке"
+    },
+    {
+      "athleteId": 10479,
+      "nameEn": "Piotr Lawicki",
+      "gender": "M",
+      "countryCode": "PL",
+      "rankingPosition": 147,
+      "rankingScore": 13.571018189876241,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Пётр Лавицкий"
+    },
+    {
+      "athleteId": 10457,
+      "nameEn": "Ondrej Kubo",
+      "gender": "M",
+      "countryCode": "SK",
+      "rankingPosition": 148,
+      "rankingScore": 13.528449997365891,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ондрей Кубо"
+    },
+    {
+      "athleteId": 10258,
+      "nameEn": "Jonathan Wayaffe",
+      "gender": "M",
+      "countryCode": "BE",
+      "rankingPosition": 149,
+      "rankingScore": 13.493262691063407,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 80,
+      "nameEn": "Benjamin Randall",
+      "gender": "M",
+      "countryCode": "US",
+      "rankingPosition": 150,
+      "rankingScore": 13.469808914479637,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Бенджамин Рэндалл"
+    },
+    {
+      "athleteId": 10197,
+      "nameEn": "Itamar Eshed",
+      "gender": "M",
+      "countryCode": "IL",
+      "rankingPosition": 151,
+      "rankingScore": 13.440545362304366,
+      "resultRows": 1,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Итамар Эшед"
+    },
+    {
+      "athleteId": 10571,
+      "nameEn": "Thomas Davis",
+      "gender": "M",
+      "countryCode": "GB",
+      "rankingPosition": 152,
+      "rankingScore": 13.262027033284452,
+      "resultRows": 10,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Томас Дэвис"
+    },
+    {
+      "athleteId": 10076,
+      "nameEn": "Calvin Amos",
+      "gender": "M",
+      "countryCode": "AU",
+      "rankingPosition": 153,
+      "rankingScore": 13.20890673002478,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Кэлвин Эймос"
+    },
+    {
+      "athleteId": 10343,
+      "nameEn": "Marc Eggeling",
+      "gender": "M",
+      "countryCode": "DE",
+      "rankingPosition": 154,
+      "rankingScore": 13.13619497708575,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Марк Эггелинг"
+    },
+    {
+      "athleteId": 10753,
+      "nameEn": "Giorgia Priarone",
+      "gender": "W",
+      "countryCode": "IT",
+      "rankingPosition": 97,
+      "rankingScore": 18.03022201472311,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2026
+      ],
+      "selectionPriority": "TOP100",
+      "nameRu": "Джорджия Приароне"
+    },
+    {
+      "athleteId": 10715,
+      "nameEn": "Danielle Fauteux",
+      "gender": "W",
+      "countryCode": "CA",
+      "rankingPosition": 99,
+      "rankingScore": 17.67714718213354,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "TOP100",
+      "nameRu": "Даниэль Фотё"
+    },
+    {
+      "athleteId": 10713,
+      "nameEn": "Daniela Ryf",
+      "gender": "W",
+      "countryCode": "CH",
+      "rankingPosition": 100,
+      "rankingScore": 17.655055303264852,
+      "resultRows": 1,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "TOP100",
+      "nameRu": "Даниэла Риф"
+    },
+    {
+      "athleteId": 10740,
+      "nameEn": "Erin Schenkels",
+      "gender": "W",
+      "countryCode": "CA",
+      "rankingPosition": 101,
+      "rankingScore": 17.633140071378865,
+      "resultRows": 6,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10895,
+      "nameEn": "Richelle Hill",
+      "gender": "W",
+      "countryCode": "AU",
+      "rankingPosition": 102,
+      "rankingScore": 17.506272835566858,
+      "resultRows": 1,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ришель Хилл"
+    },
+    {
+      "athleteId": 10779,
+      "nameEn": "Julie Iemmolo",
+      "gender": "W",
+      "countryCode": "FR",
+      "rankingPosition": 103,
+      "rankingScore": 17.263178620723448,
+      "resultRows": 10,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10767,
+      "nameEn": "Jeanni Metzler",
+      "gender": "W",
+      "countryCode": "ZA",
+      "rankingPosition": 104,
+      "rankingScore": 17.257723602281846,
+      "resultRows": 1,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Джинни Метцлер"
+    },
+    {
+      "athleteId": 10766,
+      "nameEn": "Jeanne Collonge",
+      "gender": "W",
+      "countryCode": "FR",
+      "rankingPosition": 105,
+      "rankingScore": 17.14861187160556,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Жанна Коллонж"
+    },
+    {
+      "athleteId": 10661,
+      "nameEn": "Anna Bergsten",
+      "gender": "W",
+      "countryCode": "SE",
+      "rankingPosition": 106,
+      "rankingScore": 17.143135942960072,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Анна Бергстен"
+    },
+    {
+      "athleteId": 10697,
+      "nameEn": "Cecilia Perez",
+      "gender": "W",
+      "countryCode": "MX",
+      "rankingPosition": 107,
+      "rankingScore": 17.104423050316758,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Сесилия Перес"
+    },
+    {
+      "athleteId": 10911,
+      "nameEn": "Sarah Schoenfelder",
+      "gender": "W",
+      "countryCode": "DE",
+      "rankingPosition": 108,
+      "rankingScore": 17.081856147584773,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Сара Шёнфельдер"
+    },
+    {
+      "athleteId": 10790,
+      "nameEn": "Katie Remond",
+      "gender": "W",
+      "countryCode": "AU",
+      "rankingPosition": 110,
+      "rankingScore": 16.65642412341739,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 163,
+      "nameEn": "Nikita Paskiewiez",
+      "gender": "W",
+      "countryCode": "FR",
+      "rankingPosition": 111,
+      "rankingScore": 16.467939420211447,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Никита Паскевич"
+    },
+    {
+      "athleteId": 10928,
+      "nameEn": "Solenne Billouin",
+      "gender": "W",
+      "countryCode": "FR",
+      "rankingPosition": 112,
+      "rankingScore": 16.428260491702904,
+      "resultRows": 3,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 177,
+      "nameEn": "Marissa Lovell",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 113,
+      "rankingScore": 16.42417505130383,
+      "resultRows": 4,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Марисса Ловелл"
+    },
+    {
+      "athleteId": 10799,
+      "nameEn": "Kristen Marchant",
+      "gender": "W",
+      "countryCode": "CA",
+      "rankingPosition": 114,
+      "rankingScore": 16.32171268480913,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Кристен Марчант"
+    },
+    {
+      "athleteId": 181,
+      "nameEn": "Shiva Leisner",
+      "gender": "W",
+      "countryCode": "DK",
+      "rankingPosition": 115,
+      "rankingScore": 16.28007903774389,
+      "resultRows": 5,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Шива Лейснер"
+    },
+    {
+      "athleteId": 10866,
+      "nameEn": "Miranda Tomenson",
+      "gender": "W",
+      "countryCode": "CA",
+      "rankingPosition": 116,
+      "rankingScore": 16.128529024315107,
+      "resultRows": 7,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Миранда Томенсон"
+    },
+    {
+      "athleteId": 10672,
+      "nameEn": "Arlette Mariana Gonzalez Hurtado",
+      "gender": "W",
+      "countryCode": "MX",
+      "rankingPosition": 117,
+      "rankingScore": 15.922802724814556,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Арлетт Мариана Гонсалес Уртадо"
+    },
+    {
+      "athleteId": 10734,
+      "nameEn": "Emilie Morier",
+      "gender": "W",
+      "countryCode": "FR",
+      "rankingPosition": 118,
+      "rankingScore": 15.897817083899685,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Эмили Морье"
+    },
+    {
+      "athleteId": 176,
+      "nameEn": "Luisa Iogna Prat",
+      "gender": "W",
+      "countryCode": "IT",
+      "rankingPosition": 120,
+      "rankingScore": 15.698985804571855,
+      "resultRows": 13,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Луиза Йонья Прат"
+    },
+    {
+      "athleteId": 10862,
+      "nameEn": "Merle Brunnee",
+      "gender": "W",
+      "countryCode": "DE",
+      "rankingPosition": 121,
+      "rankingScore": 15.418133721810108,
+      "resultRows": 5,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Мерле Брюнне"
+    },
+    {
+      "athleteId": 10675,
+      "nameEn": "Batya Beard",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 122,
+      "rankingScore": 15.26623783374096,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10665,
+      "nameEn": "Anna Pabinger",
+      "gender": "W",
+      "countryCode": "AT",
+      "rankingPosition": 123,
+      "rankingScore": 15.265807998092454,
+      "resultRows": 2,
+      "seasons": [
+        2024,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Анна Пабингер"
+    },
+    {
+      "athleteId": 10640,
+      "nameEn": "Ai Ueda",
+      "gender": "W",
+      "countryCode": "JP",
+      "rankingPosition": 125,
+      "rankingScore": 15.012493620396622,
+      "resultRows": 3,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ай Уэда"
+    },
+    {
+      "athleteId": 10932,
+      "nameEn": "Sophie Evans",
+      "gender": "W",
+      "countryCode": "GB",
+      "rankingPosition": 126,
+      "rankingScore": 14.963748197316258,
+      "resultRows": 1,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Софи Эванс"
+    },
+    {
+      "athleteId": 10904,
+      "nameEn": "Samantha Kingsford",
+      "gender": "W",
+      "countryCode": "NZ",
+      "rankingPosition": 127,
+      "rankingScore": 14.93245098317227,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Саманта Кингсфорд"
+    },
+    {
+      "athleteId": 10881,
+      "nameEn": "Pamella Oliveira",
+      "gender": "W",
+      "countryCode": "BR",
+      "rankingPosition": 128,
+      "rankingScore": 14.919078877146541,
+      "resultRows": 5,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Памелла Оливейра"
+    },
+    {
+      "athleteId": 10809,
+      "nameEn": "Laura Kessler",
+      "gender": "W",
+      "countryCode": "CH",
+      "rankingPosition": 129,
+      "rankingScore": 14.794883151127646,
+      "resultRows": 3,
+      "seasons": [
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Лаура Кесслер"
+    },
+    {
+      "athleteId": 10652,
+      "nameEn": "Amanda Macuiba",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 131,
+      "rankingScore": 14.52902969250344,
+      "resultRows": 4,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10778,
+      "nameEn": "Julia Skala",
+      "gender": "W",
+      "countryCode": "DE",
+      "rankingPosition": 132,
+      "rankingScore": 14.425335403050948,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Юлия Скала"
+    },
+    {
+      "athleteId": 175,
+      "nameEn": "Leslie Homol",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 133,
+      "rankingScore": 14.41805408757998,
+      "resultRows": 5,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Лесли Хомол"
+    },
+    {
+      "athleteId": 10783,
+      "nameEn": "Kate Gillespie-Jones",
+      "gender": "W",
+      "countryCode": "AU",
+      "rankingPosition": 134,
+      "rankingScore": 14.236302628597175,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Кейт Гиллеспи-Джонс"
+    },
+    {
+      "athleteId": 154,
+      "nameEn": "Stephanie Clutterbuck",
+      "gender": "W",
+      "countryCode": "GB",
+      "rankingPosition": 135,
+      "rankingScore": 14.070916230667704,
+      "resultRows": 10,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Стефани Клаттербак"
+    },
+    {
+      "athleteId": 10780,
+      "nameEn": "Justine Mathieux",
+      "gender": "W",
+      "countryCode": "FR",
+      "rankingPosition": 136,
+      "rankingScore": 14.060995860146772,
+      "resultRows": 3,
+      "seasons": [
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Жюстин Матьё"
+    },
+    {
+      "athleteId": 10643,
+      "nameEn": "Alexandra Watt",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 137,
+      "rankingScore": 14.021881833280043,
+      "resultRows": 6,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Александра Уотт"
+    },
+    {
+      "athleteId": 10901,
+      "nameEn": "Sabrina Exenberger",
+      "gender": "W",
+      "countryCode": "AT",
+      "rankingPosition": 138,
+      "rankingScore": 13.98400994762177,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Сабрина Эксенбергер"
+    },
+    {
+      "athleteId": 10886,
+      "nameEn": "Rachel Brown",
+      "gender": "W",
+      "countryCode": "GB",
+      "rankingPosition": 139,
+      "rankingScore": 13.848591656214472,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Рэйчел Браун"
+    },
+    {
+      "athleteId": 10880,
+      "nameEn": "Paige Cranage",
+      "gender": "W",
+      "countryCode": "AU",
+      "rankingPosition": 140,
+      "rankingScore": 13.748695088250082,
+      "resultRows": 3,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10892,
+      "nameEn": "Rebecca Robisch",
+      "gender": "W",
+      "countryCode": "DE",
+      "rankingPosition": 142,
+      "rankingScore": 13.710364862458414,
+      "resultRows": 1,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ребекка Робиш"
+    },
+    {
+      "athleteId": 10821,
+      "nameEn": "Lesley Smith",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 143,
+      "rankingScore": 13.69058621176494,
+      "resultRows": 4,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Лесли Смит"
+    },
+    {
+      "athleteId": 195,
+      "nameEn": "Hannah Knighton",
+      "gender": "W",
+      "countryCode": "NZ",
+      "rankingPosition": 144,
+      "rankingScore": 13.674959304460927,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ханна Найтон"
+    },
+    {
+      "athleteId": 10813,
+      "nameEn": "Laura Zimmermann",
+      "gender": "W",
+      "countryCode": "DE",
+      "rankingPosition": 145,
+      "rankingScore": 13.631748974363827,
+      "resultRows": 2,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Лаура Циммерманн"
+    },
+    {
+      "athleteId": 10651,
+      "nameEn": "Alycia Hill",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 146,
+      "rankingScore": 13.560371659752397,
+      "resultRows": 2,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 179,
+      "nameEn": "Rebecca Kawaoka",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 147,
+      "rankingScore": 13.496292223391722,
+      "resultRows": 4,
+      "seasons": [
+        2024,
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Ребекка Каваока"
+    },
+    {
+      "athleteId": 10841,
+      "nameEn": "Mareike Guhl",
+      "gender": "W",
+      "countryCode": "DE",
+      "rankingPosition": 148,
+      "rankingScore": 13.41240375879266,
+      "resultRows": 4,
+      "seasons": [
+        2025,
+        2026
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Марейке Гуль"
+    },
+    {
+      "athleteId": 10926,
+      "nameEn": "Skye Moench",
+      "gender": "W",
+      "countryCode": "US",
+      "rankingPosition": 149,
+      "rankingScore": 13.373503646677616,
+      "resultRows": 2,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": null
+    },
+    {
+      "athleteId": 10827,
+      "nameEn": "Lisa Norden",
+      "gender": "W",
+      "countryCode": "SE",
+      "rankingPosition": 150,
+      "rankingScore": 13.350596783373856,
+      "resultRows": 4,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Лиза Норден"
+    },
+    {
+      "athleteId": 10721,
+      "nameEn": "Diana Castillo Franco",
+      "gender": "W",
+      "countryCode": "CO",
+      "rankingPosition": 151,
+      "rankingScore": 13.196907293312648,
+      "resultRows": 4,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Диана Кастильо Франко"
+    },
+    {
+      "athleteId": 10945,
+      "nameEn": "Valerie Barthelemy",
+      "gender": "W",
+      "countryCode": "BE",
+      "rankingPosition": 152,
+      "rankingScore": 13.12159716839407,
+      "resultRows": 3,
+      "seasons": [
+        2024
+      ],
+      "selectionPriority": "OTHER_PRIORITY_A",
+      "nameRu": "Валери Бартелеми"
+    }
+  ]
+}
