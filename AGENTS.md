@@ -210,6 +210,18 @@ The initials placeholder is intentional and should remain available when no veri
 
 Do not accept a photo match solely because an image search/import scoring algorithm gives it a high score.
 
+### PHOTO COVERAGE POLICY
+
+- A missing athlete photo is NOT a catalog data issue. A generated profile without a photo is a normal, fully valid profile.
+- For generated profiles, prioritize correct identity and linkage to all race results.
+- Do not bulk-fill photos merely to reduce the "profiles without photo" count. Missing photos belong in audits as INFO / coverage metrics, not ISSUEs; 100% photo coverage is not a goal.
+- Stats PTO is the automated photo source. Do not automatically search secondary image sources for long-tail generated athletes.
+- When no confident Stats PTO photo is available, keep the initials placeholder. An incorrect photo is worse than a missing photo.
+- Photo enrichment priorities, in order: known / highly ranked professional athletes; athletes specifically requested by the user; photos manually found or uploaded by the user and reviewed.
+- The user may manually find and provide photos of specific athletes in the future.
+- Every new photo must pass identity verification and visual review before production publication.
+- Mass photo enrichment of generated athletes is complete after Batch 3.
+
 ## 14. Athlete audit
 
 The project contains:
@@ -222,7 +234,7 @@ Important audit categories include:
 - generated profiles still using English-only display names;
 - code-like country labels;
 - missing country codes;
-- missing photos;
+- missing photos (INFO / coverage metric, not an ISSUE);
 - profiles without linked results;
 - consistency issues.
 
