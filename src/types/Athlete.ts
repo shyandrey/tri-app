@@ -18,7 +18,7 @@ export type Athlete = {
   image?: string
   age?: number
   socialLinks?: AthleteSocialLinks
-  bio: string
+  bio?: string
   bioFacts?: string[]
   achievements: string[]
 }

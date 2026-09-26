@@ -115,7 +115,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
     return <AthletesPage athletes={rankedAthletes} ranking={athleteRanking} onBack={back} onAthleteClick={openAthlete} onNavigate={navigateSection} />
   }
 
-  if (page === 'top') return <TopAthletesPage athletes={athletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
+  if (page === 'top') return <TopAthletesPage athletes={rankedAthletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
   if (page === 'more') return <MorePage onNavigate={navigateSection} />
 
   if (page === 'race' && selectedRace) {

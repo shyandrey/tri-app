@@ -1,4 +1,5 @@
-import type { Athlete } from '../types/Athlete'
+import { usePageState } from '../navigation/usePageState'
+import type { Athlete, AthleteGender } from '../types/Athlete'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 
@@ -10,6 +11,8 @@ type TopAthletesPageProps = {
 }
 
 function TopAthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: TopAthletesPageProps) {
+  const [gender, setGender] = usePageState<AthleteGender>('rankingGender', 'M')
+  const visibleAthletes = athletes.filter(athlete => athlete.gender === gender)
   return (
     <main className="app">
       <button className="page-back-button" onClick={onBack}>← Назад</button>
@@ -19,8 +22,16 @@ function TopAthletesPage({ athletes, onBack, onAthleteClick, onNavigate }: TopAt
           <h1>Топ атлетов</h1>
         </div>
 
+        <div className="athletes-gender-filter" aria-label="Пол атлета в рейтинге">
+          {([{ value: 'M', label: 'MEN', symbol: '♂' }, { value: 'W', label: 'WOMEN', symbol: '♀' }] as const).map(item => (
+            <button key={item.value} type="button" className={gender === item.value ? 'athletes-gender-card is-active' : 'athletes-gender-card'} aria-pressed={gender === item.value} onClick={() => setGender(item.value)}>
+              <span className="athletes-gender-card__symbol">{item.symbol}</span>
+              <span className="athletes-gender-card__label">{item.label}</span>
+            </button>
+          ))}
+        </div>
         <div className="top-athletes">
-          {athletes.map((athlete, index) => (
+          {visibleAthletes.map((athlete, index) => (
             <article className="top-athlete-card" key={athlete.id} onClick={() => onAthleteClick(athlete)}>
               <div className="top-athlete-card__position">{index + 1}</div>
               <div className="top-athlete-card__info">

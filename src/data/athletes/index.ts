@@ -8,7 +8,7 @@ import { localizeAthlete } from './localization'
 
 const withRegisteredPhoto = (athlete: Athlete): Athlete => ({
   ...athlete,
-  image: athlete.image ?? athletePhotosByName[athlete.nameEn],
+  image: athlete.image ?? (athlete.nameEn ? athletePhotosByName[athlete.nameEn] : undefined),
 })
 
 export const athletes: Athlete[] = [
