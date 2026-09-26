@@ -1,5 +1,8 @@
 import type { Athlete, AthleteGender } from '../types/Athlete'
 
+import { athleteCountryKey, canonicalCountryKey } from './athleteCountryStrength.ts'
+export { athleteCountryKey } from './athleteCountryStrength.ts'
+
 export type AthleteFilters = { search: string; genderFilter: 'ALL' | AthleteGender; countryFilter: string }
 const EN_KEYS = "qwertyuiop[]asdfghjkl;'zxcvbnm,."
 const RU_KEYS = 'йцукенгшщзхъфывапролджэячсмитьбю'
@@ -12,13 +15,13 @@ function swapKeyboardLayout(value: string) {
   }).join('')
 }
 const normalizeSearch = (value: string) => value.trim().toLowerCase().replace(/ё/g, 'е')
-export const athleteCountryKey = (athlete: Athlete) => athlete.countryCode?.trim() || athlete.country?.trim() || ''
 
 // Filtering preserves the incoming ranking order. Search temporarily takes priority;
 // the selected filters are never mutated and apply again when the query is cleared.
 export function filterAthletes(athletes: Athlete[], { search, genderFilter, countryFilter }: AthleteFilters) {
   const query = normalizeSearch(search)
-  if (!query) return athletes.filter(a => (genderFilter === 'ALL' || a.gender === genderFilter) && (countryFilter === 'ALL' || athleteCountryKey(a) === countryFilter))
+  const country = canonicalCountryKey(countryFilter)
+  if (!query) return athletes.filter(a => (genderFilter === 'ALL' || a.gender === genderFilter) && (country === 'ALL' || athleteCountryKey(a) === country))
   const queries = [...new Set([query, normalizeSearch(swapKeyboardLayout(search))].filter(Boolean))]
   return athletes.filter(a => {
     const haystack = normalizeSearch([a.name, a.nameEn, a.country, a.countryEn, a.countryCode, a.discipline].filter(Boolean).join(' '))

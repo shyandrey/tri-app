@@ -30,10 +30,12 @@ import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, Ranking
 import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
-import { sortAthletesByRanking } from './utils/athleteRanking'
+import { calculateAthleteRanking, sortAthletesByRanking } from './utils/athleteRanking'
 
 const linkedRaceResults = linkResultsToAthletes(raceResults)
-const rankedAthletes = sortAthletesByRanking(athletes, linkedRaceResults, allRaceEditionViews)
+const rankingAsOf = new Date()
+const athleteRanking = calculateAthleteRanking(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf)
+const rankedAthletes = sortAthletesByRanking(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf)
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
 
@@ -110,7 +112,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
   }
 
   if (page === 'athletes') {
-    return <AthletesPage athletes={rankedAthletes} onBack={back} onAthleteClick={openAthlete} onNavigate={navigateSection} />
+    return <AthletesPage athletes={rankedAthletes} ranking={athleteRanking} onBack={back} onAthleteClick={openAthlete} onNavigate={navigateSection} />
   }
 
   if (page === 'top') return <TopAthletesPage athletes={athletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
