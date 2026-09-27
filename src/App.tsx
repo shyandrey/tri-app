@@ -1,3 +1,4 @@
+import LatestNews from './components/LatestNews'
 import FeedbackPage from './pages/FeedbackPage'
 import { genericFeedbackContext } from '../shared/feedback'
 import type { FeedbackContext } from '../shared/feedback'
@@ -164,10 +165,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
         <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PaceIcon /></div><div className="feature-card__copy"><h3>Калькулятор темпа</h3><p>Скоро</p></div></article>
       </HorizontalScroller>
 
-      <section className="section">
-        <div className="section__header"><h2>Новости из канала</h2><button>@trista_watt</button></div>
-        <article className="news-card"><div><h3>IRONMAN объявил новый календарь стартов</h3><p>Последние новости из Telegram-канала</p></div><span className="news-card__telegram">➤</span></article>
-      </section>
+      <LatestNews />
 
       <BottomNav currentPage="home" onNavigate={navigateSection} />
     </main>
