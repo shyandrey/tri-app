@@ -7,3 +7,7 @@
 # FEEDBACK_TELEGRAM_CHAT_ID=
 # NEWS_TELEGRAM_CHANNEL_ID=
 # ALLOWED_ORIGIN=http://localhost:8787
+# Feedback protected environments additionally need public TURNSTILE_SITE_KEY,
+# exact ALLOWED_ORIGIN and FEEDBACK_RATE_LIMITER binding (see docs/feedback.md).
+# TURNSTILE_SITE_KEY=
+# Local entry uses explicit mock delivery, never these real credentials.

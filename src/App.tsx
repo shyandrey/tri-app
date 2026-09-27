@@ -1,3 +1,6 @@
+import FeedbackPage from './pages/FeedbackPage'
+import { genericFeedbackContext } from '../shared/feedback'
+import type { FeedbackContext } from '../shared/feedback'
 import { allRaceEditionViews, currentRaceEditions as races } from './data/raceEditions'
 import type { Race } from './types/Race'
 import { athletes } from './data/athletes'
@@ -92,6 +95,7 @@ function App() {
 }
 
 function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: Route) => void; back: () => void }) {
+  const openFeedback = (feedback: FeedbackContext) => navigate({ page: 'feedback', feedback })
   const page = route.page
   const selectedRace = allRaceEditionViews.find(r => r.editionId === route.id)
   const selectedAthlete = athletes.find(a => String(a.id) === route.id)
@@ -117,14 +121,15 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
   }
 
   if (page === 'top') return <TopAthletesPage athletes={rankedAthletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
-  if (page === 'more') return <MorePage onNavigate={navigateSection} />
+  if (page === 'feedback') return <FeedbackPage context={route.feedback ?? genericFeedbackContext} onBack={back} />
+  if (page === 'more') return <MorePage onNavigate={navigateSection} onFeedback={() => openFeedback(genericFeedbackContext)} />
 
   if (page === 'race' && selectedRace) {
-    return <RaceDetailPage race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={back} onNavigate={navigateSection} onAthleteClick={openAthlete} />
+    return <RaceDetailPage onFeedback={openFeedback} race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={back} onNavigate={navigateSection} onAthleteClick={openAthlete} />
   }
 
   if (page === 'athlete' && selectedAthlete) {
-    return <AthleteDetailPage athlete={selectedAthlete} results={getResultsByAthlete(linkedRaceResults, selectedAthlete.id)} races={allRaceEditionViews} onBack={back} onNavigate={navigateSection} onRaceClick={openRace} />
+    return <AthleteDetailPage onFeedback={() => openFeedback({ ...genericFeedbackContext, screen: 'athlete', route: `#/athlete/${selectedAthlete.id}`, athleteId: selectedAthlete.id, athleteName: [selectedAthlete.name, selectedAthlete.nameEn].filter((v, i, a) => v && a.indexOf(v) === i).join(' / ') })} athlete={selectedAthlete} results={getResultsByAthlete(linkedRaceResults, selectedAthlete.id)} races={allRaceEditionViews} onBack={back} onNavigate={navigateSection} onRaceClick={openRace} />
   }
 
   return (

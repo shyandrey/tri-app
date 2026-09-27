@@ -1,5 +1,7 @@
 # Cloudflare foundation
 
+Feedback implementation extends this baseline; see [Feedback setup and privacy](feedback.md). Named deploy environments use the protected worker; the top-level target is now the loopback-only local mock entry.
+
 GitHub → `npm ci` → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1.
 React remains client-side. Hash routes (including direct `/#/athlete/…` links) are unchanged. Existing static files bypass Worker execution; `/api` and `/api/*` always reach the Worker, including HTML navigation requests. Other paths use the ASSETS binding / SPA fallback. Unknown API paths return JSON 404, never index.html.
 

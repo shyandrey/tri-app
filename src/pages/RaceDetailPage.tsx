@@ -1,4 +1,7 @@
-import { useMemo } from 'react'
+import { useContext, useMemo } from 'react'
+import type { FeedbackContext } from '../../shared/feedback'
+import { genericFeedbackContext } from '../../shared/feedback'
+import { NavigationContext } from '../navigation/usePageState'
 import { usePageState } from '../navigation/usePageState'
 import type { Race } from '../types/Race'
 import BottomNav from '../components/BottomNav'
@@ -9,6 +12,7 @@ import type { Athlete } from '../types/Athlete'
 import { getChampionshipNavigationGroup } from '../utils/raceChampionshipGroup'
 
 type RaceDetailPageProps = {
+  onFeedback?: (context: FeedbackContext) => void
   race: Race
   raceEditions: Race[]
   allResults: RaceResult[]
@@ -58,7 +62,8 @@ const getDaysLabel = (days: number) => {
   return 'дней'
 }
 
-function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
+function RaceDetailPage({ onFeedback, race, raceEditions, allResults, athletes, onBack, onNavigate, onAthleteClick }: RaceDetailPageProps) {
+  const navigation = useContext(NavigationContext)
   const championshipGroup = getChampionshipNavigationGroup(race)
   const initialGender = genderFromEdition(race) ?? (championshipGroup ? 'M' : undefined)
   const [activeEditionId, setActiveEditionId] = usePageState<string>('activeEditionId', race.editionId ?? '')
@@ -216,6 +221,12 @@ function RaceDetailPage({ race, raceEditions, allResults, athletes, onBack, onNa
               Скоро здесь будут результаты!
             </div>
           )}
+          {onFeedback && <button className="feedback-entry" type="button" onClick={() => {
+            const internal = navigation?.current.ui.resultGender
+            const gender = activeGender ?? (internal === 'M' || internal === 'W' ? internal : (['M', 'W'] as const).find(g => results.some(r => r.gender === g))) ?? null
+            onFeedback({ ...genericFeedbackContext, screen: 'race', route: `#/race/${activeRace.editionId}`,
+              raceEditionId: activeRace.editionId ?? null, raceName: `${activeRace.name} ${currentYear}`, gender })
+          }}>Сообщить об ошибке в результатах</button>}
         </div>
       </section>
 

@@ -16,7 +16,7 @@ test('health returns only shared public metadata; no secrets, no database depend
  assert.equal(response.headers.get('Access-Control-Allow-Origin'),null)
 })
 test('unknown API routes are JSON 404 even on browser navigation; safe 405 with Allow',async()=>{
- for(const path of ['/api','/api/missing','/api/news','/api/feedback']){
+ for(const path of ['/api','/api/missing','/api/news','/api/missing-feedback']){
   const response=await worker.fetch(request(path),env)
   assert.equal(response.status,404);assert.equal((await response.json()).error.code,'NOT_FOUND')
  }

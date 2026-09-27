@@ -6,3 +6,4 @@ export type Page =
   | 'athlete'
   | 'top'
   | 'more'
+  | 'feedback'

@@ -2,10 +2,11 @@ import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 
 type MorePageProps = {
+  onFeedback: () => void
   onNavigate: (page: Page) => void
 }
 
-function MorePage({ onNavigate }: MorePageProps) {
+function MorePage({ onNavigate, onFeedback }: MorePageProps) {
   return (
     <main className="app">
       <section className="section">
@@ -26,11 +27,11 @@ function MorePage({ onNavigate }: MorePageProps) {
             <span>›</span>
           </article>
 
-          <article className="more-card">
-            <h3>Обратная связь</h3>
-            <p>Предложения и замечания</p>
-            <span>›</span>
-          </article>
+          <button className="more-card feedback-entry" type="button" onClick={onFeedback}>
+            <strong>Сообщить об ошибке</strong>
+            <small>Предложения и замечания</small>
+            <span aria-hidden="true">›</span>
+          </button>
         </div>
       </section>
 

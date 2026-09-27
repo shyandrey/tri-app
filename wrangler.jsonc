@@ -1,10 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tri-app-local",
-  "main": "worker/index.ts",
+  "main": "worker/local.ts",
   "compatibility_date": "2026-09-27",
   "workers_dev": false,
-  "build": {"command": "npm run build", "watch_dir": ["src", "worker"]},
+  "build": {"command": "npm run build", "watch_dir": ["src", "worker", "shared"]},
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
@@ -18,6 +18,7 @@
   }],
   "env": {
     "preview": {
+      "main": "worker/index.ts",
       "name": "tri-app-preview", "workers_dev": true,
       "d1_databases": [{
         "binding": "DB", "database_name": "tri-app-preview",
@@ -26,6 +27,7 @@
       }]
     },
     "production": {
+      "main": "worker/index.ts",
       "name": "tri-app", "workers_dev": true,
       "d1_databases": [{
         "binding": "DB", "database_name": "tri-app-production",

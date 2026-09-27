@@ -1,10 +1,11 @@
+import type { FeedbackContext } from '../../shared/feedback.ts'
 import type { Page } from '../types/Page.ts'
 
-export type Route = { page: Page; id?: string }
+export type Route = { page: Page; id?: string; feedback?: FeedbackContext }
 export type Json = null | boolean | number | string | Json[] | { [key: string]: Json }
 export type Entry = { version: 1; key: string; parent: string | null; route: Route; ui: Record<string, Json>; scroll: { x: number; y: number; elements: Record<string, number> } }
 export type HistoryPort = { state: unknown; pushState: (state: unknown, unused: string, url: string) => void; replaceState: (state: unknown, unused: string, url: string) => void; back: () => void }
-const pages: Page[] = ['home', 'calendar', 'athletes', 'top', 'more', 'race', 'athlete']
+const pages: Page[] = ['home', 'calendar', 'athletes', 'top', 'more', 'race', 'athlete', 'feedback']
 export const routeURL = (route: Route) => `#/${route.page}${route.id ? '/' + encodeURIComponent(route.id) : ''}`
 export function parseRoute(hash: string): Route {
   try {
@@ -15,7 +16,7 @@ export function parseRoute(hash: string): Route {
   } catch { return { page: 'home' } }
 }
 export function fallback(route: Route): Route {
-  return { page: route.page === 'race' ? 'calendar' : route.page === 'athlete' ? 'athletes' : 'home' }
+  return { page: route.page === 'feedback' ? 'more' : route.page === 'race' ? 'calendar' : route.page === 'athlete' ? 'athletes' : 'home' }
 }
 function readEntry(state: unknown): Entry | null {
   const e = (state as { triNavigation?: Entry } | null)?.triNavigation

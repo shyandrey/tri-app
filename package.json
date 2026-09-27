@@ -24,7 +24,8 @@
     "cf:migrate:local": "wrangler d1 migrations apply DB --local",
     "cf:check": "wrangler deploy --env \"\" --dry-run --outdir .wrangler/dry-run",
     "pretest:foundation": "npm run metadata",
-    "test:foundation": "node --test scripts/test-cloudflare-foundation.mjs"
+    "test:foundation": "node --test scripts/test-cloudflare-foundation.mjs",
+    "test:feedback": "npm run metadata && node --test scripts/test-feedback.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

@@ -1,0 +1,27 @@
+.feedback-page { max-width: 680px; }
+.feedback-page h1 { font-size: 26px; }
+.feedback-context, .feedback-privacy { color: var(--tri-muted); font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.feedback-page fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; min-width: 0; }
+.feedback-page label { margin-top: 12px; font-weight: 500; }
+.feedback-page input, .feedback-page select, .feedback-page textarea { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 12px; border-radius: 10px; border: 1px solid var(--tri-border-strong); background: var(--tri-surface); color: var(--tri-text); font: inherit; font-size: 16px; }
+.feedback-page textarea { resize: vertical; }
+.feedback-page button, .feedback-entry { min-height: 44px; }
+.feedback-page button { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--tri-border-strong); background: var(--tri-surface); color: var(--tri-text); font: inherit; cursor: pointer; }
+.feedback-page .feedback-submit { background: var(--tri-accent); color: var(--tri-bg); font-weight: 600; }
+.feedback-page :focus-visible, .feedback-entry:focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
+.feedback-page :disabled { opacity: .65; cursor: wait; }
+.feedback-page small { color: var(--tri-muted); overflow-wrap: anywhere; }
+.feedback-page [role=alert], .feedback-page [id$=-error] { color: var(--tri-accent); }
+.feedback-page [id$=-error]:empty { display: none; }
+.feedback-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.feedback-success { display: grid; gap: 16px; }
+.feedback-entry { background: transparent; color: var(--tri-muted); border: 0; font: inherit; font-size: 13px; cursor: pointer; padding: 10px 0; margin-top: 12px; }
+button.more-card.feedback-entry { width: 100%; text-align: left; margin: 0; padding: 20px 50px 20px 20px; color: var(--tri-text); }
+.more-card.feedback-entry strong { display: block; font-size: 18px; margin-bottom: 7px; }
+.more-card.feedback-entry small { color: var(--tri-muted); font-size: 13px; }
+/* Keep the global floating Back button out of the form heading on narrow screens. */
+.app.feedback-page { text-align: left; }
+.feedback-page .page-back-button { position: static; display: inline-flex; align-items: center; margin-bottom: 8px; }
+.app.feedback-page > .section:first-of-type { margin-top: 12px; }
+.feedback-page h1 { margin: 0 0 14px; }
+.feedback-page h1:focus { outline: none; }

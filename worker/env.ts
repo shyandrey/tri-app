@@ -1,4 +1,6 @@
 export interface Env {
+  TURNSTILE_SITE_KEY?: string
+  FEEDBACK_RATE_LIMITER?: { limit: (options: { key: string }) => Promise<{ success: boolean }> }
   ASSETS: Fetcher
   DB: D1Database
   // Future features only: health/static serving never require these values.
