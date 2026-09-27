@@ -25,3 +25,11 @@ dist-ssr
 
 # Local photo review/download artifacts; never commit staged images.
 /.athlete-photo-staging/
+
+# Cloudflare local state, generated public metadata and credentials
+.wrangler/
+.generated/
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example

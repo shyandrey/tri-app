@@ -1,0 +1,9 @@
+# Optional future features. Do not copy real values into Git or any VITE_* key.
+# Foundation works without this file. Copy to .dev.vars only when needed.
+# TELEGRAM_BOT_TOKEN=
+# TELEGRAM_WEBHOOK_SECRET=
+# TURNSTILE_SECRET_KEY=
+# RATE_LIMIT_HMAC_SECRET=
+# FEEDBACK_TELEGRAM_CHAT_ID=
+# NEWS_TELEGRAM_CHANNEL_ID=
+# ALLOWED_ORIGIN=http://localhost:8787
