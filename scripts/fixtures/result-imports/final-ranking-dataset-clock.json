@@ -1,0 +1,1183 @@
+{
+  "rankingAsOf": "2026-09-19T12:00:00.000Z",
+  "results": 4493,
+  "athletes": 1167,
+  "top20": {
+    "M": [
+      {
+        "id": 3,
+        "name": "Hayden Wilde",
+        "position": 1,
+        "score": 125.88507373310966
+      },
+      {
+        "id": 1,
+        "name": "Kristian Blummenfelt",
+        "position": 2,
+        "score": 94.96743756004072
+      },
+      {
+        "id": 6,
+        "name": "Jelle Geens",
+        "position": 3,
+        "score": 85.72469009034192
+      },
+      {
+        "id": 2,
+        "name": "Marten Van Riel",
+        "position": 4,
+        "score": 78.44657345182814
+      },
+      {
+        "id": 7,
+        "name": "Casper Stornes",
+        "position": 5,
+        "score": 74.05382910535975
+      },
+      {
+        "id": 10521,
+        "name": "Sam Laidlow",
+        "position": 6,
+        "score": 65.90331592836247
+      },
+      {
+        "id": 23,
+        "name": "Lionel Sanders",
+        "position": 7,
+        "score": 60.72951854867037
+      },
+      {
+        "id": 4,
+        "name": "Mika Noodt",
+        "position": 8,
+        "score": 59.64068890888972
+      },
+      {
+        "id": 20,
+        "name": "Matthew Marquardt",
+        "position": 9,
+        "score": 55.23032281738558
+      },
+      {
+        "id": 39,
+        "name": "Trevor Foley",
+        "position": 10,
+        "score": 55.11586283918939
+      },
+      {
+        "id": 5,
+        "name": "Rico Bogen",
+        "position": 11,
+        "score": 54.03291373248804
+      },
+      {
+        "id": 21,
+        "name": "Magnus Ditlev",
+        "position": 12,
+        "score": 53.94815597215313
+      },
+      {
+        "id": 22,
+        "name": "Sam Long",
+        "position": 13,
+        "score": 53.101520638742535
+      },
+      {
+        "id": 11,
+        "name": "Lasse Nygaard Priester",
+        "position": 14,
+        "score": 50.23089984904856
+      },
+      {
+        "id": 8,
+        "name": "Jonas Schomburg",
+        "position": 15,
+        "score": 47.929780137108565
+      },
+      {
+        "id": 10185,
+        "name": "Harry Palmer",
+        "position": 16,
+        "score": 45.87610043261643
+      },
+      {
+        "id": 9,
+        "name": "Samuel Dickinson",
+        "position": 17,
+        "score": 45.56520963058177
+      },
+      {
+        "id": 15,
+        "name": "Morgan Pearson",
+        "position": 18,
+        "score": 44.71007912670354
+      },
+      {
+        "id": 10458,
+        "name": "Panagiotis Bitados",
+        "position": 19,
+        "score": 41.85910331879223
+      },
+      {
+        "id": 24,
+        "name": "Patrick Lange",
+        "position": 20,
+        "score": 41.29532282924112
+      }
+    ],
+    "W": [
+      {
+        "id": 104,
+        "name": "Taylor Knibb",
+        "position": 1,
+        "score": 119.06821731119257
+      },
+      {
+        "id": 101,
+        "name": "Kate Waugh",
+        "position": 2,
+        "score": 100.61675101546099
+      },
+      {
+        "id": 102,
+        "name": "Julie Derron",
+        "position": 3,
+        "score": 91.50485416659156
+      },
+      {
+        "id": 106,
+        "name": "Solveig Løvseth",
+        "position": 4,
+        "score": 90.8871161707822
+      },
+      {
+        "id": 103,
+        "name": "Lucy Charles-Barclay",
+        "position": 5,
+        "score": 86.12370852843429
+      },
+      {
+        "id": 109,
+        "name": "Laura Philipp",
+        "position": 6,
+        "score": 84.1951397965633
+      },
+      {
+        "id": 108,
+        "name": "Kat Matthews",
+        "position": 7,
+        "score": 77.44297440208607
+      },
+      {
+        "id": 147,
+        "name": "Ashleigh Gentle",
+        "position": 8,
+        "score": 67.19757402585209
+      },
+      {
+        "id": 105,
+        "name": "Georgia Taylor-Brown",
+        "position": 9,
+        "score": 62.7850140638086
+      },
+      {
+        "id": 114,
+        "name": "Paula Findlay",
+        "position": 10,
+        "score": 58.34690841180802
+      },
+      {
+        "id": 111,
+        "name": "Alanis Siffert",
+        "position": 11,
+        "score": 50.9158552311912
+      },
+      {
+        "id": 119,
+        "name": "Lisa Perterer",
+        "position": 12,
+        "score": 48.5483759515697
+      },
+      {
+        "id": 112,
+        "name": "Imogen Simmonds",
+        "position": 13,
+        "score": 46.946630253758194
+      },
+      {
+        "id": 138,
+        "name": "Jackie Hering",
+        "position": 14,
+        "score": 46.91977792453846
+      },
+      {
+        "id": 113,
+        "name": "Hannah Berry",
+        "position": 15,
+        "score": 46.40104978342105
+      },
+      {
+        "id": 120,
+        "name": "Marjolaine Pierré",
+        "position": 16,
+        "score": 45.207310712283004
+      },
+      {
+        "id": 10736,
+        "name": "Emma Pallant-Browne",
+        "position": 17,
+        "score": 42.5427094317849
+      },
+      {
+        "id": 130,
+        "name": "Marta Sánchez",
+        "position": 18,
+        "score": 42.404453311880815
+      },
+      {
+        "id": 117,
+        "name": "Caroline Pohle",
+        "position": 19,
+        "score": 40.72531257133315
+      },
+      {
+        "id": 126,
+        "name": "Katrine Græsbøll Christensen",
+        "position": 20,
+        "score": 40.54629490800539
+      }
+    ]
+  },
+  "countries": {
+    "ALL": [
+      {
+        "key": "GB",
+        "label": "GB",
+        "flag": "🇬🇧",
+        "count": 89,
+        "strength": 74.56890968848128
+      },
+      {
+        "key": "US",
+        "label": "US",
+        "flag": "🇺🇸",
+        "count": 273,
+        "strength": 65.8871403062097
+      },
+      {
+        "key": "NO",
+        "label": "NO",
+        "flag": "🇳🇴",
+        "count": 10,
+        "strength": 63.160133663083094
+      },
+      {
+        "key": "DE",
+        "label": "DE",
+        "flag": "🇩🇪",
+        "count": 150,
+        "strength": 59.20588448481965
+      },
+      {
+        "key": "NZ",
+        "label": "NZ",
+        "flag": "🇳🇿",
+        "count": 28,
+        "strength": 51.187646989713365
+      },
+      {
+        "key": "BE",
+        "label": "BE",
+        "flag": "🇧🇪",
+        "count": 38,
+        "strength": 46.88503004784137
+      },
+      {
+        "key": "CH",
+        "label": "CH",
+        "flag": "🇨🇭",
+        "count": 36,
+        "strength": 46.767741728078605
+      },
+      {
+        "key": "FR",
+        "label": "FR",
+        "flag": "🇫🇷",
+        "count": 83,
+        "strength": 44.95132663095891
+      },
+      {
+        "key": "AU",
+        "label": "AU",
+        "flag": "🇦🇺",
+        "count": 91,
+        "strength": 42.975015568410804
+      },
+      {
+        "key": "CA",
+        "label": "CA",
+        "flag": "🇨🇦",
+        "count": 55,
+        "strength": 40.27204655305898
+      },
+      {
+        "key": "DK",
+        "label": "DK",
+        "flag": "🇩🇰",
+        "count": 39,
+        "strength": 37.99475438165655
+      },
+      {
+        "key": "NL",
+        "label": "NL",
+        "flag": "🇳🇱",
+        "count": 22,
+        "strength": 32.42815711308981
+      },
+      {
+        "key": "ES",
+        "label": "ES",
+        "flag": "🇪🇸",
+        "count": 42,
+        "strength": 28.018164519608796
+      },
+      {
+        "key": "IT",
+        "label": "IT",
+        "flag": "🇮🇹",
+        "count": 31,
+        "strength": 26.554459425376194
+      },
+      {
+        "key": "AT",
+        "label": "AT",
+        "flag": "🇦🇹",
+        "count": 21,
+        "strength": 22.956654705567885
+      },
+      {
+        "key": "ZA",
+        "label": "ZA",
+        "flag": "🇿🇦",
+        "count": 13,
+        "strength": 20.194586296120267
+      },
+      {
+        "key": "SE",
+        "label": "SE",
+        "flag": "🇸🇪",
+        "count": 18,
+        "strength": 19.51926692553172
+      },
+      {
+        "key": "PL",
+        "label": "PL",
+        "flag": "🇵🇱",
+        "count": 17,
+        "strength": 17.974005214299755
+      },
+      {
+        "key": "EE",
+        "label": "EE",
+        "flag": "🇪🇪",
+        "count": 4,
+        "strength": 12.111077064477323
+      },
+      {
+        "key": "JP",
+        "label": "JP",
+        "flag": "🇯🇵",
+        "count": 8,
+        "strength": 11.703810316174486
+      },
+      {
+        "key": "MX",
+        "label": "MX",
+        "flag": "🇲🇽",
+        "count": 7,
+        "strength": 11.662664507188406
+      },
+      {
+        "key": "FI",
+        "label": "FI",
+        "flag": "🇫🇮",
+        "count": 8,
+        "strength": 11.62535784516467
+      },
+      {
+        "key": "BR",
+        "label": "BR",
+        "flag": "🇧🇷",
+        "count": 16,
+        "strength": 11.138974664893794
+      },
+      {
+        "key": "GR",
+        "label": "GR",
+        "flag": "🇬🇷",
+        "count": 2,
+        "strength": 10.106558275807213
+      },
+      {
+        "key": "LU",
+        "label": "LU",
+        "flag": "🇱🇺",
+        "count": 2,
+        "strength": 9.675814814612906
+      },
+      {
+        "key": "CL",
+        "label": "CL",
+        "flag": "🇨🇱",
+        "count": 5,
+        "strength": 8.013254266997048
+      },
+      {
+        "key": "IL",
+        "label": "IL",
+        "flag": "🇮🇱",
+        "count": 5,
+        "strength": 7.758329004649997
+      },
+      {
+        "key": "PT",
+        "label": "PT",
+        "flag": "🇵🇹",
+        "count": 4,
+        "strength": 7.588843053292609
+      },
+      {
+        "key": "IE",
+        "label": "IE",
+        "flag": "🇮🇪",
+        "count": 4,
+        "strength": 6.782399343148603
+      },
+      {
+        "key": "BM",
+        "label": "BM",
+        "flag": "🇧🇲",
+        "count": 1,
+        "strength": 5.363384475043704
+      },
+      {
+        "key": "AR",
+        "label": "AR",
+        "flag": "🇦🇷",
+        "count": 4,
+        "strength": 5.3396826314883015
+      },
+      {
+        "key": "CO",
+        "label": "CO",
+        "flag": "🇨🇴",
+        "count": 4,
+        "strength": 4.802456742863855
+      },
+      {
+        "key": "SK",
+        "label": "SK",
+        "flag": "🇸🇰",
+        "count": 3,
+        "strength": 4.470146434894781
+      },
+      {
+        "key": "CZ",
+        "label": "CZ",
+        "flag": "🇨🇿",
+        "count": 5,
+        "strength": 4.14189210465332
+      },
+      {
+        "key": "UA",
+        "label": "UA",
+        "flag": "🇺🇦",
+        "count": 3,
+        "strength": 4.065213440549603
+      },
+      {
+        "key": "RS",
+        "label": "RS",
+        "flag": "🇷🇸",
+        "count": 2,
+        "strength": 3.454495113493725
+      },
+      {
+        "key": "HU",
+        "label": "HU",
+        "flag": "🇭🇺",
+        "count": 3,
+        "strength": 2.74878777262477
+      },
+      {
+        "key": "AE",
+        "label": "AE",
+        "flag": "🇦🇪",
+        "count": 2,
+        "strength": 2.718633959847721
+      },
+      {
+        "key": "EC",
+        "label": "EC",
+        "flag": "🇪🇨",
+        "count": 2,
+        "strength": 2.5111796284896535
+      },
+      {
+        "key": "RO",
+        "label": "RO",
+        "flag": "🇷🇴",
+        "count": 1,
+        "strength": 2.0011337757036065
+      },
+      {
+        "key": "LV",
+        "label": "LV",
+        "flag": "🇱🇻",
+        "count": 1,
+        "strength": 1.8670788651846972
+      },
+      {
+        "key": "CN",
+        "label": "CN",
+        "flag": "🇨🇳",
+        "count": 2,
+        "strength": 1.8662333400509776
+      },
+      {
+        "key": "SI",
+        "label": "SI",
+        "flag": "🇸🇮",
+        "count": 2,
+        "strength": 1.8070784601564451
+      },
+      {
+        "key": "IS",
+        "label": "IS",
+        "flag": "🇮🇸",
+        "count": 1,
+        "strength": 1.6415599830616152
+      },
+      {
+        "key": "LT",
+        "label": "LT",
+        "flag": "🇱🇹",
+        "count": 1,
+        "strength": 1.4036836154093906
+      },
+      {
+        "key": "TW",
+        "label": "TW",
+        "flag": "🇹🇼",
+        "count": 2,
+        "strength": 1.0606440677354119
+      },
+      {
+        "key": "SY",
+        "label": "SY",
+        "flag": "🇸🇾",
+        "count": 1,
+        "strength": 1.043531175590433
+      },
+      {
+        "key": "VE",
+        "label": "VE",
+        "flag": "🇻🇪",
+        "count": 1,
+        "strength": 0.7965896369770583
+      },
+      {
+        "key": "PA",
+        "label": "PA",
+        "flag": "🇵🇦",
+        "count": 1,
+        "strength": 0.7298874935546572
+      },
+      {
+        "key": "KZ",
+        "label": "KZ",
+        "flag": "🇰🇿",
+        "count": 1,
+        "strength": 0
+      }
+    ],
+    "M": [
+      {
+        "key": "DE",
+        "label": "DE",
+        "flag": "🇩🇪",
+        "count": 99,
+        "strength": 50.6259210913552
+      },
+      {
+        "key": "US",
+        "label": "US",
+        "flag": "🇺🇸",
+        "count": 159,
+        "strength": 49.28452195370916
+      },
+      {
+        "key": "NO",
+        "label": "NO",
+        "flag": "🇳🇴",
+        "count": 9,
+        "strength": 46.740506762132036
+      },
+      {
+        "key": "NZ",
+        "label": "NZ",
+        "flag": "🇳🇿",
+        "count": 20,
+        "strength": 45.78049477237104
+      },
+      {
+        "key": "BE",
+        "label": "BE",
+        "flag": "🇧🇪",
+        "count": 29,
+        "strength": 44.14700158152344
+      },
+      {
+        "key": "FR",
+        "label": "FR",
+        "flag": "🇫🇷",
+        "count": 59,
+        "strength": 42.100287498650346
+      },
+      {
+        "key": "GB",
+        "label": "GB",
+        "flag": "🇬🇧",
+        "count": 48,
+        "strength": 36.24478321850144
+      },
+      {
+        "key": "DK",
+        "label": "DK",
+        "flag": "🇩🇰",
+        "count": 29,
+        "strength": 30.137429469404132
+      },
+      {
+        "key": "CA",
+        "label": "CA",
+        "flag": "🇨🇦",
+        "count": 32,
+        "strength": 28.456759698525467
+      },
+      {
+        "key": "AU",
+        "label": "AU",
+        "flag": "🇦🇺",
+        "count": 59,
+        "strength": 28.142684002755935
+      },
+      {
+        "key": "IT",
+        "label": "IT",
+        "flag": "🇮🇹",
+        "count": 21,
+        "strength": 25.151749680348583
+      },
+      {
+        "key": "NL",
+        "label": "NL",
+        "flag": "🇳🇱",
+        "count": 11,
+        "strength": 22.616724408610853
+      },
+      {
+        "key": "ZA",
+        "label": "ZA",
+        "flag": "🇿🇦",
+        "count": 9,
+        "strength": 18.69171967757388
+      },
+      {
+        "key": "ES",
+        "label": "ES",
+        "flag": "🇪🇸",
+        "count": 34,
+        "strength": 16.555593976854354
+      },
+      {
+        "key": "CH",
+        "label": "CH",
+        "flag": "🇨🇭",
+        "count": 18,
+        "strength": 16.08900412948187
+      },
+      {
+        "key": "SE",
+        "label": "SE",
+        "flag": "🇸🇪",
+        "count": 10,
+        "strength": 14.256302636394363
+      },
+      {
+        "key": "PL",
+        "label": "PL",
+        "flag": "🇵🇱",
+        "count": 13,
+        "strength": 14.20269293218914
+      },
+      {
+        "key": "AT",
+        "label": "AT",
+        "flag": "🇦🇹",
+        "count": 13,
+        "strength": 13.057952502600898
+      },
+      {
+        "key": "GR",
+        "label": "GR",
+        "flag": "🇬🇷",
+        "count": 2,
+        "strength": 10.106558275807213
+      },
+      {
+        "key": "LU",
+        "label": "LU",
+        "flag": "🇱🇺",
+        "count": 2,
+        "strength": 9.675814814612906
+      },
+      {
+        "key": "BR",
+        "label": "BR",
+        "flag": "🇧🇷",
+        "count": 10,
+        "strength": 9.1497198234715
+      },
+      {
+        "key": "JP",
+        "label": "JP",
+        "flag": "🇯🇵",
+        "count": 5,
+        "strength": 8.069750020571346
+      },
+      {
+        "key": "FI",
+        "label": "FI",
+        "flag": "🇫🇮",
+        "count": 4,
+        "strength": 7.957196888150046
+      },
+      {
+        "key": "EE",
+        "label": "EE",
+        "flag": "🇪🇪",
+        "count": 3,
+        "strength": 7.858998350432147
+      },
+      {
+        "key": "IL",
+        "label": "IL",
+        "flag": "🇮🇱",
+        "count": 5,
+        "strength": 7.758329004649997
+      },
+      {
+        "key": "PT",
+        "label": "PT",
+        "flag": "🇵🇹",
+        "count": 3,
+        "strength": 7.035365532947106
+      },
+      {
+        "key": "MX",
+        "label": "MX",
+        "flag": "🇲🇽",
+        "count": 5,
+        "strength": 6.603695362830564
+      },
+      {
+        "key": "CL",
+        "label": "CL",
+        "flag": "🇨🇱",
+        "count": 3,
+        "strength": 5.202879632321354
+      },
+      {
+        "key": "SK",
+        "label": "SK",
+        "flag": "🇸🇰",
+        "count": 3,
+        "strength": 4.470146434894781
+      },
+      {
+        "key": "UA",
+        "label": "UA",
+        "flag": "🇺🇦",
+        "count": 3,
+        "strength": 4.065213440549603
+      },
+      {
+        "key": "AR",
+        "label": "AR",
+        "flag": "🇦🇷",
+        "count": 3,
+        "strength": 3.965967861060201
+      },
+      {
+        "key": "RS",
+        "label": "RS",
+        "flag": "🇷🇸",
+        "count": 2,
+        "strength": 3.454495113493725
+      },
+      {
+        "key": "CZ",
+        "label": "CZ",
+        "flag": "🇨🇿",
+        "count": 4,
+        "strength": 2.9629763528779933
+      },
+      {
+        "key": "CO",
+        "label": "CO",
+        "flag": "🇨🇴",
+        "count": 3,
+        "strength": 2.198817843133227
+      },
+      {
+        "key": "CN",
+        "label": "CN",
+        "flag": "🇨🇳",
+        "count": 2,
+        "strength": 1.8662333400509776
+      },
+      {
+        "key": "SI",
+        "label": "SI",
+        "flag": "🇸🇮",
+        "count": 2,
+        "strength": 1.8070784601564451
+      },
+      {
+        "key": "IS",
+        "label": "IS",
+        "flag": "🇮🇸",
+        "count": 1,
+        "strength": 1.6415599830616152
+      },
+      {
+        "key": "HU",
+        "label": "HU",
+        "flag": "🇭🇺",
+        "count": 2,
+        "strength": 1.5802034438072818
+      },
+      {
+        "key": "TW",
+        "label": "TW",
+        "flag": "🇹🇼",
+        "count": 2,
+        "strength": 1.0606440677354119
+      },
+      {
+        "key": "SY",
+        "label": "SY",
+        "flag": "🇸🇾",
+        "count": 1,
+        "strength": 1.043531175590433
+      },
+      {
+        "key": "AE",
+        "label": "AE",
+        "flag": "🇦🇪",
+        "count": 1,
+        "strength": 1.0333250486793364
+      },
+      {
+        "key": "EC",
+        "label": "EC",
+        "flag": "🇪🇨",
+        "count": 1,
+        "strength": 1.0176821694885825
+      },
+      {
+        "key": "IE",
+        "label": "IE",
+        "flag": "🇮🇪",
+        "count": 1,
+        "strength": 0.8939176825293892
+      },
+      {
+        "key": "VE",
+        "label": "VE",
+        "flag": "🇻🇪",
+        "count": 1,
+        "strength": 0.7965896369770583
+      },
+      {
+        "key": "PA",
+        "label": "PA",
+        "flag": "🇵🇦",
+        "count": 1,
+        "strength": 0.7298874935546572
+      },
+      {
+        "key": "KZ",
+        "label": "KZ",
+        "flag": "🇰🇿",
+        "count": 1,
+        "strength": 0
+      }
+    ],
+    "W": [
+      {
+        "key": "GB",
+        "label": "GB",
+        "flag": "🇬🇧",
+        "count": 41,
+        "strength": 73.90223148831497
+      },
+      {
+        "key": "US",
+        "label": "US",
+        "flag": "🇺🇸",
+        "count": 114,
+        "strength": 54.18881642296992
+      },
+      {
+        "key": "CH",
+        "label": "CH",
+        "flag": "🇨🇭",
+        "count": 18,
+        "strength": 46.767741728078605
+      },
+      {
+        "key": "DE",
+        "label": "DE",
+        "flag": "🇩🇪",
+        "count": 51,
+        "strength": 45.46303654230902
+      },
+      {
+        "key": "AU",
+        "label": "AU",
+        "flag": "🇦🇺",
+        "count": 32,
+        "strength": 40.44908389241612
+      },
+      {
+        "key": "DK",
+        "label": "DK",
+        "flag": "🇩🇰",
+        "count": 10,
+        "strength": 28.866695137237127
+      },
+      {
+        "key": "FR",
+        "label": "FR",
+        "flag": "🇫🇷",
+        "count": 24,
+        "strength": 28.34909363129596
+      },
+      {
+        "key": "CA",
+        "label": "CA",
+        "flag": "🇨🇦",
+        "count": 23,
+        "strength": 28.10200228618143
+      },
+      {
+        "key": "NZ",
+        "label": "NZ",
+        "flag": "🇳🇿",
+        "count": 8,
+        "strength": 25.772085048392732
+      },
+      {
+        "key": "NL",
+        "label": "NL",
+        "flag": "🇳🇱",
+        "count": 11,
+        "strength": 22.744147907122414
+      },
+      {
+        "key": "ES",
+        "label": "ES",
+        "flag": "🇪🇸",
+        "count": 8,
+        "strength": 22.144495575744052
+      },
+      {
+        "key": "AT",
+        "label": "AT",
+        "flag": "🇦🇹",
+        "count": 8,
+        "strength": 20.188855051266767
+      },
+      {
+        "key": "NO",
+        "label": "NO",
+        "flag": "🇳🇴",
+        "count": 1,
+        "strength": 18.177423234156443
+      },
+      {
+        "key": "SE",
+        "label": "SE",
+        "flag": "🇸🇪",
+        "count": 8,
+        "strength": 15.897270402383038
+      },
+      {
+        "key": "IT",
+        "label": "IT",
+        "flag": "🇮🇹",
+        "count": 10,
+        "strength": 14.856956265214867
+      },
+      {
+        "key": "BE",
+        "label": "BE",
+        "flag": "🇧🇪",
+        "count": 9,
+        "strength": 13.305689004497552
+      },
+      {
+        "key": "PL",
+        "label": "PL",
+        "flag": "🇵🇱",
+        "count": 4,
+        "strength": 10.22797107388222
+      },
+      {
+        "key": "ZA",
+        "label": "ZA",
+        "flag": "🇿🇦",
+        "count": 4,
+        "strength": 8.962587310953287
+      },
+      {
+        "key": "BR",
+        "label": "BR",
+        "flag": "🇧🇷",
+        "count": 6,
+        "strength": 8.817396188213598
+      },
+      {
+        "key": "JP",
+        "label": "JP",
+        "flag": "🇯🇵",
+        "count": 3,
+        "strength": 6.7317428578646075
+      },
+      {
+        "key": "MX",
+        "label": "MX",
+        "flag": "🇲🇽",
+        "count": 2,
+        "strength": 6.6054451550262625
+      },
+      {
+        "key": "IE",
+        "label": "IE",
+        "flag": "🇮🇪",
+        "count": 3,
+        "strength": 5.888481660619215
+      },
+      {
+        "key": "FI",
+        "label": "FI",
+        "flag": "🇫🇮",
+        "count": 4,
+        "strength": 5.517489968184639
+      },
+      {
+        "key": "BM",
+        "label": "BM",
+        "flag": "🇧🇲",
+        "count": 1,
+        "strength": 5.363384475043704
+      },
+      {
+        "key": "EE",
+        "label": "EE",
+        "flag": "🇪🇪",
+        "count": 1,
+        "strength": 4.252078714045174
+      },
+      {
+        "key": "CL",
+        "label": "CL",
+        "flag": "🇨🇱",
+        "count": 2,
+        "strength": 2.810374634675694
+      },
+      {
+        "key": "CO",
+        "label": "CO",
+        "flag": "🇨🇴",
+        "count": 1,
+        "strength": 2.603638899730629
+      },
+      {
+        "key": "RO",
+        "label": "RO",
+        "flag": "🇷🇴",
+        "count": 1,
+        "strength": 2.0011337757036065
+      },
+      {
+        "key": "LV",
+        "label": "LV",
+        "flag": "🇱🇻",
+        "count": 1,
+        "strength": 1.8670788651846972
+      },
+      {
+        "key": "AE",
+        "label": "AE",
+        "flag": "🇦🇪",
+        "count": 1,
+        "strength": 1.6853089111683843
+      },
+      {
+        "key": "EC",
+        "label": "EC",
+        "flag": "🇪🇨",
+        "count": 1,
+        "strength": 1.493497459001071
+      },
+      {
+        "key": "LT",
+        "label": "LT",
+        "flag": "🇱🇹",
+        "count": 1,
+        "strength": 1.4036836154093906
+      },
+      {
+        "key": "AR",
+        "label": "AR",
+        "flag": "🇦🇷",
+        "count": 1,
+        "strength": 1.3737147704281
+      },
+      {
+        "key": "CZ",
+        "label": "CZ",
+        "flag": "🇨🇿",
+        "count": 1,
+        "strength": 1.1789157517753264
+      },
+      {
+        "key": "HU",
+        "label": "HU",
+        "flag": "🇭🇺",
+        "count": 1,
+        "strength": 1.1685843288174884
+      },
+      {
+        "key": "PT",
+        "label": "PT",
+        "flag": "🇵🇹",
+        "count": 1,
+        "strength": 0.5534775203455043
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@ import type { Athlete, AthleteGender } from '../types/Athlete'
 import type { RaceEditionView } from '../types/Race'
 import type { RaceResult } from '../types/RaceResult'
 import { resolveAthleteId } from '../data/athleteIdentity'
+import { getRankingDatasetClock } from './rankingDatasetClock'
 
 const DAY = 86_400_000
 const HALF_LIFE_DAYS = 730
@@ -90,7 +91,7 @@ export function calculateAthleteRanking(
   athletes: Athlete[],
   results: RaceResult[],
   editions: RaceEditionView[],
-  asOf = new Date()
+  asOf = getRankingDatasetClock(athletes, results, editions)
 ): AthleteRankingRow[] {
   const editionById = new Map(editions.map((edition) => [edition.editionId, edition]))
   const athleteById = new Map(athletes.map((athlete) => [athlete.id, athlete]))
@@ -157,7 +158,7 @@ export function sortAthletesByRanking(
   athletes: Athlete[],
   results: RaceResult[],
   editions: RaceEditionView[],
-  asOf = new Date()
+  asOf = getRankingDatasetClock(athletes, results, editions)
 ): Athlete[] {
   const ranking = calculateAthleteRanking(athletes, results, editions, asOf)
   const rankingById = new Map(ranking.map((row) => [row.athleteId, row]))

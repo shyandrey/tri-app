@@ -31,9 +31,10 @@ import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
 import { calculateAthleteRanking, sortAthletesByRanking } from './utils/athleteRanking'
+import { getRankingDatasetClock } from './utils/rankingDatasetClock'
 
 const linkedRaceResults = linkResultsToAthletes(raceResults)
-const rankingAsOf = new Date()
+const rankingAsOf = getRankingDatasetClock(athletes, linkedRaceResults, allRaceEditionViews)
 const athleteRanking = calculateAthleteRanking(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf)
 const rankedAthletes = sortAthletesByRanking(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf)
 

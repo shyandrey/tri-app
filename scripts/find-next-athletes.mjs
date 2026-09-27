@@ -125,6 +125,29 @@ function quote(value) {
   return JSON.stringify(value)
 }
 
+async function appendGeneratedProfiles() {
+  // Preserve every existing record/ID; only add exact unmatched source identities.
+  const rows = [...stats.values()].sort((a,b) => preferredName(a).localeCompare(preferredName(b)))
+  for (const item of rows) {
+    const registryCountry = countryEnrichment[preferredName(item)]?.countryCode
+    if ((item.M && item.W) || item.unknown || !inferredGender(item) || item.countryCodes.size > 1 || (registryCountry && topCountry(item) && registryCountry !== topCountry(item))) {
+      throw new Error(`Ambiguous new identity: ${preferredName(item)}; no output written`)
+    }
+  }
+  const sourcePath = path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
+  const source = await fs.readFile(sourcePath, 'utf8')
+  if (!source.endsWith(']\n')) throw new Error('Unexpected generated file format; no output written')
+  let nextId = Math.max(9999, ...runtimeAthletes.map(a => a.id)) + 1
+  const additions = rows.map(item => {
+    const name = preferredName(item), countryCode = topCountry(item)
+    const fields = { id: nextId++, name, nameEn: name, country: countryCode ?? '', countryEn: countryCode ?? '', ...(countryCode ? {countryCode} : {}), flag: '', gender: inferredGender(item), discipline: 'IRONMAN / T100', achievements: [] }
+    return `  ${JSON.stringify(fields)},`
+  })
+  if (!additions.length) { console.log('No unmatched identities to append'); return }
+  await fs.writeFile(EXPORT_PATH, source.slice(0, -2) + additions.join('\n') + '\n]\n', 'utf8')
+  console.log(`Appended ${additions.length} profiles with stable new IDs; all existing records preserved`)
+}
+
 async function writeGeneratedProfiles() {
   const curated = new Set(curatedAthletes.map((athlete) => normalizeName(athlete.nameEn)).filter(Boolean))
   const allStats = collectStats(curated)
@@ -189,5 +212,8 @@ console.log(`Uncatalogued normalized identities found in runtime results: ${stat
 printGroup('M')
 printGroup('W')
 printUnresolved()
-if (EXPORT) await writeGeneratedProfiles()
+if (EXPORT) {
+  if (process.argv.includes('--append')) await appendGeneratedProfiles()
+  else await writeGeneratedProfiles()
+}
 console.log('\nNote: catalog and results come from runtime modules. Generated countries use explicit result codes or countryEnrichment.json (verified or migrated existing data); conflicts stop generation before writing.')

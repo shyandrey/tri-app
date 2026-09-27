@@ -64,9 +64,10 @@ await server.close()
 
 test('production SSR: ALL chip first; gender changes order; search does not change carousel/counts',()=>{
  const all=render({genderFilter:'ALL'}),men=render({genderFilter:'M'}),women=render({genderFilter:'W'})
- assert.deepEqual(chips(all).slice(0,6),['ALL','GB','US','NO','DE','BE'])
- assert.deepEqual(chips(men).slice(0,6),['ALL','DE','US','NO','BE','NZ'])
- assert.deepEqual(chips(women).slice(0,6),['ALL','GB','US','DE','CH','AU'])
+ for(const [gender,html] of [['ALL',all],['M',men],['W',women]]) {
+  assert.deepEqual(chips(html),['ALL',...keys(athleteCountryStrength(athletes,productionRanking,gender))])
+ }
+ assert.notDeepEqual(chips(men),chips(women))
  const state={genderFilter:'W',countryFilter:'FR'}
  assert.equal(carousel(render(state)),carousel(render({...state,search:'Blummenfelt'})))
  assert.ok(render({...state,search:'Blummenfelt'}).includes('Kristian Blummenfelt'))

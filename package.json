@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "import:race-results": "node scripts/import-race-results.mjs",
     "audit:results": "node scripts/audit-results.mjs",
     "experiment:ranking": "node scripts/experiment-athlete-ranking.mjs",
     "collect:sof": "node scripts/collect-race-sof.mjs",

@@ -2638,11 +2638,19 @@
     "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
   },
   "Jeremy Maclean": {
-    "provenance": "migrated-existing",
-    "countryCode": "AU",
-    "country": "AU",
-    "countryEn": "AU",
-    "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
+    "countryCode": "US",
+    "country": "США",
+    "countryEn": "United States of America",
+    "profileUrl": "https://stats.protriathletes.org/athlete/jeremy-maclean",
+    "verifiedName": "Jeremy Maclean",
+    "sourceCountryLabel": "United States of America",
+    "checkedAt": "2026-09-27",
+    "matchingResult": {
+      "raceUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "position": 44,
+      "totalTime": "4:17:20"
+    },
+    "provenance": "stats-pto-verified"
   },
   "Jesper Svensson": {
     "provenance": "migrated-existing",
@@ -4842,11 +4850,19 @@
     "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
   },
   "Nick Thompson": {
-    "provenance": "migrated-existing",
-    "countryCode": "US",
-    "country": "US",
-    "countryEn": "US",
-    "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
+    "countryCode": "AU",
+    "country": "Австралия",
+    "countryEn": "Australia",
+    "profileUrl": "https://stats.protriathletes.org/athlete/nick-thompson",
+    "verifiedName": "Nick Thompson",
+    "sourceCountryLabel": "Australia",
+    "checkedAt": "2026-09-27",
+    "matchingResult": {
+      "raceUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "position": 11,
+      "totalTime": "3:56:04"
+    },
+    "provenance": "stats-pto-verified"
   },
   "Nicola Duchi": {
     "provenance": "migrated-existing",
