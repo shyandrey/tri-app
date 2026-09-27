@@ -1,0 +1,19 @@
+.more-content { max-width: 720px; margin: 0 auto; text-align: left; }
+.more-content > h1 { margin: 12px 0 24px; font-size: 28px; }
+.more-block { margin: 0 0 20px; }
+.more-block > h2 { margin: 0 0 10px; font-size: 14px; font-weight: 600; color: var(--tri-muted); }
+.more-panel { box-sizing: border-box; width: 100%; padding: 16px; border: 1px solid var(--tri-border); border-radius: 16px; background: var(--tri-surface); color: var(--tri-text); }
+.more-panel h3, .more-panel strong { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.4; }
+.more-panel .more-brand { font-size: 20px; letter-spacing: .04em; }
+.more-panel p, .more-panel small { display: block; margin: 6px 0 0; font-size: 13px; line-height: 1.55; color: var(--tri-muted); }
+.more-panel .more-version { margin-top: 12px; font-size: 12px; }
+.more-action { display: flex; align-items: center; gap: 16px; text-align: left; text-decoration: none; font-family: inherit; cursor: pointer; min-height: 64px; }
+.more-action > span:first-child { flex: 1; min-width: 0; }
+.more-action:hover { border-color: var(--tri-accent); }
+.more-indicator { flex: none; font-size: 22px; color: var(--tri-accent); }
+.more-handle { display: inline-block; color: var(--tri-accent); font-size: 13px; font-weight: 400; margin-left: 6px; }
+.more-information > div + div { border-top: 1px solid var(--tri-border); margin-top: 16px; padding-top: 16px; }
+.more-information a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: var(--tri-accent); }
+.more-content :is(a, button):focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
+.more-panel { overflow-wrap: anywhere; }
+.more-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
