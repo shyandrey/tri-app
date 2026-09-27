@@ -123,7 +123,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
 
   if (page === 'top') return <TopAthletesPage athletes={rankedAthletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
   if (page === 'feedback') return <FeedbackPage context={route.feedback ?? genericFeedbackContext} onBack={back} />
-  if (page === 'more') return <MorePage onNavigate={navigateSection} onFeedback={() => openFeedback(genericFeedbackContext)} />
+  if (page === 'more') return <MorePage onBack={back} onNavigate={navigateSection} onFeedback={() => openFeedback(genericFeedbackContext)} />
 
   if (page === 'race' && selectedRace) {
     return <RaceDetailPage onFeedback={openFeedback} race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={back} onNavigate={navigateSection} onAthleteClick={openAthlete} />

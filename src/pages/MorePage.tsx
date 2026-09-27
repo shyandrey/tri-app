@@ -5,13 +5,15 @@ import { NEWS_CHANNEL_URL } from '../../shared/news'
 import './MorePage.css'
 
 type MorePageProps = {
+  onBack: () => void
   onFeedback: () => void
   onNavigate: (page: Page) => void
 }
 
-function MorePage({ onNavigate, onFeedback }: MorePageProps) {
+function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
   return (
     <main className="app more-page">
+      <button className="page-back-button" type="button" onClick={onBack}>← Назад</button>
       <div className="more-content">
         <h1>Ещё</h1>
         <section className="more-block" aria-labelledby="more-about">

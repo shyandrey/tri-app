@@ -13,6 +13,8 @@ try {
  for(const width of [320,390,430,768,1440]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<768})
   await send('Page.navigate',{url:base+'/?more-test='+Date.now()+'#/more'});await wait(700)
+  assert.equal(await js('document.querySelector(".page-back-button").textContent'),'← Назад')
+  assert.ok(await js('document.querySelector(".page-back-button").getBoundingClientRect().right<=innerWidth'))
   const text=await js('document.querySelector(".more-content").textContent')
   assert.ok(text.includes('Версия '+pkg.version));assert.ok(!/[a-f0-9]{40}|unknown|rankingAsOf/.test(text))
   assert.ok(text.includes('не является официальным рейтингом PTO, IRONMAN или T100'))
@@ -49,5 +51,35 @@ try {
   }
   console.log(`PASS More ${width}px: content/version/privacy, actions, keyboard/focus, history/scroll, bottom nav, no overflow`)
  }
+ const click=async selector=>{await js(`document.querySelector(${JSON.stringify(selector)}).click()`);await wait(400)}
+ const start=async page=>{await send('Page.navigate',{url:base+'/?back-test='+Date.now()+'#/'+page});await wait(700)}
+ const snapshot=()=>js('({page:history.state.triNavigation.route.page,ui:history.state.triNavigation.ui,y:scrollY})')
+ const restore=async expected=>{const actual=await snapshot();assert.equal(actual.page,expected.page);assert.deepEqual(actual.ui,expected.ui);assert.ok(Math.abs(actual.y-expected.y)<=2)}
+ for(const origin of ['home','athletes','top']){
+  await start(origin)
+  if(origin!=='home'){
+   await js(`[...document.querySelectorAll('.athletes-gender-card')].find(e=>e.textContent.includes('WOMEN')).click()`);await wait(200)
+  }
+  if(origin==='athletes'){
+   await js(`[...document.querySelectorAll('.athletes-country-chip')].find(e=>e.textContent.includes('FR')).click()`)
+   await js(`(()=>{const e=document.querySelector('.athletes-search');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'a');e.dispatchEvent(new Event('input',{bubbles:true}))})()`);await wait(200)
+  }
+  await js('window.scrollTo({top:420,behavior:"instant"})');await wait(200)
+  const before=await snapshot()
+  await click('.bottom-nav button[aria-label="Ещё"]');assert.equal(await js('location.hash'),'#/more')
+  await click('.feedback-entry');await click('.page-back-button');assert.equal(await js('location.hash'),'#/more')
+  await click('.page-back-button');await restore(before)
+  await js('history.forward()');await wait(400);assert.equal(await js('location.hash'),'#/more')
+  await js('history.back()');await wait(400);await restore(before)
+  console.log('PASS '+origin+' → More → Feedback → Back → More → Back, state/scroll, browser Forward/Back')
+ }
+ await start('more');const length=await js('history.length')
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
+ assert.equal(await js('document.activeElement.className'),'page-back-button')
+ assert.notEqual(await js('getComputedStyle(document.activeElement).outlineStyle'),'none')
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await wait(400)
+ assert.equal(await js('location.hash'),'#/home');assert.equal(await js('history.length'),length)
+ assert.equal(await js('history.state.triNavigation.parent'),null)
+ console.log('PASS direct More: existing replace-to-Home fallback, no added history/loop')
  assert.deepEqual(errors,[])
 } finally {socket.close()}
