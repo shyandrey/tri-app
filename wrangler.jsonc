@@ -22,7 +22,7 @@
       "name": "tri-app-preview", "workers_dev": true,
       "d1_databases": [{
         "binding": "DB", "database_name": "tri-app-preview",
-        "database_id": "11111111-1111-1111-1111-111111111111",
+        "database_id": "4dfe9210-0cc7-484f-8eea-fe5216f5c17a",
         "migrations_dir": "migrations"
       }]
     },

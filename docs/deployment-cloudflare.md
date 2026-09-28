@@ -1,11 +1,36 @@
-# Cloudflare foundation
+# Cloudflare deployment
 
 Feedback implementation extends this baseline; see [Feedback setup and privacy](feedback.md). Named deploy environments use the protected worker; the top-level target is now the loopback-only local mock entry.
 
-GitHub → `npm ci` → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1.
+Current deployment is manual via Wrangler: local checkout → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1. GitHub automatic builds are not connected.
 React remains client-side. Hash routes (including direct `/#/athlete/…` links) are unchanged. Existing static files bypass Worker execution; `/api` and `/api/*` always reach the Worker, including HTML navigation requests. Other paths use the ASSETS binding / SPA fallback. Unknown API paths return JSON 404, never index.html.
 
-Implemented: GET /api/health, schema/migrations, build metadata and local tooling. Feedback/news handlers, Telegram webhook/delivery, Turnstile, rate limiting, scheduled jobs and UI are intentionally absent. The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are no-store JSON, with no permissive CORS headers; production callers use the same origin. Future write endpoints must validate Origin and inputs, not rely on CORS alone.
+Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News is active in preview; protected Feedback is not activated. Its Turnstile, rate-limiter and delivery prerequisites remain a separate setup task (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
+
+## Current live preview (2026-09-28)
+
+| Setting | Current state |
+| --- | --- |
+| Branch | `home-redesign-experiments` |
+| Worker | `tri-app-preview`; first deployment succeeded |
+| HTTPS URL | https://tri-app-preview.shy-andrey.workers.dev |
+| D1 | `tri-app-preview`, binding `DB` |
+| D1 UUID | `4dfe9210-0cc7-484f-8eea-fe5216f5c17a` |
+| Remote schema | Migrations 0001–0004 applied |
+| News channel | `@trista_watt`, exact channel ID `-1002054307603` |
+| Bot | `@tri_app_bot`, passive; unnecessary admin permissions disabled; must not post to the channel |
+| Webhook | https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook |
+| Allowed updates | `channel_post`, `edited_channel_post` |
+| Runtime News config | `NEWS_TELEGRAM_CHANNEL_ID` configured; `TELEGRAM_WEBHOOK_SECRET` stored as a Cloudflare secret |
+| Approved remote seed | Posts 993, 992, 988; source `manually-approved-telegram-seed` |
+| Feedback | Not activated; `TELEGRAM_BOT_TOKEN` intentionally not stored in Worker |
+| Production | Worker `tri-app` and D1 `tri-app-production` do not exist yet |
+| GitHub automatic builds | Not connected |
+| Custom domain | Not configured |
+
+Infrastructure provisioning, migration, webhook and permission status above is operator-confirmed. End-to-end Telegram → Worker → D1 → API was verified on the test channel before switching to the real channel. No test post was sent to the real channel during this documentation update.
+
+Read-only verification on 2026-09-28: `/api/health` returned `ok: true`, service `tri-app`, version `0.0.0`, commit `15ac56c225db636b01f27aec89fb8addccf2c478`. `/api/news` returned exactly `telegram-seed-993`, `telegram-seed-992`, `telegram-seed-988`, with canonical titles/excerpts/timestamps and `https://t.me/trista_watt/<message_id>` links. These HTTP checks do not independently inspect Cloudflare secrets, bot permissions or migration history.
 
 ## Local setup (no Cloudflare account)
 
@@ -19,7 +44,7 @@ npm run cf:migrate:local     # versioned migrations to local SQLite/D1
 npm run cf:dev               # Wrangler runs npm run build, then local assets + API + D1
 ```
 
-Full stack is normally http://localhost:8787; use `/api/health` and `/#/more`. Wrangler's custom build watches src/ and worker/. Restart after package/config/migration changes; rerun local migrations when SQL changes. Plain Vite dev remains fast UI-only and does not provide `/api`; no proxy is necessary until frontend API features are implemented. `npm run preview` remains a frontend-only Vite preview.
+Full stack is normally http://localhost:8787; use `/api/health` and `/#/more`. Wrangler's custom build watches src/ and worker/. Restart after package/config/migration changes; rerun local migrations when SQL changes. Plain Vite dev remains fast UI-only and does not provide `/api`; use the full-stack Wrangler server to test News and Feedback APIs. `npm run preview` remains a frontend-only Vite preview.
 
 ```sh
 npm run build               # metadata + frontend/Worker typechecks + Vite production output
@@ -31,7 +56,7 @@ npx wrangler d1 migrations list DB --local
 
 ## Build identity
 
-`scripts/build-metadata.mjs` generates ignored `.generated/build-metadata.ts` before dev/build/tests. Both worker/index.ts and src/utils/buildMetadata.ts use it. No build metadata is displayed yet.
+`scripts/build-metadata.mjs` generates ignored `.generated/build-metadata.ts` before dev/build/tests. Both worker/index.ts and src/utils/buildMetadata.ts use it. The More screen displays the version; health also exposes the commit.
 
 Version comes from package.json (currently 0.0.0). Commit uses a validated 40-character SHA from BUILD_COMMIT, CF_WORKERS_BUILD_COMMIT, CF_PAGES_COMMIT_SHA or GITHUB_SHA; otherwise git rev-parse HEAD; otherwise `unknown`. No arbitrary environment dump, secrets, timestamp or machine path enters the module. An uncommitted local build reports HEAD, not a claim of a clean release. CI should build a clean checkout; publish static assets and Worker together. Wrangler's custom build ensures metadata and dist are regenerated together. Use npm scripts rather than calling tsc directly before generated metadata exists.
 
@@ -44,37 +69,32 @@ The pre-existing package.json had incorrect react-hooks/react-refresh plugin ran
 - feedback: report ID, creation timestamp, category, 10–4000 character description, optional contact/context, build identity, optional viewport JSON/client info; pending/sent/failed delivery status, attempts, last/next attempt timestamps. Retry and creation indexes. ID supports future idempotent submission. No raw IP.
 - news: stable ID, channel/message identity (UNIQUE), publication/edit/create timestamps, title/excerpt, Telegram URL, hidden flag. Visible publication-date index. No image fields.
 
-A future webhook performs UPSERT by channel/message and ignores stale edited timestamps. UNIQUE prevents duplicate rows, but authentication, ordering and idempotent side effects still belong to the handler. SQL constraints complement, not replace, API validation. There are no foreign keys to athlete/race tables: that catalog remains versioned frontend data, not duplicated in D1.
+Migrations 0002–0004 add Feedback delivery fields, News ingestion watermarks/media groups and News source provenance. The webhook performs UPSERT by channel/message and ignores stale updates using event time and update ID. UNIQUE prevents duplicate rows, but authentication, ordering and idempotent side effects still belong to the handler. SQL constraints complement, not replace, API validation. There are no foreign keys to athlete/race tables: that catalog remains versioned frontend data, not duplicated in D1.
 
-## Environments / later remote setup
+## Environment boundaries
 
-wrangler.jsonc includes distinct local, preview and production names/bindings. All three UUIDs are deliberate placeholders, not real database IDs. Local D1 works with the placeholder. Before any remote command, create databases and replace the corresponding preview/production UUID; database IDs are configuration, not secrets. Never use production D1 for preview. Do not deploy the top-level local target.
+| Environment | Branch | Worker | D1 | Status |
+| --- | --- | --- | --- | --- |
+| Preview | `home-redesign-experiments` | `tri-app-preview` | `tri-app-preview` | Live; manual deployment |
+| Future production | `main` | `tri-app` | `tri-app-production` | Not provisioned or connected |
 
-After separate deployment approval:
+These branch mappings describe the intended workflow, not an active Git trigger. If GitHub builds are connected later, each Worker needs its own branch selection and explicit Wrangler environment (`--env preview` or `--env production`). Do not enable production as part of preview maintenance.
 
-```sh
-npx wrangler login
-npx wrangler d1 create tri-app-preview
-npx wrangler d1 create tri-app-production
-# Copy returned UUIDs to the appropriate wrangler.jsonc env binding, review the diff.
-npx wrangler d1 migrations list DB --env preview --remote
-npx wrangler d1 migrations apply DB --env preview --remote
-npx wrangler deploy --env preview
-# Smoke-test preview /, hash deep link, real CSS/JS, health, JSON 404 and 405.
-npx wrangler d1 migrations list DB --env production --remote
-npx wrangler d1 migrations apply DB --env production --remote
-npx wrangler deploy --env production
-```
+`wrangler.jsonc` contains the real preview UUID. The local UUID `00000000-0000-0000-0000-000000000000` and production UUID `22222222-2222-2222-2222-222222222222` remain placeholders. The only infrastructure config change for this checkpoint is replacing preview's `11111111-1111-1111-1111-111111111111` with the real UUID. Database IDs are configuration, not secrets. Do not create the preview database again or use production D1 for preview.
 
-Named environments inherit the Worker/assets/build configuration but explicitly declare separate DB bindings. Future per-environment vars/secrets must be configured separately. Preview here is an explicitly deployed isolated Worker, not an automatic PR preview. workers.dev can be used initially; configure a custom domain afterward. Account, domain, CI integration and remote resources have not been created in this task.
+Named environments inherit assets/build configuration, use `worker/index.ts` and explicitly declare separate DB bindings. The default target uses loopback-only `worker/local.ts`; do not deploy it remotely. `npm run cf:check` checks this default/local target with `--env "" --dry-run`; it does not validate live preview bindings. Preview is a separately deployed Worker with a stable workers.dev URL, not an automatic PR preview.
 
-## Future secrets / config
+Future production provisioning requires separate approval, its own D1 UUID/migrations and runtime configuration. Keep its placeholder unchanged until then.
 
-Foundation requires no real secret. `.dev.vars.example` is comments only; copy it to ignored `.dev.vars` when implementing the features. Never put real values in the example, Git, logs or VITE_*.
+## Runtime configuration and secrets
 
-Secrets (later): TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, TURNSTILE_SECRET_KEY, RATE_LIMIT_HMAC_SECRET. For each environment set them interactively, e.g. `npx wrangler secret put TELEGRAM_BOT_TOKEN --env preview`, and separately for production. Do not paste tokens into command arguments or docs.
+News is already configured in preview. `NEWS_TELEGRAM_CHANNEL_ID` is ordinary server configuration (it can also be stored as a secret); `TELEGRAM_WEBHOOK_SECRET` must remain a secret. No secret values belong in documentation, Git, logs or VITE_*. `.dev.vars.example` is a local template, not proof of remote configuration.
 
-Server config (later): FEEDBACK_TELEGRAM_CHAT_ID, NEWS_TELEGRAM_CHANNEL_ID, ALLOWED_ORIGIN, set in the selected environment vars/dashboard. Keep preview bot/chat separate. Only the public Turnstile site key may eventually be frontend public config; it is not needed now. Env types mark all future fields optional; health/static serving must work without them. D1 access is through the DB binding, not SQL credentials.
+News ingestion validates the exact channel ID and webhook secret. The first nonempty heading's Telegram bold entities control eligibility; ordinary posts do not create visible news. Edits update, hide or re-enable the same item. The bot is passive and the Worker makes no Telegram API call for ingestion/reads. See [Latest News](latest-news.md).
+
+`TELEGRAM_BOT_TOKEN` is needed locally for Telegram webhook administration and in the Worker only for Feedback delivery. It is intentionally absent from the current Worker. Feedback remains inactive: its bot token/destination, Turnstile keys, exact `ALLOWED_ORIGIN`, `RATE_LIMIT_HMAC_SECRET`, `FEEDBACK_RATE_LIMITER` binding and retry schedule are a separate future task. Do not enable them during News maintenance.
+
+Changes to live secrets/configuration can publish a Worker version even without a code deploy. Dashboard-only plain vars may be overwritten by a later Wrangler deployment unless explicitly preserved or represented in the selected environment configuration. Review runtime settings before any future deploy; never infer them from this file or overwrite the active News configuration blindly.
 
 ## Rollback
 
@@ -86,7 +106,16 @@ Run foundation and existing ranking/dataset-clock/country-strength/navigation/se
 
 Official references: [Static Assets](https://developers.cloudflare.com/workers/static-assets/), [asset routing](https://developers.cloudflare.com/workers/static-assets/binding/), [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/).
 
-## Foundation verification (2026-09-27)
+## Preview documentation checks (2026-09-28)
+
+- `npm run build`: passed frontend/Worker typechecks and Vite build; existing chunk-size warning above 500 kB remains.
+- `npm run cf:check`: passed default/local Worker dry-run; no upload or deployment.
+- `node --test scripts/test-news-eligibility.mjs scripts/test-news.mjs scripts/test-news-seed.mjs scripts/test-news-presentation.mjs`: 29/29 passed.
+- `npm run test:foundation`: 5/5 passed.
+- `git diff --check`: passed.
+- Live read-only health/News checks are recorded above. No D1 writes, webhook/secret changes, bot messages or resource creation were performed.
+
+## Historical foundation verification (2026-09-27, before live setup)
 
 - Foundation tests: 5/5 passed (health, routing/methods, metadata fallback/no secrets, real SQLite migration constraints).
 - Existing ranking/dataset clock/country strength/navigation/search/result-import tests: 50/50 passed.
@@ -95,4 +124,4 @@ Official references: [Static Assets](https://developers.cloudflare.com/workers/s
 - Vite + Worker typecheck/build passed; previous >500 kB bundle warning remains. ESLint: 0 errors, one existing RaceDetailPage warning. Results audit: 0 errors/0 warnings. Athlete audit: two existing issues. git diff --check passed.
 - Extra photo suites: 42/46 pass. The same four failures reproduce against the accepted HEAD with the existing local photo staging available: obsolete 1161/939 catalog/coverage counts and incomplete Batch 2/3 historical catalog baselines after six new athletes were imported. No photo code/data was changed or audit weakened. These existing test-fixture issues are outside foundation scope.
 
-No remote deployment, database creation, Telegram setup, git add/commit/push was performed.
+That foundation implementation task performed no remote deployment, database creation or Telegram setup. The subsequent live preview state is recorded above.

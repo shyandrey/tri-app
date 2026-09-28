@@ -32,7 +32,7 @@ node scripts/seed-news.mjs --input scripts/fixtures/news-seed/approved-v1.json -
 npx wrangler d1 execute DB --local --file /tmp/reviewed-news.sql
 ```
 
-The generator validates all entries, makes no network/database requests and refuses overwriting SQL output. Keep channel configuration/SQL outside Git. A manual seed uses internal revision -1, below every real Telegram update ID. Reapplying is idempotent; once a live event arrives, re-seeding cannot overwrite or resurrect it. Initial created/updated timestamps use the known publication time as the baseline, not an inferred edit time. Legacy version-1 Bot API seeds remain supported and still pass eligibility.
+The generator validates all entries, makes no network/database requests and refuses overwriting SQL output. Keep generated SQL and credentials outside Git; the confirmed channel ID is non-secret server configuration, not frontend data. A manual seed uses internal revision -1, below every real Telegram update ID. Reapplying is idempotent; once a live event arrives, re-seeding cannot overwrite or resurrect it. Initial created/updated timestamps use the known publication time as the baseline, not an inferred edit time. Legacy version-1 Bot API seeds remain supported and still pass eligibility.
 
 `src/data/newsSeed.ts` is generated, never maintained separately. It bundles only public NewsItem fields, not full source text, evidence, channel IDs or credentials. Tests verify canonical/evidence agreement, generated fallback freshness, repeat application and live-edit precedence.
 
@@ -53,8 +53,22 @@ node scripts/test-news-browser.mjs
 
 Demo uses clearly synthetic LOCAL TEST messages 990001–990004, fake channel/secret, local DB only. It exercises eligible, ordinary, edit-add, edit-hide, caption, duplicate. It refuses non-loopback destinations. Do not deploy the demo bindings or seed these fixtures into production. For browser tests, use an isolated local database seeded from approved-v1.json (not the synthetic demo database), with the same locally supplied channel binding. Browser tests independently cover five widths (320,390,430,768,1440), card counts, long text, missing excerpt, empty/error, keyboard and safe links. Screenshots `/tmp/tri-home-news-390.png` and `/tmp/tri-home-news-1440.png` use synthetic display fixtures. `/tmp/tri-home-news-real-390.png` and `/tmp/tri-home-news-real-1440.png` show the three approved real posts.
 
-## Future real bot/preview setup
+## Live preview operations (2026-09-28)
 
-After separate approval: create/add a bot to @trista_watt with access to channel updates; obtain exact channel ID; configure a distinct strong webhook secret server-side; create preview D1 and apply migrations; deploy HTTPS Worker; call Telegram setWebhook with secret_token and allowed_updates channel_post/edited_channel_post. Bot token is needed only to configure Telegram (or existing Feedback delivery), not this receiving endpoint. Never put credentials in Git or VITE_*. Test a real bold-heading post and an edit before enabling production. No real resources, webhook registration, bot creation or deployment are performed by this implementation task.
+The first preview deployment is complete. Worker `tri-app-preview` serves https://tri-app-preview.shy-andrey.workers.dev and uses preview D1 `tri-app-preview` (UUID `4dfe9210-0cc7-484f-8eea-fe5216f5c17a`), with migrations 0001–0004 applied. Full environment boundaries and verification provenance are in [Cloudflare deployment](deployment-cloudflare.md).
+
+Operator-confirmed configuration: `NEWS_TELEGRAM_CHANNEL_ID` selects real `@trista_watt` (`-1002054307603`); `TELEGRAM_WEBHOOK_SECRET` is a Cloudflare secret. `@tri_app_bot` is present with unnecessary admin permissions disabled. It is passive and must not post to the channel. Telegram webhook URL is https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook, with allowed updates `channel_post` and `edited_channel_post`.
+
+The full live ingestion flow was verified on the test channel before switching to the real channel. Approved posts 993/992/988 are now seeded in remote preview D1. A read-only check on 2026-09-28 confirmed that `/api/news` returns exactly those three real posts with canonical content and URLs. Future qualifying posts will naturally change this latest-three response; this is a dated checkpoint, not a permanent fixed list.
+
+Operational rules: accept only the configured numeric channel ID; use Telegram bold entities on the first nonempty heading as the editorial signal (literal Markdown markers are insufficient). Ordinary posts are acknowledged but do not create visible news; ordering watermarks are retained. Edits can update, hide or re-enable news. No bot token is needed by ingestion. `TELEGRAM_BOT_TOKEN` is intentionally not stored in Worker, and protected Feedback is not activated.
+
+### Seed query-path note
+
+The canonical generator remains offline/generate-only. The approved SQL was verified on isolated SQLite and local D1 for exact content, idempotency and preservation of newer live edits. No reapplication is needed for this checkpoint.
+
+During initial setup, remote `--file` hit Import API authentication error 10000. Passing SQL beginning with a `--` comment as a separate `--command` argument caused CLI option parsing failure. The verified query-path form is `--command="$SEED_SQL"` (equals sign required), with `SEED_SQL` read from the generated file. This preserves the SQL and uses the query endpoint rather than file import. Any future remote seed operation requires target review and explicit approval; do not replace canonical text or bypass live-edit guards.
+
+Production Worker/D1, GitHub automatic builds and custom domain are not configured. Connecting production later is a separate operation; one bot's webhook must not be assumed to feed preview and production simultaneously.
 
 Reference: [Telegram Bot API update and webhook contract](https://core.telegram.org/bots/api).
