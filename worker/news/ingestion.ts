@@ -1,5 +1,5 @@
-import { extractEligibleNews } from './eligibility.ts'
-import type { TelegramEntity, TelegramNewsContent } from './eligibility.ts'
+import { evaluateNews, isNewsEmoji } from './eligibility.ts'
+import type { TelegramEntity, TelegramNewsContent, NewsEvaluation } from './eligibility.ts'
 import { NEWS_CHANNEL_URL } from '../../shared/news.ts'
 
 export class NewsInputError extends Error {}
@@ -7,7 +7,7 @@ type ObjectValue = Record<string, unknown>
 const object = (v: unknown): ObjectValue => { if (!v || typeof v !== 'object' || Array.isArray(v)) throw new NewsInputError(); return v as ObjectValue }
 const integer = (v: unknown, min = 0): number => { if (!Number.isSafeInteger(v) || Number(v) < min) throw new NewsInputError(); return v as number }
 const string = (v: unknown, max: number): string => { if (typeof v !== 'string' || v.length > max) throw new NewsInputError(); return v }
-export type NewsPost = { channelId: string; messageId: number; date: number; eventAt: number; updateId: number; mediaGroupId: string | null; content: TelegramNewsContent }
+export type NewsPost = { eventType: 'channel_post' | 'edited_channel_post'; channelId: string; messageId: number; date: number; eventAt: number; updateId: number; mediaGroupId: string | null; content: TelegramNewsContent }
 export function parseNewsUpdate(input: unknown, expectedChannel: string): NewsPost {
   const update = object(input), updateId = integer(update.update_id)
   if (!!update.channel_post === !!update.edited_channel_post) throw new NewsInputError()
@@ -35,14 +35,27 @@ export function parseNewsUpdate(input: unknown, expectedChannel: string): NewsPo
       })
     }
   }
-  return { channelId, messageId, date, eventAt, updateId, mediaGroupId, content }
+  return { eventType: update.channel_post ? 'channel_post' : 'edited_channel_post', channelId, messageId, date, eventAt, updateId, mediaGroupId, content }
 }
 export type NewsStatement = { sql: string; params: (string | number | null)[] }
 // Eligibility always sees original text/offsets. Normalize only after extraction.
+const segments = new Intl.Segmenter('und', { granularity: 'grapheme' })
 const clean = (text: string, limit: number) => Array.from(text.normalize('NFC').replace(/[\p{Cc}\p{Cf}\s]+/gu, ' ').trim()).slice(0, limit).join('')
-export async function newsStatements(post: NewsPost): Promise<NewsStatement[]> {
+const cleanTitle = (text: string, limit: number) => {
+  // Preserve joiners/tag characters only inside recognized emoji sequences.
+  const normalized = [...segments.segment(text.normalize('NFC'))].map(({ segment }) =>
+    isNewsEmoji(segment) ? segment : segment.replace(/[\p{Cc}\p{Cf}\s]+/gu, ' ')).join('').replace(/\s+/gu, ' ').trim()
+  let result = '', length = 0
+  for (const { segment } of segments.segment(normalized)) {
+    const size = Array.from(segment).length
+    if (length + size > limit) break
+    result += segment; length += size
+  }
+  return result
+}
+export async function newsStatements(post: NewsPost, evaluation: NewsEvaluation = evaluateNews(post.content)): Promise<NewsStatement[]> {
   const { channelId, messageId, eventAt, updateId, mediaGroupId } = post
-  const eligible = extractEligibleNews(post.content)
+  const eligible = evaluation.eligible
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`${channelId}:${messageId}`))
   const id = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('')
   const watermark: NewsStatement = {
@@ -54,7 +67,7 @@ export async function newsStatements(post: NewsPost): Promise<NewsStatement[]> {
   // D1 batch is transactional; stale payloads cannot pass the watermark condition.
   const condition = 'EXISTS(SELECT 1 FROM news_post_state WHERE channel_id=? AND message_id=? AND event_at=? AND update_id=?)'
   const version = [channelId, messageId, eventAt, updateId]
-  if (!eligible || !clean(eligible.title, 200)) return [watermark, {
+  if (!eligible || !cleanTitle(eligible.title, 200)) return [watermark, {
     sql: `UPDATE news SET hidden=1, source='telegram', updated_at=? WHERE channel_id=? AND message_id=? AND ${condition}`,
     params: [new Date(eventAt * 1000).toISOString(), channelId, messageId, ...version],
   }]
@@ -64,11 +77,24 @@ export async function newsStatements(post: NewsPost): Promise<NewsStatement[]> {
       ON CONFLICT(channel_id,message_id) DO UPDATE SET updated_at=excluded.updated_at,title=excluded.title,excerpt=excluded.excerpt,
       telegram_url=excluded.telegram_url,hidden=0,source='telegram',media_group_id=excluded.media_group_id`,
     params: [id, channelId, messageId, new Date(post.date * 1000).toISOString(), new Date(eventAt * 1000).toISOString(),
-      clean(eligible.title, 200), clean(eligible.excerpt, 1000), `${NEWS_CHANNEL_URL}/${messageId}`,
+      cleanTitle(eligible.title, 200), clean(eligible.excerpt, 1000), `${NEWS_CHANNEL_URL}/${messageId}`,
       new Date(post.date * 1000).toISOString(), mediaGroupId, ...version],
   }]
 }
 export async function ingestNews(db: D1Database, post: NewsPost) {
-  const statements = await newsStatements(post)
+  const evaluation = evaluateNews(post.content)
+  const statements = await newsStatements(post, evaluation)
   await db.batch(statements.map(s => db.prepare(s.sql).bind(...s.params)))
+  if (!evaluation.eligible) {
+    const entities = (evaluation.contentSource === 'text' ? post.content.entities : post.content.caption_entities) ?? []
+    // Never copy arbitrary entity properties/type strings into logs (URLs, users, etc.).
+    const safeTypes = new Set(['mention', 'hashtag', 'cashtag', 'bot_command', 'url', 'email', 'phone_number', 'bold', 'italic', 'underline', 'strikethrough', 'spoiler', 'blockquote', 'expandable_blockquote', 'code', 'pre', 'text_link', 'text_mention', 'custom_emoji', 'date_time'])
+    console.info(JSON.stringify({
+      event: 'news_eligibility_rejected', message_id: post.messageId, update_id: post.updateId,
+      event_type: post.eventType, content_source: evaluation.contentSource,
+      first_line_utf16_length: evaluation.firstLineUtf16Length,
+      entities: entities.map(({ type, offset, length }) => ({ type: safeTypes.has(type) ? type : 'unknown', offset, length })),
+      reason: evaluation.reason,
+    }))
+  }
 }

@@ -97,3 +97,49 @@ test('frontend uses valid API/seed or empty fallback; strips extra fields and re
  assert.deepEqual(validNewsItems([{...item,telegramUrl:'https://t.me/evil/1'},{...item,telegramUrl:'javascript:alert(1)'}]),[])
  assert.equal(newsDate(item.publishedAt),'27 сентября')
 })
+
+
+test('decorative prefix/suffix matrix through NEW/EDIT and text/caption ingestion', async t=>{
+ const db=testD1(t),words='Каспер Сторнс мимо Коны';let id=100
+ for(const edited of [false,true]) for(const source of ['text','caption']) {
+  for(const [prefix,suffix] of [['',' 🚑'],['🔥 ',' 🏆'],['🇳🇴 ',' ☀️'],['🏊‍♂️🚴‍♂️🏃‍♂️ ',' 🌴'],['«','»!!!']]) {
+   id++;const text=prefix+words+suffix+'\nFixture body',entities=[{type:'bold',offset:prefix.length,length:words.length}]
+   const content=source==='text'?{text,entities}:{text:undefined,entities:undefined,caption:text,caption_entities:entities}
+   assert.equal((await send(db,update(id,content,edited,id))).status,200)
+   assert.equal(db.query('SELECT title FROM news WHERE message_id=?',[id])[0].title,prefix+words+suffix)
+  }
+  for(const [prefix,suffix] of [['Сегодня ',''],['🔥 ',' important update']]) {
+   id++;const text=prefix+words+suffix,entities=[{type:'bold',offset:prefix.length,length:words.length}]
+   const content=source==='text'?{text,entities}:{text:undefined,entities:undefined,caption:text,caption_entities:entities}
+   const logs=[];const mock=t.mock.method(console,'info',value=>logs.push(JSON.parse(value)))
+   assert.equal((await send(db,update(id,content,edited,id))).status,200)
+   assert.equal(db.query('SELECT title FROM news WHERE message_id=?',[id]).length,0)
+   assert.equal(logs.length,1)
+   assert.equal(logs[0].reason,prefix==='Сегодня '?'UNFORMATTED_TEXT_BEFORE_HEADING':'UNFORMATTED_TEXT_AFTER_HEADING')
+   mock.mock.restore()
+  }
+ }
+})
+test('rejection diagnostics have one safe structural event, no content or arbitrary entity properties',async t=>{
+ const db=testD1(t),logs=[];t.mock.method(console,'info',value=>logs.push(JSON.parse(value)))
+ const title='PRIVATE TITLE',body='PRIVATE BODY email@example.test'
+ for(const edited of [false,true]) for(const source of ['text','caption']) {
+  const text=title+'\n'+body,entities=[{type:'PRIVATE TYPE',offset:0,length:1,url:'https://private.example',user:{first_name:'PRIVATE USER'}}]
+  const content=source==='text'?{text,entities}:{text:undefined,entities:undefined,caption:text,caption_entities:entities}
+  const before=logs.length;await send(db,update(400+before,content,edited,500+before))
+  assert.equal(logs.length,before+1)
+  assert.deepEqual(logs.at(-1),{event:'news_eligibility_rejected',message_id:400+before,update_id:500+before,event_type:edited?'edited_channel_post':'channel_post',content_source:source,first_line_utf16_length:title.length,entities:[{type:'unknown',offset:0,length:1}],reason:'NO_BOLD'})
+ }
+ const before=logs.length;await send(db,update(500));assert.equal(logs.length,before)
+ await send(db,update(501,{text:undefined,entities:undefined}));assert.equal(logs.at(-1).reason,'UNSUPPORTED_CONTENT');assert.equal(logs.at(-1).content_source,'none')
+ await send(db,update(502,{text:'Да 🚑',entities:[{type:'bold',offset:0,length:4}]}));assert.equal(logs.at(-1).reason,'INVALID_ENTITY_BOUNDARY')
+ const output=JSON.stringify(logs);for(const privateValue of [title,body,'PRIVATE TYPE','PRIVATE USER','private.example',SECRET,String(CHANNEL)])assert.ok(!output.includes(privateValue))
+ assert.equal(db.query('SELECT count(*) n FROM news WHERE message_id<500')[0].n,0)
+})
+
+test('title normalization preserves emoji clusters without changing excerpt normalization',async t=>{
+ const db=testD1(t),emoji='👩🏽‍⚕️',title='a'.repeat(197)+emoji
+ await send(db,update(600,{text:title+'\nText '+emoji+'\u0000end',entities:[{type:'bold',offset:0,length:197}]}))
+ const row=db.query('SELECT title,excerpt FROM news WHERE message_id=600')[0]
+ assert.equal(row.title,'a'.repeat(197));assert.equal(row.excerpt,'Text 👩🏽 ⚕️ end')
+})
