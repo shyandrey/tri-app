@@ -1,6 +1,6 @@
 # V1 Feedback
 
-Users submit in TRI APP; no Telegram account or attachment is needed. More, Athlete Profile and Race Detail open a dedicated `#/feedback` page. Existing History API entries retain the source screen, scroll, filters, expanded years, edition and result sort. Only the small source context is attached to the feedback history entry. Description/email live in component memory, never in URL, history or localStorage; leaving/reloading the form discards an unsent draft. Race context is captured at click time from active edition and either controlled or table-internal gender.
+Users submit in 300W⚡ APP; no Telegram account or attachment is needed. More, Athlete Profile and Race Detail open a dedicated `#/feedback` page. Existing History API entries retain the source screen, scroll, filters, expanded years, edition and result sort. Only the small source context is attached to the feedback history entry. Description/email live in component memory, never in URL, history or localStorage; leaving/reloading the form discards an unsent draft. Race context is captured at click time from active edition and either controlled or table-internal gender.
 
 ## API and storage
 

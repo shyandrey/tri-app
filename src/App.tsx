@@ -28,7 +28,7 @@ import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
 import HomeShowcase from './components/HomeShowcase'
-import { AthleteIcon, CalendarIcon, GearIcon, PointsTableIcon, ChevronRightIcon } from './components/AppIcons'
+import { AthleteIcon, CalendarIcon, GearIcon, PointsTableIcon, ChevronRightIcon, LightningIcon } from './components/AppIcons'
 import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
@@ -134,7 +134,10 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
     <main className="app app--home-experiment">
       <header className="home-header">
         <div className="home-header__top-row">
-          <h1>TRI APP</h1>
+          <h1 className="home-wordmark" aria-label="300W⚡">
+            <span className="home-wordmark__mark" aria-hidden="true"><LightningIcon /></span>
+            <span className="home-wordmark__text" aria-hidden="true">300W</span>
+          </h1>
           <button className="home-header__settings" type="button" aria-label="Настройки" onClick={() => navigateSection('more')}>
             <GearIcon />
           </button>

@@ -23,7 +23,7 @@ async function submit(label){
 }
 try{
  await send('Page.enable');await send('Runtime.enable');await send('Emulation.setDeviceMetricsOverride',{width:390,height:700,deviceScaleFactor:1,mobile:true})
- await start('#/more');const more=await snapshot();await openReport();assert.equal(await js('document.querySelector(".feedback-context").textContent'),'Общий отзыв о TRI APP')
+ await start('#/more');const more=await snapshot();await openReport();assert.equal(await js('document.querySelector(".feedback-context").textContent'),'Общий отзыв о 300W⚡')
  // Keyboard activates native submit and invalid input is associated/focused.
  await js('document.querySelector(".feedback-submit").focus()');await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',unmodifiedText:'\r',windowsVirtualKeyCode:13});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await wait(150)
  assert.equal(await js('document.activeElement.id'),'feedback-description');assert.equal(await js('document.querySelector("#feedback-description").getAttribute("aria-invalid")'),'true')

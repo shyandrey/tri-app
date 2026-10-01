@@ -11,7 +11,7 @@ try {
  const {linkResultsToAthletes}=await server.ssrLoadModule('/src/utils/raceResults.ts')
  const {sortAthletesByRanking}=await server.ssrLoadModule('/src/utils/athleteRanking.ts')
  const ranked=sortAthletesByRanking(athletes,linkResultsToAthletes(raceResults),allRaceEditionViews)
- expected=Object.fromEntries(['ALL','M','W'].map(g=>[g,g==='ALL'?ranked.slice(0,100):ranked.filter(a=>a.gender===g)]))
+ expected=Object.fromEntries(['ALL','M','W'].map(g=>[g,g==='ALL'?ranked.slice(0,50):ranked.filter(a=>a.gender===g)]))
 } finally {await server.close()}
 const wait=ms=>new Promise(r=>setTimeout(r,ms))
 const targets=await(await fetch((process.env.TRI_CDP_URL??'http://127.0.0.1:9231')+'/json/list')).json()
@@ -44,7 +44,7 @@ try {
    await js('window.scrollTo({top:0,behavior:"instant"})');await wait(100)
    const screenshot=await send('Page.captureScreenshot',{format:'png'})
    await fs.writeFile(`/tmp/tri-ranking-${width}-${gender}.png`,Buffer.from(screenshot.data,'base64'))
-   console.log(`PASS ${width}px ${label}: production order, top-100/full filtered count, Back selection/scroll, no overflow`)
+   console.log(`PASS ${width}px ${label}: production order, initial-50/full filtered count, Back selection/scroll, no overflow`)
   }
  }
  assert.deepEqual(errors,[])

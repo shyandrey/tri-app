@@ -61,15 +61,15 @@ test('Catalog -> Athlete -> Back preserves gender, order and scroll',()=>{
  assert.equal(nav.current.ui.genderFilter,'W');assert.equal(nav.current.scroll.y,850);assert.equal(render(),before)
 })
 
-test('full App ALL uses first 100 production-ranked profiles; counts still describe the complete catalog',()=>{
+test('full App ALL uses first 50 production-ranked profiles; counts still describe the complete catalog',()=>{
  const html=renderApp('ALL')
- assert.deepEqual(headings(html),expectedHeadings(ranked.slice(0,100)))
+ assert.deepEqual(headings(html),expectedHeadings(ranked.slice(0,50)))
  assert.deepEqual([...html.matchAll(/class="athletes-gender-card__count">(\d+)</g)].map(m=>Number(m[1])),[athletes.length,athletes.filter(a=>a.gender==='M').length,athletes.filter(a=>a.gender==='W').length])
- assert.ok(html.includes(`Показаны 100 из ${athletes.length}`))
+ assert.ok(html.includes(`Показаны 50 из ${athletes.length}`))
 })
-test('full App search finds a real profile outside the initial 100, even under opposite gender',()=>{
+test('full App search finds a real profile outside the initial 50, even under opposite gender',()=>{
  const tail=ranked.at(-1)
- assert.ok(!ranked.slice(0,100).some(a=>a.id===tail.id))
+ assert.ok(!ranked.slice(0,50).some(a=>a.id===tail.id))
  assert.ok(headings(renderApp(tail.gender==='M'?'W':'M',tail.nameEn)).includes(expectedHeadings([tail])[0]))
 })
 await server.close()

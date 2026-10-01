@@ -57,10 +57,24 @@
   .athletes-country-scroller { gap:7px;margin-right:-12px;padding-right:12px; }
   .athletes-country-chip { flex-basis:64px;min-height:78px; }
   .athletes-country-chip__flag { width:40px;height:40px;font-size:23px; }
-  .athlete-card--profile { min-height:78px;padding:11px 12px;border-radius:18px;gap:12px; }
+  .athlete-card--profile { box-sizing:border-box;min-height:80px;padding:8px 12px;border-radius:18px;gap:12px; }
   .athlete-card__portrait-wrap,.athlete-card--profile .athlete-card__image,.athlete-card--profile .athlete-card__image--placeholder { width:56px;height:56px; }
   .athlete-card--profile .athlete-card__info h3 { font-size:14px; }
+  .athlete-card--profile .athlete-card__name-en { margin-bottom:4px; }
   .athlete-placeholder-icon { width:43px;height:43px; }
 }
 
-.athletes-presentation-count { margin: -6px 0 12px; color: var(--tri-muted); font-size: 12px; text-align: left; }
+.athletes-presentation-count { margin: 0; color: var(--tri-muted); font-size: 12px; text-align: left; }
+
+/* Disclosure appends rows without anchoring scroll to the moving control. */
+.app--athletes { overflow-anchor: none; }
+.athletes-disclosure { margin-top: 16px; text-align: center; }
+.athletes-disclosure .athletes-presentation-count { text-align: center; }
+.athletes-expand { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 64px; margin-top: 4px; padding: 8px 12px; border: 0; border-radius: 12px; background: transparent; color: var(--tri-muted); font: inherit; font-size: 14px; cursor: pointer; }
+.athletes-expand__chevron { width: 64px; height: 16px; transition: transform 150ms ease; }
+.athletes-expand:active .athletes-expand__chevron { transform: translateY(3px) scale(.97); }
+.athletes-presentation-count:focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .athletes-expand__chevron { transition: none; }
+  .athletes-expand:active .athletes-expand__chevron { transform: none; }
+}

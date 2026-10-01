@@ -19,7 +19,7 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
         <section className="more-block" aria-labelledby="more-about">
           <h2 id="more-about">О приложении</h2>
           <div className="more-panel">
-            <h3 className="more-brand">TRI APP</h3>
+            <h3 className="more-brand">300W⚡ APP</h3>
             <p>Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.</p>
             <p className="more-version">Версия {buildMetadata.version}</p>
           </div>

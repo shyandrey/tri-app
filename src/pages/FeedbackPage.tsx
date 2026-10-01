@@ -28,7 +28,7 @@ export default function FeedbackPage({ context, onBack }: { context: FeedbackCon
     return () => { active = false }
   }, [configAttempt])
   const contextLabel = context.screen === 'athlete' ? `Отчёт об атлете: ${context.athleteName}`
-    : context.screen === 'race' ? `Отчёт о гонке: ${context.raceName}${context.gender ? ' · ' + (context.gender === 'M' ? 'MEN' : 'WOMEN') : ''}` : 'Общий отзыв о TRI APP'
+    : context.screen === 'race' ? `Отчёт о гонке: ${context.raceName}${context.gender ? ' · ' + (context.gender === 'M' ? 'MEN' : 'WOMEN') : ''}` : 'Общий отзыв о 300W⚡'
   async function submit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
     if (busy.current) return

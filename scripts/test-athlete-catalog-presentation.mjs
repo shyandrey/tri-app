@@ -12,8 +12,8 @@ test('counters follow additions/removals, including generated profiles; country 
 })
 test('only empty ALL/ALL is capped; incoming ranking order and source are preserved',()=>{
  const before=structuredClone(catalog)
- for(const search of ['', '   '])assert.deepEqual(athleteCatalogPresentation(catalog,{...all,search}),{athletes:catalog.slice(0,100),total:260,limited:true})
- assert.deepEqual(athleteCatalogPresentation(catalog.slice(0,50),all),{athletes:catalog.slice(0,50),total:50,limited:false})
+ for(const search of ['', '   '])assert.deepEqual(athleteCatalogPresentation(catalog,{...all,search}),{athletes:catalog.slice(0,50),total:260,limited:true,progressive:true})
+ assert.deepEqual(athleteCatalogPresentation(catalog.slice(0,50),all),{athletes:catalog.slice(0,50),total:50,limited:false,progressive:true})
  assert.deepEqual(catalog,before)
 })
 test('gender/country/combined views retain all matches, including more than 100',()=>{
@@ -26,4 +26,14 @@ test('gender/country/combined views retain all matches, including more than 100'
 test('global search sees tail profiles and ignores selected filters; broad search is not capped',()=>{
  assert.deepEqual(athleteCatalogPresentation(catalog,{search:'Athlete 259',genderFilter:'M',countryFilter:'DE'}).athletes,[catalog[259]])
  assert.equal(athleteCatalogPresentation(catalog,{...all,search:'Athlete'}).athletes.length,260)
+})
+
+test('50-row batches preserve prefixes, final remainder and complete state',()=>{
+ for(const count of [50,100,150,200,250,300]){
+  const result=athleteCatalogPresentation(catalog,all,count)
+  assert.deepEqual(result.athletes,catalog.slice(0,count))
+  assert.equal(result.limited,count<260)
+  assert.equal(result.progressive,true)
+ }
+ for(const count of [50,250])assert.equal(athleteCatalogPresentation(catalog,{...all,search:'Athlete'},count).athletes.length,260)
 })

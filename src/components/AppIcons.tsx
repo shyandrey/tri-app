@@ -17,6 +17,10 @@ export function HomeIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9.8V20h13V9.8"/><path d="M9.5 20v-6h5v6"/></svg>
 }
 
+export function LightningIcon(props: IconProps) {
+  return <svg {...baseProps} {...props}><path d="m14 3-9 11h6l-1 7 9-11h-6l1-7Z" fill="currentColor" strokeWidth="1" /></svg>
+}
+
 export function CalendarIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M7.5 3.5v3M16.5 3.5v3M3.5 9h17"/><path d="M7 12h2M11 12h2M15 12h2M7 15.5h2M11 15.5h2M15 15.5h2"/></svg>
 }
