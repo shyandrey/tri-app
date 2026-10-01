@@ -5,6 +5,37 @@ import {spawnSync} from 'node:child_process'
 import worker from '../worker/index.ts'
 import {buildMetadata} from '../src/utils/buildMetadata.ts'
 import {resolveBuildMetadata} from './build-metadata.mjs'
+import {checkPreview} from './check-preview.mjs'
+
+test('preview shortcuts explicitly target preview; dry-run is safe and production shortcuts are absent',async()=>{
+ const {scripts}=JSON.parse(await fs.readFile('package.json','utf8'))
+ assert.equal(scripts['deploy:preview:dry'],'wrangler deploy --env preview --dry-run')
+ assert.equal(scripts['deploy:preview'],'wrangler deploy --env preview')
+ for(const name of ['deploy:preview:dry','deploy:preview'])assert.match(scripts[name],/--env preview(?:\s|$)/)
+ assert.match(scripts['deploy:preview:dry'],/--dry-run(?:\s|$)/)
+ for(const name of ['deploy:production','deploy','release'])assert.equal(scripts[name],undefined)
+ assert.equal(scripts['check:preview'],'node scripts/check-preview.mjs')
+})
+test('preview check only reads the fixed preview health/news endpoints and accepts an empty feed',async()=>{
+ const calls=[]
+ const result=await checkPreview(async(url,options)=>{
+  calls.push(url);assert.equal(options.method,'GET');assert.equal(options.redirect,'error')
+  assert.ok(options.signal instanceof AbortSignal)
+  assert.equal(options.body,undefined)
+  assert.ok(['https://tri-app-preview.shy-andrey.workers.dev/api/health','https://tri-app-preview.shy-andrey.workers.dev/api/news'].includes(url))
+  return Response.json(url.endsWith('/health')?{ok:true,service:'tri-app',version:'0.0.0',commit:'test-commit'}:{items:[]})
+ })
+ assert.equal(calls.length,2);assert.equal(new Set(calls).size,2)
+ assert.equal(result.newsCount,0);assert.equal(result.health.commit,'test-commit')
+})
+test('preview check fails on HTTP errors, SPA HTML, invalid health and invalid News payloads',async()=>{
+ const health={ok:true,service:'tri-app',version:'0.0.0',commit:'test-commit'}
+ for(const broken of [()=>new Response('unavailable',{status:503}),()=>new Response('<html/>',{headers:{'Content-Type':'text/html'}}),()=>Response.json({})]){
+  await assert.rejects(()=>checkPreview(async()=>broken()))
+ }
+ await assert.rejects(()=>checkPreview(async url=>Response.json(url.endsWith('/health')?health:{items:null})))
+ await assert.rejects(()=>checkPreview(async()=>{throw Error('network unavailable')}))
+})
 
 const env={ASSETS:{fetch:async request=>new Response(`asset:${new URL(request.url).pathname}`)},DB:{},TELEGRAM_BOT_TOKEN:'do-not-expose',TURNSTILE_SECRET_KEY:'private-turnstile'}
 const request=(path,method='GET')=>new Request('https://tri.example'+path,{method})

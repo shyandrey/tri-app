@@ -54,6 +54,27 @@ npx wrangler d1 migrations list DB --local
 
 `.wrangler/` stores local DB/state/build artifacts and is ignored. Migrations never execute on request or startup. Reapplying `cf:migrate:local` is safe: Wrangler tracks applied migration filenames in d1_migrations. Create subsequent migrations with `npx wrangler d1 migrations create DB <description>`; do not edit an applied migration.
 
+## Manual preview workflow
+
+```sh
+npm run deploy:preview:dry   # build/config check only; no deployment
+npm run deploy:preview       # REAL deployment to tri-app-preview
+npm run check:preview        # read-only GET /api/health and /api/news after deployment
+```
+
+Both deploy scripts use the project-local Wrangler with explicit `--env preview`.
+Wrangler runs `npm run build`, including metadata generation from the current checkout
+(see Build identity below), and selects Worker `tri-app-preview` with binding
+`DB` → `tri-app-preview`. The dry command adds `--dry-run` and does not deploy.
+Production shortcuts (`deploy:production`, `deploy`, `release`) are intentionally absent.
+
+`check:preview` checks the fixed URL `https://tri-app-preview.shy-andrey.workers.dev`:
+HTTP 200/JSON, health service/build fields, and a News items array (empty is valid).
+It uses only GET requests, rejects redirects, times out after 15 seconds per request,
+and exits nonzero on failure. It reports the deployed commit without assuming it matches
+local HEAD. Health is not a D1 connectivity check; News may be cached for 900 seconds.
+The check does not inspect secrets or perform migrations or writes.
+
 ## Build identity
 
 `scripts/build-metadata.mjs` generates ignored `.generated/build-metadata.ts` before dev/build/tests. Both worker/index.ts and src/utils/buildMetadata.ts use it. The More screen displays the version; health also exposes the commit.
