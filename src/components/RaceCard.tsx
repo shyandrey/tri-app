@@ -1,4 +1,5 @@
 import type { RaceDistance, RaceGender, RaceSeries } from '../types/Race'
+import { ChevronRightIcon } from './AppIcons'
 import { getRaceGenderLabel } from '../utils/raceGender'
 import ironmanProImage from '../assets/series/ironman-pro.jpeg'
 import t100WorldTourImage from '../assets/series/t100-worldtour.jpeg'
@@ -97,7 +98,7 @@ function RaceCard({
         )}
       </div>
 
-      <span className="race-card__arrow">›</span>
+      <ChevronRightIcon className="race-card__arrow" />
     </article>
   )
 }

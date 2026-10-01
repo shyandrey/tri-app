@@ -1,5 +1,5 @@
 /* Athlete explorer */
-.app--athletes .athletes-page { max-width: 760px; margin-left: auto; margin-right: auto; }
+.app--athletes .athletes-page { width: 100%; max-width: none; margin-inline: 0; }
 .athletes-page__header > div { min-width: 0; }
 .app--athlete-detail .athlete-detail-page { margin-top: 56px; }
 .app--athlete-detail .athlete-detail > h1, .app--athlete-detail .athlete-detail__meta { padding-right: 104px; box-sizing: border-box; }
@@ -62,3 +62,5 @@
   .athlete-card--profile .athlete-card__info h3 { font-size:14px; }
   .athlete-placeholder-icon { width:43px;height:43px; }
 }
+
+.athletes-presentation-count { margin: -6px 0 12px; color: var(--tri-muted); font-size: 12px; text-align: left; }

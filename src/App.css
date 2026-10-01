@@ -71,13 +71,13 @@
 .race-detail-about, .athlete-detail__about, .athlete-detail__achievements, .athlete-detail__results { margin-top: 24px; padding: 20px; border: 1px solid #343434; border-radius: 20px; background: #202020; text-align: left; }
 .race-detail-about h2, .athlete-detail__about h2, .athlete-detail__achievements h2, .athlete-detail__results h2 { margin: 0 0 10px; font-size: 20px; }
 .race-detail-about p, .athlete-detail__about p { margin: 0; color: #b8b8b8; line-height: 1.6; font-size: 14px; }
-.athletes-list, .top-athletes, .more-list { display: flex; flex-direction: column; gap: 12px; }
-.athlete-card, .top-athlete-card { padding: 18px; border: 1px solid #343434; border-radius: 20px; background: #202020; display: flex; align-items: center; gap: 16px; cursor: pointer; }
+.athletes-list, .more-list { display: flex; flex-direction: column; gap: 12px; }
+.athlete-card { padding: 18px; border: 1px solid #343434; border-radius: 20px; background: #202020; display: flex; align-items: center; gap: 16px; cursor: pointer; }
 .athlete-card__flag { width: 48px; height: 48px; border-radius: 14px; background: #292929; display: grid; place-items: center; font-size: 26px; }
-.athlete-card__info, .top-athlete-card__info { flex: 1; }
-.athlete-card__info h3, .top-athlete-card__info h3 { margin: 0 0 6px; font-size: 18px; }
-.athlete-card__info p, .top-athlete-card__info p { margin: 0; color: #8e8e8e; font-size: 13px; }
-.athlete-card__arrow, .top-athlete-card__arrow { color: #8e8e8e; font-size: 30px; }
+.athlete-card__info { flex: 1; }
+.athlete-card__info h3 { margin: 0 0 6px; font-size: 18px; }
+.athlete-card__info p { margin: 0; color: #8e8e8e; font-size: 13px; }
+.athlete-card__arrow { color: #8e8e8e; font-size: 30px; }
 .athlete-detail-page { max-width: 720px; margin: 0 auto; }
 .athlete-detail { text-align: center; }
 .athlete-detail__flag { width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 20px; background: #202020; border: 1px solid #343434; display: grid; place-items: center; font-size: 38px; }
@@ -88,8 +88,6 @@
 .athlete-detail__achievements li:last-child { margin-bottom: 0; }
 .athlete-detail__image { width: 180px; height: 180px; margin: 0 auto 18px; display: block; border-radius: 24px; border: 1px solid #343434; object-fit: cover; object-position: top center; }
 .athlete-detail__flag-inline { font-size: 20px; vertical-align: middle; }
-.top-athlete-card { gap: 14px; }
-.top-athlete-card__position { width: 42px; height: 42px; border-radius: 14px; background: #f3b72b; color: #171717; display: grid; place-items: center; font-size: 18px; font-weight: 700; }
 .more-card { position: relative; padding: 20px; padding-right: 50px; border: 1px solid #343434; border-radius: 20px; background: #202020; cursor: pointer; }
 .more-card h3 { margin: 0 0 7px; font-size: 18px; }
 .more-card p { margin: 0; color: #8e8e8e; font-size: 13px; }

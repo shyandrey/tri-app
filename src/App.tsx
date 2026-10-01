@@ -11,7 +11,6 @@ import AthleteDetailPage from './pages/AthleteDetailPage'
 import AthletesPage from './pages/AthletesPage'
 import RaceDetailPage from './pages/RaceDetailPage'
 import CalendarPage, { type CalendarViewState } from './pages/CalendarPage'
-import TopAthletesPage from './pages/TopAthletesPage'
 import { NavigationRoot } from './navigation/Navigation'
 import { usePageState } from './navigation/usePageState'
 import { fallback } from './navigation/history'
@@ -28,9 +27,8 @@ import './bottom-nav-glass.css'
 import RaceCard from './components/RaceCard'
 import BottomNav from './components/BottomNav'
 import MorePage from './pages/MorePage'
-import HorizontalScroller from './components/HorizontalScroller'
 import HomeShowcase from './components/HomeShowcase'
-import { AthleteIcon, CalendarIcon, GearIcon, PaceIcon, PointsTableIcon, RankingIcon } from './components/AppIcons'
+import { AthleteIcon, CalendarIcon, GearIcon, PointsTableIcon, ChevronRightIcon } from './components/AppIcons'
 import { groupRacesForHome } from './utils/homeRacePresentation'
 import { raceResults } from './data/results/index'
 import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
@@ -121,7 +119,6 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
     return <AthletesPage athletes={rankedAthletes} ranking={athleteRanking} onBack={back} onAthleteClick={openAthlete} onNavigate={navigateSection} />
   }
 
-  if (page === 'top') return <TopAthletesPage athletes={rankedAthletes} onAthleteClick={openAthlete} onBack={back} onNavigate={navigateSection} />
   if (page === 'feedback') return <FeedbackPage context={route.feedback ?? genericFeedbackContext} onBack={back} />
   if (page === 'more') return <MorePage onBack={back} onNavigate={navigateSection} onFeedback={() => openFeedback(genericFeedbackContext)} />
 
@@ -145,27 +142,27 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
         <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
       </header>
 
-      <HomeShowcase races={showcaseRaces} onRaceClick={openRace} getRaceName={getShowcaseRaceName} />
+      <div className="home-content">
+        <HomeShowcase races={showcaseRaces} onRaceClick={openRace} getRaceName={getShowcaseRaceName} />
 
-      <section className="section home-races-section">
-        <div className="section__header home-races-section__header">
-          <h2>Ближайшие гонки</h2>
-          <button onClick={() => navigateSection('calendar')}>Все гонки <span className="home-races-section__chevron">›</span></button>
-        </div>
-        {upcomingRaces.map((race) => (
-          <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />
-        ))}
-      </section>
+        <section className="section home-races-section">
+          <div className="section__header home-races-section__header">
+            <h2>Ближайшие гонки</h2>
+            <button onClick={() => navigateSection('calendar')}>Все <ChevronRightIcon className="home-races-section__chevron" /></button>
+          </div>
+          {upcomingRaces.map((race) => (
+            <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />
+          ))}
+        </section>
 
-      <HorizontalScroller className="features features--compact" ariaLabel="Разделы приложения">
-        <article className="feature-card feature-card--compact" onClick={() => navigateSection('calendar')}><div className="feature-card__icon"><CalendarIcon /></div><div className="feature-card__copy"><h3>Календарь и результаты</h3><p>Старты и результаты</p></div></article>
-        <article className="feature-card feature-card--compact" onClick={() => navigateSection('athletes')}><div className="feature-card__icon"><AthleteIcon /></div><div className="feature-card__copy"><h3>Профили атлетов</h3><p>Атлеты и достижения</p></div></article>
-        <article className="feature-card feature-card--compact" onClick={() => navigateSection('top')}><div className="feature-card__icon"><RankingIcon /></div><div className="feature-card__copy"><h3>Рейтинг атлетов</h3><p>Рейтинг сильнейших</p></div></article>
-        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PointsTableIcon /></div><div className="feature-card__copy"><h3>Таблицы очков</h3><p>Скоро</p></div></article>
-        <article className="feature-card feature-card--compact feature-card--disabled" aria-disabled="true"><div className="feature-card__icon"><PaceIcon /></div><div className="feature-card__copy"><h3>Калькулятор темпа</h3><p>Скоро</p></div></article>
-      </HorizontalScroller>
+        <section className="features features--compact" aria-label="Разделы приложения">
+          <button type="button" className="feature-card feature-card--compact" onClick={() => navigateSection('calendar')}><span className="feature-card__icon"><CalendarIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Календарь и результаты</span></span></button>
+          <button type="button" className="feature-card feature-card--compact" onClick={() => navigateSection('athletes')}><span className="feature-card__icon"><AthleteIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Профили атлетов</span></span></button>
+          <div className="feature-card feature-card--compact feature-card--disabled" role="group" aria-disabled="true" aria-label="Таблицы и очки — скоро"><span className="feature-card__icon"><PointsTableIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Таблицы и очки</span><small>Скоро</small></span></div>
+        </section>
 
-      <LatestNews />
+        <LatestNews />
+      </div>
 
       <BottomNav currentPage="home" onNavigate={navigateSection} />
     </main>

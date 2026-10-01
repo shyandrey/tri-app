@@ -182,10 +182,10 @@
 .race-season-switcher__year {
   min-width: 70px;
   padding: 8px 14px;
-  border: 1px solid #4b4b4b;
+  border: 1px solid var(--tri-border-strong);
   border-radius: 999px;
   background: transparent;
-  color: #777;
+  color: var(--tri-muted);
   font: inherit;
   font-weight: 700;
 }

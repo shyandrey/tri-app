@@ -1,11 +1,15 @@
-.latest-news { box-sizing: border-box; min-width: 0; max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; border: 1px solid var(--tri-border); border-radius: 16px; background: var(--tri-surface); padding: 0 14px; }
-.latest-news > h2 { margin: 0; padding: 16px 0 8px; font-size: 18px; font-weight: 600; line-height: 1.4; }
+.latest-news { box-sizing: border-box; min-width: 0; max-width: none; margin-left: auto; margin-right: auto; text-align: left; border: 1px solid var(--tri-border); border-radius: 16px; background: var(--tri-surface); padding: 0 14px; }
+.latest-news__header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 12px; padding-top: 6px; }
+.latest-news__header h2 { margin: 0; padding: 8px 0; font-size: 18px; font-weight: 600; line-height: 1.4; }
+.latest-news__channel { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; color: var(--tri-muted); font-size: 12px; text-decoration: none; margin-left: auto; white-space: nowrap; }
+.latest-news__channel svg { width: 17px; height: 17px; color: var(--tri-accent); }
+.latest-news__row:last-child { border-bottom: 0; }
+
 .latest-news__row { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 10px 0; box-sizing: border-box; color: var(--tri-text); text-decoration: none; border-bottom: 1px solid var(--tri-border); }
 .latest-news__icon { display: grid; place-items: center; width: 30px; height: 30px; flex: 0 0 30px; color: var(--tri-accent); border-radius: 50%; }
 .latest-news__icon { background: color-mix(in srgb, var(--tri-accent) 10%, transparent); }
 .latest-news__icon svg { width: 17px; height: 17px; }
 .latest-news__title { flex: 1; min-width: 0; font-size: 14px; font-weight: 500; line-height: 20px; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .latest-news__chevron { flex: none; font-size: 22px; line-height: 24px; color: var(--tri-accent); }
-.latest-news__all { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; color: var(--tri-muted); font-size: 12px; text-decoration: none; }
 .latest-news a:hover { color: var(--tri-accent); }
 .latest-news a:focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 2px; border-radius: 4px; }

@@ -4,6 +4,5 @@ export type Page =
   | 'race'
   | 'athletes'
   | 'athlete'
-  | 'top'
   | 'more'
   | 'feedback'

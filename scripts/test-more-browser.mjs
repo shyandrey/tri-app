@@ -10,14 +10,14 @@ const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pen
 const js=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description);return r.result.value}
 try {
  await send('Page.enable');await send('Runtime.enable')
- for(const width of [320,390,430,768,1440]){
+ for(const width of [320,390,430,768,1024,1440]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<768})
   await send('Page.navigate',{url:base+'/?more-test='+Date.now()+'#/more'});await wait(700)
   assert.equal(await js('document.querySelector(".page-back-button").textContent'),'← Назад')
   assert.ok(await js('document.querySelector(".page-back-button").getBoundingClientRect().right<=innerWidth'))
   const text=await js('document.querySelector(".more-content").textContent')
   assert.ok(text.includes('Версия '+pkg.version));assert.ok(!/[a-f0-9]{40}|unknown|rankingAsOf/.test(text))
-  assert.ok(text.includes('не является официальным рейтингом PTO, IRONMAN или T100'))
+  assert.ok(text.includes('Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.'));assert.ok(!text.includes('TRI Ranking'))
   for(const phrase of ['текст сообщения','технический контекст','Email указывается по желанию','IP-адрес не сохраняется в обращении'])assert.ok(text.includes(phrase))
   assert.equal(await js('document.querySelectorAll(".more-content > section").length'),4)
   assert.equal(await js('document.querySelectorAll(".more-content button").length'),1)
@@ -55,7 +55,7 @@ try {
  const start=async page=>{await send('Page.navigate',{url:base+'/?back-test='+Date.now()+'#/'+page});await wait(700)}
  const snapshot=()=>js('({page:history.state.triNavigation.route.page,ui:history.state.triNavigation.ui,y:scrollY})')
  const restore=async expected=>{const actual=await snapshot();assert.equal(actual.page,expected.page);assert.deepEqual(actual.ui,expected.ui);assert.ok(Math.abs(actual.y-expected.y)<=2)}
- for(const origin of ['home','athletes','top']){
+ for(const origin of ['home','athletes']){
   await start(origin)
   if(origin!=='home'){
    await js(`[...document.querySelectorAll('.athletes-gender-card')].find(e=>e.textContent.includes('WOMEN')).click()`);await wait(200)

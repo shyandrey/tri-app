@@ -20,7 +20,7 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
           <h2 id="more-about">О приложении</h2>
           <div className="more-panel">
             <h3 className="more-brand">TRI APP</h3>
-            <p>Профессиональный триатлон: календарь, результаты, атлеты и TRI Ranking.</p>
+            <p>Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.</p>
             <p className="more-version">Версия {buildMetadata.version}</p>
           </div>
         </section>
@@ -43,7 +43,6 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
           <h2 id="more-data">Данные и конфиденциальность</h2>
           <div className="more-panel more-information">
             <div><h3>Источники данных</h3><p>Результаты гонок проверяются по открытым профессиональным источникам и обновляются после проверки. Основной источник результатов — <a href="https://stats.protriathletes.org/" target="_blank" rel="noopener noreferrer">Stats PTO / ProTriathletes <span aria-hidden="true">↗</span><span className="more-sr-only"> (откроется в новой вкладке)</span></a>.</p></div>
-            <div><h3>TRI Ranking</h3><p>TRI Ranking — внутренний рейтинг TRI APP. Он рассчитывается на основе результатов гонок и не является официальным рейтингом PTO, IRONMAN или T100.</p></div>
             <div><h3>Конфиденциальность</h3><p>При отправке обратной связи мы сохраняем текст сообщения и технический контекст, необходимый для его обработки. Email указывается по желанию. Исходный IP-адрес не сохраняется в обращении.</p></div>
           </div>
         </section>

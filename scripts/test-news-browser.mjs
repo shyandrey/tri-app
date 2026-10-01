@@ -12,7 +12,7 @@ const js=async expression=>{const r=await send('Runtime.evaluate',{expression,re
 const heights={}
 try {
  await send('Page.enable');await send('Runtime.enable')
- for(const width of [320,390,430,768,1440]){
+ for(const width of [320,390,430,768,1024,1440]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<768})
   for(const mode of ['seed','long','empty','error']){
    const items=mode==='empty'?[]:mode==='long'?newsSeed.map(i=>({...i,title:'Очень длинный заголовок '.repeat(8)})):newsSeed
@@ -29,7 +29,7 @@ try {
    assert.ok(await js('[...document.querySelectorAll(".latest-news__title")].every(e=>e.getBoundingClientRect().height<=40)'))
    assert.ok(await js('[...document.querySelectorAll(".latest-news svg")].every(e=>e.getAttribute("aria-hidden")==="true")'))
    assert.equal(await js('document.documentElement.scrollWidth'),width)
-   assert.ok(await js('document.querySelector(".latest-news").getBoundingClientRect().width<=760'))
+   assert.ok(await js('Math.abs(document.querySelector(".latest-news").getBoundingClientRect().width-document.querySelector(".home-races-section .race-card").getBoundingClientRect().width)<1'))
    await js('document.querySelector(".latest-news__row").focus()')
    await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
    assert.equal(await js('getComputedStyle(document.activeElement).outlineStyle'),'solid')

@@ -47,3 +47,10 @@ test('browser Back during an unsettled scroll uses the latest in-memory snapshot
  s.nav.saveScroll({x:0,y:917,elements:{}},false)
  s.browserBack();s.forward();assert.equal(s.nav.current.scroll.y,917)
 })
+
+test('stale Top URL and persisted Top entry recover to Home without another history entry',()=>{
+ const s=setup('#/top');assert.equal(s.nav.current.route.page,'home');assert.equal(s.entries.length,1)
+ const stale={triNavigation:{...s.nav.current,route:{page:'top'}}}
+ s.nav.pop(stale,'#/top');assert.equal(s.nav.current.route.page,'home');assert.equal(s.entries.length,1)
+ s.reload();assert.equal(s.nav.current.route.page,'home')
+})

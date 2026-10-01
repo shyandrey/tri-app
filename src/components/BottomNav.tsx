@@ -1,5 +1,5 @@
 import type { Page } from '../types/Page'
-import { AthleteIcon, CalendarIcon, HomeIcon, MoreIcon, RankingIcon } from './AppIcons'
+import { AthleteIcon, CalendarIcon, HomeIcon, MoreIcon } from './AppIcons'
 
 type BottomNavProps = {
   currentPage: Page
@@ -31,14 +31,6 @@ function BottomNav({ currentPage, onNavigate }: BottomNavProps) {
         onClick={() => onNavigate('athletes')}
       >
         <AthleteIcon className="bottom-nav__icon" />
-      </button>
-
-      <button
-        aria-label="Топ атлетов"
-        className={currentPage === 'top' ? 'bottom-nav__active' : ''}
-        onClick={() => onNavigate('top')}
-      >
-        <RankingIcon className="bottom-nav__icon" />
       </button>
 
       <button

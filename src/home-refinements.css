@@ -1,4 +1,31 @@
 /* Home-only refinements */
+.app.app--home-experiment {
+  --home-section-gap: 24px;
+  --home-nav-height: 76px;
+  --home-nav-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(var(--home-nav-height) + var(--home-nav-bottom) + var(--home-section-gap));
+}
+
+.home-content {
+  display: grid;
+  gap: var(--home-section-gap);
+  margin-top: 8px;
+}
+
+.home-content > :is(.home-showcase, .section, .features) {
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.home-content .race-card:last-child { margin-bottom: 0; }
+
+.app--home-experiment .bottom-nav {
+  box-sizing: border-box;
+  height: var(--home-nav-height);
+  bottom: var(--home-nav-bottom);
+}
+
 .app--home-experiment {
   background:
     radial-gradient(circle at 50% -10%, rgba(243, 183, 43, 0.035), transparent 34%),
@@ -6,7 +33,7 @@
 }
 
 .home-header {
-  padding: 18px 18px 8px;
+  padding: 18px 0 8px;
 }
 
 .home-header__top-row {
@@ -67,10 +94,11 @@
 }
 
 .home-showcase__track {
+  position: relative;
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  padding: 0 18px 2px;
+  padding: 0 0 2px;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   overscroll-behavior-x: contain;
@@ -84,7 +112,9 @@
 .showcase-card {
   position: relative;
   isolation: isolate;
-  min-width: min(84vw, 460px);
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  min-width: 0;
   min-height: 245px;
   overflow: hidden;
   border: 1px solid #2d3239;
@@ -271,17 +301,14 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-right: 9px;
+  margin-right: 19px;
+  min-height: 44px;
   padding: 0;
 }
 
-.home-races-section__chevron {
-  display: inline-block;
-  color: #8e8e8e;
-  font-size: 28px;
-  line-height: 0.7;
-  transform: translateY(-1px);
-}
+.home-races-section__chevron,
+.race-card__arrow { width: 28px; height: 28px; color: var(--tri-muted); }
+
 
 .app--home-experiment .section__header h2,
 .app--home-experiment .section__header h1 {
@@ -344,7 +371,7 @@
   text-align: center;
 }
 
-.feature-card--compact h3 {
+.feature-card--compact .feature-card__title {
   max-width: 132px;
   margin: 0 auto;
   font-size: 14px;
@@ -512,7 +539,7 @@
 
 @media (max-width: 640px) {
   .home-header {
-    padding: 15px 14px 5px;
+    padding: 15px 0 5px;
   }
 
   .home-header h1 {
@@ -536,12 +563,11 @@
 
   .home-showcase__track {
     gap: 10px;
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-inline: 0;
   }
 
   .showcase-card {
-    min-width: calc(100vw - 42px);
+    min-width: 0;
     min-height: 230px;
     border-radius: 20px;
   }
@@ -586,7 +612,7 @@
     min-height: 28px;
   }
 
-  .feature-card--compact h3 {
+  .feature-card--compact .feature-card__title {
     max-width: 96px;
     font-size: 10px;
     line-height: 1.15;
@@ -600,4 +626,14 @@
   .settings-sheet {
     border-radius: 22px;
   }
+}
+
+.features.features--compact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
+.features--compact > * { min-width: 0; box-sizing: border-box; font: inherit; color: var(--tri-text); }
+.feature-card--compact .feature-card__title { display: block; }
+.feature-card--compact small { display: block; margin-top: 6px; color: var(--tri-muted); font-size: 11px; }
+.feature-card--disabled { opacity: .65; }
+@media (max-width: 640px) {
+  .home-races-section__header button { margin-right: 9px; }
+  .home-races-section__chevron, .race-card__arrow { width: 20px; height: 24px; }
 }

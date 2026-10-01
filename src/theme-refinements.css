@@ -2,6 +2,8 @@
    Loaded last so page-specific layout refinements remain intact. */
 
 :root {
+  --tri-shell-width: 1126px;
+  --tri-page-gutter: 20px;
   --tri-bg: #0f1115;
   --tri-surface: #1b1f24;
   --tri-surface-raised: #20252b;
@@ -118,7 +120,7 @@
 .calendar-time-filters {
   padding: 4px;
   border-radius: 15px;
-  background: #15181c;
+  background: var(--tri-surface);
 }
 
 .calendar-time-filters button,
@@ -145,7 +147,6 @@
 .race-card,
 .news-card,
 .athlete-card,
-.top-athlete-card,
 .more-card,
 .feature-card,
 .race-result-card {
@@ -156,7 +157,6 @@
 
 .race-card:hover,
 .athlete-card:hover,
-.top-athlete-card:hover,
 .more-card:hover,
 .race-result-card--clickable:hover {
   border-color: var(--tri-border-strong);
@@ -166,7 +166,6 @@
 .race-card p,
 .news-card p,
 .athlete-card__info p,
-.top-athlete-card__info p,
 .more-card p,
 .race-result-card__athlete small,
 .race-result-card__splits {
@@ -181,7 +180,6 @@
 }
 
 .athlete-card__arrow,
-.top-athlete-card__arrow,
 .more-card > span,
 .race-card__arrow {
   color: #737981;
@@ -250,7 +248,6 @@
   color: var(--tri-muted);
 }
 
-.top-athlete-card__position,
 .race-result-card__position {
   background: var(--tri-accent);
   color: var(--tri-bg);
@@ -322,3 +319,19 @@
     font-size: 21px;
   }
 }
+
+/* One outer grid; card padding and intentional inner scrollers stay independent. */
+#root { width: var(--tri-shell-width); border: 0; }
+body { background: var(--tri-bg); }
+.app { box-sizing: border-box; padding-inline: var(--tri-page-gutter); }
+.app > .section,
+.app .more-content { width: 100%; max-width: none; margin-inline: 0; box-sizing: border-box; }
+.bottom-nav {
+  left: max(var(--tri-page-gutter), calc((100vw - var(--tri-shell-width)) / 2 + var(--tri-page-gutter)));
+  right: max(var(--tri-page-gutter), calc((100vw - var(--tri-shell-width)) / 2 + var(--tri-page-gutter)));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.page-back-button { right: var(--tri-page-gutter); }
+.race-detail-page__distance-tag { left: var(--tri-page-gutter); }
+.app :is(button, a):focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
+@media (max-width: 640px) { :root { --tri-page-gutter: 12px; } }
