@@ -516,7 +516,7 @@
 }
 
 .settings-row div span {
-  color: #7f858d;
+  color: var(--tri-text-disabled);
   font-size: 12px;
 }
 

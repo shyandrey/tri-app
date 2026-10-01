@@ -9,9 +9,12 @@
   --tri-surface-raised: #20252b;
   --tri-border: #2d3239;
   --tri-border-strong: #3a414a;
+  /* Text roles: primary, secondary, muted, heading, disabled, and accent. */
   --tri-text: #f4f4f2;
   --tri-muted: #aeb2b7;
   --tri-muted-soft: #7f858d;
+  --tri-text-heading: var(--tri-text);
+  --tri-text-disabled: #7f858d;
   --tri-accent: #f3b72b;
   --tri-accent-soft: rgba(243, 183, 43, 0.12);
 }
