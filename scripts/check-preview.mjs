@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { pathToFileURL } from 'node:url'
 
-const preview = 'https://tri-app-preview.shy-andrey.workers.dev'
+const preview = 'https://preview.300w.app'
 
 export async function checkPreview(fetcher = fetch) {
   const read = async path => {

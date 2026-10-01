@@ -16,13 +16,13 @@ test('preview shortcuts explicitly target preview; dry-run is safe and productio
  for(const name of ['deploy:production','deploy','release'])assert.equal(scripts[name],undefined)
  assert.equal(scripts['check:preview'],'node scripts/check-preview.mjs')
 })
-test('preview check only reads the fixed preview health/news endpoints and accepts an empty feed',async()=>{
+test('preview check only reads canonical preview.300w.app health/news endpoints and accepts an empty feed',async()=>{
  const calls=[]
  const result=await checkPreview(async(url,options)=>{
   calls.push(url);assert.equal(options.method,'GET');assert.equal(options.redirect,'error')
   assert.ok(options.signal instanceof AbortSignal)
   assert.equal(options.body,undefined)
-  assert.ok(['https://tri-app-preview.shy-andrey.workers.dev/api/health','https://tri-app-preview.shy-andrey.workers.dev/api/news'].includes(url))
+  assert.ok(['https://preview.300w.app/api/health','https://preview.300w.app/api/news'].includes(url))
   return Response.json(url.endsWith('/health')?{ok:true,service:'tri-app',version:'0.0.0',commit:'test-commit'}:{items:[]})
  })
  assert.equal(calls.length,2);assert.equal(new Set(calls).size,2)

@@ -7,13 +7,14 @@ React remains client-side. Hash routes (including direct `/#/athlete/…` links)
 
 Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News is active in preview; protected Feedback is not activated. Its Turnstile, rate-limiter and delivery prerequisites remain a separate setup task (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
 
-## Current live preview (2026-09-28)
+## Current live preview (2026-10-01)
 
 | Setting | Current state |
 | --- | --- |
 | Branch | `home-redesign-experiments` |
 | Worker | `tri-app-preview`; first deployment succeeded |
-| HTTPS URL | https://tri-app-preview.shy-andrey.workers.dev |
+| Canonical public preview | https://preview.300w.app |
+| Technical fallback | https://tri-app-preview.shy-andrey.workers.dev |
 | D1 | `tri-app-preview`, binding `DB` |
 | D1 UUID | `4dfe9210-0cc7-484f-8eea-fe5216f5c17a` |
 | Remote schema | Migrations 0001–0004 applied |
@@ -26,9 +27,26 @@ Implemented: health, News ingestion/read API, Feedback handlers/UI, build metada
 | Feedback | Not activated; `TELEGRAM_BOT_TOKEN` intentionally not stored in Worker |
 | Production | Worker `tri-app` and D1 `tri-app-production` do not exist yet |
 | GitHub automatic builds | Not connected |
-| Custom domain | Not configured |
+| Custom domain | `preview.300w.app`; Dashboard Type = `Production` for Worker `tri-app-preview` |
+| Reserved future production domain | `300w.app`; registered, reserved, not connected to production routing |
 
 Infrastructure provisioning, migration, webhook and permission status above is operator-confirmed. End-to-end Telegram → Worker → D1 → API was verified on the test channel before switching to the real channel. No test post was sent to the real channel during this documentation update.
+
+Both preview URLs reach the same stable deployment:
+`preview.300w.app` → stable deployment of Worker `tri-app-preview` → preview D1 `tri-app-preview`.
+Cloudflare labels this Custom Domain **Type = Production** because it targets the
+stable production deployment of that Worker. This is still our **preview environment**,
+not the future application-level 300W production environment.
+
+Operator-confirmed through the custom domain: frontend, `/api/health`, `/api/news`,
+preview D1 binding and real `@trista_watt` News posts work. Confirmed deployed health
+commit: `09c8ea62a33be2d5a2d3293f833e7d1282bf8c67`.
+
+The tested Telegram News webhook remains
+`https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`.
+Its technical endpoint is independent of the public frontend hostname; adding the
+custom domain does not require a webhook migration. Keep the workers.dev URL as
+the technical fallback for preview; no webhook change accompanies this update.
 
 Read-only verification on 2026-09-28: `/api/health` returned `ok: true`, service `tri-app`, version `0.0.0`, commit `15ac56c225db636b01f27aec89fb8addccf2c478`. `/api/news` returned exactly `telegram-seed-993`, `telegram-seed-992`, `telegram-seed-988`, with canonical titles/excerpts/timestamps and `https://t.me/trista_watt/<message_id>` links. These HTTP checks do not independently inspect Cloudflare secrets, bot permissions or migration history.
 
@@ -68,8 +86,9 @@ Wrangler runs `npm run build`, including metadata generation from the current ch
 `DB` → `tri-app-preview`. The dry command adds `--dry-run` and does not deploy.
 Production shortcuts (`deploy:production`, `deploy`, `release`) are intentionally absent.
 
-`check:preview` checks the fixed URL `https://tri-app-preview.shy-andrey.workers.dev`:
-HTTP 200/JSON, health service/build fields, and a News items array (empty is valid).
+`check:preview` checks the canonical URL `https://preview.300w.app`:
+`https://preview.300w.app/api/health` and `https://preview.300w.app/api/news`.
+It verifies HTTP 200/JSON, health service/build fields, and a News items array (empty is valid).
 It uses only GET requests, rejects redirects, times out after 15 seconds per request,
 and exits nonzero on failure. It reports the deployed commit without assuming it matches
 local HEAD. Health is not a D1 connectivity check; News may be cached for 900 seconds.
@@ -103,7 +122,12 @@ These branch mappings describe the intended workflow, not an active Git trigger.
 
 `wrangler.jsonc` contains the real preview UUID. The local UUID `00000000-0000-0000-0000-000000000000` and production UUID `22222222-2222-2222-2222-222222222222` remain placeholders. The only infrastructure config change for this checkpoint is replacing preview's `11111111-1111-1111-1111-111111111111` with the real UUID. Database IDs are configuration, not secrets. Do not create the preview database again or use production D1 for preview.
 
-Named environments inherit assets/build configuration, use `worker/index.ts` and explicitly declare separate DB bindings. The default target uses loopback-only `worker/local.ts`; do not deploy it remotely. `npm run cf:check` checks this default/local target with `--env "" --dry-run`; it does not validate live preview bindings. Preview is a separately deployed Worker with a stable workers.dev URL, not an automatic PR preview.
+Named environments inherit assets/build configuration, use `worker/index.ts` and explicitly declare separate DB bindings. The default target uses loopback-only `worker/local.ts`; do not deploy it remotely. `npm run cf:check` checks this default/local target with `--env "" --dry-run`; it does not validate live preview bindings. Preview is a separately deployed Worker with canonical URL `https://preview.300w.app` and a stable workers.dev fallback, not an automatic PR preview.
+
+`300w.app` is registered and reserved for future production. Intended architecture:
+`300w.app` → production Worker `tri-app` → production D1 `tri-app-production`.
+This is separate from the preview Worker's Dashboard domain type. No production
+routing, Worker or D1 is configured or created as part of this hostname update.
 
 Future production provisioning requires separate approval, its own D1 UUID/migrations and runtime configuration. Keep its placeholder unchanged until then.
 
