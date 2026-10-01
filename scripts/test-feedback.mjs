@@ -104,6 +104,7 @@ test('Telegram uses plain text, bounded text, no parse_mode or client info; fail
  let sent
  await telegramDelivery({TELEGRAM_BOT_TOKEN:'fake',FEEDBACK_TELEGRAM_CHAT_ID:'fake'},async(_url,options)=>{sent=JSON.parse(options.body);return Response.json({ok:true})})(row)
  assert.equal(sent.parse_mode,undefined);assert.ok(sent.text.includes('<b>'));assert.equal(sent.clientInfo,undefined)
+ assert.equal(sent.text.split('\n\n')[0],'300W⚡ · Новый report')
  await assert.rejects(telegramDelivery({},async()=>{throw Error()})(row),/DELIVERY_UNCONFIGURED/)
  await assert.rejects(telegramDelivery({TELEGRAM_BOT_TOKEN:'fake',FEEDBACK_TELEGRAM_CHAT_ID:'fake'},async()=>Response.json({ok:false}))(row),/DELIVERY_FAILED/)
 })

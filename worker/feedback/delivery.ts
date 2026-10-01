@@ -3,7 +3,7 @@ import type { Env } from '../env.ts'
 import type { FeedbackRow } from './storage.ts'
 export type Deliver = (row: FeedbackRow) => Promise<void>
 export function telegramText(row: FeedbackRow) {
-  return ['TRI APP · Новый report', `#${row.id}`, feedbackCategories[row.category],
+  return ['300W⚡ · Новый report', `#${row.id}`, feedbackCategories[row.category],
     row.athlete_name ? `Атлет: ${row.athlete_name}` : '', row.race_name ? `Гонка: ${row.race_name}` : '',
     row.active_gender === 'M' ? 'MEN' : row.active_gender === 'W' ? 'WOMEN' : '',
     'Сообщение:', row.description.length > 2800 ? row.description.slice(0, 2800) + '\n[Полный текст сохранён в D1]' : row.description,

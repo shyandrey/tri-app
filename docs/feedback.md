@@ -13,7 +13,7 @@ Users submit in 300W⚡ APP; no Telegram account or attachment is needed. More, 
 
 The UUID is the existing table primary key. A SHA-256 fingerprint excludes challenge/honeypot, includes the allowlisted persisted content. Retry keeps the exact original UUID/context/viewport snapshot; refreshing a challenge token does not change identity. Editing category/text/email creates a new report. An ambiguous network failure followed by an unchanged retry cannot create a second row. On a replay, protection config, origin, rate limit and input are checked before acknowledging the stored UUID/hash; the already-used Turnstile token need not be reused.
 
-Apply `0002_feedback_delivery.sql` after existing `0001` (unchanged). Adds request_hash, active_gender, delivery_lease and a delivery-claim index. Legacy reports remain retryable. No athlete/race data or News schema changed.
+Feedback requires migrations `0001_feedback_news.sql` and `0002_feedback_delivery.sql`. The latter adds request_hash, active_gender, delivery_lease and a delivery-claim index. Preview migrations 0001–0004 are already applied, with no pending migrations; the expected Feedback schema and an empty queue were operator-confirmed before this configuration update. No new migration is required. Legacy reports remain retryable.
 
 ## Delivery and retry
 
@@ -36,27 +36,31 @@ The top-level Wrangler target uses `worker/local.ts`: loopback hosts only, expli
 
 Tests: `npm run test:foundation`, `npm run test:feedback` (Python sqlite3 executes real SQL). Browser flow: start an isolated Chrome CDP instance on port 9232 and local Worker on 8787, then `node scripts/test-feedback-browser.mjs`. Optional `TRI_CDP_URL` and `TRI_APP_URL` override those defaults. Browser tests create three actual local D1 rows and save their IDs to `/tmp/tri-feedback-demo.json`, plus `/tmp/tri-feedback-mobile.png`; no runtime artifacts should be committed.
 
-## Preview prerequisites (after separate approval)
+## Current preview infrastructure and prepared configuration
 
-No resources are created by this task. A future preview deploy needs:
+Canonical preview is `https://preview.300w.app`; the existing technical fallback is `https://tri-app-preview.shy-andrey.workers.dev`. Both target Worker `tri-app-preview`, using the existing `DB` binding to D1 `tri-app-preview`. Do not create another preview database or reapply initial migrations.
 
-1. Isolated preview D1, replace preview placeholder database_id, apply both migrations remotely.
-2. Dedicated Telegram bot token (`TELEGRAM_BOT_TOKEN`) and private destination (`FEEDBACK_TELEGRAM_CHAT_ID`); bot must be allowed to send there. Set privately; do not put real values in Git.
-3. Turnstile widget for the exact preview hostname, public `TURNSTILE_SITE_KEY` and secret `TURNSTILE_SECRET_KEY`.
-4. `ALLOWED_ORIGIN` exact HTTPS origin (no trailing slash), random secret `RATE_LIMIT_HMAC_SECRET` and Workers rate-limiter binding `FEEDBACK_RATE_LIMITER`.
-5. Configure a retry cron, e.g. every five minutes, in the selected environment. No scheduled trigger is provisioned until deployment.
+The operator has configured secrets separately on the preview Worker: `TELEGRAM_BOT_TOKEN`, `FEEDBACK_TELEGRAM_CHAT_ID`, `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_HMAC_SECRET`, plus the existing News secrets `NEWS_TELEGRAM_CHANNEL_ID` and `TELEGRAM_WEBHOOK_SECRET`. Secret values and the private Telegram chat ID never belong in Git or `VITE_*`. The Feedback destination is a private Telegram supergroup; the bot must have permission to send messages there. Notifications start with `300W⚡ · Новый report`.
 
-Suggested per-environment Wrangler binding (replace namespace with an explicitly chosen unique namespace):
+The preview Turnstile widget has been created for hostname `preview.300w.app`. Only its public `TURNSTILE_SITE_KEY` is ordinary configuration. `ALLOWED_ORIGIN` is exactly `https://preview.300w.app`, without a trailing slash. Feedback submission from the workers.dev origin is not allowed by this single-origin policy; its News/webhook role is unchanged.
+
+`env.preview` now prepares the public vars, native rate limiter (5 requests per 60 seconds) and five-minute retry cron:
 
 ```jsonc
 "ratelimits": [{
   "name": "FEEDBACK_RATE_LIMITER",
-  "namespace_id": "<chosen-numeric-namespace>",
+  "namespace_id": "30001",
   "simple": { "limit": 5, "period": 60 }
 }],
 "triggers": { "crons": ["*/5 * * * *"] }
 ```
 
-Production fails closed with 503 if any anti-spam config is missing. Origin must match. Turnstile is verified server-side including success, hostname and `feedback` action. No remoteip is sent to Siteverify. Rate-limit key is HMAC-SHA256 of transient CF-Connecting-IP; raw IP is neither stored nor logged. Native limiter is per-location best-effort abuse protection, not a global quota; no in-memory homemade global counter. User text/email/challenge/provider errors are not logged by application code. Turnstile loads only on the feedback page in protected mode. Contact email is optional; form explains storage and inability to reply personally without email.
+Namespace `30001` was supplied by the operator after read-only inspection found no native rate-limit bindings in the accessible Worker settings/environments or all 12 available versions. Dispatch namespace inventory was unavailable (403); account-wide uniqueness was not independently certified by that inspection.
+
+These are prepared configuration changes, not evidence of a completed deployment or real Feedback E2E verification. The cron invokes the existing `scheduled()` handler; no retry endpoint is added. Validate with `npm run deploy:preview:dry -- --keep-vars`. A real preview deploy requires separate approval; preserve existing remote vars with `--keep-vars` and review bindings/triggers/domain settings. This update does not alter secrets, D1, DNS, the Custom Domain or Telegram webhook. The webhook remains `https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`.
+
+Future production (`300w.app`, Worker `tri-app`, production D1) is not configured yet. Its placeholder configuration is unchanged.
+
+Protected environments fail closed with 503 if any anti-spam config is missing. Origin must match. Turnstile is verified server-side including success, hostname and `feedback` action. No remoteip is sent to Siteverify. Rate-limit key is HMAC-SHA256 of transient CF-Connecting-IP; raw IP is neither stored nor logged. Native limiter is per-location best-effort abuse protection, not a global quota; no in-memory homemade global counter. User text/email/challenge/provider errors are not logged by application code. Turnstile loads only on the feedback page in protected mode. Contact email is optional; form explains storage and inability to reply personally without email.
 
 References: [Turnstile validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/), [Workers rate limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
