@@ -82,9 +82,9 @@ try {
   await start('#/athletes')
   const athletes=await bounds(['.athletes-page','.athletes-search','.athletes-gender-filter','.athletes-country-chip','.athletes-list','.athlete-card','.bottom-nav']);const {['.athletes-country-chip']:countryChip,...athleteFrames}=athletes;align(athleteFrames,width);assert.ok(Math.abs(countryChip.left-athleteFrames['.athletes-page'].left)<=2) // Existing country scroller has a 2px overflow inset.
   assert.equal(await js('document.querySelectorAll(".athlete-card").length'),50)
-  const counts=await js('[...document.querySelectorAll(".athletes-gender-card__count")].map(e=>Number(e.textContent))')
-  assert.equal(counts[0],counts[1]+counts[2])
-  assert.equal(await js('document.querySelector(".athletes-presentation-count").textContent'),`Показаны 50 из ${counts[0]}`)
+  const counts=await js('[...document.querySelectorAll(".athletes-gender-card__count,.athletes-country-chip__count")].map(e=>e.textContent)')
+  assert.deepEqual(counts,[])
+  assert.equal(await js('document.querySelector(".athletes-presentation-count").textContent'),'Показаны 50 из 1167')
   if(width===390)await shot(`${output}/athletes-390.png`)
   await click('.athlete-card')
   const profile=await bounds(['.athlete-detail-page','.athlete-detail__results','.bottom-nav']);align(profile,width)

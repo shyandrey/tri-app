@@ -65,6 +65,8 @@ await server.close()
 test('production SSR: ALL chip first; gender changes order; search does not change carousel/counts',()=>{
  const all=render({genderFilter:'ALL'}),men=render({genderFilter:'M'}),women=render({genderFilter:'W'})
  for(const [gender,html] of [['ALL',all],['M',men],['W',women]]) {
+  assert.ok(!html.includes('athletes-gender-card__count'))
+  assert.ok(!html.includes('athletes-country-chip__count'))
   assert.deepEqual(chips(html),['ALL',...keys(athleteCountryStrength(athletes,productionRanking,gender))])
  }
  assert.notDeepEqual(chips(men),chips(women))
@@ -100,4 +102,23 @@ test('Back restores legacy selection as canonical active chip, query, gender and
  assert.match(carousel(html),/class="athletes-country-chip is-active"[^]*?chip__code">ZA</)
  nav.saveUI('search','')
  assert.equal(filterAthletes(athletes,nav.current.ui).length,athletes.filter(a=>a.gender==='M'&&athleteCountryKey(a)==='ZA').length)
+})
+
+
+test('production status uses full matching totals while only the visible slice is rendered',()=>{
+ for(const [ui,visible,total] of [
+  [{genderFilter:'W'},50,417],
+  [{genderFilter:'W',athleteVisibleCount:100},100,417],
+  [{genderFilter:'M',countryFilter:'FR'},50,59],
+  [{genderFilter:'W',countryFilter:'FR'},24,24],
+  [{countryFilter:'FR',athleteVisibleCount:100},83,83],
+ ]) {
+  const html=render(ui)
+  assert.equal((html.match(/class="athlete-card athlete-card--profile"/g)||[]).length,visible)
+  assert.ok(html.includes(`Показаны ${visible} из ${total}`))
+  assert.equal(html.includes('class="athletes-expand"'),visible<total)
+ }
+ const empty=render({search:'zzzz-no-athlete'})
+ assert.ok(empty.includes('Атлеты не найдены'))
+ assert.ok(!empty.includes('athletes-presentation-count'))
 })

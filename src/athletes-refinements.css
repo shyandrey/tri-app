@@ -13,13 +13,11 @@
 .athlete-detail__bio-list li,.athlete-detail__achievements li { margin:0 0 8px;color:var(--tri-muted);line-height:1.45; }
 .athlete-detail__bio-list li:last-child,.athlete-detail__achievements li:last-child { margin-bottom:0; }
 .athletes-gender-filter { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:24px; }
-.athletes-gender-card { min-width:0;min-height:94px;padding:12px 8px 10px;border:1px solid var(--tri-border);border-radius:18px;background:var(--tri-surface);color:var(--tri-muted);display:grid;grid-template-rows:30px auto auto;place-items:center;gap:3px;cursor:pointer;transition:border-color 150ms ease,background 150ms ease,color 150ms ease,transform 150ms ease; }
+.athletes-gender-card { min-width:0;min-height:94px;padding:12px 8px 10px;border:1px solid var(--tri-border);border-radius:18px;background:var(--tri-surface);color:var(--tri-muted);display:grid;grid-template-rows:30px auto;place-items:center;gap:3px;cursor:pointer;transition:border-color 150ms ease,background 150ms ease,color 150ms ease,transform 150ms ease; }
 .athletes-gender-card:hover { border-color:var(--tri-border-strong);background:var(--tri-surface-raised); }
 .athletes-gender-card.is-active { border-color:rgba(243,183,43,.82);background:var(--tri-accent-soft);color:var(--tri-accent);box-shadow:inset 0 0 0 1px rgba(243,183,43,.12); }
 .athletes-gender-card__symbol { font-size:28px;font-weight:700;line-height:1; }
 .athletes-gender-card__label { color:currentColor;font-size:12px;font-weight:800;letter-spacing:.6px; }
-.athletes-gender-card__count { color:var(--tri-muted-soft);font-size:11px;font-weight:700; }
-.athletes-gender-card.is-active .athletes-gender-card__count { color:rgba(243,183,43,.78); }
 .athletes-country-scroller { display:flex;gap:10px;margin:0 -2px 22px;padding:1px 2px 4px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch; }
 .athletes-country-scroller::-webkit-scrollbar { display:none; }
 .athletes-country-chip { flex:0 0 68px;min-height:82px;padding:9px 6px 8px;border:1px solid transparent;border-radius:18px;background:transparent;color:var(--tri-muted);display:grid;place-items:center;align-content:center;gap:3px;scroll-snap-align:start;cursor:pointer;transition:border-color 150ms ease,background 150ms ease,color 150ms ease; }
@@ -28,7 +26,6 @@
 .athletes-country-chip__flag { display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--tri-border);border-radius:50%;background:#15181c;font-size:24px;line-height:1; }
 .athletes-country-chip.is-active .athletes-country-chip__flag { border-color:var(--tri-accent); }
 .athletes-country-chip__code { font-size:10px;font-weight:800;letter-spacing:.45px; }
-.athletes-country-chip__count { color:var(--tri-muted-soft);font-size:9px;font-weight:700; }
 .athletes-list--profiles { gap:10px; }
 .athlete-card--profile { min-height:84px;padding:12px 14px;border-radius:20px;gap:13px; }
 .athlete-card__portrait-wrap { position:relative;width:60px;height:60px;flex:0 0 60px; }

@@ -19,10 +19,10 @@ const bottom=async()=>{await js('scrollTo({top:document.documentElement.scrollHe
 const key=async(key,code,vk)=>{await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:vk,text:key==='Enter'?'\r':' '});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:vk});await wait(220)}
 await send('Page.enable');await send('Runtime.enable')
 try{
- for(const width of [390,1440]){
-  await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<768})
+ for(const width of [390,440,844,1440]){
+  await send('Emulation.setDeviceMetricsOverride',{width,height:width===844?390:844,deviceScaleFactor:1,mobile:width<768})
   await start('#/athletes');assert.equal(await count(),50)
-  const total=await js('Number(document.querySelector(".athletes-gender-card__count").textContent)')
+  const total=await js('Number(document.querySelector(".athletes-presentation-count").textContent.split(" из ")[1])')
   const indicator=async n=>assert.equal(await js('document.querySelector(".athletes-presentation-count").textContent'),`Показаны ${n} из ${total}`)
   await indicator(50);await bottom();await shot(`${output}/initial-bottom-${width}.png`)
   if(width===390){const clip=await js('(()=>{const r=document.querySelector(".athletes-disclosure").getBoundingClientRect();return {x:r.left+scrollX,y:r.top+scrollY,width:r.width,height:r.height,scale:2}})()');const result=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip});await fs.writeFile(`${output}/control-closeup.png`,Buffer.from(result.data,'base64'))}
@@ -40,16 +40,38 @@ try{
   await click('.athlete-card:nth-child(211)');await click('.page-back-button')
   assert.equal(await count(),250);assert.ok(Math.abs(await js('scrollY')-y)<2)
   assert.deepEqual(await js('[...document.querySelectorAll(".athlete-card h3")].map(e=>e.textContent)'),names)
-  // Reset via search, gender and country; each filtered view uses the full catalog.
-  await query('a');assert.ok(await count()>50);assert.equal(await js('Boolean(document.querySelector(".athletes-expand"))'),false)
-  await query('');assert.equal(await count(),50)
-  for(const [select,clear] of [
-   ["[...document.querySelectorAll('.athletes-gender-card')].find(e=>e.querySelector('.athletes-gender-card__label').textContent==='MEN')","document.querySelector('.athletes-gender-card')"],
-   ["[...document.querySelectorAll('.athletes-country-chip')].find(e=>e.querySelector('.athletes-country-chip__code').textContent==='FR')","document.querySelector('.athletes-country-chip')"]]){
-   await click('.athletes-expand');await js(`${select}.click()`);await wait(220)
-   assert.ok(await count()>50);assert.equal(await js('Boolean(document.querySelector(".athletes-expand"))'),false)
-   await js(`${clear}.click()`);await wait(220);assert.equal(await count(),50)
+  // Every result set uses the same disclosure; filters remain selected during global search.
+  const selectGender=async label=>{await js(`[...document.querySelectorAll('.athletes-gender-card')].find(e=>e.querySelector('.athletes-gender-card__label').textContent==='${label}').click()`);await wait(220)}
+  const selectCountry=async code=>{await js(`[...document.querySelectorAll('.athletes-country-chip')].find(e=>e.querySelector('.athletes-country-chip__code').textContent==='${code}').click()`);await wait(220)}
+  const status=async()=>{const n=await count();const text=await js('document.querySelector(".athletes-presentation-count")?.textContent');assert.ok(text);const y=Number(text.split(' из ')[1]);assert.equal(text,`Показаны ${n} из ${y}`);assert.equal(await js('Boolean(document.querySelector(".athletes-expand"))'),n<y);return y}
+  const screenshot=async name=>{await js('scrollTo({top:0,behavior:"instant"})');await wait(100);await shot(`${output}/${name}-${width}.png`)}
+  await query('a');assert.equal(await count(),50);await status();await screenshot('search-many');await click('.athletes-expand');assert.equal(await count(),100)
+  await query('');assert.equal(await count(),50);await screenshot('all-initial')
+  assert.equal(await js('document.querySelectorAll(".athletes-gender-card__count,.athletes-country-chip__count").length'),0)
+  for(const gender of ['MEN','WOMEN']){
+   await selectGender(gender);assert.equal(await count(),50);const genderTotal=await status()
+   await screenshot(`${gender.toLowerCase()}-initial`)
+   await click('.athletes-expand');assert.equal(await count(),100);await status()
+   await bottom();await shot(`${output}/${gender.toLowerCase()}-expanded-${width}.png`)
+   // Preserve a filtered expansion plus list scroll across Profile → Back.
+   await js('scrollTo({top:650,behavior:"instant"})');await wait(150)
+   const saved=await js('history.state.triNavigation.ui'),filteredY=await js('scrollY')
+   await click('.athlete-card');await click('.page-back-button')
+   assert.deepEqual(await js('history.state.triNavigation.ui'),saved);assert.equal(await count(),100);assert.ok(Math.abs(await js('scrollY')-filteredY)<2)
+   await selectCountry('FR');const combined=await status();assert.equal(await count(),Math.min(50,combined))
+   if(combined>50){await click('.athletes-expand');assert.equal(await count(),Math.min(100,combined))}
+   await selectCountry('ALL');assert.equal(await count(),50);assert.equal(await status(),genderTotal)
   }
+  await selectGender('ALL');await selectCountry('FR');assert.equal(await count(),50);const countryTotal=await status();assert.ok(countryTotal>50)
+  await screenshot('country');await click('.athletes-expand');assert.equal(await count(),Math.min(100,countryTotal))
+  await selectCountry('LV');const small=await status();assert.ok(small<=50);assert.equal(await count(),small);await screenshot('small-final')
+  await query('a');assert.equal(await count(),50);await click('.athletes-expand');assert.equal(await count(),100)
+  await js('scrollTo({top:650,behavior:"instant"})');await wait(150)
+  const searchState=await js('history.state.triNavigation.ui'),searchY=await js('scrollY')
+  await click('.athlete-card');await click('.page-back-button');assert.deepEqual(await js('history.state.triNavigation.ui'),searchState);assert.equal(await count(),100);assert.ok(Math.abs(await js('scrollY')-searchY)<2)
+  await query('Blummenfelt');assert.ok(await count()<=50);await status()
+  await query('zzzz-no-athlete');assert.equal(await count(),0);assert.equal(await js('Boolean(document.querySelector(".athletes-presentation-count"))'),false)
+  await query('');assert.equal(await count(),small);await selectCountry('ALL');assert.equal(await count(),50)
   await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]})
   await bottom();await js('document.querySelector(".athletes-expand").focus({preventScroll:true})')
   assert.equal(await js('getComputedStyle(document.activeElement).outlineStyle'),'solid')
