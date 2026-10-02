@@ -112,7 +112,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
   const upcomingRaces = futureHomeRaces.slice(0, 3)
 
   if (page === 'calendar') {
-    return <CalendarPage races={allRaceEditionViews} onBack={back} onRaceClick={openRace} onNavigate={navigateSection} viewState={calendarViewState} onViewStateChange={setCalendarViewState} />
+    return <CalendarPage races={races} searchRaces={allRaceEditionViews} onBack={back} onRaceClick={openRace} onNavigate={navigateSection} viewState={calendarViewState} onViewStateChange={setCalendarViewState} />
   }
 
   if (page === 'athletes') {

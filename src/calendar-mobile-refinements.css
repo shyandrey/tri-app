@@ -153,3 +153,17 @@
     height: 2px;
   }
 }
+
+.calendar-search-notice {
+  margin: 12px 0;
+  color: var(--tri-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.calendar-search-empty {
+  margin: 20px 0;
+  color: var(--tri-text);
+  font-size: 15px;
+  text-align: center;
+}

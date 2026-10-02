@@ -239,6 +239,8 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
             </button>
           ))}
         </div>
+        {isSearching && <p className="calendar-search-notice">Поиск по всем гонкам — фильтры временно не применяются</p>}
+        {isSearching && groupedFilteredRaces.length === 0 && <p className="calendar-search-empty" role="status">Гонки не найдены</p>}
         {groupedFilteredRaces.map((item) => renderRaceCard(item, isSearching))}
         {showArchive && archiveRacesByYear.map(({ year, races: archiveRaces }) => {
           if (archiveRaces.length === 0) return null
