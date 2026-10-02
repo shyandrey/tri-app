@@ -75,6 +75,10 @@ export class NavigationHistory {
     this.write(true)
     return true
   }
+  replaceRoute(route: Route) {
+    this.current = this.create(route, this.current.parent)
+    this.write(false)
+  }
   back() {
     if (this.waiting) return false
     if (this.current.parent) { this.waiting = true; this.port.back(); return false }

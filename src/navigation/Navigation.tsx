@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { NavigationHistory, routeURL } from './history'
 import type { Route } from './history'
@@ -8,7 +8,12 @@ const scrollElements = () => [...document.querySelectorAll<HTMLElement>('[data-n
 export function NavigationRoot({ resolve, children }: { resolve: (route: Route) => Route; children: (route: Route, navigate: (route: Route) => void, back: () => void) => ReactNode }) {
   const [navigation] = useState(() => new NavigationHistory(window.history, window.location.hash, resolve))
   const [entry, setEntry] = useState(navigation.current)
-  const capture = (persist = true) => navigation.saveScroll({ x: window.scrollX, y: window.scrollY, elements: Object.fromEntries(scrollElements().map((e, i) => [e.dataset.navigationScroll || String(i), e.scrollLeft])) }, persist)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const readyKey = useRef<string | null>(null)
+  const capture = (persist = true) => {
+    if (readyKey.current !== navigation.current.key) return
+    navigation.saveScroll({ x: window.scrollX, y: window.scrollY, elements: Object.fromEntries(scrollElements().map((e, i) => [e.dataset.navigationScroll || String(i), e.scrollLeft])) }, persist)
+  }
   useLayoutEffect(() => {
     const previous = history.scrollRestoration
     history.scrollRestoration = 'manual'
@@ -18,13 +23,26 @@ export function NavigationRoot({ resolve, children }: { resolve: (route: Route) 
   }, [navigation])
   useLayoutEffect(() => {
     let restoring = true
+    readyKey.current = null
     const scroll = entry.scroll
     const restore = () => {
       window.scrollTo({ left: scroll.x, top: scroll.y, behavior: 'instant' })
       scrollElements().forEach((e, i) => { e.scrollLeft = scroll.elements[e.dataset.navigationScroll || String(i)] ?? 0 })
     }
-    restore()
-    const frame = requestAnimationFrame(() => { restore(); restoring = false })
+    let frame = 0
+    const whenReady = () => {
+      if (rootRef.current?.querySelector('[data-route-pending]')) return
+      observer.disconnect()
+      restore()
+      frame = requestAnimationFrame(() => {
+        restore()
+        restoring = false
+        readyKey.current = entry.key
+      })
+    }
+    const observer = new MutationObserver(whenReady)
+    if (rootRef.current) observer.observe(rootRef.current, { childList: true, subtree: true })
+    whenReady()
     let timer: ReturnType<typeof setTimeout> | undefined
     const flush = () => { if (navigation.current.key === entry.key) capture() }
     const save = () => {
@@ -35,7 +53,7 @@ export function NavigationRoot({ resolve, children }: { resolve: (route: Route) 
     }
     window.addEventListener('scroll', save, true)
     window.addEventListener('pagehide', flush)
-    return () => { clearTimeout(timer); cancelAnimationFrame(frame); window.removeEventListener('scroll', save, true); window.removeEventListener('pagehide', flush) }
+    return () => { observer.disconnect(); clearTimeout(timer); cancelAnimationFrame(frame); window.removeEventListener('scroll', save, true); window.removeEventListener('pagehide', flush) }
     // Entry identity alone triggers restoration; ordinary UI edits must not jump the page.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entry.key])
@@ -45,5 +63,7 @@ export function NavigationRoot({ resolve, children }: { resolve: (route: Route) 
     if (navigation.navigate(route)) setEntry(navigation.current)
   }
   const back = () => { capture(); if (navigation.back()) setEntry(navigation.current) }
-  return <NavigationContext.Provider value={navigation}><div key={entry.key} style={{ display: 'contents' }}>{children(entry.route, navigate, back)}</div></NavigationContext.Provider>
+  // children receives event handlers; it does not invoke them during rendering.
+  // eslint-disable-next-line react-hooks/refs
+  return <NavigationContext.Provider value={navigation}><div ref={rootRef} key={entry.key} style={{ display: 'contents' }}>{children(entry.route, navigate, back)}</div></NavigationContext.Provider>
 }

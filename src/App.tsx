@@ -4,12 +4,7 @@ import { genericFeedbackContext } from '../shared/feedback'
 import type { FeedbackContext } from '../shared/feedback'
 import { allRaceEditionViews, currentRaceEditions as races } from './data/raceEditions'
 import type { Race } from './types/Race'
-import { athletes } from './data/athletes'
-import type { Athlete } from './types/Athlete'
 import type { Page } from './types/Page'
-import AthleteDetailPage from './pages/AthleteDetailPage'
-import AthletesPage from './pages/AthletesPage'
-import RaceDetailPage from './pages/RaceDetailPage'
 import CalendarPage, { type CalendarViewState } from './pages/CalendarPage'
 import { NavigationRoot } from './navigation/Navigation'
 import { usePageState } from './navigation/usePageState'
@@ -30,15 +25,8 @@ import MorePage from './pages/MorePage'
 import HomeShowcase from './components/HomeShowcase'
 import { AthleteIcon, CalendarIcon, GearIcon, PointsTableIcon, ChevronRightIcon, LightningIcon } from './components/AppIcons'
 import { groupRacesForHome } from './utils/homeRacePresentation'
-import { raceResults } from './data/results/index'
-import { getResultsByAthlete, linkResultsToAthletes } from './utils/raceResults'
-import { calculateAthleteRanking, sortAthletesByRanking } from './utils/athleteRanking'
-import { getRankingDatasetClock } from './utils/rankingDatasetClock'
-
-const linkedRaceResults = linkResultsToAthletes(raceResults)
-const rankingAsOf = getRankingDatasetClock(athletes, linkedRaceResults, allRaceEditionViews)
-const athleteRanking = calculateAthleteRanking(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf)
-const rankedAthletes = sortAthletesByRanking(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf)
+import SportsRoute from './sports/SportsRoute'
+import { sportsArea } from './sports/loader'
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
 
@@ -84,8 +72,8 @@ function getShowcaseRaceName(name: string) {
 }
 
 function resolveRoute(route: Route): Route {
-  if (route.page === 'race' && !allRaceEditionViews.some(r => r.editionId === route.id)) return fallback(route)
-  if (route.page === 'athlete' && !athletes.some(a => String(a.id) === route.id)) return fallback(route)
+  if (sportsArea.peek() && route.page === 'race' && !allRaceEditionViews.some(r => r.editionId === route.id)) return fallback(route)
+  if (route.page === 'athlete' && sportsArea.peek() && !sportsArea.peek()!.hasAthlete(route.id)) return fallback(route)
   return route
 }
 
@@ -96,11 +84,8 @@ function App() {
 function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: Route) => void; back: () => void }) {
   const openFeedback = (feedback: FeedbackContext) => navigate({ page: 'feedback', feedback })
   const page = route.page
-  const selectedRace = allRaceEditionViews.find(r => r.editionId === route.id)
-  const selectedAthlete = athletes.find(a => String(a.id) === route.id)
   const navigateSection = (page: Page) => navigate({ page })
   const openRace = (race: Race) => navigate({ page: 'race', id: race.editionId })
-  const openAthlete = (athlete: Athlete) => navigate({ page: 'athlete', id: String(athlete.id) })
   const [calendarViewState, setCalendarViewState] = usePageState<CalendarViewState>('calendar', {
     search: '', filter: 'Все', timeFilter: 'upcoming', openArchiveYears: [],
   })
@@ -115,20 +100,10 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
     return <CalendarPage races={races} searchRaces={allRaceEditionViews} onBack={back} onRaceClick={openRace} onNavigate={navigateSection} viewState={calendarViewState} onViewStateChange={setCalendarViewState} />
   }
 
-  if (page === 'athletes') {
-    return <AthletesPage athletes={rankedAthletes} ranking={athleteRanking} onBack={back} onAthleteClick={openAthlete} onNavigate={navigateSection} />
-  }
+  if (page === 'athletes' || page === 'athlete' || page === 'race') return <SportsRoute route={route} navigate={navigate} back={back} />
 
   if (page === 'feedback') return <FeedbackPage context={route.feedback ?? genericFeedbackContext} onBack={back} />
   if (page === 'more') return <MorePage onBack={back} onNavigate={navigateSection} onFeedback={() => openFeedback(genericFeedbackContext)} />
-
-  if (page === 'race' && selectedRace) {
-    return <RaceDetailPage onFeedback={openFeedback} race={selectedRace} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={back} onNavigate={navigateSection} onAthleteClick={openAthlete} />
-  }
-
-  if (page === 'athlete' && selectedAthlete) {
-    return <AthleteDetailPage onFeedback={() => openFeedback({ ...genericFeedbackContext, screen: 'athlete', route: `#/athlete/${selectedAthlete.id}`, athleteId: selectedAthlete.id, athleteName: [selectedAthlete.name, selectedAthlete.nameEn].filter((v, i, a) => v && a.indexOf(v) === i).join(' / ') })} athlete={selectedAthlete} results={getResultsByAthlete(linkedRaceResults, selectedAthlete.id)} races={allRaceEditionViews} onBack={back} onNavigate={navigateSection} onRaceClick={openRace} />
-  }
 
   return (
     <main className="app app--home-experiment">

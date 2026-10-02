@@ -1,0 +1,5 @@
+.sports-loading { min-height: 240px; padding: 24px 0; color: var(--tri-text); }
+.sports-loading h1 { font-size: 20px; }
+.sports-loading p { color: var(--tri-muted); line-height: 1.5; }
+.sports-loading__retry { min-height: 48px; padding: 10px 24px; border: 1px solid var(--tri-border); border-radius: 12px; background: var(--tri-surface); color: var(--tri-text); cursor: pointer; }
+.sports-loading__retry:focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }

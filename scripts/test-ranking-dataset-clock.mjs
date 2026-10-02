@@ -34,9 +34,9 @@ test('production ranking/sort/country strength are deterministic and share datas
  for(const g of ['ALL','M','W'])assert.deepEqual(strength(athletes,explicit,g),strength(athletes,calculate(athletes,raceResults,editions),g))
 })
 test('App shares one clock for Ranking, Athletes order and derived Country Strength',async()=>{
- const app=await fs.readFile('src/App.tsx','utf8')
+ const app=await fs.readFile('src/sports/data.ts','utf8')+'\n'+await fs.readFile('src/sports/SportsArea.tsx','utf8')
  assert.match(app,/const rankingAsOf = getRankingDatasetClock\(athletes, linkedRaceResults, allRaceEditionViews\)/)
- for(const fn of ['calculateAthleteRanking','sortAthletesByRanking'])assert.match(app,new RegExp(fn+'\\(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf\\)'))
+ for(const fn of ['calculateAthleteRanking','sortAthletesByRanking'])assert.match(app,new RegExp(fn+'\\(athletes, linkedRaceResults, allRaceEditionViews, rankingAsOf(?:, athleteRanking)?\\)'))
  assert.match(app,/ranking=\{athleteRanking\}/)
  assert.match(app,/athletes=\{rankedAthletes\}/)
 })

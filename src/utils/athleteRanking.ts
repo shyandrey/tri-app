@@ -158,9 +158,9 @@ export function sortAthletesByRanking(
   athletes: Athlete[],
   results: RaceResult[],
   editions: RaceEditionView[],
-  asOf = getRankingDatasetClock(athletes, results, editions)
+  asOf = getRankingDatasetClock(athletes, results, editions),
+  ranking = calculateAthleteRanking(athletes, results, editions, asOf),
 ): Athlete[] {
-  const ranking = calculateAthleteRanking(athletes, results, editions, asOf)
   const rankingById = new Map(ranking.map((row) => [row.athleteId, row]))
   const originalIndex = new Map(athletes.map((athlete, index) => [athlete.id, index]))
 
