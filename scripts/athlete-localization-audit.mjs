@@ -20,11 +20,7 @@ export function auditAthleteLocalization(registry, rawAthletes, localizedAthlete
       continue
     }
     const raw = matches[0]
-    // A manually curated display name always wins over the registry.
-    const expected = raw.name !== nameEn ? raw.name : nameRu
-    if (raw.name !== nameEn && raw.name !== nameRu) {
-      issues.push(`LOCALIZATION CONFLICT: ${nameEn} — ${raw.name} / ${nameRu}`)
-    }
+    const expected = nameRu
     const actual = localizedAthletes.find(a => a.id === raw.id)
     if (actual?.name !== expected || actual?.nameEn !== raw.nameEn) {
       issues.push(`LOCALIZATION NOT APPLIED: ${nameEn}`)

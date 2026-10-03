@@ -27,7 +27,7 @@ const ISO3_TO_ISO2: Record<string, string> = {
   SVK:'SK', USA:'US', RSA:'ZA',
 }
 
-// Exact English identity keys; existing curated display names take precedence.
+// Exact English identity keys; explicit overrides take precedence over embedded display names.
 const ATHLETE_NAMES_RU: Record<string, string | { nameRu: string; provenance: string }> = athleteLocalization
 
 export function localizeAthlete(athlete: Athlete): Athlete {
@@ -38,7 +38,7 @@ export function localizeAthlete(athlete: Athlete): Athlete {
   const nameRu = typeof entry === 'string' ? entry : entry?.nameRu
   return {
     ...athlete,
-    name: athlete.name !== nameEn ? athlete.name : (nameRu ?? athlete.name),
+    name: nameRu ?? (athlete.name || nameEn),
     countryCode: code ?? athlete.countryCode,
     country: code ? (COUNTRY_NAMES_RU[code] ?? athlete.country) : athlete.country,
     countryEn: code ? (COUNTRY_NAMES_EN[code] ?? athlete.countryEn) : athlete.countryEn,
