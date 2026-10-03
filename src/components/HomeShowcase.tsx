@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePageState } from '../navigation/usePageState'
-import type { CSSProperties } from 'react'
 import type { RaceEditionView } from '../types/Race'
 import { CalendarIcon, LocationIcon } from './AppIcons'
 import { pickShowcaseImage } from '../data/showcaseImages'
@@ -39,8 +38,25 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
   const manualPauseUntilRef = useRef(0)
   const [activeIndex, setActiveIndex] = usePageState<number>('showcaseIndex',0)
 
+  // Mount only current/next images initially; reveal other neighbours before they enter.
+  const [loadedImages, setLoadedImages] = useState(() => new Set([activeIndex, (activeIndex + 1) % races.length]))
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting && entry.intersectionRect.width > 0)
+      if (!visible.length) return
+      setLoadedImages(previous => {
+        const next = new Set(previous)
+        visible.forEach(entry => next.add(cardRefs.current.indexOf(entry.target as HTMLElement)))
+        return next
+      })
+      visible.forEach(entry => observer.unobserve(entry.target))
+    }, { root: trackRef.current, rootMargin: '0px 100% 0px 100%' })
+    cardRefs.current.forEach(card => { if (card) observer.observe(card) })
+    return () => observer.disconnect()
+  }, [races.length])
+
   const imageByRaceId = useMemo(() => {
-    const selected = new Map<string, string | undefined>()
+    const selected = new Map<string, ReturnType<typeof pickShowcaseImage>>()
     races.forEach((race) => {
       if (!selected.has(race.raceId)) {
         selected.set(race.raceId, pickShowcaseImage(race.raceId))
@@ -123,8 +139,16 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
               key={`showcase-${race.editionId}`}
               ref={(node) => { cardRefs.current[index] = node }}
               onClick={() => onRaceClick(race)}
-              style={showcaseImage ? { '--showcase-image': `url(${showcaseImage})` } as CSSProperties : undefined}
             >
+              {showcaseImage && loadedImages.has(index) && <img
+                className="showcase-card__image" alt="" aria-hidden="true"
+                src={showcaseImage[1].src}
+                srcSet={showcaseImage.map(image => `${image.src} ${image.width}w`).join(', ')}
+                sizes="(max-width: 640px) max(410px, calc(100vw - 24px)), (max-width: 1126px) calc(100vw - 40px), 1086px"
+                width={1672} height={941}
+                loading={index === activeIndex ? 'eager' : 'lazy'}
+                fetchPriority={index === activeIndex ? 'high' : 'low'}
+              />}
               <div className="showcase-card__shade" aria-hidden="true" />
               <div className="showcase-card__content">
                 <span className="showcase-card__eyebrow">Скоро</span>

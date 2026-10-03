@@ -1,0 +1,3826 @@
+[
+  {
+    "source": "public/athletes/aaron-royle.png",
+    "file": "src/assets/optimized/athletes/aaron-royle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7482,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/aaron-royle.png",
+    "file": "src/assets/optimized/athletes/aaron-royle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24018,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/adam-feigh.png",
+    "file": "src/assets/optimized/athletes/adam-feigh-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10124,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/adam-feigh.png",
+    "file": "src/assets/optimized/athletes/adam-feigh-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29142,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ai-ueda.png",
+    "file": "src/assets/optimized/athletes/ai-ueda-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9102,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ai-ueda.png",
+    "file": "src/assets/optimized/athletes/ai-ueda-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25186,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alanis-siffert.png",
+    "file": "src/assets/optimized/athletes/alanis-siffert-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9876,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alanis-siffert.png",
+    "file": "src/assets/optimized/athletes/alanis-siffert-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32620,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alexia-bailly.png",
+    "file": "src/assets/optimized/athletes/alexia-bailly-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10564,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alexia-bailly.png",
+    "file": "src/assets/optimized/athletes/alexia-bailly-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 36090,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ali-brauer.png",
+    "file": "src/assets/optimized/athletes/ali-brauer-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8400,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ali-brauer.png",
+    "file": "src/assets/optimized/athletes/ali-brauer-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28962,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alice-alberts.png",
+    "file": "src/assets/optimized/athletes/alice-alberts-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9444,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alice-alberts.png",
+    "file": "src/assets/optimized/athletes/alice-alberts-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25758,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alistair-brownlee.png",
+    "file": "src/assets/optimized/athletes/alistair-brownlee-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8956,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/alistair-brownlee.png",
+    "file": "src/assets/optimized/athletes/alistair-brownlee-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29552,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/amelia-watkinson.png",
+    "file": "src/assets/optimized/athletes/amelia-watkinson-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10500,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/amelia-watkinson.png",
+    "file": "src/assets/optimized/athletes/amelia-watkinson-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 35772,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anastacia-damm-nielsen.png",
+    "file": "src/assets/optimized/athletes/anastacia-damm-nielsen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8532,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anastacia-damm-nielsen.png",
+    "file": "src/assets/optimized/athletes/anastacia-damm-nielsen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28666,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/andrea-salvisberg.png",
+    "file": "src/assets/optimized/athletes/andrea-salvisberg-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9008,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/andrea-salvisberg.png",
+    "file": "src/assets/optimized/athletes/andrea-salvisberg-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25346,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anna-bergsten.png",
+    "file": "src/assets/optimized/athletes/anna-bergsten-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8158,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anna-bergsten.png",
+    "file": "src/assets/optimized/athletes/anna-bergsten-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24406,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/annamarie-strehlow.png",
+    "file": "src/assets/optimized/athletes/annamarie-strehlow-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10008,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/annamarie-strehlow.png",
+    "file": "src/assets/optimized/athletes/annamarie-strehlow-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27278,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anne-haug.png",
+    "file": "src/assets/optimized/athletes/anne-haug-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8310,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anne-haug.png",
+    "file": "src/assets/optimized/athletes/anne-haug-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24838,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anne-reischmann.png",
+    "file": "src/assets/optimized/athletes/anne-reischmann-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7056,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anne-reischmann.png",
+    "file": "src/assets/optimized/athletes/anne-reischmann-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 18968,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anne-sophie-pierre.png",
+    "file": "src/assets/optimized/athletes/anne-sophie-pierre-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9404,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/anne-sophie-pierre.png",
+    "file": "src/assets/optimized/athletes/anne-sophie-pierre-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28904,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/antonio-benito-lopez.png",
+    "file": "src/assets/optimized/athletes/antonio-benito-lopez-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9708,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/antonio-benito-lopez.png",
+    "file": "src/assets/optimized/athletes/antonio-benito-lopez-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29330,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/antony-costes.png",
+    "file": "src/assets/optimized/athletes/antony-costes-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10306,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/antony-costes.png",
+    "file": "src/assets/optimized/athletes/antony-costes-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28406,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ashleigh-gentle.png",
+    "file": "src/assets/optimized/athletes/ashleigh-gentle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7668,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ashleigh-gentle.png",
+    "file": "src/assets/optimized/athletes/ashleigh-gentle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21632,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/audrey-merle.png",
+    "file": "src/assets/optimized/athletes/audrey-merle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7584,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/audrey-merle.png",
+    "file": "src/assets/optimized/athletes/audrey-merle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22728,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/bart-aernouts.png",
+    "file": "src/assets/optimized/athletes/bart-aernouts-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8640,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/bart-aernouts.png",
+    "file": "src/assets/optimized/athletes/bart-aernouts-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27812,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ben-hamilton.png",
+    "file": "src/assets/optimized/athletes/ben-hamilton-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10260,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ben-hamilton.png",
+    "file": "src/assets/optimized/athletes/ben-hamilton-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31766,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ben-kanute.png",
+    "file": "src/assets/optimized/athletes/ben-kanute-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8516,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ben-kanute.png",
+    "file": "src/assets/optimized/athletes/ben-kanute-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25980,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/benjamin-zorgnotti.png",
+    "file": "src/assets/optimized/athletes/benjamin-zorgnotti-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8632,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/benjamin-zorgnotti.png",
+    "file": "src/assets/optimized/athletes/benjamin-zorgnotti-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27282,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/bianca-bogen.png",
+    "file": "src/assets/optimized/athletes/bianca-bogen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10612,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/bianca-bogen.png",
+    "file": "src/assets/optimized/athletes/bianca-bogen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33690,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/blake-harris.png",
+    "file": "src/assets/optimized/athletes/blake-harris-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8076,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/blake-harris.png",
+    "file": "src/assets/optimized/athletes/blake-harris-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24042,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/athletes/blummenfelt.jpg",
+    "file": "src/assets/optimized/athletes/blummenfelt-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7498,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/athletes/blummenfelt.jpg",
+    "file": "src/assets/optimized/athletes/blummenfelt-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22592,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/braden-currie.png",
+    "file": "src/assets/optimized/athletes/braden-currie-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8766,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/braden-currie.png",
+    "file": "src/assets/optimized/athletes/braden-currie-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27174,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/bradley-weiss.png",
+    "file": "src/assets/optimized/athletes/bradley-weiss-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7884,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/bradley-weiss.png",
+    "file": "src/assets/optimized/athletes/bradley-weiss-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24548,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/caleb-noble.png",
+    "file": "src/assets/optimized/athletes/caleb-noble-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9500,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/caleb-noble.png",
+    "file": "src/assets/optimized/athletes/caleb-noble-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30714,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/cameron-wurf.png",
+    "file": "src/assets/optimized/athletes/cameron-wurf-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10446,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/cameron-wurf.png",
+    "file": "src/assets/optimized/athletes/cameron-wurf-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31094,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/caroline-kaplan.png",
+    "file": "src/assets/optimized/athletes/caroline-kaplan-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8546,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/caroline-kaplan.png",
+    "file": "src/assets/optimized/athletes/caroline-kaplan-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24416,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/caroline-pohle.png",
+    "file": "src/assets/optimized/athletes/caroline-pohle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10376,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/caroline-pohle.png",
+    "file": "src/assets/optimized/athletes/caroline-pohle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31134,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/casper-stornes.png",
+    "file": "src/assets/optimized/athletes/casper-stornes-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8968,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/casper-stornes.png",
+    "file": "src/assets/optimized/athletes/casper-stornes-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28422,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/cathia-schar.png",
+    "file": "src/assets/optimized/athletes/cathia-schar-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11162,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/cathia-schar.png",
+    "file": "src/assets/optimized/athletes/cathia-schar-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 37382,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/cecilia-perez.png",
+    "file": "src/assets/optimized/athletes/cecilia-perez-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8176,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/cecilia-perez.png",
+    "file": "src/assets/optimized/athletes/cecilia-perez-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23086,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/charlene-clavel.png",
+    "file": "src/assets/optimized/athletes/charlene-clavel-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9514,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/charlene-clavel.png",
+    "file": "src/assets/optimized/athletes/charlene-clavel-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28644,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chelsea-sodaro.png",
+    "file": "src/assets/optimized/athletes/chelsea-sodaro-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9720,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chelsea-sodaro.png",
+    "file": "src/assets/optimized/athletes/chelsea-sodaro-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33336,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chloe-hartnett.png",
+    "file": "src/assets/optimized/athletes/chloe-hartnett-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10174,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chloe-hartnett.png",
+    "file": "src/assets/optimized/athletes/chloe-hartnett-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33740,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chloe-lane.png",
+    "file": "src/assets/optimized/athletes/chloe-lane-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8562,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chloe-lane.png",
+    "file": "src/assets/optimized/athletes/chloe-lane-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28658,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chris-leiferman.png",
+    "file": "src/assets/optimized/athletes/chris-leiferman-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8736,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/chris-leiferman.png",
+    "file": "src/assets/optimized/athletes/chris-leiferman-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24432,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/clement-mignon.png",
+    "file": "src/assets/optimized/athletes/clement-mignon-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8726,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/clement-mignon.png",
+    "file": "src/assets/optimized/athletes/clement-mignon-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27114,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/colin-szuch.png",
+    "file": "src/assets/optimized/athletes/colin-szuch-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9042,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/colin-szuch.png",
+    "file": "src/assets/optimized/athletes/colin-szuch-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29880,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daisy-davies.png",
+    "file": "src/assets/optimized/athletes/daisy-davies-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10998,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daisy-davies.png",
+    "file": "src/assets/optimized/athletes/daisy-davies-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 36656,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniel-b-kkegard.png",
+    "file": "src/assets/optimized/athletes/daniel-b-kkegard-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8808,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniel-b-kkegard.png",
+    "file": "src/assets/optimized/athletes/daniel-b-kkegard-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26900,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniela-bleymehl.png",
+    "file": "src/assets/optimized/athletes/daniela-bleymehl-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9838,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniela-bleymehl.png",
+    "file": "src/assets/optimized/athletes/daniela-bleymehl-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28180,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniela-kleiser.png",
+    "file": "src/assets/optimized/athletes/daniela-kleiser-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8670,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniela-kleiser.png",
+    "file": "src/assets/optimized/athletes/daniela-kleiser-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26546,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniela-ryf.png",
+    "file": "src/assets/optimized/athletes/daniela-ryf-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9126,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/daniela-ryf.png",
+    "file": "src/assets/optimized/athletes/daniela-ryf-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28386,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/danielle-fauteux.png",
+    "file": "src/assets/optimized/athletes/danielle-fauteux-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7540,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/danielle-fauteux.png",
+    "file": "src/assets/optimized/athletes/danielle-fauteux-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22650,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/danielle-lewis.png",
+    "file": "src/assets/optimized/athletes/danielle-lewis-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8298,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/danielle-lewis.png",
+    "file": "src/assets/optimized/athletes/danielle-lewis-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23956,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/david-mcnamee.png",
+    "file": "src/assets/optimized/athletes/david-mcnamee-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8398,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/david-mcnamee.png",
+    "file": "src/assets/optimized/athletes/david-mcnamee-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25074,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/diana-castillo-franco.png",
+    "file": "src/assets/optimized/athletes/diana-castillo-franco-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7824,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/diana-castillo-franco.png",
+    "file": "src/assets/optimized/athletes/diana-castillo-franco-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21482,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/diede-diederiks.png",
+    "file": "src/assets/optimized/athletes/diede-diederiks-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7602,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/diede-diederiks.png",
+    "file": "src/assets/optimized/athletes/diede-diederiks-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25008,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/dominik-sowieja.png",
+    "file": "src/assets/optimized/athletes/dominik-sowieja-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7682,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/dominik-sowieja.png",
+    "file": "src/assets/optimized/athletes/dominik-sowieja-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20334,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/dylan-magnien.png",
+    "file": "src/assets/optimized/athletes/dylan-magnien-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9692,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/dylan-magnien.png",
+    "file": "src/assets/optimized/athletes/dylan-magnien-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 35002,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/eduardo-perez-sandi-garcia.png",
+    "file": "src/assets/optimized/athletes/eduardo-perez-sandi-garcia-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9226,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/eduardo-perez-sandi-garcia.png",
+    "file": "src/assets/optimized/athletes/eduardo-perez-sandi-garcia-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30108,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/elisabetta-curridori.png",
+    "file": "src/assets/optimized/athletes/elisabetta-curridori-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9588,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/elisabetta-curridori.png",
+    "file": "src/assets/optimized/athletes/elisabetta-curridori-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32544,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ellie-salthouse.png",
+    "file": "src/assets/optimized/athletes/ellie-salthouse-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10546,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ellie-salthouse.png",
+    "file": "src/assets/optimized/athletes/ellie-salthouse-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32542,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/els-visser.png",
+    "file": "src/assets/optimized/athletes/els-visser-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9968,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/els-visser.png",
+    "file": "src/assets/optimized/athletes/els-visser-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31252,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/emma-pallant-browne.png",
+    "file": "src/assets/optimized/athletes/emma-pallant-browne-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8924,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/emma-pallant-browne.png",
+    "file": "src/assets/optimized/athletes/emma-pallant-browne-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26540,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/fenella-langridge.png",
+    "file": "src/assets/optimized/athletes/fenella-langridge-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10790,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/fenella-langridge.png",
+    "file": "src/assets/optimized/athletes/fenella-langridge-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 35794,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/fernando-toldi.png",
+    "file": "src/assets/optimized/athletes/fernando-toldi-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8196,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/fernando-toldi.png",
+    "file": "src/assets/optimized/athletes/fernando-toldi-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20768,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/filipe-azevedo.png",
+    "file": "src/assets/optimized/athletes/filipe-azevedo-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9416,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/filipe-azevedo.png",
+    "file": "src/assets/optimized/athletes/filipe-azevedo-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28612,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/fiona-moriarty.png",
+    "file": "src/assets/optimized/athletes/fiona-moriarty-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10284,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/fiona-moriarty.png",
+    "file": "src/assets/optimized/athletes/fiona-moriarty-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 34434,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/flora-duffy.png",
+    "file": "src/assets/optimized/athletes/flora-duffy-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8502,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/flora-duffy.png",
+    "file": "src/assets/optimized/athletes/flora-duffy-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23802,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/florian-angert.png",
+    "file": "src/assets/optimized/athletes/florian-angert-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 6650,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/florian-angert.png",
+    "file": "src/assets/optimized/athletes/florian-angert-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20084,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/franzi-hofmann.png",
+    "file": "src/assets/optimized/athletes/franzi-hofmann-180.webp",
+    "width": 180,
+    "height": 131,
+    "bytes": 7572,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/franzi-hofmann.png",
+    "file": "src/assets/optimized/athletes/franzi-hofmann-396.webp",
+    "width": 274,
+    "height": 200,
+    "bytes": 12388,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/frederic-funk.png",
+    "file": "src/assets/optimized/athletes/frederic-funk-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8330,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/frederic-funk.png",
+    "file": "src/assets/optimized/athletes/frederic-funk-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23218,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gabrielle-lumkes.png",
+    "file": "src/assets/optimized/athletes/gabrielle-lumkes-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11572,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gabrielle-lumkes.png",
+    "file": "src/assets/optimized/athletes/gabrielle-lumkes-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 41850,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/georgia-taylor-brown.png",
+    "file": "src/assets/optimized/athletes/georgia-taylor-brown-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10550,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/georgia-taylor-brown.png",
+    "file": "src/assets/optimized/athletes/georgia-taylor-brown-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 34408,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/grace-alexander.png",
+    "file": "src/assets/optimized/athletes/grace-alexander-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9556,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/grace-alexander.png",
+    "file": "src/assets/optimized/athletes/grace-alexander-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29238,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/grace-thek.png",
+    "file": "src/assets/optimized/athletes/grace-thek-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7640,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/grace-thek.png",
+    "file": "src/assets/optimized/athletes/grace-thek-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21998,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gregor-payet.png",
+    "file": "src/assets/optimized/athletes/gregor-payet-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8724,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gregor-payet.png",
+    "file": "src/assets/optimized/athletes/gregor-payet-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25464,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gregory-barnaby.png",
+    "file": "src/assets/optimized/athletes/gregory-barnaby-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8860,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gregory-barnaby.png",
+    "file": "src/assets/optimized/athletes/gregory-barnaby-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26796,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/guillem-montiel.png",
+    "file": "src/assets/optimized/athletes/guillem-montiel-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9648,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/guillem-montiel.png",
+    "file": "src/assets/optimized/athletes/guillem-montiel-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29108,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gurutze-frades-larralde.png",
+    "file": "src/assets/optimized/athletes/gurutze-frades-larralde-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8848,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gurutze-frades-larralde.png",
+    "file": "src/assets/optimized/athletes/gurutze-frades-larralde-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25480,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gustav-iden.png",
+    "file": "src/assets/optimized/athletes/gustav-iden-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8948,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/gustav-iden.png",
+    "file": "src/assets/optimized/athletes/gustav-iden-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26382,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/hannah-berry.png",
+    "file": "src/assets/optimized/athletes/hannah-berry-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9426,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/hannah-berry.png",
+    "file": "src/assets/optimized/athletes/hannah-berry-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31430,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/hanne-de-vet.png",
+    "file": "src/assets/optimized/athletes/hanne-de-vet-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8832,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/hanne-de-vet.png",
+    "file": "src/assets/optimized/athletes/hanne-de-vet-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26560,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/harry-palmer.png",
+    "file": "src/assets/optimized/athletes/harry-palmer-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9916,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/harry-palmer.png",
+    "file": "src/assets/optimized/athletes/harry-palmer-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31300,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/hayden-wilde.png",
+    "file": "src/assets/optimized/athletes/hayden-wilde-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8402,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/hayden-wilde.png",
+    "file": "src/assets/optimized/athletes/hayden-wilde-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26474,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/henri-schoeman.png",
+    "file": "src/assets/optimized/athletes/henri-schoeman-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9192,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/henri-schoeman.png",
+    "file": "src/assets/optimized/athletes/henri-schoeman-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32498,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/henrik-goesch.png",
+    "file": "src/assets/optimized/athletes/henrik-goesch-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11922,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/henrik-goesch.png",
+    "file": "src/assets/optimized/athletes/henrik-goesch-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 42414,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/henry-rappo.png",
+    "file": "src/assets/optimized/athletes/henry-rappo-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8942,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/henry-rappo.png",
+    "file": "src/assets/optimized/athletes/henry-rappo-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26796,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/holly-lawrence.png",
+    "file": "src/assets/optimized/athletes/holly-lawrence-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9872,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/holly-lawrence.png",
+    "file": "src/assets/optimized/athletes/holly-lawrence-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31544,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/imogen-simmonds.png",
+    "file": "src/assets/optimized/athletes/imogen-simmonds-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10324,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/imogen-simmonds.png",
+    "file": "src/assets/optimized/athletes/imogen-simmonds-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 37288,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/india-lee.png",
+    "file": "src/assets/optimized/athletes/india-lee-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8854,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/india-lee.png",
+    "file": "src/assets/optimized/athletes/india-lee-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26474,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jackie-hering.png",
+    "file": "src/assets/optimized/athletes/jackie-hering-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9122,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jackie-hering.png",
+    "file": "src/assets/optimized/athletes/jackie-hering-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29458,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jackson-laundry.png",
+    "file": "src/assets/optimized/athletes/jackson-laundry-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8018,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jackson-laundry.png",
+    "file": "src/assets/optimized/athletes/jackson-laundry-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21278,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jake-birtwhistle.png",
+    "file": "src/assets/optimized/athletes/jake-birtwhistle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8572,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jake-birtwhistle.png",
+    "file": "src/assets/optimized/athletes/jake-birtwhistle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28590,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/james-teagle.png",
+    "file": "src/assets/optimized/athletes/james-teagle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8320,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/james-teagle.png",
+    "file": "src/assets/optimized/athletes/james-teagle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23128,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jamie-besse.png",
+    "file": "src/assets/optimized/athletes/jamie-besse-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9562,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jamie-besse.png",
+    "file": "src/assets/optimized/athletes/jamie-besse-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26492,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jamie-riddle.png",
+    "file": "src/assets/optimized/athletes/jamie-riddle-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7652,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jamie-riddle.png",
+    "file": "src/assets/optimized/athletes/jamie-riddle-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22818,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jan-stratmann.png",
+    "file": "src/assets/optimized/athletes/jan-stratmann-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8602,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jan-stratmann.png",
+    "file": "src/assets/optimized/athletes/jan-stratmann-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25826,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jannik-schaufler.png",
+    "file": "src/assets/optimized/athletes/jannik-schaufler-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8244,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jannik-schaufler.png",
+    "file": "src/assets/optimized/athletes/jannik-schaufler-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25868,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jarrod-osborne.png",
+    "file": "src/assets/optimized/athletes/jarrod-osborne-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10224,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jarrod-osborne.png",
+    "file": "src/assets/optimized/athletes/jarrod-osborne-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 35534,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jasmine-brown.png",
+    "file": "src/assets/optimized/athletes/jasmine-brown-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8556,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jasmine-brown.png",
+    "file": "src/assets/optimized/athletes/jasmine-brown-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24256,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jason-west.png",
+    "file": "src/assets/optimized/athletes/jason-west-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9744,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jason-west.png",
+    "file": "src/assets/optimized/athletes/jason-west-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29906,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jeanni-metzler.png",
+    "file": "src/assets/optimized/athletes/jeanni-metzler-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8182,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jeanni-metzler.png",
+    "file": "src/assets/optimized/athletes/jeanni-metzler-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21122,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jelle-geens.png",
+    "file": "src/assets/optimized/athletes/jelle-geens-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7450,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jelle-geens.png",
+    "file": "src/assets/optimized/athletes/jelle-geens-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22190,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jenny-jendryschik.png",
+    "file": "src/assets/optimized/athletes/jenny-jendryschik-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11850,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jenny-jendryschik.png",
+    "file": "src/assets/optimized/athletes/jenny-jendryschik-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 41956,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jessica-fullagar.png",
+    "file": "src/assets/optimized/athletes/jessica-fullagar-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10592,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jessica-fullagar.png",
+    "file": "src/assets/optimized/athletes/jessica-fullagar-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 35860,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jessica-learmonth.png",
+    "file": "src/assets/optimized/athletes/jessica-learmonth-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8894,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jessica-learmonth.png",
+    "file": "src/assets/optimized/athletes/jessica-learmonth-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25872,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/joanna-ryter.png",
+    "file": "src/assets/optimized/athletes/joanna-ryter-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10074,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/joanna-ryter.png",
+    "file": "src/assets/optimized/athletes/joanna-ryter-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26662,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jocelyn-mccauley.png",
+    "file": "src/assets/optimized/athletes/jocelyn-mccauley-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8224,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jocelyn-mccauley.png",
+    "file": "src/assets/optimized/athletes/jocelyn-mccauley-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24032,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/joe-skipper.png",
+    "file": "src/assets/optimized/athletes/joe-skipper-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9328,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/joe-skipper.png",
+    "file": "src/assets/optimized/athletes/joe-skipper-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30094,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/johanna-ahrens.png",
+    "file": "src/assets/optimized/athletes/johanna-ahrens-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8004,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/johanna-ahrens.png",
+    "file": "src/assets/optimized/athletes/johanna-ahrens-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20124,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jonas-hoffmann.png",
+    "file": "src/assets/optimized/athletes/jonas-hoffmann-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10044,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jonas-hoffmann.png",
+    "file": "src/assets/optimized/athletes/jonas-hoffmann-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33146,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jonas-schomburg.png",
+    "file": "src/assets/optimized/athletes/jonas-schomburg-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9710,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jonas-schomburg.png",
+    "file": "src/assets/optimized/athletes/jonas-schomburg-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32990,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jordi-montraveta-moya.png",
+    "file": "src/assets/optimized/athletes/jordi-montraveta-moya-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8104,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/jordi-montraveta-moya.png",
+    "file": "src/assets/optimized/athletes/jordi-montraveta-moya-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27932,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/josh-amberger.png",
+    "file": "src/assets/optimized/athletes/josh-amberger-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11634,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/josh-amberger.png",
+    "file": "src/assets/optimized/athletes/josh-amberger-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 40524,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/joshua-lewis.png",
+    "file": "src/assets/optimized/athletes/joshua-lewis-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 5938,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/joshua-lewis.png",
+    "file": "src/assets/optimized/athletes/joshua-lewis-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 16400,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/julian-becker.png",
+    "file": "src/assets/optimized/athletes/julian-becker-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7604,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/julian-becker.png",
+    "file": "src/assets/optimized/athletes/julian-becker-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20970,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/julie-derron.png",
+    "file": "src/assets/optimized/athletes/julie-derron-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9468,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/julie-derron.png",
+    "file": "src/assets/optimized/athletes/julie-derron-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32146,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/julie-iemmolo.png",
+    "file": "src/assets/optimized/athletes/julie-iemmolo-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11126,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/julie-iemmolo.png",
+    "file": "src/assets/optimized/athletes/julie-iemmolo-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 38044,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justin-riele.png",
+    "file": "src/assets/optimized/athletes/justin-riele-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8306,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justin-riele.png",
+    "file": "src/assets/optimized/athletes/justin-riele-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25884,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justine-guerard.png",
+    "file": "src/assets/optimized/athletes/justine-guerard-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9282,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justine-guerard.png",
+    "file": "src/assets/optimized/athletes/justine-guerard-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28246,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justine-mathieux.png",
+    "file": "src/assets/optimized/athletes/justine-mathieux-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8990,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justine-mathieux.png",
+    "file": "src/assets/optimized/athletes/justine-mathieux-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27346,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justus-nieschlag.png",
+    "file": "src/assets/optimized/athletes/justus-nieschlag-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8520,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/justus-nieschlag.png",
+    "file": "src/assets/optimized/athletes/justus-nieschlag-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24322,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kacper-stepniak.png",
+    "file": "src/assets/optimized/athletes/kacper-stepniak-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7626,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kacper-stepniak.png",
+    "file": "src/assets/optimized/athletes/kacper-stepniak-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20754,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kaidi-kivioja.png",
+    "file": "src/assets/optimized/athletes/kaidi-kivioja-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9542,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kaidi-kivioja.png",
+    "file": "src/assets/optimized/athletes/kaidi-kivioja-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31158,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kat-matthews.png",
+    "file": "src/assets/optimized/athletes/kat-matthews-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9052,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kat-matthews.png",
+    "file": "src/assets/optimized/athletes/kat-matthews-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28126,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kate-curran.png",
+    "file": "src/assets/optimized/athletes/kate-curran-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8240,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kate-curran.png",
+    "file": "src/assets/optimized/athletes/kate-curran-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23700,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kate-waugh.png",
+    "file": "src/assets/optimized/athletes/kate-waugh-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11386,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kate-waugh.png",
+    "file": "src/assets/optimized/athletes/kate-waugh-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 41436,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/katrine-gr-sb-ll-christensen.png",
+    "file": "src/assets/optimized/athletes/katrine-gr-sb-ll-christensen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10144,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/katrine-gr-sb-ll-christensen.png",
+    "file": "src/assets/optimized/athletes/katrine-gr-sb-ll-christensen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 32618,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kenji-nener.png",
+    "file": "src/assets/optimized/athletes/kenji-nener-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7762,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kenji-nener.png",
+    "file": "src/assets/optimized/athletes/kenji-nener-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24738,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kieran-lindars.png",
+    "file": "src/assets/optimized/athletes/kieran-lindars-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8102,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kieran-lindars.png",
+    "file": "src/assets/optimized/athletes/kieran-lindars-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21912,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kirsten-kasper.png",
+    "file": "src/assets/optimized/athletes/kirsten-kasper-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8414,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kirsten-kasper.png",
+    "file": "src/assets/optimized/athletes/kirsten-kasper-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25444,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kristian-blummenfelt.png",
+    "file": "src/assets/optimized/athletes/kristian-blummenfelt-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9326,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kristian-blummenfelt.png",
+    "file": "src/assets/optimized/athletes/kristian-blummenfelt-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26132,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kristian-h-genhaug.png",
+    "file": "src/assets/optimized/athletes/kristian-h-genhaug-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8860,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kristian-h-genhaug.png",
+    "file": "src/assets/optimized/athletes/kristian-h-genhaug-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25368,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kurt-mcdonald.png",
+    "file": "src/assets/optimized/athletes/kurt-mcdonald-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8368,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kurt-mcdonald.png",
+    "file": "src/assets/optimized/athletes/kurt-mcdonald-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25198,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kyle-smith.png",
+    "file": "src/assets/optimized/athletes/kyle-smith-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7356,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kyle-smith.png",
+    "file": "src/assets/optimized/athletes/kyle-smith-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23576,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kylie-simpson.png",
+    "file": "src/assets/optimized/athletes/kylie-simpson-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9266,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/kylie-simpson.png",
+    "file": "src/assets/optimized/athletes/kylie-simpson-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26396,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lasse-nygaard-priester.png",
+    "file": "src/assets/optimized/athletes/lasse-nygaard-priester-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8482,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lasse-nygaard-priester.png",
+    "file": "src/assets/optimized/athletes/lasse-nygaard-priester-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24022,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-jansen.png",
+    "file": "src/assets/optimized/athletes/laura-jansen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9024,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-jansen.png",
+    "file": "src/assets/optimized/athletes/laura-jansen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26546,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-madsen.png",
+    "file": "src/assets/optimized/athletes/laura-madsen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11666,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-madsen.png",
+    "file": "src/assets/optimized/athletes/laura-madsen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 41336,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-philipp.png",
+    "file": "src/assets/optimized/athletes/laura-philipp-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8426,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-philipp.png",
+    "file": "src/assets/optimized/athletes/laura-philipp-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23184,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-zimmermann.png",
+    "file": "src/assets/optimized/athletes/laura-zimmermann-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7516,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/laura-zimmermann.png",
+    "file": "src/assets/optimized/athletes/laura-zimmermann-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23108,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lauren-brandon.png",
+    "file": "src/assets/optimized/athletes/lauren-brandon-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8898,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lauren-brandon.png",
+    "file": "src/assets/optimized/athletes/lauren-brandon-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28372,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/leana-bissig.png",
+    "file": "src/assets/optimized/athletes/leana-bissig-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7962,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/leana-bissig.png",
+    "file": "src/assets/optimized/athletes/leana-bissig-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23146,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lena-mei-ner.png",
+    "file": "src/assets/optimized/athletes/lena-mei-ner-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8994,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lena-mei-ner.png",
+    "file": "src/assets/optimized/athletes/lena-mei-ner-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27448,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/leo-bergere.png",
+    "file": "src/assets/optimized/athletes/leo-bergere-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7924,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/leo-bergere.png",
+    "file": "src/assets/optimized/athletes/leo-bergere-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23598,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/leon-chevalier.png",
+    "file": "src/assets/optimized/athletes/leon-chevalier-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8352,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/leon-chevalier.png",
+    "file": "src/assets/optimized/athletes/leon-chevalier-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26382,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lesley-smith.png",
+    "file": "src/assets/optimized/athletes/lesley-smith-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9148,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lesley-smith.png",
+    "file": "src/assets/optimized/athletes/lesley-smith-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25740,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lionel-sanders.png",
+    "file": "src/assets/optimized/athletes/lionel-sanders-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9770,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lionel-sanders.png",
+    "file": "src/assets/optimized/athletes/lionel-sanders-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31568,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lisa-becharas.png",
+    "file": "src/assets/optimized/athletes/lisa-becharas-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9866,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lisa-becharas.png",
+    "file": "src/assets/optimized/athletes/lisa-becharas-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33140,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lisa-norden.png",
+    "file": "src/assets/optimized/athletes/lisa-norden-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9446,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lisa-norden.png",
+    "file": "src/assets/optimized/athletes/lisa-norden-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30634,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lisa-perterer.png",
+    "file": "src/assets/optimized/athletes/lisa-perterer-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10202,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lisa-perterer.png",
+    "file": "src/assets/optimized/athletes/lisa-perterer-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30242,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lizzie-rayner.png",
+    "file": "src/assets/optimized/athletes/lizzie-rayner-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9422,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lizzie-rayner.png",
+    "file": "src/assets/optimized/athletes/lizzie-rayner-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28642,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lotte-wilms.png",
+    "file": "src/assets/optimized/athletes/lotte-wilms-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8780,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lotte-wilms.png",
+    "file": "src/assets/optimized/athletes/lotte-wilms-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28190,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lucy-byram.png",
+    "file": "src/assets/optimized/athletes/lucy-byram-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9246,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lucy-byram.png",
+    "file": "src/assets/optimized/athletes/lucy-byram-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28942,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lucy-charles-barclay.png",
+    "file": "src/assets/optimized/athletes/lucy-charles-barclay-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10090,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lucy-charles-barclay.png",
+    "file": "src/assets/optimized/athletes/lucy-charles-barclay-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31376,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lukas-stahl.png",
+    "file": "src/assets/optimized/athletes/lukas-stahl-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7138,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lukas-stahl.png",
+    "file": "src/assets/optimized/athletes/lukas-stahl-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21466,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lydia-russell.png",
+    "file": "src/assets/optimized/athletes/lydia-russell-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9834,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/lydia-russell.png",
+    "file": "src/assets/optimized/athletes/lydia-russell-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30546,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/magnus-ditlev.png",
+    "file": "src/assets/optimized/athletes/magnus-ditlev-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9248,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/magnus-ditlev.png",
+    "file": "src/assets/optimized/athletes/magnus-ditlev-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26834,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marc-dubrick.png",
+    "file": "src/assets/optimized/athletes/marc-dubrick-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7512,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marc-dubrick.png",
+    "file": "src/assets/optimized/athletes/marc-dubrick-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22802,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marjolaine-pierre.png",
+    "file": "src/assets/optimized/athletes/marjolaine-pierre-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10854,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marjolaine-pierre.png",
+    "file": "src/assets/optimized/athletes/marjolaine-pierre-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31398,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marlene-de-boer.png",
+    "file": "src/assets/optimized/athletes/marlene-de-boer-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9862,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marlene-de-boer.png",
+    "file": "src/assets/optimized/athletes/marlene-de-boer-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31428,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marta-lagownik.png",
+    "file": "src/assets/optimized/athletes/marta-lagownik-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8250,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marta-lagownik.png",
+    "file": "src/assets/optimized/athletes/marta-lagownik-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22742,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marta-sanchez.png",
+    "file": "src/assets/optimized/athletes/marta-sanchez-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8650,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marta-sanchez.png",
+    "file": "src/assets/optimized/athletes/marta-sanchez-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24844,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marten-van-riel.png",
+    "file": "src/assets/optimized/athletes/marten-van-riel-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8944,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/marten-van-riel.png",
+    "file": "src/assets/optimized/athletes/marten-van-riel-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25440,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mathias-petersen.png",
+    "file": "src/assets/optimized/athletes/mathias-petersen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11754,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mathias-petersen.png",
+    "file": "src/assets/optimized/athletes/mathias-petersen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 35010,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mathis-margirier.png",
+    "file": "src/assets/optimized/athletes/mathis-margirier-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11084,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mathis-margirier.png",
+    "file": "src/assets/optimized/athletes/mathis-margirier-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 38310,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matt-burton.png",
+    "file": "src/assets/optimized/athletes/matt-burton-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7824,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matt-burton.png",
+    "file": "src/assets/optimized/athletes/matt-burton-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22298,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matt-hanson.png",
+    "file": "src/assets/optimized/athletes/matt-hanson-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10220,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matt-hanson.png",
+    "file": "src/assets/optimized/athletes/matt-hanson-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29398,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matthew-collins.png",
+    "file": "src/assets/optimized/athletes/matthew-collins-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 6554,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matthew-collins.png",
+    "file": "src/assets/optimized/athletes/matthew-collins-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 18204,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matthew-marquardt.png",
+    "file": "src/assets/optimized/athletes/matthew-marquardt-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7586,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/matthew-marquardt.png",
+    "file": "src/assets/optimized/athletes/matthew-marquardt-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 19832,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mattia-ceccarelli.png",
+    "file": "src/assets/optimized/athletes/mattia-ceccarelli-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 6832,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mattia-ceccarelli.png",
+    "file": "src/assets/optimized/athletes/mattia-ceccarelli-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20078,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/maximilian-sperl.png",
+    "file": "src/assets/optimized/athletes/maximilian-sperl-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7176,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/maximilian-sperl.png",
+    "file": "src/assets/optimized/athletes/maximilian-sperl-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20746,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/megan-mcdonald.png",
+    "file": "src/assets/optimized/athletes/megan-mcdonald-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8548,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/megan-mcdonald.png",
+    "file": "src/assets/optimized/athletes/megan-mcdonald-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23734,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/menno-koolhaas.png",
+    "file": "src/assets/optimized/athletes/menno-koolhaas-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8606,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/menno-koolhaas.png",
+    "file": "src/assets/optimized/athletes/menno-koolhaas-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26858,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/merle-brunnee.png",
+    "file": "src/assets/optimized/athletes/merle-brunnee-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9892,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/merle-brunnee.png",
+    "file": "src/assets/optimized/athletes/merle-brunnee-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31174,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mika-noodt.png",
+    "file": "src/assets/optimized/athletes/mika-noodt-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7846,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/mika-noodt.png",
+    "file": "src/assets/optimized/athletes/mika-noodt-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27904,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/morgan-pearson.png",
+    "file": "src/assets/optimized/athletes/morgan-pearson-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7590,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/morgan-pearson.png",
+    "file": "src/assets/optimized/athletes/morgan-pearson-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22252,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/natalie-van-coevorden.png",
+    "file": "src/assets/optimized/athletes/natalie-van-coevorden-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8912,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/natalie-van-coevorden.png",
+    "file": "src/assets/optimized/athletes/natalie-van-coevorden-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27040,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicholas-chase.png",
+    "file": "src/assets/optimized/athletes/nicholas-chase-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9194,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicholas-chase.png",
+    "file": "src/assets/optimized/athletes/nicholas-chase-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26524,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicholas-quenet.png",
+    "file": "src/assets/optimized/athletes/nicholas-quenet-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8034,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicholas-quenet.png",
+    "file": "src/assets/optimized/athletes/nicholas-quenet-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25778,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicolas-mann.png",
+    "file": "src/assets/optimized/athletes/nicolas-mann-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7670,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicolas-mann.png",
+    "file": "src/assets/optimized/athletes/nicolas-mann-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21276,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicole-van-der-kaay.png",
+    "file": "src/assets/optimized/athletes/nicole-van-der-kaay-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10634,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nicole-van-der-kaay.png",
+    "file": "src/assets/optimized/athletes/nicole-van-der-kaay-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 34724,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nikki-bartlett.png",
+    "file": "src/assets/optimized/athletes/nikki-bartlett-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10328,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nikki-bartlett.png",
+    "file": "src/assets/optimized/athletes/nikki-bartlett-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29826,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nina-derron.png",
+    "file": "src/assets/optimized/athletes/nina-derron-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7920,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/nina-derron.png",
+    "file": "src/assets/optimized/athletes/nina-derron-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23098,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/olivia-dietzel.png",
+    "file": "src/assets/optimized/athletes/olivia-dietzel-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7948,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/olivia-dietzel.png",
+    "file": "src/assets/optimized/athletes/olivia-dietzel-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21630,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ondrej-kubo.png",
+    "file": "src/assets/optimized/athletes/ondrej-kubo-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9890,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/ondrej-kubo.png",
+    "file": "src/assets/optimized/athletes/ondrej-kubo-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31918,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pamella-oliveira.png",
+    "file": "src/assets/optimized/athletes/pamella-oliveira-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8610,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pamella-oliveira.png",
+    "file": "src/assets/optimized/athletes/pamella-oliveira-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27596,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pamphiel-pareyn.png",
+    "file": "src/assets/optimized/athletes/pamphiel-pareyn-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9040,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pamphiel-pareyn.png",
+    "file": "src/assets/optimized/athletes/pamphiel-pareyn-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25250,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/panagiotis-bitados.png",
+    "file": "src/assets/optimized/athletes/panagiotis-bitados-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 6624,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/panagiotis-bitados.png",
+    "file": "src/assets/optimized/athletes/panagiotis-bitados-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 19018,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/patrick-lange.png",
+    "file": "src/assets/optimized/athletes/patrick-lange-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7890,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/patrick-lange.png",
+    "file": "src/assets/optimized/athletes/patrick-lange-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20120,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/paul-schuster.png",
+    "file": "src/assets/optimized/athletes/paul-schuster-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8802,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/paul-schuster.png",
+    "file": "src/assets/optimized/athletes/paul-schuster-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25912,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/paula-findlay.png",
+    "file": "src/assets/optimized/athletes/paula-findlay-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10618,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/paula-findlay.png",
+    "file": "src/assets/optimized/athletes/paula-findlay-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33546,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/penny-slater.png",
+    "file": "src/assets/optimized/athletes/penny-slater-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 6658,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/penny-slater.png",
+    "file": "src/assets/optimized/athletes/penny-slater-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 18570,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pierre-le-corre.png",
+    "file": "src/assets/optimized/athletes/pierre-le-corre-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7396,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pierre-le-corre.png",
+    "file": "src/assets/optimized/athletes/pierre-le-corre-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 19266,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pieter-heemeryck.png",
+    "file": "src/assets/optimized/athletes/pieter-heemeryck-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8658,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/pieter-heemeryck.png",
+    "file": "src/assets/optimized/athletes/pieter-heemeryck-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 26738,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rachel-zilinskas.png",
+    "file": "src/assets/optimized/athletes/rachel-zilinskas-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9158,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rachel-zilinskas.png",
+    "file": "src/assets/optimized/athletes/rachel-zilinskas-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24506,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rasmus-svenningsson.png",
+    "file": "src/assets/optimized/athletes/rasmus-svenningsson-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8290,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rasmus-svenningsson.png",
+    "file": "src/assets/optimized/athletes/rasmus-svenningsson-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24420,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rebecca-anderbury.png",
+    "file": "src/assets/optimized/athletes/rebecca-anderbury-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11244,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rebecca-anderbury.png",
+    "file": "src/assets/optimized/athletes/rebecca-anderbury-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 38428,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rebecca-clarke.png",
+    "file": "src/assets/optimized/athletes/rebecca-clarke-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10410,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rebecca-clarke.png",
+    "file": "src/assets/optimized/athletes/rebecca-clarke-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33238,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/regan-hollioake.png",
+    "file": "src/assets/optimized/athletes/regan-hollioake-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8812,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/regan-hollioake.png",
+    "file": "src/assets/optimized/athletes/regan-hollioake-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27460,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rhianne-hughes.png",
+    "file": "src/assets/optimized/athletes/rhianne-hughes-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 13490,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rhianne-hughes.png",
+    "file": "src/assets/optimized/athletes/rhianne-hughes-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 50816,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rico-bogen.png",
+    "file": "src/assets/optimized/athletes/rico-bogen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7394,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rico-bogen.png",
+    "file": "src/assets/optimized/athletes/rico-bogen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 20638,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/robert-kallin.png",
+    "file": "src/assets/optimized/athletes/robert-kallin-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7804,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/robert-kallin.png",
+    "file": "src/assets/optimized/athletes/robert-kallin-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22716,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rudy-von-berg.png",
+    "file": "src/assets/optimized/athletes/rudy-von-berg-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9320,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/rudy-von-berg.png",
+    "file": "src/assets/optimized/athletes/rudy-von-berg-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30830,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sam-laidlow.png",
+    "file": "src/assets/optimized/athletes/sam-laidlow-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7902,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sam-laidlow.png",
+    "file": "src/assets/optimized/athletes/sam-laidlow-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23690,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sam-long.png",
+    "file": "src/assets/optimized/athletes/sam-long-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7912,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sam-long.png",
+    "file": "src/assets/optimized/athletes/sam-long-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22240,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sam-osborne.png",
+    "file": "src/assets/optimized/athletes/sam-osborne-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10246,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sam-osborne.png",
+    "file": "src/assets/optimized/athletes/sam-osborne-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 33728,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/samuel-dickinson.png",
+    "file": "src/assets/optimized/athletes/samuel-dickinson-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7926,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/samuel-dickinson.png",
+    "file": "src/assets/optimized/athletes/samuel-dickinson-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25464,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sara-perez-sala.png",
+    "file": "src/assets/optimized/athletes/sara-perez-sala-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8668,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sara-perez-sala.png",
+    "file": "src/assets/optimized/athletes/sara-perez-sala-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25080,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sara-svensk.png",
+    "file": "src/assets/optimized/athletes/sara-svensk-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9046,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sara-svensk.png",
+    "file": "src/assets/optimized/athletes/sara-svensk-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28204,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sif-bendix-madsen.png",
+    "file": "src/assets/optimized/athletes/sif-bendix-madsen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 10238,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/sif-bendix-madsen.png",
+    "file": "src/assets/optimized/athletes/sif-bendix-madsen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 30888,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/simon-viain.png",
+    "file": "src/assets/optimized/athletes/simon-viain-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 6582,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/simon-viain.png",
+    "file": "src/assets/optimized/athletes/simon-viain-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 18962,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/skye-moench.png",
+    "file": "src/assets/optimized/athletes/skye-moench-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7692,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/skye-moench.png",
+    "file": "src/assets/optimized/athletes/skye-moench-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 21520,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/skye-wallace.png",
+    "file": "src/assets/optimized/athletes/skye-wallace-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 3862,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/skye-wallace.png",
+    "file": "src/assets/optimized/athletes/skye-wallace-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 8644,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/solenne-billouin.png",
+    "file": "src/assets/optimized/athletes/solenne-billouin-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8238,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/solenne-billouin.png",
+    "file": "src/assets/optimized/athletes/solenne-billouin-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22536,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/solveig-l-vseth.png",
+    "file": "src/assets/optimized/athletes/solveig-l-vseth-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8918,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/solveig-l-vseth.png",
+    "file": "src/assets/optimized/athletes/solveig-l-vseth-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 28118,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/tamara-jewett.png",
+    "file": "src/assets/optimized/athletes/tamara-jewett-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9680,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/tamara-jewett.png",
+    "file": "src/assets/optimized/athletes/tamara-jewett-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 31526,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/taylor-knibb.png",
+    "file": "src/assets/optimized/athletes/taylor-knibb-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11234,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/taylor-knibb.png",
+    "file": "src/assets/optimized/athletes/taylor-knibb-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 38366,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/taylor-spivey.png",
+    "file": "src/assets/optimized/athletes/taylor-spivey-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7844,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/taylor-spivey.png",
+    "file": "src/assets/optimized/athletes/taylor-spivey-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 23008,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/thomas-bishop.png",
+    "file": "src/assets/optimized/athletes/thomas-bishop-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 11646,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/thomas-bishop.png",
+    "file": "src/assets/optimized/athletes/thomas-bishop-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 37856,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/thor-bendix-madsen.png",
+    "file": "src/assets/optimized/athletes/thor-bendix-madsen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 9890,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/thor-bendix-madsen.png",
+    "file": "src/assets/optimized/athletes/thor-bendix-madsen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 29292,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/trevor-foley.png",
+    "file": "src/assets/optimized/athletes/trevor-foley-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 7526,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/trevor-foley.png",
+    "file": "src/assets/optimized/athletes/trevor-foley-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 22086,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/valdemar-solok.png",
+    "file": "src/assets/optimized/athletes/valdemar-solok-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8994,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/valdemar-solok.png",
+    "file": "src/assets/optimized/athletes/valdemar-solok-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27136,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/vincent-luis.png",
+    "file": "src/assets/optimized/athletes/vincent-luis-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8772,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/vincent-luis.png",
+    "file": "src/assets/optimized/athletes/vincent-luis-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 24872,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/will-draper.png",
+    "file": "src/assets/optimized/athletes/will-draper-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8486,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/will-draper.png",
+    "file": "src/assets/optimized/athletes/will-draper-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 27342,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/youri-keulen.png",
+    "file": "src/assets/optimized/athletes/youri-keulen-180.webp",
+    "width": 180,
+    "height": 180,
+    "bytes": 8492,
+    "format": "webp"
+  },
+  {
+    "source": "public/athletes/youri-keulen.png",
+    "file": "src/assets/optimized/athletes/youri-keulen-396.webp",
+    "width": 396,
+    "height": 396,
+    "bytes": 25194,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/series/ironman-pro.jpeg",
+    "file": "src/assets/optimized/series/ironman-pro-216.png",
+    "width": 216,
+    "height": 191,
+    "bytes": 56261,
+    "format": "png"
+  },
+  {
+    "source": "src/assets/series/t100-worldtour.jpeg",
+    "file": "src/assets/optimized/series/t100-worldtour-216.png",
+    "width": 216,
+    "height": 216,
+    "bytes": 18137,
+    "format": "png"
+  },
+  {
+    "source": "src/assets/showcase/dubai/dubai-swim-skyline.png",
+    "file": "src/assets/optimized/showcase/dubai-swim-skyline-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 175294,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/dubai/dubai-swim-skyline.png",
+    "file": "src/assets/optimized/showcase/dubai-swim-skyline-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 258536,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/dubai/dubai-swim-skyline.png",
+    "file": "src/assets/optimized/showcase/dubai-swim-skyline-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 61072,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/french-riviera/french-riviera-run.png",
+    "file": "src/assets/optimized/showcase/french-riviera-run-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 186696,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/french-riviera/french-riviera-run.png",
+    "file": "src/assets/optimized/showcase/french-riviera-run-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 268114,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/french-riviera/french-riviera-run.png",
+    "file": "src/assets/optimized/showcase/french-riviera-run-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 64466,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-bike-lava.png",
+    "file": "src/assets/optimized/showcase/kona-bike-lava-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 199304,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-bike-lava.png",
+    "file": "src/assets/optimized/showcase/kona-bike-lava-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 299328,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-bike-lava.png",
+    "file": "src/assets/optimized/showcase/kona-bike-lava-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 60110,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-finish-alii.png",
+    "file": "src/assets/optimized/showcase/kona-finish-alii-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 178516,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-finish-alii.png",
+    "file": "src/assets/optimized/showcase/kona-finish-alii-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 250796,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-finish-alii.png",
+    "file": "src/assets/optimized/showcase/kona-finish-alii-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 64302,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-swim-start.png",
+    "file": "src/assets/optimized/showcase/kona-swim-start-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 203964,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-swim-start.png",
+    "file": "src/assets/optimized/showcase/kona-swim-start-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 297512,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/kona/kona-swim-start.png",
+    "file": "src/assets/optimized/showcase/kona-swim-start-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 65992,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-bike-mountains.png",
+    "file": "src/assets/optimized/showcase/nice-bike-mountains-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 202992,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-bike-mountains.png",
+    "file": "src/assets/optimized/showcase/nice-bike-mountains-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 300986,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-bike-mountains.png",
+    "file": "src/assets/optimized/showcase/nice-bike-mountains-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 64216,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-run-promenade.png",
+    "file": "src/assets/optimized/showcase/nice-run-promenade-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 243498,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-run-promenade.png",
+    "file": "src/assets/optimized/showcase/nice-run-promenade-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 363542,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-run-promenade.png",
+    "file": "src/assets/optimized/showcase/nice-run-promenade-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 74882,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-swim-start.png",
+    "file": "src/assets/optimized/showcase/nice-swim-start-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 232338,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-swim-start.png",
+    "file": "src/assets/optimized/showcase/nice-swim-start-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 335610,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/nice/nice-swim-start.png",
+    "file": "src/assets/optimized/showcase/nice-swim-start-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 74334,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/qatar/qatar-lusail-sunset.png",
+    "file": "src/assets/optimized/showcase/qatar-lusail-sunset-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 213156,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/qatar/qatar-lusail-sunset.png",
+    "file": "src/assets/optimized/showcase/qatar-lusail-sunset-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 313252,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/qatar/qatar-lusail-sunset.png",
+    "file": "src/assets/optimized/showcase/qatar-lusail-sunset-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 67560,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/saudi-arabia/saudi-arabia-seaview.png",
+    "file": "src/assets/optimized/showcase/saudi-arabia-seaview-1280.webp",
+    "width": 1280,
+    "height": 720,
+    "bytes": 195538,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/saudi-arabia/saudi-arabia-seaview.png",
+    "file": "src/assets/optimized/showcase/saudi-arabia-seaview-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 305344,
+    "format": "webp"
+  },
+  {
+    "source": "src/assets/showcase/saudi-arabia/saudi-arabia-seaview.png",
+    "file": "src/assets/optimized/showcase/saudi-arabia-seaview-640.webp",
+    "width": 640,
+    "height": 360,
+    "bytes": 55110,
+    "format": "webp"
+  }
+]

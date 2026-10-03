@@ -1,15 +1,13 @@
 .showcase-card--has-image::before {
   opacity: 1;
   background:
-    linear-gradient(180deg, rgba(7, 8, 10, 0.03) 0%, rgba(7, 8, 10, 0.12) 34%, rgba(7, 8, 10, 0.52) 70%, rgba(7, 8, 10, 0.84) 100%),
-    var(--showcase-image) center / cover no-repeat;
+    linear-gradient(180deg, rgba(7, 8, 10, 0.03) 0%, rgba(7, 8, 10, 0.12) 34%, rgba(7, 8, 10, 0.52) 70%, rgba(7, 8, 10, 0.84) 100%);
 }
 
 .showcase-card--has-image.showcase-card--2::before,
 .showcase-card--has-image.showcase-card--3::before {
   background:
-    linear-gradient(180deg, rgba(7, 8, 10, 0.03) 0%, rgba(7, 8, 10, 0.12) 34%, rgba(7, 8, 10, 0.52) 70%, rgba(7, 8, 10, 0.84) 100%),
-    var(--showcase-image) center / cover no-repeat;
+    linear-gradient(180deg, rgba(7, 8, 10, 0.03) 0%, rgba(7, 8, 10, 0.12) 34%, rgba(7, 8, 10, 0.52) 70%, rgba(7, 8, 10, 0.84) 100%);
 }
 
 .showcase-card__tag-row {
@@ -27,4 +25,16 @@
 
 .showcase-card__title-part {
   white-space: nowrap;
+}
+
+/* Same cover/center crop and two overlays as the former CSS background. */
+.showcase-card__image {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
 }

@@ -1,8 +1,8 @@
 import type { RaceDistance, RaceGender, RaceSeries } from '../types/Race'
 import { ChevronRightIcon } from './AppIcons'
 import { getRaceGenderLabel } from '../utils/raceGender'
-import ironmanProImage from '../assets/series/ironman-pro.jpeg'
-import t100WorldTourImage from '../assets/series/t100-worldtour.jpeg'
+import ironmanProImage from '../assets/optimized/series/ironman-pro-216.png'
+import t100WorldTourImage from '../assets/optimized/series/t100-worldtour-216.png'
 
 type RaceCardProps = {
   distance: RaceDistance
