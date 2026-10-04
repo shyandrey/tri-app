@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import ts from 'typescript'
 
 // Inspect decoded property names before JSON.parse can discard duplicate keys.
@@ -17,51 +18,101 @@ export function parseUniqueJSON(text, label = 'JSON') {
   visit(ast)
   return JSON.parse(text)
 }
+export const hash = value => createHash('sha256').update(value).digest('hex')
 const russian = value => typeof value === 'string' && /[А-Яа-яЁё]/u.test(value)
-export function reviewAthleteNames(registry, reviewed, raw, localized) {
-  const issues = []
+export function validateRussianName(value, label) {
+  if (typeof value !== 'string' || !value.trim() || value !== value.trim()) throw Error(`INVALID_NAME: ${label}: требуется непустое имя без пробелов по краям`)
+  if (!russian(value)) throw Error(`NON_RUSSIAN_OVERRIDE: ${label}`)
+  if (/\p{Script=Latin}/u.test(value)) throw Error(`MIXED_SCRIPT: ${label}`)
+  if (!/^[\p{Script=Cyrillic}\p{M} .’'\-–—]+$/u.test(value)) throw Error(`INVALID_NAME_CHARACTERS: ${label}`)
+}
+export function catalogRows(registry, raw, localized) {
   const byName = new Map(), ids = new Set()
   for (const a of raw) {
-    if (ids.has(a.id)) issues.push(`DUPLICATE_ID: ${a.id}`)
+    if (!Number.isSafeInteger(a.id) || a.id <= 0 || ids.has(a.id)) throw Error(`INVALID_OR_DUPLICATE_ID: ${a.id}`)
     ids.add(a.id)
-    if (byName.has(a.nameEn)) issues.push(`AMBIGUOUS_IDENTITY: ${a.nameEn}`)
+    if (typeof a.nameEn !== 'string' || !a.nameEn.trim() || byName.has(a.nameEn)) throw Error(`AMBIGUOUS_IDENTITY: ${a.nameEn}`)
     byName.set(a.nameEn, a)
   }
-  if (!registry || typeof registry !== 'object' || Array.isArray(registry)) issues.push('INVALID_REGISTRY')
-  else for (const [key, entry] of Object.entries(registry)) {
-    if (!byName.has(key)) issues.push(`ORPHAN_LOCALIZATION: ${key}`)
-    const name = typeof entry === 'string' ? entry : entry?.nameRu
-    if (typeof name !== 'string' || !name.trim() || name !== name.trim()) issues.push(`INVALID_NAME: ${key}`)
-    else if (!russian(name)) issues.push(`NON_RUSSIAN_OVERRIDE: ${key}`)
-    else if (/\p{Script=Latin}/u.test(name)) issues.push(`MIXED_SCRIPT: ${key}`)
+  if (!registry || typeof registry !== 'object' || Array.isArray(registry)) throw Error('INVALID_REGISTRY')
+  for (const [key, entry] of Object.entries(registry)) {
+    if (!byName.has(key)) throw Error(`ORPHAN_LOCALIZATION: ${key}`)
+    validateRussianName(typeof entry === 'string' ? entry : entry?.nameRu, key)
   }
-  const approved = new Set()
-  if (!Array.isArray(reviewed)) issues.push('INVALID_REVIEW_LIST')
-  else for (const key of reviewed) {
-    if (typeof key !== 'string' || !key.trim() || key !== key.trim()) { issues.push('INVALID_REVIEW_KEY'); continue }
-    if (approved.has(key)) issues.push(`DUPLICATE_REVIEW_KEY: ${key}`)
-    approved.add(key)
-    if (!byName.has(key)) issues.push(`ORPHAN_REVIEW_KEY: ${key}`)
-  }
-  if (raw.length !== localized.length) issues.push('CATALOG_LENGTH_CHANGED')
+  if (raw.length !== localized.length) throw Error('CATALOG_LENGTH_CHANGED')
   localized.forEach((a, i) => {
-    if (a.id !== raw[i]?.id || a.nameEn !== raw[i]?.nameEn) issues.push(`IDENTITY_CHANGED: ${a.id}`)
-    if (approved.has(a.nameEn) && !russian(a.name)) issues.push(`APPROVED_WITHOUT_RUSSIAN_NAME: ${a.nameEn}`)
-    const entry = registry?.[a.nameEn], override = typeof entry === 'string' ? entry : entry?.nameRu
-    if (override !== undefined && a.name !== override) issues.push(`OVERRIDE_NOT_APPLIED: ${a.nameEn}`)
+    if (a.id !== raw[i]?.id || a.nameEn !== raw[i]?.nameEn) throw Error(`IDENTITY_CHANGED: ${a.id}`)
+    const entry = registry[a.nameEn], override = typeof entry === 'string' ? entry : entry?.nameRu
+    if (override !== undefined && a.name !== override) throw Error(`OVERRIDE_NOT_APPLIED: ${a.nameEn}`)
   })
-  const rows = localized.map(a => ({ id: a.id, original: a.nameEn, russian: russian(a.name) ? a.name : '',
-    status: !russian(a.name) ? 'MISSING' : approved.has(a.nameEn) ? 'APPROVED' : 'REVIEW' }))
-    .sort((a, b) => a.original.localeCompare(b.original, 'en') || a.id - b.id)
-  return { issues, rows }
+  return localized.map(a => ({ athlete_id: a.id, name_en: a.nameEn, name_ru: russian(a.name) ? a.name : '' }))
+    .sort((a, b) => a.name_en.localeCompare(b.name_en, 'en') || a.athlete_id - b.athlete_id)
 }
+const columns = ['athlete_id', 'name_en', 'name_ru']
 export function formatReports(rows) {
-  const header = ['ID', 'Original name', 'Current Russian name', 'Status']
-  const values = rows.map(r => [r.id, r.original, r.russian, r.status])
-  // BOM + CRLF for spreadsheet applications; neutralize formula-like cells.
-  const csvCell = value => '"' + String(value).replace(/^[=+@-]/, "'$&").replaceAll('"', '""') + '"'
+  const csvCell = value => {
+    if (/^[=+@\-\t\r]/.test(String(value))) throw Error('Unsafe spreadsheet cell prefix; export aborted')
+    return '"' + String(value).replaceAll('"', '""') + '"'
+  }
   const mdCell = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('|', '&#124;').replace(/[\r\n]/g, ' ')
-  return { csv: '\uFEFF' + [header, ...values].map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n',
-    md: '# Athlete names — manual review\n\nGenerated report, not an editable source.\n\n' +
-      [header, header.map(() => '---'), ...values].map(row => '| ' + row.map(mdCell).join(' | ') + ' |').join('\n') + '\n' }
+  const values = rows.map(r => columns.map(c => r[c]))
+  return { csv: '\uFEFF' + [columns, ...values].map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n',
+    md: `# Athlete names\n\nTotal: ${rows.length}; Russian name present: ${rows.filter(r => r.name_ru).length}; missing: ${rows.filter(r => !r.name_ru).length}.\n\nEdit only name_ru in review.csv.\n\n` +
+      [columns, columns.map(() => '---'), ...values].map(row => '| ' + row.map(mdCell).join(' | ') + ' |').join('\n') + '\n' }
+}
+// Strict CSV: comma separator, escaped quotes, CRLF/LF and quoted newlines.
+// Structural errors are fatal; no heuristic delimiter or column repair.
+export function parseCSV(source) {
+  const text = source.replace(/^\uFEFF/, ''), rows = []
+  let row = [], cell = '', quoted = false, closed = false
+  const field = () => { row.push(cell); cell = ''; closed = false }
+  const record = () => { field(); rows.push(row); row = [] }
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i]
+    if (quoted) {
+      if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++ } else { quoted = false; closed = true } }
+      else cell += c
+    } else if (c === ',') field()
+    else if (c === '\r' || c === '\n') { if (c === '\r' && text[i + 1] === '\n') i++; record() }
+    else if (c === '"' && cell === '' && !closed) quoted = true
+    else {
+      if (closed || c === '"') throw Error(`Malformed CSV near record ${rows.length + 1}`)
+      cell += c
+    }
+  }
+  if (quoted) throw Error('Unterminated CSV quote')
+  if (cell || row.length || closed) record()
+  if (JSON.stringify(rows.shift()) !== JSON.stringify(columns)) throw Error('CSV columns must be exactly athlete_id,name_en,name_ru (comma-separated UTF-8)')
+  return rows
+}
+export function makeBaseline(rows, catalog, registryText) {
+  return { version: 1, catalog_sha256: hash(JSON.stringify(catalog)), localization_sha256: hash(registryText), rows }
+}
+export function assertFresh(baseline, current) {
+  if (JSON.stringify(baseline) !== JSON.stringify(current)) throw Error('STALE_BASELINE: каталог, локализация или baseline изменились. Сохраните правки отдельно, заново выполните npm run audit:athlete-names и перенесите правки в новый CSV. Автоматического merge нет.')
+}
+export function planImport(csv, baseline, current, registry) {
+  assertFresh(baseline, current)
+  const input = parseCSV(csv)
+  if (input.length !== baseline.rows.length) throw Error('ROW_COUNT_CHANGED: нельзя добавлять или удалять строки')
+  const byId = new Map(baseline.rows.map(r => [String(r.athlete_id), r])), seen = new Set(), changes = []
+  for (const [i, cells] of input.entries()) {
+    const label = `CSV record ${i + 2}`
+    if (cells.length !== 3) throw Error(`${label}: expected exactly 3 cells`)
+    const [id, name, value] = cells, before = byId.get(id)
+    if (!before || seen.has(id)) throw Error(`${label}: UNKNOWN_OR_DUPLICATE_ID ${id}`)
+    seen.add(id)
+    if (name !== before.name_en) throw Error(`${label}: IDENTITY_CHANGED: ${id}; name_en must exactly match baseline`)
+    if (value === before.name_ru) continue
+    if (!value.trim()) throw Error(`${label}: DELETION_FORBIDDEN: ${name}`)
+    validateRussianName(value, `${label}: ${name}`)
+    changes.push({ ...before, before: before.name_ru, after: value, kind: before.name_ru ? 'CHANGED' : 'ADDED' })
+  }
+  const next = structuredClone(registry)
+  // Only changed entries are replaced; object metadata on existing entries survives.
+  for (const change of changes) {
+    const entry = next[change.name_en]
+    Object.defineProperty(next, change.name_en, { value: entry && typeof entry === 'object' ? { ...entry, nameRu: change.after } : change.after, enumerable: true, writable: true, configurable: true })
+  }
+  return { total: input.length, unchanged: input.length - changes.length, changes, next }
 }

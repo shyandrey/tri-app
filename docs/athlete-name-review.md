@@ -1,44 +1,81 @@
-# Manual Russian athlete-name review
+# Ручная правка русских имён через CSV
 
-`src/data/athletes/athleteLocalization.json` is the single editable source for explicit Russian display-name overrides. Keys are exact existing `nameEn` identities, including accents and case. Values may be a Russian string or the existing `{ "nameRu": "…", "provenance": "generated-reviewed" }` format. For new manual entries use a string; do not invent provenance.
+Рабочий файл — `.generated/athlete-names/review.csv`. Меняйте только `name_ru`. Если имя правильное, ничего не делайте. Если имя отсутствует, впишите его после ручной проверки. Автоматической транслитерации нет.
 
-Display priority: explicit registry override → existing profile display name → existing English fallback. Overrides apply at runtime; regenerating profiles is not necessary. Missing entries retain the current fallback. Russian names never become identity keys.
+## Порядок работы
 
-`src/data/athletes/athleteLocalizationReviewed.json` is a curated JSON array of exact `nameEn` keys approved by the project owner. It contains no Russian names and starts empty. Historical `generated-reviewed` provenance does **not** imply owner approval.
+1. Выполните `npm run audit:athlete-names`.
+2. Откройте `.generated/athlete-names/review.csv` в Numbers.
+3. Не меняйте `athlete_id` и `name_en`, заголовки и набор строк. Сортировать строки можно.
+4. Правильные русские имена оставьте как есть.
+5. Неправильные исправьте в `name_ru`.
+6. В пустые `name_ru` впишите проверенные русские имена; остальные оставьте пустыми.
+7. Экспортируйте из Numbers обратно в **CSV, UTF-8, разделитель запятая**, заменив рабочий `review.csv`. Не сохраняйте файл `.numbers` под расширением `.csv`.
+8. Выполните `npm run import:athlete-names` — это dry-run, без записи source data.
+9. Просмотрите весь список before/after. Убедитесь, что нет случайных правок.
+10. Выполните `npm run import:athlete-names -- --write`.
+11. Выполните `npm run audit:athlete-names` для нового CSV/baseline с применёнными именами.
+12. При необходимости выполните tests/build, проверьте diff и отдельно создайте commit. Для name batches коммитится только `src/data/athletes/athleteLocalization.json`.
 
-Statuses:
+**Export перезаписывает рабочие CSV/MD/baseline.** Перед повторным export сохраните незавершённые правки отдельно. Не запускайте export, import и ручное редактирование registry одновременно.
 
-- MISSING: current display name has no Russian letters.
-- REVIEW: a Russian display name exists but its key is not approved.
-- APPROVED: a Russian display name exists and its key is in the reviewed list.
+## Формат
 
-Approval is a persistent owner assertion for an identity, not a hash of a spelling. When changing a previously approved spelling, remove its key until the new spelling is checked, or explicitly reapprove it in the same review. Renaming an English identity requires an intentional registry/review-key migration; never guess or fuzzy-match identities.
+CSV имеет ровно три столбца:
 
-## Human workflow
+```csv
+athlete_id,name_en,name_ru
+10000,Aaron Belcher,Аарон Белчер
+10001,Aaron Kolk,Аарон Колк
+10002,Aaron Royle,Аарон Ройл
+10003,Aaronn Gu,
+```
 
-1. Run `npm run audit:athlete-names`.
-2. Open `.generated/athlete-names/review.csv` in Numbers/Excel, or `review.md` in an editor.
-3. Choose MISSING or REVIEW rows. The report covers the full catalog, ordered by Original name then ID, never ranking.
-4. Verify the athlete identity and Russian spelling manually. The script never transliterates or verifies pronunciation.
-5. Edit `src/data/athletes/athleteLocalization.json` using the exact Original name as the key. If the existing spelling is correct, no override change is needed.
-6. Add the exact key once to `src/data/athletes/athleteLocalizationReviewed.json`.
-7. Rerun `npm run audit:athlete-names`.
-8. Confirm the row is APPROVED and validation passes.
-9. Run `node --test scripts/test-athlete-names.mjs`, `node scripts/test-athlete-localization.mjs`, and `npm run build` before publishing a batch.
-10. In review-batch commits, include only the intended curated name/review source changes. Inspect the diff. Reports are ignored working artifacts, not authoritative input.
+Экспорт использует UTF-8 BOM, CRLF и quoted cells; importer принимает также UTF-8 без BOM и LF, поддерживает CSV escaped quotes. Разделитель `;`, дополнительные столбцы, пустые дополнительные строки и некорректные quotes отклоняются. Числовой ID должен оставаться точным десятичным значением, без форматирования вроде `10,000` или `10000.0`.
 
-The report uses UTF-8 with a BOM and CRLF for CSV spreadsheet compatibility. Formula-like cell prefixes are escaped for spreadsheet safety; copy identity keys from the actual registry/catalog if such a case occurs. Audit writes only the reports. Validation failure exits nonzero and does not overwrite reports; any previous report is stale until the audit passes again.
+`review.md` — только companion report с теми же именами и total/present/missing. Редактировать его для импорта бессмысленно. Все файлы в `.generated/` игнорируются Git.
 
-Validation covers duplicate catalog IDs, duplicate JSON keys (including escaped equivalents before JSON.parse), exact and normalized identity ambiguity, orphan localization/review keys, malformed approval lists, empty/non-string overrides, Latin-only/mixed Latin-Cyrillic names, runtime override application, ID/nameEn preservation and unchanged result linkage. Apostrophes, hyphens and punctuation do not trigger mixed-script errors. Reviewed keys without a Russian display name fail validation. Shared Russian spellings do not merge athletes.
+## Baseline и защита импорта
 
-## Runtime presentation and protected data
+`baseline.json` содержит version, исходные строки `athlete_id/name_en/name_ru`, SHA-256 raw catalog + runtime results и SHA-256 точных байтов localization registry. Это snapshot, а не editable source. Не редактируйте baseline.
 
-Athlete Profiles, Athlete Detail and search consume the localized catalog. Race Results uses the linked athlete's display name in desktop and mobile views; unmatched rows retain their original result name. Raw results and linkage stay untouched.
+Importer проверяет baseline против текущего runtime snapshot и registry. Поэтому изменения каталога, результатов или registry после export требуют нового export. Сохраните старый исправленный CSV отдельно и вручную перенесите изменения в новый snapshot. Автоматического merge identity changes нет.
 
-NEVER manually edit for this workflow:
+Сравнение `name_ru` с baseline:
 
-- `src/data/athletes/resultAthletes.generated.ts`;
+- одинаковые значения, включая две пустые ячейки: ничего не записывать;
+- непустое имя изменено: исправить explicit override;
+- вместо пустого введено имя: добавить explicit override;
+- существующее имя очищено: **abort**, удаления через CSV нет.
+
+Проверяются точный набор ID, отсутствие duplicate rows, точное соответствие ID ↔ English name, количество строк, структура CSV/JSON, duplicate JSON keys до JSON.parse, orphan/ambiguous localization mappings, непустые новые значения, русские буквы, mixed Latin/Cyrillic и недопустимые символы. Допустимы дефисы, апострофы, пробелы и точки; пробелы по краям не исправляются автоматически. Один invalid row останавливает весь batch.
+
+Dry-run ничего не пишет. `--write` сначала валидирует весь batch, затем повторно проверяет snapshot и registry перед atomic rename одного файла. Временный файл рядом с registry удаляется при ошибке. Незатронутые registry entries и metadata существующих object entries сохраняются. При отсутствии изменений файл не перезаписывается. Atomic replacement предотвращает частичную запись JSON, но не предназначен для параллельного редактирования несколькими процессами.
+
+## Источник имён и UI
+
+После import единственный authoritative источник explicit overrides — `src/data/athletes/athleteLocalization.json`.
+
+Приоритет: explicit override → существующее имя профиля → существующий English fallback. Runtime применяет override без регенерации athlete profiles.
+
+Athlete Profiles, Athlete Detail и search получают имя из общего локализованного каталога. Race Results показывает имя связанного профиля; несвязанные строки используют исходное `result.athleteName`. Russian display name никогда не становится identity key.
+
+Не редактируйте в этом workflow:
+
+- `name_en`, athlete IDs, aliases, страны, ranking;
+- `resultAthletes.generated.ts`;
 - generated image manifests;
 - race result datasets.
 
-Do not change `nameEn`, IDs, aliases, countries or ranking as part of a spelling review. Full profile generation currently assigns numeric IDs by sorted position; append mode preserves existing IDs. The name registry deliberately uses existing exact English identity keys, not generated numeric IDs. Do not run full generation merely to apply a Russian-name correction.
+Полный athlete generator не нужен для CSV import. Его известные конфликты стран Jeremy Maclean AU/US и Nick Thompson US/AU остаются отдельной задачей; ошибки полной регенерации нельзя считать PASS.
+
+Проверки workflow:
+
+```sh
+node --test scripts/test-athlete-names.mjs
+npm run audit:athlete-names
+npm run import:athlete-names
+npm run build
+```
+
+Первый тест проверяет synthetic writes только в изолированной temporary directory; реальные athlete names не меняет.
