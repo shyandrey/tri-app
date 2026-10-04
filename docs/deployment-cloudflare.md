@@ -5,7 +5,7 @@ Feedback implementation extends this baseline; see [Feedback setup and privacy](
 Current deployment is manual via Wrangler: local checkout → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1. GitHub automatic builds are not connected.
 React remains client-side. Hash routes (including direct `/#/athlete/…` links) are unchanged. Existing static files bypass Worker execution; `/api` and `/api/*` always reach the Worker, including HTML navigation requests. Other paths use the ASSETS binding / SPA fallback. Unknown API paths return JSON 404, never index.html.
 
-Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News is active in preview; protected Feedback is not activated. Its Turnstile, rate-limiter and delivery prerequisites remain a separate setup task (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
+Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News and protected Feedback are active in preview. Turnstile, the rate limiter and retry cron are configured; D1 save and Telegram delivery have been operator-verified (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
 
 ## Current live preview (2026-10-01)
 
@@ -24,7 +24,7 @@ Implemented: health, News ingestion/read API, Feedback handlers/UI, build metada
 | Allowed updates | `channel_post`, `edited_channel_post` |
 | Runtime News config | `NEWS_TELEGRAM_CHANNEL_ID` configured; `TELEGRAM_WEBHOOK_SECRET` stored as a Cloudflare secret |
 | Approved remote seed | Posts 993, 992, 988; source `manually-approved-telegram-seed` |
-| Feedback | Not activated; `TELEGRAM_BOT_TOKEN` intentionally not stored in Worker |
+| Feedback | Active protected mode; Turnstile, rate limiter and retry cron configured; D1 → Telegram delivery verified |
 | Production | Worker `tri-app` and D1 `tri-app-production` do not exist yet |
 | GitHub automatic builds | Not connected |
 | Custom domain | `preview.300w.app`; Dashboard Type = `Production` for Worker `tri-app-preview` |
@@ -39,7 +39,7 @@ stable production deployment of that Worker. This is still our **preview environ
 not the future application-level 300W production environment.
 
 Operator-confirmed through the custom domain: frontend, `/api/health`, `/api/news`,
-preview D1 binding and real `@trista_watt` News posts work. Confirmed deployed health
+preview D1 binding and real `@trista_watt` News posts work. Historical custom-domain verification health
 commit: `09c8ea62a33be2d5a2d3293f833e7d1282bf8c67`.
 
 The tested Telegram News webhook remains
@@ -75,11 +75,12 @@ npx wrangler d1 migrations list DB --local
 ## Manual preview workflow
 
 ```sh
-npm run deploy:preview:dry   # build/config check only; no deployment
-npm run deploy:preview       # REAL deployment to tri-app-preview
+npm run deploy:preview:dry -- --keep-vars   # build/config check only; no deployment
+npm run deploy:preview -- --keep-vars       # REAL deployment to tri-app-preview
 npm run check:preview        # read-only GET /api/health and /api/news after deployment
 ```
 
+`--keep-vars` preserves dashboard-managed ordinary vars during manual deployment; still review the selected environment configuration.
 Both deploy scripts use the project-local Wrangler with explicit `--env preview`.
 Wrangler runs `npm run build`, including metadata generation from the current checkout
 (see Build identity below), and selects Worker `tri-app-preview` with binding
@@ -137,7 +138,7 @@ News is already configured in preview. `NEWS_TELEGRAM_CHANNEL_ID` is ordinary se
 
 News ingestion validates the exact channel ID and webhook secret. The first nonempty heading's Telegram bold entities control eligibility; ordinary posts do not create visible news. Edits update, hide or re-enable the same item. The bot is passive and the Worker makes no Telegram API call for ingestion/reads. See [Latest News](latest-news.md).
 
-`TELEGRAM_BOT_TOKEN` is needed locally for Telegram webhook administration and in the Worker only for Feedback delivery. It is intentionally absent from the current Worker. Feedback remains inactive: its bot token/destination, Turnstile keys, exact `ALLOWED_ORIGIN`, `RATE_LIMIT_HMAC_SECRET`, `FEEDBACK_RATE_LIMITER` binding and retry schedule are a separate future task. Do not enable them during News maintenance.
+`TELEGRAM_BOT_TOKEN` is needed locally for Telegram webhook administration and in the Worker only for Feedback delivery. It is configured remotely for preview Feedback. Preview has the bot destination, Turnstile keys, `ALLOWED_ORIGIN=https://preview.300w.app`, `RATE_LIMIT_HMAC_SECRET`, `FEEDBACK_RATE_LIMITER` (5/60) and retry cron (`*/5 * * * *`). Do not change these or News settings during unrelated maintenance. Future production is not ready.
 
 Changes to live secrets/configuration can publish a Worker version even without a code deploy. Dashboard-only plain vars may be overwritten by a later Wrangler deployment unless explicitly preserved or represented in the selected environment configuration. Review runtime settings before any future deploy; never infer them from this file or overwrite the active News configuration blindly.
 

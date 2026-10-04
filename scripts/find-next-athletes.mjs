@@ -3,14 +3,26 @@ import path from 'node:path'
 import { createServer } from 'vite'
 
 const ROOT = process.cwd()
-const outputAt = process.argv.indexOf('--output')
-if (outputAt >= 0 && (!process.argv[outputAt + 1] || process.argv[outputAt + 1].startsWith('--'))) {
-  throw new Error('--output requires a file path')
+// Validate all arguments before loading the catalog or opening any output file.
+const args = process.argv.slice(2), options = new Map()
+for (let i = 0; i < args.length; i++) {
+  const flag = args[i]
+  if (!['--write', '--append', '--full-regenerate', '--output'].includes(flag)) throw new Error(`Unknown argument: ${flag}`)
+  if (options.has(flag)) throw new Error(`Duplicate argument: ${flag}`)
+  if (flag === '--output') {
+    if (!args[i + 1] || args[i + 1].startsWith('--')) throw new Error('--output requires a file path')
+    options.set(flag, args[++i])
+  } else options.set(flag, true)
 }
-const EXPORT_PATH = outputAt >= 0
-  ? path.resolve(ROOT, process.argv[outputAt + 1])
+if (options.has('--append') && options.has('--full-regenerate')) throw new Error('--append and --full-regenerate are mutually exclusive')
+const EXPORT = options.has('--write')
+if (EXPORT && !options.has('--append') && !options.has('--full-regenerate')) {
+  throw new Error('For new athletes use --write --append. Full regeneration may renumber existing generated athlete IDs; explicit --write --full-regenerate is required. No output written.')
+}
+if (!EXPORT && options.size) throw new Error('Read-only discovery takes no flags. --append, --full-regenerate and --output require --write.')
+const EXPORT_PATH = options.has('--output')
+  ? path.resolve(ROOT, options.get('--output'))
   : path.join(ROOT, 'src/data/athletes/resultAthletes.generated.ts')
-const EXPORT = process.argv.includes('--write')
 const countryEnrichment = JSON.parse(await fs.readFile(path.join(ROOT, 'src/data/athletes/countryEnrichment.json'), 'utf8'))
 
 // Persistent, manually reviewed names keyed by exact English identity.
@@ -170,7 +182,7 @@ async function writeGeneratedProfiles() {
   const lines = [
     "import type { Athlete } from '../../types/Athlete'",
     '',
-    '// Generated from runtime result rows by: npm run find:next-athletes -- --write',
+    '// Generated from runtime result rows by: npm run find:next-athletes -- --write --full-regenerate',
     '// Do not edit here. Russian names belong in athleteLocalization.json; photos/bios in normal profiles.',
     'export const resultAthletes: Athlete[] = [',
   ]
@@ -213,7 +225,7 @@ printGroup('M')
 printGroup('W')
 printUnresolved()
 if (EXPORT) {
-  if (process.argv.includes('--append')) await appendGeneratedProfiles()
+  if (options.has('--append')) await appendGeneratedProfiles()
   else await writeGeneratedProfiles()
 }
 console.log('\nNote: catalog and results come from runtime modules. Generated countries use explicit result codes or countryEnrichment.json (verified or migrated existing data); conflicts stop generation before writing.')

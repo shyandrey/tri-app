@@ -27,7 +27,7 @@ try {
   const resultSnapshot = structuredClone(raceResults), linked = linkResultsToAthletes(raceResults)
   const rawIds = new Map(raw.map(a => [norm(a.nameEn), a.id]))
   assert.deepEqual(linked, raceResults.map(r => ({ ...r, athleteId: rawIds.get(norm(r.athleteName)) ?? r.athleteId })))
-  execFileSync(process.execPath, ['scripts/find-next-athletes.mjs', '--write', '--output', output], { stdio: 'pipe' })
+  execFileSync(process.execPath, ['scripts/find-next-athletes.mjs', '--write', '--full-regenerate', '--output', output], { stdio: 'pipe' })
   const bytes = await fs.readFile(output, 'utf8')
   const { resultAthletes: regenerated } = await server.ssrLoadModule(output)
   assert.deepEqual(regenerated.map(({ name, ...rest }) => rest), c.resultAthletes.map(({ name, ...rest }) => rest), 'Regeneration must preserve all non-display data')
@@ -51,7 +51,7 @@ try {
     assert.equal(c.athletes.find(a => a.nameEn === nameEn)?.name, nameRu)
     assert.equal(after.find(a => a.nameEn === nameEn)?.name, nameRu)
   }
-  execFileSync(process.execPath, ['scripts/find-next-athletes.mjs', '--write', '--output', output], { stdio: 'pipe' })
+  execFileSync(process.execPath, ['scripts/find-next-athletes.mjs', '--write', '--full-regenerate', '--output', output], { stdio: 'pipe' })
   assert.equal(await fs.readFile(output, 'utf8'), bytes)
   assert.equal(await fs.readFile(registryPath, 'utf8'), registryBytes)
   assert.deepEqual(linkResultsToAthletes(raceResults), linked)
