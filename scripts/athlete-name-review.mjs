@@ -48,22 +48,37 @@ export function catalogRows(registry, raw, localized) {
   return localized.map(a => ({ athlete_id: a.id, name_en: a.nameEn, name_ru: russian(a.name) ? a.name : '' }))
     .sort((a, b) => a.name_en.localeCompare(b.name_en, 'en') || a.athlete_id - b.athlete_id)
 }
-const columns = ['athlete_id', 'name_en', 'name_ru']
+// Position in the production ALL order, limited to actual ranking members.
+export function rankReviewRows(rows, rankedAthletes, ranking) {
+  const members = new Set(ranking.map(r => r.athleteId))
+  const positions = new Map(rankedAthletes.filter(a => members.has(a.id)).map((a, i) => [a.id, i + 1]))
+  return rows.map(row => ({ ...row, ranking: positions.get(row.athlete_id) ?? '' }))
+    .sort((a, b) => (a.ranking || Infinity) - (b.ranking || Infinity) || a.name_en.localeCompare(b.name_en, 'en') || a.athlete_id - b.athlete_id)
+}
+const columns = ['athlete_id', 'ranking', 'name_en', 'name_ru']
 export function formatReports(rows) {
   const csvCell = value => {
     if (/^[=+@\-\t\r]/.test(String(value))) throw Error('Unsafe spreadsheet cell prefix; export aborted')
     return '"' + String(value).replaceAll('"', '""') + '"'
   }
   const mdCell = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('|', '&#124;').replace(/[\r\n]/g, ' ')
-  const values = rows.map(r => columns.map(c => r[c]))
+  const values = rows.map(r => columns.map(c => r[c] ?? ''))
   return { csv: '\uFEFF' + [columns, ...values].map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n',
     md: `# Athlete names\n\nTotal: ${rows.length}; Russian name present: ${rows.filter(r => r.name_ru).length}; missing: ${rows.filter(r => !r.name_ru).length}.\n\nEdit only name_ru in review.csv.\n\n` +
       [columns, columns.map(() => '---'), ...values].map(row => '| ' + row.map(mdCell).join(' | ') + ' |').join('\n') + '\n' }
 }
-// Strict CSV: comma separator, escaped quotes, CRLF/LF and quoted newlines.
+// Strict CSV: header-selected comma/semicolon, escaped quotes, CRLF/LF and quoted newlines.
 // Structural errors are fatal; no heuristic delimiter or column repair.
 export function parseCSV(source) {
   const text = source.replace(/^\uFEFF/, ''), rows = []
+  const header = text.split(/[\r\n]/, 1)[0]
+  // Accept exact column names, including the exporter's standard quoted header.
+  const delimiter = [',', ';'].find(separator => {
+    const cells = header.split(separator)
+    return cells.length === columns.length && cells.every((cell, i) => cell === columns[i] || cell === `"${columns[i]}"`)
+  })
+  if (!delimiter) throw Error('CSV columns must be exactly athlete_id,ranking,name_en,name_ru (comma- or semicolon-separated UTF-8)')
+  const otherDelimiter = delimiter === ',' ? ';' : ','
   let row = [], cell = '', quoted = false, closed = false
   const field = () => { row.push(cell); cell = ''; closed = false }
   const record = () => { field(); rows.push(row); row = [] }
@@ -72,24 +87,26 @@ export function parseCSV(source) {
     if (quoted) {
       if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++ } else { quoted = false; closed = true } }
       else cell += c
-    } else if (c === ',') field()
+    } else if (c === delimiter) field()
     else if (c === '\r' || c === '\n') { if (c === '\r' && text[i + 1] === '\n') i++; record() }
     else if (c === '"' && cell === '' && !closed) quoted = true
     else {
+      if (c === otherDelimiter) throw Error(`Mixed CSV delimiters near record ${rows.length + 1}; quote literal separators`)
       if (closed || c === '"') throw Error(`Malformed CSV near record ${rows.length + 1}`)
       cell += c
     }
   }
   if (quoted) throw Error('Unterminated CSV quote')
   if (cell || row.length || closed) record()
-  if (JSON.stringify(rows.shift()) !== JSON.stringify(columns)) throw Error('CSV columns must be exactly athlete_id,name_en,name_ru (comma-separated UTF-8)')
+  if (JSON.stringify(rows.shift()) !== JSON.stringify(columns)) throw Error('CSV columns must be exactly athlete_id,ranking,name_en,name_ru (comma- or semicolon-separated UTF-8)')
   return rows
 }
 export function makeBaseline(rows, catalog, registryText) {
-  return { version: 1, catalog_sha256: hash(JSON.stringify(catalog)), localization_sha256: hash(registryText), rows }
+  return { version: 2, catalog_sha256: hash(JSON.stringify(catalog)), localization_sha256: hash(registryText), rows }
 }
 export function assertFresh(baseline, current) {
-  if (JSON.stringify(baseline) !== JSON.stringify(current)) throw Error('STALE_BASELINE: каталог, локализация или baseline изменились. Сохраните правки отдельно, заново выполните npm run audit:athlete-names и перенесите правки в новый CSV. Автоматического merge нет.')
+  const namesOnly = snapshot => ({ ...snapshot, rows: snapshot?.rows?.map(row => ({ athlete_id: row.athlete_id, name_en: row.name_en, name_ru: row.name_ru })).sort((a, b) => a.athlete_id - b.athlete_id) })
+  if (JSON.stringify(namesOnly(baseline)) !== JSON.stringify(namesOnly(current))) throw Error('STALE_BASELINE: каталог, локализация или baseline изменились. Сохраните правки отдельно, заново выполните npm run audit:athlete-names и перенесите правки в новый CSV. Автоматического merge нет.')
 }
 export function planImport(csv, baseline, current, registry) {
   assertFresh(baseline, current)
@@ -98,8 +115,8 @@ export function planImport(csv, baseline, current, registry) {
   const byId = new Map(baseline.rows.map(r => [String(r.athlete_id), r])), seen = new Set(), changes = []
   for (const [i, cells] of input.entries()) {
     const label = `CSV record ${i + 2}`
-    if (cells.length !== 3) throw Error(`${label}: expected exactly 3 cells`)
-    const [id, name, value] = cells, before = byId.get(id)
+    if (cells.length !== 4) throw Error(`${label}: expected exactly 4 cells`)
+    const [id, , name, value] = cells, before = byId.get(id)
     if (!before || seen.has(id)) throw Error(`${label}: UNKNOWN_OR_DUPLICATE_ID ${id}`)
     seen.add(id)
     if (name !== before.name_en) throw Error(`${label}: IDENTITY_CHANGED: ${id}; name_en must exactly match baseline`)

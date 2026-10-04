@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { createServer } from 'vite'
-import { parseUniqueJSON, catalogRows, formatReports, makeBaseline } from './athlete-name-review.mjs'
+import { parseUniqueJSON, catalogRows, formatReports, makeBaseline, rankReviewRows } from './athlete-name-review.mjs'
 export const registryPath = 'src/data/athletes/athleteLocalization.json'
 export const reviewDirectory = '.generated/athlete-names'
 export async function loadNameSnapshot() {
@@ -13,7 +13,7 @@ export async function loadNameSnapshot() {
   try {
     const c = await server.ssrLoadModule('/src/data/athletes/index.ts')
     const raw = [...c.maleAthletes, ...c.femaleAthletes, ...c.resultAthletes, ...c.verifiedResultAthletes]
-    const rows = catalogRows(registry, raw, c.athletes)
+    const nameRows = catalogRows(registry, raw, c.athletes)
     const { normalizeAthleteIdentityName: norm } = await server.ssrLoadModule('/src/data/athleteIdentity.ts')
     const normalized = new Map()
     for (const a of raw) {
@@ -27,7 +27,10 @@ export async function loadNameSnapshot() {
     assert.deepEqual(linkResultsToAthletes(raceResults), raceResults.map(r => ({ ...r, athleteId: normalized.get(norm(r.athleteName)) ?? r.athleteId })), 'Result linkage changed')
     assert.deepEqual(raceResults, snapshot, 'Raw results mutated')
     assert.equal(await fs.readFile(registryPath, 'utf8'), registryText, 'Localization changed while reading; retry')
-    return { registryText, registry, baseline: makeBaseline(rows, { raw, results: raceResults }, registryText) }
+    const { rankedAthletes, athleteRanking } = await server.ssrLoadModule('/src/sports/data.ts')
+    const rows = rankReviewRows(nameRows, rankedAthletes, athleteRanking)
+    // Results affect review priority, not the identity/name snapshot for import.
+    return { registryText, registry, baseline: makeBaseline(rows, raw, registryText) }
   } finally { await server.close() }
 }
 export async function exportNameReview(snapshot, directory = reviewDirectory) {

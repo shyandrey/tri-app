@@ -6,11 +6,11 @@
 
 1. Выполните `npm run audit:athlete-names`.
 2. Откройте `.generated/athlete-names/review.csv` в Numbers.
-3. Не меняйте `athlete_id` и `name_en`, заголовки и набор строк. Сортировать строки можно.
+3. Не меняйте `athlete_id`, `ranking` и `name_en`, заголовки и набор строк. Сортировать строки можно.
 4. Правильные русские имена оставьте как есть.
 5. Неправильные исправьте в `name_ru`.
 6. В пустые `name_ru` впишите проверенные русские имена; остальные оставьте пустыми.
-7. Экспортируйте из Numbers обратно в **CSV, UTF-8, разделитель запятая**, заменив рабочий `review.csv`. Не сохраняйте файл `.numbers` под расширением `.csv`.
+7. Экспортируйте из Numbers обратно в **CSV, UTF-8, разделитель запятая или точка с запятой**, заменив рабочий `review.csv`. Не сохраняйте файл `.numbers` под расширением `.csv`.
 8. Выполните `npm run import:athlete-names` — это dry-run, без записи source data.
 9. Просмотрите весь список before/after. Убедитесь, что нет случайных правок.
 10. Выполните `npm run import:athlete-names -- --write`.
@@ -21,25 +21,28 @@
 
 ## Формат
 
-CSV имеет ровно три столбца:
+CSV имеет ровно четыре столбца:
 
 ```csv
-athlete_id,name_en,name_ru
-10000,Aaron Belcher,Аарон Белчер
-10001,Aaron Kolk,Аарон Колк
-10002,Aaron Royle,Аарон Ройл
-10003,Aaronn Gu,
+athlete_id,ranking,name_en,name_ru
+3,1,Hayden Wilde,Хайден Уайлд
+104,2,Taylor Knibb,Тейлор Книбб
+101,3,Kate Waugh,Кейт Во
 ```
 
-Экспорт использует UTF-8 BOM, CRLF и quoted cells; importer принимает также UTF-8 без BOM и LF, поддерживает CSV escaped quotes. Разделитель `;`, дополнительные столбцы, пустые дополнительные строки и некорректные quotes отклоняются. Числовой ID должен оставаться точным десятичным значением, без форматирования вроде `10,000` или `10000.0`.
+`ranking` — справочная позиция в общем production TRI Ranking (ALL, мужчины и женщины вместе), а не score и не отдельная позиция по полу. Экспорт использует существующие `rankedAthletes` / `athleteRanking` и production dataset clock. Сначала идут участники ranking по позиции 1, 2, 3…; затем атлеты без ranking — по name_en A–Z и ID. У unranked поле ranking пустое. Нулевой score сам по себе не означает отсутствие ranking.
+
+Пользователь редактирует только name_ru. Importer игнорирует ranking в CSV: он не использует его для identity, обнаружения правок или записи overrides. Обновление ranking после export не требует повторного export при неизменных каталоге и локализации. Перестановка строк безопасна.
+
+Экспорт использует UTF-8 BOM, CRLF и quoted cells; importer принимает также UTF-8 без BOM и LF, поддерживает CSV escaped quotes. Разделитель (`,` или `;`) определяется по точному header и используется для всего файла. Смешанные разделители, дополнительные столбцы, пустые дополнительные строки и некорректные quotes отклоняются. Буквальные запятые и точки с запятой внутри значений должны быть в quoted fields; экспорт остаётся comma-separated. Числовой ID должен оставаться точным десятичным значением, без форматирования вроде `10,000` или `10000.0`.
 
 `review.md` — только companion report с теми же именами и total/present/missing. Редактировать его для импорта бессмысленно. Все файлы в `.generated/` игнорируются Git.
 
 ## Baseline и защита импорта
 
-`baseline.json` содержит version, исходные строки `athlete_id/name_en/name_ru`, SHA-256 raw catalog + runtime results и SHA-256 точных байтов localization registry. Это snapshot, а не editable source. Не редактируйте baseline.
+`baseline.json` содержит version 2, исходные строки `athlete_id/ranking/name_en/name_ru`, SHA-256 raw catalog и SHA-256 точных байтов localization registry. Это snapshot, а не editable source. Не редактируйте baseline. Старый трёхколоночный CSV/baseline v1 нужно переэкспортировать; незавершённые правки предварительно сохраните отдельно.
 
-Importer проверяет baseline против текущего runtime snapshot и registry. Поэтому изменения каталога, результатов или registry после export требуют нового export. Сохраните старый исправленный CSV отдельно и вручную перенесите изменения в новый snapshot. Автоматического merge identity changes нет.
+Importer проверяет baseline против текущего runtime snapshot и registry. Поэтому изменения каталога или registry после export требуют нового export. Изменение только результатов/ranking не блокирует импорт: ranking и порядок строк исключены из сравнения snapshot. Сохраните старый исправленный CSV отдельно и вручную перенесите изменения в новый snapshot. Автоматического merge identity changes нет.
 
 Сравнение `name_ru` с baseline:
 
