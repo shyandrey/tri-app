@@ -338,3 +338,16 @@ body { background: var(--tri-bg); }
 .race-detail-page__distance-tag { left: var(--tri-page-gutter); }
 .app :is(button, a):focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
 @media (max-width: 640px) { :root { --tri-page-gutter: 12px; } }
+
+/* One native action per card; absolute placement preserves the approved layout.
+   Its click bubbles to the existing card handler, including Enter/Space activation. */
+.race-card, .athlete-card--profile { position: relative; }
+.app .card-navigation-target {
+  position: absolute; inset: 0; z-index: 1;
+  margin: 0; padding: 0; border: 0; border-radius: inherit;
+  background: transparent; color: inherit; cursor: pointer;
+}
+.app .card-navigation-target:focus-visible {
+  outline: 2px solid var(--tri-accent); outline-offset: -4px;
+  box-shadow: inset 0 0 0 2px #111;
+}

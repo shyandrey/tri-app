@@ -75,7 +75,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
     if (!track || !card) return
 
     const left = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2
-    track.scrollTo({ left, behavior: 'smooth' })
+    track.scrollTo({ left, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
   }
 
   const pauseAutoScroll = () => {
@@ -85,13 +85,20 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
   useEffect(() => {
     if (races.length < 2) return
 
-    const timer = window.setInterval(() => {
-      if (Date.now() < manualPauseUntilRef.current) return
-      const nextIndex = (activeIndexRef.current + 1) % races.length
-      scrollToCard(nextIndex)
-    }, AUTO_SCROLL_MS)
-
-    return () => window.clearInterval(timer)
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let timer: number | undefined
+    const updateAutoplay = () => {
+      window.clearInterval(timer)
+      if (motion.matches) return
+      timer = window.setInterval(() => {
+        if (Date.now() < manualPauseUntilRef.current) return
+        const nextIndex = (activeIndexRef.current + 1) % races.length
+        scrollToCard(nextIndex)
+      }, AUTO_SCROLL_MS)
+    }
+    updateAutoplay()
+    motion.addEventListener('change', updateAutoplay)
+    return () => { window.clearInterval(timer); motion.removeEventListener('change', updateAutoplay) }
   }, [races.length])
 
   const handleScroll = () => {

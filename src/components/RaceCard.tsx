@@ -99,6 +99,7 @@ function RaceCard({
       </div>
 
       <ChevronRightIcon className="race-card__arrow" />
+      {onClick && <button type="button" className="card-navigation-target" aria-label={`Открыть гонку: ${name}, ${date}`} />}
     </article>
   )
 }

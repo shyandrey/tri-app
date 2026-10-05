@@ -38,3 +38,7 @@
   object-position: center;
   pointer-events: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .home-showcase__track { scroll-behavior: auto; }
+}
