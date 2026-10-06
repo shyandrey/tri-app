@@ -25,7 +25,7 @@ Implemented: health, News ingestion/read API, Feedback handlers/UI, build metada
 | Runtime News config | `NEWS_TELEGRAM_CHANNEL_ID` configured; `TELEGRAM_WEBHOOK_SECRET` stored as a Cloudflare secret |
 | Approved remote seed | Posts 993, 992, 988; source `manually-approved-telegram-seed` |
 | Feedback | Active protected mode; Turnstile, rate limiter and retry cron configured; D1 → Telegram delivery verified |
-| Production | Worker `tri-app` and D1 `tri-app-production` do not exist yet |
+| Production (P1/P2 update) | D1 `tri-app-production` exists; Worker not deployed, domain not bound; NOT live |
 | GitHub automatic builds | Not connected |
 | Custom domain | `preview.300w.app`; Dashboard Type = `Production` for Worker `tri-app-preview` |
 | Reserved future production domain | `300w.app`; registered, reserved, not connected to production routing |
@@ -85,7 +85,7 @@ Both deploy scripts use the project-local Wrangler with explicit `--env preview`
 Wrangler runs `npm run build`, including metadata generation from the current checkout
 (see Build identity below), and selects Worker `tri-app-preview` with binding
 `DB` → `tri-app-preview`. The dry command adds `--dry-run` and does not deploy.
-Production shortcuts (`deploy:production`, `deploy`, `release`) are intentionally absent.
+Explicit production commands are prepared below for future use. Generic `deploy` and `release` shortcuts remain intentionally absent.
 
 `check:preview` checks the canonical URL `https://preview.300w.app`:
 `https://preview.300w.app/api/health` and `https://preview.300w.app/api/news`.
@@ -94,6 +94,46 @@ It uses only GET requests, rejects redirects, times out after 15 seconds per req
 and exits nonzero on failure. It reports the deployed commit without assuming it matches
 local HEAD. Health is not a D1 connectivity check; News may be cached for 900 seconds.
 The check does not inspect secrets or perform migrations or writes.
+
+## Prepared production commands — NOT live
+
+P1 created only D1 `tri-app-production` in account
+`3fd801274d556b3ffc138463a0f20830`, UUID
+`2b5cd1b9-d9bf-483d-b710-23d00b6db7fd`. Migrations 0001–0004 are **NOT applied**.
+Worker `tri-app` is **NOT deployed**, `300w.app` is **NOT bound**, and production
+Turnstile/site key, allowed origin, rate limiter, cron and secrets are **NOT configured**.
+News seed/webhook and Feedback destination setup are also pending. Production is **NOT live**.
+
+```sh
+npm run deploy:production:dry   # local build/bundle only; explicit --env production --dry-run
+# FUTURE REAL DEPLOY — requires separate approval and completed prerequisites:
+npm run deploy:production
+npm run check:production       # GET only; expected SHA defaults to local git HEAD
+npm run check:production -- --expected-sha <approved-40-character-sha>
+```
+
+Both production deploy scripts use explicit `--env production`. No migrations or
+seed are chained to deployment. Do not run the real deploy while this configuration
+is incomplete. Dry-run cannot establish production readiness: optional TypeScript
+Env fields and Wrangler bundling do not validate required live Feedback/News secrets.
+
+Production uses a declarative ordinary-vars policy: no `--keep-vars`; Wrangler's
+default replaces ordinary remote vars with the selected config. Declare all required
+production ordinary vars before the first real deploy; inspect any unexpected
+Dashboard-managed vars before later deploys. Existing remote secrets are preserved
+by normal deploy, but none are provisioned by these commands. Preview's existing
+`--keep-vars` operational workflow is unchanged. Never pass secret values as npm arguments.
+
+The checkers share GET/JSON/status validation and 15-second request timeouts.
+Production is fixed to `https://300w.app/api/health` and `/api/news`, rejects redirects
+and never falls back to preview/workers.dev. It verifies a full health commit SHA
+against the explicit expected SHA (or local HEAD); an unavailable domain, invalid
+response or SHA mismatch exits nonzero with `PRODUCTION check failed`.
+Preview retains its existing health/News validation without requiring a SHA match;
+output labels distinguish PREVIEW/PRODUCTION. Empty News is accepted by this basic
+checker, so a PASS is not proof of seeded News, D1 schema, ingestion or Feedback E2E.
+No checker sends Feedback/Telegram requests. A dirty working build can still report
+HEAD; release checks require the separately reviewed clean source state.
 
 ## Build identity
 
@@ -117,20 +157,25 @@ Migrations 0002–0004 add Feedback delivery fields, News ingestion watermarks/m
 | Environment | Branch | Worker | D1 | Status |
 | --- | --- | --- | --- | --- |
 | Preview | `home-redesign-experiments` | `tri-app-preview` | `tri-app-preview` | Live; manual deployment |
-| Future production | `main` | `tri-app` | `tri-app-production` | Not provisioned or connected |
+| Future production | `main` (intended) | `tri-app` (not deployed) | `tri-app-production` (created, not migrated) | NOT live; domain not bound |
 
 These branch mappings describe the intended workflow, not an active Git trigger. If GitHub builds are connected later, each Worker needs its own branch selection and explicit Wrangler environment (`--env preview` or `--env production`). Do not enable production as part of preview maintenance.
 
-`wrangler.jsonc` contains the real preview UUID. The local UUID `00000000-0000-0000-0000-000000000000` and production UUID `22222222-2222-2222-2222-222222222222` remain placeholders. The only infrastructure config change for this checkpoint is replacing preview's `11111111-1111-1111-1111-111111111111` with the real UUID. Database IDs are configuration, not secrets. Do not create the preview database again or use production D1 for preview.
+`wrangler.jsonc` contains the real preview UUID and production D1 UUID
+`2b5cd1b9-d9bf-483d-b710-23d00b6db7fd`. Production database name is
+`tri-app-production`, binding name `DB`; configuring this binding locally does not
+attach it to a deployed Worker. The default/local UUID remains
+`00000000-0000-0000-0000-000000000000`. Database IDs are configuration, not secrets.
+Never substitute preview UUID `4dfe9210-0cc7-484f-8eea-fe5216f5c17a` for production.
 
 Named environments inherit assets/build configuration, use `worker/index.ts` and explicitly declare separate DB bindings. The default target uses loopback-only `worker/local.ts`; do not deploy it remotely. `npm run cf:check` checks this default/local target with `--env "" --dry-run`; it does not validate live preview bindings. Preview is a separately deployed Worker with canonical URL `https://preview.300w.app` and a stable workers.dev fallback, not an automatic PR preview.
 
 `300w.app` is registered and reserved for future production. Intended architecture:
 `300w.app` → production Worker `tri-app` → production D1 `tri-app-production`.
-This is separate from the preview Worker's Dashboard domain type. No production
-routing, Worker or D1 is configured or created as part of this hostname update.
+This is separate from the preview Worker's Dashboard domain type. P1 subsequently
+created the production D1 only; production routing and Worker deployment remain pending.
 
-Future production provisioning requires separate approval, its own D1 UUID/migrations and runtime configuration. Keep its placeholder unchanged until then.
+Further production provisioning requires separate approval: migrations, Worker deployment, domain binding and runtime protection/delivery configuration are still pending.
 
 ## Runtime configuration and secrets
 

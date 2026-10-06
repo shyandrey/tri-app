@@ -6,14 +6,18 @@ import worker from '../worker/index.ts'
 import {buildMetadata} from '../src/utils/buildMetadata.ts'
 import {resolveBuildMetadata} from './build-metadata.mjs'
 import {checkPreview} from './check-preview.mjs'
+import {checkProduction,productionCheckArgs} from './check-production.mjs'
 
-test('preview shortcuts explicitly target preview; dry-run is safe and production shortcuts are absent',async()=>{
+test('deployment shortcuts explicitly select environments; no generic deploy shortcut',async()=>{
  const {scripts}=JSON.parse(await fs.readFile('package.json','utf8'))
  assert.equal(scripts['deploy:preview:dry'],'wrangler deploy --env preview --dry-run')
  assert.equal(scripts['deploy:preview'],'wrangler deploy --env preview')
  for(const name of ['deploy:preview:dry','deploy:preview'])assert.match(scripts[name],/--env preview(?:\s|$)/)
  assert.match(scripts['deploy:preview:dry'],/--dry-run(?:\s|$)/)
- for(const name of ['deploy:production','deploy','release'])assert.equal(scripts[name],undefined)
+ assert.equal(scripts['deploy:production:dry'],'wrangler deploy --env production --dry-run')
+ assert.equal(scripts['deploy:production'],'wrangler deploy --env production')
+ assert.equal(scripts['check:production'],'node scripts/check-production.mjs')
+ for(const name of ['deploy','release'])assert.equal(scripts[name],undefined)
  assert.equal(scripts['check:preview'],'node scripts/check-preview.mjs')
 })
 test('preview check only reads canonical preview.300w.app health/news endpoints and accepts an empty feed',async()=>{
@@ -96,4 +100,61 @@ assert c.execute('SELECT id FROM news WHERE hidden=0 ORDER BY published_at DESC,
 print('schema/constraints passed')
 `],{input:sql,encoding:'utf8'})
  assert.equal(python.status,0,python.stderr)
+})
+
+
+test('production D1 is isolated; preview and default bindings/config stay intact',async()=>{
+ const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
+ assert.deepEqual(config.env.production,{
+  main:'worker/index.ts',name:'tri-app',workers_dev:true,
+  d1_databases:[{binding:'DB',database_name:'tri-app-production',database_id:'2b5cd1b9-d9bf-483d-b710-23d00b6db7fd',migrations_dir:'migrations'}],
+ }) // Exact allowlist: no copied preview vars, secret values or fabricated bindings.
+ assert.deepEqual(config.env.preview,{
+  main:'worker/index.ts',name:'tri-app-preview',workers_dev:true,
+  vars:{TURNSTILE_SITE_KEY:'0x4AAAAAAFLWMQLuWNz_aJ5j',ALLOWED_ORIGIN:'https://preview.300w.app'},
+  ratelimits:[{name:'FEEDBACK_RATE_LIMITER',namespace_id:'30001',simple:{limit:5,period:60}}],
+  triggers:{crons:['*/5 * * * *']},
+  d1_databases:[{binding:'DB',database_name:'tri-app-preview',database_id:'4dfe9210-0cc7-484f-8eea-fe5216f5c17a',migrations_dir:'migrations'}],
+ })
+ assert.deepEqual(config.d1_databases,[{binding:'DB',database_name:'tri-app-local',database_id:'00000000-0000-0000-0000-000000000000',migrations_dir:'migrations'}])
+ assert.notEqual(config.env.production.d1_databases[0].database_id,config.env.preview.d1_databases[0].database_id)
+})
+
+test('production checker uses only canonical GET endpoints and verifies expected SHA',async()=>{
+ const expected='a'.repeat(40), calls=[]
+ const result=await checkProduction(async(url,options)=>{
+  calls.push(url)
+  assert.equal(options.method,'GET');assert.equal(options.redirect,'error');assert.equal(options.body,undefined)
+  assert.ok(options.signal instanceof AbortSignal)
+  return Response.json(url.endsWith('/health')?{ok:true,service:'tri-app',version:'0.0.0',commit:expected}:{items:[]})
+ },expected)
+ assert.deepEqual(calls.sort(),['https://300w.app/api/health','https://300w.app/api/news'])
+ assert.equal(result.health.commit,expected);assert.equal(result.newsCount,0)
+})
+
+test('production checker fails without fallback on network/redirect/HTTP/schema/SHA failure',async()=>{
+ const expected='a'.repeat(40)
+ for(const kind of ['network','redirect','http','html','health','news','unknown-sha','wrong-sha']){
+  const calls=[]
+  await assert.rejects(()=>checkProduction(async(url,options)=>{
+   calls.push(url);assert.equal(options.redirect,'error')
+   if(kind==='network' || kind==='redirect')throw new TypeError('fetch failed')
+   if(kind==='http')return new Response('unavailable',{status:503})
+   if(kind==='html')return new Response('<html/>',{headers:{'Content-Type':'text/html'}})
+   const health={ok:kind!=='health',service:'tri-app',version:'0.0.0',commit:kind==='unknown-sha'?'unknown':kind==='wrong-sha'?'b'.repeat(40):expected}
+   return Response.json(url.endsWith('/health')?health:{items:kind==='news'?null:[]})
+  },expected))
+  assert.deepEqual(calls.sort(),['https://300w.app/api/health','https://300w.app/api/news'])
+ }
+ let requested=false
+ await assert.rejects(()=>checkProduction(async()=>{requested=true},'invalid'))
+ assert.equal(requested,false)
+})
+
+test('production checker rejects ambiguous CLI arguments before any network request',()=>{
+ const expected='a'.repeat(40)
+ assert.equal(productionCheckArgs(['--expected-sha',expected]),expected)
+ for(const args of [['--expected-sha'],['--expected-sha','unknown'],['--url','https://preview.300w.app'],['--expected-sha',expected,'--expected-sha',expected]]){
+  assert.throws(()=>productionCheckArgs(args),/Usage/)
+ }
 })

@@ -41,7 +41,7 @@
       "name": "tri-app", "workers_dev": true,
       "d1_databases": [{
         "binding": "DB", "database_name": "tri-app-production",
-        "database_id": "22222222-2222-2222-2222-222222222222",
+        "database_id": "2b5cd1b9-d9bf-483d-b710-23d00b6db7fd",
         "migrations_dir": "migrations"
       }]
     }
