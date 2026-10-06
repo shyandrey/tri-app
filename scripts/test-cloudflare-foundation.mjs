@@ -107,7 +107,9 @@ test('production D1 is isolated; preview and default bindings/config stay intact
  const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
  assert.deepEqual(config.env.production,{
   main:'worker/index.ts',name:'tri-app',workers_dev:true,
-  vars:{APP_ENV:'production'},
+  vars:{APP_ENV:'production',TURNSTILE_SITE_KEY:'0x4AAAAAAFPhEVzQXvHl5kR8',ALLOWED_ORIGIN:'https://300w.app'},
+  ratelimits:[{name:'FEEDBACK_RATE_LIMITER',namespace_id:'40001',simple:{limit:5,period:60}}],
+  triggers:{crons:['*/5 * * * *']},
   d1_databases:[{binding:'DB',database_name:'tri-app-production',database_id:'2b5cd1b9-d9bf-483d-b710-23d00b6db7fd',migrations_dir:'migrations'}],
  }) // Exact allowlist: no copied preview vars, secret values or fabricated bindings.
  assert.deepEqual(config.env.preview,{
@@ -157,5 +159,26 @@ test('production checker rejects ambiguous CLI arguments before any network requ
  assert.equal(productionCheckArgs(['--expected-sha',expected]),expected)
  for(const args of [['--expected-sha'],['--expected-sha','unknown'],['--url','https://preview.300w.app'],['--expected-sha',expected,'--expected-sha',expected]]){
   assert.throws(()=>productionCheckArgs(args),/Usage/)
+ }
+})
+
+
+test('asset upload ignores Finder metadata at all directory depths',async()=>{
+ const rules=(await fs.readFile('public/.assetsignore','utf8')).split(/\r?\n/).filter(line=>line && !line.startsWith('#'))
+ assert.deepEqual(rules,['**/.DS_Store']) // gitignore syntax: zero or more directories; no asset-wide exclusions.
+ const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
+ assert.equal(config.assets.directory,'./dist')
+})
+test('production before secrets serves shell/health but fails closed for submissions and ingestion',async()=>{
+ const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
+ const env={...config.env.production.vars,DB:{prepare(){throw Error('Unexpected DB access')}},ASSETS:{fetch:async()=>new Response('static shell')}}
+ const read=path=>worker.fetch(new Request('https://tri-app.example'+path),env)
+ assert.equal((await read('/api/health')).status,200)
+ assert.equal(await(await read('/')).text(),'static shell')
+ assert.deepEqual(await(await read('/api/feedback/config')).json(),{mode:'protected',siteKey:config.env.production.vars.TURNSTILE_SITE_KEY})
+ assert.deepEqual((await(await read('/api/news')).json()).items,[])
+ for(const path of ['/api/feedback','/api/telegram-webhook']){
+  const response=await worker.fetch(new Request('https://tri-app.example'+path,{method:'POST',headers:{Origin:'https://300w.app'}}),env)
+  assert.equal(response.status,503)
  }
 })

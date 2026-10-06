@@ -25,7 +25,7 @@ Implemented: health, News ingestion/read API, Feedback handlers/UI, build metada
 | Runtime News config | `NEWS_TELEGRAM_CHANNEL_ID` configured; `TELEGRAM_WEBHOOK_SECRET` stored as a Cloudflare secret |
 | Approved remote seed | Posts 993, 992, 988; source `manually-approved-telegram-seed` |
 | Feedback | Active protected mode; Turnstile, rate limiter and retry cron configured; D1 → Telegram delivery verified |
-| Production (P1/P2 update) | D1 `tri-app-production` exists; Worker not deployed, domain not bound; NOT live |
+| Production (P4D preparation) | D1 schema initialized; Turnstile created; runtime config prepared; Worker not created/deployed, domain not bound; NOT live |
 | GitHub automatic builds | Not connected |
 | Custom domain | `preview.300w.app`; Dashboard Type = `Production` for Worker `tri-app-preview` |
 | Reserved future production domain | `300w.app`; registered, reserved, not connected to production routing |
@@ -97,12 +97,27 @@ The check does not inspect secrets or perform migrations or writes.
 
 ## Prepared production commands — NOT live
 
-P1 created only D1 `tri-app-production` in account
+P1 created D1 `tri-app-production` in account
 `3fd801274d556b3ffc138463a0f20830`, UUID
-`2b5cd1b9-d9bf-483d-b710-23d00b6db7fd`. Migrations 0001–0004 are **NOT applied**.
-Worker `tri-app` is **NOT deployed**, `300w.app` is **NOT bound**, and production
-Turnstile/site key, allowed origin, rate limiter, cron and secrets are **NOT configured**.
-News seed/webhook and Feedback destination setup are also pending. Production is **NOT live**.
+`2b5cd1b9-d9bf-483d-b710-23d00b6db7fd`. P3 applied migrations 0001–0004;
+application tables were verified empty. Production Turnstile `tri-app-production`
+exists for `300w.app`, managed mode, public site key `0x4AAAAAAFPhEVzQXvHl5kR8`.
+
+Repository `env.production` now prepares `APP_ENV=production`, that public site
+key, `ALLOWED_ORIGIN=https://300w.app`, `FEEDBACK_RATE_LIMITER` namespace `40001`
+with 5/60 policy, and cron `*/5 * * * *`. Namespace `40001` is owner-approved:
+no collision was found in accessible Workers/18 preview versions, but dispatch
+inventory returned 403, so account-wide uniqueness is not proven. Preview stays
+on `30001`. No production binding/trigger has been deployed.
+
+Worker `tri-app` is **NOT created/deployed**, its secrets are **NOT installed**,
+and `300w.app` is **NOT bound/live**. Production bot `@tri_app_prod_bot` exists and
+is already in the News channel and shared private Feedback group. Owner-confirmed
+runbook identifiers: `NEWS_TELEGRAM_CHANNEL_ID=-1002054307603` and
+`FEEDBACK_TELEGRAM_CHAT_ID=-1004339782824`. These IDs remain future Worker secrets,
+not ordinary vars. Preview uses `@tri_app_bot`; tokens, webhook secrets, Turnstile
+secrets and HMAC secrets must be independent. Production webhook/News seed remain
+pending. Production is **NOT live**.
 
 ```sh
 npm run deploy:production:dry   # local build/bundle only; explicit --env production --dry-run
@@ -113,8 +128,8 @@ npm run check:production -- --expected-sha <approved-40-character-sha>
 ```
 
 Both production deploy scripts use explicit `--env production`. No migrations or
-seed are chained to deployment. Do not run the real deploy while this configuration
-is incomplete. Dry-run cannot establish production readiness: optional TypeScript
+seed are chained to deployment. A first isolated workers.dev deployment requires
+separate approval; this prepared config does not authorize it. Dry-run cannot establish production readiness: optional TypeScript
 Env fields and Wrangler bundling do not validate required live Feedback/News secrets.
 
 Production uses a declarative ordinary-vars policy: no `--keep-vars`; Wrangler's
@@ -157,7 +172,7 @@ Migrations 0002–0004 add Feedback delivery fields, News ingestion watermarks/m
 | Environment | Branch | Worker | D1 | Status |
 | --- | --- | --- | --- | --- |
 | Preview | `home-redesign-experiments` | `tri-app-preview` | `tri-app-preview` | Live; manual deployment |
-| Future production | `main` (intended) | `tri-app` (not deployed) | `tri-app-production` (created, not migrated) | NOT live; domain not bound |
+| Future production | `main` (intended) | `tri-app` (not deployed) | `tri-app-production` (schema initialized) | NOT live; domain not bound |
 
 These branch mappings describe the intended workflow, not an active Git trigger. If GitHub builds are connected later, each Worker needs its own branch selection and explicit Wrangler environment (`--env preview` or `--env production`). Do not enable production as part of preview maintenance.
 
@@ -173,9 +188,10 @@ Named environments inherit assets/build configuration, use `worker/index.ts` and
 `300w.app` is registered and reserved for future production. Intended architecture:
 `300w.app` → production Worker `tri-app` → production D1 `tri-app-production`.
 This is separate from the preview Worker's Dashboard domain type. P1 subsequently
-created the production D1 only; production routing and Worker deployment remain pending.
+created production D1; P3 initialized its schema and P4A created production Turnstile.
+Production routing and Worker deployment remain pending.
 
-Further production provisioning requires separate approval: migrations, Worker deployment, domain binding and runtime protection/delivery configuration are still pending.
+Further production provisioning requires separate approval: Worker deployment, secret installation, domain binding and Telegram webhook setup remain pending; D1 migrations 0001–0004 are already applied.
 
 ## Runtime configuration and secrets
 
@@ -226,3 +242,49 @@ intentionally share one private Feedback group; the explicit headings end in
 local config) yields `⚠️ ENV UNKNOWN`, never an inferred production label.
 News webhooks stay separate because each bot supports only one active webhook.
 No Telegram token or chat ID is stored in repository config.
+
+
+### First isolated production deploy and secret installation — owner runbook
+
+Only after separate approval: deploy the reviewed config to workers.dev without
+custom-domain routes or Telegram webhook. Before secrets, health and static assets
+should work; News GET returns an empty feed without the channel binding. Feedback
+config exposes protected mode/site key, but POST Feedback and News webhook return
+503 without server secrets. The workers.dev hostname is not authorized by the
+production Turnstile widget or `ALLOWED_ORIGIN`; do not expect Feedback E2E there.
+The empty Feedback queue makes cron read-only with no Telegram call. Install
+credentials before accepting reports, otherwise retries can consume attempts.
+
+After confirming Worker `tri-app` exists and the intended version is deployed,
+the owner can run these commands **only with separate secret-install approval**:
+
+```sh
+npx --no-install wrangler secret put TELEGRAM_BOT_TOKEN --env production
+npx --no-install wrangler secret put TURNSTILE_SECRET_KEY --env production
+npx --no-install wrangler secret put FEEDBACK_TELEGRAM_CHAT_ID --env production
+npx --no-install wrangler secret put NEWS_TELEGRAM_CHANNEL_ID --env production
+npx --no-install wrangler secret put TELEGRAM_WEBHOOK_SECRET --env production
+npx --no-install wrangler secret put RATE_LIMIT_HMAC_SECRET --env production
+```
+
+Each ordinary `secret put` creates and immediately deploys a new Worker version;
+it is not a read-only or staging operation. Wrangler 4.142.0 can offer to create a
+missing Worker (and defaults to yes in non-interactive mode). Do not use these
+commands to create the first Worker; abort any unexpected creation prompt.
+
+Use the production BotFather token and production Turnstile Dashboard secret;
+paste only into hidden prompts. For the two ID prompts use the owner-confirmed
+values above. Independently generate the webhook and HMAC secrets, one at a time,
+with `openssl rand -hex 32 | pbcopy`; store each in a password manager, paste into
+its prompt, then clear clipboard with `pbcopy < /dev/null`. Avoid clipboard
+history/sync. Do not put values into command arguments, repository files or chat.
+No secrets are generated or installed by build/dry-run. Keep webhook secret for
+later separately approved webhook setup; do not switch preview's webhook.
+
+### Finder metadata upload exclusion
+
+Vite copies `public/` into `dist/`, including local Finder `.DS_Store` files.
+`public/.assetsignore` is copied to `dist/.assetsignore`; its `**/.DS_Store` rule
+excludes root and nested Finder metadata from Wrangler uploads. It does not delete
+local files and does not change normal assets. See
+[Cloudflare asset ignore rules](https://developers.cloudflare.com/workers/static-assets/binding/).

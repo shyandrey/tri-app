@@ -1,0 +1,2 @@
+# Finder metadata is not a public asset (root and nested directories).
+**/.DS_Store
