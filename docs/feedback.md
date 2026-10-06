@@ -40,7 +40,7 @@ Tests: `npm run test:foundation`, `npm run test:feedback` (Python sqlite3 execut
 
 Canonical preview is `https://preview.300w.app`; the existing technical fallback is `https://tri-app-preview.shy-andrey.workers.dev`. Both target Worker `tri-app-preview`, using the existing `DB` binding to D1 `tri-app-preview`. Do not create another preview database or reapply initial migrations.
 
-The operator has configured secrets separately on the preview Worker: `TELEGRAM_BOT_TOKEN`, `FEEDBACK_TELEGRAM_CHAT_ID`, `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_HMAC_SECRET`, plus the existing News secrets `NEWS_TELEGRAM_CHANNEL_ID` and `TELEGRAM_WEBHOOK_SECRET`. Secret values and the private Telegram chat ID never belong in Git or `VITE_*`. The Feedback destination is a private Telegram supergroup; the bot must have permission to send messages there. Notifications start with `300W⚡ · Новый report`.
+The operator has configured secrets separately on the preview Worker: `TELEGRAM_BOT_TOKEN`, `FEEDBACK_TELEGRAM_CHAT_ID`, `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_HMAC_SECRET`, plus the existing News secrets `NEWS_TELEGRAM_CHANNEL_ID` and `TELEGRAM_WEBHOOK_SECRET`. Secret values and the private Telegram chat ID never belong in Git or `VITE_*`. The Feedback destination is a private Telegram supergroup; the bot must have permission to send messages there. Notifications start with `300W⚡ · Новый report · 🧪 PREVIEW` or `300W⚡ · Новый report · 🟢 PRODUCTION`, selected only by the explicit ordinary Worker var `APP_ENV=preview|production`.
 
 The preview Turnstile widget has been created for hostname `preview.300w.app`. Only its public `TURNSTILE_SITE_KEY` is ordinary configuration. `ALLOWED_ORIGIN` is exactly `https://preview.300w.app`, without a trailing slash. Feedback submission from the workers.dev origin is not allowed by this single-origin policy; its News/webhook role is unchanged.
 
@@ -64,3 +64,18 @@ Future production (`300w.app`, Worker `tri-app`, production D1) is not configure
 Protected environments fail closed with 503 if any anti-spam config is missing. Origin must match. Turnstile is verified server-side including success, hostname and `feedback` action. No remoteip is sent to Siteverify. Rate-limit key is HMAC-SHA256 of transient CF-Connecting-IP; raw IP is neither stored nor logged. Native limiter is per-location best-effort abuse protection, not a global quota; no in-memory homemade global counter. User text/email/challenge/provider errors are not logged by application code. Turnstile loads only on the feedback page in protected mode. Contact email is optional; form explains storage and inability to reply personally without email.
 
 References: [Turnstile validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/), [Workers rate limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
+
+
+Preview (`@tri_app_bot`) and Production (`@tri_app_prod_bot`) intentionally share
+one existing private Feedback group; both may use the same
+`FEEDBACK_TELEGRAM_CHAT_ID`. No second group is needed. The production bot has
+already been added to that group; production Worker credentials still require
+separate setup. News webhooks remain separate: each Telegram bot has only one
+active webhook.
+
+`APP_ENV` affects only the Feedback Telegram heading, including scheduled retries.
+Missing or unrecognized values produce `⚠️ ENV UNKNOWN`, never `PRODUCTION`;
+no raw unknown value is echoed. Default/local config deliberately omits `APP_ENV`
+and therefore uses this explicit fallback if real delivery is configured; normal
+local Worker delivery remains its existing no-send stub. Only `preview` and
+`production` are supported configured values. No hostname/build inference is used.

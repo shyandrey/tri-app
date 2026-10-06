@@ -1,4 +1,5 @@
 export interface Env {
+  APP_ENV?: 'preview' | 'production'
   TURNSTILE_SITE_KEY?: string
   FEEDBACK_RATE_LIMITER?: { limit: (options: { key: string }) => Promise<{ success: boolean }> }
   ASSETS: Fetcher

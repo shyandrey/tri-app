@@ -21,6 +21,7 @@
       "main": "worker/index.ts",
       "name": "tri-app-preview", "workers_dev": true,
       "vars": {
+        "APP_ENV": "preview",
         "TURNSTILE_SITE_KEY": "0x4AAAAAAFLWMQLuWNz_aJ5j",
         "ALLOWED_ORIGIN": "https://preview.300w.app"
       },
@@ -39,6 +40,7 @@
     "production": {
       "main": "worker/index.ts",
       "name": "tri-app", "workers_dev": true,
+      "vars": { "APP_ENV": "production" },
       "d1_databases": [{
         "binding": "DB", "database_name": "tri-app-production",
         "database_id": "2b5cd1b9-d9bf-483d-b710-23d00b6db7fd",

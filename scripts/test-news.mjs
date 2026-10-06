@@ -143,3 +143,19 @@ test('title normalization preserves emoji clusters without changing excerpt norm
  const row=db.query('SELECT title,excerpt FROM news WHERE message_id=600')[0]
  assert.equal(row.title,'a'.repeat(197));assert.equal(row.excerpt,'Text 👩🏽 ⚕️ end')
 })
+
+
+test('APP_ENV does not affect News webhook authentication, ingestion or feed',async t=>{
+ let expected
+ for(const APP_ENV of ['preview','production',undefined,'unknown']){
+  const db=testD1(t),bindings={...env(db),APP_ENV}
+  assert.equal((await worker.fetch(req(update(7),'wrong'),bindings)).status,401)
+  assert.equal((await worker.fetch(req(update(7)),bindings)).status,200)
+  const response=await worker.fetch(new Request('https://tri.example/api/news'),bindings)
+  assert.equal(response.status,200)
+  const body=await response.json()
+  assert.equal(body.items.length,1)
+  if(expected)assert.deepEqual(body,expected)
+  expected=body
+ }
+})

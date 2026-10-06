@@ -2,8 +2,9 @@ import { feedbackCategories } from '../../shared/feedback.ts'
 import type { Env } from '../env.ts'
 import type { FeedbackRow } from './storage.ts'
 export type Deliver = (row: FeedbackRow) => Promise<void>
-export function telegramText(row: FeedbackRow) {
-  return ['300W⚡ · Новый report', `#${row.id}`, feedbackCategories[row.category],
+export function telegramText(row: FeedbackRow, appEnv?: Env['APP_ENV']) {
+  const marker = appEnv === 'preview' ? '🧪 PREVIEW' : appEnv === 'production' ? '🟢 PRODUCTION' : '⚠️ ENV UNKNOWN'
+  return [`300W⚡ · Новый report · ${marker}`, `#${row.id}`, feedbackCategories[row.category],
     row.athlete_name ? `Атлет: ${row.athlete_name}` : '', row.race_name ? `Гонка: ${row.race_name}` : '',
     row.active_gender === 'M' ? 'MEN' : row.active_gender === 'W' ? 'WOMEN' : '',
     'Сообщение:', row.description.length > 2800 ? row.description.slice(0, 2800) + '\n[Полный текст сохранён в D1]' : row.description,
@@ -13,7 +14,7 @@ export const telegramDelivery = (env: Env, fetcher: typeof fetch = fetch): Deliv
   if (!env.TELEGRAM_BOT_TOKEN || !env.FEEDBACK_TELEGRAM_CHAT_ID) throw Error('DELIVERY_UNCONFIGURED')
   const response = await fetcher(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(8000),
-    body: JSON.stringify({ chat_id: env.FEEDBACK_TELEGRAM_CHAT_ID, text: telegramText(row), link_preview_options: { is_disabled: true } }),
+    body: JSON.stringify({ chat_id: env.FEEDBACK_TELEGRAM_CHAT_ID, text: telegramText(row, env.APP_ENV), link_preview_options: { is_disabled: true } }),
   })
   if (!response.ok || !(await response.json() as { ok?: boolean }).ok) throw Error('DELIVERY_FAILED')
 }

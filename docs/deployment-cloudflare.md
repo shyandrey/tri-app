@@ -216,3 +216,13 @@ Official references: [Static Assets](https://developers.cloudflare.com/workers/s
 - Extra photo suites: 42/46 pass. The same four failures reproduce against the accepted HEAD with the existing local photo staging available: obsolete 1161/939 catalog/coverage counts and incomplete Batch 2/3 historical catalog baselines after six new athletes were imported. No photo code/data was changed or audit weakened. These existing test-fixture issues are outside foundation scope.
 
 That foundation implementation task performed no remote deployment, database creation or Telegram setup. The subsequent live preview state is recorded above.
+
+
+Feedback environment labels use the ordinary Worker var `APP_ENV`: `preview` in
+`env.preview`, `production` in `env.production`. This repository configuration is
+not a deployment. Preview (`@tri_app_bot`) and Production (`@tri_app_prod_bot`)
+intentionally share one private Feedback group; the explicit headings end in
+`🧪 PREVIEW` and `🟢 PRODUCTION`. Missing/unknown `APP_ENV` (including the default
+local config) yields `⚠️ ENV UNKNOWN`, never an inferred production label.
+News webhooks stay separate because each bot supports only one active webhook.
+No Telegram token or chat ID is stored in repository config.

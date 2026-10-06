@@ -104,7 +104,7 @@ test('Telegram uses plain text, bounded text, no parse_mode or client info; fail
  let sent
  await telegramDelivery({TELEGRAM_BOT_TOKEN:'fake',FEEDBACK_TELEGRAM_CHAT_ID:'fake'},async(_url,options)=>{sent=JSON.parse(options.body);return Response.json({ok:true})})(row)
  assert.equal(sent.parse_mode,undefined);assert.ok(sent.text.includes('<b>'));assert.equal(sent.clientInfo,undefined)
- assert.equal(sent.text.split('\n\n')[0],'300W⚡ · Новый report')
+ assert.equal(sent.text.split('\n\n')[0],'300W⚡ · Новый report · ⚠️ ENV UNKNOWN')
  await assert.rejects(telegramDelivery({},async()=>{throw Error()})(row),/DELIVERY_UNCONFIGURED/)
  await assert.rejects(telegramDelivery({TELEGRAM_BOT_TOKEN:'fake',FEEDBACK_TELEGRAM_CHAT_ID:'fake'},async()=>Response.json({ok:false}))(row),/DELIVERY_FAILED/)
 })
@@ -141,4 +141,31 @@ test('retry batch is limited and scheduled handler uses the same delivery path',
  await localWorker.scheduled({}, {DB:db})
  assert.equal(db.run("SELECT count(*) n FROM feedback WHERE delivery_status='sent'")[0].n,10)
  assert.equal(db.run("SELECT count(*) n FROM feedback WHERE delivery_status='pending'")[0].n,2)
+})
+
+
+test('explicit Feedback environment changes only heading; unknown never becomes production',async()=>{
+ const row={id:'report-id',category:'other',description:'Unchanged report body',contact_email:'reply@example.com',athlete_name:'Athlete',race_name:'Race',active_gender:'W',build_version:'1',build_commit:'test'}
+ const body=['#report-id','Другое','Атлет: Athlete','Гонка: Race','WOMEN','Сообщение:','Unchanged report body','Контакт: reply@example.com','Build: 1 / test'].join('\n\n')
+ for(const [APP_ENV,marker] of [['preview','🧪 PREVIEW'],['production','🟢 PRODUCTION'],[undefined,'⚠️ ENV UNKNOWN'],['','⚠️ ENV UNKNOWN'],['PRODUCTION','⚠️ ENV UNKNOWN'],['other','⚠️ ENV UNKNOWN']]){
+  let sent
+  await telegramDelivery({APP_ENV,TELEGRAM_BOT_TOKEN:'fake',FEEDBACK_TELEGRAM_CHAT_ID:'shared-test-group'},async(_url,options)=>{sent=JSON.parse(options.body);return Response.json({ok:true})})(row)
+  assert.equal(sent.text,`300W⚡ · Новый report · ${marker}\n\n${body}`)
+  assert.equal(sent.chat_id,'shared-test-group')
+ }
+})
+test('initial delivery and scheduled retry preserve explicit environment heading',async t=>{
+ const originalFetch=globalThis.fetch
+ t.after(()=>{globalThis.fetch=originalFetch})
+ for(const APP_ENV of ['preview','production']){
+  const db=database(t),messages=[]
+  globalThis.fetch=async(_url,options)=>{messages.push(JSON.parse(options.body).text);return Response.json({ok:messages.length>1})}
+  const env={DB:db,APP_ENV,TELEGRAM_BOT_TOKEN:'fake',FEEDBACK_TELEGRAM_CHAT_ID:'shared-test-group'}
+  assert.equal((await acceptFeedback(request(payload()),env,{local:true})).status,201)
+  db.run('UPDATE feedback SET next_delivery_at=NULL')
+  await worker.scheduled({},env)
+  assert.equal(messages.length,2);assert.equal(messages[0],messages[1])
+  assert.equal(messages[0].split('\n\n')[0],`300W⚡ · Новый report · ${APP_ENV==='preview'?'🧪 PREVIEW':'🟢 PRODUCTION'}`)
+  assert.equal(db.run('SELECT delivery_status FROM feedback')[0].delivery_status,'sent')
+ }
 })
