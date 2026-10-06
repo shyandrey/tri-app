@@ -100,22 +100,78 @@ Dry — DRY-RUN remote deployment, но WRITE локального build/metadat
 
 Последняя команда READ-ONLY GET `https://preview.300w.app/api/health` и `/api/news`; review deployed SHA/status/items. Fallback `https://tri-app-preview.shy-andrey.workers.dev`. Production shortcut намеренно отсутствует; future `300w.app` environment не готов. [Deployment details](deployment-cloudflare.md).
 
-## 10. Release checks
+## 10. V1 release checks
 
-Команды ниже проверяют checkout; не deploy. Сначала выбрать relevant suites, не запускать все scripts wildcard: среди них есть writers.
+```sh
+npm run check:release
+npm run check:release:browser
+```
 
-| Команда | Читает / пишет / review |
+**RC requires both gates PASS**, plus human visual review and separately authorized operational checks. A local PASS does not attest live deployment, secrets, webhook, delivery, DNS or external network health. Neither command deploys or calls remote infrastructure. No source datasets, localization, review CSV or generated athletes are written. Build writes ignored metadata/dist/compiler caches; tests write temporary synthetic fixtures and local screenshots. Logs and machine-readable `summary.json` go into the printed OS temporary directory. Run from repository root with Node 24, installed project dependencies, Python 3/SQLite, and the existing `sharp` image toolchain (currently transitive). A missing dependency is an environment error, never PASS. No automatic install or retry.
+
+### Fast gate — `check:release`
+
+Explicit ordered allowlist in `scripts/release-policy.mjs`, no wildcard script execution:
+
+| Check | Exact scripts / command |
 | --- | --- |
-| `node --test scripts/test-find-next-athletes.mjs scripts/test-race-result-import.mjs` | INTERNAL TEST, синтетические/temp fixtures; source не меняет; review CLI/identity/import failures |
-| `node --test scripts/test-athlete-names.mjs scripts/test-athlete-search.mjs scripts/test-ranking.mjs scripts/test-ranking-dataset-clock.mjs scripts/test-navigation.mjs` | INTERNAL TEST, source/runtime и временные fixtures; проверить failures и unchanged ranking/linkage |
-| `npm run audit:athletes` / `npm run audit:results` | READ-ONLY runtime audit; прочитать весь report, не только exit code |
-| `npm run test:foundation` / `npm run test:feedback` | INTERNAL TEST; ignored metadata и local fixtures; review API/schema/security failures |
-| `npm run build` | WRITE metadata/dist и compiler artifacts; читает app/Worker/assets; review type errors, chunk graph/warnings |
-| `node --test scripts/test-initial-graph.mjs` | READ-ONLY production graph после build; review cold Home dependency closure |
-| `npm run lint` / `git diff --check` | READ-ONLY; review ошибки и warnings, не скрывать failures |
-| `npm run cf:check` | DRY-RUN, local bundle/build artifacts; default/local target, **не проверка live preview** |
+| TypeScript + production assets | `npm run build` (includes metadata, app and Worker typechecks) |
+| ESLint | `npm run lint` |
+| Whitespace/conflicts | `git diff --check`, `git diff --cached --check` |
+| Foundation | `test-cloudflare-foundation.mjs` |
+| Calendar | `test-calendar.mjs` |
+| Catalog/search/localization | `test-athlete-catalog-presentation.mjs`, `test-athlete-country-strength.mjs`, `test-athlete-search.mjs`, `test-athlete-names.mjs`, `test-current-athletes.mjs` |
+| Catalog issues/provenance | `audit-athletes.mjs --json`, explicit interpretation below |
+| Ranking | `test-ranking.mjs`, `test-ranking-dataset-clock.mjs` |
+| Navigation/lazy loading | `test-navigation.mjs`, `test-sports-loader.mjs` |
+| News | `test-news.mjs`, `test-news-eligibility.mjs`, `test-news-presentation.mjs`, `test-news-seed.mjs` (SQLite temporary fixtures only) |
+| Feedback | `test-feedback.mjs` (local mocked delivery; no real report or Telegram send) |
+| Results/identity | `audit-results.mjs`, `test-race-result-import.mjs` |
+| Graph/images/current photos | `test-initial-graph.mjs`, `test-image-delivery.mjs`; current photo mapping/evidence bytes also checked in `test-current-athletes.mjs` |
+| Accessibility | `test-accessibility.mjs` |
+| Runner policy | `test-release-runner.mjs` |
 
-Relevant browser tests запускать по setup в соответствующем файле на local dev/preview server; они могут писать screenshots/.generated artifacts. Review visual/navigation/Back/deep links. Metadata сообщает HEAD даже для dirty build. Known failures указывать отдельно, не выдавать за PASS.
+Unit groups use `node --test --test-concurrency=1`; independent groups run sequentially. A child FAIL blocks RC; exit **1**. Environment errors (including HMR `listen EPERM/EADDRINUSE` even if the child exits 0, unavailable executable/dependency) block verification; exit **2** if there is no ordinary failure. If both occur, exit 1 and both are listed. Unknown failures/timeouts fail closed. Exit **0** only on PASS. Per-check logs retain complete diagnostics. Existing >500 KB async sports warning is visible in build log, not disabled.
+
+### Known data policy — exact allowlist, not a count exemption
+
+Two different groups are observed, **four issues total**, not one interchangeable pair:
+
+- Country provenance conflicts: Jeremy Maclean `10235`, source codes AU/US, registry US; Nick Thompson `10435`, source codes AU/US, registry AU. These still block full regeneration.
+- Existing catalog audit issues: missing country Erik Olsson `10144`, Sebastian Schober `10541`. Documented before Wave B in `results-import-2026-nice-riviera.md`. These are not Jeremy/Nick conflicts.
+
+For this V1 gate these exact existing issues are non-blocking but **always printed when observed**. New IDs/issues, different countries, malformed/duplicate audit diagnostics fail the gate. If an issue disappears, it is no longer reported; the runner does not fabricate a fixed count. `audit:athletes` keeps its existing exit semantics (may exit 0 with ISSUES); the gate consumes `--json` schemaVersion 1 with `issues`, `info`, `countryConflicts`. Missing photos and untranslated names remain coverage INFO, not a reason to fabricate data. Country provenance diagnostics inspect current generated profiles/results/registry; they do not replace or weaken full-regeneration validation.
+
+### RC browser gate — local production build only
+
+Run `check:release` first. Start this checkout's build with:
+
+```sh
+npm run preview -- --host 127.0.0.1 --port 5390 --strictPort
+# Separate terminal, macOS example; use an isolated test profile/unused CDP port:
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-first-run --remote-debugging-port=9373 --user-data-dir=/tmp/tri-rc-chrome about:blank
+npm run check:release:browser
+```
+
+For other systems, launch the installed Chrome/Chromium binary with the same flags. Optional `TRI_APP_URL`/`TRI_CDP_URL` must be loopback HTTP origins; defaults above. Dedicated CDP browser required. Preflight compares served index.html with local dist; missing/stale build, unavailable server/CDP or remote origin stops with ENVIRONMENT ERROR. Each suite gets a fresh page; only pages created during the suite are closed. No retries. More suite uses a bounded readiness wait for lazy Athletes before interacting (the former fixed 700ms could click before the module mounted); all history/scroll assertions remain. Production build freshness relies on running the fast gate first, including for dirty working trees; build metadata is HEAD, not proof of a clean checkout.
+
+Current suites: Calendar, athlete disclosure, athlete search, **updated ranking**, navigation/Results, brand, More, News (mocked), dark-theme text, UI cleanup, image delivery/showcase, code splitting, accessibility, Feedback submission (all config/POST requests mocked). Suites retain their existing viewport matrices, including 390/440/844 landscape/1440 where applicable. No real Feedback browser suite requiring a Worker/database is included. No real Telegram send or Turnstile validation. Browser PASS does not reassess known data; see fast-gate summary. Browser matrix takes several minutes and is separate from the fast gate.
+
+### Historical and full-data checks — not renamed PASS
+
+Run explicitly when investigating their workflows; they are not part of either release gate:
+
+| Command | Classification / current evidence |
+| --- | --- |
+| `node scripts/test-athlete-localization.mjs` | KNOWN DATA ISSUE: full regeneration to a temporary file aborts for Jeremy/Nick conflicts. Validation remains unchanged; no production regeneration. |
+| `node --test scripts/test-athlete-photos.mjs` | HISTORICAL REPLAY + STALE EXPECTATION: 1161/939 versus current 1167/945; Batch 2/3 replay aborts with `Incomplete photo baseline`: saved catalog snapshots lack the six subsequently added athletes, before ranking comparison can complete. No historical fixture rewrite. |
+| `node --test scripts/test-athlete-photo-staging.mjs` | Synthetic staging/publish into temp fixtures; passes in reviewed macOS environment. Swift/xcrun decoder is an environment dependency. Also imported by the historical photo suite. |
+
+Historical photo publication checks require ignored `.athlete-photo-staging` bytes: they may work on an enriched developer checkout but fail ENOENT on a clean checkout. This is an environment/fixture dependency, not permission to redownload or publish anything. Current public photo files, identity mappings and reviewed published bytes are checked independently by the fast gate without ignored staging.
+
+Historical result replay **is retained in the gate** after correcting its invariant. Pre-import catalog from Git `71523cf^` reproduces fixture `oldAthletesSha256` exactly. Its semantic projection `{id,nameEn,gender,countryCode}` is protected by a separate hash; only the same two historical reviewed country reversals are applied. Full old results hash (including IDs/content), source snapshots/proposals and linkage of every old result remain checked. Changes to Russian display names/photos do not invalidate identity. The historical fixture hash is neither replaced nor suppressed.
+
+Sandbox socket/HMR errors are ENVIRONMENT FAILURE. Rerun explicitly in an environment permitting local sockets; do not silently retry with more permissions or report the failed environment as PASS. Live operations, full regeneration, historical photo replay and exploratory ranking/SOF scripts are outside the release allowlist.
 
 ## 11. Legacy / do not use
 
@@ -124,7 +180,6 @@ Relevant browser tests запускать по setup в соответствую
 | `npm run import:athlete-photos:all` | LEGACY / incompatible / DO NOT USE: importer требует explicit batch и отклоняет `--all` |
 | `npm run collect:sof` | LEGACY/helper; не canonical results importer; не заменяет verified source/SOF proposal review |
 | `npm run experiment:ranking` | LEGACY research; не production ranking validation |
-| `scripts/test-ranking-browser.mjs` | INTERNAL TEST со stale expectations; не release gate до отдельного fix |
 
 Не исправлять/обходить эти ограничения попутно.
 
@@ -136,5 +191,3 @@ Relevant browser tests запускать по setup в соответствую
 - Jeremy Maclean AU/US и Nick Thompson US/AU блокируют full regeneration validation. Не исправлять данными «по догадке», не подавлять и не считать PASS.
 - Export name audit перезаписывает рабочий CSV. Не запускать его, пока ручные правки не импортированы/сохранены отдельно.
 - Не коммитить локальные `athlete-audit.txt`, `docs/product-readiness-audit.md`, `ranking.txt`, `sof.json` или ignored review artifacts.
-
-Текущая дополнительная тестовая оговорка: `test-race-result-import.mjs` сравнивает полные athlete objects с историческим `oldAthletesSha256`; этот assertion сейчас падает. Проверка сохранности старых results rows/IDs перед ним проходит. Fixture здесь не обновляется и failure не подавляется.

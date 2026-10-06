@@ -148,7 +148,7 @@ Inspect `npx wrangler deployments list --env production`, then use `npx wrangler
 
 ## Release checks
 
-Run foundation and existing ranking/dataset-clock/country-strength/navigation/search/import tests, audits, build, lint and git diff --check. Local Wrangler smoke-test must verify static vs API routing and local migration replay. Health returns only ok/service/version/commit; no secrets and no D1 query. Do not enable future write endpoints until validation, abuse protection and delivery behavior are implemented.
+Run `npm run check:release` and the separately prepared local `npm run check:release:browser` before RC. Both must pass; see [V1 release checks](scripts.md#10-v1-release-checks) for the exact allowlist, known-data policy, historical checks and environment requirements. These gates do not deploy or verify live infrastructure. Local Wrangler smoke-test must verify static vs API routing and local migration replay. Health returns only ok/service/version/commit; no secrets and no D1 query. Do not enable future write endpoints until validation, abuse protection and delivery behavior are implemented.
 
 Official references: [Static Assets](https://developers.cloudflare.com/workers/static-assets/), [asset routing](https://developers.cloudflare.com/workers/static-assets/binding/), [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/).
 

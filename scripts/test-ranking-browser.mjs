@@ -11,7 +11,7 @@ try {
  const {linkResultsToAthletes}=await server.ssrLoadModule('/src/utils/raceResults.ts')
  const {sortAthletesByRanking}=await server.ssrLoadModule('/src/utils/athleteRanking.ts')
  const ranked=sortAthletesByRanking(athletes,linkResultsToAthletes(raceResults),allRaceEditionViews)
- expected=Object.fromEntries(['ALL','M','W'].map(g=>[g,g==='ALL'?ranked.slice(0,50):ranked.filter(a=>a.gender===g)]))
+ expected=Object.fromEntries(['ALL','M','W'].map(g=>[g,g==='ALL'?ranked:ranked.filter(a=>a.gender===g)]))
 } finally {await server.close()}
 const wait=ms=>new Promise(r=>setTimeout(r,ms))
 const targets=await(await fetch((process.env.TRI_CDP_URL??'http://127.0.0.1:9231')+'/json/list')).json()
@@ -28,8 +28,18 @@ try {
   await send('Page.navigate',{url:(process.env.TRI_APP_URL??'http://127.0.0.1:5190')+'/?ranking='+Date.now()+'#/athletes'});await wait(700)
   for(const [gender,label] of [['ALL','ALL'],['M','MEN'],['W','WOMEN']]) {
    await js(`[...document.querySelectorAll('.athletes-gender-card')].find(e=>e.querySelector('.athletes-gender-card__label').textContent==='${label}').click()`);await wait(150)
-   const order=await js(`[...document.querySelectorAll('.athlete-card h3')].map(e=>e.textContent.trim())`)
-   assert.deepEqual(order,expected[gender].map(a=>a.name))
+   const names=()=>js(`[...document.querySelectorAll('.athlete-card h3')].map(e=>e.textContent.trim())`)
+   let count=Math.min(50,expected[gender].length)
+   assert.deepEqual(await names(),expected[gender].slice(0,count).map(a=>a.name))
+   while(count<expected[gender].length){
+    assert.ok(await js('Boolean(document.querySelector(".athletes-expand"))'))
+    await js('document.querySelector(".athletes-expand").click()');await wait(100)
+    count=Math.min(count+50,expected[gender].length)
+    assert.deepEqual(await names(),expected[gender].slice(0,count).map(a=>a.name))
+    assert.equal(await js('document.querySelector(".athletes-presentation-count").textContent'),`Показаны ${count} из ${expected[gender].length}`)
+   }
+   assert.equal(await js('Boolean(document.querySelector(".athletes-expand"))'),false)
+   const order=await names()
    assert.equal(await js('document.documentElement.scrollWidth'),width)
    await js('window.scrollTo({top:700,behavior:"instant"})');await wait(200)
    const y=await js('scrollY')
@@ -44,7 +54,7 @@ try {
    await js('window.scrollTo({top:0,behavior:"instant"})');await wait(100)
    const screenshot=await send('Page.captureScreenshot',{format:'png'})
    await fs.writeFile(`/tmp/tri-ranking-${width}-${gender}.png`,Buffer.from(screenshot.data,'base64'))
-   console.log(`PASS ${width}px ${label}: production order, initial-50/full filtered count, Back selection/scroll, no overflow`)
+   console.log(`PASS ${width}px ${label}: production order, initial 50, every +50 batch/full filtered count, Back selection/scroll, no overflow`)
   }
  }
  assert.deepEqual(errors,[])

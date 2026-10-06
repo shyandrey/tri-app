@@ -105,7 +105,7 @@ test('CLI dry-run/write refuse existing edition and wrong source; no production 
  }
 })
 
-test('import preserves prior rows/IDs and profiles except the two reviewed country corrections',async()=>{
+test('import preserves prior rows/IDs and athlete identity except the two reviewed country corrections',async()=>{
  const baseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/ranking-comparison-2026-09-26.json','utf8'))
  const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
  assert.equal(hash(raceResults.slice(0,baseline.oldResultsPreserved)),baseline.oldResultsSha256)
@@ -115,5 +115,20 @@ test('import preserves prior rows/IDs and profiles except the two reviewed count
   if(id===10235){assert.equal(a.countryCode,'US');return {...a,countryCode:'AU',country:'Австралия',countryEn:'Australia'}}
   return a
  })
- assert.equal(hash(restored),baseline.oldAthletesSha256)
+ // Derived from 71523cf^ (pre-import catalog), independently reconstructed via Vite.
+ // Its FULL object hash equals baseline.oldAthletesSha256. Mutable display names
+ // are intentionally excluded; the historical fixture itself is not rewritten.
+ const identity = rows => rows.map(({id,nameEn,gender,countryCode})=>({id,nameEn,gender,countryCode}))
+ const expectedIdentityHash='91a0f5b0b7788348a88e0cd261f3f905adc865716a6dfa2202756b61c227011b'
+ assert.equal(hash(identity(restored)),expectedIdentityHash)
+ assert.equal(hash(identity(restored.map(a=>({...a,name:'Reviewed name',image:'/reviewed.png'})))),expectedIdentityHash)
+ for(const field of ['id','nameEn','gender','countryCode']){
+  const changed=structuredClone(restored);changed[0][field]='different'
+  assert.notEqual(hash(identity(changed)),expectedIdentityHash,field)
+ }
+ for(const row of raceResults.slice(0,baseline.oldResultsPreserved)){
+  const old=restored.find(a=>normalizeAthleteIdentityName(a.nameEn)===normalizeAthleteIdentityName(row.athleteName))
+  assert.ok(old,`Historical result ${row.id} must still resolve`)
+  assert.equal(resolveAthleteId(row.athleteName),old.id)
+ }
 })

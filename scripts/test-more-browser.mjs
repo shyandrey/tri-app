@@ -52,7 +52,17 @@ try {
   console.log(`PASS More ${width}px: content/version/privacy, actions, keyboard/focus, history/scroll, bottom nav, no overflow`)
  }
  const click=async selector=>{await js(`document.querySelector(${JSON.stringify(selector)}).click()`);await wait(400)}
- const start=async page=>{await send('Page.navigate',{url:base+'/?back-test='+Date.now()+'#/'+page});await wait(700)}
+ const start=async page=>{
+  await send('Page.navigate',{url:base+'/?back-test='+Date.now()+'#/'+page});await wait(700)
+  // Athletes is lazy-loaded. Wait for readiness, never retry an action/assertion.
+  if(page==='athletes'){
+   const deadline=Date.now()+5000
+   while(await js('document.querySelectorAll(".athletes-gender-card").length!==3 || !!document.querySelector("[data-route-pending]")')){
+    assert.ok(Date.now()<deadline,'Timed out waiting for lazy Athletes before More navigation')
+    await wait(50)
+   }
+  }
+ }
  const snapshot=()=>js('({page:history.state.triNavigation.route.page,ui:history.state.triNavigation.ui,y:scrollY})')
  const restore=async expected=>{const actual=await snapshot();assert.equal(actual.page,expected.page);assert.deepEqual(actual.ui,expected.ui);assert.ok(Math.abs(actual.y-expected.y)<=2)}
  for(const origin of ['home','athletes']){

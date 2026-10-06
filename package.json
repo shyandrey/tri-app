@@ -30,7 +30,9 @@
     "check:preview": "node scripts/check-preview.mjs",
     "pretest:foundation": "npm run metadata",
     "test:foundation": "node --test scripts/test-cloudflare-foundation.mjs",
-    "test:feedback": "npm run metadata && node --test scripts/test-feedback.mjs"
+    "test:feedback": "npm run metadata && node --test scripts/test-feedback.mjs",
+    "check:release": "node scripts/check-release.mjs",
+    "check:release:browser": "node scripts/check-release.mjs --browser"
   },
   "dependencies": {
     "react": "^19.2.8",

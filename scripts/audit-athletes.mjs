@@ -2,7 +2,7 @@ import { createServer } from 'vite'
 import fs from 'node:fs/promises'
 import { auditAthleteLocalization } from './athlete-localization-audit.mjs'
 
-const server = await createServer({ server:{middlewareMode:true}, appType:'custom', logLevel:'error' })
+const server = await createServer({ server:{middlewareMode:true,hmr:false,watch:null}, appType:'custom', logLevel:'error' })
 
 const norm = value => (value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/['’`.-]/g,' ').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim()
 const loose = value => norm(value).replace(/\s/g,'')
@@ -90,6 +90,18 @@ try {
   info.push(`Profiles without photo: ${noPhoto.length}`)
   info.push(`Profiles without linked result rows: ${noResults.length}`)
 
+  // Additional read-only provenance diagnostics; existing ISSUES/exit semantics stay intact.
+  const enrichment = JSON.parse(await fs.readFile(new URL('../src/data/athletes/countryEnrichment.json', import.meta.url), 'utf8'))
+  const countryConflicts = resultAthletes.flatMap(a => {
+    const rows = raceResults.filter(r => norm(r.athleteName) === norm(a.nameEn))
+    const codes = [...new Set(rows.map(r => r.countryCode).filter(Boolean))].sort()
+    const registry = enrichment[a.nameEn]?.countryCode ?? null
+    return codes.length > 1 || (registry && codes.some(code => code !== registry))
+      ? [{id:a.id, nameEn:a.nameEn, codes, registry}] : []
+  })
+  if (process.argv.includes('--json')) {
+    console.log(JSON.stringify({schemaVersion:1, issues, info, countryConflicts}))
+  } else {
   console.log('\nTRI APP — ATHLETE CATALOG AUDIT')
   console.log('================================')
   info.forEach(x=>console.log(`INFO  ${x}`))
@@ -104,5 +116,6 @@ try {
     generated.filter(a=>!a.countryCode).forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
     console.log(`\nNO LINKED RESULTS (${noResults.length})`)
     noResults.forEach(a=>console.log(`  - ${a.nameEn} [${a.id}]`))
+  }
   }
 } finally { await server.close() }
