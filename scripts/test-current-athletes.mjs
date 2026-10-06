@@ -36,3 +36,47 @@ test('current localization preserves identity, linkage and ranking; current phot
     }
   }finally{await server.close()}
 })
+
+test('Wave C verified countries preserve four identities, historical countries and ranking', async () => {
+  const server = await createServer({server:{middlewareMode:true,hmr:false,watch:null},appType:'custom',logLevel:'silent'})
+  try {
+    const {athletes,resultAthletes} = await server.ssrLoadModule('/src/data/athletes/index.ts')
+    const {raceResults} = await server.ssrLoadModule('/src/data/results/index.ts')
+    const {allRaceEditionViews} = await server.ssrLoadModule('/src/data/raceEditions.ts')
+    const {linkResultsToAthletes} = await server.ssrLoadModule('/src/utils/raceResults.ts')
+    const {calculateAthleteRanking,sortAthletesByRanking} = await server.ssrLoadModule('/src/utils/athleteRanking.ts')
+    const registry = JSON.parse(await fs.readFile('src/data/athletes/countryEnrichment.json','utf8'))
+    const cases = [
+      [10144,'Erik Olsson','SE','Швеция', [undefined]],
+      [10541,'Sebastian Schober','DE','Германия', [undefined]],
+      [10235,'Jeremy Maclean','US','США', ['AU','AU','US']],
+      [10435,'Nick Thompson','AU','Австралия', [...Array(11).fill('US'),'AU']],
+    ]
+    const linked = linkResultsToAthletes(raceResults)
+    for (const [id,nameEn,countryCode,country,countries] of cases) {
+      const profile = athletes.find(a=>a.id===id)
+      assert.equal(profile.nameEn,nameEn)
+      assert.equal(profile.countryCode,countryCode)
+      assert.equal(profile.country,country)
+      assert.equal(resultAthletes.find(a=>a.id===id).countryCode,countryCode)
+      assert.equal(registry[nameEn].countryCode,countryCode)
+      const rows = linked.filter(r=>r.athleteName===nameEn)
+      assert.deepEqual(rows.map(r=>r.countryCode),countries, 'Profile evidence must not rewrite historical result countries')
+      assert.ok(rows.every(r=>r.athleteId===id))
+      if (id===10144 || id===10541) {
+        const evidence = registry[nameEn]
+        assert.equal(evidence.athleteId,id)
+        assert.equal(evidence.verifiedName,nameEn)
+        assert.match(evidence.provenance,/^official-(federation|results)-verified$/)
+        assert.equal(new URL(evidence.sourceUrl).protocol,'https:')
+        assert.ok(evidence.sourceEvidence && evidence.verificationNote)
+        assert.equal(rows[0].position,evidence.matchingResult.position)
+        assert.equal(rows[0].totalTime,evidence.matchingResult.totalTime)
+      }
+    }
+    const before = athletes.map(a=>a.id===10144 || a.id===10541 ? {...a,countryCode:undefined,country:'',countryEn:''} : a)
+    const asOf = new Date('2026-10-06T00:00:00Z')
+    assert.deepEqual(calculateAthleteRanking(athletes,linked,allRaceEditionViews,asOf),calculateAthleteRanking(before,linked,allRaceEditionViews,asOf))
+    assert.deepEqual(sortAthletesByRanking(athletes,linked,allRaceEditionViews,asOf).map(a=>a.id),sortAthletesByRanking(before,linked,allRaceEditionViews,asOf).map(a=>a.id))
+  } finally { await server.close() }
+})

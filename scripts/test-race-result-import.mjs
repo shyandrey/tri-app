@@ -105,7 +105,7 @@ test('CLI dry-run/write refuse existing edition and wrong source; no production 
  }
 })
 
-test('import preserves prior rows/IDs and athlete identity except the two reviewed country corrections',async()=>{
+test('import preserves prior rows/IDs and identity except reviewed country corrections/additions',async()=>{
  const baseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/ranking-comparison-2026-09-26.json','utf8'))
  const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
  assert.equal(hash(raceResults.slice(0,baseline.oldResultsPreserved)),baseline.oldResultsSha256)
@@ -113,6 +113,13 @@ test('import preserves prior rows/IDs and athlete identity except the two review
   const a=athletes.find(a=>a.id===id)
   if(id===10435){assert.equal(a.countryCode,'AU');return {...a,countryCode:'US',country:'США',countryEn:'United States'}}
   if(id===10235){assert.equal(a.countryCode,'US');return {...a,countryCode:'AU',country:'Австралия',countryEn:'Australia'}}
+  // Wave C filled two previously missing profile countries using official evidence
+  // in countryEnrichment.json. Assert the new values before projecting the old
+  // snapshot; do not exclude countryCode from the identity guard globally.
+  if(id===10144 || id===10541){
+   assert.equal(a.countryCode,id===10144?'SE':'DE')
+   return {...a,countryCode:undefined}
+  }
   return a
  })
  // Derived from 71523cf^ (pre-import catalog), independently reconstructed via Vite.

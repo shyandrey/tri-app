@@ -1751,6 +1751,23 @@
     "countryEn": "US",
     "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
   },
+  "Erik Olsson": {
+    "countryCode": "SE",
+    "country": "Швеция",
+    "countryEn": "Sweden",
+    "verifiedName": "Erik Olsson",
+    "athleteId": 10144,
+    "checkedAt": "2026-10-06",
+    "provenance": "official-federation-verified",
+    "sourceUrl": "https://www.svensktriathlon.org/download/18.d991d7a1961de7382f4dbad/1744456515687/Protokoll%20och%20bilagor%20%C3%85M%202025-03-25_signerat.pdf",
+    "sourceEvidence": "Swedish Triathlon Federation 2024 international results, printed page 34: Ironman Texas, 27 April, Pro men, Erik Olsson (27).",
+    "matchingResult": {
+      "raceUrl": "https://stats.protriathletes.org/race/im-texas/2024/results",
+      "position": 27,
+      "totalTime": "8:51:07"
+    },
+    "verificationNote": "The federation identifies the Swedish competitor at this exact race/place; PTO confirms the finish time. PTO athlete link redirects to /t100 and is not used as country evidence. Latest verified representation is from 2024."
+  },
   "Erika Ackerlund": {
     "provenance": "migrated-existing",
     "countryCode": "US",
@@ -5963,6 +5980,24 @@
     "country": "SE",
     "countryEn": "SE",
     "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
+  },
+  "Sebastian Schober": {
+    "countryCode": "DE",
+    "country": "Германия",
+    "countryEn": "Germany",
+    "verifiedName": "Sebastian Schober",
+    "athleteId": 10541,
+    "checkedAt": "2026-10-06",
+    "provenance": "official-results-verified",
+    "profileUrl": "https://stats.protriathletes.org/athlete/sebastian-schober",
+    "sourceUrl": "https://www.triathlon-austria.at/de/service-termine/intern:169/event-datenbank/eventdbdoc-ironman-70.3-zell-am-see-kaprun-03.09.2023---DDUL0VbjtmLKg",
+    "sourceEvidence": "Official Zell am See 2023 results hosted by the Austrian federation, PDF page 3: bib 31, Sebastian Schober, GER, MPRO, 5:06:01.",
+    "matchingResult": {
+      "raceUrl": "https://stats.protriathletes.org/race/challenge-roth/2024/results",
+      "position": 40,
+      "totalTime": "9:19:18"
+    },
+    "verificationNote": "One PTO profile links Zell am See 2023 (5:06:01) to Roth 2024 (40, 9:19:18), including matching splits. PTO country is blank; country evidence comes from the official 2023 result, not the blank profile. No newer country change established."
   },
   "Sebastian Wernersen": {
     "provenance": "migrated-existing",
