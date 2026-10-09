@@ -36,7 +36,7 @@ The top-level Wrangler target uses `worker/local.ts`: loopback hosts only, expli
 
 Tests: `npm run test:foundation`, `npm run test:feedback` (Python sqlite3 executes real SQL). Browser flow: start an isolated Chrome CDP instance on port 9232 and local Worker on 8787, then `node scripts/test-feedback-browser.mjs`. Optional `TRI_CDP_URL` and `TRI_APP_URL` override those defaults. Browser tests create three actual local D1 rows and save their IDs to `/tmp/tri-feedback-demo.json`, plus `/tmp/tri-feedback-mobile.png`; no runtime artifacts should be committed.
 
-## Current preview infrastructure and prepared configuration
+## Live environments (2026-10-09)
 
 Canonical preview is `https://preview.300w.app`; the existing technical fallback is `https://tri-app-preview.shy-andrey.workers.dev`. Both target Worker `tri-app-preview`, using the existing `DB` binding to D1 `tri-app-preview`. Do not create another preview database or reapply initial migrations.
 
@@ -44,7 +44,7 @@ The operator has configured secrets separately on the preview Worker: `TELEGRAM_
 
 The preview Turnstile widget has been created for hostname `preview.300w.app`. Only its public `TURNSTILE_SITE_KEY` is ordinary configuration. `ALLOWED_ORIGIN` is exactly `https://preview.300w.app`, without a trailing slash. Feedback submission from the workers.dev origin is not allowed by this single-origin policy; its News/webhook role is unchanged.
 
-`env.preview` now prepares the public vars, native rate limiter (5 requests per 60 seconds) and five-minute retry cron:
+`env.preview` declares the public vars, native rate limiter (5 requests per 60 seconds) and five-minute retry cron. Snapshot 2026-10-09: the older live preview deployment lacks APP_ENV; the headings described here are the current code/config behavior, not proof that the preview label has been deployed:
 
 ```jsonc
 "ratelimits": [{
@@ -57,9 +57,9 @@ The preview Turnstile widget has been created for hostname `preview.300w.app`. O
 
 Namespace `30001` was supplied by the operator after read-only inspection found no native rate-limit bindings in the accessible Worker settings/environments or all 12 available versions. Dispatch namespace inventory was unavailable (403); account-wide uniqueness was not independently certified by that inspection.
 
-These are prepared configuration changes, not evidence of a completed deployment or real Feedback E2E verification. The cron invokes the existing `scheduled()` handler; no retry endpoint is added. Validate with `npm run deploy:preview:dry -- --keep-vars`. A real preview deploy requires separate approval; preserve existing remote vars with `--keep-vars` and review bindings/triggers/domain settings. This update does not alter secrets, D1, DNS, the Custom Domain or Telegram webhook. The webhook remains `https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`.
+Preview is deployed and operator-verified; production E2E is also confirmed below. Repository configuration alone is never E2E evidence. The cron invokes the existing `scheduled()` handler; no retry endpoint is added. Validate with `npm run deploy:preview:dry -- --keep-vars`. A real preview deploy requires separate approval; preserve existing remote vars with `--keep-vars` and review bindings/triggers/domain settings. This update does not alter secrets, D1, DNS, the Custom Domain or Telegram webhook. The webhook remains `https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`.
 
-Future production (`300w.app`, Worker `tri-app`, production D1) is not configured yet. Its placeholder configuration is unchanged.
+Production is deployed at `300w.app`, Worker `tri-app`, DB `tri-app-production`. On 2026-10-08 the owner completed iPhone Telegram Mini App Feedback E2E; D1 read-only verification found exactly one report, `sent`, attempts=1, next_delivery_at and delivery_lease NULL. The owner confirmed matching UI/Telegram UUID and 🟢 PRODUCTION. Preview retained its two older reports. See [current runtime and recovery runbook](deployment-cloudflare.md#live-production-and-manual-deployment).
 
 Protected environments fail closed with 503 if any anti-spam config is missing. Origin must match. Turnstile is verified server-side including success, hostname and `feedback` action. No remoteip is sent to Siteverify. Rate-limit key is HMAC-SHA256 of transient CF-Connecting-IP; raw IP is neither stored nor logged. Native limiter is per-location best-effort abuse protection, not a global quota; no in-memory homemade global counter. User text/email/challenge/provider errors are not logged by application code. Turnstile loads only on the feedback page in protected mode. Contact email is optional; form explains storage and inability to reply personally without email.
 
@@ -69,8 +69,7 @@ References: [Turnstile validation](https://developers.cloudflare.com/turnstile/g
 Preview (`@tri_app_bot`) and Production (`@tri_app_prod_bot`) intentionally share
 one existing private Feedback group; both may use the same
 `FEEDBACK_TELEGRAM_CHAT_ID`. No second group is needed. The production bot has
-already been added to that group; production Worker credentials still require
-separate setup. News webhooks remain separate: each Telegram bot has only one
+already been added to that group; six production Worker secret bindings are installed; values remain server-only. News webhooks remain separate: each Telegram bot has only one
 active webhook.
 
 `APP_ENV` affects only the Feedback Telegram heading, including scheduled retries.

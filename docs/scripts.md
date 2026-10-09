@@ -84,7 +84,7 @@ Staging/publish — отдельный reviewed workflow в [athlete-photo-impor
 
 ## 8. Feedback
 
-Preview protected Feedback активен: Turnstile, native rate limiter, D1-first save, Telegram delivery, retry cron. `npm run test:feedback` — INTERNAL TEST; генерирует ignored build metadata, использует локальные tests/fixtures, не отправляет реальный report. `node scripts/test-feedback-browser.mjs` и `node scripts/test-feedback-submission-browser.mjs` — локальные browser tests; требуют setup из файлов, создают test artifacts, не доказательство real Turnstile happy path.
+Production и Preview protected Feedback активны: Turnstile, native rate limiter, D1-first save, Telegram delivery, retry cron. `npm run test:feedback` — INTERNAL TEST; генерирует ignored build metadata, использует локальные tests/fixtures, не отправляет реальный report. `node scripts/test-feedback-browser.mjs` и `node scripts/test-feedback-submission-browser.mjs` — локальные browser tests; требуют setup из файлов, создают test artifacts, не доказательство real Turnstile happy path.
 
 После Feedback changes review сохранности формы, single-submit, errors/retry и privacy. Реальный E2E создаёт D1 report и Telegram notification и требует отдельного разрешения; это не read-only health check. Secrets только server-side. Настройка описана в [feedback.md](feedback.md); не менять cron/keys/bindings в scripts maintenance.
 
@@ -98,9 +98,13 @@ npm run check:preview
 
 Dry — DRY-RUN remote deployment, но WRITE локального build/metadata/Wrangler artifacts; читает checkout/config/assets и проверяет preview bundle. Review Worker `tri-app-preview`, DB `tri-app-preview`, diff/build identity. Вторая команда — **REAL REMOTE WRITE**, только после отдельного разрешения; публикует текущий checkout, а не гарантированно чистый commit. `--keep-vars` сохраняет dashboard-managed vars; не заменяет review config и не применяет migrations.
 
-Последняя команда READ-ONLY GET `https://preview.300w.app/api/health` и `/api/news`; review deployed SHA/status/items. Fallback `https://tri-app-preview.shy-andrey.workers.dev`. Production shortcut намеренно отсутствует; future `300w.app` environment не готов. [Deployment details](deployment-cloudflare.md).
+Последняя команда READ-ONLY GET `https://preview.300w.app/api/health` и `/api/news`; review deployed SHA/status/items. Fallback `https://tri-app-preview.shy-andrey.workers.dev`. Production уже deployed: `deploy:production:dry`, `deploy:production`, `check:production` используют explicit production target. Real deploy — отдельная REMOTE WRITE операция без `--keep-vars`; generic `deploy`/`release` scripts отсутствуют. Public Mini App: `@tri_app_bot` → `300w.app`; production News/Feedback: `@tri_app_prod_bot`. [Deployment details](deployment-cloudflare.md).
+
+Production rollback, D1 export/recovery, secret/binding verification и read-only monitoring: [operational runbook](deployment-cloudflare.md#rollback). Не выполнять recovery-команды как часть gate.
 
 ## 10. V1 release checks
+
+`npm run check` отсутствует. Fast gate ниже не включает browser coverage; для RC нужны обе команды.
 
 ```sh
 npm run check:release
@@ -141,6 +145,10 @@ Two different groups are observed, **four issues total**, not one interchangeabl
 - Existing catalog audit issues: missing country Erik Olsson `10144`, Sebastian Schober `10541`. Documented before Wave B in `results-import-2026-nice-riviera.md`. These are not Jeremy/Nick conflicts.
 
 For this V1 gate these exact existing issues are non-blocking but **always printed when observed**. New IDs/issues, different countries, malformed/duplicate audit diagnostics fail the gate. If an issue disappears, it is no longer reported; the runner does not fabricate a fixed count. `audit:athletes` keeps its existing exit semantics (may exit 0 with ISSUES); the gate consumes `--json` schemaVersion 1 with `issues`, `info`, `countryConflicts`. Missing photos and untranslated names remain coverage INFO, not a reason to fabricate data. Country provenance diagnostics inspect current generated profiles/results/registry; they do not replace or weaken full-regeneration validation.
+
+### RC verification snapshot — 2026-10-09
+
+Source SHA `a1e69f3740738ee7d29927c62178f5a09e559d88`: `check:release` PASS, 17 checks / 153 unit tests, 21.2 s; `check:release:browser` PASS, 14 suites, 359.3 s. No failures or environment errors in these runs; no expectations changed. Chrome headless against local production build, with each suite's viewport matrix; not a real Android/iPhone Telegram test. News and Feedback browser responses are mocked; no real Turnstile, Telegram send or remote D1 write. Two known country conflicts remain visible. This dated evidence does not certify a later code change; documentation edits following these runs do not change application behavior. Live production News ingestion, Android coverage, intermittent direct asset delivery and a D1 restore drill remain unverified/unresolved.
 
 ### RC browser gate — local production build only
 
