@@ -18,6 +18,8 @@ Before making changes, inspect the relevant code and data files. Do not assume t
 
 ## 2. Working principles
 
+Before substantial development or maintenance, read [PROJECT_BOARD.md](docs/PROJECT_BOARD.md). Update relevant task status when work starts, is blocked, needs review or completes; follow the board's maintenance rules. Board entries do not authorize mutations or deployments.
+
 Prefer small, targeted changes over broad refactors.
 
 Before changing existing behavior:
