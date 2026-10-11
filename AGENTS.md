@@ -97,7 +97,7 @@ An unresolved value is preferable to an incorrect value.
 
 ## 6. Primary data source
 
-For imported professional race results and athlete verification, the primary source is:
+For imported professional race results and athlete data, Stats PTO is the sole default authoritative source. Follow the canonical [Data Source Policy](docs/scripts.md#data-source-policy), including scoped owner-approved exceptions and STOP conditions; no automatic fallback to other providers. Source URL:
 
 `https://stats.protriathletes.org/`
 

@@ -15,27 +15,49 @@ READ-ONLY означает отсутствие намеренной запис�
 | Русские имена | `npm run audit:athlete-names` | WRITE review artifacts, не имена |
 | Preview health/News | `npm run check:preview` | READ-ONLY, network GET |
 
+## Data Source Policy
+
+**DOCUMENTED policy:** [Stats PTO](https://stats.protriathletes.org/) — единственный default authoritative источник спортивных данных ниже. Это правило работы и owner review, а не утверждение, что все исторические данные автоматически проверены или что scripts технически запрещают любой другой источник.
+
+- **Race results:** профессиональные результаты, места, overall times, swim/bike/run и transition splits, явно доступные DNS/DNF/DSQ, historical results и race-result athlete identity matching — только соответствующая Stats PTO race/edition page по умолчанию.
+- **Athlete data:** identity/profile linkage, исходные имена, nationality/country, race history и result-derived statistics — только Stats PTO по умолчанию. Не объединять profiles и не разрешать identity/country conflicts через внешние сайты без explicit approval. TRI Ranking остаётся собственной формулой приложения, не заменяется PTO ranking; утверждённая ручная русская локализация остаётся presentation layer, не новым источником identity.
+- **Missing / incomplete / inaccessible / contradictory PTO:** перечислить affected fields/athletes, записать discrepancy и STOP для owner review. Не выводить отсутствующие времена, статусы, страны или личности косвенно. Не перезаписывать PTO данными другого сайта молча. Сохранять stable athlete IDs и unrelated historical data.
+- **Нет автоматического fallback:** IRONMAN, World Triathlon, Challenge Family и другие providers не являются запасным источником results/athlete data по умолчанию. Искать альтернативных results providers можно только по отдельному запросу или для объяснения документированного ограничения; найденная ссылка не даёт разрешения использовать её данные.
+
+**Другие назначения источников:** IRONMAN, T100/PTO, Challenge Family и другие организаторы допустимы для calendars, dates, schedules и изменений; официальные организаторы и атлеты — для news, announcements и supplementary information; официальные competition rules/ranking tables — для qualification points, slots и будущих competition-specific calculations. Это не разрешает переносить оттуда результаты или athlete data. Новые расчёты также не считаются реализованной возможностью приложения.
+
+**Exceptions:** требуется explicit owner approval для конкретной race, athlete, field или task. Записать source URL, причину, дату approval и scope в reviewed report/evidence; различать дату проверки источника и дату разрешения. Non-PTO provenance должно оставаться отличимым от PTO-derived data. Нет blanket fallback authorization; историческое разрешение на одну задачу не переносится на другие.
+
+Существующие approved exceptions сохраняются, не переписываются под PTO provenance. В [countryEnrichment.json](../src/data/athletes/countryEnrichment.json) уже записаны:
+
+| Exception | Scope / reason | Сохранённое evidence |
+| --- | --- | --- |
+| Erik Olsson, ID 10144 | Country SE; PTO profile redirect не подтверждал страну | `official-federation-verified`, Swedish federation source URL, проверка 2026-10-06, связь с Texas 2024 |
+| Sebastian Schober, ID 10541 | Country DE; PTO country отсутствовал | `official-results-verified`, Austrian federation official-results URL, проверка 2026-10-06, PTO linkage Zell am See 2023 ↔ Roth 2024 |
+
+Это ранее approved Wave C corrections, не разрешение на новые federation-based изменения. Даты выше — existing `checkedAt`, не выдуманные даты approval. Approved manual/photo provenance, включая исключения в [photo workflow](../scripts/athlete-photo-import.md), также сохраняется. `migrated-existing` не превращается автоматически ни в verified PTO, ни в approved external exception; нехватку provenance нужно явно отметить. Jeremy Maclean AU/US и Nick Thompson US/AU остаются двумя известными unresolved country-provenance conflicts; автоматически их не разрешать.
+
 ## 2. Import new race results
 
 ### Canonical workflow
 
-**Official source → Codex discovery → Owner review → Incremental import → Tests/audits → Preview → Owner approval → Production.** Это единый процесс для статических профессиональных результатов; инструкция сама по себе не разрешает запись, commit или deployment.
+**Stats PTO URL → Codex discovery → Owner review → Incremental import → Tests/audits → Preview → Owner approval → Production.** Это единый процесс для статических профессиональных результатов; инструкция сама по себе не разрешает запись, commit или deployment.
 
 Статус возможностей:
 
 | Статус | Что существует / требуется |
 | --- | --- |
 | IMPLEMENTED | [Stats PTO importer](../scripts/import-race-results.mjs) + [HTML parser](../scripts/parse-stats-pto-results.py): dry-run, новый module, source snapshot/evidence, guards; [athlete discovery/append](../scripts/find-next-athletes.mjs); tests/audits и отдельные deployment scripts. |
-| DOCUMENTED | Обязательные source/identity review и STOP points ниже; ручное подключение edition/module; сравнение до/после; отдельные разрешения на preview и production. Эти действия не автоматизированы одной командой. |
-| PROPOSED — не реализовано | Универсальный импорт официальных IRONMAN/API/CSV exports; автоматическое создание editions; общий immutable registry result IDs; автоматический per-import baseline/approval gate. Не считать их возможностями текущего CLI. |
+| DOCUMENTED | Data Source Policy выше и обязательные source/identity review и STOP points ниже; ручное подключение edition/module; сравнение до/после; отдельные разрешения на preview и production. Эти действия не автоматизированы одной командой. |
+| PROPOSED — не реализовано | Автоматическое создание editions; общий immutable registry result IDs; автоматический per-import baseline/approval gate. Не считать их возможностями текущего CLI. Поддержка иных providers не входит в default workflow и требует отдельного approval. |
 
 ### A. Source — READ-ONLY
 
-Owner или ChatGPT обычно предоставляет официальный results URL. Codex проверяет фактические таблицы, а не только заголовок страницы: гонку, год, дату/edition, место и нужные professional categories MPRO/WPRO (Stats PTO называет женскую панель FPRO). Проверить все страницы/категории, финальность результатов и полноту поля, включая non-finishers; start list не равен result list.
+Owner или ChatGPT обычно предоставляет Stats PTO race/edition URL. Если URL не указан, Codex может самостоятельно найти правильную страницу на Stats PTO и проверить race identity, год и категории до extraction. Codex проверяет фактические таблицы, а не только заголовок страницы: гонку, год, дату/edition, место и нужные professional categories MPRO/WPRO (Stats PTO называет женскую панель FPRO). Проверить все страницы/категории, финальность результатов и полноту поля, включая non-finishers; start list не равен result list.
 
-Если страница недоступна, неполна или динамическая, можно самостоятельно найти официальный API/export или иной авторитетный источник. Записать исходный URL, все использованные endpoint/export URLs, время получения, race/edition/category, количество строк и статусы, ограничения и расхождения источников. Приоритет имеет согласованный официальный источник; Stats PTO — поддерживаемый источник автоматического импорта. Замена источника или расхождение требует owner review. Другой год, edition или предварительный протокол нельзя подставлять молча.
+При missing/incomplete/inaccessible/contradictory PTO data действует [Data Source Policy](#data-source-policy): записать limitation и affected fields/athletes, затем STOP для owner review. Записать точный PTO URL, время получения, race/edition/category, количество строк и статусы, ограничения и расхождения. Другой год, edition или предварительный протокол нельзя подставлять молча. Другой provider допустим только как отдельно approved scoped exception.
 
-**Ограничение CLI:** `import:race-results` принимает только `https://stats.protriathletes.org/race/<slug>/<year>/results` без query/hash, запрещает redirects и проверяет canonical URL в HTML. Официальный IRONMAN URL/API/export напрямую не поддержан. `--html` — только snapshot того же Stats PTO формата, не универсальный адаптер. Если согласованные данные нельзя точно представить поддерживаемым путём, STOP: предложить отдельную реализацию/ручной reviewed patch, не фабриковать Stats PTO HTML и не обходить guards.
+**Ограничение CLI:** `import:race-results` принимает только `https://stats.protriathletes.org/race/<slug>/<year>/results` без query/hash, запрещает redirects и проверяет canonical URL в HTML. Официальный IRONMAN URL/API/export напрямую не поддержан. `--html` — только snapshot того же Stats PTO формата, не универсальный адаптер. Если согласованные данные нельзя точно представить поддерживаемым путём, STOP: сообщить ограничение; отдельная реализация/ручной reviewed patch возможны только после explicit approval scope и источника, не фабриковать Stats PTO HTML и не обходить guards.
 
 ### B. Discovery → owner review — до source writes
 
@@ -61,7 +83,7 @@ Importer **не создаёт RaceEdition, не подключает module и 
 
 Затем вручную подключить export в results index, выполнить discovery из следующего раздела и `npm run audit:results` (читает общий runtime results/catalog/editions, не пишет; проверить весь report), `npm run audit:athletes`. Включение module влияет на global result IDs — см. §12.
 
-Evidence JSON содержит source URL, retrieval time, SHA-256 HTML, title/source dates, editions, parsed groups и proposal; HTML сохраняет source snapshot. Дополнительные официальные источники и решение owner записать в reviewed import report: CLI автоматически сохраняет только свой Stats PTO source. Не включать credentials в URLs/snapshots.
+Evidence JSON содержит source URL, retrieval time, SHA-256 HTML, title/source dates, editions, parsed groups и proposal; HTML сохраняет source snapshot. Для approved non-PTO exceptions source URL, причину, дату и scope approval записать в reviewed import report: CLI автоматически сохраняет только свой Stats PTO source. Не включать credentials в URLs/snapshots.
 
 Существующие результаты edition importer отказывается перезаписывать; это добавление нового поля результатов, не merge/update tool. Исправление уже импортированной edition требует отдельного плана. После подключения module выполнить §3 discovery, затем только approved `--write --append`, если действительно нужны новые profiles. Append обрабатывает **все** unmatched identities runtime results, а не только новую гонку; его полный набор должен совпадать с reviewed scope, иначе STOP.
 

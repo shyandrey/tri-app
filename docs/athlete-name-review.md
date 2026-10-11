@@ -57,6 +57,8 @@ Dry-run ничего не пишет. `--write` сначала валидиру�
 
 ## Источник имён и UI
 
+Identity, исходные имена и внешние источники регулирует [Data Source Policy](scripts.md#data-source-policy). Этот approved manual workflow меняет только русское отображение; он не разрешает менять identity/name_en/country или брать athlete data из другого provider.
+
 После import единственный authoritative источник explicit overrides — `src/data/athletes/athleteLocalization.json`.
 
 Приоритет: explicit override → существующее имя профиля → существующий English fallback. Runtime применяет override без регенерации athlete profiles.

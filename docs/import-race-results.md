@@ -1,5 +1,7 @@
 # Controlled Stats PTO result import
 
+Source selection and exceptions follow the canonical [Data Source Policy](scripts.md#data-source-policy); end-to-end approvals follow the [canonical workflow](scripts.md#canonical-workflow). This document describes the implemented Stats PTO CLI, not authorization for another provider.
+
 Production data stays versioned in the repository; no frontend live fetch.
 Requires Node (project version), Python 3 standard library, and existing npm dependencies. No new dependencies.
 
