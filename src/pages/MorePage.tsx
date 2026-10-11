@@ -42,7 +42,12 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
         <section className="more-block" aria-labelledby="more-data">
           <h2 id="more-data">Данные и конфиденциальность</h2>
           <div className="more-panel more-information">
-            <div><h3>Источники данных</h3><p>Результаты гонок проверяются по открытым профессиональным источникам и обновляются после проверки. Основной источник результатов — <a href="https://stats.protriathletes.org/" target="_blank" rel="noopener noreferrer">Stats PTO / ProTriathletes <span aria-hidden="true">↗</span><span className="more-sr-only"> (откроется в новой вкладке)</span></a>.</p></div>
+            <div>
+              <h3>Основные источники спортивных данных</h3>
+              <p>Результаты и сведения об атлетах обновляются после проверки.</p>
+              <p><a href="https://stats.protriathletes.org/" target="_blank" rel="noopener noreferrer">Stats PTO <span aria-hidden="true">↗</span><span className="more-sr-only"> (откроется в новой вкладке)</span></a></p>
+              <p><a href="https://triathlon.org/" target="_blank" rel="noopener noreferrer">World Triathlon <span aria-hidden="true">↗</span><span className="more-sr-only"> (откроется в новой вкладке)</span></a></p>
+            </div>
             <div><h3>Конфиденциальность</h3><p>При отправке обратной связи мы сохраняем текст сообщения и технический контекст, необходимый для его обработки. Email указывается по желанию. Исходный IP-адрес не сохраняется в обращении.</p></div>
           </div>
         </section>

@@ -806,7 +806,7 @@ export const resultAthletes: Athlete[] = [
   { id: 10800, name: "Кристин Липольд", nameEn: "Kristin Liepold", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10801, name: "Кристина Григер", nameEn: "Kristina Grieger", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10802, name: "Кайли Симпсон", nameEn: "Kylie Simpson", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
-  { id: 10803, name: "Лара Эрнандес-Томе", nameEn: "Lara Hernandez-Tome", country: "US", countryEn: "US", countryCode: "US", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
+  { id: 10803, name: "Лара Эрнандес-Томе", nameEn: "Lara Hernandez-Tome", country: "Испания", countryEn: "Spain", countryCode: "ES", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10804, name: "Ларисса Яспер", nameEn: "Larissa Jasper", country: "DE", countryEn: "DE", countryCode: "DE", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10805, name: "Лора Эдди", nameEn: "Laura Addie", country: "GB", countryEn: "GB", countryCode: "GB", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },
   { id: 10806, name: "Лора Деннис", nameEn: "Laura Dennis", country: "AU", countryEn: "AU", countryCode: "AU", flag: '', gender: "W", discipline: 'IRONMAN / T100', bio: '', achievements: [] },

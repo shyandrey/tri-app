@@ -49,8 +49,8 @@ test('Wave C verified countries preserve four identities, historical countries a
     const cases = [
       [10144,'Erik Olsson','SE','Швеция', [undefined]],
       [10541,'Sebastian Schober','DE','Германия', [undefined]],
-      [10235,'Jeremy Maclean','US','США', ['AU','AU','US']],
-      [10435,'Nick Thompson','AU','Австралия', [...Array(11).fill('US'),'AU']],
+      [10235,'Jeremy Maclean','US','США', ['US','US','US']],
+      [10435,'Nick Thompson','AU','Австралия', Array(12).fill('AU')],
     ]
     const linked = linkResultsToAthletes(raceResults)
     for (const [id,nameEn,countryCode,country,countries] of cases) {
@@ -61,7 +61,7 @@ test('Wave C verified countries preserve four identities, historical countries a
       assert.equal(resultAthletes.find(a=>a.id===id).countryCode,countryCode)
       assert.equal(registry[nameEn].countryCode,countryCode)
       const rows = linked.filter(r=>r.athleteName===nameEn)
-      assert.deepEqual(rows.map(r=>r.countryCode),countries, 'Profile evidence must not rewrite historical result countries')
+      assert.deepEqual(rows.map(r=>r.countryCode),countries, 'Historical countries must match reviewed race-row evidence')
       assert.ok(rows.every(r=>r.athleteId===id))
       if (id===10144 || id===10541) {
         const evidence = registry[nameEn]
@@ -78,5 +78,48 @@ test('Wave C verified countries preserve four identities, historical countries a
     const asOf = new Date('2026-10-06T00:00:00Z')
     assert.deepEqual(calculateAthleteRanking(athletes,linked,allRaceEditionViews,asOf),calculateAthleteRanking(before,linked,allRaceEditionViews,asOf))
     assert.deepEqual(sortAthletesByRanking(athletes,linked,allRaceEditionViews,asOf).map(a=>a.id),sortAthletesByRanking(before,linked,allRaceEditionViews,asOf).map(a=>a.id))
+  } finally { await server.close() }
+})
+
+test('Lara verified country preserves identity, historical results and ranking', async () => {
+  const server = await createServer({server:{middlewareMode:true,hmr:false,watch:null},appType:'custom',logLevel:'silent'})
+  try {
+    const {athletes,resultAthletes} = await server.ssrLoadModule('/src/data/athletes/index.ts')
+    const {raceResults} = await server.ssrLoadModule('/src/data/results/index.ts')
+    const {allRaceEditionViews} = await server.ssrLoadModule('/src/data/raceEditions.ts')
+    const {linkResultsToAthletes} = await server.ssrLoadModule('/src/utils/raceResults.ts')
+    const {calculateAthleteRanking,sortAthletesByRanking} = await server.ssrLoadModule('/src/utils/athleteRanking.ts')
+    const profile = athletes.find(a=>a.id===10803)
+    assert.equal(profile.nameEn,'Lara Hernandez-Tome')
+    assert.equal(profile.countryCode,'ES')
+    assert.equal(profile.country,'Испания')
+    assert.equal(profile.countryEn,'Spain')
+    assert.equal(resultAthletes.find(a=>a.id===10803).countryCode,'ES')
+    const registry = JSON.parse(await fs.readFile('src/data/athletes/countryEnrichment.json','utf8'))
+    const evidence = registry[profile.nameEn]
+    assert.equal(evidence.athleteId,profile.id)
+    assert.equal(evidence.countryCode,profile.countryCode)
+    assert.equal(evidence.provenance,'stats-pto-verified')
+    assert.equal(evidence.profileUrl,'https://stats.protriathletes.org/athlete/lara-hernandez-tome')
+    assert.equal(evidence.matchingResult.raceUrl,'https://stats.protriathletes.org/race/im-hawaii/2026/results')
+    assert.equal(evidence.supportingSource.athleteId,201326)
+    assert.equal(evidence.supportingSource.sourceUrl,'https://triathlon.org/athletes/profile/201326/lara-maria-hernandez-tome')
+    assert.equal(evidence.previousCountryEvidence.countryCode,'US')
+    assert.equal(evidence.previousCountryEvidence.provenance,'migrated-existing')
+    const linked = linkResultsToAthletes(raceResults)
+    const rows = linked.filter(r=>r.athleteName===profile.nameEn)
+    assert.equal(rows.length,2)
+    assert.ok(rows.every(r=>r.countryCode==='ES' && r.athleteId===10803))
+    assert.deepEqual(rows.map(r=>[r.position,r.totalTime]),[[16,'4:33:19'],[8,'9:28:45']])
+    assert.deepEqual(rows.map(r=>[r.id,r.raceEditionId,r.swimTime,r.t1Time,r.bikeTime,r.t2Time,r.runTime,r.ptoPoints]),[
+      [3397,'ironman-70-3-oceanside-2026','23:26','3:59','2:29:54','3:06','1:32:55',54.61],
+      [3923,'ironman-lake-placid-2026','52:13','4:54','5:09:28','2:55','3:19:17',67.49],
+    ])
+    assert.deepEqual(evidence.historicalCountryCorrections.map(e=>[e.runtimeResultId,e.editionId,e.previousCountryCode,e.verifiedCountryCode]),rows.map(r=>[r.id,r.raceEditionId,'US','ES']))
+    const beforeResults=linked.map(r=>r.athleteId===10803 ? {...r,countryCode:'US'} : r)
+    const before = athletes.map(a=>a.id===10803 ? {...a,countryCode:'US',country:'США',countryEn:'United States'} : a)
+    const asOf = new Date('2026-10-11T12:00:00Z')
+    assert.deepEqual(calculateAthleteRanking(athletes,linked,allRaceEditionViews,asOf),calculateAthleteRanking(before,beforeResults,allRaceEditionViews,asOf))
+    assert.deepEqual(sortAthletesByRanking(athletes,linked,allRaceEditionViews,asOf).map(a=>a.id),sortAthletesByRanking(before,beforeResults,allRaceEditionViews,asOf).map(a=>a.id))
   } finally { await server.close() }
 })

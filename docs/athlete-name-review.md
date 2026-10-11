@@ -57,7 +57,7 @@ Dry-run ничего не пишет. `--write` сначала валидиру�
 
 ## Источник имён и UI
 
-Identity, исходные имена и внешние источники регулирует [Data Source Policy](scripts.md#data-source-policy). Этот approved manual workflow меняет только русское отображение; он не разрешает менять identity/name_en/country или брать athlete data из другого provider.
+Identity, исходные имена и внешние источники регулирует [Data Source Policy](scripts.md#data-source-policy). Этот approved manual workflow меняет только русское отображение; он не разрешает менять identity/name_en/country или обходить приоритет Stats PTO → World Triathlon и review конфликтов из policy V2.
 
 После import единственный authoritative источник explicit overrides — `src/data/athletes/athleteLocalization.json`.
 

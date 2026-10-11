@@ -2667,7 +2667,29 @@
       "position": 44,
       "totalTime": "4:17:20"
     },
-    "provenance": "stats-pto-verified"
+    "provenance": "stats-pto-verified",
+    "historicalCountryReview": {
+      "checkedAt": "2026-10-11",
+      "verifiedCountryCode": "US",
+      "correctedSourceResultId": 8115,
+      "previousExplicitCountryCode": "AU",
+      "initialLocalCommit": "6fed732",
+      "verificationNote": "Every listed current PTO race row links to this exact athlete profile and matches identity, position/status, available splits, total time and PTO points. The original explicit country was present in the initial local commit; its reason is UNKNOWN. Older local rows without country inherit that explicit value through the existing fallback. No verified historical nationality change is established. World Triathlon identity linkage was not confirmed and is not used as evidence. Race dates are unchanged; general PTO championship page dates differ from local male-edition dates in 2025/2026.",
+      "rows": [
+        {
+          "runtimeResultId": 2491,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-703-swansea/2025/results"
+        },
+        {
+          "runtimeResultId": 3788,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-703-elsinore/2026/results"
+        },
+        {
+          "runtimeResultId": 4461,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results"
+        }
+      ]
+    }
   },
   "Jesper Svensson": {
     "provenance": "migrated-existing",
@@ -3431,11 +3453,59 @@
     "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
   },
   "Lara Hernandez-Tome": {
-    "provenance": "migrated-existing",
-    "countryCode": "US",
-    "country": "US",
-    "countryEn": "US",
-    "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
+    "provenance": "stats-pto-verified",
+    "athleteId": 10803,
+    "verifiedName": "Lara Hernandez-Tome",
+    "countryCode": "ES",
+    "country": "Испания",
+    "countryEn": "Spain",
+    "profileUrl": "https://stats.protriathletes.org/athlete/lara-hernandez-tome",
+    "sourceCountryLabel": "Spain",
+    "checkedAt": "2026-10-11",
+    "matchingResult": {
+      "raceUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "position": 28,
+      "totalTime": "9:44:29"
+    },
+    "supportingSource": {
+      "provider": "World Triathlon",
+      "sourceUrl": "https://triathlon.org/athletes/profile/201326/lara-maria-hernandez-tome",
+      "athleteId": 201326,
+      "verifiedName": "Lara Maria Hernandez Tome",
+      "sourceCountryLabel": "Spain"
+    },
+    "verificationNote": "Country fields corrected from migrated-existing US to ES. Kona row links to the exact PTO profile, which says Spain and lists Lake Placid 2026 #8 9:28:45 and Oceanside 2026 #16 4:33:19 matching existing profile history. Owner-approved World Triathlon profile supplies corroborating Spain evidence; English/Russian names and identity remain unchanged. The two historical result country codes were separately approved for correction to ES after verification against their current PTO race tables. The original reason for US is UNKNOWN; neither automatic fallback nor a verified historical nationality change is established.",
+    "previousCountryEvidence": {
+      "provenance": "migrated-existing",
+      "countryCode": "US",
+      "country": "US",
+      "countryEn": "US",
+      "sourceFile": "src/data/athletes/resultAthletes.generated.ts"
+    },
+    "historicalCountryCorrections": [
+      {
+        "editionId": "ironman-70-3-oceanside-2026",
+        "runtimeResultId": 3397,
+        "sourceFile": "src/data/results/2026/ironman/oceanside.ts",
+        "sourceUrl": "https://stats.protriathletes.org/race/im-703-california/2026/results",
+        "previousCountryCode": "US",
+        "verifiedCountryCode": "ES",
+        "initialLocalCommit": "0a3cc336e6c9041cad066cb7bebab80249a7a041",
+        "checkedAt": "2026-10-11",
+        "evidence": "Current PTO table reports ES; identity, position, total time, all splits and PTO points match the local row. US was explicit in the initial local commit; original reason UNKNOWN."
+      },
+      {
+        "editionId": "ironman-lake-placid-2026",
+        "runtimeResultId": 3923,
+        "sourceFile": "src/data/results/2026/ironman/lake-placid.ts",
+        "sourceUrl": "https://stats.protriathletes.org/race/im-lake-placid/2026/results",
+        "previousCountryCode": "US",
+        "verifiedCountryCode": "ES",
+        "initialLocalCommit": "f73e6e3eed2d6f6e8197be5a8e9453dfdb8fa283",
+        "checkedAt": "2026-10-11",
+        "evidence": "Current PTO table reports ES; identity, position, total time, all splits and PTO points match the local row. US was explicit in the initial local commit; original reason UNKNOWN."
+      }
+    ]
   },
   "Larissa Jasper": {
     "provenance": "migrated-existing",
@@ -4879,7 +4949,65 @@
       "position": 11,
       "totalTime": "3:56:04"
     },
-    "provenance": "stats-pto-verified"
+    "provenance": "stats-pto-verified",
+    "historicalCountryReview": {
+      "checkedAt": "2026-10-11",
+      "verifiedCountryCode": "AU",
+      "correctedSourceResultId": 4118,
+      "previousExplicitCountryCode": "US",
+      "initialLocalCommit": "df3aeff",
+      "verificationNote": "Every listed current PTO race row links to this exact athlete profile and matches identity, position/status, available splits, total time and PTO points. The original explicit country was present in the initial local commit; its reason is UNKNOWN. Older local rows without country inherit that explicit value through the existing fallback. No verified historical nationality change is established. World Triathlon identity linkage was not confirmed and is not used as evidence. Race dates are unchanged; general PTO championship page dates differ from local male-edition dates in 2025/2026.",
+      "rows": [
+        {
+          "runtimeResultId": 148,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-texas/2024/results"
+        },
+        {
+          "runtimeResultId": 571,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-cairns/2024/results"
+        },
+        {
+          "runtimeResultId": 957,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-germany/2024/results"
+        },
+        {
+          "runtimeResultId": 1185,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-hawaii/2024/results"
+        },
+        {
+          "runtimeResultId": 1259,
+          "sourceUrl": "https://stats.protriathletes.org/race/ironman-703-western-australia/2024/results"
+        },
+        {
+          "runtimeResultId": 1964,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-texas/2025/results"
+        },
+        {
+          "runtimeResultId": 2370,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-cairns/2025/results"
+        },
+        {
+          "runtimeResultId": 2597,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-703-zell-am-see/2025/results"
+        },
+        {
+          "runtimeResultId": 2648,
+          "sourceUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2025/results"
+        },
+        {
+          "runtimeResultId": 2804,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2025/results"
+        },
+        {
+          "runtimeResultId": 3517,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-texas/2026/results"
+        },
+        {
+          "runtimeResultId": 4428,
+          "sourceUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results"
+        }
+      ]
+    }
   },
   "Nicola Duchi": {
     "provenance": "migrated-existing",

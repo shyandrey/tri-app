@@ -97,7 +97,7 @@ An unresolved value is preferable to an incorrect value.
 
 ## 6. Primary data source
 
-For imported professional race results and athlete data, Stats PTO is the sole default authoritative source. Follow the canonical [Data Source Policy](docs/scripts.md#data-source-policy), including scoped owner-approved exceptions and STOP conditions; no automatic fallback to other providers. Source URL:
+For imported professional race results and athlete data, Stats PTO is priority 1; World Triathlon (https://triathlon.org/) is the trusted priority 2 source for verified missing fields without separate source approval. Follow the canonical [Data Source Policy](docs/scripts.md#data-source-policy), including scoped owner-approved exceptions and STOP conditions; explicit source disagreement requires human review; other providers require scoped approval. Source URL:
 
 `https://stats.protriathletes.org/`
 
@@ -109,7 +109,7 @@ For automated enrichment:
 - treat redirects, name mismatches and ambiguous profiles as unresolved;
 - do not overwrite verified data with weaker inferred data.
 
-When Stats PTO does not support a value, report the unresolved case rather than guessing.
+When Stats PTO lacks a value, follow Data Source Policy V2 for World Triathlon verification. If neither trusted source provides usable evidence, report the limitation rather than guessing.
 
 ## 7. Race data model
 

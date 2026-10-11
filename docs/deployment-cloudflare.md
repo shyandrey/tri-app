@@ -4,7 +4,7 @@ Feedback implementation extends this baseline; see [Feedback setup and privacy](
 
 Current deployment is manual via Wrangler: local checkout → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1. GitHub automatic builds are not connected.
 
-For static professional results, follow the [canonical results import workflow](scripts.md#canonical-workflow): Stats PTO URL/discovery → owner review → approved incremental import → validation → preview review → explicitly approved production deployment of the same Git revision. The [Data Source Policy](scripts.md#data-source-policy) governs results and athlete provenance. Do not reimport results into production or run D1 migrations/seeds for a static results update.
+For static professional results, follow the [canonical results import workflow](scripts.md#canonical-workflow): Stats PTO URL/discovery → owner review → approved incremental import → validation → preview review → explicitly approved production deployment of the same Git revision. The [Data Source Policy V2](scripts.md#data-source-policy) governs results and athlete provenance: Stats PTO first, World Triathlon for verified missing fields; conflicting values require review. Do not reimport results into production or run D1 migrations/seeds for a static results update.
 
 React remains client-side. Hash routes (including direct `/#/athlete/…` links) are unchanged. Existing static files bypass Worker execution; `/api` and `/api/*` always reach the Worker, including HTML navigation requests. Other paths use the ASSETS binding / SPA fallback. Unknown API paths return JSON 404, never index.html.
 

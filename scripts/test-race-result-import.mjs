@@ -108,9 +108,127 @@ test('CLI dry-run/write refuse existing edition and wrong source; no production 
 test('import preserves prior rows/IDs and identity except reviewed country corrections/additions',async()=>{
  const baseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/ranking-comparison-2026-09-26.json','utf8'))
  const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
- assert.equal(hash(raceResults.slice(0,baseline.oldResultsPreserved)),baseline.oldResultsSha256)
+ // Project only exact reviewed rows (including inherited countries) to the old snapshot.
+ const reviewed=[
+  [
+    2491,
+    "Jeremy Maclean",
+    "ironman-70-3-swansea-2025",
+    "AU",
+    "US"
+  ],
+  [
+    3788,
+    "Jeremy Maclean",
+    "ironman-70-3-elsinore-2026",
+    "AU",
+    "US"
+  ],
+  [
+    148,
+    "Nick Thompson",
+    "ironman-texas-2024",
+    "US",
+    "AU"
+  ],
+  [
+    571,
+    "Nick Thompson",
+    "ironman-cairns-2024",
+    "US",
+    "AU"
+  ],
+  [
+    957,
+    "Nick Thompson",
+    "ironman-frankfurt-2024",
+    "US",
+    "AU"
+  ],
+  [
+    1185,
+    "Nick Thompson",
+    "ironman-world-championship-kona-2024-men",
+    "US",
+    "AU"
+  ],
+  [
+    1259,
+    "Nick Thompson",
+    "ironman-70-3-western-australia-2024",
+    "US",
+    "AU"
+  ],
+  [
+    1964,
+    "Nick Thompson",
+    "ironman-texas-2025",
+    "US",
+    "AU"
+  ],
+  [
+    2370,
+    "Nick Thompson",
+    "ironman-cairns-2025",
+    "US",
+    "AU"
+  ],
+  [
+    2597,
+    "Nick Thompson",
+    "ironman-70-3-zell-am-see-2025",
+    "US",
+    "AU"
+  ],
+  [
+    2648,
+    "Nick Thompson",
+    "ironman-world-championship-nice-2025-men",
+    "US",
+    "AU"
+  ],
+  [
+    2804,
+    "Nick Thompson",
+    "ironman-70-3-world-championship-marbella-2025-men",
+    "US",
+    "AU"
+  ],
+  [
+    3517,
+    "Nick Thompson",
+    "ironman-texas-2026",
+    "US",
+    "AU"
+  ]
+]
+ let inheritedProjected=0
+ const corrections=new Map([['ironman-70-3-oceanside-2026',[3397,16,'4:33:19']],['ironman-lake-placid-2026',[3923,8,'9:28:45']]])
+ let projected=0
+ const historicalResults=raceResults.slice(0,baseline.oldResultsPreserved).map(row=>{
+  const correction=reviewed.find(([id])=>id===row.id)
+  if(correction){
+   const [,name,edition,oldCountry,newCountry]=correction
+   assert.equal(row.athleteName,name)
+   assert.equal(row.raceEditionId,edition)
+   assert.equal(row.countryCode,newCountry)
+   inheritedProjected++
+   return {...row,countryCode:oldCountry}
+  }
+  const expected=corrections.get(row.raceEditionId)
+  if(row.athleteName!=='Lara Hernandez-Tome' || !expected)return row
+  assert.deepEqual([row.id,row.position,row.totalTime],expected)
+  assert.equal(row.countryCode,'ES')
+  projected++
+  return {...row,countryCode:'US'}
+ })
+ assert.equal(projected,2)
+ assert.equal(inheritedProjected,13)
+ assert.equal(hash(historicalResults),baseline.oldResultsSha256)
  const restored=baseline.oldAthleteIds.map(id=>{
   const a=athletes.find(a=>a.id===id)
+  // Approved Lara profile correction; result corrections are checked separately above.
+  if(id===10803){assert.equal(a.countryCode,'ES');return {...a,countryCode:'US'}}
   if(id===10435){assert.equal(a.countryCode,'AU');return {...a,countryCode:'US',country:'США',countryEn:'United States'}}
   if(id===10235){assert.equal(a.countryCode,'US');return {...a,countryCode:'AU',country:'Австралия',countryEn:'Australia'}}
   // Wave C filled two previously missing profile countries using official evidence
