@@ -17,6 +17,38 @@ READ-ONLY означает отсутствие намеренной запис�
 
 ## 2. Import new race results
 
+### Canonical workflow
+
+**Official source → Codex discovery → Owner review → Incremental import → Tests/audits → Preview → Owner approval → Production.** Это единый процесс для статических профессиональных результатов; инструкция сама по себе не разрешает запись, commit или deployment.
+
+Статус возможностей:
+
+| Статус | Что существует / требуется |
+| --- | --- |
+| IMPLEMENTED | [Stats PTO importer](../scripts/import-race-results.mjs) + [HTML parser](../scripts/parse-stats-pto-results.py): dry-run, новый module, source snapshot/evidence, guards; [athlete discovery/append](../scripts/find-next-athletes.mjs); tests/audits и отдельные deployment scripts. |
+| DOCUMENTED | Обязательные source/identity review и STOP points ниже; ручное подключение edition/module; сравнение до/после; отдельные разрешения на preview и production. Эти действия не автоматизированы одной командой. |
+| PROPOSED — не реализовано | Универсальный импорт официальных IRONMAN/API/CSV exports; автоматическое создание editions; общий immutable registry result IDs; автоматический per-import baseline/approval gate. Не считать их возможностями текущего CLI. |
+
+### A. Source — READ-ONLY
+
+Owner или ChatGPT обычно предоставляет официальный results URL. Codex проверяет фактические таблицы, а не только заголовок страницы: гонку, год, дату/edition, место и нужные professional categories MPRO/WPRO (Stats PTO называет женскую панель FPRO). Проверить все страницы/категории, финальность результатов и полноту поля, включая non-finishers; start list не равен result list.
+
+Если страница недоступна, неполна или динамическая, можно самостоятельно найти официальный API/export или иной авторитетный источник. Записать исходный URL, все использованные endpoint/export URLs, время получения, race/edition/category, количество строк и статусы, ограничения и расхождения источников. Приоритет имеет согласованный официальный источник; Stats PTO — поддерживаемый источник автоматического импорта. Замена источника или расхождение требует owner review. Другой год, edition или предварительный протокол нельзя подставлять молча.
+
+**Ограничение CLI:** `import:race-results` принимает только `https://stats.protriathletes.org/race/<slug>/<year>/results` без query/hash, запрещает redirects и проверяет canonical URL в HTML. Официальный IRONMAN URL/API/export напрямую не поддержан. `--html` — только snapshot того же Stats PTO формата, не универсальный адаптер. Если согласованные данные нельзя точно представить поддерживаемым путём, STOP: предложить отдельную реализацию/ручной reviewed patch, не фабриковать Stats PTO HTML и не обходить guards.
+
+### B. Discovery → owner review — до source writes
+
+Проверить [race editions](../src/data/raceEditions.ts), [race identity](../src/data/raceIdentity.ts), [result model](../src/types/RaceResult.ts), [results index](../src/data/results/index.ts), [catalog](../src/data/athletes/index.ts) и [identity resolver](../src/data/athleteIdentity.ts). RaceEntity — постоянная гонка, RaceEdition — конкретное издание; новый год не означает новую постоянную race identity.
+
+Сопоставить полный профессиональный протокол с текущими rows: имена/страны, места, total/splits, DNS/DNF/DSQ, дубликаты, существующие и unmatched profiles. Для каждого неоднозначного совпадения показать source profile URL/evidence и кандидатов. Нормализация удаляет диакритику, часть пунктуации и различия регистра; это не доказательство личности. Нельзя объединять похожие имена, подменять source spelling или создавать второй профиль лишь потому, что exact-normalized match отсутствует. Варианты/aliases из discovery — наблюдения, не автоматически проверенный alias registry.
+
+До импорта записать baseline существующих athlete IDs/nameEn и result rows/IDs, список предполагаемых файлов, новые editions/profiles и ожидаемое влияние на ranking при одной и той же reference date. Новые результаты закономерно меняют scores/order; формула, clock semantics и unrelated data должны сохраниться. Автоматического универсального baseline snapshot для каждой новой гонки нет: существующие replay tests относятся к своим fixtures.
+
+**STOP для owner review:** предоставить source/provenance, counts по gender/status, matches/unmatched, anomalies, proposed file/ID/linkage changes и ограничения. Если edition ещё нет или её source URL не настроен, dry-run не запустится: сначала согласовать её добавление, не создавать edition во время read-only discovery.
+
+### C. Incremental import — LOCAL WRITE только после approval
+
 ```sh
 npm run import:race-results -- --url '<verified Stats PTO URL>' --race '<editionId>'
 # Только после review:
@@ -28,6 +60,63 @@ npm run import:race-results -- --url '<verified Stats PTO URL>' --race '<edition
 Importer **не создаёт RaceEdition, не подключает module и не создаёт athlete profiles**. Edition и её verified source URL должны уже существовать. Review: edition/date/gender, identities, anomalies, SOF proposal и source evidence. SOF применять к нужной edition отдельно после проверки, не перезаписывать conflicts. Anomalies нельзя автоматически «исправлять» выдуманными результатами.
 
 Затем вручную подключить export в results index, выполнить discovery из следующего раздела и `npm run audit:results` (читает общий runtime results/catalog/editions, не пишет; проверить весь report), `npm run audit:athletes`. Включение module влияет на global result IDs — см. §12.
+
+Evidence JSON содержит source URL, retrieval time, SHA-256 HTML, title/source dates, editions, parsed groups и proposal; HTML сохраняет source snapshot. Дополнительные официальные источники и решение owner записать в reviewed import report: CLI автоматически сохраняет только свой Stats PTO source. Не включать credentials в URLs/snapshots.
+
+Существующие результаты edition importer отказывается перезаписывать; это добавление нового поля результатов, не merge/update tool. Исправление уже импортированной edition требует отдельного плана. После подключения module выполнить §3 discovery, затем только approved `--write --append`, если действительно нужны новые profiles. Append обрабатывает **все** unmatched identities runtime results, а не только новую гонку; его полный набор должен совпадать с reviewed scope, иначе STOP.
+
+**IDs и страны:** штатный последовательный append сохраняет старые generated records/athlete IDs и назначает новые выше max catalog ID. Full regeneration может перенумеровать IDs и отдельно разрешается, не является этапом этого workflow. Global result IDs назначаются `index + 1` в конце results index: добавлять новый batch в конец итогового списка, не вставлять в середину старых season arrays. Проверить старые rows целиком: country backfill в index способен менять historical rows при добавлении source countries в season arrays. Повторить baseline comparison; абсолютной гарантии стабильности всех IDs/linkages у цепочки importer + ручной wiring нет. Concurrent writes запрещены.
+
+**Статусы и missing values:** сохранять source DNS/DNF/DSQ и имеющиеся splits; отсутствие в start/result list не превращать автоматически в DNS. Парсер пропускает отсутствующие времена (не zero и не выдуманное время), сохраняет поддержанные числовые места/points и отклоняет неизвестные статусы/форматы. Не рассчитывать отсутствующие splits из total. Country conflicts, missing splits и split/total mismatch попадают в anomalies; **anomalies сами по себе не запрещают `--write`**. Title/date соответствие и полнота обоих gender fields требуют review: наличие canonical URL и хотя бы подходящей таблицы не доказывает их. Не угадывать nationality/SOF/identity для прохождения audit.
+
+### D. Validation — source data не менять проверками
+
+После local diff review выполнить существующие команды из корня:
+
+```sh
+npm run audit:results
+npm run audit:athletes
+node --test --test-concurrency=1 scripts/test-race-result-import.mjs scripts/test-current-athletes.mjs scripts/test-find-next-athletes.mjs
+node --test --test-concurrency=1 scripts/test-ranking.mjs scripts/test-ranking-dataset-clock.mjs
+npm run check:release
+git diff --check
+# После local browser setup из §10:
+npm run check:release:browser
+```
+
+`check:release` уже запускает `npm run build`, lint, ranking, results/identity и другие проверки; отдельный `npm run build` нужен при изменениях после gate или для отдельной build-проверки. Browser gate проверяет Calendar/results/navigation/athletes/ranking и другие текущие suites; дополнительно вручную проверить именно новую edition и athletes: старые fixtures не доказывают правильность нового протокола. Tests/build могут писать temporary/ignored artifacts, но не должны регенерировать source datasets или обращаться с записью к remote D1/Telegram. Не запускать full regeneration ради обычной валидации импорта.
+
+Разделять новые regressions, source anomalies, historical failures и environment errors; не обновлять expectations ради зелёного gate. `audit:athletes` exit 0 не означает отсутствие issues. Jeremy Maclean (profile US / historical AU) и Nick Thompson (profile AU / historical US) остаются provenance conflicts; full-regeneration validation остаётся FAIL. Не исправлять их попутно. Исторические missing-country Erik Olsson / Sebastian Schober уже закрыты SE / DE; их присутствие в release-policy allowlist не означает текущие issues. Подробности historical/non-gating checks — §10.
+
+### E. Preview → owner approval
+
+После успешной валидации и разрешения owner на commit/deploy зафиксировать только reviewed data/evidence/wiring/tests; сохранить SHA. Не включать unrelated changes и локальные artifacts. Из чистого reviewed checkout выполнить preview процедуру §9. До remote write проверить Worker/DB/environment; после — сравнить health SHA вручную с recorded commit (`check:preview` сам SHA-match не требует).
+
+Проверить новую race detail, оба нужных professional fields/statuses/splits, athlete links/details/search, ranking и Back/navigation на mobile/desktop. Сохранить screenshots/results review. Results/catalog — статические TS данные в bundle, а не News/Feedback D1: этот импорт не требует migrations, SQL seed или копирования preview D1. Проверить, что preview использует свой Worker/DB, а production deployment/bindings не изменились. **STOP для owner visual/data approval.**
+
+### F. Production — только тот же reviewed Git revision
+
+После успешного preview review и отдельного explicit production approval проверить чистый checkout того же SHA, текущий production version и rollback candidate. Использовать [production deployment procedure](deployment-cloudflare.md#live-production-and-manual-deployment):
+
+```sh
+npm run deploy:production:dry
+# Только после explicit production deployment approval:
+npm run deploy:production
+npm run check:production -- --expected-sha '<approved-40-character-sha>'
+```
+
+Это rebuild того же Git revision для production environment, не повторный импорт гонки и не копирование preview данных. Если revision изменился после preview approval, пройти review/validation заново. Не подменять scripts несуществующими `npm run deploy` / `npm run check`.
+
+После deployment — GET/SELECT verification: SHA, полная загрузка JS/CSS, новая edition/athletes/results/ranking, News и protected Feedback config; сверить production DB, шесть secret binding names, Turnstile/limiter/cron и preview isolation по runbook. Health/News checker один не покрывает эти проверки. Не отправлять реальный Feedback/Telegram report без отдельного разрешения.
+
+### Mandatory STOP и recovery
+
+- Не подтверждены race/year/edition/categories, источник неполон/предварителен или формат не поддерживается.
+- Есть unresolved identity/duplicate/gender/country конфликт: сначала evidence и решение owner; не превращать незнакомое имя в нового атлета автоматически. Source anomaly можно оставить только явно reviewed и документированной, не скрывать.
+- Importer пытается заменить существующую edition/file; scope append шире approved; old IDs/rows меняются неожиданно; output/diff не соответствует плану.
+- Новая regression, непроверенный environment failure, dirty release checkout/SHA mismatch, неправильный Worker/DB/bindings или нет разрешения на соответствующий write/deploy.
+
+При production regression остановиться, записать version/SHA и evidence. [Rollback/recovery runbook](deployment-cloudflare.md#rollback) требует отдельного разрешения и повторной проверки known-good version с нужными bindings/secrets; не считать исторический version ID вечным safe target. Worker rollback возвращает bundle (включая статические результаты), но не D1/Telegram state. Для статического results incident не восстанавливать и не перезаписывать production D1; D1 recovery — отдельная операция только при доказанном data incident. Preview не использовать как источник замены production DB.
 
 ## 3. Add new athletes from results
 

@@ -3,6 +3,9 @@
 Feedback implementation extends this baseline; see [Feedback setup and privacy](feedback.md). Named deploy environments use the protected worker; the top-level target is now the loopback-only local mock entry.
 
 Current deployment is manual via Wrangler: local checkout → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1. GitHub automatic builds are not connected.
+
+For static professional results, follow the [canonical results import workflow](scripts.md#canonical-workflow): source/discovery review → approved incremental import → validation → preview review → explicitly approved production deployment of the same Git revision. Do not reimport results into production or run D1 migrations/seeds for a static results update.
+
 React remains client-side. Hash routes (including direct `/#/athlete/…` links) are unchanged. Existing static files bypass Worker execution; `/api` and `/api/*` always reach the Worker, including HTML navigation requests. Other paths use the ASSETS binding / SPA fallback. Unknown API paths return JSON 404, never index.html.
 
 Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News reads and protected Feedback are active in production and preview. Production live News ingestion awaits a naturally occurring eligible post. Turnstile, the rate limiter and retry cron are configured; D1 save and Telegram delivery have been operator-verified (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
