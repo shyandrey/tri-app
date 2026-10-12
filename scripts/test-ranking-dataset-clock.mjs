@@ -26,7 +26,7 @@ test('older dataset and appended completed race move clock automatically; DNF re
 })
 test('production ranking/sort/country strength are deterministic and share dataset clock defaults',()=>{
  const asOf=clock(athletes,raceResults,editions)
- assert.equal(asOf.toISOString(),'2026-09-19T12:00:00.000Z')
+ assert.equal(asOf.toISOString(),'2026-10-10T12:00:00.000Z')
  const explicit=calculate(athletes,raceResults,editions,asOf)
  assert.deepEqual(calculate(athletes,raceResults,editions),explicit)
  assert.deepEqual(calculate(athletes,raceResults,editions),explicit)

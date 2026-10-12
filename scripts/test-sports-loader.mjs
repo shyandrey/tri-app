@@ -21,7 +21,7 @@ test('async sports data retains all catalog/results and exact original ranking o
     const data=await server.ssrLoadModule('/src/sports/data.ts')
     const again=await server.ssrLoadModule('/src/sports/data.ts')
     assert.equal(data.rankedAthletes,again.rankedAthletes)
-    assert.equal(data.athletes.length,1167);assert.equal(data.linkedRaceResults.length,4493)
+    assert.equal(data.athletes.length,1167);assert.equal(data.linkedRaceResults.length,4592)
     const {allRaceEditionViews}=await server.ssrLoadModule('/src/data/raceEditions.ts')
     const {getRankingDatasetClock}=await server.ssrLoadModule('/src/utils/rankingDatasetClock.ts')
     const {calculateAthleteRanking,sortAthletesByRanking}=await server.ssrLoadModule('/src/utils/athleteRanking.ts')

@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process'
 import { createServer } from 'vite'
 import { parseStatsPtoResults, proposeResults, proposeEditionSof, validateSourceURL } from './import-race-results.mjs'
 
-const fixtures=await Promise.all(['nice-world-championship-2026','french-riviera-2026'].map(async stem=>{
+const fixtures=await Promise.all(['nice-world-championship-2026','french-riviera-2026','kona-2026'].map(async stem=>{
  const evidence=JSON.parse(await fs.readFile(`scripts/fixtures/result-imports/${stem}.json`,'utf8'))
  const html=await fs.readFile(evidence.snapshot,'utf8')
  return {evidence,html,parsed:parseStatsPtoResults(html)}
@@ -86,7 +86,7 @@ test('production rows exactly match source proposal; unique linkage, canonical c
   total+=actual.length
   assert.equal(new Set(actual.map(r=>`${r.raceEditionId}:${r.gender}:${resolveAthleteId(r.athleteName)}`)).size,actual.length)
  }
- assert.equal(total,126)
+ assert.equal(total,225)
 })
 test('existing editions cannot be overwritten, catalog ambiguity/gender conflicts stop proposals',()=>{
  const {parsed,evidence}=fixtures[1], editions=evidence.editions.map(e=>allRaceEditionViews.find(x=>x.editionId===e.editionId))
@@ -256,4 +256,30 @@ test('import preserves prior rows/IDs and identity except reviewed country corre
   assert.ok(old,`Historical result ${row.id} must still resolve`)
   assert.equal(resolveAthleteId(row.athleteName),old.id)
  }
+})
+
+
+test('Kona incremental import preserves every prior row/profile and exact source statuses',async()=>{
+ const baseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/kona-baseline-2026.json','utf8'))
+ const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
+ assert.equal(athletes.length,baseline.athletesCount)
+ assert.equal(hash(athletes),baseline.athletesSha256)
+ assert.equal(hash(raceResults.slice(0,baseline.resultsCount)),baseline.resultsSha256)
+ const editionId='ironman-world-championship-kona-2026'
+ const oldEditions=allRaceEditionViews.map(e=>{if(e.editionId!==editionId)return e;const {sof,...old}=e;assert.deepEqual(sof,{women:96.82,men:92.79});return old})
+ assert.equal(hash(oldEditions),baseline.editionsSha256)
+ const rows=raceResults.slice(baseline.resultsCount)
+ assert.equal(rows.length,99)
+ assert.ok(rows.every((r,i)=>r.raceEditionId===editionId && r.id===4494+i && resolveAthleteId(r.athleteName)))
+ for(const [gender,count,finish] of [['M',52,41],['W',47,36]]){
+  const group=rows.filter(r=>r.gender===gender)
+  assert.equal(group.length,count)
+  assert.equal(group.filter(r=>typeof r.position==='number').length,finish)
+  assert.equal(group.filter(r=>r.position==='DNF').length,11)
+ }
+ const proposal=proposeResults(fixtures[2].parsed,[allRaceEditionViews.find(e=>e.editionId===editionId)],[],athletes,normalizeAthleteIdentityName)
+ assert.equal(proposal.matches.length,99)
+ assert.equal(proposal.unmatched.length,0)
+ assert.equal(proposal.anomalies.length,22)
+ assert.ok(proposal.anomalies.every(a=>a.type==='missing-splits' && a.status==='DNF'))
 })

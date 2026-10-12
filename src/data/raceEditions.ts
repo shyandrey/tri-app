@@ -24,6 +24,7 @@ const currentSeasonSofByRaceId: Record<string, { women?: number; men?: number }>
   'ironman-70-3-boise': {"women":80.58,"men":80.09},
   'ironman-kalmar': {"women":73.79,"men":87.34},
   'ironman-70-3-zell-am-see': {"women":85.22,"men":87.85},
+  'ironman-world-championship-kona': {"women":96.82,"men":92.79},
   'ironman-70-3-world-championship': {"women":96.18,"men":96.35},
   't100-gold-coast': {"women":91.16},
   't100-singapore': {"men":96.38},

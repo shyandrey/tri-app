@@ -1,0 +1,4616 @@
+{
+  "sourceUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+  "retrievedAt": "2026-10-12T12:03:15.672Z",
+  "sourceSha256": "d60089c6c4c5254d10289facfdaebad5157e474a40a597509c428773e89b6d90",
+  "snapshot": "scripts/fixtures/result-imports/kona-2026.html",
+  "title": "2026 Ironman Hawaii",
+  "sourceDates": [
+    "10 Oct 2026"
+  ],
+  "editions": [
+    {
+      "editionId": "ironman-world-championship-kona-2026",
+      "raceId": "ironman-world-championship-kona",
+      "dateISO": "2026-10-10",
+      "gender": "ALL"
+    }
+  ],
+  "groups": [
+    {
+      "panel": "FPRO",
+      "gender": "W",
+      "rows": [
+        {
+          "result": {
+            "athleteName": "Taylor Knibb",
+            "gender": "W",
+            "position": 1,
+            "countryCode": "US",
+            "swimTime": "52:55",
+            "t1Time": "2:54",
+            "bikeTime": "4:40:07",
+            "t2Time": "2:48",
+            "runTime": "2:57:46",
+            "totalTime": "8:36:29",
+            "ptoPoints": 101.42
+          },
+          "athletePath": "/athlete/taylor-knibb",
+          "rawCells": [
+            "1",
+            "Taylor Knibb",
+            "52:55 (2)",
+            "2:54",
+            "4:40:07",
+            "2:48",
+            "2:57:46 (3)",
+            "8:36:29",
+            "101.42"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Laura Philipp",
+            "gender": "W",
+            "position": 2,
+            "countryCode": "DE",
+            "swimTime": "1:00:03",
+            "t1Time": "2:47",
+            "bikeTime": "4:43:00",
+            "t2Time": "3:04",
+            "runTime": "2:50:43",
+            "totalTime": "8:39:34",
+            "ptoPoints": 99.56
+          },
+          "athletePath": "/athlete/laura-philipp",
+          "rawCells": [
+            "2",
+            "Laura Philipp",
+            "1:00:03 (30)",
+            "2:47",
+            "4:43:00 (3)",
+            "3:04",
+            "2:50:43",
+            "8:39:34",
+            "99.56"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Julie Derron",
+            "gender": "W",
+            "position": 3,
+            "countryCode": "CH",
+            "swimTime": "53:09",
+            "t1Time": "2:24",
+            "bikeTime": "4:49:35",
+            "t2Time": "2:24",
+            "runTime": "2:58:54",
+            "totalTime": "8:46:25",
+            "ptoPoints": 96.42
+          },
+          "athletePath": "/athlete/julie-derron",
+          "rawCells": [
+            "3",
+            "Julie Derron",
+            "53:09 (7)",
+            "2:24",
+            "4:49:35 (10)",
+            "2:24",
+            "2:58:54 (4)",
+            "8:46:25",
+            "96.42"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kat Matthews",
+            "gender": "W",
+            "position": 4,
+            "countryCode": "GB",
+            "swimTime": "54:57",
+            "t1Time": "2:39",
+            "bikeTime": "4:55:34",
+            "t2Time": "3:41",
+            "runTime": "2:52:50",
+            "totalTime": "8:49:38",
+            "ptoPoints": 94.56
+          },
+          "athletePath": "/athlete/kat-matthews",
+          "rawCells": [
+            "4",
+            "Kat Matthews",
+            "54:57 (14)",
+            "2:39",
+            "4:55:34 (16)",
+            "3:41",
+            "2:52:50 (2)",
+            "8:49:38",
+            "94.56"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Imogen Simmonds",
+            "gender": "W",
+            "position": 5,
+            "countryCode": "CH",
+            "swimTime": "53:08",
+            "t1Time": "2:29",
+            "bikeTime": "4:45:21",
+            "t2Time": "3:04",
+            "runTime": "3:07:45",
+            "totalTime": "8:51:44",
+            "ptoPoints": 93.08
+          },
+          "athletePath": "/athlete/imogen-simmonds",
+          "rawCells": [
+            "5",
+            "Imogen Simmonds",
+            "53:08 (6)",
+            "2:29",
+            "4:45:21 (7)",
+            "3:04",
+            "3:07:45 (10)",
+            "8:51:44",
+            "93.08"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Lisa Perterer",
+            "gender": "W",
+            "position": 6,
+            "countryCode": "AT",
+            "swimTime": "54:34",
+            "t1Time": "2:53",
+            "bikeTime": "4:43:54",
+            "t2Time": "3:04",
+            "runTime": "3:08:31",
+            "totalTime": "8:52:54",
+            "ptoPoints": 91.94
+          },
+          "athletePath": "/athlete/lisa-perterer",
+          "rawCells": [
+            "6",
+            "Lisa Perterer",
+            "54:34 (13)",
+            "2:53",
+            "4:43:54 (5)",
+            "3:04",
+            "3:08:31 (11)",
+            "8:52:54",
+            "91.94"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Hannah Berry",
+            "gender": "W",
+            "position": 7,
+            "countryCode": "NZ",
+            "swimTime": "53:12",
+            "t1Time": "2:32",
+            "bikeTime": "4:45:23",
+            "t2Time": "3:11",
+            "runTime": "3:15:26",
+            "totalTime": "8:59:41",
+            "ptoPoints": 88.89
+          },
+          "athletePath": "/athlete/hannah-wells",
+          "rawCells": [
+            "7",
+            "Hannah Berry",
+            "53:12 (8)",
+            "2:32",
+            "4:45:23 (8)",
+            "3:11",
+            "3:15:26 (18)",
+            "8:59:41",
+            "88.89"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Solveig Løvseth",
+            "gender": "W",
+            "position": 8,
+            "countryCode": "NO",
+            "swimTime": "55:29",
+            "t1Time": "3:05",
+            "bikeTime": "4:42:12",
+            "t2Time": "2:17",
+            "runTime": "3:19:08",
+            "totalTime": "9:02:09",
+            "ptoPoints": 87.34
+          },
+          "athletePath": "/athlete/solveig-loevseth",
+          "rawCells": [
+            "8",
+            "Solveig Løvseth",
+            "55:29 (16)",
+            "3:05",
+            "4:42:12 (2)",
+            "2:17",
+            "3:19:08 (21)",
+            "9:02:09",
+            "87.34"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Anne-Sophie Pierre",
+            "gender": "W",
+            "position": 9,
+            "countryCode": "FR",
+            "swimTime": "1:04:01",
+            "t1Time": "2:27",
+            "bikeTime": "4:52:08",
+            "t2Time": "2:50",
+            "runTime": "3:02:25",
+            "totalTime": "9:03:49",
+            "ptoPoints": 86.07
+          },
+          "athletePath": "/athlete/anne-sophie-pierre",
+          "rawCells": [
+            "9",
+            "Anne-Sophie Pierre",
+            "1:04:01 (33)",
+            "2:27",
+            "4:52:08 (13)",
+            "2:50",
+            "3:02:25 (7)",
+            "9:03:49",
+            "86.07"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Grace Thek",
+            "gender": "W",
+            "position": 10,
+            "countryCode": "AU",
+            "swimTime": "57:12",
+            "t1Time": "2:38",
+            "bikeTime": "5:01:04",
+            "t2Time": "3:04",
+            "runTime": "3:02:41",
+            "totalTime": "9:06:37",
+            "ptoPoints": 84.43
+          },
+          "athletePath": "/athlete/grace-thek",
+          "rawCells": [
+            "10",
+            "Grace Thek",
+            "57:12 (19)",
+            "2:38",
+            "5:01:04 (23)",
+            "3:04",
+            "3:02:41 (8)",
+            "9:06:37",
+            "84.43"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Elisabetta Curridori",
+            "gender": "W",
+            "position": 11,
+            "countryCode": "IT",
+            "swimTime": "1:04:41",
+            "t1Time": "2:28",
+            "bikeTime": "4:57:25",
+            "t2Time": "2:56",
+            "runTime": "3:02:03",
+            "totalTime": "9:09:30",
+            "ptoPoints": 82.78
+          },
+          "athletePath": "/athlete/elisabetta-curridori",
+          "rawCells": [
+            "11",
+            "Elisabetta Curridori",
+            "1:04:41 (34)",
+            "2:28",
+            "4:57:25 (18)",
+            "2:56",
+            "3:02:03 (6)",
+            "9:09:30",
+            "82.78"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Lotte Wilms",
+            "gender": "W",
+            "position": 12,
+            "countryCode": "NL",
+            "swimTime": "54:31",
+            "t1Time": "3:12",
+            "bikeTime": "4:51:27",
+            "t2Time": "3:54",
+            "runTime": "3:16:47",
+            "totalTime": "9:09:48",
+            "ptoPoints": 82.02
+          },
+          "athletePath": "/athlete/lotte-wilms",
+          "rawCells": [
+            "12",
+            "Lotte Wilms",
+            "54:31 (11)",
+            "3:12",
+            "4:51:27 (11)",
+            "3:54",
+            "3:16:47 (19)",
+            "9:09:48",
+            "82.02"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Marta Sánchez",
+            "gender": "W",
+            "position": 13,
+            "countryCode": "ES",
+            "swimTime": "52:59",
+            "t1Time": "2:42",
+            "bikeTime": "4:54:01",
+            "t2Time": "3:25",
+            "runTime": "3:17:18",
+            "totalTime": "9:10:25",
+            "ptoPoints": 81.16
+          },
+          "athletePath": "/athlete/marta-sanchez",
+          "rawCells": [
+            "13",
+            "Marta Sánchez",
+            "52:59 (3)",
+            "2:42",
+            "4:54:01 (14)",
+            "3:25",
+            "3:17:18 (20)",
+            "9:10:25",
+            "81.16"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Sara Svensk",
+            "gender": "W",
+            "position": 14,
+            "countryCode": "SE",
+            "swimTime": "1:04:43",
+            "t1Time": "2:54",
+            "bikeTime": "4:57:58",
+            "t2Time": "3:43",
+            "runTime": "3:05:21",
+            "totalTime": "9:14:38",
+            "ptoPoints": 79.09
+          },
+          "athletePath": "/athlete/sara-svensk",
+          "rawCells": [
+            "14",
+            "Sara Svensk",
+            "1:04:43 (35)",
+            "2:54",
+            "4:57:58 (19)",
+            "3:43",
+            "3:05:21 (9)",
+            "9:14:38",
+            "79.09"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Marta Lagownik",
+            "gender": "W",
+            "position": 15,
+            "countryCode": "PL",
+            "swimTime": "59:55",
+            "t1Time": "2:33",
+            "bikeTime": "5:07:41",
+            "t2Time": "3:15",
+            "runTime": "3:01:22",
+            "totalTime": "9:14:44",
+            "ptoPoints": 78.44
+          },
+          "athletePath": "/athlete/marta-lagownik",
+          "rawCells": [
+            "15",
+            "Marta Lagownik",
+            "59:55 (24)",
+            "2:33",
+            "5:07:41 (30)",
+            "3:15",
+            "3:01:22 (5)",
+            "9:14:44",
+            "78.44"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jenny Jendryschik",
+            "gender": "W",
+            "position": 16,
+            "countryCode": "DE",
+            "swimTime": "1:00:00",
+            "t1Time": "2:33",
+            "bikeTime": "4:58:10",
+            "t2Time": "2:44",
+            "runTime": "3:12:14",
+            "totalTime": "9:15:40",
+            "ptoPoints": 77.52
+          },
+          "athletePath": "/athlete/jenny-jendryschik",
+          "rawCells": [
+            "16",
+            "Jenny Jendryschik",
+            "1:00:00 (27)",
+            "2:33",
+            "4:58:10 (20)",
+            "2:44",
+            "3:12:14 (15)",
+            "9:15:40",
+            "77.52"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Regan Hollioake",
+            "gender": "W",
+            "position": 17,
+            "countryCode": "AU",
+            "swimTime": "54:32",
+            "t1Time": "2:44",
+            "bikeTime": "4:48:21",
+            "t2Time": "3:20",
+            "runTime": "3:28:22",
+            "totalTime": "9:17:18",
+            "ptoPoints": 76.37
+          },
+          "athletePath": "/athlete/regan-hollioake",
+          "rawCells": [
+            "17",
+            "Regan Hollioake",
+            "54:32 (12)",
+            "2:44",
+            "4:48:21 (9)",
+            "3:20",
+            "3:28:22 (30)",
+            "9:17:18",
+            "76.37"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Paula Findlay",
+            "gender": "W",
+            "position": 18,
+            "countryCode": "CA",
+            "swimTime": "55:02",
+            "t1Time": "2:39",
+            "bikeTime": "4:43:41",
+            "t2Time": "2:41",
+            "runTime": "3:36:00",
+            "totalTime": "9:20:01",
+            "ptoPoints": 74.86
+          },
+          "athletePath": "/athlete/paula-findlay",
+          "rawCells": [
+            "18",
+            "Paula Findlay",
+            "55:02 (15)",
+            "2:39",
+            "4:43:41 (4)",
+            "2:41",
+            "3:36:00 (33)",
+            "9:20:01",
+            "74.86"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Rachel Zilinskas",
+            "gender": "W",
+            "position": 19,
+            "countryCode": "US",
+            "swimTime": "53:07",
+            "t1Time": "3:15",
+            "bikeTime": "4:54:32",
+            "t2Time": "3:42",
+            "runTime": "3:26:15",
+            "totalTime": "9:20:49",
+            "ptoPoints": 74.01
+          },
+          "athletePath": "/athlete/rachel-zilinskas",
+          "rawCells": [
+            "19",
+            "Rachel Zilinskas",
+            "53:07 (5)",
+            "3:15",
+            "4:54:32 (15)",
+            "3:42",
+            "3:26:15 (29)",
+            "9:20:49",
+            "74.01"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jana Uderstadt",
+            "gender": "W",
+            "position": 20,
+            "countryCode": "DE",
+            "swimTime": "1:04:47",
+            "t1Time": "2:54",
+            "bikeTime": "4:59:39",
+            "t2Time": "3:01",
+            "runTime": "3:11:03",
+            "totalTime": "9:21:22",
+            "ptoPoints": 73.27
+          },
+          "athletePath": "/athlete/jana-uderstadt",
+          "rawCells": [
+            "20",
+            "Jana Uderstadt",
+            "1:04:47 (37)",
+            "2:54",
+            "4:59:39 (22)",
+            "3:01",
+            "3:11:03 (13)",
+            "9:21:22",
+            "73.27"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jackie Hering",
+            "gender": "W",
+            "position": 21,
+            "countryCode": "US",
+            "swimTime": "58:06",
+            "t1Time": "3:01",
+            "bikeTime": "5:05:40",
+            "t2Time": "3:32",
+            "runTime": "3:12:13",
+            "totalTime": "9:22:30",
+            "ptoPoints": 72.34
+          },
+          "athletePath": "/athlete/jackie-hering",
+          "rawCells": [
+            "21",
+            "Jackie Hering",
+            "58:06 (22)",
+            "3:01",
+            "5:05:40 (28)",
+            "3:32",
+            "3:12:13 (14)",
+            "9:22:30",
+            "72.34"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kaidi Kivioja",
+            "gender": "W",
+            "position": 22,
+            "countryCode": "EE",
+            "swimTime": "1:00:01",
+            "t1Time": "2:56",
+            "bikeTime": "4:55:38",
+            "t2Time": "2:56",
+            "runTime": "3:26:09",
+            "totalTime": "9:27:38",
+            "ptoPoints": 70.04
+          },
+          "athletePath": "/athlete/kaidi-kivioja",
+          "rawCells": [
+            "22",
+            "Kaidi Kivioja",
+            "1:00:01 (29)",
+            "2:56",
+            "4:55:38 (17)",
+            "2:56",
+            "3:26:09 (28)",
+            "9:27:38",
+            "70.04"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Skye Wallace",
+            "gender": "W",
+            "position": 23,
+            "countryCode": "AU",
+            "swimTime": "1:03:11",
+            "t1Time": "2:59",
+            "bikeTime": "5:01:08",
+            "t2Time": "2:58",
+            "runTime": "3:19:20",
+            "totalTime": "9:29:33",
+            "ptoPoints": 68.86
+          },
+          "athletePath": "/athlete/skye-wallace",
+          "rawCells": [
+            "23",
+            "Skye Wallace",
+            "1:03:11 (32)",
+            "2:59",
+            "5:01:08 (24)",
+            "2:58",
+            "3:19:20 (22)",
+            "9:29:33",
+            "68.86"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Charlotte McShane",
+            "gender": "W",
+            "position": 24,
+            "countryCode": "AU",
+            "swimTime": "57:13",
+            "t1Time": "3:02",
+            "bikeTime": "5:18:29",
+            "t2Time": "3:28",
+            "runTime": "3:10:00",
+            "totalTime": "9:32:09",
+            "ptoPoints": 67.45
+          },
+          "athletePath": "/athlete/charlotte-mcshane",
+          "rawCells": [
+            "24",
+            "Charlotte McShane",
+            "57:13 (20)",
+            "3:02",
+            "5:18:29 (37)",
+            "3:28",
+            "3:10:00 (12)",
+            "9:32:09",
+            "67.45"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kate Curran",
+            "gender": "W",
+            "position": 25,
+            "countryCode": "GB",
+            "swimTime": "57:10",
+            "t1Time": "2:39",
+            "bikeTime": "5:18:41",
+            "t2Time": "3:41",
+            "runTime": "3:13:11",
+            "totalTime": "9:35:19",
+            "ptoPoints": 65.87
+          },
+          "athletePath": "/athlete/kate-curran",
+          "rawCells": [
+            "25",
+            "Kate Curran",
+            "57:10 (18)",
+            "2:39",
+            "5:18:41 (38)",
+            "3:41",
+            "3:13:11 (16)",
+            "9:35:19",
+            "65.87"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Leonie Konczalla",
+            "gender": "W",
+            "position": 26,
+            "countryCode": "DE",
+            "swimTime": "1:08:19",
+            "t1Time": "3:02",
+            "bikeTime": "5:02:06",
+            "t2Time": "2:43",
+            "runTime": "3:19:25",
+            "totalTime": "9:35:33",
+            "ptoPoints": 65.3
+          },
+          "athletePath": "/athlete/leonie-konczalla",
+          "rawCells": [
+            "26",
+            "Leonie Konczalla",
+            "1:08:19 (44)",
+            "3:02",
+            "5:02:06 (26)",
+            "2:43",
+            "3:19:25 (23)",
+            "9:35:33",
+            "65.30"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Samantha Skold",
+            "gender": "W",
+            "position": 27,
+            "countryCode": "US",
+            "swimTime": "1:16:57",
+            "t1Time": "2:26",
+            "bikeTime": "5:04:21",
+            "t2Time": "3:32",
+            "runTime": "3:14:45",
+            "totalTime": "9:41:59",
+            "ptoPoints": 62.61
+          },
+          "athletePath": "/athlete/samantha-skold",
+          "rawCells": [
+            "27",
+            "Samantha Skold",
+            "1:16:57 (47)",
+            "2:26",
+            "5:04:21 (27)",
+            "3:32",
+            "3:14:45 (17)",
+            "9:41:59",
+            "62.61"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Lara Hernandez-Tome",
+            "gender": "W",
+            "position": 28,
+            "countryCode": "ES",
+            "swimTime": "53:00",
+            "t1Time": "3:37",
+            "bikeTime": "5:10:55",
+            "t2Time": "4:06",
+            "runTime": "3:32:53",
+            "totalTime": "9:44:29",
+            "ptoPoints": 61.28
+          },
+          "athletePath": "/athlete/lara-hernandez-tome",
+          "rawCells": [
+            "28",
+            "Lara Hernandez-Tome",
+            "53:00 (4)",
+            "3:37",
+            "5:10:55 (31)",
+            "4:06",
+            "3:32:53 (32)",
+            "9:44:29",
+            "61.28"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Rhianne Hughes",
+            "gender": "W",
+            "position": 29,
+            "countryCode": "GB",
+            "swimTime": "1:10:16",
+            "t1Time": "2:36",
+            "bikeTime": "5:12:09",
+            "t2Time": "2:49",
+            "runTime": "3:20:41",
+            "totalTime": "9:48:29",
+            "ptoPoints": 59.44
+          },
+          "athletePath": "/athlete/rhianne-hughes",
+          "rawCells": [
+            "29",
+            "Rhianne Hughes",
+            "1:10:16 (45)",
+            "2:36",
+            "5:12:09 (32)",
+            "2:49",
+            "3:20:41 (24)",
+            "9:48:29",
+            "59.44"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Nikita Paskiewiez",
+            "gender": "W",
+            "position": 30,
+            "countryCode": "FR",
+            "swimTime": "1:07:41",
+            "t1Time": "3:26",
+            "bikeTime": "5:16:27",
+            "t2Time": "2:43",
+            "runTime": "3:21:32",
+            "totalTime": "9:51:46",
+            "ptoPoints": 57.86
+          },
+          "athletePath": "/athlete/nikita-paskiewiez",
+          "rawCells": [
+            "30",
+            "Nikita Paskiewiez",
+            "1:07:41 (40)",
+            "3:26",
+            "5:16:27 (36)",
+            "2:43",
+            "3:21:32 (25)",
+            "9:51:46",
+            "57.86"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Arlette Mariana Gonzalez Hurtado",
+            "gender": "W",
+            "position": 31,
+            "countryCode": "MX",
+            "swimTime": "1:04:48",
+            "t1Time": "3:10",
+            "bikeTime": "5:16:26",
+            "t2Time": "4:40",
+            "runTime": "3:23:57",
+            "totalTime": "9:52:59",
+            "ptoPoints": 57
+          },
+          "athletePath": "/athlete/arlette-mariana-gonzalez-hurtado",
+          "rawCells": [
+            "31",
+            "Arlette Mariana Gonzalez Hurtado",
+            "1:04:48 (38)",
+            "3:10",
+            "5:16:26 (35)",
+            "4:40",
+            "3:23:57 (27)",
+            "9:52:59",
+            "57.00"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Anna Pabinger",
+            "gender": "W",
+            "position": 32,
+            "countryCode": "AT",
+            "swimTime": "1:16:09",
+            "t1Time": "3:29",
+            "bikeTime": "5:06:24",
+            "t2Time": "3:14",
+            "runTime": "3:23:45",
+            "totalTime": "9:53:00",
+            "ptoPoints": 56.55
+          },
+          "athletePath": "/athlete/anna-pabinger",
+          "rawCells": [
+            "32",
+            "Anna Pabinger",
+            "1:16:09 (46)",
+            "3:29",
+            "5:06:24 (29)",
+            "3:14",
+            "3:23:45 (26)",
+            "9:53:00",
+            "56.55"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Gabrielle Lumkes",
+            "gender": "W",
+            "position": 33,
+            "countryCode": "US",
+            "swimTime": "59:58",
+            "t1Time": "2:39",
+            "bikeTime": "5:14:00",
+            "t2Time": "3:12",
+            "runTime": "3:41:44",
+            "totalTime": "10:01:32",
+            "ptoPoints": 53.2
+          },
+          "athletePath": "/athlete/gabrielle-lumkes",
+          "rawCells": [
+            "33",
+            "Gabrielle Lumkes",
+            "59:58 (25)",
+            "2:39",
+            "5:14:00 (34)",
+            "3:12",
+            "3:41:44 (34)",
+            "10:01:32",
+            "53.20"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Antonia Milowsky",
+            "gender": "W",
+            "position": 34,
+            "countryCode": "DE",
+            "swimTime": "59:59",
+            "t1Time": "2:39",
+            "bikeTime": "5:32:58",
+            "t2Time": "4:26",
+            "runTime": "3:30:04",
+            "totalTime": "10:10:04",
+            "ptoPoints": 49.85
+          },
+          "athletePath": "/athlete/antonia-milowsky",
+          "rawCells": [
+            "34",
+            "Antonia Milowsky",
+            "59:59 (26)",
+            "2:39",
+            "5:32:58 (39)",
+            "4:26",
+            "3:30:04 (31)",
+            "10:10:04",
+            "49.85"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Penny Slater",
+            "gender": "W",
+            "position": 35,
+            "countryCode": "AU",
+            "swimTime": "1:00:13",
+            "t1Time": "2:55",
+            "bikeTime": "5:13:44",
+            "t2Time": "3:27",
+            "runTime": "3:51:49",
+            "totalTime": "10:12:06",
+            "ptoPoints": 49.17
+          },
+          "athletePath": "/athlete/penny-slater",
+          "rawCells": [
+            "35",
+            "Penny Slater",
+            "1:00:13 (31)",
+            "2:55",
+            "5:13:44 (33)",
+            "3:27",
+            "3:51:49 (35)",
+            "10:12:06",
+            "49.17"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Henrike Gueber",
+            "gender": "W",
+            "position": 36,
+            "countryCode": "DE",
+            "swimTime": "1:07:44",
+            "t1Time": "2:54",
+            "bikeTime": "4:51:42",
+            "t2Time": "3:01",
+            "runTime": "4:30:54",
+            "totalTime": "10:36:14",
+            "ptoPoints": 48.77
+          },
+          "athletePath": "/athlete/henrike-gueber",
+          "rawCells": [
+            "36",
+            "Henrike Gueber",
+            "1:07:44 (42)",
+            "2:54",
+            "4:51:42 (12)",
+            "3:01",
+            "4:30:54 (36)",
+            "10:36:14",
+            "48.77"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Lucy Charles-Barclay",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "GB",
+            "swimTime": "51:28",
+            "t1Time": "2:22",
+            "bikeTime": "4:45:12",
+            "t2Time": "2:32"
+          },
+          "athletePath": "/athlete/lucy-charles-barclay",
+          "rawCells": [
+            "DNF",
+            "Lucy Charles-Barclay",
+            "51:28",
+            "2:22",
+            "4:45:12 (6)",
+            "2:32",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Marjolaine Pierré",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "FR",
+            "swimTime": "55:53",
+            "t1Time": "2:41",
+            "bikeTime": "4:58:54",
+            "t2Time": "2:32"
+          },
+          "athletePath": "/athlete/marjolaine-pierre",
+          "rawCells": [
+            "DNF",
+            "Marjolaine Pierré",
+            "55:53 (17)",
+            "2:41",
+            "4:58:54 (21)",
+            "2:32",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "India Lee",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "GB",
+            "swimTime": "58:02",
+            "t1Time": "2:37",
+            "bikeTime": "5:01:25"
+          },
+          "athletePath": "/athlete/india-lee",
+          "rawCells": [
+            "DNF",
+            "India Lee",
+            "58:02 (21)",
+            "2:37",
+            "5:01:25 (25)",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Daisy Davies",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "GB",
+            "swimTime": "53:18",
+            "t1Time": "2:29"
+          },
+          "athletePath": "/athlete/daisy-davies",
+          "rawCells": [
+            "DNF",
+            "Daisy Davies",
+            "53:18 (10)",
+            "2:29",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Pamella Oliveira",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "BR",
+            "swimTime": "53:14",
+            "t1Time": "2:38"
+          },
+          "athletePath": "/athlete/pamella-oliveira",
+          "rawCells": [
+            "DNF",
+            "Pamella Oliveira",
+            "53:14 (9)",
+            "2:38",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Franzi Hofmann",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "DE",
+            "swimTime": "59:54",
+            "t1Time": "2:37"
+          },
+          "athletePath": "/athlete/franzi-reng",
+          "rawCells": [
+            "DNF",
+            "Franzi Hofmann",
+            "59:54 (23)",
+            "2:37",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Tamara Jewett",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "CA",
+            "swimTime": "1:00:00",
+            "t1Time": "2:45"
+          },
+          "athletePath": "/athlete/tamara-jewett",
+          "rawCells": [
+            "DNF",
+            "Tamara Jewett",
+            "1:00:00 (28)",
+            "2:45",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Katrine Græsbøll Christensen",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "DK",
+            "swimTime": "1:04:45",
+            "t1Time": "3:18"
+          },
+          "athletePath": "/athlete/katrine-graesboell-christensen",
+          "rawCells": [
+            "DNF",
+            "Katrine Græsbøll Christensen",
+            "1:04:45 (36)",
+            "3:18",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Rebecca Anderbury",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "GB",
+            "swimTime": "1:07:42",
+            "t1Time": "2:52"
+          },
+          "athletePath": "/athlete/rebecca-anderbury",
+          "rawCells": [
+            "DNF",
+            "Rebecca Anderbury",
+            "1:07:42 (41)",
+            "2:52",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Danielle Lewis",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "US",
+            "swimTime": "1:07:36",
+            "t1Time": "3:47"
+          },
+          "athletePath": "/athlete/danielle-lewis",
+          "rawCells": [
+            "DNF",
+            "Danielle Lewis",
+            "1:07:36 (39)",
+            "3:47",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Danielle Fauteux",
+            "gender": "W",
+            "position": "DNF",
+            "countryCode": "CA",
+            "swimTime": "1:07:50",
+            "t1Time": "4:07"
+          },
+          "athletePath": "/athlete/danielle-fauteux",
+          "rawCells": [
+            "DNF",
+            "Danielle Fauteux",
+            "1:07:50 (43)",
+            "4:07",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        }
+      ],
+      "sof": 96.82
+    },
+    {
+      "panel": "MPRO",
+      "gender": "M",
+      "rows": [
+        {
+          "result": {
+            "athleteName": "Vincent Luis",
+            "gender": "M",
+            "position": 1,
+            "countryCode": "FR",
+            "swimTime": "48:31",
+            "t1Time": "2:12",
+            "bikeTime": "4:15:42",
+            "t2Time": "2:28",
+            "runTime": "2:38:36",
+            "totalTime": "7:47:27",
+            "ptoPoints": 97.81
+          },
+          "athletePath": "/athlete/vincent-luis",
+          "rawCells": [
+            "1",
+            "Vincent Luis",
+            "48:31 (13)",
+            "2:12",
+            "4:15:42 (9)",
+            "2:28",
+            "2:38:36 (2)",
+            "7:47:27",
+            "97.81"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Gustav Iden",
+            "gender": "M",
+            "position": 2,
+            "countryCode": "NO",
+            "swimTime": "50:10",
+            "t1Time": "2:20",
+            "bikeTime": "4:17:10",
+            "t2Time": "2:27",
+            "runTime": "2:36:58",
+            "totalTime": "7:49:03",
+            "ptoPoints": 96.4
+          },
+          "athletePath": "/athlete/gustav-iden",
+          "rawCells": [
+            "2",
+            "Gustav Iden",
+            "50:10 (27)",
+            "2:20",
+            "4:17:10 (12)",
+            "2:27",
+            "2:36:58",
+            "7:49:03",
+            "96.40"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Matthew Marquardt",
+            "gender": "M",
+            "position": 3,
+            "countryCode": "US",
+            "swimTime": "48:25",
+            "t1Time": "2:51",
+            "bikeTime": "4:11:28",
+            "t2Time": "3:20",
+            "runTime": "2:43:58",
+            "totalTime": "7:49:59",
+            "ptoPoints": 95.26
+          },
+          "athletePath": "/athlete/matthew-marquardt",
+          "rawCells": [
+            "3",
+            "Matthew Marquardt",
+            "48:25 (4)",
+            "2:51",
+            "4:11:28 (3)",
+            "3:20",
+            "2:43:58 (8)",
+            "7:49:59",
+            "95.26"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Gregory Barnaby",
+            "gender": "M",
+            "position": 4,
+            "countryCode": "IT",
+            "swimTime": "50:10",
+            "t1Time": "2:21",
+            "bikeTime": "4:11:23",
+            "t2Time": "2:26",
+            "runTime": "2:44:44",
+            "totalTime": "7:51:02",
+            "ptoPoints": 94.09
+          },
+          "athletePath": "/athlete/gregory-barnaby",
+          "rawCells": [
+            "4",
+            "Gregory Barnaby",
+            "50:10 (28)",
+            "2:21",
+            "4:11:23 (2)",
+            "2:26",
+            "2:44:44 (9)",
+            "7:51:02",
+            "94.09"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Pierre Le Corre",
+            "gender": "M",
+            "position": 5,
+            "countryCode": "FR",
+            "swimTime": "48:29",
+            "t1Time": "2:48",
+            "bikeTime": "4:20:47",
+            "t2Time": "2:37",
+            "runTime": "2:38:50",
+            "totalTime": "7:53:29",
+            "ptoPoints": 92.4
+          },
+          "athletePath": "/athlete/pierre-le-corre",
+          "rawCells": [
+            "5",
+            "Pierre Le Corre",
+            "48:29 (8)",
+            "2:48",
+            "4:20:47 (17)",
+            "2:37",
+            "2:38:50 (3)",
+            "7:53:29",
+            "92.40"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Sam Long",
+            "gender": "M",
+            "position": 6,
+            "countryCode": "US",
+            "swimTime": "54:47",
+            "t1Time": "2:08",
+            "bikeTime": "4:12:50",
+            "t2Time": "2:40",
+            "runTime": "2:42:57",
+            "totalTime": "7:55:21",
+            "ptoPoints": 90.94
+          },
+          "athletePath": "/athlete/sam-long",
+          "rawCells": [
+            "6",
+            "Sam Long",
+            "54:47 (42)",
+            "2:08",
+            "4:12:50 (6)",
+            "2:40",
+            "2:42:57 (7)",
+            "7:55:21",
+            "90.94"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jonas Schomburg",
+            "gender": "M",
+            "position": 7,
+            "countryCode": "DE",
+            "swimTime": "48:34",
+            "t1Time": "2:22",
+            "bikeTime": "4:21:31",
+            "t2Time": "2:32",
+            "runTime": "2:41:45",
+            "totalTime": "7:56:42",
+            "ptoPoints": 89.7
+          },
+          "athletePath": "/athlete/jonas-schomburg",
+          "rawCells": [
+            "7",
+            "Jonas Schomburg",
+            "48:34 (19)",
+            "2:22",
+            "4:21:31 (22)",
+            "2:32",
+            "2:41:45 (5)",
+            "7:56:42",
+            "89.70"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kristian Blummenfelt",
+            "gender": "M",
+            "position": 8,
+            "countryCode": "NO",
+            "swimTime": "48:48",
+            "t1Time": "2:28",
+            "bikeTime": "4:15:06",
+            "t2Time": "2:40",
+            "runTime": "2:49:06",
+            "totalTime": "7:58:07",
+            "ptoPoints": 88.45
+          },
+          "athletePath": "/athlete/kristian-blummenfelt",
+          "rawCells": [
+            "8",
+            "Kristian Blummenfelt",
+            "48:48 (24)",
+            "2:28",
+            "4:15:06 (8)",
+            "2:40",
+            "2:49:06 (14)",
+            "7:58:07",
+            "88.45"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Youri Keulen",
+            "gender": "M",
+            "position": 9,
+            "countryCode": "NL",
+            "swimTime": "48:32",
+            "t1Time": "2:35",
+            "bikeTime": "4:22:30",
+            "t2Time": "2:46",
+            "runTime": "2:42:05",
+            "totalTime": "7:58:26",
+            "ptoPoints": 87.64
+          },
+          "athletePath": "/athlete/youri-keulen",
+          "rawCells": [
+            "9",
+            "Youri Keulen",
+            "48:32 (15)",
+            "2:35",
+            "4:22:30 (23)",
+            "2:46",
+            "2:42:05 (6)",
+            "7:58:26",
+            "87.64"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Menno Koolhaas",
+            "gender": "M",
+            "position": 10,
+            "countryCode": "NL",
+            "swimTime": "48:18",
+            "t1Time": "1:57",
+            "bikeTime": "4:20:37",
+            "t2Time": "2:34",
+            "runTime": "2:45:31",
+            "totalTime": "7:58:55",
+            "ptoPoints": 86.77
+          },
+          "athletePath": "/athlete/menno-koolhaas",
+          "rawCells": [
+            "10",
+            "Menno Koolhaas",
+            "48:18 (2)",
+            "1:57",
+            "4:20:37 (15)",
+            "2:34",
+            "2:45:31 (11)",
+            "7:58:55",
+            "86.77"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Nick Thompson",
+            "gender": "M",
+            "position": 11,
+            "countryCode": "AU",
+            "swimTime": "51:36",
+            "t1Time": "2:39",
+            "bikeTime": "4:12:36",
+            "t2Time": "2:31",
+            "runTime": "2:51:52",
+            "totalTime": "8:01:13",
+            "ptoPoints": 85.22
+          },
+          "athletePath": "/athlete/nick-thompson",
+          "rawCells": [
+            "11",
+            "Nick Thompson",
+            "51:36 (33)",
+            "2:39",
+            "4:12:36 (4)",
+            "2:31",
+            "2:51:52 (20)",
+            "8:01:13",
+            "85.22"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Cameron Wurf",
+            "gender": "M",
+            "position": 12,
+            "countryCode": "AU",
+            "swimTime": "54:47",
+            "t1Time": "2:26",
+            "bikeTime": "4:12:41",
+            "t2Time": "2:28",
+            "runTime": "2:51:41",
+            "totalTime": "8:04:01",
+            "ptoPoints": 83.5
+          },
+          "athletePath": "/athlete/cameron-wurf",
+          "rawCells": [
+            "12",
+            "Cameron Wurf",
+            "54:47 (43)",
+            "2:26",
+            "4:12:41 (5)",
+            "2:28",
+            "2:51:41 (19)",
+            "8:04:01",
+            "83.50"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Mikel Ugarte Ramos",
+            "gender": "M",
+            "position": 13,
+            "countryCode": "ES",
+            "swimTime": "50:41",
+            "t1Time": "2:49",
+            "bikeTime": "4:22:31",
+            "t2Time": "2:36",
+            "runTime": "2:45:30",
+            "totalTime": "8:04:04",
+            "ptoPoints": 82.84
+          },
+          "athletePath": "/athlete/mikel-ugarte-ramos",
+          "rawCells": [
+            "13",
+            "Mikel Ugarte Ramos",
+            "50:41 (31)",
+            "2:49",
+            "4:22:31 (24)",
+            "2:36",
+            "2:45:30 (10)",
+            "8:04:04",
+            "82.84"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jon Sæverås Breivold",
+            "gender": "M",
+            "position": 14,
+            "countryCode": "NO",
+            "swimTime": "59:02",
+            "t1Time": "2:43",
+            "bikeTime": "4:13:21",
+            "t2Time": "2:54",
+            "runTime": "2:48:56",
+            "totalTime": "8:06:53",
+            "ptoPoints": 81.13
+          },
+          "athletePath": "/athlete/jon-saeveras-breivold",
+          "rawCells": [
+            "14",
+            "Jon Sæverås Breivold",
+            "59:02 (51)",
+            "2:43",
+            "4:13:21 (7)",
+            "2:54",
+            "2:48:56 (13)",
+            "8:06:53",
+            "81.13"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jan Stratmann",
+            "gender": "M",
+            "position": 15,
+            "countryCode": "DE",
+            "swimTime": "48:33",
+            "t1Time": "2:41",
+            "bikeTime": "4:20:44",
+            "t2Time": "3:47",
+            "runTime": "2:51:36",
+            "totalTime": "8:07:19",
+            "ptoPoints": 80.35
+          },
+          "athletePath": "/athlete/jan-stratmann",
+          "rawCells": [
+            "15",
+            "Jan Stratmann",
+            "48:33 (17)",
+            "2:41",
+            "4:20:44 (16)",
+            "3:47",
+            "2:51:36 (18)",
+            "8:07:19",
+            "80.35"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kacper Stepniak",
+            "gender": "M",
+            "position": 16,
+            "countryCode": "PL",
+            "swimTime": "48:25",
+            "t1Time": "2:24",
+            "bikeTime": "4:20:47",
+            "t2Time": "2:26",
+            "runTime": "2:53:33",
+            "totalTime": "8:07:32",
+            "ptoPoints": 79.67
+          },
+          "athletePath": "/athlete/kacper-stepniak",
+          "rawCells": [
+            "16",
+            "Kacper Stepniak",
+            "48:25 (5)",
+            "2:24",
+            "4:20:47 (18)",
+            "2:26",
+            "2:53:33 (23)",
+            "8:07:32",
+            "79.67"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kieran Lindars",
+            "gender": "M",
+            "position": 17,
+            "countryCode": "GB",
+            "swimTime": "48:32",
+            "t1Time": "2:17",
+            "bikeTime": "4:21:05",
+            "t2Time": "2:37",
+            "runTime": "2:53:34",
+            "totalTime": "8:08:03",
+            "ptoPoints": 78.88
+          },
+          "athletePath": "/athlete/kieran-lindars",
+          "rawCells": [
+            "17",
+            "Kieran Lindars",
+            "48:32 (16)",
+            "2:17",
+            "4:21:05 (19)",
+            "2:37",
+            "2:53:34 (24)",
+            "8:08:03",
+            "78.88"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jordi Montraveta Moya",
+            "gender": "M",
+            "position": 18,
+            "countryCode": "ES",
+            "swimTime": "58:57",
+            "t1Time": "2:27",
+            "bikeTime": "4:18:51",
+            "t2Time": "3:11",
+            "runTime": "2:48:27",
+            "totalTime": "8:11:52",
+            "ptoPoints": 76.83
+          },
+          "athletePath": "/athlete/jordi-montraveta-moya",
+          "rawCells": [
+            "18",
+            "Jordi Montraveta Moya",
+            "58:57 (49)",
+            "2:27",
+            "4:18:51 (13)",
+            "3:11",
+            "2:48:27 (12)",
+            "8:11:52",
+            "76.83"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jumpei Furuya",
+            "gender": "M",
+            "position": 19,
+            "countryCode": "JP",
+            "swimTime": "48:29",
+            "t1Time": "2:23",
+            "bikeTime": "4:25:38",
+            "t2Time": "3:14",
+            "runTime": "2:53:59",
+            "totalTime": "8:13:42",
+            "ptoPoints": 75.56
+          },
+          "athletePath": "/athlete/jumpei-furuya",
+          "rawCells": [
+            "19",
+            "Jumpei Furuya",
+            "48:29 (9)",
+            "2:23",
+            "4:25:38 (29)",
+            "3:14",
+            "2:53:59 (25)",
+            "8:13:42",
+            "75.56"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Matt Hanson",
+            "gender": "M",
+            "position": 20,
+            "countryCode": "US",
+            "swimTime": "54:50",
+            "t1Time": "2:15",
+            "bikeTime": "4:36:11",
+            "t2Time": "2:32",
+            "runTime": "2:40:34",
+            "totalTime": "8:16:19",
+            "ptoPoints": 74.01
+          },
+          "athletePath": "/athlete/matt-hanson",
+          "rawCells": [
+            "20",
+            "Matt Hanson",
+            "54:50 (45)",
+            "2:15",
+            "4:36:11 (38)",
+            "2:32",
+            "2:40:34 (4)",
+            "8:16:19",
+            "74.01"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Damien Le Mesnager",
+            "gender": "M",
+            "position": 21,
+            "countryCode": "FR",
+            "swimTime": "58:51",
+            "t1Time": "2:21",
+            "bikeTime": "4:21:24",
+            "t2Time": "2:51",
+            "runTime": "2:51:22",
+            "totalTime": "8:16:47",
+            "ptoPoints": 73.29
+          },
+          "athletePath": "/athlete/damien-le-mesnager",
+          "rawCells": [
+            "21",
+            "Damien Le Mesnager",
+            "58:51 (47)",
+            "2:21",
+            "4:21:24 (20)",
+            "2:51",
+            "2:51:22 (17)",
+            "8:16:47",
+            "73.29"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Michele Sarzilla",
+            "gender": "M",
+            "position": 22,
+            "countryCode": "IT",
+            "swimTime": "48:31",
+            "t1Time": "2:20",
+            "bikeTime": "4:27:22",
+            "t2Time": "3:01",
+            "runTime": "2:55:53",
+            "totalTime": "8:17:05",
+            "ptoPoints": 72.64
+          },
+          "athletePath": "/athlete/michele-sarzilla",
+          "rawCells": [
+            "22",
+            "Michele Sarzilla",
+            "48:31 (14)",
+            "2:20",
+            "4:27:22 (31)",
+            "3:01",
+            "2:55:53 (26)",
+            "8:17:05",
+            "72.64"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Frederic Funk",
+            "gender": "M",
+            "position": 23,
+            "countryCode": "DE",
+            "swimTime": "53:19",
+            "t1Time": "2:37",
+            "bikeTime": "4:16:29",
+            "t2Time": "2:58",
+            "runTime": "3:02:07",
+            "totalTime": "8:17:29",
+            "ptoPoints": 71.96
+          },
+          "athletePath": "/athlete/frederic-funk",
+          "rawCells": [
+            "23",
+            "Frederic Funk",
+            "53:19 (37)",
+            "2:37",
+            "4:16:29 (11)",
+            "2:58",
+            "3:02:07 (30)",
+            "8:17:29",
+            "71.96"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Brock Hoel",
+            "gender": "M",
+            "position": 24,
+            "countryCode": "CA",
+            "swimTime": "50:06",
+            "t1Time": "2:12",
+            "bikeTime": "4:34:32",
+            "t2Time": "2:34",
+            "runTime": "2:50:19",
+            "totalTime": "8:19:40",
+            "ptoPoints": 70.61
+          },
+          "athletePath": "/athlete/brock-hoel",
+          "rawCells": [
+            "24",
+            "Brock Hoel",
+            "50:06 (25)",
+            "2:12",
+            "4:34:32 (37)",
+            "2:34",
+            "2:50:19 (16)",
+            "8:19:40",
+            "70.61"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Dominik Sowieja",
+            "gender": "M",
+            "position": 25,
+            "countryCode": "DE",
+            "swimTime": "58:54",
+            "t1Time": "2:42",
+            "bikeTime": "4:25:37",
+            "t2Time": "3:13",
+            "runTime": "2:51:57",
+            "totalTime": "8:22:22",
+            "ptoPoints": 69.07
+          },
+          "athletePath": "/athlete/dominik-sowieja",
+          "rawCells": [
+            "25",
+            "Dominik Sowieja",
+            "58:54 (48)",
+            "2:42",
+            "4:25:37 (28)",
+            "3:13",
+            "2:51:57 (21)",
+            "8:22:22",
+            "69.07"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Cameron Main",
+            "gender": "M",
+            "position": 26,
+            "countryCode": "GB",
+            "swimTime": "50:07",
+            "t1Time": "2:12",
+            "bikeTime": "4:42:34",
+            "t2Time": "2:30",
+            "runTime": "2:50:01",
+            "totalTime": "8:27:22",
+            "ptoPoints": 66.67
+          },
+          "athletePath": "/athlete/cameron-main",
+          "rawCells": [
+            "26",
+            "Cameron Main",
+            "50:07 (26)",
+            "2:12",
+            "4:42:34 (42)",
+            "2:30",
+            "2:50:01 (15)",
+            "8:27:22",
+            "66.67"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Ben Kanute",
+            "gender": "M",
+            "position": 27,
+            "countryCode": "US",
+            "swimTime": "48:36",
+            "t1Time": "2:26",
+            "bikeTime": "4:24:41",
+            "t2Time": "3:18",
+            "runTime": "3:08:55",
+            "totalTime": "8:27:54",
+            "ptoPoints": 65.98
+          },
+          "athletePath": "/athlete/ben-kanute",
+          "rawCells": [
+            "27",
+            "Ben Kanute",
+            "48:36 (21)",
+            "2:26",
+            "4:24:41 (25)",
+            "3:18",
+            "3:08:55 (34)",
+            "8:27:54",
+            "65.98"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Wilhelm Hirsch",
+            "gender": "M",
+            "position": 28,
+            "countryCode": "DE",
+            "swimTime": "48:21",
+            "t1Time": "2:11",
+            "bikeTime": "4:25:34",
+            "t2Time": "3:01",
+            "runTime": "3:09:13",
+            "totalTime": "8:28:17",
+            "ptoPoints": 65.36
+          },
+          "athletePath": "/athlete/willhelm-hirsch",
+          "rawCells": [
+            "28",
+            "Wilhelm Hirsch",
+            "48:21 (3)",
+            "2:11",
+            "4:25:34 (27)",
+            "3:01",
+            "3:09:13 (35)",
+            "8:28:17",
+            "65.36"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jason West",
+            "gender": "M",
+            "position": 29,
+            "countryCode": "US",
+            "swimTime": "48:36",
+            "t1Time": "2:29",
+            "bikeTime": "4:26:26",
+            "t2Time": "3:44",
+            "runTime": "3:07:50",
+            "totalTime": "8:29:03",
+            "ptoPoints": 64.61
+          },
+          "athletePath": "/athlete/jason-west",
+          "rawCells": [
+            "29",
+            "Jason West",
+            "48:36 (22)",
+            "2:29",
+            "4:26:26 (30)",
+            "3:44",
+            "3:07:50 (33)",
+            "8:29:03",
+            "64.61"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Florian Angert",
+            "gender": "M",
+            "position": 30,
+            "countryCode": "DE",
+            "swimTime": "48:35",
+            "t1Time": "2:35",
+            "bikeTime": "4:25:07",
+            "t2Time": "3:07",
+            "runTime": "3:10:17",
+            "totalTime": "8:29:40",
+            "ptoPoints": 63.91
+          },
+          "athletePath": "/athlete/florian-angert",
+          "rawCells": [
+            "30",
+            "Florian Angert",
+            "48:35 (20)",
+            "2:35",
+            "4:25:07 (26)",
+            "3:07",
+            "3:10:17 (36)",
+            "8:29:40",
+            "63.91"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Almog Elazary",
+            "gender": "M",
+            "position": 31,
+            "countryCode": "IL",
+            "swimTime": "48:40",
+            "t1Time": "2:15",
+            "bikeTime": "4:42:12",
+            "t2Time": "2:40",
+            "runTime": "2:57:45",
+            "totalTime": "8:33:30",
+            "ptoPoints": 62
+          },
+          "athletePath": "/athlete/almog-elazary",
+          "rawCells": [
+            "31",
+            "Almog Elazary",
+            "48:40 (23)",
+            "2:15",
+            "4:42:12 (41)",
+            "2:40",
+            "2:57:45 (27)",
+            "8:33:30",
+            "62.00"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jack Moody",
+            "gender": "M",
+            "position": 32,
+            "countryCode": "NZ",
+            "swimTime": "53:26",
+            "t1Time": "2:56",
+            "bikeTime": "4:37:00",
+            "t2Time": "3:03",
+            "runTime": "2:57:56",
+            "totalTime": "8:34:20",
+            "ptoPoints": 61.25
+          },
+          "athletePath": "/athlete/jack-moody",
+          "rawCells": [
+            "32",
+            "Jack Moody",
+            "53:26 (39)",
+            "2:56",
+            "4:37:00 (39)",
+            "3:03",
+            "2:57:56 (29)",
+            "8:34:20",
+            "61.25"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jack Sosinski",
+            "gender": "M",
+            "position": 33,
+            "countryCode": "AU",
+            "swimTime": "53:18",
+            "t1Time": "2:29",
+            "bikeTime": "4:31:47",
+            "t2Time": "2:41",
+            "runTime": "3:07:04",
+            "totalTime": "8:37:17",
+            "ptoPoints": 59.69
+          },
+          "athletePath": "/athlete/jack-sosinski",
+          "rawCells": [
+            "33",
+            "Jack Sosinski",
+            "53:18 (36)",
+            "2:29",
+            "4:31:47 (36)",
+            "2:41",
+            "3:07:04 (32)",
+            "8:37:17",
+            "59.69"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Arnaud Guilloux",
+            "gender": "M",
+            "position": 34,
+            "countryCode": "FR",
+            "swimTime": "54:44",
+            "t1Time": "2:32",
+            "bikeTime": "4:40:24",
+            "t2Time": "3:23",
+            "runTime": "2:57:49",
+            "totalTime": "8:38:50",
+            "ptoPoints": 58.68
+          },
+          "athletePath": "/athlete/arnaud-guilloux",
+          "rawCells": [
+            "34",
+            "Arnaud Guilloux",
+            "54:44 (41)",
+            "2:32",
+            "4:40:24 (40)",
+            "3:23",
+            "2:57:49 (28)",
+            "8:38:50",
+            "58.68"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Sebastian Norberg",
+            "gender": "M",
+            "position": 35,
+            "countryCode": "SE",
+            "swimTime": "59:04",
+            "t1Time": "3:10",
+            "bikeTime": "4:28:41",
+            "t2Time": "3:06",
+            "runTime": "3:06:35",
+            "totalTime": "8:40:34",
+            "ptoPoints": 57.6
+          },
+          "athletePath": "/athlete/sebastian-norberg",
+          "rawCells": [
+            "35",
+            "Sebastian Norberg",
+            "59:04 (52)",
+            "3:10",
+            "4:28:41 (34)",
+            "3:06",
+            "3:06:35 (31)",
+            "8:40:34",
+            "57.60"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Marten Van Riel",
+            "gender": "M",
+            "position": 36,
+            "countryCode": "BE",
+            "swimTime": "48:17",
+            "t1Time": "2:19",
+            "bikeTime": "4:16:14",
+            "t2Time": "2:40",
+            "runTime": "3:32:49",
+            "totalTime": "8:42:18",
+            "ptoPoints": 56.54
+          },
+          "athletePath": "/athlete/marten-van-riel",
+          "rawCells": [
+            "36",
+            "Marten Van Riel",
+            "48:17",
+            "2:19",
+            "4:16:14 (10)",
+            "2:40",
+            "3:32:49 (38)",
+            "8:42:18",
+            "56.54"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Benjamin Hill",
+            "gender": "M",
+            "position": 37,
+            "countryCode": "AU",
+            "swimTime": "54:49",
+            "t1Time": "3:13",
+            "bikeTime": "4:53:30",
+            "t2Time": "3:51",
+            "runTime": "2:53:11",
+            "totalTime": "8:48:32",
+            "ptoPoints": 53.75
+          },
+          "athletePath": "/athlete/benjamin-hill",
+          "rawCells": [
+            "37",
+            "Benjamin Hill",
+            "54:49 (44)",
+            "3:13",
+            "4:53:30 (43)",
+            "3:51",
+            "2:53:11 (22)",
+            "8:48:32",
+            "53.75"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Marius Bjerkeset",
+            "gender": "M",
+            "position": 38,
+            "countryCode": "NO",
+            "swimTime": "59:01",
+            "t1Time": "2:37",
+            "bikeTime": "4:28:06",
+            "t2Time": "3:18",
+            "runTime": "3:15:46",
+            "totalTime": "8:48:47",
+            "ptoPoints": 53.27
+          },
+          "athletePath": "/athlete/marius-bjerkeset",
+          "rawCells": [
+            "38",
+            "Marius Bjerkeset",
+            "59:01 (50)",
+            "2:37",
+            "4:28:06 (33)",
+            "3:18",
+            "3:15:46 (37)",
+            "8:48:47",
+            "53.27"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Antonio Benito López",
+            "gender": "M",
+            "position": 39,
+            "countryCode": "ES",
+            "swimTime": "48:27",
+            "t1Time": "2:36",
+            "bikeTime": "4:20:05",
+            "t2Time": "2:38",
+            "runTime": "3:37:34",
+            "totalTime": "8:51:18",
+            "ptoPoints": 51.93
+          },
+          "athletePath": "/athlete/antonio-benito-lopez",
+          "rawCells": [
+            "39",
+            "Antonio Benito López",
+            "48:27 (6)",
+            "2:36",
+            "4:20:05 (14)",
+            "2:38",
+            "3:37:34 (39)",
+            "8:51:18",
+            "51.93"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Caleb Noble",
+            "gender": "M",
+            "position": 40,
+            "countryCode": "AU",
+            "swimTime": "50:42",
+            "t1Time": "2:46",
+            "bikeTime": "4:31:41",
+            "t2Time": "3:22",
+            "runTime": "3:54:25",
+            "totalTime": "9:22:54",
+            "ptoPoints": 46.03
+          },
+          "athletePath": "/athlete/caleb-noble",
+          "rawCells": [
+            "40",
+            "Caleb Noble",
+            "50:42 (32)",
+            "2:46",
+            "4:31:41 (35)",
+            "3:22",
+            "3:54:25 (40)",
+            "9:22:54",
+            "46.03"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Mattia Ceccarelli",
+            "gender": "M",
+            "position": 41,
+            "countryCode": "IT",
+            "swimTime": "48:30",
+            "t1Time": "2:25",
+            "bikeTime": "4:59:32",
+            "t2Time": "4:15",
+            "runTime": "3:55:28",
+            "totalTime": "9:50:08",
+            "ptoPoints": 45.67
+          },
+          "athletePath": "/athlete/mattia-ceccarelli",
+          "rawCells": [
+            "41",
+            "Mattia Ceccarelli",
+            "48:30 (12)",
+            "2:25",
+            "4:59:32 (44)",
+            "4:15",
+            "3:55:28 (41)",
+            "9:50:08",
+            "45.67"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Magnus Ditlev",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "DK",
+            "swimTime": "50:18",
+            "t1Time": "3:14",
+            "bikeTime": "4:06:47",
+            "t2Time": "2:58"
+          },
+          "athletePath": "/athlete/magnus-elbaek-ditlev",
+          "rawCells": [
+            "DNF",
+            "Magnus Ditlev",
+            "50:18 (30)",
+            "3:14",
+            "4:06:47",
+            "2:58",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Nathan Guerbeur",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "FR",
+            "swimTime": "52:16",
+            "t1Time": "2:26",
+            "bikeTime": "4:21:29",
+            "t2Time": "3:40"
+          },
+          "athletePath": "/athlete/nathan-guerbeur",
+          "rawCells": [
+            "DNF",
+            "Nathan Guerbeur",
+            "52:16 (34)",
+            "2:26",
+            "4:21:29 (21)",
+            "3:40",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Rudy Von Berg",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "US",
+            "swimTime": "50:12",
+            "t1Time": "2:24",
+            "bikeTime": "4:28:05",
+            "t2Time": "3:45"
+          },
+          "athletePath": "/athlete/rudy-von-berg",
+          "rawCells": [
+            "DNF",
+            "Rudy Von Berg",
+            "50:12 (29)",
+            "2:24",
+            "4:28:05 (32)",
+            "3:45",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Patrick Lange",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "DE",
+            "swimTime": "48:29",
+            "t1Time": "2:17"
+          },
+          "athletePath": "/athlete/patrick-lange",
+          "rawCells": [
+            "DNF",
+            "Patrick Lange",
+            "48:29 (10)",
+            "2:17",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Andrea Salvisberg",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "CH",
+            "swimTime": "48:29",
+            "t1Time": "2:30"
+          },
+          "athletePath": "/athlete/andrea-salvisberg",
+          "rawCells": [
+            "DNF",
+            "Andrea Salvisberg",
+            "48:29 (11)",
+            "2:30",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Jamie Riddle",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "ZA",
+            "swimTime": "48:27",
+            "t1Time": "2:34"
+          },
+          "athletePath": "/athlete/jamie-riddle",
+          "rawCells": [
+            "DNF",
+            "Jamie Riddle",
+            "48:27 (7)",
+            "2:34",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Sam Laidlow",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "FR",
+            "swimTime": "48:33",
+            "t1Time": "3:06"
+          },
+          "athletePath": "/athlete/sam-laidlow",
+          "rawCells": [
+            "DNF",
+            "Sam Laidlow",
+            "48:33 (18)",
+            "3:06",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Tristan Olij",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "NL",
+            "swimTime": "53:17",
+            "t1Time": "2:23"
+          },
+          "athletePath": "/athlete/tristan-olij",
+          "rawCells": [
+            "DNF",
+            "Tristan Olij",
+            "53:17 (35)",
+            "2:23",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Daniel Bækkegård",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "DK",
+            "swimTime": "53:26",
+            "t1Time": "2:26"
+          },
+          "athletePath": "/athlete/daniel-baekkegard",
+          "rawCells": [
+            "DNF",
+            "Daniel Bækkegård",
+            "53:26 (40)",
+            "2:26",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Kristian Høgenhaug",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "DK",
+            "swimTime": "53:22",
+            "t1Time": "3:09"
+          },
+          "athletePath": "/athlete/kristian-hogenhaug",
+          "rawCells": [
+            "DNF",
+            "Kristian Høgenhaug",
+            "53:22 (38)",
+            "3:09",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        },
+        {
+          "result": {
+            "athleteName": "Trevor Foley",
+            "gender": "M",
+            "position": "DNF",
+            "countryCode": "US",
+            "swimTime": "54:53",
+            "t1Time": "2:35"
+          },
+          "athletePath": "/athlete/trevor-foley",
+          "rawCells": [
+            "DNF",
+            "Trevor Foley",
+            "54:53 (46)",
+            "2:35",
+            "--:--",
+            "--:--",
+            "--:--",
+            "--:--",
+            "-"
+          ]
+        }
+      ],
+      "sof": 92.79
+    }
+  ],
+  "rows": [
+    {
+      "athleteName": "Taylor Knibb",
+      "gender": "W",
+      "position": 1,
+      "countryCode": "US",
+      "swimTime": "52:55",
+      "t1Time": "2:54",
+      "bikeTime": "4:40:07",
+      "t2Time": "2:48",
+      "runTime": "2:57:46",
+      "totalTime": "8:36:29",
+      "ptoPoints": 101.42,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Laura Philipp",
+      "gender": "W",
+      "position": 2,
+      "countryCode": "DE",
+      "swimTime": "1:00:03",
+      "t1Time": "2:47",
+      "bikeTime": "4:43:00",
+      "t2Time": "3:04",
+      "runTime": "2:50:43",
+      "totalTime": "8:39:34",
+      "ptoPoints": 99.56,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Julie Derron",
+      "gender": "W",
+      "position": 3,
+      "countryCode": "CH",
+      "swimTime": "53:09",
+      "t1Time": "2:24",
+      "bikeTime": "4:49:35",
+      "t2Time": "2:24",
+      "runTime": "2:58:54",
+      "totalTime": "8:46:25",
+      "ptoPoints": 96.42,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kat Matthews",
+      "gender": "W",
+      "position": 4,
+      "countryCode": "GB",
+      "swimTime": "54:57",
+      "t1Time": "2:39",
+      "bikeTime": "4:55:34",
+      "t2Time": "3:41",
+      "runTime": "2:52:50",
+      "totalTime": "8:49:38",
+      "ptoPoints": 94.56,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Imogen Simmonds",
+      "gender": "W",
+      "position": 5,
+      "countryCode": "CH",
+      "swimTime": "53:08",
+      "t1Time": "2:29",
+      "bikeTime": "4:45:21",
+      "t2Time": "3:04",
+      "runTime": "3:07:45",
+      "totalTime": "8:51:44",
+      "ptoPoints": 93.08,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Lisa Perterer",
+      "gender": "W",
+      "position": 6,
+      "countryCode": "AT",
+      "swimTime": "54:34",
+      "t1Time": "2:53",
+      "bikeTime": "4:43:54",
+      "t2Time": "3:04",
+      "runTime": "3:08:31",
+      "totalTime": "8:52:54",
+      "ptoPoints": 91.94,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Hannah Berry",
+      "gender": "W",
+      "position": 7,
+      "countryCode": "NZ",
+      "swimTime": "53:12",
+      "t1Time": "2:32",
+      "bikeTime": "4:45:23",
+      "t2Time": "3:11",
+      "runTime": "3:15:26",
+      "totalTime": "8:59:41",
+      "ptoPoints": 88.89,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Solveig Løvseth",
+      "gender": "W",
+      "position": 8,
+      "countryCode": "NO",
+      "swimTime": "55:29",
+      "t1Time": "3:05",
+      "bikeTime": "4:42:12",
+      "t2Time": "2:17",
+      "runTime": "3:19:08",
+      "totalTime": "9:02:09",
+      "ptoPoints": 87.34,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Anne-Sophie Pierre",
+      "gender": "W",
+      "position": 9,
+      "countryCode": "FR",
+      "swimTime": "1:04:01",
+      "t1Time": "2:27",
+      "bikeTime": "4:52:08",
+      "t2Time": "2:50",
+      "runTime": "3:02:25",
+      "totalTime": "9:03:49",
+      "ptoPoints": 86.07,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Grace Thek",
+      "gender": "W",
+      "position": 10,
+      "countryCode": "AU",
+      "swimTime": "57:12",
+      "t1Time": "2:38",
+      "bikeTime": "5:01:04",
+      "t2Time": "3:04",
+      "runTime": "3:02:41",
+      "totalTime": "9:06:37",
+      "ptoPoints": 84.43,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Elisabetta Curridori",
+      "gender": "W",
+      "position": 11,
+      "countryCode": "IT",
+      "swimTime": "1:04:41",
+      "t1Time": "2:28",
+      "bikeTime": "4:57:25",
+      "t2Time": "2:56",
+      "runTime": "3:02:03",
+      "totalTime": "9:09:30",
+      "ptoPoints": 82.78,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Lotte Wilms",
+      "gender": "W",
+      "position": 12,
+      "countryCode": "NL",
+      "swimTime": "54:31",
+      "t1Time": "3:12",
+      "bikeTime": "4:51:27",
+      "t2Time": "3:54",
+      "runTime": "3:16:47",
+      "totalTime": "9:09:48",
+      "ptoPoints": 82.02,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Marta Sánchez",
+      "gender": "W",
+      "position": 13,
+      "countryCode": "ES",
+      "swimTime": "52:59",
+      "t1Time": "2:42",
+      "bikeTime": "4:54:01",
+      "t2Time": "3:25",
+      "runTime": "3:17:18",
+      "totalTime": "9:10:25",
+      "ptoPoints": 81.16,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Sara Svensk",
+      "gender": "W",
+      "position": 14,
+      "countryCode": "SE",
+      "swimTime": "1:04:43",
+      "t1Time": "2:54",
+      "bikeTime": "4:57:58",
+      "t2Time": "3:43",
+      "runTime": "3:05:21",
+      "totalTime": "9:14:38",
+      "ptoPoints": 79.09,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Marta Lagownik",
+      "gender": "W",
+      "position": 15,
+      "countryCode": "PL",
+      "swimTime": "59:55",
+      "t1Time": "2:33",
+      "bikeTime": "5:07:41",
+      "t2Time": "3:15",
+      "runTime": "3:01:22",
+      "totalTime": "9:14:44",
+      "ptoPoints": 78.44,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jenny Jendryschik",
+      "gender": "W",
+      "position": 16,
+      "countryCode": "DE",
+      "swimTime": "1:00:00",
+      "t1Time": "2:33",
+      "bikeTime": "4:58:10",
+      "t2Time": "2:44",
+      "runTime": "3:12:14",
+      "totalTime": "9:15:40",
+      "ptoPoints": 77.52,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Regan Hollioake",
+      "gender": "W",
+      "position": 17,
+      "countryCode": "AU",
+      "swimTime": "54:32",
+      "t1Time": "2:44",
+      "bikeTime": "4:48:21",
+      "t2Time": "3:20",
+      "runTime": "3:28:22",
+      "totalTime": "9:17:18",
+      "ptoPoints": 76.37,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Paula Findlay",
+      "gender": "W",
+      "position": 18,
+      "countryCode": "CA",
+      "swimTime": "55:02",
+      "t1Time": "2:39",
+      "bikeTime": "4:43:41",
+      "t2Time": "2:41",
+      "runTime": "3:36:00",
+      "totalTime": "9:20:01",
+      "ptoPoints": 74.86,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Rachel Zilinskas",
+      "gender": "W",
+      "position": 19,
+      "countryCode": "US",
+      "swimTime": "53:07",
+      "t1Time": "3:15",
+      "bikeTime": "4:54:32",
+      "t2Time": "3:42",
+      "runTime": "3:26:15",
+      "totalTime": "9:20:49",
+      "ptoPoints": 74.01,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jana Uderstadt",
+      "gender": "W",
+      "position": 20,
+      "countryCode": "DE",
+      "swimTime": "1:04:47",
+      "t1Time": "2:54",
+      "bikeTime": "4:59:39",
+      "t2Time": "3:01",
+      "runTime": "3:11:03",
+      "totalTime": "9:21:22",
+      "ptoPoints": 73.27,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jackie Hering",
+      "gender": "W",
+      "position": 21,
+      "countryCode": "US",
+      "swimTime": "58:06",
+      "t1Time": "3:01",
+      "bikeTime": "5:05:40",
+      "t2Time": "3:32",
+      "runTime": "3:12:13",
+      "totalTime": "9:22:30",
+      "ptoPoints": 72.34,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kaidi Kivioja",
+      "gender": "W",
+      "position": 22,
+      "countryCode": "EE",
+      "swimTime": "1:00:01",
+      "t1Time": "2:56",
+      "bikeTime": "4:55:38",
+      "t2Time": "2:56",
+      "runTime": "3:26:09",
+      "totalTime": "9:27:38",
+      "ptoPoints": 70.04,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Skye Wallace",
+      "gender": "W",
+      "position": 23,
+      "countryCode": "AU",
+      "swimTime": "1:03:11",
+      "t1Time": "2:59",
+      "bikeTime": "5:01:08",
+      "t2Time": "2:58",
+      "runTime": "3:19:20",
+      "totalTime": "9:29:33",
+      "ptoPoints": 68.86,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Charlotte McShane",
+      "gender": "W",
+      "position": 24,
+      "countryCode": "AU",
+      "swimTime": "57:13",
+      "t1Time": "3:02",
+      "bikeTime": "5:18:29",
+      "t2Time": "3:28",
+      "runTime": "3:10:00",
+      "totalTime": "9:32:09",
+      "ptoPoints": 67.45,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kate Curran",
+      "gender": "W",
+      "position": 25,
+      "countryCode": "GB",
+      "swimTime": "57:10",
+      "t1Time": "2:39",
+      "bikeTime": "5:18:41",
+      "t2Time": "3:41",
+      "runTime": "3:13:11",
+      "totalTime": "9:35:19",
+      "ptoPoints": 65.87,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Leonie Konczalla",
+      "gender": "W",
+      "position": 26,
+      "countryCode": "DE",
+      "swimTime": "1:08:19",
+      "t1Time": "3:02",
+      "bikeTime": "5:02:06",
+      "t2Time": "2:43",
+      "runTime": "3:19:25",
+      "totalTime": "9:35:33",
+      "ptoPoints": 65.3,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Samantha Skold",
+      "gender": "W",
+      "position": 27,
+      "countryCode": "US",
+      "swimTime": "1:16:57",
+      "t1Time": "2:26",
+      "bikeTime": "5:04:21",
+      "t2Time": "3:32",
+      "runTime": "3:14:45",
+      "totalTime": "9:41:59",
+      "ptoPoints": 62.61,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Lara Hernandez-Tome",
+      "gender": "W",
+      "position": 28,
+      "countryCode": "ES",
+      "swimTime": "53:00",
+      "t1Time": "3:37",
+      "bikeTime": "5:10:55",
+      "t2Time": "4:06",
+      "runTime": "3:32:53",
+      "totalTime": "9:44:29",
+      "ptoPoints": 61.28,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Rhianne Hughes",
+      "gender": "W",
+      "position": 29,
+      "countryCode": "GB",
+      "swimTime": "1:10:16",
+      "t1Time": "2:36",
+      "bikeTime": "5:12:09",
+      "t2Time": "2:49",
+      "runTime": "3:20:41",
+      "totalTime": "9:48:29",
+      "ptoPoints": 59.44,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Nikita Paskiewiez",
+      "gender": "W",
+      "position": 30,
+      "countryCode": "FR",
+      "swimTime": "1:07:41",
+      "t1Time": "3:26",
+      "bikeTime": "5:16:27",
+      "t2Time": "2:43",
+      "runTime": "3:21:32",
+      "totalTime": "9:51:46",
+      "ptoPoints": 57.86,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Arlette Mariana Gonzalez Hurtado",
+      "gender": "W",
+      "position": 31,
+      "countryCode": "MX",
+      "swimTime": "1:04:48",
+      "t1Time": "3:10",
+      "bikeTime": "5:16:26",
+      "t2Time": "4:40",
+      "runTime": "3:23:57",
+      "totalTime": "9:52:59",
+      "ptoPoints": 57,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Anna Pabinger",
+      "gender": "W",
+      "position": 32,
+      "countryCode": "AT",
+      "swimTime": "1:16:09",
+      "t1Time": "3:29",
+      "bikeTime": "5:06:24",
+      "t2Time": "3:14",
+      "runTime": "3:23:45",
+      "totalTime": "9:53:00",
+      "ptoPoints": 56.55,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Gabrielle Lumkes",
+      "gender": "W",
+      "position": 33,
+      "countryCode": "US",
+      "swimTime": "59:58",
+      "t1Time": "2:39",
+      "bikeTime": "5:14:00",
+      "t2Time": "3:12",
+      "runTime": "3:41:44",
+      "totalTime": "10:01:32",
+      "ptoPoints": 53.2,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Antonia Milowsky",
+      "gender": "W",
+      "position": 34,
+      "countryCode": "DE",
+      "swimTime": "59:59",
+      "t1Time": "2:39",
+      "bikeTime": "5:32:58",
+      "t2Time": "4:26",
+      "runTime": "3:30:04",
+      "totalTime": "10:10:04",
+      "ptoPoints": 49.85,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Penny Slater",
+      "gender": "W",
+      "position": 35,
+      "countryCode": "AU",
+      "swimTime": "1:00:13",
+      "t1Time": "2:55",
+      "bikeTime": "5:13:44",
+      "t2Time": "3:27",
+      "runTime": "3:51:49",
+      "totalTime": "10:12:06",
+      "ptoPoints": 49.17,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Henrike Gueber",
+      "gender": "W",
+      "position": 36,
+      "countryCode": "DE",
+      "swimTime": "1:07:44",
+      "t1Time": "2:54",
+      "bikeTime": "4:51:42",
+      "t2Time": "3:01",
+      "runTime": "4:30:54",
+      "totalTime": "10:36:14",
+      "ptoPoints": 48.77,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Lucy Charles-Barclay",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "GB",
+      "swimTime": "51:28",
+      "t1Time": "2:22",
+      "bikeTime": "4:45:12",
+      "t2Time": "2:32",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Marjolaine Pierré",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "FR",
+      "swimTime": "55:53",
+      "t1Time": "2:41",
+      "bikeTime": "4:58:54",
+      "t2Time": "2:32",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "India Lee",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "GB",
+      "swimTime": "58:02",
+      "t1Time": "2:37",
+      "bikeTime": "5:01:25",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Daisy Davies",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "GB",
+      "swimTime": "53:18",
+      "t1Time": "2:29",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Pamella Oliveira",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "BR",
+      "swimTime": "53:14",
+      "t1Time": "2:38",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Franzi Hofmann",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "DE",
+      "swimTime": "59:54",
+      "t1Time": "2:37",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Tamara Jewett",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "CA",
+      "swimTime": "1:00:00",
+      "t1Time": "2:45",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Katrine Græsbøll Christensen",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "DK",
+      "swimTime": "1:04:45",
+      "t1Time": "3:18",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Rebecca Anderbury",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "GB",
+      "swimTime": "1:07:42",
+      "t1Time": "2:52",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Danielle Lewis",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "US",
+      "swimTime": "1:07:36",
+      "t1Time": "3:47",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Danielle Fauteux",
+      "gender": "W",
+      "position": "DNF",
+      "countryCode": "CA",
+      "swimTime": "1:07:50",
+      "t1Time": "4:07",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Vincent Luis",
+      "gender": "M",
+      "position": 1,
+      "countryCode": "FR",
+      "swimTime": "48:31",
+      "t1Time": "2:12",
+      "bikeTime": "4:15:42",
+      "t2Time": "2:28",
+      "runTime": "2:38:36",
+      "totalTime": "7:47:27",
+      "ptoPoints": 97.81,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Gustav Iden",
+      "gender": "M",
+      "position": 2,
+      "countryCode": "NO",
+      "swimTime": "50:10",
+      "t1Time": "2:20",
+      "bikeTime": "4:17:10",
+      "t2Time": "2:27",
+      "runTime": "2:36:58",
+      "totalTime": "7:49:03",
+      "ptoPoints": 96.4,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Matthew Marquardt",
+      "gender": "M",
+      "position": 3,
+      "countryCode": "US",
+      "swimTime": "48:25",
+      "t1Time": "2:51",
+      "bikeTime": "4:11:28",
+      "t2Time": "3:20",
+      "runTime": "2:43:58",
+      "totalTime": "7:49:59",
+      "ptoPoints": 95.26,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Gregory Barnaby",
+      "gender": "M",
+      "position": 4,
+      "countryCode": "IT",
+      "swimTime": "50:10",
+      "t1Time": "2:21",
+      "bikeTime": "4:11:23",
+      "t2Time": "2:26",
+      "runTime": "2:44:44",
+      "totalTime": "7:51:02",
+      "ptoPoints": 94.09,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Pierre Le Corre",
+      "gender": "M",
+      "position": 5,
+      "countryCode": "FR",
+      "swimTime": "48:29",
+      "t1Time": "2:48",
+      "bikeTime": "4:20:47",
+      "t2Time": "2:37",
+      "runTime": "2:38:50",
+      "totalTime": "7:53:29",
+      "ptoPoints": 92.4,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Sam Long",
+      "gender": "M",
+      "position": 6,
+      "countryCode": "US",
+      "swimTime": "54:47",
+      "t1Time": "2:08",
+      "bikeTime": "4:12:50",
+      "t2Time": "2:40",
+      "runTime": "2:42:57",
+      "totalTime": "7:55:21",
+      "ptoPoints": 90.94,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jonas Schomburg",
+      "gender": "M",
+      "position": 7,
+      "countryCode": "DE",
+      "swimTime": "48:34",
+      "t1Time": "2:22",
+      "bikeTime": "4:21:31",
+      "t2Time": "2:32",
+      "runTime": "2:41:45",
+      "totalTime": "7:56:42",
+      "ptoPoints": 89.7,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kristian Blummenfelt",
+      "gender": "M",
+      "position": 8,
+      "countryCode": "NO",
+      "swimTime": "48:48",
+      "t1Time": "2:28",
+      "bikeTime": "4:15:06",
+      "t2Time": "2:40",
+      "runTime": "2:49:06",
+      "totalTime": "7:58:07",
+      "ptoPoints": 88.45,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Youri Keulen",
+      "gender": "M",
+      "position": 9,
+      "countryCode": "NL",
+      "swimTime": "48:32",
+      "t1Time": "2:35",
+      "bikeTime": "4:22:30",
+      "t2Time": "2:46",
+      "runTime": "2:42:05",
+      "totalTime": "7:58:26",
+      "ptoPoints": 87.64,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Menno Koolhaas",
+      "gender": "M",
+      "position": 10,
+      "countryCode": "NL",
+      "swimTime": "48:18",
+      "t1Time": "1:57",
+      "bikeTime": "4:20:37",
+      "t2Time": "2:34",
+      "runTime": "2:45:31",
+      "totalTime": "7:58:55",
+      "ptoPoints": 86.77,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Nick Thompson",
+      "gender": "M",
+      "position": 11,
+      "countryCode": "AU",
+      "swimTime": "51:36",
+      "t1Time": "2:39",
+      "bikeTime": "4:12:36",
+      "t2Time": "2:31",
+      "runTime": "2:51:52",
+      "totalTime": "8:01:13",
+      "ptoPoints": 85.22,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Cameron Wurf",
+      "gender": "M",
+      "position": 12,
+      "countryCode": "AU",
+      "swimTime": "54:47",
+      "t1Time": "2:26",
+      "bikeTime": "4:12:41",
+      "t2Time": "2:28",
+      "runTime": "2:51:41",
+      "totalTime": "8:04:01",
+      "ptoPoints": 83.5,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Mikel Ugarte Ramos",
+      "gender": "M",
+      "position": 13,
+      "countryCode": "ES",
+      "swimTime": "50:41",
+      "t1Time": "2:49",
+      "bikeTime": "4:22:31",
+      "t2Time": "2:36",
+      "runTime": "2:45:30",
+      "totalTime": "8:04:04",
+      "ptoPoints": 82.84,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jon Sæverås Breivold",
+      "gender": "M",
+      "position": 14,
+      "countryCode": "NO",
+      "swimTime": "59:02",
+      "t1Time": "2:43",
+      "bikeTime": "4:13:21",
+      "t2Time": "2:54",
+      "runTime": "2:48:56",
+      "totalTime": "8:06:53",
+      "ptoPoints": 81.13,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jan Stratmann",
+      "gender": "M",
+      "position": 15,
+      "countryCode": "DE",
+      "swimTime": "48:33",
+      "t1Time": "2:41",
+      "bikeTime": "4:20:44",
+      "t2Time": "3:47",
+      "runTime": "2:51:36",
+      "totalTime": "8:07:19",
+      "ptoPoints": 80.35,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kacper Stepniak",
+      "gender": "M",
+      "position": 16,
+      "countryCode": "PL",
+      "swimTime": "48:25",
+      "t1Time": "2:24",
+      "bikeTime": "4:20:47",
+      "t2Time": "2:26",
+      "runTime": "2:53:33",
+      "totalTime": "8:07:32",
+      "ptoPoints": 79.67,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kieran Lindars",
+      "gender": "M",
+      "position": 17,
+      "countryCode": "GB",
+      "swimTime": "48:32",
+      "t1Time": "2:17",
+      "bikeTime": "4:21:05",
+      "t2Time": "2:37",
+      "runTime": "2:53:34",
+      "totalTime": "8:08:03",
+      "ptoPoints": 78.88,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jordi Montraveta Moya",
+      "gender": "M",
+      "position": 18,
+      "countryCode": "ES",
+      "swimTime": "58:57",
+      "t1Time": "2:27",
+      "bikeTime": "4:18:51",
+      "t2Time": "3:11",
+      "runTime": "2:48:27",
+      "totalTime": "8:11:52",
+      "ptoPoints": 76.83,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jumpei Furuya",
+      "gender": "M",
+      "position": 19,
+      "countryCode": "JP",
+      "swimTime": "48:29",
+      "t1Time": "2:23",
+      "bikeTime": "4:25:38",
+      "t2Time": "3:14",
+      "runTime": "2:53:59",
+      "totalTime": "8:13:42",
+      "ptoPoints": 75.56,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Matt Hanson",
+      "gender": "M",
+      "position": 20,
+      "countryCode": "US",
+      "swimTime": "54:50",
+      "t1Time": "2:15",
+      "bikeTime": "4:36:11",
+      "t2Time": "2:32",
+      "runTime": "2:40:34",
+      "totalTime": "8:16:19",
+      "ptoPoints": 74.01,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Damien Le Mesnager",
+      "gender": "M",
+      "position": 21,
+      "countryCode": "FR",
+      "swimTime": "58:51",
+      "t1Time": "2:21",
+      "bikeTime": "4:21:24",
+      "t2Time": "2:51",
+      "runTime": "2:51:22",
+      "totalTime": "8:16:47",
+      "ptoPoints": 73.29,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Michele Sarzilla",
+      "gender": "M",
+      "position": 22,
+      "countryCode": "IT",
+      "swimTime": "48:31",
+      "t1Time": "2:20",
+      "bikeTime": "4:27:22",
+      "t2Time": "3:01",
+      "runTime": "2:55:53",
+      "totalTime": "8:17:05",
+      "ptoPoints": 72.64,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Frederic Funk",
+      "gender": "M",
+      "position": 23,
+      "countryCode": "DE",
+      "swimTime": "53:19",
+      "t1Time": "2:37",
+      "bikeTime": "4:16:29",
+      "t2Time": "2:58",
+      "runTime": "3:02:07",
+      "totalTime": "8:17:29",
+      "ptoPoints": 71.96,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Brock Hoel",
+      "gender": "M",
+      "position": 24,
+      "countryCode": "CA",
+      "swimTime": "50:06",
+      "t1Time": "2:12",
+      "bikeTime": "4:34:32",
+      "t2Time": "2:34",
+      "runTime": "2:50:19",
+      "totalTime": "8:19:40",
+      "ptoPoints": 70.61,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Dominik Sowieja",
+      "gender": "M",
+      "position": 25,
+      "countryCode": "DE",
+      "swimTime": "58:54",
+      "t1Time": "2:42",
+      "bikeTime": "4:25:37",
+      "t2Time": "3:13",
+      "runTime": "2:51:57",
+      "totalTime": "8:22:22",
+      "ptoPoints": 69.07,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Cameron Main",
+      "gender": "M",
+      "position": 26,
+      "countryCode": "GB",
+      "swimTime": "50:07",
+      "t1Time": "2:12",
+      "bikeTime": "4:42:34",
+      "t2Time": "2:30",
+      "runTime": "2:50:01",
+      "totalTime": "8:27:22",
+      "ptoPoints": 66.67,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Ben Kanute",
+      "gender": "M",
+      "position": 27,
+      "countryCode": "US",
+      "swimTime": "48:36",
+      "t1Time": "2:26",
+      "bikeTime": "4:24:41",
+      "t2Time": "3:18",
+      "runTime": "3:08:55",
+      "totalTime": "8:27:54",
+      "ptoPoints": 65.98,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Wilhelm Hirsch",
+      "gender": "M",
+      "position": 28,
+      "countryCode": "DE",
+      "swimTime": "48:21",
+      "t1Time": "2:11",
+      "bikeTime": "4:25:34",
+      "t2Time": "3:01",
+      "runTime": "3:09:13",
+      "totalTime": "8:28:17",
+      "ptoPoints": 65.36,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jason West",
+      "gender": "M",
+      "position": 29,
+      "countryCode": "US",
+      "swimTime": "48:36",
+      "t1Time": "2:29",
+      "bikeTime": "4:26:26",
+      "t2Time": "3:44",
+      "runTime": "3:07:50",
+      "totalTime": "8:29:03",
+      "ptoPoints": 64.61,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Florian Angert",
+      "gender": "M",
+      "position": 30,
+      "countryCode": "DE",
+      "swimTime": "48:35",
+      "t1Time": "2:35",
+      "bikeTime": "4:25:07",
+      "t2Time": "3:07",
+      "runTime": "3:10:17",
+      "totalTime": "8:29:40",
+      "ptoPoints": 63.91,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Almog Elazary",
+      "gender": "M",
+      "position": 31,
+      "countryCode": "IL",
+      "swimTime": "48:40",
+      "t1Time": "2:15",
+      "bikeTime": "4:42:12",
+      "t2Time": "2:40",
+      "runTime": "2:57:45",
+      "totalTime": "8:33:30",
+      "ptoPoints": 62,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jack Moody",
+      "gender": "M",
+      "position": 32,
+      "countryCode": "NZ",
+      "swimTime": "53:26",
+      "t1Time": "2:56",
+      "bikeTime": "4:37:00",
+      "t2Time": "3:03",
+      "runTime": "2:57:56",
+      "totalTime": "8:34:20",
+      "ptoPoints": 61.25,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jack Sosinski",
+      "gender": "M",
+      "position": 33,
+      "countryCode": "AU",
+      "swimTime": "53:18",
+      "t1Time": "2:29",
+      "bikeTime": "4:31:47",
+      "t2Time": "2:41",
+      "runTime": "3:07:04",
+      "totalTime": "8:37:17",
+      "ptoPoints": 59.69,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Arnaud Guilloux",
+      "gender": "M",
+      "position": 34,
+      "countryCode": "FR",
+      "swimTime": "54:44",
+      "t1Time": "2:32",
+      "bikeTime": "4:40:24",
+      "t2Time": "3:23",
+      "runTime": "2:57:49",
+      "totalTime": "8:38:50",
+      "ptoPoints": 58.68,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Sebastian Norberg",
+      "gender": "M",
+      "position": 35,
+      "countryCode": "SE",
+      "swimTime": "59:04",
+      "t1Time": "3:10",
+      "bikeTime": "4:28:41",
+      "t2Time": "3:06",
+      "runTime": "3:06:35",
+      "totalTime": "8:40:34",
+      "ptoPoints": 57.6,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Marten Van Riel",
+      "gender": "M",
+      "position": 36,
+      "countryCode": "BE",
+      "swimTime": "48:17",
+      "t1Time": "2:19",
+      "bikeTime": "4:16:14",
+      "t2Time": "2:40",
+      "runTime": "3:32:49",
+      "totalTime": "8:42:18",
+      "ptoPoints": 56.54,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Benjamin Hill",
+      "gender": "M",
+      "position": 37,
+      "countryCode": "AU",
+      "swimTime": "54:49",
+      "t1Time": "3:13",
+      "bikeTime": "4:53:30",
+      "t2Time": "3:51",
+      "runTime": "2:53:11",
+      "totalTime": "8:48:32",
+      "ptoPoints": 53.75,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Marius Bjerkeset",
+      "gender": "M",
+      "position": 38,
+      "countryCode": "NO",
+      "swimTime": "59:01",
+      "t1Time": "2:37",
+      "bikeTime": "4:28:06",
+      "t2Time": "3:18",
+      "runTime": "3:15:46",
+      "totalTime": "8:48:47",
+      "ptoPoints": 53.27,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Antonio Benito López",
+      "gender": "M",
+      "position": 39,
+      "countryCode": "ES",
+      "swimTime": "48:27",
+      "t1Time": "2:36",
+      "bikeTime": "4:20:05",
+      "t2Time": "2:38",
+      "runTime": "3:37:34",
+      "totalTime": "8:51:18",
+      "ptoPoints": 51.93,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Caleb Noble",
+      "gender": "M",
+      "position": 40,
+      "countryCode": "AU",
+      "swimTime": "50:42",
+      "t1Time": "2:46",
+      "bikeTime": "4:31:41",
+      "t2Time": "3:22",
+      "runTime": "3:54:25",
+      "totalTime": "9:22:54",
+      "ptoPoints": 46.03,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Mattia Ceccarelli",
+      "gender": "M",
+      "position": 41,
+      "countryCode": "IT",
+      "swimTime": "48:30",
+      "t1Time": "2:25",
+      "bikeTime": "4:59:32",
+      "t2Time": "4:15",
+      "runTime": "3:55:28",
+      "totalTime": "9:50:08",
+      "ptoPoints": 45.67,
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Magnus Ditlev",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "DK",
+      "swimTime": "50:18",
+      "t1Time": "3:14",
+      "bikeTime": "4:06:47",
+      "t2Time": "2:58",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Nathan Guerbeur",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "FR",
+      "swimTime": "52:16",
+      "t1Time": "2:26",
+      "bikeTime": "4:21:29",
+      "t2Time": "3:40",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Rudy Von Berg",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "US",
+      "swimTime": "50:12",
+      "t1Time": "2:24",
+      "bikeTime": "4:28:05",
+      "t2Time": "3:45",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Patrick Lange",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "DE",
+      "swimTime": "48:29",
+      "t1Time": "2:17",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Andrea Salvisberg",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "CH",
+      "swimTime": "48:29",
+      "t1Time": "2:30",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Jamie Riddle",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "ZA",
+      "swimTime": "48:27",
+      "t1Time": "2:34",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Sam Laidlow",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "FR",
+      "swimTime": "48:33",
+      "t1Time": "3:06",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Tristan Olij",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "NL",
+      "swimTime": "53:17",
+      "t1Time": "2:23",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Daniel Bækkegård",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "DK",
+      "swimTime": "53:26",
+      "t1Time": "2:26",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Kristian Høgenhaug",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "DK",
+      "swimTime": "53:22",
+      "t1Time": "3:09",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    },
+    {
+      "athleteName": "Trevor Foley",
+      "gender": "M",
+      "position": "DNF",
+      "countryCode": "US",
+      "swimTime": "54:53",
+      "t1Time": "2:35",
+      "raceEditionId": "ironman-world-championship-kona-2026"
+    }
+  ],
+  "matches": [
+    {
+      "athleteName": "Taylor Knibb",
+      "athleteId": 104,
+      "athletePath": "/athlete/taylor-knibb"
+    },
+    {
+      "athleteName": "Laura Philipp",
+      "athleteId": 109,
+      "athletePath": "/athlete/laura-philipp"
+    },
+    {
+      "athleteName": "Julie Derron",
+      "athleteId": 102,
+      "athletePath": "/athlete/julie-derron"
+    },
+    {
+      "athleteName": "Kat Matthews",
+      "athleteId": 108,
+      "athletePath": "/athlete/kat-matthews"
+    },
+    {
+      "athleteName": "Imogen Simmonds",
+      "athleteId": 112,
+      "athletePath": "/athlete/imogen-simmonds"
+    },
+    {
+      "athleteName": "Lisa Perterer",
+      "athleteId": 119,
+      "athletePath": "/athlete/lisa-perterer"
+    },
+    {
+      "athleteName": "Hannah Berry",
+      "athleteId": 113,
+      "athletePath": "/athlete/hannah-wells"
+    },
+    {
+      "athleteName": "Solveig Løvseth",
+      "athleteId": 106,
+      "athletePath": "/athlete/solveig-loevseth"
+    },
+    {
+      "athleteName": "Anne-Sophie Pierre",
+      "athleteId": 134,
+      "athletePath": "/athlete/anne-sophie-pierre"
+    },
+    {
+      "athleteName": "Grace Thek",
+      "athleteId": 129,
+      "athletePath": "/athlete/grace-thek"
+    },
+    {
+      "athleteName": "Elisabetta Curridori",
+      "athleteId": 10728,
+      "athletePath": "/athlete/elisabetta-curridori"
+    },
+    {
+      "athleteName": "Lotte Wilms",
+      "athleteId": 122,
+      "athletePath": "/athlete/lotte-wilms"
+    },
+    {
+      "athleteName": "Marta Sánchez",
+      "athleteId": 130,
+      "athletePath": "/athlete/marta-sanchez"
+    },
+    {
+      "athleteName": "Sara Svensk",
+      "athleteId": 136,
+      "athletePath": "/athlete/sara-svensk"
+    },
+    {
+      "athleteName": "Marta Lagownik",
+      "athleteId": 162,
+      "athletePath": "/athlete/marta-lagownik"
+    },
+    {
+      "athleteName": "Jenny Jendryschik",
+      "athleteId": 160,
+      "athletePath": "/athlete/jenny-jendryschik"
+    },
+    {
+      "athleteName": "Regan Hollioake",
+      "athleteId": 180,
+      "athletePath": "/athlete/regan-hollioake"
+    },
+    {
+      "athleteName": "Paula Findlay",
+      "athleteId": 114,
+      "athletePath": "/athlete/paula-findlay"
+    },
+    {
+      "athleteName": "Rachel Zilinskas",
+      "athleteId": 10889,
+      "athletePath": "/athlete/rachel-zilinskas"
+    },
+    {
+      "athleteName": "Jana Uderstadt",
+      "athleteId": 198,
+      "athletePath": "/athlete/jana-uderstadt"
+    },
+    {
+      "athleteName": "Jackie Hering",
+      "athleteId": 138,
+      "athletePath": "/athlete/jackie-hering"
+    },
+    {
+      "athleteName": "Kaidi Kivioja",
+      "athleteId": 141,
+      "athletePath": "/athlete/kaidi-kivioja"
+    },
+    {
+      "athleteName": "Skye Wallace",
+      "athleteId": 182,
+      "athletePath": "/athlete/skye-wallace"
+    },
+    {
+      "athleteName": "Charlotte McShane",
+      "athleteId": 157,
+      "athletePath": "/athlete/charlotte-mcshane"
+    },
+    {
+      "athleteName": "Kate Curran",
+      "athleteId": 144,
+      "athletePath": "/athlete/kate-curran"
+    },
+    {
+      "athleteName": "Leonie Konczalla",
+      "athleteId": 10819,
+      "athletePath": "/athlete/leonie-konczalla"
+    },
+    {
+      "athleteName": "Samantha Skold",
+      "athleteId": 10905,
+      "athletePath": "/athlete/samantha-skold"
+    },
+    {
+      "athleteName": "Lara Hernandez-Tome",
+      "athleteId": 10803,
+      "athletePath": "/athlete/lara-hernandez-tome"
+    },
+    {
+      "athleteName": "Rhianne Hughes",
+      "athleteId": 153,
+      "athletePath": "/athlete/rhianne-hughes"
+    },
+    {
+      "athleteName": "Nikita Paskiewiez",
+      "athleteId": 163,
+      "athletePath": "/athlete/nikita-paskiewiez"
+    },
+    {
+      "athleteName": "Arlette Mariana Gonzalez Hurtado",
+      "athleteId": 10672,
+      "athletePath": "/athlete/arlette-mariana-gonzalez-hurtado"
+    },
+    {
+      "athleteName": "Anna Pabinger",
+      "athleteId": 10665,
+      "athletePath": "/athlete/anna-pabinger"
+    },
+    {
+      "athleteName": "Gabrielle Lumkes",
+      "athleteId": 158,
+      "athletePath": "/athlete/gabrielle-lumkes"
+    },
+    {
+      "athleteName": "Antonia Milowsky",
+      "athleteId": 187,
+      "athletePath": "/athlete/antonia-milowsky"
+    },
+    {
+      "athleteName": "Penny Slater",
+      "athleteId": 149,
+      "athletePath": "/athlete/penny-slater"
+    },
+    {
+      "athleteName": "Henrike Gueber",
+      "athleteId": 196,
+      "athletePath": "/athlete/henrike-gueber"
+    },
+    {
+      "athleteName": "Lucy Charles-Barclay",
+      "athleteId": 103,
+      "athletePath": "/athlete/lucy-charles-barclay"
+    },
+    {
+      "athleteName": "Marjolaine Pierré",
+      "athleteId": 120,
+      "athletePath": "/athlete/marjolaine-pierre"
+    },
+    {
+      "athleteName": "India Lee",
+      "athleteId": 131,
+      "athletePath": "/athlete/india-lee"
+    },
+    {
+      "athleteName": "Daisy Davies",
+      "athleteId": 128,
+      "athletePath": "/athlete/daisy-davies"
+    },
+    {
+      "athleteName": "Pamella Oliveira",
+      "athleteId": 10881,
+      "athletePath": "/athlete/pamella-oliveira"
+    },
+    {
+      "athleteName": "Franzi Hofmann",
+      "athleteId": 172,
+      "athletePath": "/athlete/franzi-reng"
+    },
+    {
+      "athleteName": "Tamara Jewett",
+      "athleteId": 137,
+      "athletePath": "/athlete/tamara-jewett"
+    },
+    {
+      "athleteName": "Katrine Græsbøll Christensen",
+      "athleteId": 126,
+      "athletePath": "/athlete/katrine-graesboell-christensen"
+    },
+    {
+      "athleteName": "Rebecca Anderbury",
+      "athleteId": 178,
+      "athletePath": "/athlete/rebecca-anderbury"
+    },
+    {
+      "athleteName": "Danielle Lewis",
+      "athleteId": 152,
+      "athletePath": "/athlete/danielle-lewis"
+    },
+    {
+      "athleteName": "Danielle Fauteux",
+      "athleteId": 10715,
+      "athletePath": "/athlete/danielle-fauteux"
+    },
+    {
+      "athleteName": "Vincent Luis",
+      "athleteId": 41,
+      "athletePath": "/athlete/vincent-luis"
+    },
+    {
+      "athleteName": "Gustav Iden",
+      "athleteId": 25,
+      "athletePath": "/athlete/gustav-iden"
+    },
+    {
+      "athleteName": "Matthew Marquardt",
+      "athleteId": 20,
+      "athletePath": "/athlete/matthew-marquardt"
+    },
+    {
+      "athleteName": "Gregory Barnaby",
+      "athleteId": 16,
+      "athletePath": "/athlete/gregory-barnaby"
+    },
+    {
+      "athleteName": "Pierre Le Corre",
+      "athleteId": 10475,
+      "athletePath": "/athlete/pierre-le-corre"
+    },
+    {
+      "athleteName": "Sam Long",
+      "athleteId": 22,
+      "athletePath": "/athlete/sam-long"
+    },
+    {
+      "athleteName": "Jonas Schomburg",
+      "athleteId": 8,
+      "athletePath": "/athlete/jonas-schomburg"
+    },
+    {
+      "athleteName": "Kristian Blummenfelt",
+      "athleteId": 1,
+      "athletePath": "/athlete/kristian-blummenfelt"
+    },
+    {
+      "athleteName": "Youri Keulen",
+      "athleteId": 12,
+      "athletePath": "/athlete/youri-keulen"
+    },
+    {
+      "athleteName": "Menno Koolhaas",
+      "athleteId": 10,
+      "athletePath": "/athlete/menno-koolhaas"
+    },
+    {
+      "athleteName": "Nick Thompson",
+      "athleteId": 10435,
+      "athletePath": "/athlete/nick-thompson"
+    },
+    {
+      "athleteName": "Cameron Wurf",
+      "athleteId": 37,
+      "athletePath": "/athlete/cameron-wurf"
+    },
+    {
+      "athleteName": "Mikel Ugarte Ramos",
+      "athleteId": 10409,
+      "athletePath": "/athlete/mikel-ugarte-ramos"
+    },
+    {
+      "athleteName": "Jon Sæverås Breivold",
+      "athleteId": 10250,
+      "athletePath": "/athlete/jon-saeveras-breivold"
+    },
+    {
+      "athleteName": "Jan Stratmann",
+      "athleteId": 68,
+      "athletePath": "/athlete/jan-stratmann"
+    },
+    {
+      "athleteName": "Kacper Stepniak",
+      "athleteId": 71,
+      "athletePath": "/athlete/kacper-stepniak"
+    },
+    {
+      "athleteName": "Kieran Lindars",
+      "athleteId": 72,
+      "athletePath": "/athlete/kieran-lindars"
+    },
+    {
+      "athleteName": "Jordi Montraveta Moya",
+      "athleteId": 45,
+      "athletePath": "/athlete/jordi-montraveta-moya"
+    },
+    {
+      "athleteName": "Jumpei Furuya",
+      "athleteId": 10275,
+      "athletePath": "/athlete/jumpei-furuya"
+    },
+    {
+      "athleteName": "Matt Hanson",
+      "athleteId": 49,
+      "athletePath": "/athlete/matt-hanson"
+    },
+    {
+      "athleteName": "Damien Le Mesnager",
+      "athleteId": 10108,
+      "athletePath": "/athlete/damien-le-mesnager"
+    },
+    {
+      "athleteName": "Michele Sarzilla",
+      "athleteId": 10401,
+      "athletePath": "/athlete/michele-sarzilla"
+    },
+    {
+      "athleteName": "Frederic Funk",
+      "athleteId": 34,
+      "athletePath": "/athlete/frederic-funk"
+    },
+    {
+      "athleteName": "Brock Hoel",
+      "athleteId": 58,
+      "athletePath": "/athlete/brock-hoel"
+    },
+    {
+      "athleteName": "Dominik Sowieja",
+      "athleteId": 85,
+      "athletePath": "/athlete/dominik-sowieja"
+    },
+    {
+      "athleteName": "Cameron Main",
+      "athleteId": 10078,
+      "athletePath": "/athlete/cameron-main"
+    },
+    {
+      "athleteName": "Ben Kanute",
+      "athleteId": 27,
+      "athletePath": "/athlete/ben-kanute"
+    },
+    {
+      "athleteName": "Wilhelm Hirsch",
+      "athleteId": 10621,
+      "athletePath": "/athlete/willhelm-hirsch"
+    },
+    {
+      "athleteName": "Jason West",
+      "athleteId": 14,
+      "athletePath": "/athlete/jason-west"
+    },
+    {
+      "athleteName": "Florian Angert",
+      "athleteId": 10163,
+      "athletePath": "/athlete/florian-angert"
+    },
+    {
+      "athleteName": "Almog Elazary",
+      "athleteId": 10022,
+      "athletePath": "/athlete/almog-elazary"
+    },
+    {
+      "athleteName": "Jack Moody",
+      "athleteId": 10203,
+      "athletePath": "/athlete/jack-moody"
+    },
+    {
+      "athleteName": "Jack Sosinski",
+      "athleteId": 94,
+      "athletePath": "/athlete/jack-sosinski"
+    },
+    {
+      "athleteName": "Arnaud Guilloux",
+      "athleteId": 10044,
+      "athletePath": "/athlete/arnaud-guilloux"
+    },
+    {
+      "athleteName": "Sebastian Norberg",
+      "athleteId": 10540,
+      "athletePath": "/athlete/sebastian-norberg"
+    },
+    {
+      "athleteName": "Marten Van Riel",
+      "athleteId": 2,
+      "athletePath": "/athlete/marten-van-riel"
+    },
+    {
+      "athleteName": "Benjamin Hill",
+      "athleteId": 10060,
+      "athletePath": "/athlete/benjamin-hill"
+    },
+    {
+      "athleteName": "Marius Bjerkeset",
+      "athleteId": 10350,
+      "athletePath": "/athlete/marius-bjerkeset"
+    },
+    {
+      "athleteName": "Antonio Benito López",
+      "athleteId": 44,
+      "athletePath": "/athlete/antonio-benito-lopez"
+    },
+    {
+      "athleteName": "Caleb Noble",
+      "athleteId": 10075,
+      "athletePath": "/athlete/caleb-noble"
+    },
+    {
+      "athleteName": "Mattia Ceccarelli",
+      "athleteId": 10382,
+      "athletePath": "/athlete/mattia-ceccarelli"
+    },
+    {
+      "athleteName": "Magnus Ditlev",
+      "athleteId": 21,
+      "athletePath": "/athlete/magnus-elbaek-ditlev"
+    },
+    {
+      "athleteName": "Nathan Guerbeur",
+      "athleteId": 10422,
+      "athletePath": "/athlete/nathan-guerbeur"
+    },
+    {
+      "athleteName": "Rudy Von Berg",
+      "athleteId": 26,
+      "athletePath": "/athlete/rudy-von-berg"
+    },
+    {
+      "athleteName": "Patrick Lange",
+      "athleteId": 24,
+      "athletePath": "/athlete/patrick-lange"
+    },
+    {
+      "athleteName": "Andrea Salvisberg",
+      "athleteId": 57,
+      "athletePath": "/athlete/andrea-salvisberg"
+    },
+    {
+      "athleteName": "Jamie Riddle",
+      "athleteId": 67,
+      "athletePath": "/athlete/jamie-riddle"
+    },
+    {
+      "athleteName": "Sam Laidlow",
+      "athleteId": 10521,
+      "athletePath": "/athlete/sam-laidlow"
+    },
+    {
+      "athleteName": "Tristan Olij",
+      "athleteId": 10604,
+      "athletePath": "/athlete/tristan-olij"
+    },
+    {
+      "athleteName": "Daniel Bækkegård",
+      "athleteId": 28,
+      "athletePath": "/athlete/daniel-baekkegard"
+    },
+    {
+      "athleteName": "Kristian Høgenhaug",
+      "athleteId": 35,
+      "athletePath": "/athlete/kristian-hogenhaug"
+    },
+    {
+      "athleteName": "Trevor Foley",
+      "athleteId": 39,
+      "athletePath": "/athlete/trevor-foley"
+    }
+  ],
+  "unmatched": [],
+  "anomalies": [
+    {
+      "type": "missing-splits",
+      "athleteName": "Lucy Charles-Barclay",
+      "status": "DNF",
+      "fields": [
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Marjolaine Pierré",
+      "status": "DNF",
+      "fields": [
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "India Lee",
+      "status": "DNF",
+      "fields": [
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Daisy Davies",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Pamella Oliveira",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Franzi Hofmann",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Tamara Jewett",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Katrine Græsbøll Christensen",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Rebecca Anderbury",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Danielle Lewis",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Danielle Fauteux",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Magnus Ditlev",
+      "status": "DNF",
+      "fields": [
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Nathan Guerbeur",
+      "status": "DNF",
+      "fields": [
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Rudy Von Berg",
+      "status": "DNF",
+      "fields": [
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Patrick Lange",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Andrea Salvisberg",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Jamie Riddle",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Sam Laidlow",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Tristan Olij",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Daniel Bækkegård",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Kristian Høgenhaug",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    },
+    {
+      "type": "missing-splits",
+      "athleteName": "Trevor Foley",
+      "status": "DNF",
+      "fields": [
+        "bikeTime",
+        "t2Time",
+        "runTime"
+      ]
+    }
+  ],
+  "editionSof": [
+    {
+      "editionId": "ironman-world-championship-kona-2026",
+      "sof": {
+        "men": 92.79,
+        "women": 96.82
+      },
+      "missing": []
+    }
+  ]
+}

@@ -60,7 +60,7 @@ test('Wave C verified countries preserve four identities, historical countries a
       assert.equal(profile.country,country)
       assert.equal(resultAthletes.find(a=>a.id===id).countryCode,countryCode)
       assert.equal(registry[nameEn].countryCode,countryCode)
-      const rows = linked.filter(r=>r.athleteName===nameEn)
+      const rows = linked.filter(r=>r.athleteName===nameEn && r.raceEditionId!=='ironman-world-championship-kona-2026')
       assert.deepEqual(rows.map(r=>r.countryCode),countries, 'Historical countries must match reviewed race-row evidence')
       assert.ok(rows.every(r=>r.athleteId===id))
       if (id===10144 || id===10541) {
@@ -107,7 +107,7 @@ test('Lara verified country preserves identity, historical results and ranking',
     assert.equal(evidence.previousCountryEvidence.countryCode,'US')
     assert.equal(evidence.previousCountryEvidence.provenance,'migrated-existing')
     const linked = linkResultsToAthletes(raceResults)
-    const rows = linked.filter(r=>r.athleteName===profile.nameEn)
+    const rows = linked.filter(r=>r.athleteName===profile.nameEn && r.raceEditionId!=='ironman-world-championship-kona-2026')
     assert.equal(rows.length,2)
     assert.ok(rows.every(r=>r.countryCode==='ES' && r.athleteId===10803))
     assert.deepEqual(rows.map(r=>[r.position,r.totalTime]),[[16,'4:33:19'],[8,'9:28:45']])

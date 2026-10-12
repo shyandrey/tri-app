@@ -1,6 +1,6 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-11. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-12. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
@@ -8,9 +8,9 @@
 
 ### DATA-03 — Kona 2026: импорт профессиональных результатов
 
-- **Status:** NEEDS OWNER REVIEW · **Priority:** P1.
-- **Описание:** discovery/dry-run завершены: 99 matched, 0 unmatched; write-mode import не выполнялся. Country corrections прошли review, закоммичены и отправлены в `7738e43`; они больше не ожидают review. Конфликты Lara/Jeremy/Nick — 0. До записи нужен review окончательного import plan, включая сохранность global result IDs.
-- **Next action:** подтвердить актуальность PTO source, согласовать точный incremental import/wiring plan; после отдельного approval импортировать, проверить IDs/ranking, затем пройти preview → owner approval → production. Full regeneration не использовать (TECH-01).
+- **Status:** APPROVED FOR COMMIT — PREVIEW NOT DEPLOYED · **Priority:** P1.
+- **Описание:** Локальный incremental import выполнен 2026-10-12: 99 результатов (52 MPRO / 47 WPRO, 77 finishers / 22 DNF), все 99 linked; IDs 4494–4592. Source HTML/evidence сохранены. Прежние 4493 строки и 1167 профилей сохранены, regeneration не запускалась. Targeted tests 41 PASS; release gate 17/17 PASS (21,7 с), country conflicts 0. Изменение рейтинга от новой гонки и dataset clock 2026-10-10 ожидаемо; формула не изменялась. Country corrections прошли review, закоммичены и отправлены в `7738e43`; они больше не ожидают review. Конфликты Lara/Jeremy/Nick — 0. Owner approval для commit/push получен; deployment не выполнялся.
+- **Next action:** После commit/push — отдельное approval для preview, browser/device review и затем production. Browser gate в этом шаге не запускался. Full regeneration не использовать (TECH-01).
 - **Links:** [PTO Kona 2026](https://stats.protriathletes.org/race/im-hawaii/2026/results), [canonical workflow](scripts.md#canonical-workflow), [import CLI](import-race-results.md), DATA-04 ниже.
 
 ## In Progress

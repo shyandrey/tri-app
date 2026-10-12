@@ -78,6 +78,7 @@ import { challengeRoth2026Results } from './2026/challenge/roth'
 
 import { niceWorldChampionship2026Results } from './2026/ironman/nice-world-championship'
 import { frenchRiviera2026Results } from './2026/t100/french-riviera'
+import { kona2026Results } from './2026/ironman/kona'
 
 const results2024: RaceResult[] = [
   ...oceanside2024Results, ...texas2024Results, ...stGeorge2024Results, ...mallorca2024Results,
@@ -152,6 +153,7 @@ const allResults = [
   // Explicit source countries must not backfill or overwrite historical rows.
   ...niceWorldChampionship2026Results,
   ...frenchRiviera2026Results,
+  ...kona2026Results,
 ]
 
 // Result IDs are internal row identifiers, not source data. Assign them once after
