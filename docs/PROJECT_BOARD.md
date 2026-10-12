@@ -92,6 +92,13 @@
 - **Next action:** согласовать минимальную повторную диагностику с полными byte counts, устройством/сетью/VPN и сравнением custom domain/workers.dev; любые изменения сети/Cloudflare — только после отдельного approval.
 - **Links:** [asset smoke / network caveats](deployment-cloudflare.md).
 
+### TECH-02 — Photo extraction can nominate non-portrait assets
+
+- **Status:** OPEN — LOCAL FIX NEEDS REVIEW · **Priority:** P1.
+- **Описание:** Franzi Hofmann (ID 172) displayed a Sailfish sponsor logo. On 2026-10-12 the PTO profile has `no-pic` without `src`; sponsor image is separate. Local runtime rejection removes this specific association; original/optimized files and generated registry are retained. Historical extraction cause is not proven.
+- **Next action:** review the targeted fix; separately approve pipeline safeguards. Current discovery scans all page images, generic filtering relies on URL/alt keywords, and opaque sponsor URLs can remain candidates. Require explicit portrait-region evidence and reject sponsor ancestry before nomination; keep visual approval. No bulk regeneration authorized; systemic risk remains OPEN.
+- **Links:** [PTO profile](https://stats.protriathletes.org/athlete/franzi-reng), [manual rejection](../src/data/athletes/photoReview.ts), [extractor](../scripts/athlete-photo-core.mjs), [regression](../scripts/test-athlete-photo-review.mjs).
+
 ## Recently Completed
 
 ### DATA-04 — Data Source Policy V2 и country corrections

@@ -5,10 +5,11 @@ import { resultAthletes } from './resultAthletes.generated'
 import { verifiedResultAthletes } from './verifiedResultAthletes'
 import { athletePhotosByName } from './athletePhotos.generated'
 import { localizeAthlete } from './localization'
+import { reviewedAthletePhoto } from './photoReview'
 
 const withRegisteredPhoto = (athlete: Athlete): Athlete => ({
   ...athlete,
-  image: athlete.image ?? (athlete.nameEn ? athletePhotosByName[athlete.nameEn] : undefined),
+  image: reviewedAthletePhoto(athlete.id, athlete.image ?? (athlete.nameEn ? athletePhotosByName[athlete.nameEn] : undefined)),
 })
 
 export const athletes: Athlete[] = [
