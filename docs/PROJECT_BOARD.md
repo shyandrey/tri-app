@@ -40,6 +40,14 @@
 
 ## Backlog
 
+### DATA-05 — Переход сезона 2026 → 2027
+
+- **Status:** BACKLOG — POLICY DOCUMENTED, IMPLEMENTATION NOT STARTED · **Priority:** P2.
+- **Описание:** approved scope IRONMAN / IRONMAN 70.3 / T100 под TWT; Roth — отдельная гонка без нового фильтра. T50, Challenger и WTCS исключены. Policy подготовлена 2026-10-12 для review; новые гонки/assets/код не добавлены, DATA-03 остаётся Current Focus.
+- **Next action:** owner review policy; получить verified calendar и отдельный approved plan для archive 2026, 2027 editions, Roth visibility/aliases и showcase imagery. Не копировать даты и не мигрировать IDs автоматически.
+- **Links:** [season policy и implementation gaps](season-transition-2026-2027.md), [source policy](scripts.md#data-source-policy), TECH-01.
+
+
 ### OPS-01 — GitHub Actions: automatic preview, manual production approval
 
 - **Status:** BACKLOG · **Priority:** P2.

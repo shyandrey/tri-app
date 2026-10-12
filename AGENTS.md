@@ -141,6 +141,8 @@ Challenge Roth data exists but is intentionally hidden from parts of the UI/sear
 
 Do not restore Roth visibility unless explicitly requested.
 
+For the approved 2026 → 2027 transition scope and future Roth visibility, follow [season transition policy](docs/season-transition-2026-2027.md). It documents future work, not authorization to add races or change historical visibility.
+
 ## 9. Race UI decisions
 
 The generic "О гонке" / "About the race" block was intentionally removed from race-result pages because it did not provide useful information.
