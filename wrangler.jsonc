@@ -22,6 +22,9 @@
       "name": "tri-app-preview", "workers_dev": true,
       "vars": {
         "APP_ENV": "preview",
+        "PUBLIC_TELEGRAM_COMMANDS_ENABLED": "false",
+        "PUBLIC_TELEGRAM_BOT_USERNAME": "tri_app_preview_bot",
+        "PUBLIC_TELEGRAM_MINI_APP_URL": "https://preview.300w.app",
         "TURNSTILE_SITE_KEY": "0x4AAAAAAFLWMQLuWNz_aJ5j",
         "ALLOWED_ORIGIN": "https://preview.300w.app"
       },
@@ -42,6 +45,9 @@
       "name": "tri-app", "workers_dev": true,
       "vars": {
         "APP_ENV": "production",
+        "PUBLIC_TELEGRAM_COMMANDS_ENABLED": "false",
+        "PUBLIC_TELEGRAM_BOT_USERNAME": "tri_app_bot",
+        "PUBLIC_TELEGRAM_MINI_APP_URL": "https://300w.app",
         "TURNSTILE_SITE_KEY": "0x4AAAAAAFPhEVzQXvHl5kR8",
         "ALLOWED_ORIGIN": "https://300w.app"
       },

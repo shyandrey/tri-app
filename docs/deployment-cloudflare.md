@@ -355,3 +355,7 @@ Vite copies `public/` into `dist/`, including local Finder `.DS_Store` files.
 excludes root and nested Finder metadata from Wrangler uploads. It does not delete
 local files and does not change normal assets. See
 [Cloudflare asset ignore rules](https://developers.cloudflare.com/workers/static-assets/binding/).
+
+## BOT-01 preparation
+
+The separate public command webhook is a local implementation pending review, disabled in repository configuration for both environments. No bot migration has occurred. Follow [Telegram commands](telegram-commands.md) for future Preview test-bot setup, explicit enablement and later production public-bot migration. Existing News/Feedback endpoints and credentials remain unchanged by this patch.

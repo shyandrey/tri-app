@@ -6,9 +6,16 @@
 
 ## Current Focus
 
-DOC-01 и DATA-03 завершены; следующая основная задача пока не назначена.
+BOT-01 — локальная реализация Telegram command handler для review; remote setup не разрешён этой задачей.
 
 ## In Progress
+
+### BOT-01 — Dedicated Telegram command webhook
+
+- **Status:** IN PROGRESS — LOCAL PATCH / NEEDS REVIEW · **Priority:** P1.
+- **Описание:** отдельный command endpoint для production public bot и Preview test bot; /start, /app, /help, собственные credentials. В config обе среды disabled, secrets/webhooks не настроены этой задачей. News/Feedback code и routing сохранены.
+- **Next action:** review patch/tests, затем отдельно согласовать Preview secrets/enablement/deploy/webhook и E2E. Production migration и отключение Preview News — позднее. Учесть отсутствие persistent command deduplication.
+- **Links:** [command operations](telegram-commands.md), [handler](../worker/telegram/commands.ts), [tests](../scripts/test-telegram-commands.mjs).
 
 ### DATA-01 — Русские имена атлетов
 

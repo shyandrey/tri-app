@@ -1,3 +1,4 @@
+import { publicTelegramWebhook } from './telegram/commands.ts'
 import { telegramWebhook, latestNews } from './news/api.ts'
 import { buildMetadata } from '../.generated/build-metadata.ts'
 import type { Env } from './env.ts'
@@ -11,6 +12,7 @@ export function createWorker(local = false, deliver?: Deliver) {
       const url = new URL(request.url), pathname = url.pathname
       if (local && !['localhost', '127.0.0.1', '[::1]'].includes(url.hostname)) return json({ error: { code: 'UNAVAILABLE' } }, 503)
       if (pathname !== '/api' && !pathname.startsWith('/api/')) return env.ASSETS.fetch(request)
+      if (pathname === '/api/telegram-public-webhook') return publicTelegramWebhook(request, env)
       if (pathname === '/api/telegram-webhook') {
         if (request.method !== 'POST') return json({ error: { code: 'METHOD_NOT_ALLOWED' } }, 405, { Allow: 'POST' })
         return telegramWebhook(request, env)
