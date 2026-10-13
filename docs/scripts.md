@@ -15,6 +15,8 @@ READ-ONLY означает отсутствие намеренной запис�
 | Русские имена | `npm run audit:athlete-names` | WRITE review artifacts, не имена |
 | Preview health/News | `npm run check:preview` | READ-ONLY, network GET |
 
+Практические руководства (согласованы владельцем 13.10.2026): [developer](maintenance-developer.md) и [владелец](maintenance-owner.md). Этот файл остаётся canonical reference команд и workflows.
+
 ## Data Source Policy
 
 **DOCUMENTED policy V2:** два доверенных источника с приоритетом на уровне конкретного поля. Это правило source review, не утверждение, что все исторические данные проверены по обоим источникам или что scripts автоматически реализуют эту политику.
@@ -37,7 +39,7 @@ READ-ONLY означает отсутствие намеренной запис�
 | Erik Olsson, ID 10144 | Country SE; PTO profile redirect не подтверждал страну | `official-federation-verified`, Swedish federation source URL, проверка 2026-10-06, связь с Texas 2024 |
 | Sebastian Schober, ID 10541 | Country DE; PTO country отсутствовал | `official-results-verified`, Austrian federation official-results URL, проверка 2026-10-06, PTO linkage Zell am See 2023 ↔ Roth 2024 |
 
-Это ранее approved Wave C corrections, не разрешение на новые federation-based изменения. Даты выше — existing `checkedAt`, не выдуманные даты approval. Approved manual/photo provenance, включая исключения в [photo workflow](../scripts/athlete-photo-import.md), также сохраняется. `migrated-existing` не превращается автоматически ни в verified PTO, ни в approved external exception; нехватку provenance нужно явно отметить. Jeremy Maclean AU/US и Nick Thompson US/AU остаются двумя известными unresolved country-provenance conflicts; автоматически их не разрешать.
+Это ранее approved Wave C corrections, не разрешение на новые federation-based изменения. Даты выше — existing `checkedAt`, не выдуманные даты approval. Approved manual/photo provenance, включая исключения в [photo workflow](../scripts/athlete-photo-import.md), также сохраняется. `migrated-existing` не превращается автоматически ни в verified PTO, ни в approved external exception; нехватку provenance нужно явно отметить. Lara/Jeremy/Nick country conflicts разрешены reviewed corrections (DATA-04). Сохранять их field-level evidence; текущий full-regeneration риск — athlete ID drift (TECH-01), а не эти конфликты.
 
 ## 2. Import new race results
 
@@ -110,7 +112,7 @@ npm run check:release:browser
 
 `check:release` уже запускает `npm run build`, lint, ranking, results/identity и другие проверки; отдельный `npm run build` нужен при изменениях после gate или для отдельной build-проверки. Browser gate проверяет Calendar/results/navigation/athletes/ranking и другие текущие suites; дополнительно вручную проверить именно новую edition и athletes: старые fixtures не доказывают правильность нового протокола. Tests/build могут писать temporary/ignored artifacts, но не должны регенерировать source datasets или обращаться с записью к remote D1/Telegram. Не запускать full regeneration ради обычной валидации импорта.
 
-Разделять новые regressions, source anomalies, historical failures и environment errors; не обновлять expectations ради зелёного gate. `audit:athletes` exit 0 не означает отсутствие issues. Jeremy Maclean (profile US / historical AU) и Nick Thompson (profile AU / historical US) остаются provenance conflicts; full-regeneration validation остаётся FAIL. Не исправлять их попутно. Исторические missing-country Erik Olsson / Sebastian Schober уже закрыты SE / DE; их присутствие в release-policy allowlist не означает текущие issues. Подробности historical/non-gating checks — §10.
+Разделять новые regressions, source anomalies, historical failures и environment errors; не обновлять expectations ради зелёного gate. `audit:athletes` exit 0 не означает отсутствие issues. Jeremy Maclean (US), Nick Thompson (AU) и Lara Hernandez-Tome (ES) согласованы с проверенными историческими PTO rows; country conflicts устранены. Full-regeneration validation остаётся FAIL из-за переназначения athlete IDs (TECH-01); не запускать write-mode regeneration в настоящий каталог. Исторические missing-country Erik Olsson / Sebastian Schober уже закрыты SE / DE; их присутствие в release-policy allowlist не означает текущие issues. Подробности historical/non-gating checks — §10.
 
 ### E. Preview → owner approval
 
@@ -161,7 +163,7 @@ WRITE append читает существующий `src/data/athletes/resultAthl
 npm run find:next-athletes -- --write --full-regenerate --output '<temporary-output.ts>'
 ```
 
-Full regeneration перестраивает список из results минус curated/verified identities и назначает `10000 + index`. `--output` направляет запись в указанный файл; без него обе write-команды заменяют настоящий generated catalog. Сначала использовать temporary output, затем отдельно review ID/linkage diff; не переносить результат автоматически. Известные country conflicts Jeremy Maclean AU/US и Nick Thompson US/AU остаются блокирующими проверками full regeneration, не PASS.
+Full regeneration перестраивает список из results минус curated/verified identities и назначает `10000 + index`. `--output` направляет запись в указанный файл; без него обе write-команды заменяют настоящий generated catalog. Сначала использовать temporary output, затем отдельно review ID/linkage diff; не переносить результат автоматически. Country conflicts устранены; full-regeneration validation теперь обнаруживает ID drift, например Emmanuel Lejeune 20010 → 10140. Это FAIL, не разрешение заменить каталог.
 
 CLI: без flags — discovery; `--write --append` и `--write --full-regenerate` разрешены; plain `--write`, оба режима вместе, неизвестные/повторные flags, `--output` без пути отклоняются до загрузки данных/записи. `--append`, `--full-regenerate` и `--output` без `--write` отклоняются: отдельного incremental dry-run нет, использовать discovery.
 
@@ -204,12 +206,12 @@ Production и Preview protected Feedback активны: Turnstile, native rate 
 ## 9. Preview deploy
 
 ```sh
-npm run deploy:preview:dry -- --keep-vars
-npm run deploy:preview -- --keep-vars
+npm run deploy:preview:dry
+npm run deploy:preview
 npm run check:preview
 ```
 
-Dry — DRY-RUN remote deployment, но WRITE локального build/metadata/Wrangler artifacts; читает checkout/config/assets и проверяет preview bundle. Review Worker `tri-app-preview`, DB `tri-app-preview`, diff/build identity. Вторая команда — **REAL REMOTE WRITE**, только после отдельного разрешения; публикует текущий checkout, а не гарантированно чистый commit. `--keep-vars` сохраняет dashboard-managed vars; не заменяет review config и не применяет migrations.
+Dry — DRY-RUN remote deployment, но WRITE локального build/metadata/Wrangler artifacts; читает checkout/config/assets и проверяет preview bundle. Review Worker `tri-app-preview`, DB `tri-app-preview`, diff/build identity. Вторая команда — **REAL REMOTE WRITE**, только после отдельного разрешения; публикует текущий checkout, а не гарантированно чистый commit. Оба package scripts не содержат `--keep-vars`: обычные vars задаёт repository config. Установленный Wrangler сохраняет secrets при обычном deploy. Флаг сохраняет dashboard-managed ordinary vars и допускается только как отдельно рассмотренное исключение, не обязательный preview шаг; migrations он не применяет.
 
 Последняя команда READ-ONLY GET `https://preview.300w.app/api/health` и `/api/news`; review deployed SHA/status/items. Fallback `https://tri-app-preview.shy-andrey.workers.dev`. Production уже deployed: `deploy:production:dry`, `deploy:production`, `check:production` используют explicit production target. Real deploy — отдельная REMOTE WRITE операция без `--keep-vars`; generic `deploy`/`release` scripts отсутствуют. Public Mini App: `@tri_app_bot` → `300w.app`; production News/Feedback: `@tri_app_prod_bot`. [Deployment details](deployment-cloudflare.md).
 
@@ -252,16 +254,16 @@ Unit groups use `node --test --test-concurrency=1`; independent groups run seque
 
 ### Known data policy — exact allowlist, not a count exemption
 
-Two different groups are observed, **four issues total**, not one interchangeable pair:
+Historical allowlist contains two different groups (four originally observed issues). These are resolved, not a claim of four current issues:
 
-- Country provenance conflicts: Jeremy Maclean `10235`, source codes AU/US, registry US; Nick Thompson `10435`, source codes AU/US, registry AU. These still block full regeneration.
-- Existing catalog audit issues: missing country Erik Olsson `10144`, Sebastian Schober `10541`. Documented before Wave B in `results-import-2026-nice-riviera.md`. These are not Jeremy/Nick conflicts.
+- Country provenance conflicts: Jeremy Maclean `10235`, source codes AU/US, registry US; Nick Thompson `10435`, source codes AU/US, registry AU. Resolved in DATA-04; current full-regeneration blocker is ID drift (TECH-01).
+- Historical catalog audit issues (resolved SE / DE): missing country Erik Olsson `10144`, Sebastian Schober `10541`. Documented before Wave B in `results-import-2026-nice-riviera.md`. These are not Jeremy/Nick conflicts.
 
 For this V1 gate these exact existing issues are non-blocking but **always printed when observed**. New IDs/issues, different countries, malformed/duplicate audit diagnostics fail the gate. If an issue disappears, it is no longer reported; the runner does not fabricate a fixed count. `audit:athletes` keeps its existing exit semantics (may exit 0 with ISSUES); the gate consumes `--json` schemaVersion 1 with `issues`, `info`, `countryConflicts`. Missing photos and untranslated names remain coverage INFO, not a reason to fabricate data. Country provenance diagnostics inspect current generated profiles/results/registry; they do not replace or weaken full-regeneration validation.
 
 ### RC verification snapshot — 2026-10-09
 
-Source SHA `a1e69f3740738ee7d29927c62178f5a09e559d88`: `check:release` PASS, 17 checks / 153 unit tests, 21.2 s; `check:release:browser` PASS, 14 suites, 359.3 s. No failures or environment errors in these runs; no expectations changed. Chrome headless against local production build, with each suite's viewport matrix; not a real Android/iPhone Telegram test. News and Feedback browser responses are mocked; no real Turnstile, Telegram send or remote D1 write. Two known country conflicts remain visible. This dated evidence does not certify a later code change; documentation edits following these runs do not change application behavior. Live production News ingestion, Android coverage, intermittent direct asset delivery and a D1 restore drill remain unverified/unresolved.
+Source SHA `a1e69f3740738ee7d29927c62178f5a09e559d88`: `check:release` PASS, 17 checks / 153 unit tests, 21.2 s; `check:release:browser` PASS, 14 suites, 359.3 s. No failures or environment errors in these runs; no expectations changed. Chrome headless against local production build, with each suite's viewport matrix; not a real Android/iPhone Telegram test. News and Feedback browser responses are mocked; no real Turnstile, Telegram send or remote D1 write. Two known country conflicts were visible at that checkpoint; subsequently resolved in DATA-04. This dated evidence does not certify a later code change; documentation edits following these runs do not change application behavior. Live production News ingestion, Android coverage, intermittent direct asset delivery and a D1 restore drill remain unverified/unresolved.
 
 ### Kona release closure — 2026-10-12
 
@@ -288,9 +290,11 @@ Run explicitly when investigating their workflows; they are not part of either r
 
 | Command | Classification / current evidence |
 | --- | --- |
-| `node scripts/test-athlete-localization.mjs` | KNOWN DATA ISSUE: full regeneration to a temporary file aborts for Jeremy/Nick conflicts. Validation remains unchanged; no production regeneration. |
+| `node scripts/test-athlete-localization.mjs` | KNOWN MAINTENANCE LIMITATION: temporary full regeneration fails existing-ID preservation (TECH-01). Jeremy/Nick country conflicts are resolved. No write-mode full regeneration into the real catalog. |
 | `node --test scripts/test-athlete-photos.mjs` | HISTORICAL REPLAY + STALE EXPECTATION: 1161/939 versus current 1167/945; Batch 2/3 replay aborts with `Incomplete photo baseline`: saved catalog snapshots lack the six subsequently added athletes, before ranking comparison can complete. No historical fixture rewrite. |
 | `node --test scripts/test-athlete-photo-staging.mjs` | Synthetic staging/publish into temp fixtures; passes in reviewed macOS environment. Swift/xcrun decoder is an environment dependency. Also imported by the historical photo suite. |
+
+**Current narrow regression:** `node --test scripts/test-athlete-photo-review.mjs` verifies Franzi ID 172 uses FH and only the rejected association is blocked. Run it separately for photo/review changes; it is not currently listed in the release runner. This does not resolve the extraction risk TECH-02.
 
 Historical photo publication checks require ignored `.athlete-photo-staging` bytes: they may work on an enriched developer checkout but fail ENOENT on a clean checkout. This is an environment/fixture dependency, not permission to redownload or publish anything. Current public photo files, identity mappings and reviewed published bytes are checked independently by the fast gate without ignored staging.
 
@@ -313,6 +317,6 @@ Sandbox socket/HMR errors are ENVIRONMENT FAILURE. Rerun explicitly in an enviro
 - Athlete append не имеет lock: только последовательные writes, branch/status до и diff после. Full regeneration может перенумеровать generated IDs.
 - **FUTURE ARCHITECTURE ISSUE:** result IDs присваиваются по порядку общего results index. Вставка module в середину может сдвинуть последующие IDs. Здесь архитектура не меняется.
 - `audit:athletes` может вывести ISSUES с exit code 0. Читать report обязательно; missing photos — INFO, не требование bulk enrichment.
-- Jeremy Maclean AU/US и Nick Thompson US/AU блокируют full regeneration validation. Не исправлять данными «по догадке», не подавлять и не считать PASS.
+- Full-regeneration validation FAIL из-за ID drift (TECH-01); country conflicts Lara/Jeremy/Nick уже закрыты. Не подавлять FAIL и не расширять allowlists. Historical country labels в release-policy ещё требуют отдельного code maintenance (DOC-02).
 - Export name audit перезаписывает рабочий CSV. Не запускать его, пока ручные правки не импортированы/сохранены отдельно.
 - Не коммитить локальные `athlete-audit.txt`, `docs/product-readiness-audit.md`, `ranking.txt`, `sof.json` или ignored review artifacts.

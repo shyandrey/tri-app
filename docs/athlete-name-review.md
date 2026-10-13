@@ -72,7 +72,7 @@ Athlete Profiles, Athlete Detail и search получают имя из обще
 - generated image manifests;
 - race result datasets.
 
-Полный athlete generator не нужен для CSV import. Его известные конфликты стран Jeremy Maclean AU/US и Nick Thompson US/AU остаются отдельной задачей; ошибки полной регенерации нельзя считать PASS.
+Полный athlete generator не нужен для CSV import. Country conflicts Lara/Jeremy/Nick разрешены (DATA-04); текущая причина full-regeneration FAIL — athlete ID drift (TECH-01). Не запускать full regeneration для изменения русских имён, не ослаблять validation и не считать этот FAIL за PASS. См. [maintenance handbook](maintenance-owner.md#4-русские-имена-и-страны).
 
 Проверки workflow:
 

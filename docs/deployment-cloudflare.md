@@ -78,12 +78,12 @@ npx wrangler d1 migrations list DB --local
 ## Manual preview workflow
 
 ```sh
-npm run deploy:preview:dry -- --keep-vars   # build/config check only; no deployment
-npm run deploy:preview -- --keep-vars       # REAL deployment to tri-app-preview
+npm run deploy:preview:dry   # build/config check only; no deployment
+npm run deploy:preview       # REAL deployment to tri-app-preview
 npm run check:preview        # read-only GET /api/health and /api/news after deployment
 ```
 
-`--keep-vars` preserves dashboard-managed ordinary vars during manual deployment; still review the selected environment configuration.
+Neither preview package script includes `--keep-vars`. With the installed Wrangler, ordinary vars are replaced from the selected repository configuration by default; normal deployments preserve installed secrets. `--keep-vars` retains dashboard-managed ordinary vars and is an explicitly reviewed exception, not a required preview step or a secret-preservation flag. Inspect remote bindings/config before deployment; stop on unexplained differences.
 Both deploy scripts use the project-local Wrangler with explicit `--env preview`.
 Wrangler runs `npm run build`, including metadata generation from the current checkout
 (see Build identity below), and selects Worker `tri-app-preview` with binding
@@ -125,7 +125,7 @@ npm run deploy:production
 npm run check:production -- --expected-sha 3861531cac5570765e242e697fcb03dde271dde6
 ```
 
-Deploy from a reviewed clean checkout. Record the current version/bindings and recovery point first. Production uses explicit `--env production`, no `--keep-vars`: ordinary vars come from repository config. Normal deploy preserves installed secrets; no migrations, seeding or secrets are chained. Abort unexpected Worker creation or target mismatch. Reverify bindings and application after deployment. Preview continues its separate `--keep-vars` procedure.
+Deploy from a reviewed clean checkout. Record the current version/bindings and recovery point first. Production uses explicit `--env production`, no `--keep-vars`: ordinary vars come from repository config. Normal deploy preserves installed secrets; no migrations, seeding or secrets are chained. Abort unexpected Worker creation or target mismatch. Reverify bindings and application after deployment. Preview uses its own environment scripts and bindings, with the same default config-owned ordinary-var behavior.
 
 The checkers share GET/JSON/status validation and 15-second request timeouts.
 Production is fixed to `https://300w.app/api/health` and `/api/news`, rejects redirects

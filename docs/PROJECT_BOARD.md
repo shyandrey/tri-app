@@ -1,21 +1,14 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-12. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-13. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-Релиз DATA-03 завершён; следующая основная задача пока не назначена.
+DOC-01 и DATA-03 завершены; следующая основная задача пока не назначена.
 
 ## In Progress
-
-### DOC-01 — Developer and Owner Maintenance Handbooks
-
-- **Status:** IN PROGRESS · **Priority:** P2.
-- **Описание:** отдельные практические руководства для разработчика и владельца; существующие операционные документы — исходный материал, готовность отдельных handbooks не подтверждена.
-- **Next action:** согласовать аудитории, структуру и границы руководств; ссылаться на canonical workflows вместо копирования команд в несколько мест.
-- **Links:** [scripts](scripts.md), [deployment/recovery](deployment-cloudflare.md), [name review](athlete-name-review.md).
 
 ### DATA-01 — Русские имена атлетов
 
@@ -29,8 +22,8 @@
 ### DOC-02 — Сверить устаревшие статусы в документации и release output
 
 - **Status:** NEEDS REVIEW · **Priority:** P2.
-- **Описание:** `scripts.md` ещё называет Jeremy/Nick unresolved country conflicts; это закрыто DATA-04. Последний release output также описывает full-regeneration FAIL как country conflict, хотя фактическая причина теперь ID drift. Production snapshot обновлён при закрытии DATA-03; датированные snapshots и release output всё ещё требуют отдельного maintenance review.
-- **Next action:** отдельным review согласовать документы с commit evidence и свежими read-only operational checks. Сохранить исторические checkpoints с датами; не превращать UNKNOWN в PASS без evidence и не открывать заново исправленные country issues.
+- **Описание:** Текущие documentation claims исправлены в DOC-01; historical snapshots сохранены с датами. Release policy/output всё ещё содержит country-conflict wording/старый allowlist, хотя фактический full-regeneration FAIL теперь ID drift. Photo-review regression запускается отдельно и не входит в release runner. Изменения scripts/tests не входят в DOC-01.
+- **Next action:** отдельным code maintenance review согласовать release diagnostics и состав gate с текущими evidence. Сохранить исторические checkpoints с датами; не превращать UNKNOWN в PASS без evidence и не открывать заново исправленные country issues.
 - **Links:** [scripts](scripts.md), [News operations](latest-news.md), [production runbook](deployment-cloudflare.md), [release policy](../scripts/release-policy.mjs).
 
 ## Backlog
@@ -38,8 +31,8 @@
 ### DATA-05 — Переход сезона 2026 → 2027
 
 - **Status:** BACKLOG — POLICY DOCUMENTED, IMPLEMENTATION NOT STARTED · **Priority:** P2.
-- **Описание:** approved scope IRONMAN / IRONMAN 70.3 / T100 под TWT; Roth — отдельная гонка без нового фильтра. T50, Challenger и WTCS исключены. Policy подготовлена 2026-10-12 для review; новые гонки/assets/код не добавлены. DATA-03 завершена; реализация сезона 2027 не начата.
-- **Next action:** owner review policy; получить verified calendar и отдельный approved plan для archive 2026, 2027 editions, Roth visibility/aliases и showcase imagery. Не копировать даты и не мигрировать IDs автоматически.
+- **Описание:** approved scope IRONMAN / IRONMAN 70.3 / T100 под TWT; Roth — отдельная гонка без нового фильтра. T50, Challenger и WTCS исключены. Policy approved и committed 243d9a565d937a41c0131ed189aae24b33ae3301; новые гонки/assets/код не добавлены. DATA-03 завершена; реализация сезона 2027 не начата.
+- **Next action:** получить verified calendar и отдельный approved plan для archive 2026, 2027 editions, Roth visibility/aliases и showcase imagery. Не копировать даты и не мигрировать IDs автоматически.
 - **Links:** [season policy и implementation gaps](season-transition-2026-2027.md), [source policy](scripts.md#data-source-policy), TECH-01.
 
 
@@ -94,7 +87,22 @@
 - **Next action:** separately approve pipeline safeguards. Current discovery scans all page images, generic filtering relies on URL/alt keywords, and opaque sponsor URLs can remain candidates. Require explicit portrait-region evidence and reject sponsor ancestry before nomination; keep visual approval. No bulk regeneration authorized; systemic risk remains OPEN.
 - **Links:** [PTO profile](https://stats.protriathletes.org/athlete/franzi-reng), [manual rejection](../src/data/athletes/photoReview.ts), [extractor](../scripts/athlete-photo-core.mjs), [regression](../scripts/test-athlete-photo-review.mjs).
 
+### TECH-03 — Runtime result IDs зависят от порядка общего массива
+
+- **Status:** OPEN — MAINTENANCE LIMITATION · **Priority:** P2.
+- **Описание:** `results/index.ts` назначает IDs через `index + 1`. Вставка или перестановка batch в середине может сдвинуть существующие IDs; importer сам по себе не гарантирует сохранность после ручного wiring. Это отдельный риск от athlete ID drift TECH-01.
+- **Next action:** сохранять полный baseline старых rows/IDs и проверять append integration. Любое изменение ID architecture требует отдельного design review; текущий DOC-01 не меняет реализацию.
+- **Links:** [results index](../src/data/results/index.ts), [import safeguards](import-race-results.md), [developer handbook](maintenance-developer.md).
+
 ## Recently Completed
+
+### DOC-01 — Developer and Owner Maintenance Handbooks
+
+- **Status:** DONE · **Priority:** P2 · **Date:** 13.10.2026.
+- **Описание:** созданы два практических руководства для разработчика и владельца, source-of-truth map, validation/STOP boundaries и ссылки на canonical workflows. Уточнены country status, keep-vars и ограничения photo tests.
+- **Evidence:** владелец согласовал оба handbook и финальный walkthrough. Сценарии изменения даты гонки и русского имени успешно проверены по текущему коду: файлы, поля, примеры, команды, Git, Preview и отмена. Проверка была read-only относительно application/data; реальные даты/имена не менялись. Локальные ссылки, пути, npm-команды и diff checks проверены.
+- **Next action:** поддерживать руководства при изменении реализации. DOC-02, TECH-01, TECH-02, TECH-03 и OPS-02 остаются открытыми; закрытие DOC-01 не разрешает deploy или исправление этих задач.
+- **Links:** [developer handbook](maintenance-developer.md), [owner handbook](maintenance-owner.md), [scripts](scripts.md), [deployment/recovery](deployment-cloudflare.md), [name review](athlete-name-review.md).
 
 ### DATA-03 — Kona 2026: production release
 
