@@ -6,12 +6,7 @@
 
 ## Current Focus
 
-### DATA-03 — Kona 2026: импорт профессиональных результатов
-
-- **Status:** APPROVED FOR COMMIT — PREVIEW NOT DEPLOYED · **Priority:** P1.
-- **Описание:** Локальный incremental import выполнен 2026-10-12: 99 результатов (52 MPRO / 47 WPRO, 77 finishers / 22 DNF), все 99 linked; IDs 4494–4592. Source HTML/evidence сохранены. Прежние 4493 строки и 1167 профилей сохранены, regeneration не запускалась. Targeted tests 41 PASS; release gate 17/17 PASS (21,7 с), country conflicts 0. Изменение рейтинга от новой гонки и dataset clock 2026-10-10 ожидаемо; формула не изменялась. Country corrections прошли review, закоммичены и отправлены в `7738e43`; они больше не ожидают review. Конфликты Lara/Jeremy/Nick — 0. Owner approval для commit/push получен; deployment не выполнялся.
-- **Next action:** После commit/push — отдельное approval для preview, browser/device review и затем production. Browser gate в этом шаге не запускался. Full regeneration не использовать (TECH-01).
-- **Links:** [PTO Kona 2026](https://stats.protriathletes.org/race/im-hawaii/2026/results), [canonical workflow](scripts.md#canonical-workflow), [import CLI](import-race-results.md), DATA-04 ниже.
+Релиз DATA-03 завершён; следующая основная задача пока не назначена.
 
 ## In Progress
 
@@ -34,7 +29,7 @@
 ### DOC-02 — Сверить устаревшие статусы в документации и release output
 
 - **Status:** NEEDS REVIEW · **Priority:** P2.
-- **Описание:** `scripts.md` ещё называет Jeremy/Nick unresolved country conflicts; это закрыто DATA-04. Последний release output также описывает full-regeneration FAIL как country conflict, хотя фактическая причина теперь ID drift. News/deployment docs содержат датированные snapshots с неподтверждённым live ingestion и старым active SHA; они не доказывают текущее live-состояние.
+- **Описание:** `scripts.md` ещё называет Jeremy/Nick unresolved country conflicts; это закрыто DATA-04. Последний release output также описывает full-regeneration FAIL как country conflict, хотя фактическая причина теперь ID drift. Production snapshot обновлён при закрытии DATA-03; датированные snapshots и release output всё ещё требуют отдельного maintenance review.
 - **Next action:** отдельным review согласовать документы с commit evidence и свежими read-only operational checks. Сохранить исторические checkpoints с датами; не превращать UNKNOWN в PASS без evidence и не открывать заново исправленные country issues.
 - **Links:** [scripts](scripts.md), [News operations](latest-news.md), [production runbook](deployment-cloudflare.md), [release policy](../scripts/release-policy.mjs).
 
@@ -43,7 +38,7 @@
 ### DATA-05 — Переход сезона 2026 → 2027
 
 - **Status:** BACKLOG — POLICY DOCUMENTED, IMPLEMENTATION NOT STARTED · **Priority:** P2.
-- **Описание:** approved scope IRONMAN / IRONMAN 70.3 / T100 под TWT; Roth — отдельная гонка без нового фильтра. T50, Challenger и WTCS исключены. Policy подготовлена 2026-10-12 для review; новые гонки/assets/код не добавлены, DATA-03 остаётся Current Focus.
+- **Описание:** approved scope IRONMAN / IRONMAN 70.3 / T100 под TWT; Roth — отдельная гонка без нового фильтра. T50, Challenger и WTCS исключены. Policy подготовлена 2026-10-12 для review; новые гонки/assets/код не добавлены. DATA-03 завершена; реализация сезона 2027 не начата.
 - **Next action:** owner review policy; получить verified calendar и отдельный approved plan для archive 2026, 2027 editions, Roth visibility/aliases и showcase imagery. Не копировать даты и не мигрировать IDs автоматически.
 - **Links:** [season policy и implementation gaps](season-transition-2026-2027.md), [source policy](scripts.md#data-source-policy), TECH-01.
 
@@ -94,12 +89,20 @@
 
 ### TECH-02 — Photo extraction can nominate non-portrait assets
 
-- **Status:** OPEN — LOCAL FIX NEEDS REVIEW · **Priority:** P1.
-- **Описание:** Franzi Hofmann (ID 172) displayed a Sailfish sponsor logo. On 2026-10-12 the PTO profile has `no-pic` without `src`; sponsor image is separate. Local runtime rejection removes this specific association; original/optimized files and generated registry are retained. Historical extraction cause is not proven.
-- **Next action:** review the targeted fix; separately approve pipeline safeguards. Current discovery scans all page images, generic filtering relies on URL/alt keywords, and opaque sponsor URLs can remain candidates. Require explicit portrait-region evidence and reject sponsor ancestry before nomination; keep visual approval. No bulk regeneration authorized; systemic risk remains OPEN.
+- **Status:** OPEN — SYSTEMIC RISK · **Priority:** P1.
+- **Описание:** Franzi Hofmann (ID 172) displayed a Sailfish sponsor logo. On 2026-10-12 the PTO profile has `no-pic` without `src`; sponsor image is separate. The targeted fix is included in the owner-confirmed DATA-03 production release; runtime rejection removes this specific association; original/optimized files and generated registry are retained. Historical extraction cause is not proven.
+- **Next action:** separately approve pipeline safeguards. Current discovery scans all page images, generic filtering relies on URL/alt keywords, and opaque sponsor URLs can remain candidates. Require explicit portrait-region evidence and reject sponsor ancestry before nomination; keep visual approval. No bulk regeneration authorized; systemic risk remains OPEN.
 - **Links:** [PTO profile](https://stats.protriathletes.org/athlete/franzi-reng), [manual rejection](../src/data/athletes/photoReview.ts), [extractor](../scripts/athlete-photo-core.mjs), [regression](../scripts/test-athlete-photo-review.mjs).
 
 ## Recently Completed
+
+### DATA-03 — Kona 2026: production release
+
+- **Status:** DONE · **Priority:** P1 · **Date:** 12.10.2026.
+- **Описание:** Релиз завершён по подтверждению владельца. Production SHA `3861531cac5570765e242e697fcb03dde271dde6`; version `c3f601c7-592a-4e4c-973c-6898c62fdc68`. Kona: 99 результатов (52 MPRO / 47 WPRO, 77 finishers / 22 DNF), 99 links, IDs 4494–4592, SOF men 92.79 / women 96.82. В релиз входят approved country corrections, Policy V2/More и placeholder FH для Franzi. Ranking formula и stable IDs сохранены; рейтинг учитывает новую гонку.
+- **Evidence:** preflight release gate 17/17 PASS (30,2 с), targeted snapshot/photo/identity tests 24/24 PASS; preview assets проверены полностью. Владелец подтвердил успешный production release и ручную проверку Telegram Mini App на iPhone — PASS. Production SHA/version в этой записи сообщены владельцем; live-проверки при закрытии документации не выполнялись. Browser gate на финальном target не повторялся; Android не подтверждён.
+- **Next action:** обычный monitoring по runbook; TECH-01, TECH-02 и OPS-02 остаются открытыми. Повторный импорт или deploy не требуется этой задачей.
+- **Links:** [PTO Kona 2026](https://stats.protriathletes.org/race/im-hawaii/2026/results), [production snapshot](deployment-cloudflare.md#live-production-and-manual-deployment), [canonical workflow](scripts.md#canonical-workflow).
 
 ### DATA-04 — Data Source Policy V2 и country corrections
 

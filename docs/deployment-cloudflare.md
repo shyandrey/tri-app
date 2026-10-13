@@ -100,19 +100,20 @@ The check does not inspect secrets or perform migrations or writes.
 
 ## Live production and manual deployment
 
-Verified snapshot, 2026-10-09 (not a guarantee of future state):
+Snapshot, 2026-10-12: owner-confirmed Kona release and iPhone Telegram Mini App manual check — PASS. SHA/version below are owner-provided; runtime bindings/API evidence comes from the read-only preflight earlier that day. No fresh live checks were run for this documentation update:
 
 - Public entry: `@tri_app_bot` launches `https://300w.app` (owner-confirmed iPhone).
 - Worker `tri-app`; technical URL `https://tri-app.shy-andrey.workers.dev`.
-- Code SHA `a1e69f3740738ee7d29927c62178f5a09e559d88`.
-- Active version `f90a0765-e7c6-40ad-8bd2-2b0fd8c42766`, deployment `4bdc8537-b846-4dd4-a0e8-8dc9deda7173` (2026-10-08 13:18:59 UTC, secret-triggered).
+- Code SHA `3861531cac5570765e242e697fcb03dde271dde6`.
+- Active version `c3f601c7-592a-4e4c-973c-6898c62fdc68`. Final deployment ID/timestamp were not supplied; do not reuse the previous deployment ID.
+- Release includes Kona 2026 (99 results, 52 MPRO / 47 WPRO, 77 finishers / 22 DNF), approved country corrections, data-source/docs changes and Franzi placeholder FH. Preflight `check:release`: 17/17 PASS, 30.2 s. Final browser gate was not rerun; owner iPhone PASS does not certify Android or global network availability.
 - Account `3fd801274d556b3ffc138463a0f20830`; DB `tri-app-production`, UUID `2b5cd1b9-d9bf-483d-b710-23d00b6db7fd`; migrations 0001–0004 applied.
 - Six installed secret bindings: `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_HMAC_SECRET`, `TELEGRAM_BOT_TOKEN`, `FEEDBACK_TELEGRAM_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET`, `NEWS_TELEGRAM_CHANNEL_ID`. Names/presence verified; values never retrieved.
 - `APP_ENV=production`, `ALLOWED_ORIGIN=https://300w.app`; managed Turnstile `tri-app-production`, hostname only `300w.app`, public key `0x4AAAAAAFPhEVzQXvHl5kR8`.
 - `FEEDBACK_RATE_LIMITER`: namespace `40001`, 5/60; cron `*/5 * * * *`; ASSETS present. Account-wide namespace uniqueness was not certified because dispatch inventory was permission-limited.
 - Production News/Feedback bot: `@tri_app_prod_bot`. Its configured News webhook is `https://tri-app.shy-andrey.workers.dev/api/telegram-webhook` (P7B operator-confirmed; current Telegram state not independently re-read).
 - Production Feedback E2E passed on iPhone: one saved report, `sent`, attempts=1, no retry/lease; owner confirmed matching UI/Telegram UUID and 🟢 PRODUCTION.
-- News bootstrap/API: 997 → 996 → 993; production live ingestion is still UNKNOWN. Do not confuse bootstrap watermark `update_id=-1` with a real webhook event.
+- Latest preflight News API: 999 → 997 → 996 on production and preview. Owner reported post 999 appearing in production after publication on 2026-10-09. This update does not independently certify webhook/watermark state; do not confuse bootstrap `update_id=-1` with a real event.
 - Preview remains on its own Worker, DB, domain and `@tri_app_bot` News webhook. Public Mini App launch settings are independent of that bot's preview webhook. Do not repoint it merely to launch production.
 
 ```sh
@@ -121,7 +122,7 @@ npm run deploy:production:dry
 # REMOTE MUTATION: only after separate release approval and both release gates:
 npm run deploy:production
 # GET-only; explicitly use the approved deployed SHA, not a later documentation HEAD:
-npm run check:production -- --expected-sha a1e69f3740738ee7d29927c62178f5a09e559d88
+npm run check:production -- --expected-sha 3861531cac5570765e242e697fcb03dde271dde6
 ```
 
 Deploy from a reviewed clean checkout. Record the current version/bindings and recovery point first. Production uses explicit `--env production`, no `--keep-vars`: ordinary vars come from repository config. Normal deploy preserves installed secrets; no migrations, seeding or secrets are chained. Abort unexpected Worker creation or target mismatch. Reverify bindings and application after deployment. Preview continues its separate `--keep-vars` procedure.
@@ -190,7 +191,7 @@ These procedures are instructions for a separately authorized incident response,
 
 ### Known-good version and Worker rollback
 
-The current version `f90a0765-e7c6-40ad-8bd2-2b0fd8c42766` is the recorded **future rollback candidate** for code SHA `a1e69f3740738ee7d29927c62178f5a09e559d88`. On 2026-10-09 its version metadata was read via GET and contained all six expected secret_text bindings plus the production D1 UUID. Its live deployment passed Feedback E2E. It is currently active, so rolling back to it now would not fix an existing fault. No older version is certified here as a safe alternative. Secret names cannot establish secret values; any later credential rotation requires renewed candidate review.
+The pre-Kona production version `72451282-d5a8-49c0-a6fe-ba8639c1307b` is the recorded rollback candidate for SHA `452bb87d4653657e020d6bf825d35a9b6600055a`. The 2026-10-12 read-only preflight verified its version metadata, all six secret_text bindings and production D1 UUID. It is no longer the active version after the owner-confirmed Kona release. Rolling back would remove Kona results and the accumulated approved changes, including the Franzi fix, from the application. Recheck availability and compatibility before separately approving rollback. Secret names cannot establish secret values; any later credential rotation requires renewed review.
 
 Before the next deployment, record version ID, SHA, binding metadata, schemas and successful smoke evidence in a private incident/release record. Recheck candidate availability and compatibility each time. Never blindly select the previous version: initial production versions predate complete secrets. If no compatible version with all six secrets is available, STOP and prepare an explicitly reviewed forward recovery deployment; do not fall back to preview.
 
@@ -199,7 +200,7 @@ Read-only discovery:
 ```sh
 npx --no-install wrangler whoami
 npx --no-install wrangler deployments list --env production
-npx --no-install wrangler versions view f90a0765-e7c6-40ad-8bd2-2b0fd8c42766 --env production
+npx --no-install wrangler versions view 72451282-d5a8-49c0-a6fe-ba8639c1307b --env production
 npx --no-install wrangler secret list --env production
 ```
 
@@ -207,7 +208,7 @@ Compare candidate and active metadata with the runtime snapshot above. If secret
 
 ```sh
 # REMOTE MUTATION — not a check; use this candidate only after the checks above.
-npx --no-install wrangler rollback f90a0765-e7c6-40ad-8bd2-2b0fd8c42766 --env production
+npx --no-install wrangler rollback 72451282-d5a8-49c0-a6fe-ba8639c1307b --env production
 ```
 
 Afterward re-read deployment/version, secret names and Worker settings; verify DB UUID, APP_ENV, origin/site key, limiter, ASSETS, schedules and domain separately. Use health with the candidate's expected SHA, full JS download, News/config GET and read-only queue/count checks below. Do not send Feedback automatically. Compare preview snapshot independently. If verification fails, stop and assess; no automatic repeated rollback. Resource data is not restored by code rollback. Cloudflare documents a last-100-versions rollback limit and resource compatibility restrictions: [Worker rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/).
@@ -253,7 +254,7 @@ Time Travel is remote even without `--remote`; restoring cancels in-flight queri
 Use expected deployed SHA explicitly after documentation commits; HEAD may differ. Routine monitoring is GET/SELECT only:
 
 ```sh
-npm run check:production -- --expected-sha a1e69f3740738ee7d29927c62178f5a09e559d88
+npm run check:production -- --expected-sha 3861531cac5570765e242e697fcb03dde271dde6
 npm run check:preview
 curl --fail --show-error --max-time 15 https://300w.app/api/feedback/config
 npx --no-install wrangler d1 execute DB --env production --remote --command "SELECT name FROM d1_migrations ORDER BY id; SELECT delivery_status,COUNT(*) AS count FROM feedback GROUP BY delivery_status; SELECT id,created_at,delivery_status,delivery_attempts,last_delivery_at,next_delivery_at,delivery_lease IS NULL AS lease_clear FROM feedback WHERE delivery_status!='sent' OR delivery_lease IS NOT NULL OR next_delivery_at IS NOT NULL;"

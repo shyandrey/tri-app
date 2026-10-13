@@ -263,6 +263,10 @@ For this V1 gate these exact existing issues are non-blocking but **always print
 
 Source SHA `a1e69f3740738ee7d29927c62178f5a09e559d88`: `check:release` PASS, 17 checks / 153 unit tests, 21.2 s; `check:release:browser` PASS, 14 suites, 359.3 s. No failures or environment errors in these runs; no expectations changed. Chrome headless against local production build, with each suite's viewport matrix; not a real Android/iPhone Telegram test. News and Feedback browser responses are mocked; no real Turnstile, Telegram send or remote D1 write. Two known country conflicts remain visible. This dated evidence does not certify a later code change; documentation edits following these runs do not change application behavior. Live production News ingestion, Android coverage, intermittent direct asset delivery and a D1 restore drill remain unverified/unresolved.
 
+### Kona release closure — 2026-10-12
+
+Production SHA `3861531cac5570765e242e697fcb03dde271dde6`: release completed and iPhone Telegram Mini App manual check PASS, both confirmed by the owner. Preflight `check:release`: 17/17 PASS, 30.2 s, zero observed data issues. The prior dated RC snapshot remains historical evidence, not the current release status. No final browser gate/Android validation is claimed. See [production snapshot and recovery](deployment-cloudflare.md#live-production-and-manual-deployment) and [DATA-03](PROJECT_BOARD.md#recently-completed); TECH-01, TECH-02 and network risks remain open.
+
 ### RC browser gate — local production build only
 
 Run `check:release` first. Start this checkout's build with:
