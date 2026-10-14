@@ -6,15 +6,15 @@
 
 ## Current Focus
 
-BOT-01 — диагностика Preview webhook HTTP 503; temporary observability local patch для review, pending deployment.
+BOT-01 — исправление несовместимого fetch redirect в Preview command handler; local patch для review, без deployment.
 
 ## In Progress
 
 ### BOT-01 — Dedicated Telegram command webhook
 
-- **Status:** IN PROGRESS — TEMPORARY OBSERVABILITY / NEEDS REVIEW / PENDING DEPLOYMENT · **Priority:** P1.
-- **Описание:** Preview command handler и safe 503 diagnostics deployed (371b25ec4fd27c6ffb346a05abb35f7a725ba77e); владелец сообщил webhook HTTP 503. Причина пока не установлена. Подготовлен только локальный Preview observability config: persisted console logs, sampling 1, invocation logs/traces/issues выключены, query strings redacted, external destinations отсутствуют. Production configuration сохранена.
-- **Next action:** review config/tests, отдельно согласовать deployment и ограниченное окно наблюдения естественных retries по telegram_command_failure без новых команд. Это не event allowlist: возможны другие console events/runtime errors; после диагностики отдельно согласовать отключение/режим хранения. Production migration и отключение Preview News — позднее. Persistent command deduplication отсутствует.
+- **Status:** IN PROGRESS — REDIRECT FIX / NEEDS REVIEW / PENDING DEPLOYMENT · **Priority:** P1.
+- **Описание:** Владелец подтвердил live `SEND_NETWORK_OR_RUNTIME_ERROR` на Preview version `d9c03a1d-a0df-47ee-9796-8d12a9797128`. Локально воспроизведён TypeError workerd для `redirect: 'error'`; подготовлена замена на `manual` с runtime regression: 3xx отклоняются, переход не выполняется. Live устранение инцидента ещё не подтверждено. Temporary Preview observability остаётся отдельным эксплуатационным шагом; Production не меняется.
+- **Next action:** review patch/tests, отдельно согласовать deployment и наблюдение естественных retries без новых команд. После диагностики отдельно согласовать отключение/режим хранения observability. Production migration и отключение Preview News — позднее. Persistent command deduplication отсутствует.
 - **Links:** [command operations](telegram-commands.md), [handler](../worker/telegram/commands.ts), [tests](../scripts/test-telegram-commands.mjs).
 
 ### DATA-01 — Русские имена атлетов

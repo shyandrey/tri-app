@@ -44,7 +44,7 @@ npm run check:release
 
 The command suite uses synthetic requests and injected senders; no actual Telegram messages or remote D1 access. It is a separate suite, not yet part of the release runner. Tests cover config/auth, parsing, private chats, payload safety, fixed URLs, provider failures/timeout configuration, and forbidden access to DB/legacy credentials. Real Telegram device E2E remains a deployment prerequisite, not proven by mocks.
 
-## Safe 503 diagnostics (local patch; not deployed)
+## Safe 503 diagnostics
 
 Every handled 503 emits one JSON warning with event `telegram_command_failure` and one fixed reason. Responses remain 503 / `{"ok":false}`; authentication failures (401), malformed requests (400/413), ignored updates and successful commands do not emit these events. No extra Telegram requests or retries are introduced.
 
@@ -57,3 +57,9 @@ Optional fields are numeric `http_status` and numeric `error_code` only. Non-2xx
 Example (synthetic): `{"event":"telegram_command_failure","reason":"UPSTREAM_HTTP_ERROR","http_status":401,"error_code":401}`.
 
 A future Preview deployment and narrow log inspection require separate approval. Observe existing Telegram retries without sending more commands; retries can still deliver replies or duplicates. Numeric errors narrow the failure stage but do not prove a specific secret value is incorrect. The current live incident is not resolved by this local patch.
+
+### Workers redirect compatibility fix (local patch; pending review)
+
+The owner observed `SEND_NETWORK_OR_RUNTIME_ERROR` on Preview version `d9c03a1d-a0df-47ee-9796-8d12a9797128`. Local workerd reproduces rejection of `redirect: 'error'` with TypeError before outbound delivery. The local fix uses `redirect: 'manual'`: redirects are not followed and non-2xx responses still return HTTP 503 through existing error handling. Live recovery requires separately approved deployment and verification; no credential change is implied.
+
+`node --test scripts/test-telegram-commands.mjs` includes the actual handler running in installed Miniflare/workerd with a fully local outbound stub. It checks successful sending, redirect rejection without a second request, and upstream HTTP failures. It uses synthetic credentials only, makes no Telegram requests, and requires permission to open local runtime sockets. Node emits an experimental warning for `stripTypeScriptTypes`; Miniflare is supplied by the existing Wrangler installation.

@@ -77,7 +77,7 @@ export async function publicTelegramWebhook(request: Request, env: Env, fetcher:
       : '/app — открыть 300W\nНовости и сообщество: https://t.me/trista_watt\nНашли ошибку? В приложении откройте «Ещё» → «Сообщить об ошибке».'
   try {
     const response = await fetcher(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, redirect: 'error', signal: AbortSignal.timeout(8000),
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, redirect: 'manual', signal: AbortSignal.timeout(8000),
       body: JSON.stringify({ chat_id: message.chat.id, text, link_preview_options: { is_disabled: true },
         reply_markup: { inline_keyboard: [[{ text: 'Открыть 300W', web_app: { url: appUrl } }]] } }),
     })

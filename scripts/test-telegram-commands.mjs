@@ -1,6 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
+import { stripTypeScriptTypes } from 'node:module'
+import { Miniflare, convertV4MiniflareOptions } from 'miniflare'
 import {publicTelegramWebhook} from '../worker/telegram/commands.ts'
 import worker from '../worker/index.ts'
 const env={PUBLIC_TELEGRAM_COMMANDS_ENABLED:'true',PUBLIC_TELEGRAM_BOT_TOKEN:'test-public',PUBLIC_TELEGRAM_WEBHOOK_SECRET:'test-secret',PUBLIC_TELEGRAM_BOT_USERNAME:'tri_app_preview_bot',PUBLIC_TELEGRAM_MINI_APP_URL:'https://preview.300w.app'}
@@ -30,7 +32,7 @@ test('commands, addressed username, safe payload and fixed URL; no DB or Feedbac
    const config={...env,PUBLIC_TELEGRAM_BOT_USERNAME:username,PUBLIC_TELEGRAM_MINI_APP_URL:url}
    for(const key of ['DB','TELEGRAM_BOT_TOKEN','TELEGRAM_WEBHOOK_SECRET','FEEDBACK_TELEGRAM_CHAT_ID'])Object.defineProperty(config,key,{get(){throw Error(`Forbidden access: ${key}`)}})
    const result=await publicTelegramWebhook(request(update(command)),config,async(target,options)=>{
-    calls++;assert.equal(target,'https://api.telegram.org/bottest-public/sendMessage');assert.equal(options.redirect,'error')
+    calls++;assert.equal(target,'https://api.telegram.org/bottest-public/sendMessage');assert.equal(options.redirect,'manual')
     assert.ok(options.signal instanceof AbortSignal)
     const body=JSON.parse(options.body);assert.equal(body.chat_id,123);assert.equal(body.reply_markup.inline_keyboard[0][0].web_app.url,url)
     assert.ok(!body.text.includes('safe_-123'));assert.equal(body.parse_mode,undefined)
@@ -77,6 +79,43 @@ test('Worker route preserves News auth and enables commands only in Preview',asy
   assert.equal(vars.PUBLIC_TELEGRAM_COMMANDS_ENABLED,enabled);assert.equal(vars.PUBLIC_TELEGRAM_BOT_USERNAME,user);assert.equal(vars.PUBLIC_TELEGRAM_MINI_APP_URL,url)
   assert.equal(vars.PUBLIC_TELEGRAM_BOT_TOKEN,undefined);assert.equal(vars.PUBLIC_TELEGRAM_WEBHOOK_SECRET,undefined)
  }
+})
+
+test('workerd sends successfully and rejects redirects without following them',async()=>{
+ const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
+ const source=stripTypeScriptTypes(await fs.readFile('worker/telegram/commands.ts','utf8'))
+ let upstreamStatus=200,calls=0,followed=0
+ // All outbound requests terminate in this local stub, including redirect targets.
+ // Exercise the actual handler with workerd's native fetch, not an injected fetcher.
+ const mf=new Miniflare(convertV4MiniflareOptions({
+  modules:true,compatibilityDate:config.compatibility_date,bindings:env,
+  script:source+'\nexport default { fetch(request, env) { return publicTelegramWebhook(request, env) } }',
+  outboundService:async req=>{
+   calls++
+   if(req.url!=='https://api.telegram.org/bottest-public/sendMessage'){
+    followed++
+    return Response.json({ok:true,result:{message_id:10,chat:{id:123}}})
+   }
+   if(upstreamStatus>=300&&upstreamStatus<400)
+    return new Response(null,{status:upstreamStatus,headers:{Location:'https://redirect.invalid/blocked'}})
+   if(upstreamStatus!==200)return new Response('upstream unavailable',{status:upstreamStatus})
+   return Response.json({ok:true,result:{message_id:10,chat:{id:123}}})
+  },
+ }))
+ try{
+  for(const status of [200,301,302,303,304,307,308,401,429,500]){
+   upstreamStatus=status;calls=0;followed=0
+   const r=await mf.dispatchFetch('https://example.test/api/telegram-public-webhook',{
+    method:'POST',headers:{'Content-Type':'application/json','X-Telegram-Bot-Api-Secret-Token':env.PUBLIC_TELEGRAM_WEBHOOK_SECRET},
+    body:JSON.stringify(update('/app')),
+   })
+   assert.equal(r.status,status===200?200:503,`upstream ${status}`)
+   assert.deepEqual(await r.json(),{ok:status===200})
+   assert.equal(r.headers.get('Cache-Control'),'no-store')
+   assert.equal(calls,1,'exactly one outbound request')
+   assert.equal(followed,0,'redirect destination must never be requested')
+  }
+ }finally{await mf.dispose()}
 })
 
 test('503 diagnostics use fixed categories, emit once, preserve responses and never retry or leak',async()=>{
