@@ -66,15 +66,15 @@ test('Telegram HTTP/API/malformed response/network failures are generic; timeout
   assert.equal(duration,8000)
  }finally{AbortSignal.timeout=original}
 })
-test('Worker route and configuration preserve News auth and disable commands by default',async()=>{
+test('Worker route preserves News auth and enables commands only in Preview',async()=>{
  assert.equal((await worker.fetch(new Request('https://example.test/api/telegram-public-webhook'),env)).status,405)
  assert.equal((await worker.fetch(request(update('/start')),{})).status,503)
  const r=request(update('/start'))
  assert.equal((await worker.fetch(new Request('https://example.test/api/telegram-webhook',r),{...env,TELEGRAM_WEBHOOK_SECRET:'news-secret',NEWS_TELEGRAM_CHANNEL_ID:'-123'})).status,401)
  const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
- for(const [name,user,url] of [['preview','tri_app_preview_bot','https://preview.300w.app'],['production','tri_app_bot','https://300w.app']]){
+ for(const [name,enabled,user,url] of [['preview','true','tri_app_preview_bot','https://preview.300w.app'],['production','false','tri_app_bot','https://300w.app']]){
   const vars=config.env[name].vars
-  assert.equal(vars.PUBLIC_TELEGRAM_COMMANDS_ENABLED,'false');assert.equal(vars.PUBLIC_TELEGRAM_BOT_USERNAME,user);assert.equal(vars.PUBLIC_TELEGRAM_MINI_APP_URL,url)
+  assert.equal(vars.PUBLIC_TELEGRAM_COMMANDS_ENABLED,enabled);assert.equal(vars.PUBLIC_TELEGRAM_BOT_USERNAME,user);assert.equal(vars.PUBLIC_TELEGRAM_MINI_APP_URL,url)
   assert.equal(vars.PUBLIC_TELEGRAM_BOT_TOKEN,undefined);assert.equal(vars.PUBLIC_TELEGRAM_WEBHOOK_SECRET,undefined)
  }
 })

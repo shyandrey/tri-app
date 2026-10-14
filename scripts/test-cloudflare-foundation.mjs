@@ -114,7 +114,7 @@ test('production D1 is isolated; preview and default bindings/config stay intact
  }) // Exact allowlist: no copied preview vars, secret values or fabricated bindings.
  assert.deepEqual(config.env.preview,{
   main:'worker/index.ts',name:'tri-app-preview',workers_dev:true,
-  vars:{APP_ENV:'preview',PUBLIC_TELEGRAM_COMMANDS_ENABLED:'false',PUBLIC_TELEGRAM_BOT_USERNAME:'tri_app_preview_bot',PUBLIC_TELEGRAM_MINI_APP_URL:'https://preview.300w.app',TURNSTILE_SITE_KEY:'0x4AAAAAAFLWMQLuWNz_aJ5j',ALLOWED_ORIGIN:'https://preview.300w.app'},
+  vars:{APP_ENV:'preview',PUBLIC_TELEGRAM_COMMANDS_ENABLED:'true',PUBLIC_TELEGRAM_BOT_USERNAME:'tri_app_preview_bot',PUBLIC_TELEGRAM_MINI_APP_URL:'https://preview.300w.app',TURNSTILE_SITE_KEY:'0x4AAAAAAFLWMQLuWNz_aJ5j',ALLOWED_ORIGIN:'https://preview.300w.app'},
   ratelimits:[{name:'FEEDBACK_RATE_LIMITER',namespace_id:'30001',simple:{limit:5,period:60}}],
   triggers:{crons:['*/5 * * * *']},
   d1_databases:[{binding:'DB',database_name:'tri-app-preview',database_id:'4dfe9210-0cc7-484f-8eea-fe5216f5c17a',migrations_dir:'migrations'}],
