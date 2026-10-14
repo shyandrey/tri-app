@@ -1,20 +1,20 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-13. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-15. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-BOT-01 — локальная реализация Telegram command handler для review; remote setup не разрешён этой задачей.
+BOT-01 — диагностика Preview webhook HTTP 503; temporary observability local patch для review, pending deployment.
 
 ## In Progress
 
 ### BOT-01 — Dedicated Telegram command webhook
 
-- **Status:** IN PROGRESS — LOCAL PATCH / NEEDS REVIEW · **Priority:** P1.
-- **Описание:** отдельный command endpoint для production public bot и Preview test bot; /start, /app, /help, собственные credentials. В config обе среды disabled, secrets/webhooks не настроены этой задачей. News/Feedback code и routing сохранены.
-- **Next action:** review patch/tests, затем отдельно согласовать Preview secrets/enablement/deploy/webhook и E2E. Production migration и отключение Preview News — позднее. Учесть отсутствие persistent command deduplication.
+- **Status:** IN PROGRESS — TEMPORARY OBSERVABILITY / NEEDS REVIEW / PENDING DEPLOYMENT · **Priority:** P1.
+- **Описание:** Preview command handler и safe 503 diagnostics deployed (371b25ec4fd27c6ffb346a05abb35f7a725ba77e); владелец сообщил webhook HTTP 503. Причина пока не установлена. Подготовлен только локальный Preview observability config: persisted console logs, sampling 1, invocation logs/traces/issues выключены, query strings redacted, external destinations отсутствуют. Production configuration сохранена.
+- **Next action:** review config/tests, отдельно согласовать deployment и ограниченное окно наблюдения естественных retries по telegram_command_failure без новых команд. Это не event allowlist: возможны другие console events/runtime errors; после диагностики отдельно согласовать отключение/режим хранения. Production migration и отключение Preview News — позднее. Persistent command deduplication отсутствует.
 - **Links:** [command operations](telegram-commands.md), [handler](../worker/telegram/commands.ts), [tests](../scripts/test-telegram-commands.mjs).
 
 ### DATA-01 — Русские имена атлетов
