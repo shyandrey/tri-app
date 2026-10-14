@@ -4,16 +4,36 @@ const json = (status = 200) => Response.json({ ok: status === 200 }, { status, h
 const object = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value)
 const integer = (value: unknown, min = 0): value is number => Number.isSafeInteger(value) && (value as number) >= min
 
+type FailureReason =
+  | 'CONFIG_DISABLED' | 'CONFIG_TOKEN_EMPTY' | 'CONFIG_SECRET_EMPTY'
+  | 'CONFIG_USERNAME_INVALID' | 'CONFIG_URL_INVALID'
+  | 'UPSTREAM_HTTP_ERROR' | 'UPSTREAM_API_ERROR' | 'UPSTREAM_INVALID_JSON'
+  | 'UPSTREAM_INVALID_RESULT' | 'UPSTREAM_CHAT_MISMATCH'
+  | 'SEND_TIMEOUT' | 'SEND_NETWORK_OR_RUNTIME_ERROR'
+
+const timeout = (error: unknown) => error instanceof Error && error.name === 'TimeoutError'
+function failure(reason: FailureReason, status?: number, errorCode?: unknown) {
+  const event: Record<string, string | number> = { event: 'telegram_command_failure', reason }
+  if (typeof status === 'number' && Number.isInteger(status)) event.http_status = status
+  if (typeof errorCode === 'number' && Number.isSafeInteger(errorCode)) event.error_code = errorCode
+  // No provider-controlled strings, identifiers, URLs or exception details.
+  try { console.warn(JSON.stringify(event)) } catch { /* Diagnostics must not alter the response. */ }
+  return json(503)
+}
+
 export async function publicTelegramWebhook(request: Request, env: Env, fetcher: typeof fetch = fetch): Promise<Response> {
   if (request.method !== 'POST') return new Response(null, { status: 405, headers: { Allow: 'POST' } })
   const token = env.PUBLIC_TELEGRAM_BOT_TOKEN, secret = env.PUBLIC_TELEGRAM_WEBHOOK_SECRET
   const username = env.PUBLIC_TELEGRAM_BOT_USERNAME, appUrl = env.PUBLIC_TELEGRAM_MINI_APP_URL
-  if (env.PUBLIC_TELEGRAM_COMMANDS_ENABLED !== 'true' || !token?.trim() || !secret?.trim()
-    || !username || !/^[A-Za-z0-9_]{5,32}$/.test(username) || !appUrl) return json(503)
+  if (env.PUBLIC_TELEGRAM_COMMANDS_ENABLED !== 'true') return failure('CONFIG_DISABLED')
+  if (!token?.trim()) return failure('CONFIG_TOKEN_EMPTY')
+  if (!secret?.trim()) return failure('CONFIG_SECRET_EMPTY')
+  if (!username || !/^[A-Za-z0-9_]{5,32}$/.test(username)) return failure('CONFIG_USERNAME_INVALID')
+  if (!appUrl) return failure('CONFIG_URL_INVALID')
   try {
     const url = new URL(appUrl)
-    if (url.protocol !== 'https:' || url.username || url.password) return json(503)
-  } catch { return json(503) }
+    if (url.protocol !== 'https:' || url.username || url.password) return failure('CONFIG_URL_INVALID')
+  } catch { return failure('CONFIG_URL_INVALID') }
   const supplied = request.headers.get('X-Telegram-Bot-Api-Secret-Token') ?? ''
   const digest = (s: string) => crypto.subtle.digest('SHA-256', new TextEncoder().encode(s))
   const [a, b] = await Promise.all([digest(supplied), digest(secret)])
@@ -61,9 +81,19 @@ export async function publicTelegramWebhook(request: Request, env: Env, fetcher:
       body: JSON.stringify({ chat_id: message.chat.id, text, link_preview_options: { is_disabled: true },
         reply_markup: { inline_keyboard: [[{ text: 'Открыть 300W', web_app: { url: appUrl } }]] } }),
     })
-    const body: unknown = await response.json()
-    if (!response.ok || !object(body) || body.ok !== true || !object(body.result)
-      || !integer(body.result.message_id, 1) || !object(body.result.chat) || body.result.chat.id !== message.chat.id) return json(503)
+    let body: unknown
+    try { body = await response.json() } catch (error) {
+      if (!response.ok) return failure('UPSTREAM_HTTP_ERROR', response.status)
+      return failure(timeout(error) ? 'SEND_TIMEOUT'
+        : error instanceof SyntaxError ? 'UPSTREAM_INVALID_JSON' : 'SEND_NETWORK_OR_RUNTIME_ERROR', response.status)
+    }
+    const errorCode = object(body) ? body.error_code : undefined
+    if (!response.ok) return failure('UPSTREAM_HTTP_ERROR', response.status, errorCode)
+    if (!object(body)) return failure('UPSTREAM_INVALID_RESULT', response.status)
+    if (body.ok !== true) return failure('UPSTREAM_API_ERROR', response.status, errorCode)
+    if (!object(body.result) || !integer(body.result.message_id, 1) || !object(body.result.chat))
+      return failure('UPSTREAM_INVALID_RESULT', response.status)
+    if (body.result.chat.id !== message.chat.id) return failure('UPSTREAM_CHAT_MISMATCH', response.status)
     return json()
-  } catch { return json(503) }
+  } catch (error) { return failure(timeout(error) ? 'SEND_TIMEOUT' : 'SEND_NETWORK_OR_RUNTIME_ERROR') }
 }

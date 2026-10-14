@@ -43,3 +43,17 @@ npm run check:release
 ```
 
 The command suite uses synthetic requests and injected senders; no actual Telegram messages or remote D1 access. It is a separate suite, not yet part of the release runner. Tests cover config/auth, parsing, private chats, payload safety, fixed URLs, provider failures/timeout configuration, and forbidden access to DB/legacy credentials. Real Telegram device E2E remains a deployment prerequisite, not proven by mocks.
+
+## Safe 503 diagnostics (local patch; not deployed)
+
+Every handled 503 emits one JSON warning with event `telegram_command_failure` and one fixed reason. Responses remain 503 / `{"ok":false}`; authentication failures (401), malformed requests (400/413), ignored updates and successful commands do not emit these events. No extra Telegram requests or retries are introduced.
+
+- Configuration: `CONFIG_DISABLED`, `CONFIG_TOKEN_EMPTY`, `CONFIG_SECRET_EMPTY`, `CONFIG_USERNAME_INVALID`, `CONFIG_URL_INVALID`. These precede authentication; binding presence alone does not establish non-empty values.
+- Upstream: `UPSTREAM_HTTP_ERROR`, `UPSTREAM_API_ERROR`, `UPSTREAM_INVALID_JSON`, `UPSTREAM_INVALID_RESULT`, `UPSTREAM_CHAT_MISMATCH`.
+- Exceptions: `SEND_TIMEOUT` (recognized TimeoutError), `SEND_NETWORK_OR_RUNTIME_ERROR`. Other abort/network/runtime exceptions remain grouped; this is not a definitive network diagnosis.
+
+Optional fields are numeric `http_status` and numeric `error_code` only. Non-2xx HTTP takes precedence over malformed/non-JSON error bodies. A timeout while reading a successful HTTP response is classified as SEND_TIMEOUT. No provider descriptions, raw responses, headers, message text, chat/user IDs, token-bearing URLs, exception messages/stacks or secrets are logged.
+
+Example (synthetic): `{"event":"telegram_command_failure","reason":"UPSTREAM_HTTP_ERROR","http_status":401,"error_code":401}`.
+
+A future Preview deployment and narrow log inspection require separate approval. Observe existing Telegram retries without sending more commands; retries can still deliver replies or duplicates. Numeric errors narrow the failure stage but do not prove a specific secret value is incorrect. The current live incident is not resolved by this local patch.

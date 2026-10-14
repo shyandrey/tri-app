@@ -78,3 +78,56 @@ test('Worker route preserves News auth and enables commands only in Preview',asy
   assert.equal(vars.PUBLIC_TELEGRAM_BOT_TOKEN,undefined);assert.equal(vars.PUBLIC_TELEGRAM_WEBHOOK_SECRET,undefined)
  }
 })
+
+test('503 diagnostics use fixed categories, emit once, preserve responses and never retry or leak',async()=>{
+ const privateDetail='PRIVATE_TOKEN_SECRET_TEXT_HEADER_URL'
+ const cases=[
+  [{PUBLIC_TELEGRAM_COMMANDS_ENABLED:'false'},null,'CONFIG_DISABLED'],
+  [{PUBLIC_TELEGRAM_BOT_TOKEN:'  '},null,'CONFIG_TOKEN_EMPTY'],
+  [{PUBLIC_TELEGRAM_WEBHOOK_SECRET:' '},null,'CONFIG_SECRET_EMPTY'],
+  [{PUBLIC_TELEGRAM_BOT_USERNAME:'@invalid'},null,'CONFIG_USERNAME_INVALID'],
+  [{PUBLIC_TELEGRAM_MINI_APP_URL:'bad'},null,'CONFIG_URL_INVALID'],
+  [{PUBLIC_TELEGRAM_MINI_APP_URL:''},null,'CONFIG_URL_INVALID'],
+  [{PUBLIC_TELEGRAM_MINI_APP_URL:'http://example.test'},null,'CONFIG_URL_INVALID'],
+  [{},()=>new Response(privateDetail,{status:401}),'UPSTREAM_HTTP_ERROR',401],
+  [{},()=>Response.json({ok:false,error_code:403,description:privateDetail},{status:403}),'UPSTREAM_HTTP_ERROR',403,403],
+  [{},()=>Response.json({ok:false,error_code:429,description:privateDetail}),'UPSTREAM_API_ERROR',200,429],
+  [{},()=>Response.json({ok:false,error_code:privateDetail}),'UPSTREAM_API_ERROR',200],
+  [{},()=>new Response(privateDetail),'UPSTREAM_INVALID_JSON',200],
+  [{},()=>({ok:true,status:200,json:async()=>{throw new TypeError(privateDetail)}}),'SEND_NETWORK_OR_RUNTIME_ERROR',200],
+  [{},()=>Response.json(null),'UPSTREAM_INVALID_RESULT',200],
+  [{},()=>Response.json({ok:true,result:{message_id:privateDetail}}),'UPSTREAM_INVALID_RESULT',200],
+  [{},()=>Response.json({ok:true,result:{message_id:1,chat:{id:987654321},text:privateDetail}}),'UPSTREAM_CHAT_MISMATCH',200],
+  [{},()=>{throw new DOMException(privateDetail,'TimeoutError')},'SEND_TIMEOUT'],
+  [{},()=>{throw new Error(privateDetail)},'SEND_NETWORK_OR_RUNTIME_ERROR'],
+  [{},()=>({ok:true,status:200,json:async()=>{throw new DOMException(privateDetail,'TimeoutError')}}),'SEND_TIMEOUT',200],
+ ]
+ const original=console.warn
+ try{
+  for(const [patch,sender,reason,status,errorCode] of cases){
+   const logs=[];let calls=0
+   console.warn=(...args)=>logs.push(args)
+   const r=await publicTelegramWebhook(request(update('/start '+privateDetail)),{...env,...patch},async()=>{
+    calls++
+    assert.ok(sender,'configuration errors must not send')
+    return sender()
+   })
+   assert.equal(r.status,503);assert.deepEqual(await r.json(),{ok:false})
+   assert.equal(r.headers.get('Cache-Control'),'no-store')
+   assert.equal(calls,sender?1:0);assert.equal(logs.length,1);assert.equal(logs[0].length,1)
+   const expected={event:'telegram_command_failure',reason}
+   if(status!==undefined)expected.http_status=status
+   if(errorCode!==undefined)expected.error_code=errorCode
+   assert.deepEqual(JSON.parse(logs[0][0]),expected)
+   for(const sensitive of [privateDetail,env.PUBLIC_TELEGRAM_BOT_TOKEN,env.PUBLIC_TELEGRAM_WEBHOOK_SECRET,'987654321','api.telegram.org'])
+    assert.ok(!logs[0][0].includes(sensitive))
+  }
+  const logs=[];console.warn=(...args)=>logs.push(args)
+  assert.equal((await publicTelegramWebhook(request(update('/app')),env,ok)).status,200)
+  assert.equal((await publicTelegramWebhook(request(update('/app'),'wrong'),env,noSend)).status,401)
+  assert.equal((await publicTelegramWebhook(request(update('hello')),env,noSend)).status,200)
+  assert.equal(logs.length,0)
+  console.warn=()=>{throw Error(privateDetail)}
+  assert.equal((await publicTelegramWebhook(request(update('/app')),{...env,PUBLIC_TELEGRAM_COMMANDS_ENABLED:'false'},noSend)).status,503)
+ }finally{console.warn=original}
+})
