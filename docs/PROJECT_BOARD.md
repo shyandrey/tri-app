@@ -1,20 +1,21 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-15. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-16. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-BOT-01 — исправление несовместимого fetch redirect в Preview command handler; local patch для review, без deployment.
+BOT-01 — Preview E2E подтверждён владельцем; подготовка изолированной Production migration @tri_app_bot, без remote mutations.
 
 ## In Progress
 
 ### BOT-01 — Dedicated Telegram command webhook
 
-- **Status:** IN PROGRESS — REDIRECT FIX / NEEDS REVIEW / PENDING DEPLOYMENT · **Priority:** P1.
-- **Описание:** Владелец подтвердил live `SEND_NETWORK_OR_RUNTIME_ERROR` на Preview version `d9c03a1d-a0df-47ee-9796-8d12a9797128`. Локально воспроизведён TypeError workerd для `redirect: 'error'`; подготовлена замена на `manual` с runtime regression: 3xx отклоняются, переход не выполняется. Live устранение инцидента ещё не подтверждено. Temporary Preview observability остаётся отдельным эксплуатационным шагом; Production не меняется.
-- **Next action:** review patch/tests, отдельно согласовать deployment и наблюдение естественных retries без новых команд. После диагностики отдельно согласовать отключение/режим хранения observability. Production migration и отключение Preview News — позднее. Persistent command deduplication отсутствует.
+- **Status:** IN PROGRESS — PREVIEW E2E PASS / PRODUCTION ENABLEMENT PATCH NEEDS REVIEW · **Priority:** P1.
+- **Описание:** Preview command handler SHA `f1a95114b29fe56b1a76596bb2da8ce8b895ff5e` deployed; владелец подтвердил `/start`, `/app`, `/help` у @tri_app_preview_bot — PASS, а также доставку Preview Feedback в Telegram-группу с маркером PREVIEW. Это owner-confirmed E2E, отдельно от ранее выполненных automated command/workerd tests (9/9 PASS) и release gate PASS. Исправление использует `redirect: 'manual'`; 3xx не следуются. Temporary Preview observability сохранена.
+- **Production preflight (2026-10-16):** live SHA `3861531cac5570765e242e697fcb03dde271dde6`; public-command route пока отсутствует. D1/bindings соответствуют baseline; Feedback: sent=3, pending/failed/retryable/active и expired leases=0. Владелец подтвердил identity @tri_app_bot PASS и текущий webhook `https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`, allowed_updates `channel_post, edited_channel_post`, pending=0. Подготовлен только локальный Production enablement=true и соответствующие assertions; live configuration не изменена. До миграции необходимы review accumulated diff, отдельная установка PUBLIC credentials и deployment approval. Значения secrets не читались. Production News/Feedback @tri_app_prod_bot должны остаться неизменными.
+- **Next action:** review локального production enablement/tests, отдельно согласовать secure credential setup, deployment и только затем перенос webhook @tri_app_bot. Старую Preview News dependency отключать отдельным шагом после переноса; сохранить News GET/records и @tri_app_preview_bot commands/Feedback. Не восстанавливать public webhook на Preview автоматически. Persistent command deduplication отсутствует; retries могут давать повторные ответы. Режим хранения/отключение temporary observability требует отдельного решения.
 - **Links:** [command operations](telegram-commands.md), [handler](../worker/telegram/commands.ts), [tests](../scripts/test-telegram-commands.mjs).
 
 ### DATA-01 — Русские имена атлетов
