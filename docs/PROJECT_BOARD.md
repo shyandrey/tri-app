@@ -1,22 +1,14 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-16. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-17. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-BOT-01 — Preview E2E подтверждён владельцем; подготовка изолированной Production migration @tri_app_bot, без remote mutations.
+BOT-01 core завершён; review эксплуатационных follow-ups BOT-02–BOT-04. Новые remote mutations требуют отдельного approval.
 
 ## In Progress
-
-### BOT-01 — Dedicated Telegram command webhook
-
-- **Status:** IN PROGRESS — PREVIEW E2E PASS / PRODUCTION ENABLEMENT PATCH NEEDS REVIEW · **Priority:** P1.
-- **Описание:** Preview command handler SHA `f1a95114b29fe56b1a76596bb2da8ce8b895ff5e` deployed; владелец подтвердил `/start`, `/app`, `/help` у @tri_app_preview_bot — PASS, а также доставку Preview Feedback в Telegram-группу с маркером PREVIEW. Это owner-confirmed E2E, отдельно от ранее выполненных automated command/workerd tests (9/9 PASS) и release gate PASS. Исправление использует `redirect: 'manual'`; 3xx не следуются. Temporary Preview observability сохранена.
-- **Production preflight (2026-10-16):** live SHA `3861531cac5570765e242e697fcb03dde271dde6`; public-command route пока отсутствует. D1/bindings соответствуют baseline; Feedback: sent=3, pending/failed/retryable/active и expired leases=0. Владелец подтвердил identity @tri_app_bot PASS и текущий webhook `https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`, allowed_updates `channel_post, edited_channel_post`, pending=0. Подготовлен только локальный Production enablement=true и соответствующие assertions; live configuration не изменена. До миграции необходимы review accumulated diff, отдельная установка PUBLIC credentials и deployment approval. Значения secrets не читались. Production News/Feedback @tri_app_prod_bot должны остаться неизменными.
-- **Next action:** review локального production enablement/tests, отдельно согласовать secure credential setup, deployment и только затем перенос webhook @tri_app_bot. Старую Preview News dependency отключать отдельным шагом после переноса; сохранить News GET/records и @tri_app_preview_bot commands/Feedback. Не восстанавливать public webhook на Preview автоматически. Persistent command deduplication отсутствует; retries могут давать повторные ответы. Режим хранения/отключение temporary observability требует отдельного решения.
-- **Links:** [command operations](telegram-commands.md), [handler](../worker/telegram/commands.ts), [tests](../scripts/test-telegram-commands.mjs).
 
 ### DATA-01 — Русские имена атлетов
 
@@ -27,6 +19,27 @@ BOT-01 — Preview E2E подтверждён владельцем; подгот
 
 ## Needs Attention / Review
 
+### BOT-02 — BotFather commands и Menu Button
+
+- **Status:** NEEDS REVIEW · **Priority:** P2.
+- **Описание:** работа `/start`, `/app`, `/help` и кнопки Mini App подтверждена владельцем; состояние BotFather command list и Menu Button отдельно не подтверждено.
+- **Next action:** owner-assisted проверка списка команд и URL меню для Production/Preview; изменения только после отдельного approval.
+- **Links:** [command operations](telegram-commands.md#operational-follow-ups).
+
+### BOT-03 — Retire unused Preview News receiver
+
+- **Status:** NEEDS REVIEW · **Priority:** P2.
+- **Описание:** public @tri_app_bot перенесён в Production; старый Preview News endpoint/config ещё не отключён. Preview News GET и существующие D1 records должны сохраниться.
+- **Next action:** отдельно согласовать отключение legacy receiver; сохранить NEWS_TELEGRAM_CHANNEL_ID, test-bot commands/Feedback и Production News/Feedback. Не выполнять автоматический возврат public webhook на Preview.
+- **Links:** [cleanup safeguards](telegram-commands.md#operational-follow-ups).
+
+### BOT-04 — Permanent Preview Observability policy
+
+- **Status:** NEEDS REVIEW · **Priority:** P2.
+- **Описание:** временная Preview Observability остаётся включённой после устранения command incident; invocation logs, traces и issues отключены.
+- **Next action:** выбрать permanent settings либо отключение после review хранения, sampling и privacy; никаких unfiltered Telegram payload logs.
+- **Links:** [safe diagnostics](telegram-commands.md#safe-503-diagnostics).
+
 ### DOC-02 — Сверить устаревшие статусы в документации и release output
 
 - **Status:** NEEDS REVIEW · **Priority:** P2.
@@ -35,6 +48,22 @@ BOT-01 — Preview E2E подтверждён владельцем; подгот
 - **Links:** [scripts](scripts.md), [News operations](latest-news.md), [production runbook](deployment-cloudflare.md), [release policy](../scripts/release-policy.mjs).
 
 ## Backlog
+
+### UX-01 — Calendar Empty State
+
+- **Status:** TODO · **Priority:** P2.
+- **Описание:** при некоторых сочетаниях фильтров Calendar может показывать пустой список, например Upcoming + IRONMAN Pro Series после окончания сезона. Нужен оформленный empty state вместо пустого пространства.
+- **Acceptance criteria:** различать «Сезон завершён» и обычное «Нет гонок по выбранным фильтрам»; согласовать подходящий русский текст, рассмотреть компактную иллюстрацию календаря или иконку и добавить понятное действие сброса фильтров. Не выводить завершение сезона только из пустого результата: определить отдельное обоснованное условие. Сохранить текущие layout и поведение фильтрации; проверить mobile UI и добавить filter regression tests для обоих состояний и сброса фильтров.
+- **Next action:** изучить текущую фильтрацию и данные сезона, предложить условия состояний, copy и макет; получить отдельное approval реализации.
+- **Links:** [Calendar](../src/pages/CalendarPage.tsx), [season policy](season-transition-2026-2027.md), [developer handbook](maintenance-developer.md).
+
+### REL-01 — Application Versioning
+
+- **Status:** TODO · **Priority:** P1.
+- **Описание:** подготовить версию 1.0.0 для первого публичного релиза и отображение «Версия 1.0.0» в More. Определить единый источник версии, предпочтительно package.json, и простую release versioning policy. Фактическую версию не менять до отдельного release approval.
+- **Acceptance criteria:** UI и `/api/health` получают согласованную версию из единого источника; проверить существующую цепочку build metadata и добавить version consistency tests. Описать порядок изменения версии и её проверки при релизе, без независимых hardcoded значений в UI/Worker.
+- **Next action:** проверить текущий version/build metadata flow, предложить минимальный план подготовки 1.0.0 и политику версионирования; отдельно согласовать изменение версии и релиз.
+- **Links:** [package.json](../package.json), [More](../src/pages/MorePage.tsx), [health handler](../worker/index.ts), [deployment procedure](deployment-cloudflare.md).
 
 ### DATA-05 — Переход сезона 2026 → 2027
 
@@ -103,6 +132,15 @@ BOT-01 — Preview E2E подтверждён владельцем; подгот
 - **Links:** [results index](../src/data/results/index.ts), [import safeguards](import-race-results.md), [developer handbook](maintenance-developer.md).
 
 ## Recently Completed
+
+### BOT-01 — Dedicated Telegram command webhook
+
+- **Status:** DONE — CORE FUNCTIONALITY · **Priority:** P1 · **Date:** 2026-10-17.
+- **Описание:** public @tri_app_bot webhook успешно перенесён с Preview News endpoint на `https://tri-app.shy-andrey.workers.dev/api/telegram-public-webhook` по подтверждению владельца. Production News/Feedback остаются у @tri_app_prod_bot; Preview commands/Feedback — у @tri_app_preview_bot.
+- **Owner-confirmed E2E:** Production `/start`, `/app`, `/help`, кнопка открытия `https://300w.app` и доставка тестового Feedback в Telegram-группу — PASS. Ранее Preview `/start`, `/app`, `/help` и Feedback с PREVIEW marker также подтверждены владельцем. Это реальные owner checks, не результаты mocks.
+- **Automated read-only evidence (2026-10-17):** Production SHA `9abd8c47a87b34cdaff9fb54f4f673058b5511af`, version `431a164d-b2a0-44e6-9651-8e98bfebf5f7`, deployment `4c65e3da-9a9c-4e64-96f4-2fe5733cc819`; восемь secret bindings и ordinary vars подтверждены без чтения значений secrets. Feedback sent=4; pending/failed/retryable/active и expired leases=0. News GET 999 → 997 → 996; Feedback protected. Preview SHA `f1a95114b29fe56b1a76596bb2da8ce8b895ff5e`, deployment/bindings/D1 identity и News/Feedback responses совпадают с baseline. Полное содержимое D1 не сравнивалось; Telegram getWebhookInfo при closeout не вызывался.
+- **Next action:** BOT-02/BOT-03/BOT-04 остаются открытыми. Persistent command deduplication отсутствует: неоднозначные send failures/retries могут дать повторные ответы. Не откатывать автоматически на версию без public route. Исторические command/workerd tests и release gate PASS не запускались повторно в documentation closeout.
+- **Links:** [command operations](telegram-commands.md), [handler](../worker/telegram/commands.ts), [tests](../scripts/test-telegram-commands.mjs), [production runbook](deployment-cloudflare.md).
 
 ### DOC-01 — Developer and Owner Maintenance Handbooks
 

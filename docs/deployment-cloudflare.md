@@ -10,7 +10,9 @@ React remains client-side. Hash routes (including direct `/#/athlete/…` links)
 
 Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News reads and protected Feedback are active in production and preview. Production live News ingestion awaits a naturally occurring eligible post. Turnstile, the rate limiter and retry cron are configured; D1 save and Telegram delivery have been operator-verified (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
 
-## Current environments (verified 2026-10-09)
+## Historical environment snapshot (2026-10-09)
+
+Historical setup only. BOT-01 subsequently moved @tri_app_bot to Production commands; use the current snapshot below and [command operations](telegram-commands.md) for bot roles.
 
 | Setting | Current state |
 | --- | --- |
@@ -45,11 +47,11 @@ Operator-confirmed through the custom domain: frontend, `/api/health`, `/api/new
 preview D1 binding and real `@trista_watt` News posts work. Historical custom-domain verification health
 commit: `09c8ea62a33be2d5a2d3293f833e7d1282bf8c67`.
 
-The tested Telegram News webhook remains
+At that historical checkpoint the tested Telegram News webhook was
 `https://tri-app-preview.shy-andrey.workers.dev/api/telegram-webhook`.
 Its technical endpoint is independent of the public frontend hostname; adding the
 custom domain does not require a webhook migration. Keep the workers.dev URL as
-the technical fallback for preview; no webhook change accompanies this update.
+the technical fallback for preview. BOT-01 later moved the public bot subscription to the Production command endpoint; the legacy Preview News receiver awaits retirement.
 
 Read-only verification on 2026-09-28: `/api/health` returned `ok: true`, service `tri-app`, version `0.0.0`, commit `15ac56c225db636b01f27aec89fb8addccf2c478`. `/api/news` returned exactly `telegram-seed-993`, `telegram-seed-992`, `telegram-seed-988`, with canonical titles/excerpts/timestamps and `https://t.me/trista_watt/<message_id>` links. These HTTP checks do not independently inspect Cloudflare secrets, bot permissions or migration history.
 
@@ -100,21 +102,22 @@ The check does not inspect secrets or perform migrations or writes.
 
 ## Live production and manual deployment
 
-Snapshot, 2026-10-12: owner-confirmed Kona release and iPhone Telegram Mini App manual check — PASS. SHA/version below are owner-provided; runtime bindings/API evidence comes from the read-only preflight earlier that day. No fresh live checks were run for this documentation update:
+Snapshot, 2026-10-17: BOT-01 Production E2E closeout. Deployment metadata, bindings, workers.dev health/News/Feedback config and aggregate Production Feedback queue were verified read-only. Public webhook migration and real command/Mini App/Feedback E2E are owner-confirmed, not a fresh Telegram API inspection:
 
 - Public entry: `@tri_app_bot` launches `https://300w.app` (owner-confirmed iPhone).
 - Worker `tri-app`; technical URL `https://tri-app.shy-andrey.workers.dev`.
-- Code SHA `3861531cac5570765e242e697fcb03dde271dde6`.
-- Active version `c3f601c7-592a-4e4c-973c-6898c62fdc68`. Final deployment ID/timestamp were not supplied; do not reuse the previous deployment ID.
-- Release includes Kona 2026 (99 results, 52 MPRO / 47 WPRO, 77 finishers / 22 DNF), approved country corrections, data-source/docs changes and Franzi placeholder FH. Preflight `check:release`: 17/17 PASS, 30.2 s. Final browser gate was not rerun; owner iPhone PASS does not certify Android or global network availability.
+- Code SHA `9abd8c47a87b34cdaff9fb54f4f673058b5511af`.
+- Active version `431a164d-b2a0-44e6-9651-8e98bfebf5f7`; deployment `4c65e3da-9a9c-4e64-96f4-2fe5733cc819`, created 2026-10-16T21:42:02.049742Z.
+- Historical Kona release (2026-10-12) includes Kona 2026 (99 results, 52 MPRO / 47 WPRO, 77 finishers / 22 DNF), approved country corrections, data-source/docs changes and Franzi placeholder FH. Preflight `check:release`: 17/17 PASS, 30.2 s. Final browser gate was not rerun; owner iPhone PASS does not certify Android or global network availability.
 - Account `3fd801274d556b3ffc138463a0f20830`; DB `tri-app-production`, UUID `2b5cd1b9-d9bf-483d-b710-23d00b6db7fd`; migrations 0001–0004 applied.
-- Six installed secret bindings: `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_HMAC_SECRET`, `TELEGRAM_BOT_TOKEN`, `FEEDBACK_TELEGRAM_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET`, `NEWS_TELEGRAM_CHANNEL_ID`. Names/presence verified; values never retrieved.
+- Eight installed secret bindings: `TURNSTILE_SECRET_KEY`, `RATE_LIMIT_HMAC_SECRET`, `TELEGRAM_BOT_TOKEN`, `FEEDBACK_TELEGRAM_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET`, `NEWS_TELEGRAM_CHANNEL_ID`, `PUBLIC_TELEGRAM_BOT_TOKEN`, `PUBLIC_TELEGRAM_WEBHOOK_SECRET`. Names/presence verified; values never retrieved.
 - `APP_ENV=production`, `ALLOWED_ORIGIN=https://300w.app`; managed Turnstile `tri-app-production`, hostname only `300w.app`, public key `0x4AAAAAAFPhEVzQXvHl5kR8`.
 - `FEEDBACK_RATE_LIMITER`: namespace `40001`, 5/60; cron `*/5 * * * *`; ASSETS present. Account-wide namespace uniqueness was not certified because dispatch inventory was permission-limited.
 - Production News/Feedback bot: `@tri_app_prod_bot`. Its configured News webhook is `https://tri-app.shy-andrey.workers.dev/api/telegram-webhook` (P7B operator-confirmed; current Telegram state not independently re-read).
-- Production Feedback E2E passed on iPhone: one saved report, `sent`, attempts=1, no retry/lease; owner confirmed matching UI/Telegram UUID and 🟢 PRODUCTION.
+- BOT-01 owner-confirmed Production E2E: `/start`, `/app`, `/help`, button opens `https://300w.app`, test Feedback delivered to Telegram group — PASS. Aggregate D1 check: sent=4, pending=0, failed=0, retryable=0, active/expired leases=0; no report content retrieved and no claim about individual attempt counts from this aggregate.
 - Latest preflight News API: 999 → 997 → 996 on production and preview. Owner reported post 999 appearing in production after publication on 2026-10-09. This update does not independently certify webhook/watermark state; do not confuse bootstrap `update_id=-1` with a real event.
-- Preview remains on its own Worker, DB, domain and `@tri_app_bot` News webhook. Public Mini App launch settings are independent of that bot's preview webhook. Do not repoint it merely to launch production.
+- Public commands: `PUBLIC_TELEGRAM_COMMANDS_ENABLED=true`, username `tri_app_bot`, Mini App URL `https://300w.app`. Owner confirms migration to `https://tri-app.shy-andrey.workers.dev/api/telegram-public-webhook`; intended subscription `message`, latest rotated public secret, no pending-update discard. BotFather Menu Button/command list review remains open.
+- Preview remains isolated: SHA `f1a95114b29fe56b1a76596bb2da8ce8b895ff5e`, version `a86e3978-6b5b-4bbc-8de4-f90b232b6a2c`, deployment `4f71baea-59c4-428b-970d-6a93a51a01d7`; DB UUID `4dfe9210-0cc7-484f-8eea-fe5216f5c17a`. Commands/Feedback use @tri_app_preview_bot. Deployment, bindings, D1 identity and News/Feedback responses match the saved baseline; no full D1 content comparison was performed. Legacy Preview News receiver retirement and permanent Observability decision remain open.
 
 ```sh
 # Local artifacts only; no deployment:
@@ -122,7 +125,7 @@ npm run deploy:production:dry
 # REMOTE MUTATION: only after separate release approval and both release gates:
 npm run deploy:production
 # GET-only; explicitly use the approved deployed SHA, not a later documentation HEAD:
-npm run check:production -- --expected-sha 3861531cac5570765e242e697fcb03dde271dde6
+npm run check:production -- --expected-sha 9abd8c47a87b34cdaff9fb54f4f673058b5511af
 ```
 
 Deploy from a reviewed clean checkout. Record the current version/bindings and recovery point first. Production uses explicit `--env production`, no `--keep-vars`: ordinary vars come from repository config. Normal deploy preserves installed secrets; no migrations, seeding or secrets are chained. Abort unexpected Worker creation or target mismatch. Reverify bindings and application after deployment. Preview uses its own environment scripts and bindings, with the same default config-owned ordinary-var behavior.
@@ -191,16 +194,18 @@ These procedures are instructions for a separately authorized incident response,
 
 ### Known-good version and Worker rollback
 
-The pre-Kona production version `72451282-d5a8-49c0-a6fe-ba8639c1307b` is the recorded rollback candidate for SHA `452bb87d4653657e020d6bf825d35a9b6600055a`. The 2026-10-12 read-only preflight verified its version metadata, all six secret_text bindings and production D1 UUID. It is no longer the active version after the owner-confirmed Kona release. Rolling back would remove Kona results and the accumulated approved changes, including the Franzi fix, from the application. Recheck availability and compatibility before separately approving rollback. Secret names cannot establish secret values; any later credential rotation requires renewed review.
+Current known-good command-capable version is `431a164d-b2a0-44e6-9651-8e98bfebf5f7`, SHA `9abd8c47a87b34cdaff9fb54f4f673058b5511af`, with eight verified secret bindings and owner-confirmed command/Feedback E2E. It is the active version, not an instruction to roll back now. Before a later release, record its availability, bindings and credential-rotation compatibility as a potential recovery point.
 
-Before the next deployment, record version ID, SHA, binding metadata, schemas and successful smoke evidence in a private incident/release record. Recheck candidate availability and compatibility each time. Never blindly select the previous version: initial production versions predate complete secrets. If no compatible version with all six secrets is available, STOP and prepare an explicitly reviewed forward recovery deployment; do not fall back to preview.
+The pre-Kona candidate `72451282-d5a8-49c0-a6fe-ba8639c1307b` is historical only: its six-secret check predates PUBLIC credentials and the command route. It is not a safe BOT-01 rollback target while the public webhook points to Production commands. Worker rollback does not undo the Telegram migration; never restore public traffic to Preview automatically.
+
+Before the next deployment, record version ID, SHA, binding metadata, schemas and successful smoke evidence in a private incident/release record. Recheck availability and compatibility each time. If no compatible version with the public route and all eight secrets is available, STOP and prepare an explicitly reviewed forward recovery deployment. Secret names alone cannot establish values or compatibility after rotation.
 
 Read-only discovery:
 
 ```sh
 npx --no-install wrangler whoami
 npx --no-install wrangler deployments list --env production
-npx --no-install wrangler versions view 72451282-d5a8-49c0-a6fe-ba8639c1307b --env production
+npx --no-install wrangler versions view 431a164d-b2a0-44e6-9651-8e98bfebf5f7 --env production
 npx --no-install wrangler secret list --env production
 ```
 
@@ -208,7 +213,7 @@ Compare candidate and active metadata with the runtime snapshot above. If secret
 
 ```sh
 # REMOTE MUTATION — not a check; use this candidate only after the checks above.
-npx --no-install wrangler rollback 72451282-d5a8-49c0-a6fe-ba8639c1307b --env production
+npx --no-install wrangler rollback 431a164d-b2a0-44e6-9651-8e98bfebf5f7 --env production
 ```
 
 Afterward re-read deployment/version, secret names and Worker settings; verify DB UUID, APP_ENV, origin/site key, limiter, ASSETS, schedules and domain separately. Use health with the candidate's expected SHA, full JS download, News/config GET and read-only queue/count checks below. Do not send Feedback automatically. Compare preview snapshot independently. If verification fails, stop and assess; no automatic repeated rollback. Resource data is not restored by code rollback. Cloudflare documents a last-100-versions rollback limit and resource compatibility restrictions: [Worker rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/).
@@ -254,7 +259,7 @@ Time Travel is remote even without `--remote`; restoring cancels in-flight queri
 Use expected deployed SHA explicitly after documentation commits; HEAD may differ. Routine monitoring is GET/SELECT only:
 
 ```sh
-npm run check:production -- --expected-sha 3861531cac5570765e242e697fcb03dde271dde6
+npm run check:production -- --expected-sha 9abd8c47a87b34cdaff9fb54f4f673058b5511af
 npm run check:preview
 curl --fail --show-error --max-time 15 https://300w.app/api/feedback/config
 npx --no-install wrangler d1 execute DB --env production --remote --command "SELECT name FROM d1_migrations ORDER BY id; SELECT delivery_status,COUNT(*) AS count FROM feedback GROUP BY delivery_status; SELECT id,created_at,delivery_status,delivery_attempts,last_delivery_at,next_delivery_at,delivery_lease IS NULL AS lease_clear FROM feedback WHERE delivery_status!='sent' OR delivery_lease IS NOT NULL OR next_delivery_at IS NOT NULL;"
@@ -262,13 +267,13 @@ npx --no-install wrangler d1 execute DB --env production --remote --command "SEL
 npx --no-install wrangler d1 execute DB --env production --remote --command "SELECT message_id,title,excerpt,published_at,updated_at,source,hidden,media_group_id,telegram_url FROM news WHERE message_id=<MESSAGE_ID>; SELECT message_id,event_at,update_id,media_group_id FROM news_post_state WHERE message_id=<MESSAGE_ID>; SELECT channel_id,message_id,COUNT(*) FROM news GROUP BY channel_id,message_id HAVING COUNT(*)>1;"
 ```
 
-Repeat the message-specific SELECT with explicit `--env preview` only for comparison. Expected current API baseline: 997/996/993. After a natural eligible post, verify source=telegram, one row, watermark ordering and latest-three presentation; album grouping and 900-second cache apply. See [News operations](latest-news.md). A state-only row may be an intentional rejection; review safe structured reason logs, not raw bodies.
+Repeat the message-specific SELECT with explicit `--env preview` only for comparison. Expected current API baseline: 999/997/996. After a natural eligible post, verify source=telegram, one row, watermark ordering and latest-three presentation; album grouping and 900-second cache apply. See [News operations](latest-news.md). A state-only row may be an intentional rejection; review safe structured reason logs, not raw bodies.
 
 Feedback alert conditions: repeated failed attempts, attempts>=5 (manual investigation needed), leases/due retries remaining overdue across cron cycles, unexpected growth or duplicates. Do not log descriptions/emails. Cron is five minutes; lease is 60 seconds; D1 remains authoritative if Telegram fails. Restores/crashes can duplicate notifications, not imply duplicate report rows.
 
-Webhook: only getWebhookInfo, using the correct bot credential from the owner's secure store without printing token-bearing URLs. Verify production workers.dev URL, allowed_updates channel_post/edited_channel_post, pending_update_count and error date/message. Do not call setWebhook/deleteWebhook/getUpdates as a diagnostic. If credential is unavailable, mark UNKNOWN; Worker secret values are not retrievable. Public bot Mini App launch settings are separately checked in BotFather/on-device; do not change its preview News webhook.
+Webhook: only getWebhookInfo, using the correct bot credential from the owner's secure store without printing token-bearing URLs. For @tri_app_prod_bot verify the News workers.dev endpoint and allowed_updates channel_post/edited_channel_post; for @tri_app_bot verify the public-command endpoint and allowed_updates message. Inspect pending_update_count and sanitized last-error category/date separately per bot. Do not call setWebhook/deleteWebhook/getUpdates as a diagnostic. If credential is unavailable, mark UNKNOWN; Worker secret values are not retrievable. Public bot Mini App launch settings are separately checked in BotFather/on-device; do not restore its former Preview News webhook.
 
-Read-only Cloudflare Dashboard/API checks: production Worker settings/secret names, Turnstile widget hostname=300w.app and managed mode, limiter 40001/5/60, schedules */5, domain attached to tri-app. Secret presence does not prove correct pairing; owner-confirmed E2E supplies that runtime evidence. Preview uses a different DB/widget/limiter. Snapshot 2026-10-09 preview lacks live APP_ENV (older deployment), despite current repository config; do not silently deploy it during production work.
+Read-only Cloudflare Dashboard/API checks: production Worker settings/secret names, Turnstile widget hostname=300w.app and managed mode, limiter 40001/5/60, schedules */5, domain attached to tri-app. Secret presence does not prove correct pairing; owner-confirmed E2E supplies that runtime evidence. Preview uses a different DB/widget/limiter. The 2026-10-17 Preview snapshot has APP_ENV=preview, commands enabled and temporary Observability; do not alter it during Production maintenance.
 
 Asset smoke: GET the current index.html, obtain its actual JS/CSS paths and download each with a bounded timeout. Compare complete byte counts/checksums with that approved release build, not HTTP 200 alone. Compare workers.dev if necessary. Record device/network/VPN state; do not disable TLS verification. Current example JS /assets/index-BmpoD4_d.js is 272194 bytes raw. Intermittent direct Mac/Windows failures remain unresolved; a successful run is not global availability. Owner iPhone Mini App checks passed; Android remains unverified.
 
@@ -301,7 +306,7 @@ That foundation implementation task performed no remote deployment, database cre
 
 Feedback environment labels use the ordinary Worker var `APP_ENV`: `preview` in
 `env.preview`, `production` in `env.production`. This repository configuration is
-not a deployment. Preview (`@tri_app_bot`) and Production (`@tri_app_prod_bot`)
+not a deployment. Preview (`@tri_app_preview_bot`) and Production (`@tri_app_prod_bot`)
 intentionally share one private Feedback group; the explicit headings end in
 `🧪 PREVIEW` and `🟢 PRODUCTION`. Missing/unknown `APP_ENV` (including the default
 local config) yields `⚠️ ENV UNKNOWN`, never an inferred production label.
@@ -356,6 +361,6 @@ excludes root and nested Finder metadata from Wrangler uploads. It does not dele
 local files and does not change normal assets. See
 [Cloudflare asset ignore rules](https://developers.cloudflare.com/workers/static-assets/binding/).
 
-## BOT-01 preparation
+## BOT-01 operations
 
-The separate public command webhook is a local implementation pending review, disabled in repository configuration for both environments. No bot migration has occurred. Follow [Telegram commands](telegram-commands.md) for future Preview test-bot setup, explicit enablement and later production public-bot migration. Existing News/Feedback endpoints and credentials remain unchanged by this patch.
+Core commands and public webhook migration are complete by owner confirmation; current deployment/config evidence is recorded above. Commands are enabled in both environments with distinct PUBLIC credentials. Production News/Feedback routing remains separate. Follow [Telegram commands](telegram-commands.md) and [Project Board](PROJECT_BOARD.md) for open BotFather setup, legacy Preview News receiver retirement and Observability follow-ups. Closing BOT-01 does not authorize those mutations.
