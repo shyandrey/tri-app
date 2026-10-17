@@ -123,3 +123,38 @@ test('empty state matrix, reset and explicit load states preserve calendar seman
     assert.ok(r.nodes.some(n=>n.type==='h2'&&n.props.children==='Гонки не найдены'))
   }
 })
+
+test('confirmed season completion is scoped by date, series, search and catalog year', t => {
+  freeze(t)
+  const inspect = (patch = {}, races = currentRaceEditions, dataStatus = 'ready') => {
+    let next
+    const state = {...initial, filter:'IRONMAN Pro Series', openArchiveYears:[2025], ...patch}
+    const root = Calendar({races,searchRaces:allRaceEditionViews,dataStatus,viewState:state,onViewStateChange:s=>{next=s},onBack(){},onNavigate(){},onRaceClick(){}})
+    const nodes=[]
+    const walk=n=>{if(Array.isArray(n))return n.forEach(walk);if(!n||typeof n!=='object')return;nodes.push(n);walk(n.props?.children)}
+    walk(root)
+    const heading=nodes.find(n=>n.type==='h2')?.props.children
+    const button=nodes.find(n=>n.props?.className==='calendar-empty__reset')
+    button?.props.onClick()
+    return {heading,button,next}
+  }
+  assert.equal(inspect().heading,undefined)
+  t.mock.timers.setTime(new Date('2026-10-10T12:00:00Z').getTime())
+  assert.equal(inspect().heading,undefined)
+  t.mock.timers.setTime(new Date('2026-10-11T09:00:00Z').getTime())
+  const completed=inspect()
+  assert.equal(completed.heading,'Сезон завершён!')
+  assert.equal(completed.button.props.children,'Результаты сезона')
+  assert.deepEqual(completed.next,{...initial,filter:'IRONMAN Pro Series',timeFilter:'finished',openArchiveYears:[2025]})
+  assert.ok(render(completed.next).cards.length>0)
+  assert.equal(inspect({search:'zzznorace'}).heading,'Гонки не найдены')
+  assert.equal(inspect({search:'zzznorace'}).next.filter,'Все')
+  for(const dataStatus of ['loading','error'])assert.equal(inspect({},currentRaceEditions,dataStatus).heading,undefined)
+  assert.equal(inspect({},[]).heading,'Гонки не найдены')
+  for(const year of [2027,2028]) {
+    t.mock.timers.setTime(new Date(`${year}-11-01T09:00:00Z`).getTime())
+    const future=currentRaceEditions.map(r=>({...r,year,dateISO:r.dateISO.replace('2026',String(year))}))
+    assert.equal(inspect({},future).heading,'Гонки не найдены')
+    assert.equal(inspect().heading,'Гонки не найдены')
+  }
+})

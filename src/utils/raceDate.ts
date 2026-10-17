@@ -1,6 +1,6 @@
 import type { Race } from '../types/Race'
 
-function getMoscowDateISO() {
+export function getMoscowDateISO() {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Europe/Moscow',
     year: 'numeric',

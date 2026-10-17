@@ -1,3 +1,4 @@
+import { isCalendarSeasonCompleted } from '../data/calendarSeasons'
 import { CalendarIcon } from '../components/AppIcons'
 import './CalendarPage.css'
 import RaceCard from '../components/RaceCard'
@@ -185,6 +186,10 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
   const showArchive = dataStatus === 'ready' && !isSearching && timeFilter !== 'upcoming'
   const hasArchiveResults = showArchive && archiveRacesByYear.some(({ races }) => races.length > 0)
   const showEmpty = dataStatus === 'ready' && groupedFilteredRaces.length === 0 && !hasArchiveResults
+  const seriesYears = [...new Set(races.filter(race => race.series === filter).map(race => race.year))]
+  const showCompletedSeason = showEmpty && !isSearching && timeFilter === 'upcoming'
+    && filter === 'IRONMAN Pro Series' && seriesYears.length === 1
+    && isCalendarSeasonCompleted(filter, seriesYears[0])
   const hasCatalogRaces = searchRaces.some(race => race.series !== 'Challenge') || races.some(race => race.series !== 'Challenge')
 
   const toggleArchiveYear = (year: number) => {
@@ -252,10 +257,10 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
           <div className="calendar-empty">
             <CalendarIcon className="calendar-empty__icon" />
             <div role="status" aria-live="polite">
-              <h2>Гонки не найдены</h2>
-              <p>{hasCatalogRaces ? 'Попробуйте изменить поиск или сбросить фильтры.' : 'В календаре пока нет доступных гонок. Загляните позже.'}</p>
+              <h2>{showCompletedSeason ? 'Сезон завершён!' : 'Гонки не найдены'}</h2>
+              <p>{showCompletedSeason ? 'Все гонки IRONMAN Pro Series этого сезона уже позади. Посмотрите результаты прошедших стартов.' : hasCatalogRaces ? 'Попробуйте изменить поиск или сбросить фильтры.' : 'В календаре пока нет доступных гонок. Загляните позже.'}</p>
             </div>
-            <button type="button" className="calendar-empty__reset" onClick={() => updateViewState({ search: '', filter: 'Все', timeFilter: 'all' })}>Показать все гонки</button>
+            <button type="button" className="calendar-empty__reset" onClick={() => updateViewState(showCompletedSeason ? { search: '', timeFilter: 'finished' } : { search: '', filter: 'Все', timeFilter: 'all' })}>{showCompletedSeason ? 'Результаты сезона' : 'Показать все гонки'}</button>
           </div>
         )}
         {dataStatus === 'ready' && groupedFilteredRaces.map((item) => renderRaceCard(item, isSearching))}

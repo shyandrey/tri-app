@@ -15,7 +15,7 @@ BOT-01/BOT-02/BOT-05 завершены; native Telegram Splash Screen прин�
 - **Status:** IN PROGRESS · **Priority:** P2.
 - **Описание:** при некоторых сочетаниях фильтров Calendar может показывать пустой список, например Upcoming + IRONMAN Pro Series после окончания сезона. Нужен оформленный empty state вместо пустого пространства.
 - **Acceptance criteria:** различать «Сезон завершён» и обычное «Нет гонок по выбранным фильтрам»; согласовать подходящий русский текст, рассмотреть компактную иллюстрацию календаря или иконку и добавить понятное действие сброса фильтров. Не выводить завершение сезона только из пустого результата: определить отдельное обоснованное условие. Сохранить текущие layout и поведение фильтрации; проверить mobile UI и добавить filter regression tests для обоих состояний и сброса фильтров.
-- **Next action:** owner review локального empty state и проверок; без надёжного season-status используется «Гонки не найдены». Reset очищает поиск и time/series filters, сохраняя archives; loading/error не считаются пустым результатом.
+- **Next action:** owner Preview review сезонного empty state. [Метаданные завершения](../src/data/calendarSeasons.ts): IRONMAN Pro Series 2026 завершён 10.10.2026 в Kona, подтверждено владельцем 18.10.2026. Только Upcoming без поиска показывает «Сезон завершён!» после этой даты в 2026 году; «Результаты сезона» переключает на Past, сохраняя серию и archives. Без подтверждения сезона, при поиске и в будущем году — generic reset. Loading/error не считаются пустым результатом.
 - **Links:** [Calendar](../src/pages/CalendarPage.tsx), [season policy](season-transition-2026-2027.md), [developer handbook](maintenance-developer.md).
 
 ### REL-01 — Application Versioning
