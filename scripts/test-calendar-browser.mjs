@@ -40,7 +40,7 @@ const snapshot = async (width, name, fullPage = false) => {
 await send('Page.enable'); await send('Runtime.enable')
 const clock = await send('Page.addScriptToEvaluateOnNewDocument', { source: `(()=>{const RealDate=Date;globalThis.Date=class extends RealDate{constructor(...args){super(...(args.length?args:['2026-10-02T09:00:00Z']))}static now(){return RealDate.parse('2026-10-02T09:00:00Z')}}})()` })
 try {
-  for (const [width, height] of [[390, 844], [844, 390], [1440, 900]]) {
+  for (const [width, height] of [[320, 740], [390, 844], [844, 390], [1440, 900]]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width < 1000 })
     await send('Page.navigate', { url: (process.env.TRI_APP_URL ?? 'http://127.0.0.1:5197') + '/?calendarTest=' + Date.now() + '#/calendar' })
     await wait(900); await count(4)
@@ -78,7 +78,7 @@ try {
     assert.ok((await cards()).some(c => c[1].endsWith('2024')))
     await snapshot(width, 'search')
     await query('zzznorace'); await count(0)
-    assert.equal(await js(`document.querySelector('[role="status"]').textContent`), 'Гонки не найдены')
+    assert.equal(await js(`document.querySelector('.calendar-empty h2').textContent`), 'Гонки не найдены')
     await snapshot(width, 'empty')
     await query('2025'); await count(0)
     await click('.calendar-search-clear'); await count(1)
@@ -88,6 +88,23 @@ try {
     // Main cards are identical after a different filter/search click sequence.
     assert.deepEqual((await cards()).slice(0, 21), before)
     assert.equal(await js('document.documentElement.scrollWidth>innerWidth'), false)
+    assert.equal(await js('document.querySelector(".calendar-empty")'), null)
+    await query('zzznorace'); await count(0)
+    assert.equal(await js('document.body.textContent.includes("Сезон завершён!")'), false)
+    const archiveState = await js('history.state.triNavigation.ui.calendar.openArchiveYears')
+    await js('document.querySelector(".calendar-filters button:last-child").focus()')
+    await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
+    await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
+    assert.equal(await js('document.activeElement.className'),'calendar-empty__reset')
+    await js('document.activeElement.scrollIntoView({block:"center"})')
+    assert.equal(await js('getComputedStyle(document.activeElement).outlineStyle'),'solid')
+    assert.ok(await js('document.querySelector(".calendar-empty__reset").getBoundingClientRect().bottom <= document.querySelector(".bottom-nav").getBoundingClientRect().top'))
+    assert.equal(await js('document.documentElement.scrollWidth>innerWidth'),false)
+    await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13})
+    await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13})
+    await wait(150); await count(77)
+    assert.deepEqual(await js('history.state.triNavigation.ui.calendar'),{search:'',filter:'Все',timeFilter:'all',openArchiveYears:archiveState})
+    assert.equal(await js('document.querySelector(".calendar-empty")'),null)
     console.log(`PASS ${width}×${height}: filters, archives, search/clear/empty, deterministic order, Back/scroll, no overflow`)
   }
 } finally {

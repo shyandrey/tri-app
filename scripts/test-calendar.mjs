@@ -84,3 +84,42 @@ test('no-results searches show compact empty state; year search remains unsuppor
     assert.match(result.text, /Поиск по всем гонкам/)
   }
 })
+
+test('empty state matrix, reset and explicit load states preserve calendar semantics', t => {
+  freeze(t)
+  const inspect = (state, races = currentRaceEditions, searchRaces = allRaceEditionViews, dataStatus = 'ready') => {
+    let next
+    const nodes = []
+    const root = Calendar({races,searchRaces,dataStatus,viewState:state,onViewStateChange:s=>{next=s},onBack(){},onNavigate(){},onRaceClick(){}})
+    const walk = node => {if(Array.isArray(node))return node.forEach(walk);if(!node||typeof node!=='object')return;nodes.push(node);walk(node.props?.children)}
+    walk(root)
+    const reset = nodes.find(n=>n.props?.className==='calendar-empty__reset')
+    reset?.props.onClick()
+    return {nodes,reset,next,empty:nodes.some(n=>n.props?.className==='calendar-empty')}
+  }
+  for(const filter of series)for(const timeFilter of ['upcoming','finished','all']) {
+    const state={search:'zzznorace',filter,timeFilter,openArchiveYears:[2025]}
+    const result=inspect(state)
+    assert.equal(result.empty,true)
+    assert.equal(result.reset.props.type,'button')
+    assert.deepEqual(result.next,{...state,search:'',filter:'Все',timeFilter:'all'})
+    assert.equal(inspect(result.next).empty,false)
+    assert.equal(inspect({...state,search:''}).empty,false)
+    for(const dataStatus of ['loading','error']) {
+      const r=inspect(state,[],[],dataStatus)
+      assert.equal(r.empty,false)
+      assert.equal(r.reset,undefined)
+      assert.ok(r.nodes.some(n=>n.props?.role===(dataStatus==='error'?'alert':'status')))
+    }
+  }
+  assert.equal(inspect(initial,[],[]).empty,true)
+  // An available archive is a result even while its accordion is collapsed.
+  assert.equal(inspect({...initial,timeFilter:'all'},[],allRaceEditionViews).empty,false)
+  t.mock.timers.setTime(new Date('2028-01-01T00:00:00Z').getTime())
+  for(const filter of series){
+    const r=inspect({...initial,filter})
+    assert.equal(r.empty,true)
+    assert.ok(!r.nodes.some(n=>n.props?.children==='Сезон завершён!'))
+    assert.ok(r.nodes.some(n=>n.type==='h2'&&n.props.children==='Гонки не найдены'))
+  }
+})

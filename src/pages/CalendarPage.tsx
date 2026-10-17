@@ -1,3 +1,5 @@
+import { CalendarIcon } from '../components/AppIcons'
+import './CalendarPage.css'
 import RaceCard from '../components/RaceCard'
 import type { RaceEditionView, RaceGender } from '../types/Race'
 import type { Page } from '../types/Page'
@@ -14,6 +16,7 @@ export type CalendarViewState = {
 
 type CalendarPageProps = {
   races: RaceEditionView[]
+  dataStatus?: 'ready' | 'loading' | 'error'
   searchRaces?: RaceEditionView[]
   viewState: CalendarViewState
   onViewStateChange: (state: CalendarViewState) => void
@@ -130,7 +133,7 @@ const groupRaceEventCards = (source: RaceEditionView[]): RaceCardItem[] => {
   return items
 }
 
-function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
+function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewState, onViewStateChange, onBack, onRaceClick, onNavigate }: CalendarPageProps) {
   const { search, filter, timeFilter, openArchiveYears } = viewState
 
   const updateViewState = (patch: Partial<CalendarViewState>) => {
@@ -179,7 +182,10 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
     ).sort((a, b) => new Date(a.race.dateISO).getTime() - new Date(b.race.dateISO).getTime()),
   }))
 
-  const showArchive = !isSearching && timeFilter !== 'upcoming'
+  const showArchive = dataStatus === 'ready' && !isSearching && timeFilter !== 'upcoming'
+  const hasArchiveResults = showArchive && archiveRacesByYear.some(({ races }) => races.length > 0)
+  const showEmpty = dataStatus === 'ready' && groupedFilteredRaces.length === 0 && !hasArchiveResults
+  const hasCatalogRaces = searchRaces.some(race => race.series !== 'Challenge') || races.some(race => race.series !== 'Challenge')
 
   const toggleArchiveYear = (year: number) => {
     updateViewState({
@@ -240,8 +246,19 @@ function CalendarPage({ races, searchRaces = races, viewState, onViewStateChange
           ))}
         </div>
         {isSearching && <p className="calendar-search-notice">Поиск по всем гонкам — фильтры временно не применяются</p>}
-        {isSearching && groupedFilteredRaces.length === 0 && <p className="calendar-search-empty" role="status">Гонки не найдены</p>}
-        {groupedFilteredRaces.map((item) => renderRaceCard(item, isSearching))}
+        {dataStatus === 'loading' && <p role="status">Загружаем гонки…</p>}
+        {dataStatus === 'error' && <p role="alert">Не удалось загрузить гонки. Попробуйте открыть календарь позже.</p>}
+        {showEmpty && (
+          <div className="calendar-empty">
+            <CalendarIcon className="calendar-empty__icon" />
+            <div role="status" aria-live="polite">
+              <h2>Гонки не найдены</h2>
+              <p>{hasCatalogRaces ? 'Попробуйте изменить поиск или сбросить фильтры.' : 'В календаре пока нет доступных гонок. Загляните позже.'}</p>
+            </div>
+            <button type="button" className="calendar-empty__reset" onClick={() => updateViewState({ search: '', filter: 'Все', timeFilter: 'all' })}>Показать все гонки</button>
+          </div>
+        )}
+        {dataStatus === 'ready' && groupedFilteredRaces.map((item) => renderRaceCard(item, isSearching))}
         {showArchive && archiveRacesByYear.map(({ year, races: archiveRaces }) => {
           if (archiveRaces.length === 0) return null
           const isOpen = openArchiveYears.includes(year)
