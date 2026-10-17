@@ -17,3 +17,10 @@
 .more-content :is(a, button):focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
 .more-panel { overflow-wrap: anywhere; }
 .more-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.more-release { margin-top: 12px; }
+.more-release summary { cursor: pointer; min-height: 44px; }
+.more-release summary:focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
+.more-release-title { display: block; margin-top: 4px; font-size: 13px; color: var(--tri-muted); }
+.more-release h4 { margin: 12px 0 4px; font-size: 13px; }
+.more-release ul { padding-left: 20px; margin: 4px 0; color: var(--tri-muted); font-size: 13px; line-height: 1.55; }

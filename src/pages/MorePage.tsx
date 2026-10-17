@@ -1,3 +1,4 @@
+import { currentRelease } from '../../.generated/current-release'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 import { buildMetadata } from '../utils/buildMetadata'
@@ -21,7 +22,19 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
           <div className="more-panel">
             <h3 className="more-brand">300W⚡ APP</h3>
             <p>Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.</p>
-            <p className="more-version">Версия {buildMetadata.version}</p>
+            <details className="more-release">
+              <summary>
+                <span className="more-version">Версия {buildMetadata.version}</span>
+                <span className="more-release-title">{currentRelease.title}</span>
+              </summary>
+              {currentRelease.unpublished && <p>Предварительная версия — публичный релиз ещё не объявлен.</p>}
+              {currentRelease.sections.map(section => (
+                <div key={section.heading}>
+                  <h4>{({ Added: 'Добавлено', Changed: 'Изменено', Fixed: 'Исправлено', Technical: 'Техническое' } as const)[section.heading as 'Added' | 'Changed' | 'Fixed' | 'Technical']}</h4>
+                  <ul>{section.items.map(item => <li key={item}>{item}</li>)}</ul>
+                </div>
+              ))}
+            </details>
           </div>
         </section>
         <section className="more-block" aria-labelledby="more-feedback">

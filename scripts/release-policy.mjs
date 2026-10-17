@@ -6,6 +6,7 @@ export const releaseChecks = [
   {name:'diff', command:['git','diff','--check']},
   {name:'staged diff', command:['git','diff','--cached','--check']},
   {name:'foundation', command:unit('cloudflare-foundation')},
+  {name:'versioning', command:unit('versioning')},
   {name:'Calendar', command:unit('calendar')},
   {name:'athlete catalog/search/localization', command:unit('athlete-catalog-presentation','athlete-country-strength','athlete-search','athlete-names','current-athletes')},
   {name:'athlete audit', command:['node','scripts/audit-athletes.mjs','--json'], audit:true},

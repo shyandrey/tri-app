@@ -6,9 +6,17 @@
 
 ## Current Focus
 
-BOT-01 core завершён; review эксплуатационных follow-ups BOT-02–BOT-04. Новые remote mutations требуют отдельного approval.
+BOT-01/BOT-02/BOT-05 завершены; native Telegram Splash Screen принят владельцем для v1.0.0. Дополнительные Splash Screen работы перед релизом не требуются. BOT-03/BOT-04 остаются открытыми. REL-01 — локальная реализация versioning/changelog, ожидает review; новые remote mutations требуют отдельного approval.
 
 ## In Progress
+
+### REL-01 — Application Versioning
+
+- **Status:** IN PROGRESS · **Priority:** P1.
+- **Описание:** подготовить версию 1.0.0 для первого публичного релиза и отображение «Версия 1.0.0» в More. Определить единый источник версии, предпочтительно package.json, и простую release versioning policy. Фактическую версию не менять до отдельного release approval.
+- **Acceptance criteria:** UI и `/api/health` получают согласованную версию из единого источника; проверить существующую цепочку build metadata и добавить version consistency tests. Описать порядок изменения версии и её проверки при релизе, без независимых hardcoded значений в UI/Worker.
+- **Next action:** owner review локальной реализации: package version остаётся 0.0.0; CHANGELOG.md хранит историю, build генерирует только current notes, More использует collapsed disclosure. Проверить тесты и согласовать notes/процедуру выпуска; не публиковать 1.0.0 без отдельного approval.
+- **Links:** [version policy](versioning.md), [changelog](../CHANGELOG.md), [package.json](../package.json), [More](../src/pages/MorePage.tsx), [health handler](../worker/index.ts), [deployment procedure](deployment-cloudflare.md).
 
 ### DATA-01 — Русские имена атлетов
 
@@ -18,13 +26,6 @@ BOT-01 core завершён; review эксплуатационных follow-ups
 - **Links:** [CSV workflow](athlete-name-review.md), [localization registry](../src/data/athletes/athleteLocalization.json).
 
 ## Needs Attention / Review
-
-### BOT-02 — BotFather commands и Menu Button
-
-- **Status:** NEEDS REVIEW · **Priority:** P2.
-- **Описание:** работа `/start`, `/app`, `/help` и кнопки Mini App подтверждена владельцем; состояние BotFather command list и Menu Button отдельно не подтверждено.
-- **Next action:** owner-assisted проверка списка команд и URL меню для Production/Preview; изменения только после отдельного approval.
-- **Links:** [command operations](telegram-commands.md#operational-follow-ups).
 
 ### BOT-03 — Retire unused Preview News receiver
 
@@ -56,14 +57,6 @@ BOT-01 core завершён; review эксплуатационных follow-ups
 - **Acceptance criteria:** различать «Сезон завершён» и обычное «Нет гонок по выбранным фильтрам»; согласовать подходящий русский текст, рассмотреть компактную иллюстрацию календаря или иконку и добавить понятное действие сброса фильтров. Не выводить завершение сезона только из пустого результата: определить отдельное обоснованное условие. Сохранить текущие layout и поведение фильтрации; проверить mobile UI и добавить filter regression tests для обоих состояний и сброса фильтров.
 - **Next action:** изучить текущую фильтрацию и данные сезона, предложить условия состояний, copy и макет; получить отдельное approval реализации.
 - **Links:** [Calendar](../src/pages/CalendarPage.tsx), [season policy](season-transition-2026-2027.md), [developer handbook](maintenance-developer.md).
-
-### REL-01 — Application Versioning
-
-- **Status:** TODO · **Priority:** P1.
-- **Описание:** подготовить версию 1.0.0 для первого публичного релиза и отображение «Версия 1.0.0» в More. Определить единый источник версии, предпочтительно package.json, и простую release versioning policy. Фактическую версию не менять до отдельного release approval.
-- **Acceptance criteria:** UI и `/api/health` получают согласованную версию из единого источника; проверить существующую цепочку build metadata и добавить version consistency tests. Описать порядок изменения версии и её проверки при релизе, без независимых hardcoded значений в UI/Worker.
-- **Next action:** проверить текущий version/build metadata flow, предложить минимальный план подготовки 1.0.0 и политику версионирования; отдельно согласовать изменение версии и релиз.
-- **Links:** [package.json](../package.json), [More](../src/pages/MorePage.tsx), [health handler](../worker/index.ts), [deployment procedure](deployment-cloudflare.md).
 
 ### DATA-05 — Переход сезона 2026 → 2027
 
@@ -132,6 +125,26 @@ BOT-01 core завершён; review эксплуатационных follow-ups
 - **Links:** [results index](../src/data/results/index.ts), [import safeguards](import-race-results.md), [developer handbook](maintenance-developer.md).
 
 ## Recently Completed
+
+### BOT-05 — Branded Mini App Splash Screen
+
+- **Status:** DONE · **Priority:** P1 · **Date:** 17.10.2026.
+- **Описание:** владелец принял текущий native Telegram Splash Screen public @tri_app_bot для v1.0.0. SVG 512×512, один заполненный path молнии; Main Mini App URL `https://300w.app/` и Fullsize mode сохраняются.
+- **Approved design:** Splash background и Header `#0F1115`, brand yellow `#F3B72B`, одинаковый визуальный стиль light/dark Telegram themes. Оригинальная геометрия Home LightningIcon; прозрачный canvas. Для v1.0.0 не добавлять отдельный animated loading screen в приложение; встроенная анимация Telegram не контролируется этой задачей.
+- **Owner acceptance:** текущий Splash Screen принят владельцем 17.10.2026. Telegram применяет platform-specific icon tint; brand yellow `#F3B72B` не гарантирован. Низкий контраст в Telegram Desktop Preview — принятое ограничение v1.0.0. Это решение владельца, не подтверждение новых device tests; QA-01 остаётся отдельной задачей.
+- **Asset validation (17.10.2026):** владелец подтвердил требования BotFather: SVG canvas 512×512 и ровно один path (WEBP/TGS — альтернативы). `/tmp/300w-bot05/300w-splash-final.svg`: 229 bytes, XML/512×512/one-path/transparency PASS, исходные path и stroke сохранены; viewBox 0 0 24 24 масштабируется в canvas 512×512. PNG preview `/tmp/300w-bot05/300w-splash-final-preview.png` на `#0F1115` визуально проверен локально. Production assets не изменены.
+- **Owner rendering evidence (17.10.2026):** после перехода к single filled path в координатах 512×512 геометрия и масштаб PASS; Desktop Splash Preview на `#0F1115` показывает почти чёрную молнию. Предыдущая Asset validation выше относится к первоначальному локальному SVG, не подтверждает клиентский цвет.
+- **Verified color investigation:** [iOS source](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/WebUI/Sources/WebAppController.swift) использует template mask: для тёмного заданного фона основной tint — фон + 5% белого, отдельно shimmer. [Android source](https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/ui/web/BotWebViewContainer.java) применяет собственный tint: для тёмного фона HSV saturation +0.025 (условно), value +0.15, отдельно gradient. SVG fill не сохраняется этими ветками. В опубликованном botAppSettings нет icon-color или цветного WEBP/TGS media field; смена формата не подтверждена как способ сохранить жёлтый. Точная реализация Desktop Preview и соответствие исходников установленным версиям клиентов остаются UNKNOWN.
+- **Local experiment:** `/tmp/300w-bot05/tint-comparison.png` — приближение основного tint без shimmer, не screenshot Telegram. Для фонов `#0F1115`, `#14171C`, `#1C2026`, `#242A32` расчётный контраст iOS 1.12–1.16:1, Android 1.41–1.58:1; осветление графита не даёт убедительного решения. Жёлтый `#F3B72B` остаётся brand intent, не гарантией splash rendering.
+- **Next action:** дополнительных Splash Screen работ до релиза не требуется. Сохранить background/header `#0F1115`, текущий SVG, URL и Fullsize. Не добавлять отдельный animated loading screen для v1.0.0. Возможные будущие улучшения требуют отдельного scope/approval.
+- **Links:** [Telegram operations](telegram-commands.md), [loading screen settings](https://core.telegram.org/bots/features#customizable-loading-screens), [app settings schema](https://core.telegram.org/constructor/botAppSettings), [Home lightning](../src/components/AppIcons.tsx), QA-01.
+
+### BOT-02 — BotFather commands и Menu Button
+
+- **Status:** DONE · **Priority:** P2 · **Date:** 17.10.2026.
+- **Evidence:** owner-confirmed Telegram command menu показывает `/start`, `/app`, `/help`. Владелец ранее подтвердил Main Mini App enabled и default Menu Button `300W⚡️` → `https://300w.app/`; это owner-confirmed evidence, не новая Bot API проверка.
+- **Next action:** сохранять текущие команды, Menu Button и Main Mini App URL; Splash Screen отслеживается отдельно в BOT-05.
+- **Links:** [command operations](telegram-commands.md).
 
 ### BOT-01 — Dedicated Telegram command webhook
 
