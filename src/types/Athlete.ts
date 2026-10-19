@@ -1,3 +1,4 @@
+import type { PtoProfileData } from '../utils/athleteProfileData'
 export type AthleteGender = 'M' | 'W'
 
 export type AthleteSocialLinks = {
@@ -16,6 +17,7 @@ export type Athlete = {
   gender?: AthleteGender
   discipline: string
   image?: string
+  ptoProfile?: PtoProfileData
   age?: number
   socialLinks?: AthleteSocialLinks
   bio?: string

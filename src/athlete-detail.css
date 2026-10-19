@@ -80,6 +80,7 @@
 
 .athlete-detail__socials {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
   gap: 9px;
@@ -88,6 +89,8 @@
 
 .athlete-social-icon {
   display: grid;
+  flex-shrink: 0;
+  font-size: 10px;
   width: 36px;
   height: 36px;
   place-items: center;

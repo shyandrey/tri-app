@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 1,
+  "approvedAt": "2026-10-19",
+  "approvalScope": "72 reviewed additions + four Marten/Sam age fields; no social replacements",
+  "reviewCsvSha256": "a16044cd946940f077be2ef56864796e1b994f52eed5f6b5df2576b1be01f9c0",
+  "entries": {
+    "1": {
+      "name": "Kristian Blummenfelt",
+      "profile": {
+        "socials": {
+          "twitter": {
+            "value": "https://twitter.com/kristianblu",
+            "raw": "https://twitter.com/kristianblu",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/kristian-blummenfelt",
+            "observedAt": "2026-10-18T16:58:16.596Z",
+            "verifiedAt": "2026-10-18T16:58:16.596Z",
+            "snapshotSha256": "5e8cf38bdac2075cc4b0d44d62d92ffcb826df77a0d38029a9af038bb3e72ebf"
+          }
+        },
+        "reportedAge": {
+          "value": 32,
+          "raw": "32",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/kristian-blummenfelt",
+          "observedAt": "2026-10-18T16:58:16.596Z",
+          "verifiedAt": "2026-10-18T16:58:16.596Z",
+          "snapshotSha256": "5e8cf38bdac2075cc4b0d44d62d92ffcb826df77a0d38029a9af038bb3e72ebf"
+        },
+        "birthYear": {
+          "value": 1994,
+          "raw": "1994",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/kristian-blummenfelt",
+          "observedAt": "2026-10-18T16:58:16.596Z",
+          "verifiedAt": "2026-10-18T16:58:16.596Z",
+          "snapshotSha256": "5e8cf38bdac2075cc4b0d44d62d92ffcb826df77a0d38029a9af038bb3e72ebf"
+        }
+      }
+    },
+    "2": {
+      "name": "Marten Van Riel",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/martenvanriel",
+            "raw": "https://www.instagram.com/martenvanriel/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/marten-van-riel",
+            "observedAt": "2026-10-18T16:58:23.123Z",
+            "verifiedAt": "2026-10-18T16:58:23.123Z",
+            "snapshotSha256": "3e87f4473906285f1a23a9e1001c277313d399b3350e0677aa8ba8e6df393fca"
+          },
+          "facebook": {
+            "value": "https://facebook.com/MartenVanRiel",
+            "raw": "https://www.facebook.com/MartenVanRiel",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/marten-van-riel",
+            "observedAt": "2026-10-18T16:58:23.123Z",
+            "verifiedAt": "2026-10-18T16:58:23.123Z",
+            "snapshotSha256": "3e87f4473906285f1a23a9e1001c277313d399b3350e0677aa8ba8e6df393fca"
+          }
+        },
+        "reportedAge": {
+          "value": 33,
+          "raw": "33",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/marten-van-riel",
+          "observedAt": "2026-10-18T16:58:23.123Z",
+          "verifiedAt": "2026-10-18T16:58:23.123Z",
+          "snapshotSha256": "3e87f4473906285f1a23a9e1001c277313d399b3350e0677aa8ba8e6df393fca"
+        },
+        "birthYear": {
+          "value": 1992,
+          "raw": "1992",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/marten-van-riel",
+          "observedAt": "2026-10-18T16:58:23.123Z",
+          "verifiedAt": "2026-10-18T16:58:23.123Z",
+          "snapshotSha256": "3e87f4473906285f1a23a9e1001c277313d399b3350e0677aa8ba8e6df393fca"
+        }
+      },
+      "reviewedAgeDiscrepancy": {
+        "approvedAt": "2026-10-19",
+        "decision": "Preserve raw AGE/BORN; display calendar-year competition age from BORN."
+      }
+    },
+    "3": {
+      "name": "Hayden Wilde",
+      "profile": {
+        "socials": {},
+        "reportedAge": {
+          "value": 29,
+          "raw": "29",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/hayden-wilde",
+          "observedAt": "2026-10-18T16:58:14.517Z",
+          "verifiedAt": "2026-10-18T16:58:14.517Z",
+          "snapshotSha256": "0abc3af95440670175e9e679e470725205a4403845c939abd5d382269feb992d"
+        },
+        "birthYear": {
+          "value": 1997,
+          "raw": "1997",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/hayden-wilde",
+          "observedAt": "2026-10-18T16:58:14.517Z",
+          "verifiedAt": "2026-10-18T16:58:14.517Z",
+          "snapshotSha256": "0abc3af95440670175e9e679e470725205a4403845c939abd5d382269feb992d"
+        }
+      }
+    },
+    "4": {
+      "name": "Mika Noodt",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/mikanoo00",
+            "raw": "https://www.instagram.com/mikanoo00/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/mika-noodt",
+            "observedAt": "2026-10-18T16:58:28.476Z",
+            "verifiedAt": "2026-10-18T16:58:28.476Z",
+            "snapshotSha256": "fa6616eeb82d670bcf64f17625e740395ea3711f415d57487b60bf9ba9698136"
+          }
+        },
+        "reportedAge": {
+          "value": 26,
+          "raw": "26",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/mika-noodt",
+          "observedAt": "2026-10-18T16:58:28.476Z",
+          "verifiedAt": "2026-10-18T16:58:28.476Z",
+          "snapshotSha256": "fa6616eeb82d670bcf64f17625e740395ea3711f415d57487b60bf9ba9698136"
+        },
+        "birthYear": {
+          "value": 2000,
+          "raw": "2000",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/mika-noodt",
+          "observedAt": "2026-10-18T16:58:28.476Z",
+          "verifiedAt": "2026-10-18T16:58:28.476Z",
+          "snapshotSha256": "fa6616eeb82d670bcf64f17625e740395ea3711f415d57487b60bf9ba9698136"
+        }
+      }
+    },
+    "6": {
+      "name": "Jelle Geens",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/jellegeens",
+            "raw": "https://www.instagram.com/jellegeens/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/jelle-geens",
+            "observedAt": "2026-10-18T16:58:19.333Z",
+            "verifiedAt": "2026-10-18T16:58:19.333Z",
+            "snapshotSha256": "2b3fcadb52e28e26106a11bbfa012802922b71a0b855a9f97878bd25e5e4493d"
+          }
+        },
+        "reportedAge": {
+          "value": 33,
+          "raw": "33",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/jelle-geens",
+          "observedAt": "2026-10-18T16:58:19.333Z",
+          "verifiedAt": "2026-10-18T16:58:19.333Z",
+          "snapshotSha256": "2b3fcadb52e28e26106a11bbfa012802922b71a0b855a9f97878bd25e5e4493d"
+        },
+        "birthYear": {
+          "value": 1993,
+          "raw": "1993",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/jelle-geens",
+          "observedAt": "2026-10-18T16:58:19.333Z",
+          "verifiedAt": "2026-10-18T16:58:19.333Z",
+          "snapshotSha256": "2b3fcadb52e28e26106a11bbfa012802922b71a0b855a9f97878bd25e5e4493d"
+        }
+      }
+    },
+    "7": {
+      "name": "Casper Stornes",
+      "profile": {
+        "socials": {
+          "twitter": {
+            "value": "https://twitter.com/CasperStornes",
+            "raw": "https://twitter.com/CasperStornes",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/casper-stornes",
+            "observedAt": "2026-10-18T16:58:21.216Z",
+            "verifiedAt": "2026-10-18T16:58:21.216Z",
+            "snapshotSha256": "ff1ba3f3b98d1c376bbbe220ab369026480c0fe27a9cb82ccf41ed4a33ff3aa4"
+          }
+        },
+        "reportedAge": {
+          "value": 29,
+          "raw": "29",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/casper-stornes",
+          "observedAt": "2026-10-18T16:58:21.216Z",
+          "verifiedAt": "2026-10-18T16:58:21.216Z",
+          "snapshotSha256": "ff1ba3f3b98d1c376bbbe220ab369026480c0fe27a9cb82ccf41ed4a33ff3aa4"
+        },
+        "birthYear": {
+          "value": 1997,
+          "raw": "1997",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/casper-stornes",
+          "observedAt": "2026-10-18T16:58:21.216Z",
+          "verifiedAt": "2026-10-18T16:58:21.216Z",
+          "snapshotSha256": "ff1ba3f3b98d1c376bbbe220ab369026480c0fe27a9cb82ccf41ed4a33ff3aa4"
+        }
+      }
+    },
+    "20": {
+      "name": "Matthew Marquardt",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/matthewdmarquardt",
+            "raw": "https://www.instagram.com/matthewdmarquardt/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/matthew-marquardt",
+            "observedAt": "2026-10-18T16:58:30.305Z",
+            "verifiedAt": "2026-10-18T16:58:30.305Z",
+            "snapshotSha256": "b057779ed4266bc81ba26f559a9ac2cecc6019d0a4b9216ed4b5241f4cf91fa5"
+          },
+          "twitter": {
+            "value": "https://twitter.com/MD_Marquardt1",
+            "raw": "https://twitter.com/MD_Marquardt1",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/matthew-marquardt",
+            "observedAt": "2026-10-18T16:58:30.305Z",
+            "verifiedAt": "2026-10-18T16:58:30.305Z",
+            "snapshotSha256": "b057779ed4266bc81ba26f559a9ac2cecc6019d0a4b9216ed4b5241f4cf91fa5"
+          }
+        }
+      }
+    },
+    "23": {
+      "name": "Lionel Sanders",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/lsanderstri",
+            "raw": "https://www.instagram.com/lsanderstri/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lionel-sanders",
+            "observedAt": "2026-10-18T16:58:26.624Z",
+            "verifiedAt": "2026-10-18T16:58:26.624Z",
+            "snapshotSha256": "859345446665be6eb2bae814e77df2c4ee7deea22aa52fd0c0dc9ae74652845e"
+          },
+          "youtube": {
+            "value": "https://youtube.com/user/PBTriClinic2011",
+            "raw": "https://www.youtube.com/user/PBTriClinic2011",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lionel-sanders",
+            "observedAt": "2026-10-18T16:58:26.624Z",
+            "verifiedAt": "2026-10-18T16:58:26.624Z",
+            "snapshotSha256": "859345446665be6eb2bae814e77df2c4ee7deea22aa52fd0c0dc9ae74652845e"
+          },
+          "facebook": {
+            "value": "https://facebook.com/lsanderstri",
+            "raw": "https://www.facebook.com/lsanderstri",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lionel-sanders",
+            "observedAt": "2026-10-18T16:58:26.624Z",
+            "verifiedAt": "2026-10-18T16:58:26.624Z",
+            "snapshotSha256": "859345446665be6eb2bae814e77df2c4ee7deea22aa52fd0c0dc9ae74652845e"
+          },
+          "website": {
+            "value": "https://lsanderstri.com/",
+            "raw": "https://www.lsanderstri.com/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lionel-sanders",
+            "observedAt": "2026-10-18T16:58:26.624Z",
+            "verifiedAt": "2026-10-18T16:58:26.624Z",
+            "snapshotSha256": "859345446665be6eb2bae814e77df2c4ee7deea22aa52fd0c0dc9ae74652845e"
+          }
+        },
+        "reportedAge": {
+          "value": 38,
+          "raw": "38",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/lionel-sanders",
+          "observedAt": "2026-10-18T16:58:26.624Z",
+          "verifiedAt": "2026-10-18T16:58:26.624Z",
+          "snapshotSha256": "859345446665be6eb2bae814e77df2c4ee7deea22aa52fd0c0dc9ae74652845e"
+        },
+        "birthYear": {
+          "value": 1988,
+          "raw": "1988",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/lionel-sanders",
+          "observedAt": "2026-10-18T16:58:26.624Z",
+          "verifiedAt": "2026-10-18T16:58:26.624Z",
+          "snapshotSha256": "859345446665be6eb2bae814e77df2c4ee7deea22aa52fd0c0dc9ae74652845e"
+        }
+      }
+    },
+    "41": {
+      "name": "Vincent Luis",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/vincentluistri",
+            "raw": "https://www.instagram.com/vincentluistri",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/vincent-luis",
+            "observedAt": "2026-10-18T16:58:32.143Z",
+            "verifiedAt": "2026-10-18T16:58:32.143Z",
+            "snapshotSha256": "ca6d592a2bb122073e7ba70e9480d958515cb43da3d91917862dc411530ab516"
+          }
+        },
+        "reportedAge": {
+          "value": 37,
+          "raw": "37",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/vincent-luis",
+          "observedAt": "2026-10-18T16:58:32.143Z",
+          "verifiedAt": "2026-10-18T16:58:32.143Z",
+          "snapshotSha256": "ca6d592a2bb122073e7ba70e9480d958515cb43da3d91917862dc411530ab516"
+        },
+        "birthYear": {
+          "value": 1989,
+          "raw": "1989",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/vincent-luis",
+          "observedAt": "2026-10-18T16:58:32.143Z",
+          "verifiedAt": "2026-10-18T16:58:32.143Z",
+          "snapshotSha256": "ca6d592a2bb122073e7ba70e9480d958515cb43da3d91917862dc411530ab516"
+        }
+      }
+    },
+    "101": {
+      "name": "Kate Waugh",
+      "profile": {
+        "socials": {},
+        "reportedAge": {
+          "value": 27,
+          "raw": "27",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/kate-waugh",
+          "observedAt": "2026-10-18T16:58:38.525Z",
+          "verifiedAt": "2026-10-18T16:58:38.525Z",
+          "snapshotSha256": "0d08b326e74c26efbacccdedf80fdbd5b62c46d974641b8e50b9d877a4247c2c"
+        },
+        "birthYear": {
+          "value": 1999,
+          "raw": "1999",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/kate-waugh",
+          "observedAt": "2026-10-18T16:58:38.525Z",
+          "verifiedAt": "2026-10-18T16:58:38.525Z",
+          "snapshotSha256": "0d08b326e74c26efbacccdedf80fdbd5b62c46d974641b8e50b9d877a4247c2c"
+        }
+      }
+    },
+    "102": {
+      "name": "Julie Derron",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/juliederron",
+            "raw": "https://www.instagram.com/juliederron/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/julie-derron",
+            "observedAt": "2026-10-18T16:58:40.904Z",
+            "verifiedAt": "2026-10-18T16:58:40.904Z",
+            "snapshotSha256": "6d0c5bca3dbfecfbdf2840abbedb92e208362a374c191c81466ac6d5057d60b6"
+          },
+          "facebook": {
+            "value": "https://facebook.com/juliederrontri",
+            "raw": "https://www.facebook.com/juliederrontri",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/julie-derron",
+            "observedAt": "2026-10-18T16:58:40.904Z",
+            "verifiedAt": "2026-10-18T16:58:40.904Z",
+            "snapshotSha256": "6d0c5bca3dbfecfbdf2840abbedb92e208362a374c191c81466ac6d5057d60b6"
+          }
+        },
+        "reportedAge": {
+          "value": 30,
+          "raw": "30",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/julie-derron",
+          "observedAt": "2026-10-18T16:58:40.904Z",
+          "verifiedAt": "2026-10-18T16:58:40.904Z",
+          "snapshotSha256": "6d0c5bca3dbfecfbdf2840abbedb92e208362a374c191c81466ac6d5057d60b6"
+        },
+        "birthYear": {
+          "value": 1996,
+          "raw": "1996",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/julie-derron",
+          "observedAt": "2026-10-18T16:58:40.904Z",
+          "verifiedAt": "2026-10-18T16:58:40.904Z",
+          "snapshotSha256": "6d0c5bca3dbfecfbdf2840abbedb92e208362a374c191c81466ac6d5057d60b6"
+        }
+      }
+    },
+    "103": {
+      "name": "Lucy Charles-Barclay",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/lucycharles93",
+            "raw": "https://www.instagram.com/lucycharles93/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+            "observedAt": "2026-10-18T16:58:47.243Z",
+            "verifiedAt": "2026-10-18T16:58:47.243Z",
+            "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+          },
+          "twitter": {
+            "value": "https://twitter.com/lucyannecharles",
+            "raw": "https://twitter.com/lucyannecharles",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+            "observedAt": "2026-10-18T16:58:47.243Z",
+            "verifiedAt": "2026-10-18T16:58:47.243Z",
+            "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+          },
+          "youtube": {
+            "value": "https://youtube.com/channel/UC6PP69DCmBwMCPf9RSSTNTg",
+            "raw": "https://www.youtube.com/channel/UC6PP69DCmBwMCPf9RSSTNTg",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+            "observedAt": "2026-10-18T16:58:47.243Z",
+            "verifiedAt": "2026-10-18T16:58:47.243Z",
+            "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+          },
+          "facebook": {
+            "value": "https://facebook.com/LucyAnneCharles",
+            "raw": "https://www.facebook.com/LucyAnneCharles/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+            "observedAt": "2026-10-18T16:58:47.243Z",
+            "verifiedAt": "2026-10-18T16:58:47.243Z",
+            "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+          },
+          "website": {
+            "value": "https://lucycharles.com/",
+            "raw": "https://www.lucycharles.com/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+            "observedAt": "2026-10-18T16:58:47.243Z",
+            "verifiedAt": "2026-10-18T16:58:47.243Z",
+            "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+          }
+        },
+        "reportedAge": {
+          "value": 33,
+          "raw": "33",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+          "observedAt": "2026-10-18T16:58:47.243Z",
+          "verifiedAt": "2026-10-18T16:58:47.243Z",
+          "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+        },
+        "birthYear": {
+          "value": 1993,
+          "raw": "1993",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+          "observedAt": "2026-10-18T16:58:47.243Z",
+          "verifiedAt": "2026-10-18T16:58:47.243Z",
+          "snapshotSha256": "8fafadee45ea860ed24416e0b7c7543a616a364400a12c8211a44216e83e49b8"
+        }
+      }
+    },
+    "104": {
+      "name": "Taylor Knibb",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/taylorknibb",
+            "raw": "https://www.instagram.com/taylorknibb/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/taylor-knibb",
+            "observedAt": "2026-10-18T16:58:35.895Z",
+            "verifiedAt": "2026-10-18T16:58:35.895Z",
+            "snapshotSha256": "0cf5878149ea73778c54306c41d84c8f0fb9f5bb6183602c0608d30d4198d81f"
+          },
+          "twitter": {
+            "value": "https://twitter.com/taylorknibb",
+            "raw": "https://twitter.com/taylorknibb",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/taylor-knibb",
+            "observedAt": "2026-10-18T16:58:35.895Z",
+            "verifiedAt": "2026-10-18T16:58:35.895Z",
+            "snapshotSha256": "0cf5878149ea73778c54306c41d84c8f0fb9f5bb6183602c0608d30d4198d81f"
+          }
+        },
+        "reportedAge": {
+          "value": 28,
+          "raw": "28",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/taylor-knibb",
+          "observedAt": "2026-10-18T16:58:35.895Z",
+          "verifiedAt": "2026-10-18T16:58:35.895Z",
+          "snapshotSha256": "0cf5878149ea73778c54306c41d84c8f0fb9f5bb6183602c0608d30d4198d81f"
+        },
+        "birthYear": {
+          "value": 1998,
+          "raw": "1998",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/taylor-knibb",
+          "observedAt": "2026-10-18T16:58:35.895Z",
+          "verifiedAt": "2026-10-18T16:58:35.895Z",
+          "snapshotSha256": "0cf5878149ea73778c54306c41d84c8f0fb9f5bb6183602c0608d30d4198d81f"
+        }
+      }
+    },
+    "105": {
+      "name": "Georgia Taylor-Brown",
+      "profile": {
+        "socials": {},
+        "reportedAge": {
+          "value": 32,
+          "raw": "32",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/georgia-taylor-brown",
+          "observedAt": "2026-10-18T16:58:54.003Z",
+          "verifiedAt": "2026-10-18T16:58:54.003Z",
+          "snapshotSha256": "cd685764268be201ca3dca7a390bfb95e8c71856827de08dbdeec16859f1af39"
+        },
+        "birthYear": {
+          "value": 1994,
+          "raw": "1994",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/georgia-taylor-brown",
+          "observedAt": "2026-10-18T16:58:54.003Z",
+          "verifiedAt": "2026-10-18T16:58:54.003Z",
+          "snapshotSha256": "cd685764268be201ca3dca7a390bfb95e8c71856827de08dbdeec16859f1af39"
+        }
+      }
+    },
+    "108": {
+      "name": "Kat Matthews",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/katr_matthews",
+            "raw": "https://www.instagram.com/katr_matthews/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/kat-matthews",
+            "observedAt": "2026-10-18T16:58:49.155Z",
+            "verifiedAt": "2026-10-18T16:58:49.155Z",
+            "snapshotSha256": "ec75cee83a2c18fc19178fbfcdff73ce97bb7143f620606d0a2ddab09631100c"
+          },
+          "twitter": {
+            "value": "https://twitter.com/Katr_Matthews",
+            "raw": "https://twitter.com/Katr_Matthews",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/kat-matthews",
+            "observedAt": "2026-10-18T16:58:49.155Z",
+            "verifiedAt": "2026-10-18T16:58:49.155Z",
+            "snapshotSha256": "ec75cee83a2c18fc19178fbfcdff73ce97bb7143f620606d0a2ddab09631100c"
+          },
+          "facebook": {
+            "value": "https://facebook.com/katrina.rye",
+            "raw": "https://www.facebook.com/katrina.rye",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/kat-matthews",
+            "observedAt": "2026-10-18T16:58:49.155Z",
+            "verifiedAt": "2026-10-18T16:58:49.155Z",
+            "snapshotSha256": "ec75cee83a2c18fc19178fbfcdff73ce97bb7143f620606d0a2ddab09631100c"
+          },
+          "website": {
+            "value": "https://katrinamatthewstri.com/",
+            "raw": "https://www.katrinamatthewstri.com",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/kat-matthews",
+            "observedAt": "2026-10-18T16:58:49.155Z",
+            "verifiedAt": "2026-10-18T16:58:49.155Z",
+            "snapshotSha256": "ec75cee83a2c18fc19178fbfcdff73ce97bb7143f620606d0a2ddab09631100c"
+          }
+        },
+        "reportedAge": {
+          "value": 35,
+          "raw": "35",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/kat-matthews",
+          "observedAt": "2026-10-18T16:58:49.155Z",
+          "verifiedAt": "2026-10-18T16:58:49.155Z",
+          "snapshotSha256": "ec75cee83a2c18fc19178fbfcdff73ce97bb7143f620606d0a2ddab09631100c"
+        },
+        "birthYear": {
+          "value": 1991,
+          "raw": "1991",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/kat-matthews",
+          "observedAt": "2026-10-18T16:58:49.155Z",
+          "verifiedAt": "2026-10-18T16:58:49.155Z",
+          "snapshotSha256": "ec75cee83a2c18fc19178fbfcdff73ce97bb7143f620606d0a2ddab09631100c"
+        }
+      }
+    },
+    "109": {
+      "name": "Laura Philipp",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/laura_philipp_tri",
+            "raw": "https://www.instagram.com/laura_philipp_tri/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/laura-philipp",
+            "observedAt": "2026-10-18T16:58:42.707Z",
+            "verifiedAt": "2026-10-18T16:58:42.707Z",
+            "snapshotSha256": "ff3f2c70985be1a6c26bf25d33c0448fbce2ef5e27ae7d20e981b1254d8251b2"
+          },
+          "youtube": {
+            "value": "https://youtube.com/channel/UCkJ1Sgtqj909kXj_kApY3rA",
+            "raw": "https://www.youtube.com/channel/UCkJ1Sgtqj909kXj_kApY3rA",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/laura-philipp",
+            "observedAt": "2026-10-18T16:58:42.707Z",
+            "verifiedAt": "2026-10-18T16:58:42.707Z",
+            "snapshotSha256": "ff3f2c70985be1a6c26bf25d33c0448fbce2ef5e27ae7d20e981b1254d8251b2"
+          }
+        },
+        "reportedAge": {
+          "value": 39,
+          "raw": "39",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/laura-philipp",
+          "observedAt": "2026-10-18T16:58:42.707Z",
+          "verifiedAt": "2026-10-18T16:58:42.707Z",
+          "snapshotSha256": "ff3f2c70985be1a6c26bf25d33c0448fbce2ef5e27ae7d20e981b1254d8251b2"
+        },
+        "birthYear": {
+          "value": 1987,
+          "raw": "1987",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/laura-philipp",
+          "observedAt": "2026-10-18T16:58:42.707Z",
+          "verifiedAt": "2026-10-18T16:58:42.707Z",
+          "snapshotSha256": "ff3f2c70985be1a6c26bf25d33c0448fbce2ef5e27ae7d20e981b1254d8251b2"
+        }
+      }
+    },
+    "114": {
+      "name": "Paula Findlay",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/paula_findlay",
+            "raw": "https://www.instagram.com/paula_findlay/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+            "observedAt": "2026-10-18T16:58:55.844Z",
+            "verifiedAt": "2026-10-18T16:58:55.844Z",
+            "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+          },
+          "twitter": {
+            "value": "https://twitter.com/PaulaFindlay",
+            "raw": "https://twitter.com/PaulaFindlay",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+            "observedAt": "2026-10-18T16:58:55.844Z",
+            "verifiedAt": "2026-10-18T16:58:55.844Z",
+            "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+          },
+          "youtube": {
+            "value": "https://youtube.com/channel/UC8Wjskc9fSkYLporjscGIBQ",
+            "raw": "https://www.youtube.com/channel/UC8Wjskc9fSkYLporjscGIBQ",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+            "observedAt": "2026-10-18T16:58:55.844Z",
+            "verifiedAt": "2026-10-18T16:58:55.844Z",
+            "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+          },
+          "facebook": {
+            "value": "https://facebook.com/paula.findlay.triathlete",
+            "raw": "https://www.facebook.com/paula.findlay.triathlete/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+            "observedAt": "2026-10-18T16:58:55.844Z",
+            "verifiedAt": "2026-10-18T16:58:55.844Z",
+            "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+          },
+          "website": {
+            "value": "https://paulafindlay.blogspot.com/",
+            "raw": "https://paulafindlay.blogspot.com/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+            "observedAt": "2026-10-18T16:58:55.844Z",
+            "verifiedAt": "2026-10-18T16:58:55.844Z",
+            "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+          }
+        },
+        "reportedAge": {
+          "value": 37,
+          "raw": "37",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+          "observedAt": "2026-10-18T16:58:55.844Z",
+          "verifiedAt": "2026-10-18T16:58:55.844Z",
+          "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+        },
+        "birthYear": {
+          "value": 1989,
+          "raw": "1989",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/paula-findlay",
+          "observedAt": "2026-10-18T16:58:55.844Z",
+          "verifiedAt": "2026-10-18T16:58:55.844Z",
+          "snapshotSha256": "434fd559aba4de1cd6020fcc86814f993edf014eb31e5b82de91c7ed210c0553"
+        }
+      }
+    },
+    "147": {
+      "name": "Ashleigh Gentle",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/gentle_ash",
+            "raw": "https://www.instagram.com/gentle_ash/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+            "observedAt": "2026-10-18T16:58:51.314Z",
+            "verifiedAt": "2026-10-18T16:58:51.314Z",
+            "snapshotSha256": "f7a3696a7888e3c493ef508b6f34dff921f783cbd65c7b9a779d540ca65f1e35"
+          },
+          "twitter": {
+            "value": "https://twitter.com/AshleighGentle",
+            "raw": "https://twitter.com/AshleighGentle",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+            "observedAt": "2026-10-18T16:58:51.314Z",
+            "verifiedAt": "2026-10-18T16:58:51.314Z",
+            "snapshotSha256": "f7a3696a7888e3c493ef508b6f34dff921f783cbd65c7b9a779d540ca65f1e35"
+          },
+          "youtube": {
+            "value": "https://youtube.com/channel/UCdpue5OolKQqxKfoXY9Y9Bw",
+            "raw": "https://www.youtube.com/channel/UCdpue5OolKQqxKfoXY9Y9Bw",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+            "observedAt": "2026-10-18T16:58:51.314Z",
+            "verifiedAt": "2026-10-18T16:58:51.314Z",
+            "snapshotSha256": "f7a3696a7888e3c493ef508b6f34dff921f783cbd65c7b9a779d540ca65f1e35"
+          },
+          "facebook": {
+            "value": "https://facebook.com/AshleighGentleTri",
+            "raw": "https://www.facebook.com/AshleighGentleTri/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+            "observedAt": "2026-10-18T16:58:51.314Z",
+            "verifiedAt": "2026-10-18T16:58:51.314Z",
+            "snapshotSha256": "f7a3696a7888e3c493ef508b6f34dff921f783cbd65c7b9a779d540ca65f1e35"
+          }
+        },
+        "reportedAge": {
+          "value": 35,
+          "raw": "35",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+          "observedAt": "2026-10-18T16:58:51.314Z",
+          "verifiedAt": "2026-10-18T16:58:51.314Z",
+          "snapshotSha256": "f7a3696a7888e3c493ef508b6f34dff921f783cbd65c7b9a779d540ca65f1e35"
+        },
+        "birthYear": {
+          "value": 1991,
+          "raw": "1991",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+          "observedAt": "2026-10-18T16:58:51.314Z",
+          "verifiedAt": "2026-10-18T16:58:51.314Z",
+          "snapshotSha256": "f7a3696a7888e3c493ef508b6f34dff921f783cbd65c7b9a779d540ca65f1e35"
+        }
+      }
+    },
+    "10521": {
+      "name": "Sam Laidlow",
+      "profile": {
+        "socials": {
+          "instagram": {
+            "value": "https://instagram.com/samlaidlow",
+            "raw": "https://www.instagram.com/samlaidlow/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/sam-laidlow",
+            "observedAt": "2026-10-18T16:58:33.975Z",
+            "verifiedAt": "2026-10-18T16:58:33.975Z",
+            "snapshotSha256": "0e66b8332ac2899e3a80776bcf61aff167bd0fc09e6acfe92ee0fe971112c7df"
+          },
+          "youtube": {
+            "value": "https://youtube.com/channel/UCP6EsU9T2RykT1quNR5moeg",
+            "raw": "https://youtube.com/channel/UCP6EsU9T2RykT1quNR5moeg",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/sam-laidlow",
+            "observedAt": "2026-10-18T16:58:33.975Z",
+            "verifiedAt": "2026-10-18T16:58:33.975Z",
+            "snapshotSha256": "0e66b8332ac2899e3a80776bcf61aff167bd0fc09e6acfe92ee0fe971112c7df"
+          },
+          "website": {
+            "value": "https://samlaidlow.com/",
+            "raw": "https://samlaidlow.com/",
+            "sourceUrl": "https://stats.protriathletes.org/athlete/sam-laidlow",
+            "observedAt": "2026-10-18T16:58:33.975Z",
+            "verifiedAt": "2026-10-18T16:58:33.975Z",
+            "snapshotSha256": "0e66b8332ac2899e3a80776bcf61aff167bd0fc09e6acfe92ee0fe971112c7df"
+          }
+        },
+        "reportedAge": {
+          "value": 27,
+          "raw": "27",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/sam-laidlow",
+          "observedAt": "2026-10-18T16:58:33.975Z",
+          "verifiedAt": "2026-10-18T16:58:33.975Z",
+          "snapshotSha256": "0e66b8332ac2899e3a80776bcf61aff167bd0fc09e6acfe92ee0fe971112c7df"
+        },
+        "birthYear": {
+          "value": 1998,
+          "raw": "1998",
+          "sourceUrl": "https://stats.protriathletes.org/athlete/sam-laidlow",
+          "observedAt": "2026-10-18T16:58:33.975Z",
+          "verifiedAt": "2026-10-18T16:58:33.975Z",
+          "snapshotSha256": "0e66b8332ac2899e3a80776bcf61aff167bd0fc09e6acfe92ee0fe971112c7df"
+        }
+      },
+      "reviewedAgeDiscrepancy": {
+        "approvedAt": "2026-10-19",
+        "decision": "Preserve raw AGE/BORN; display calendar-year competition age from BORN."
+      }
+    }
+  }
+}

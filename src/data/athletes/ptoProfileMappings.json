@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "approvalScope": "URL_IDENTITY_ONLY",
+  "note": "Owner approved all 20 URLs on 2026-10-18. Field approvals remain separate. Live identity/reachability must be checked before field extraction; no automatic replacement.",
+  "mappings": [
+    {
+      "id": 3,
+      "name": "Hayden Wilde",
+      "url": "https://stats.protriathletes.org/athlete/hayden-wilde",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "fd4432d3e59695a193a3c84c88b5f3063d9e71797be8a469e0ccd217da73265a",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 1,
+      "name": "Kristian Blummenfelt",
+      "url": "https://stats.protriathletes.org/athlete/kristian-blummenfelt",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "c7fc3421eee42dc380923a7f98b7de0ffed89becff2895737023bcb5b5beb751",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": [
+        "EXISTING_YOUTUBE_CONFLICT"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Jelle Geens",
+      "url": "https://stats.protriathletes.org/athlete/jelle-geens",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "8efd402675d9dd3072ce72261efb3d1ef2b51fa227f9c3ac88ef9ee5d6060a73",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 7,
+      "name": "Casper Stornes",
+      "url": "https://stats.protriathletes.org/athlete/casper-stornes",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "9dbcdd59af289b41663cbd46f238a5216a20623675239d84fc41ed3bb417d76b",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": [
+        "INVALID_OR_UNCLASSIFIED_SOCIAL_URL"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Marten Van Riel",
+      "url": "https://stats.protriathletes.org/athlete/marten-van-riel",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "ced78efd8290639295b9880309fffdb64474069daeec9e001c1d53f87b33606e",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": [
+        "AGE_BORN_CONFLICT"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Lionel Sanders",
+      "url": "https://stats.protriathletes.org/athlete/lionel-sanders",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "a0cf8335e2ba47be0027e3c09a3091981645e76ceebe8ecb984987412df96fc7",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 4,
+      "name": "Mika Noodt",
+      "url": "https://stats.protriathletes.org/athlete/mika-noodt",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "e5a8b69361a6cc7de1435484477b05f95be6181a2da955bf6ec18c38ce4626f6",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 20,
+      "name": "Matthew Marquardt",
+      "url": "https://stats.protriathletes.org/athlete/matthew-marquardt",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "f8396411da1b0e5fff0b000d7d2a64f9acb22d6901e56c6a3334f321bf52ff85",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": [
+        "INVALID_OR_UNCLASSIFIED_SOCIAL_URL"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Vincent Luis",
+      "url": "https://stats.protriathletes.org/athlete/vincent-luis",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "387c79652a2ea0e80ace0d5c7eb8842e763e48a3ccd3134e0709cecc784f8f45",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 10521,
+      "name": "Sam Laidlow",
+      "url": "https://stats.protriathletes.org/athlete/sam-laidlow",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "ed295718e82c2c4606a8e67bd8c1adcd711886060af7b325b66345eeeceb35c4",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": [
+        "AGE_BORN_CONFLICT",
+        "INVALID_OR_UNCLASSIFIED_SOCIAL_URL",
+        "INVALID_OR_UNCLASSIFIED_SOCIAL_URL"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Taylor Knibb",
+      "url": "https://stats.protriathletes.org/athlete/taylor-knibb",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "035a6ee744ec1c9865ffc108eb75a30b9448afc8dd67dcfa269195b36da460d1",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 101,
+      "name": "Kate Waugh",
+      "url": "https://stats.protriathletes.org/athlete/kate-waugh",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "c99ba3218c150e09d5aa3bb92c6ae8a3f7cef2f21dac4cd94e49a92fd89eeac6",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 102,
+      "name": "Julie Derron",
+      "url": "https://stats.protriathletes.org/athlete/julie-derron",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "94687897c42975d31e4a4f367eea1c06f270dfc0ca402c80e525187e75489b5b",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 109,
+      "name": "Laura Philipp",
+      "url": "https://stats.protriathletes.org/athlete/laura-philipp",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "087f2ca547504a750c6b5c73805bc5112fe3a51a3178c2b19b4b1d8da349cc4b",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": [
+        "INVALID_OR_UNCLASSIFIED_SOCIAL_URL"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Solveig Løvseth",
+      "url": "https://stats.protriathletes.org/athlete/solveig-loevseth",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "2b8cd3db10153b5d06e588de634af2e5ce4d1a8cd3c741fdc149ad690eae2e37",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 103,
+      "name": "Lucy Charles-Barclay",
+      "url": "https://stats.protriathletes.org/athlete/lucy-charles-barclay",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "bdf227e9c965701c86552bcc79e1b31186f9ab272af6b7829854a85936da5eda",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 108,
+      "name": "Kat Matthews",
+      "url": "https://stats.protriathletes.org/athlete/kat-matthews",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "5c9536d12ec33e6cdabd1507c782b46a98f19b2bcbfd6c4152f40438304b843b",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 147,
+      "name": "Ashleigh Gentle",
+      "url": "https://stats.protriathletes.org/athlete/ashleigh-gentle",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "72784d8e56a8db7ce3d4564bdfa7bc95b6f867cf071c93b2314a911caf376dfd",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 105,
+      "name": "Georgia Taylor-Brown",
+      "url": "https://stats.protriathletes.org/athlete/georgia-taylor-brown",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "ba186660cca70f65b83e4d7dc5c7b04bb10b979f6a0155fd013dcb298212644c",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    },
+    {
+      "id": 114,
+      "name": "Paula Findlay",
+      "url": "https://stats.protriathletes.org/athlete/paula-findlay",
+      "approvedBy": "owner",
+      "approvedAt": "2026-10-18",
+      "approvalScope": "URL_IDENTITY_ONLY",
+      "approvalSource": "docs/athlete-pto-owner-review-2026-10-18.md",
+      "identitySnapshotSha256": "a42d38ea1f97b9a9cd0071ee71dc5ed8ba1368cc4470d9dc333a9ad54bd72ac4",
+      "fieldApproval": "NOT_GRANTED",
+      "fieldReviewFlags": []
+    }
+  ]
+}

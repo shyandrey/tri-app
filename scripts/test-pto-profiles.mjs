@@ -1,0 +1,26 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import {analyze,validateCohort,report} from './pto-profile-core.mjs'
+import {competitionAge,validSocialUrl,profileSocials} from '../src/utils/athleteProfileData.ts'
+const url='https://stats.protriathletes.org/athlete/test-athlete',athlete={id:1,nameEn:'Test Athlete',gender:'M'}
+const at='2026-10-18T12:00:00Z'
+const field=(value,verifiedAt=at)=>({value,verifiedAt,raw:String(value),sourceUrl:url,snapshotSha256:'test'})
+const html=(age='28',born='1998',social='',name='Test Athlete')=>`<link rel="canonical" href="${url}"><meta property="og:title" content="${name} - Pro Triathlon Results | PTO"><div class="attribute"><div class="name">Age</div><div class="value">${age}</div></div><div class="attribute"><div class="name">Born</div><div class="value">${born}</div></div><div class="equipments-and-socials"><div class="social attribute">${social}</div></div><footer><a class="social-link" href="https://instagram.com/t100">T100</a></footer>`
+const run=(s=html(),a=athlete)=>analyze({athlete:a,url,html:s,verifiedAt:at})
+test('scoped HTML extraction, provenance and footer exclusion',()=>{const r=run();assert.equal(r.normalized.birthYear.value,1998);assert.equal(r.calculatedAge,28);assert.deepEqual(r.normalized.socials,{});assert.match(r.snapshotSha256,/^[a-f0-9]{64}$/)})
+test('missing fields never propose removal',()=>{const r=run(html('-','-'),{...athlete,ptoProfile:{birthYear:field(1998)}});assert.deepEqual(r.proposed,[]);assert.ok(r.missing.includes('Born'))})
+test('conflicting AGE/BORN retain raw values without age proposal',()=>{const r=run(html('27'));assert.ok(r.conflicts.includes('AGE_BORN_CONFLICT'));assert.equal(r.normalized.reportedAge.value,27);assert.equal(r.proposed.length,0)})
+test('birth year calculates at calendar rollover',()=>assert.equal(competitionAge({birthYear:field(1998)},new Date('2027-01-01T12:00:00Z')),29))
+test('reported AGE expires, never increments',()=>{assert.equal(competitionAge({reportedAge:field(28)},new Date(at)),28);assert.equal(competitionAge({reportedAge:field(28)},new Date('2027-01-01')),undefined)})
+test('YouTube channel, handle and legacy formats; reject videos',()=>{for(const p of ['@test','channel/UC123','c/test','user/test'])assert.ok(validSocialUrl('youtube',`https://youtube.com/${p}`));assert.equal(validSocialUrl('youtube','https://youtube.com/watch?v=1'),undefined)})
+test('duplicate IDs and mismatched identity stop cohort',()=>{const p={id:1,name:'Test Athlete',gender:'M',url};assert.throws(()=>validateCohort([p,p],[athlete]),/DUPLICATE/);assert.throws(()=>validateCohort([{...p,id:2}],[athlete]),/IDENTITY/)})
+test('domain spoofing, wrong platforms and insecure URL rejected',()=>{for(const s of ['http://instagram.com/test','https://instagram.com.evil.test/test','https://user:secret@instagram.com/test','https://twitter.com/test'])assert.equal(validSocialUrl('instagram',s),undefined)})
+test('deterministic output',()=>assert.deepEqual(run(),run()))
+test('existing verified values and working legacy links preserved',()=>{const a={...athlete,socialLinks:{instagram:'old',youtube:'old'},ptoProfile:{birthYear:field(1997)}};const r=run(html('28','1998','<a class="social-link" href="https://instagram.com/new">x</a>'),a);assert.ok(r.conflicts.includes('EXISTING_INSTAGRAM_CONFLICT'));assert.ok(r.conflicts.includes('EXISTING_BIRTHYEAR_CONFLICT'));assert.equal(profileSocials(a)[0][1],'https://instagram.com/old')})
+test('page identity mismatch gives no proposals',()=>{const r=run(html('28','1998','','Someone Else'));assert.deepEqual(r.proposed,[]);assert.ok(r.conflicts.includes('IDENTITY_OR_CANONICAL_MISMATCH'))})
+test('shared social URL across IDs is review-only',()=>{const s='<a class="social-link" href="https://instagram.com/test">x</a>';const a=run(html('28','1998',s)),b=run(html('28','1998',s),{...athlete,id:2});report([a,b]);assert.ok(a.conflicts.includes('CROSS_ATHLETE_SOCIAL_DUPLICATE'));assert.deepEqual(a.proposed,[])})
+test('explicit platform mismatch rejected',()=>{const r=run(html('28','1998','<a class="social-link" target="_social_ig" href="https://twitter.com/test">x</a>'));assert.ok(r.conflicts.includes('SOCIAL_PLATFORM_MISMATCH'));assert.deepEqual(r.normalized.socials,{})})
+test('website must be explicit; other social providers not websites',()=>{assert.equal(validSocialUrl('website','https://linkedin.com/in/test'),undefined);const r=run(html('28','1998','<a class="social-link" target="_social_www" href="https://athlete.example/">site</a>'));assert.equal(r.normalized.socials.website.value,'https://athlete.example/')})
+test('country discrepancy blocks proposals',()=>{assert.ok(run(html(),{...athlete,countryCode:'US'}).conflicts.includes('COUNTRY_IDENTITY_REVIEW'))})
+test('boolean HTML attributes do not crash extraction',()=>assert.equal(run(html().replace('<div class="attribute">','<div class> <div class="attribute">')).normalized.birthYear.value,1998))
+test('full URLs remain URLs, no handle concatenation; missing age hidden',()=>{assert.equal(profileSocials({socialLinks:{youtube:'https://youtube.com/channel/UC123'}})[0][1],'https://youtube.com/channel/UC123');assert.equal(competitionAge(undefined),undefined)})

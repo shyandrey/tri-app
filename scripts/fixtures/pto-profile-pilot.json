@@ -1,0 +1,167 @@
+{
+  "sha": "e8a3dba1de13ab5e75964ce9c2ff9dd3e3a49745",
+  "clock": "2026-10-10T12:00:00.000Z",
+  "cohort": [
+    {
+      "gender": "M",
+      "rank": 1,
+      "id": 3,
+      "name": "Hayden Wilde",
+      "score": 125.88507373310965,
+      "url": "https://stats.protriathletes.org/athlete/hayden-wilde"
+    },
+    {
+      "gender": "M",
+      "rank": 2,
+      "id": 1,
+      "name": "Kristian Blummenfelt",
+      "score": 90.03724951027097,
+      "url": "https://stats.protriathletes.org/athlete/kristian-blummenfelt"
+    },
+    {
+      "gender": "M",
+      "rank": 3,
+      "id": 6,
+      "name": "Jelle Geens",
+      "score": 85.72469009034197,
+      "url": "https://stats.protriathletes.org/athlete/jelle-geens"
+    },
+    {
+      "gender": "M",
+      "rank": 4,
+      "id": 7,
+      "name": "Casper Stornes",
+      "score": 74.05382910535975,
+      "url": "https://stats.protriathletes.org/athlete/casper-stornes"
+    },
+    {
+      "gender": "M",
+      "rank": 5,
+      "id": 2,
+      "name": "Marten Van Riel",
+      "score": 72.98768881928662,
+      "url": "https://stats.protriathletes.org/athlete/marten-van-riel"
+    },
+    {
+      "gender": "M",
+      "rank": 6,
+      "id": 23,
+      "name": "Lionel Sanders",
+      "score": 60.72951854867037,
+      "url": "https://stats.protriathletes.org/athlete/lionel-sanders"
+    },
+    {
+      "gender": "M",
+      "rank": 7,
+      "id": 4,
+      "name": "Mika Noodt",
+      "score": 59.64068890888972,
+      "url": "https://stats.protriathletes.org/athlete/mika-noodt"
+    },
+    {
+      "gender": "M",
+      "rank": 8,
+      "id": 20,
+      "name": "Matthew Marquardt",
+      "score": 57.939426040675755,
+      "url": "https://stats.protriathletes.org/athlete/matthew-marquardt"
+    },
+    {
+      "gender": "M",
+      "rank": 9,
+      "id": 41,
+      "name": "Vincent Luis",
+      "score": 56.740906219792755,
+      "url": "https://stats.protriathletes.org/athlete/vincent-luis"
+    },
+    {
+      "gender": "M",
+      "rank": 10,
+      "id": 10521,
+      "name": "Sam Laidlow",
+      "score": 56.17236280359028,
+      "url": "https://stats.protriathletes.org/athlete/sam-laidlow"
+    },
+    {
+      "gender": "W",
+      "rank": 1,
+      "id": 104,
+      "name": "Taylor Knibb",
+      "score": 128.17218681382354,
+      "url": "https://stats.protriathletes.org/athlete/taylor-knibb"
+    },
+    {
+      "gender": "W",
+      "rank": 2,
+      "id": 101,
+      "name": "Kate Waugh",
+      "score": 100.616751015461,
+      "url": "https://stats.protriathletes.org/athlete/kate-waugh"
+    },
+    {
+      "gender": "W",
+      "rank": 3,
+      "id": 102,
+      "name": "Julie Derron",
+      "score": 90.85988917865494,
+      "url": "https://stats.protriathletes.org/athlete/julie-derron"
+    },
+    {
+      "gender": "W",
+      "rank": 4,
+      "id": 109,
+      "name": "Laura Philipp",
+      "score": 87.47826243425953,
+      "url": "https://stats.protriathletes.org/athlete/laura-philipp"
+    },
+    {
+      "gender": "W",
+      "rank": 5,
+      "id": 106,
+      "name": "Solveig Løvseth",
+      "score": 85.6423757738189,
+      "url": "https://stats.protriathletes.org/athlete/solveig-loevseth"
+    },
+    {
+      "gender": "W",
+      "rank": 6,
+      "id": 103,
+      "name": "Lucy Charles-Barclay",
+      "score": 76.45471036918995,
+      "url": "https://stats.protriathletes.org/athlete/lucy-charles-barclay"
+    },
+    {
+      "gender": "W",
+      "rank": 7,
+      "id": 108,
+      "name": "Kat Matthews",
+      "score": 76.27003134817912,
+      "url": "https://stats.protriathletes.org/athlete/kat-matthews"
+    },
+    {
+      "gender": "W",
+      "rank": 8,
+      "id": 147,
+      "name": "Ashleigh Gentle",
+      "score": 67.19757402585209,
+      "url": "https://stats.protriathletes.org/athlete/ashleigh-gentle"
+    },
+    {
+      "gender": "W",
+      "rank": 9,
+      "id": 105,
+      "name": "Georgia Taylor-Brown",
+      "score": 62.78501406380858,
+      "url": "https://stats.protriathletes.org/athlete/georgia-taylor-brown"
+    },
+    {
+      "gender": "W",
+      "rank": 10,
+      "id": 114,
+      "name": "Paula Findlay",
+      "score": 55.85679516669974,
+      "url": "https://stats.protriathletes.org/athlete/paula-findlay"
+    }
+  ],
+  "verifiedAt": "2026-10-18T16:32:35.985327+00:00"
+}

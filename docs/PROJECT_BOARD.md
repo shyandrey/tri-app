@@ -1,12 +1,12 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-17. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-18. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-BOT-01/BOT-02/BOT-05 завершены; native Telegram Splash Screen принят владельцем для v1.0.0. Дополнительные Splash Screen работы перед релизом не требуются. BOT-03/BOT-04 остаются открытыми. REL-01 — локальная реализация versioning/changelog, ожидает review; новые remote mutations требуют отдельного approval.
+Подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `e8a3dba1de13ab5e75964ce9c2ff9dd3e3a49745` (live verified 18.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 — local importer/dry-run review; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
 
 ## In Progress
 
@@ -15,7 +15,7 @@ BOT-01/BOT-02/BOT-05 завершены; native Telegram Splash Screen прин�
 - **Status:** IN PROGRESS · **Priority:** P2.
 - **Описание:** при некоторых сочетаниях фильтров Calendar может показывать пустой список, например Upcoming + IRONMAN Pro Series после окончания сезона. Нужен оформленный empty state вместо пустого пространства.
 - **Acceptance criteria:** различать «Сезон завершён» и обычное «Нет гонок по выбранным фильтрам»; согласовать подходящий русский текст, рассмотреть компактную иллюстрацию календаря или иконку и добавить понятное действие сброса фильтров. Не выводить завершение сезона только из пустого результата: определить отдельное обоснованное условие. Сохранить текущие layout и поведение фильтрации; проверить mobile UI и добавить filter regression tests для обоих состояний и сброса фильтров.
-- **Next action:** owner Preview review сезонного empty state. [Метаданные завершения](../src/data/calendarSeasons.ts): IRONMAN Pro Series 2026 завершён 10.10.2026 в Kona, подтверждено владельцем 18.10.2026. Только Upcoming без поиска показывает «Сезон завершён!» после этой даты в 2026 году; «Результаты сезона» переключает на Past, сохраняя серию и archives. Без подтверждения сезона, при поиске и в будущем году — generic reset. Loading/error не считаются пустым результатом.
+- **Next action:** owner Production closeout review; Preview UI owner-approved, deployed Preview/Production browser tests PASS на target e8a3dba1. Сезонный UI уже deployed; статус остаётся IN PROGRESS до отдельного закрытия.  [Метаданные завершения](../src/data/calendarSeasons.ts): IRONMAN Pro Series 2026 завершён 10.10.2026 в Kona, подтверждено владельцем 18.10.2026. Только Upcoming без поиска показывает «Сезон завершён!» после этой даты в 2026 году; «Результаты сезона» переключает на Past, сохраняя серию и archives. Без подтверждения сезона, при поиске и в будущем году — generic reset. Loading/error не считаются пустым результатом.
 - **Links:** [Calendar](../src/pages/CalendarPage.tsx), [season policy](season-transition-2026-2027.md), [developer handbook](maintenance-developer.md).
 
 ### REL-01 — Application Versioning
@@ -23,7 +23,7 @@ BOT-01/BOT-02/BOT-05 завершены; native Telegram Splash Screen прин�
 - **Status:** IN PROGRESS · **Priority:** P1.
 - **Описание:** подготовить версию 1.0.0 для первого публичного релиза и отображение «Версия 1.0.0» в More. Определить единый источник версии, предпочтительно package.json, и простую release versioning policy. Фактическую версию не менять до отдельного release approval.
 - **Acceptance criteria:** UI и `/api/health` получают согласованную версию из единого источника; проверить существующую цепочку build metadata и добавить version consistency tests. Описать порядок изменения версии и её проверки при релизе, без независимых hardcoded значений в UI/Worker.
-- **Next action:** owner review локальной реализации: package version остаётся 0.0.0; CHANGELOG.md хранит историю, build генерирует только current notes, More использует collapsed disclosure. Проверить тесты и согласовать notes/процедуру выпуска; не публиковать 1.0.0 без отдельного approval.
+- **Next action:** подготовить отдельно approved v1.0.0 release notes/version/tag; implementation уже deployed в Preview/Production e8a3dba1, package version остаётся 0.0.0; CHANGELOG.md хранит историю, build генерирует только current notes, More использует collapsed disclosure. Проверить тесты и согласовать notes/процедуру выпуска; не публиковать 1.0.0 без отдельного approval.
 - **Links:** [version policy](versioning.md), [changelog](../CHANGELOG.md), [package.json](../package.json), [More](../src/pages/MorePage.tsx), [health handler](../worker/index.ts), [deployment procedure](deployment-cloudflare.md).
 
 ### DATA-01 — Русские имена атлетов
@@ -57,6 +57,34 @@ BOT-01/BOT-02/BOT-05 завершены; native Telegram Splash Screen прин�
 - **Links:** [scripts](scripts.md), [News operations](latest-news.md), [production runbook](deployment-cloudflare.md), [release policy](../scripts/release-policy.mjs).
 
 ## Backlog
+
+### ATH-01 — Verified social media links
+
+- **Status:** IN PROGRESS — LOCAL REVIEW · **Priority:** P2.
+- **Описание:** verified Instagram/X/YouTube/Facebook/TikTok/website URLs для reproducible top-10 M + top-10 W cohort; сейчас 2/1 профиля. Field-level provenance, без угадывания аккаунтов.
+- **Next action:** 20 PTO URL mappings APPROVED владельцем 18.10.2026; [mapping registry](../src/data/athletes/ptoProfileMappings.json) подготовлен локально. Live identity/extraction 20/20 PASS 18.10.2026; [final field review](athlete-pto-field-review-2026-10-18.md): 72 AUTO-APPROVABLE additions, 5 REVIEW REQUIRED fields, 83 SKIP slots. Owner field approval 19.10.2026: [local application](athlete-pto-pilot-application-2026-10-19.md) 76 fields / 19 profiles; 40 новых social URLs, без замен. Далее review локального patch; YouTube Kristian сохранён, исключённые URLs не применены. Primary PTO.
+- **Links:** [model, workflow, tests, dependencies](pre-release-readiness-2026-10-18.md#ath-01--verified-social-media-links).
+
+### ATH-02 — PTO BORN and competition age
+
+- **Status:** IN PROGRESS — LOCAL REVIEW · **Priority:** P2.
+- **Описание:** раздельные PTO AGE/BORN с provenance; competition age = year − BORN, AGE-only истекает при смене года. DOB не выводится из этих полей.
+- **Next action:** review четырёх AGE/BORN fields Marten/Sam в [final live proposal](athlete-pto-field-review-2026-10-18.md): raw33/1992 → competition34; raw27/1998 → competition28. Owner approved raw AGE/BORN Marten/Sam 19.10.2026; локально применены с provenance, competition age34/28. Далее review [local application](athlete-pto-pilot-application-2026-10-19.md); production unchanged.
+- **Links:** [model, workflow, tests, dependencies](pre-release-readiness-2026-10-18.md#ath-02--birth-date-and-calculated-age).
+
+### ATH-03 — Editorial biographies for top athletes
+
+- **Status:** TODO — PROPOSED · **Priority:** P3.
+- **Описание:** reviewed Russian biographies top cohort, claim-level evidence; сейчас 1/1167. Детализация DATA-02, не замена/закрытие задачи.
+- **Next action:** факт-лист и owner-approved текст, затем persistent editorial registry и общий paragraph rendering review. Scope M + editorial work; mobile/accessibility/invariant tests.
+- **Links:** [model, sources, workflow](pre-release-readiness-2026-10-18.md#ath-03--editorial-biographies-for-top-athletes), DATA-02.
+
+### ATH-04 — Verified key achievements
+
+- **Status:** TODO — PROPOSED · **Priority:** P3.
+- **Описание:** verified structured achievements с competition/season/evidence; сейчас 1 профиль, 4 пункта. Сохранить approved Kristian text/icons.
+- **Next action:** source/identity/season review и owner approval до schema/icon adapter changes; scope M, зависимости provenance и DATA-02, tests порядка/уникальности/иконок/ID/ranking.
+- **Links:** [model, sources, workflow](pre-release-readiness-2026-10-18.md#ath-04--verified-key-achievements), DATA-02.
 
 ### DATA-05 — Переход сезона 2026 → 2027
 
