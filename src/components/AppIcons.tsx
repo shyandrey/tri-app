@@ -52,3 +52,15 @@ export function ChevronRightIcon(props: IconProps) {
 export function TelegramIcon(props: IconProps) {
   return <svg {...baseProps} {...props}><path d="m21 3-4 18-6-5-3 3v-6L3 11 21 3Z"/><path d="m8 13 9-6-6 9"/></svg>
 }
+
+export function FacebookIcon(props: IconProps) {
+  return <svg {...baseProps} {...props}><path fill="currentColor" stroke="none" d="M14 22v-9h3l.5-3.5H14V7.3c0-1 .3-1.8 1.8-1.8H18V2.3C17.6 2.2 16.3 2 14.8 2 11.7 2 10 3.9 10 7v2.5H7V13h3v9Z"/></svg>
+}
+
+export function XIcon(props: IconProps) {
+  return <svg {...baseProps} {...props}><path fill="currentColor" stroke="none" fillRule="evenodd" d="M18.9 2H22l-7.3 8.5L23 22h-6.5l-5.1-7L5.4 22H2.2l7.7-9L1.9 2h6.7l4.6 6.4L18.9 2ZM17.5 20h1.7L7.5 4H5.7l11.8 16Z"/></svg>
+}
+
+export function GlobeIcon(props: IconProps) {
+  return <svg {...baseProps} {...props}><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3.5 9h17M3.5 15h17"/></svg>
+}

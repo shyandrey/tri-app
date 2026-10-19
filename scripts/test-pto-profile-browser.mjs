@@ -1,5 +1,6 @@
 // Local Vite dev server + isolated Chrome CDP. Synthetic fields exist in browser memory only.
 import assert from 'node:assert/strict'
+import fs from 'node:fs/promises'
 const base=process.env.TRI_APP_URL??'http://127.0.0.1:5196'
 if(!['localhost','127.0.0.1'].includes(new URL(base).hostname))throw Error('LOCAL_ONLY')
 const targets=await(await fetch((process.env.TRI_CDP_URL??'http://127.0.0.1:9396')+'/json/list')).json()
@@ -29,6 +30,19 @@ try{
   assert.equal(await js('document.querySelectorAll("#pto-test .athlete-social-icon").length'),6)
   assert.ok(await js('[...document.querySelectorAll("#pto-test .athlete-social-icon")].every(a=>a.href.startsWith("https://")&&a.target==="_blank"&&a.rel.includes("noopener")&&a.getAttribute("aria-label")&&a.getBoundingClientRect().right<=innerWidth)'))
   assert.ok(await js('document.documentElement.scrollWidth<=innerWidth'))
+  const icons=await js(`['facebook','twitter','Официальный сайт'].map(label=>{const a=document.querySelector('#pto-test a[aria-label="'+label+'"]'),svg=a.querySelector('svg'),shape=svg?.querySelector('path'),box=a.getBoundingClientRect();return {label,viewBox:svg?.getAttribute('viewBox'),hidden:svg?.getAttribute('aria-hidden'),text:a.textContent,fill:shape&&getComputedStyle(shape).fill,stroke:shape&&getComputedStyle(shape).stroke,color:getComputedStyle(a).color,width:box.width,height:box.height,cssWidth:getComputedStyle(a).width,raster:!!svg?.querySelector('image'),circle:!!svg?.querySelector('circle'),ellipse:!!svg?.querySelector('ellipse')}})`)
+  for(const icon of icons){
+   assert.equal(icon.viewBox,'0 0 24 24');assert.equal(icon.hidden,'true');assert.equal(icon.text,'');assert.equal(icon.raster,false)
+   assert.equal(icon.cssWidth,width<=640?'34px':'36px');assert.equal(icon.height,icon.width)
+   if(icon.label==='Официальный сайт'){assert.ok(icon.circle&&icon.ellipse);assert.equal(icon.stroke,icon.color)}
+   else {assert.equal(icon.fill,icon.color);assert.equal(icon.stroke,'none')}
+  }
+  await js('document.querySelector("#pto-test a[aria-label=facebook]").focus()')
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
+  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
+  assert.equal(await js('document.activeElement.getAttribute("aria-label")'),'tiktok')
+  const screenshot=await send('Page.captureScreenshot',{format:'png'})
+  await fs.writeFile(`/tmp/300w-social-icons-${width}.png`,Buffer.from(screenshot.data,'base64'))
   assert.ok(await js('document.querySelector("#pto-test .athlete-detail__facts").textContent.includes(String(Number(new Intl.DateTimeFormat("en",{timeZone:"Europe/Moscow",year:"numeric"}).format(new Date()))-2000))'))
   await js('document.querySelector("#pto-test .athlete-social-icon").focus()');assert.ok(await js('document.activeElement.classList.contains("athlete-social-icon")'))
  }
