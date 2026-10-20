@@ -1,3 +1,4 @@
+import {normalizedPtoCountry,validProfileUrl} from './pto-profile-identity-values.mjs'
 import {spawnSync} from 'node:child_process'
 import {createHash} from 'node:crypto'
 import {competitionAge, validSocialUrl, profileSocials} from '../src/utils/athleteProfileData.ts'
@@ -15,7 +16,7 @@ export function validateCohort(cohort,athletes){
     ids.add(p.id);urls.add(p.url)
     const matches=athletes.filter(a=>normalizeName(a.nameEn)===normalizeName(p.name))
     if(matches.length!==1||matches[0].id!==p.id||matches[0].gender!==p.gender)throw Error('IDENTITY_MISMATCH')
-    if(!/^https:\/\/stats\.protriathletes\.org\/athlete\/[a-z0-9-]+$/.test(p.url))throw Error('INVALID_PROFILE_URL')
+    if(!validProfileUrl(p.url))throw Error('INVALID_PROFILE_URL')
   }
 }
 export function analyze({athlete,url,html,verifiedAt}){
@@ -23,7 +24,7 @@ export function analyze({athlete,url,html,verifiedAt}){
   const parsed=extract(html),hash=createHash('sha256').update(html).digest('hex'), conflicts=[],missing=[],normalized={socials:{}},proposed=[]
   const result={id:athlete.id,name:athlete.nameEn,url,verifiedAt,snapshotSha256:hash,raw:parsed,normalized,missing,conflicts,proposed}
   if(parsed.names.length!==1||normalizeName(parsed.names[0])!==normalizeName(athlete.nameEn)||parsed.canonical.length!==1||parsed.canonical[0]!==url){conflicts.push('IDENTITY_OR_CANONICAL_MISMATCH');return result}
-  if(athlete.countryCode && (parsed.countries.length!==1 || parsed.countries[0]!==athlete.countryCode)){conflicts.push('COUNTRY_IDENTITY_REVIEW');return result}
+  if(athlete.countryCode && (parsed.countries.length!==1 || !normalizedPtoCountry(athlete.countryCode) || normalizedPtoCountry(parsed.countries[0])!==normalizedPtoCountry(athlete.countryCode))){conflicts.push('COUNTRY_IDENTITY_REVIEW');return result}
   const evidence=(value,raw)=>({value,raw,sourceUrl:url,verifiedAt,snapshotSha256:hash})
   const year=Number(new Intl.DateTimeFormat('en',{timeZone:'Europe/Moscow',year:'numeric'}).format(new Date(verifiedAt)))
   for(const [label,key,min,max] of [['Age','reportedAge',0,120],['Born','birthYear',1900,year]]){

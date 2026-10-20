@@ -1,6 +1,6 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-18. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-20. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
@@ -58,18 +58,50 @@
 
 ## Backlog
 
+### RANK-01 — Official Series Rankings Integration
+
+- **Status:** TODO · **Priority:** P1 · **Target:** Before v1.0.0.
+- **Описание:** интегрировать официальные standings IRONMAN Pro Series и T100 / Triathlon World Tour, отдельно для мужчин и женщин, за сезоны 2024, 2025 и 2026 там, где применимо.
+- **Acceptance criteria:** официальные места и очки без выдуманных расчётов; сохранить форматы соревнований каждого сезона. Записывать source provenance и даты snapshots; обеспечить stable mapping к 300W athlete IDs и переходы в профили. Нужны import validation, conflict reporting и regression tests. Официальные standings не подменяют внутреннюю ranking formula 300W.
+- **Next action:** read-only discovery официальных источников и доступности исторических сезонов, затем review модели, identity mappings и import plan до реализации.
+- **Links:** [Data Source Policy](scripts.md#data-source-policy), [season policy](season-transition-2026-2027.md), [внутренний ranking](../src/utils/athleteRanking.ts).
+
+### FAV-01 — Favorite Athletes
+
+- **Status:** TODO · **Priority:** P2 · **Target:** Post-release.
+- **Описание:** добавление и удаление атлетов из избранного, отдельный список избранных.
+- **Acceptance criteria:** user-specific persistent storage; синхронизация между устройствами там, где поддерживается. Сохранять stable athlete IDs и изоляцию пользовательских списков.
+- **Next action:** спроектировать идентификацию пользователя, хранение, доступность cross-device sync и UI; согласовать проверки сохранения, удаления и изоляции до реализации.
+- **Links:** [developer handbook](maintenance-developer.md), [Telegram integration](telegram-commands.md).
+
+### FAV-02 — Athlete Finish Notifications
+
+- **Status:** TODO · **Priority:** P2 · **Target:** Post-release · **Dependency:** FAV-01.
+- **Описание:** уведомлять пользователя, когда у избранного атлета появляется проверенный результат гонки; Telegram bot integration.
+- **Acceptance criteria:** указывать атлета, гонку, место и finish time, когда доступны; не придумывать отсутствующие значения. Исключить duplicate notifications; обеспечить opt-in и настройки уведомлений.
+- **Next action:** после [FAV-01](#fav-01--favorite-athletes) согласовать событие verified result, deduplication, preferences и изолированную Telegram delivery; предусмотреть regression tests повторной обработки и opt-out.
+- **Links:** [results workflow](import-race-results.md), [Telegram operations](telegram-commands.md).
+
+### FAV-03 — Ranking Movement Notifications
+
+- **Status:** TODO · **Priority:** P2 · **Target:** Post-release · **Dependencies:** FAV-01, RANK-01.
+- **Описание:** определять подтверждённые изменения в официальных standings серий и уведомлять о значимых перемещениях избранных атлетов.
+- **Acceptance criteria:** указывать серию, предыдущее и новое место; исключить дубликаты и шумные уведомления, учитывать пользовательские preferences. Сравнивать подтверждённые snapshots соответствующих серии, сезона и пола.
+- **Next action:** после [FAV-01](#fav-01--favorite-athletes) и [RANK-01](#rank-01--official-series-rankings-integration) согласовать критерий значимости, snapshot comparison, deduplication и tests настроек пользователя.
+- **Links:** [Telegram operations](telegram-commands.md), [Data Source Policy](scripts.md#data-source-policy).
+
 ### ATH-01 — Verified social media links
 
 - **Status:** IN PROGRESS — LOCAL REVIEW · **Priority:** P2.
-- **Описание:** verified Instagram/X/YouTube/Facebook/TikTok/website URLs для reproducible top-10 M + top-10 W cohort; сейчас 2/1 профиля. Field-level provenance, без угадывания аккаунтов.
-- **Next action:** 20 PTO URL mappings APPROVED владельцем 18.10.2026; [mapping registry](../src/data/athletes/ptoProfileMappings.json) подготовлен локально. Live identity/extraction 20/20 PASS 18.10.2026; [final field review](athlete-pto-field-review-2026-10-18.md): 72 AUTO-APPROVABLE additions, 5 REVIEW REQUIRED fields, 83 SKIP slots. Owner field approval 19.10.2026: [local application](athlete-pto-pilot-application-2026-10-19.md) 76 fields / 19 profiles; 40 новых social URLs, без замен. Далее review локального patch; YouTube Kristian сохранён, исключённые URLs не применены. Primary PTO.
+- **Описание:** verified Instagram/X/YouTube/Facebook/TikTok/website URLs для 221 photo-cohort athlete с approved PTO mapping. 720 новых полей применены локально; 210 профилей с PTO enrichment, 197 с AGE/BORN. Исходный 20-athlete pilot сохранён. Field-level provenance, без угадывания аккаунтов.
+- **Next action:** ожидаются отдельные owner approvals на commit и затем Preview deployment; локальный full-photo-cohort patch 20.10.2026: 221 approved mappings; применено 720 новых полей (651 + 60 raw AGE/BORN + 9 Jackson/Lisa), без пересечений и замен. Исходный pilot 76 fields неизменён. Shared YouTube Jackson/Lisa, AGE/BORN Lisa и 57 rejected URLs не импортированы; YouTube Kristian сохранён. [Application report](athlete-pto-photo-application-2026-10-20.md). Production unchanged; это не deployment approval.
 - **Links:** [model, workflow, tests, dependencies](pre-release-readiness-2026-10-18.md#ath-01--verified-social-media-links).
 
 ### ATH-02 — PTO BORN and competition age
 
 - **Status:** IN PROGRESS — LOCAL REVIEW · **Priority:** P2.
 - **Описание:** раздельные PTO AGE/BORN с provenance; competition age = year − BORN, AGE-only истекает при смене года. DOB не выводится из этих полей.
-- **Next action:** review четырёх AGE/BORN fields Marten/Sam в [final live proposal](athlete-pto-field-review-2026-10-18.md): raw33/1992 → competition34; raw27/1998 → competition28. Owner approved raw AGE/BORN Marten/Sam 19.10.2026; локально применены с provenance, competition age34/28. Далее review [local application](athlete-pto-pilot-application-2026-10-19.md); production unchanged.
+- **Next action:** ожидаются commit и Preview deployment по отдельному approval; [full cohort application](athlete-pto-photo-application-2026-10-20.md): AGE/BORN coverage 197/221, raw значения и source timestamps сохранены; competition age вычисляется из BORN. 30 новых расхождений согласованы как сохранение обоих raw полей; точный DOB не выводится. AGE/BORN Lisa остаются HOLD. Исходные Marten/Sam pilot values неизменны; Production unchanged.
 - **Links:** [model, workflow, tests, dependencies](pre-release-readiness-2026-10-18.md#ath-02--birth-date-and-calculated-age).
 
 ### ATH-03 — Editorial biographies for top athletes

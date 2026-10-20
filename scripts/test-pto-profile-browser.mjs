@@ -15,7 +15,7 @@ try{
  await send('Page.enable');await send('Runtime.enable')
  await send('Page.navigate',{url:base+'/?pto-test='+Date.now()+'#/athlete/1'});await wait()
  assert.deepEqual(await js('[...document.querySelectorAll(".athlete-social-icon")].map(a=>a.href)'),['https://instagram.com/kristianblu','https://youtube.com/@kristian.blummenfelt','https://twitter.com/kristianblu'])
- for(const [id,born,links] of [[2,1992,2],[10521,1998,3],[20,null,2],[7,1997,1],[109,1987,2]]){
+ for(const [id,born,links] of [[2,1992,2],[10521,1998,3],[20,null,2],[7,1997,1],[109,1987,2],[38,1993,4],[10825,null,3]]){
   await send('Page.navigate',{url:base+'/?pilot='+Date.now()+'#/athlete/'+id});await wait()
   assert.equal(await js('document.querySelectorAll(".athlete-social-icon").length'),links)
   const facts=await js('document.querySelector(".athlete-detail__facts").textContent')

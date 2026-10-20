@@ -13,8 +13,8 @@ let registry=[]
 try{registry=JSON.parse(await fs.readFile('src/data/athletes/ptoProfileMappings.json','utf8')).mappings;if(!Array.isArray(registry))throw Error('INVALID_REGISTRY')}catch(e){if(e.code!=='ENOENT')throw e}
 const server=await createServer({server:{middlewareMode:true,hmr:false,watch:null},appType:'custom',logLevel:'silent'})
 try{
- const {athletes}=await server.ssrLoadModule('/src/data/athletes/index.ts')
- const mappings=mappingPlan(manifest.cohort,athletes,decisions,registry),rows=[]
+ const {athletes,linkedRaceResults}=await server.ssrLoadModule('/src/sports/data.ts')
+ const mappings=mappingPlan(manifest.cohort,athletes,decisions,registry,linkedRaceResults),rows=[]
  let stopped=false
  for(const row of mappings){
   const athlete=athletes.find(a=>a.id===row.id)

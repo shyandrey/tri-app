@@ -32,4 +32,17 @@ for n in allnodes:
             if cls(social,'social'):
                 for a in nodes(social):
                     if a['tag']=='a' and cls(a,'social-link'):links.append({'href':a['attrs'].get('href',''),'target':a['attrs'].get('target','')})
-print(json.dumps({'names':[n['attrs'].get('content','').split(' - Pro Triathlon')[0] for n in allnodes if n['tag']=='meta' and n['attrs'].get('property')=='og:title'], 'canonical':[n['attrs'].get('href') for n in allnodes if n['tag']=='link' and n['attrs'].get('rel')=='canonical'], 'fields':fields,'links':links,'countries':countries}))
+history=[]
+if '--identity-only' in sys.argv:
+    for n in allnodes:
+        if n['tag']!='tr':continue
+        cells={}
+        for c in n['children']:
+            if isinstance(c,dict) and c['tag']=='td':
+                for key in ('race','place','overall','swim','bike','run'):
+                    if cls(c,key):cells[key]=c
+        if len(cells)!=6:continue
+        anchors=[a for a in nodes(cells['race']) if a['tag']=='a' and a['attrs'].get('href','').startswith('/race/')]
+        if len(anchors)!=1:continue
+        history.append({'url':'https://stats.protriathletes.org'+anchors[0]['attrs']['href'],'position':text(cells['place']),'total':' '.join(c.strip() for c in cells['overall']['children'] if isinstance(c,str)).strip(),'swim':text(cells['swim']),'bike':text(cells['bike']),'run':text(cells['run'])})
+print(json.dumps({'names':[n['attrs'].get('content','').split(' - Pro Triathlon')[0] for n in allnodes if n['tag']=='meta' and n['attrs'].get('property')=='og:title'], 'canonical':[n['attrs'].get('href') for n in allnodes if n['tag']=='link' and n['attrs'].get('rel')=='canonical'], 'fields':fields,'links':links,'countries':countries,'history':history}))
