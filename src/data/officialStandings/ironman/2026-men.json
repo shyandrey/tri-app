@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "series": "IRONMAN_PRO_SERIES",
+  "coverage": "TOP_10_ONLY",
+  "seasonYear": 2026,
+  "gender": "M",
+  "seasonStatus": "LIVE",
+  "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+  "sourceObservedAt": null,
+  "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+  "sourceVerificationStatus": "OWNER_APPROVED_VALUES_NOT_INDEPENDENTLY_HTML_VERIFIED",
+  "approvalScope": "LOCAL_CANDIDATE_PREPARATION_ONLY",
+  "readyForApplication": false,
+  "provenance": {
+    "path": "/Users/andrey.shubin/Downloads/ironman-pro-series-standings-2024-2026-approved.csv",
+    "sha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+    "bytes": 9524,
+    "encoding": "UTF-8 with BOM",
+    "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+    "ownerApprovedAt": "2026-10-21",
+    "htmlVerified": false,
+    "identityEvidenceFile": "scripts/fixtures/official-standings/ironman-approved-2026-10-21.json"
+  },
+  "rows": [
+    {
+      "officialRank": 1,
+      "athleteName": "Gustav Iden",
+      "nationality": "NOR",
+      "officialPoints": 20176,
+      "athleteId": 25,
+      "proposedAthleteId": 25,
+      "nationalityNormalized": "NO",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 41,
+        "identityEvidenceKey": "Gustav Iden"
+      }
+    },
+    {
+      "officialRank": 2,
+      "athleteName": "Jonas Schomburg",
+      "nationality": "GER",
+      "officialPoints": 20123,
+      "athleteId": 8,
+      "proposedAthleteId": 8,
+      "nationalityNormalized": "DE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 42,
+        "identityEvidenceKey": "Jonas Schomburg"
+      }
+    },
+    {
+      "officialRank": 3,
+      "athleteName": "Kristian Blummenfelt",
+      "nationality": "NOR",
+      "officialPoints": 19984,
+      "athleteId": 1,
+      "proposedAthleteId": 1,
+      "nationalityNormalized": "NO",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 43,
+        "identityEvidenceKey": "Kristian Blummenfelt"
+      }
+    },
+    {
+      "officialRank": 4,
+      "athleteName": "Kacper Stepniak",
+      "nationality": "POL",
+      "officialPoints": 18162,
+      "athleteId": 71,
+      "proposedAthleteId": 71,
+      "nationalityNormalized": "PL",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 44,
+        "identityEvidenceKey": "Kacper Stepniak"
+      }
+    },
+    {
+      "officialRank": 5,
+      "athleteName": "Kieran Lindars",
+      "nationality": "GBR",
+      "officialPoints": 18053,
+      "athleteId": 72,
+      "proposedAthleteId": 72,
+      "nationalityNormalized": "GB",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 45,
+        "identityEvidenceKey": "Kieran Lindars"
+      }
+    },
+    {
+      "officialRank": 6,
+      "athleteName": "Vincent Luis",
+      "nationality": "FRA",
+      "officialPoints": 17598,
+      "athleteId": 41,
+      "proposedAthleteId": 41,
+      "nationalityNormalized": "FR",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 46,
+        "identityEvidenceKey": "Vincent Luis"
+      }
+    },
+    {
+      "officialRank": 7,
+      "athleteName": "Marten Van Riel",
+      "nationality": "BEL",
+      "officialPoints": 17581,
+      "athleteId": 2,
+      "proposedAthleteId": 2,
+      "nationalityNormalized": "BE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 47,
+        "identityEvidenceKey": "Marten Van Riel"
+      }
+    },
+    {
+      "officialRank": 8,
+      "athleteName": "Matthew Marquardt",
+      "nationality": "USA",
+      "officialPoints": 17546,
+      "athleteId": 20,
+      "proposedAthleteId": 20,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 48,
+        "identityEvidenceKey": "Matthew Marquardt"
+      }
+    },
+    {
+      "officialRank": 9,
+      "athleteName": "Matt Hanson",
+      "nationality": "USA",
+      "officialPoints": 17181,
+      "athleteId": 49,
+      "proposedAthleteId": 49,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 49,
+        "identityEvidenceKey": "Matt Hanson"
+      }
+    },
+    {
+      "officialRank": 10,
+      "athleteName": "Sam Long",
+      "nationality": "USA",
+      "officialPoints": 16723,
+      "athleteId": 22,
+      "proposedAthleteId": 22,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2026",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 50,
+        "identityEvidenceKey": "Sam Long"
+      }
+    }
+  ]
+}

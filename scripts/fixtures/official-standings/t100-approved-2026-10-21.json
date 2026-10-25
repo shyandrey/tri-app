@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 1,
+  "approval": {
+    "date": "2026-10-21",
+    "scope": "LOCAL_REGISTRY_ONLY",
+    "sourceDirectory": "/tmp/300w-t100-closeout-2026-10-21",
+    "noUiApproval": true
+  },
+  "rowColumns": [
+    "officialRank",
+    "athleteName",
+    "nationality",
+    "nationalityNormalized",
+    "officialPoints",
+    "athleteId"
+  ],
+  "tables": [
+    {
+      "file": "2024-men.json",
+      "series": "T100",
+      "seasonYear": 2024,
+      "gender": "M",
+      "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceSeasonId": 2,
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "provenanceType": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+      "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+      "sourceScreenshot": {
+        "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2024-men.png",
+        "sha256": "72113dec79195426c40dc28bb2c03587c47685d9b273e702d43d1ac9f6d29a4a",
+        "captureTimestamp": null,
+        "reviewDate": "2026-10-21"
+      },
+      "reviewLimitations": [
+        "Historical FINAL status remains pending",
+        "2024 Men explicit gender label not visible; owner file label used"
+      ],
+      "candidateSha256": "d3d12fcfa5285a6fbdafbbcafbac4996b26f53e2202802e886f3279d3d903dcd",
+      "rows": [
+        [
+          1,
+          "Marten Van Riel",
+          "BEL",
+          "BE",
+          153,
+          2
+        ],
+        [
+          2,
+          "Kyle Smith",
+          "NZL",
+          "NZ",
+          111,
+          32
+        ],
+        [
+          3,
+          "Rico Bogen",
+          "GER",
+          "DE",
+          102,
+          5
+        ],
+        [
+          4,
+          "Magnus Ditlev",
+          "DEN",
+          "DK",
+          100,
+          21
+        ],
+        [
+          5,
+          "Alistair Brownlee",
+          "GBR",
+          "GB",
+          96,
+          10021
+        ],
+        [
+          6,
+          "Sam Long",
+          "USA",
+          "US",
+          90,
+          22
+        ],
+        [
+          7,
+          "Mathis Margirier",
+          "FRA",
+          "FR",
+          89,
+          13
+        ],
+        [
+          8,
+          "Pieter Heemeryck",
+          "BEL",
+          "BE",
+          83,
+          33
+        ],
+        [
+          9,
+          "Youri Keulen",
+          "NED",
+          "NL",
+          83,
+          12
+        ],
+        [
+          10,
+          "Frederic Funk",
+          "GER",
+          "DE",
+          76,
+          34
+        ]
+      ],
+      "corrections": {
+        "6": {
+          "sourceUrl": "https://stats.protriathletes.org/t100/standings/men?season=2",
+          "seasonYear": 2024,
+          "gender": "M",
+          "ownerApprovalDate": "2026-10-21",
+          "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2024-men.png",
+          "screenshotSha256": "72113dec79195426c40dc28bb2c03587c47685d9b273e702d43d1ac9f6d29a4a",
+          "status": "OWNER_APPROVED_SCREENSHOT_CORRECTION",
+          "htmlVerified": false
+        }
+      }
+    },
+    {
+      "file": "2024-women.json",
+      "series": "T100",
+      "seasonYear": 2024,
+      "gender": "W",
+      "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceSeasonId": 2,
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "provenanceType": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+      "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+      "sourceScreenshot": {
+        "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2024-women.png",
+        "sha256": "8f6b3ce63b84aac566c2420719826abed821616436c5697379cf1bac212dfe31",
+        "captureTimestamp": null,
+        "reviewDate": "2026-10-21"
+      },
+      "reviewLimitations": [
+        "Historical FINAL status remains pending"
+      ],
+      "candidateSha256": "4d4594a210950fd2b43c40885ac114ae98d20df1d0069f00e6178c11888f96e5",
+      "rows": [
+        [
+          1,
+          "Taylor Knibb",
+          "USA",
+          "US",
+          160,
+          104
+        ],
+        [
+          2,
+          "Ashleigh Gentle",
+          "AUS",
+          "AU",
+          132,
+          147
+        ],
+        [
+          3,
+          "Julie Derron",
+          "SUI",
+          "CH",
+          101,
+          102
+        ],
+        [
+          4,
+          "Kat Matthews",
+          "GBR",
+          "GB",
+          91,
+          108
+        ],
+        [
+          5,
+          "Flora Duffy",
+          "BER",
+          "BM",
+          90,
+          10745
+        ],
+        [
+          6,
+          "Lucy Byram",
+          "GBR",
+          "GB",
+          87,
+          150
+        ],
+        [
+          7,
+          "Laura Philipp",
+          "GER",
+          "DE",
+          87,
+          109
+        ],
+        [
+          8,
+          "India Lee",
+          "GBR",
+          "GB",
+          86,
+          131
+        ],
+        [
+          9,
+          "Imogen Simmonds",
+          "SUI",
+          "CH",
+          84,
+          112
+        ],
+        [
+          10,
+          "Paula Findlay",
+          "CAN",
+          "CA",
+          74,
+          114
+        ]
+      ],
+      "corrections": {}
+    },
+    {
+      "file": "2025-men.json",
+      "series": "T100",
+      "seasonYear": 2025,
+      "gender": "M",
+      "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceSeasonId": 3,
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "provenanceType": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+      "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+      "sourceScreenshot": {
+        "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "sha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "captureTimestamp": null,
+        "reviewDate": "2026-10-21",
+        "role": "MEN_2025_UNOCCLUDED_REPLACEMENT_EVIDENCE",
+        "archiveStatus": "ALREADY_PRESENT_NO_REWRITE"
+      },
+      "reviewLimitations": [
+        "Historical FINAL status remains pending"
+      ],
+      "candidateSha256": "337cc735e13f740a3c2a750fb85e35c877c411387a54c078236841b0f34d44cd",
+      "rows": [
+        [
+          1,
+          "Hayden Wilde",
+          "NZL",
+          "NZ",
+          195,
+          3
+        ],
+        [
+          2,
+          "Mika Noodt",
+          "GER",
+          "DE",
+          150,
+          4
+        ],
+        [
+          3,
+          "Jelle Geens",
+          "BEL",
+          "BE",
+          149,
+          6
+        ],
+        [
+          4,
+          "Morgan Pearson",
+          "USA",
+          "US",
+          129,
+          15
+        ],
+        [
+          5,
+          "Rico Bogen",
+          "GER",
+          "DE",
+          123,
+          5
+        ],
+        [
+          6,
+          "Marten Van Riel",
+          "BEL",
+          "BE",
+          122,
+          2
+        ],
+        [
+          7,
+          "Mathis Margirier",
+          "FRA",
+          "FR",
+          115,
+          13
+        ],
+        [
+          8,
+          "Samuel Dickinson",
+          "GBR",
+          "GB",
+          106,
+          9
+        ],
+        [
+          9,
+          "Youri Keulen",
+          "NED",
+          "NL",
+          99,
+          12
+        ],
+        [
+          10,
+          "Gregory Barnaby",
+          "ITA",
+          "IT",
+          90,
+          16
+        ]
+      ],
+      "corrections": {
+        "8": {
+          "sourceUrl": "https://stats.protriathletes.org/t100/standings/men?season=3",
+          "seasonYear": 2025,
+          "gender": "M",
+          "ownerApprovalDate": "2026-10-21",
+          "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men.png",
+          "screenshotSha256": "511c059d60c9e8caaa180b9c721dbe00a4a6d9015e8b8ed175d8d4402138e3e3",
+          "status": "OWNER_APPROVED_SCREENSHOT_CORRECTION",
+          "htmlVerified": false
+        },
+        "10": {
+          "sourceUrl": "https://stats.protriathletes.org/t100/standings/men?season=3",
+          "seasonYear": 2025,
+          "gender": "M",
+          "ownerApprovalDate": "2026-10-21",
+          "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men.png",
+          "screenshotSha256": "511c059d60c9e8caaa180b9c721dbe00a4a6d9015e8b8ed175d8d4402138e3e3",
+          "status": "OWNER_APPROVED_SCREENSHOT_CORRECTION",
+          "htmlVerified": false
+        }
+      }
+    },
+    {
+      "file": "2025-women.json",
+      "series": "T100",
+      "seasonYear": 2025,
+      "gender": "W",
+      "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceSeasonId": 3,
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "provenanceType": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+      "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+      "sourceScreenshot": {
+        "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-women.png",
+        "sha256": "0c895f2b962346242fd30edcc274704fcdf697618ee1c91c0d39b573651beb73",
+        "captureTimestamp": null,
+        "reviewDate": "2026-10-21"
+      },
+      "reviewLimitations": [
+        "Historical FINAL status remains pending"
+      ],
+      "candidateSha256": "19ed8cec617d6cff049e637f1437f8b6c6d7c0de9e721412bce0e508b9207837",
+      "rows": [
+        [
+          1,
+          "Kate Waugh",
+          "GBR",
+          "GB",
+          183,
+          101
+        ],
+        [
+          2,
+          "Julie Derron",
+          "SUI",
+          "CH",
+          163,
+          102
+        ],
+        [
+          3,
+          "Lucy Charles-Barclay",
+          "GBR",
+          "GB",
+          152,
+          103
+        ],
+        [
+          4,
+          "Ashleigh Gentle",
+          "AUS",
+          "AU",
+          137,
+          147
+        ],
+        [
+          5,
+          "Jessica Learmonth",
+          "GBR",
+          "GB",
+          120,
+          107
+        ],
+        [
+          6,
+          "Ellie Salthouse",
+          "AUS",
+          "AU",
+          97,
+          115
+        ],
+        [
+          7,
+          "Georgia Taylor-Brown",
+          "GBR",
+          "GB",
+          90,
+          105
+        ],
+        [
+          8,
+          "Taylor Knibb",
+          "USA",
+          "US",
+          90,
+          104
+        ],
+        [
+          9,
+          "Lucy Byram",
+          "GBR",
+          "GB",
+          89,
+          150
+        ],
+        [
+          10,
+          "Holly Lawrence",
+          "GBR",
+          "GB",
+          85,
+          110
+        ]
+      ],
+      "corrections": {}
+    },
+    {
+      "file": "2026-men.json",
+      "series": "T100",
+      "seasonYear": 2026,
+      "gender": "M",
+      "seasonStatus": "LIVE",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceSeasonId": 4,
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "provenanceType": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+      "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+      "sourceScreenshot": {
+        "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-men.png",
+        "sha256": "515645084114dc6ab9c8ff8fc38a2d21fd89d24f347ddcd1da020229e1cc3795",
+        "captureTimestamp": null,
+        "reviewDate": "2026-10-21"
+      },
+      "reviewLimitations": [],
+      "candidateSha256": "8a34c11573d67d723582e83aaf9701895bff43b0d1984a0b5fdc6dd9ad39fe36",
+      "rows": [
+        [
+          1,
+          "Hayden Wilde",
+          "NZL",
+          "NZ",
+          96,
+          3
+        ],
+        [
+          2,
+          "Jake Birtwhistle",
+          "AUS",
+          "AU",
+          59,
+          17
+        ],
+        [
+          3,
+          "Lasse Nygaard Priester",
+          "GER",
+          "DE",
+          49,
+          11
+        ],
+        [
+          4,
+          "Samuel Dickinson",
+          "GBR",
+          "GB",
+          47,
+          9
+        ],
+        [
+          5,
+          "Rico Bogen",
+          "GER",
+          "DE",
+          43,
+          5
+        ],
+        [
+          6,
+          "Gregor Payet",
+          "LUX",
+          "LU",
+          40,
+          19
+        ],
+        [
+          7,
+          "Menno Koolhaas",
+          "NED",
+          "NL",
+          37,
+          10
+        ],
+        [
+          8,
+          "Kyle Smith",
+          "NZL",
+          "NZ",
+          34,
+          32
+        ],
+        [
+          9,
+          "Kurt McDonald",
+          "AUS",
+          "AU",
+          32,
+          18
+        ],
+        [
+          10,
+          "Henry Räppo",
+          "EST",
+          "EE",
+          30,
+          93
+        ]
+      ],
+      "corrections": {}
+    },
+    {
+      "file": "2026-women.json",
+      "series": "T100",
+      "seasonYear": 2026,
+      "gender": "W",
+      "seasonStatus": "LIVE",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceSeasonId": 4,
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "provenanceType": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+      "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+      "sourceScreenshot": {
+        "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "sha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "captureTimestamp": null,
+        "reviewDate": "2026-10-21"
+      },
+      "reviewLimitations": [],
+      "candidateSha256": "ced7e17d3ea8cb49331aff8d4a7d423864505f37035574ed6619c0f27ee6288c",
+      "rows": [
+        [
+          1,
+          "Julie Derron",
+          "SUI",
+          "CH",
+          64,
+          102
+        ],
+        [
+          2,
+          "Imogen Simmonds",
+          "SUI",
+          "CH",
+          62,
+          112
+        ],
+        [
+          3,
+          "Georgia Taylor-Brown",
+          "GBR",
+          "GB",
+          61,
+          105
+        ],
+        [
+          4,
+          "Alanis Siffert",
+          "SUI",
+          "CH",
+          47,
+          111
+        ],
+        [
+          5,
+          "Bianca Bogen",
+          "GER",
+          "DE",
+          42,
+          121
+        ],
+        [
+          6,
+          "Taylor Spivey",
+          "USA",
+          "US",
+          40,
+          118
+        ],
+        [
+          7,
+          "Nicole Van der Kaay",
+          "NZL",
+          "NZ",
+          39,
+          123
+        ],
+        [
+          8,
+          "Taylor Knibb",
+          "USA",
+          "US",
+          35,
+          104
+        ],
+        [
+          9,
+          "Sara Pérez Sala",
+          "ESP",
+          "ES",
+          34,
+          116
+        ],
+        [
+          10,
+          "Kate Waugh",
+          "GBR",
+          "GB",
+          29,
+          101
+        ]
+      ],
+      "corrections": {}
+    }
+  ]
+}

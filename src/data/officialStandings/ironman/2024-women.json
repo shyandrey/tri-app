@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "series": "IRONMAN_PRO_SERIES",
+  "coverage": "TOP_10_ONLY",
+  "seasonYear": 2024,
+  "gender": "W",
+  "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+  "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+  "sourceObservedAt": null,
+  "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+  "sourceVerificationStatus": "OWNER_APPROVED_VALUES_NOT_INDEPENDENTLY_HTML_VERIFIED",
+  "approvalScope": "LOCAL_CANDIDATE_PREPARATION_ONLY",
+  "readyForApplication": false,
+  "provenance": {
+    "path": "/Users/andrey.shubin/Downloads/ironman-pro-series-standings-2024-2026-approved.csv",
+    "sha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+    "bytes": 9524,
+    "encoding": "UTF-8 with BOM",
+    "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+    "ownerApprovedAt": "2026-10-21",
+    "htmlVerified": false,
+    "identityEvidenceFile": "scripts/fixtures/official-standings/ironman-approved-2026-10-21.json"
+  },
+  "rows": [
+    {
+      "officialRank": 1,
+      "athleteName": "Kat Matthews",
+      "nationality": "GBR",
+      "officialPoints": 20761,
+      "athleteId": 108,
+      "proposedAthleteId": 108,
+      "nationalityNormalized": "GB",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 11,
+        "identityEvidenceKey": "Kat Matthews"
+      }
+    },
+    {
+      "officialRank": 2,
+      "athleteName": "Jackie Hering",
+      "nationality": "USA",
+      "officialPoints": 18093,
+      "athleteId": 138,
+      "proposedAthleteId": 138,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 12,
+        "identityEvidenceKey": "Jackie Hering"
+      }
+    },
+    {
+      "officialRank": 3,
+      "athleteName": "Lotte Wilms",
+      "nationality": "NED",
+      "officialPoints": 17678,
+      "athleteId": 122,
+      "proposedAthleteId": 122,
+      "nationalityNormalized": "NL",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 13,
+        "identityEvidenceKey": "Lotte Wilms"
+      }
+    },
+    {
+      "officialRank": 4,
+      "athleteName": "Hannah Berry",
+      "nationality": "NZL",
+      "officialPoints": 17094,
+      "athleteId": 113,
+      "proposedAthleteId": 113,
+      "nationalityNormalized": "NZ",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 14,
+        "identityEvidenceKey": "Hannah Berry"
+      }
+    },
+    {
+      "officialRank": 5,
+      "athleteName": "Maja Stage Nielsen",
+      "nationality": "DEN",
+      "officialPoints": 15999,
+      "athleteId": 10840,
+      "proposedAthleteId": 10840,
+      "nationalityNormalized": "DK",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "identityApproval": {
+        "approvedBy": "owner",
+        "approvedAt": "2026-10-22",
+        "athleteName": "Maja Stage Nielsen",
+        "athleteId": 10840,
+        "nationalityNormalized": "DK",
+        "gender": "women",
+        "rows": [
+          {
+            "seasonYear": 2024,
+            "rank": 5
+          },
+          {
+            "seasonYear": 2025,
+            "rank": 10
+          }
+        ],
+        "scope": "IRONMAN_RANKING_IDENTITY_ONLY",
+        "evidenceReportSha256": "8533f06278c9edf637115bf7813fbbee5725089d1c694f19e90cc8b556e29d77"
+      },
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 15,
+        "identityEvidenceKey": "Maja Stage Nielsen"
+      }
+    },
+    {
+      "officialRank": 6,
+      "athleteName": "Danielle Lewis",
+      "nationality": "USA",
+      "officialPoints": 15416,
+      "athleteId": 152,
+      "proposedAthleteId": 152,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 16,
+        "identityEvidenceKey": "Danielle Lewis"
+      }
+    },
+    {
+      "officialRank": 7,
+      "athleteName": "Els Visser",
+      "nationality": "NED",
+      "officialPoints": 15295,
+      "athleteId": 146,
+      "proposedAthleteId": 146,
+      "nationalityNormalized": "NL",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 17,
+        "identityEvidenceKey": "Els Visser"
+      }
+    },
+    {
+      "officialRank": 8,
+      "athleteName": "Daniela Bleymehl",
+      "nationality": "GER",
+      "officialPoints": 14999,
+      "athleteId": 10712,
+      "proposedAthleteId": 10712,
+      "nationalityNormalized": "DE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 18,
+        "identityEvidenceKey": "Daniela Bleymehl"
+      }
+    },
+    {
+      "officialRank": 9,
+      "athleteName": "Alice Alberts",
+      "nationality": "USA",
+      "officialPoints": 14000,
+      "athleteId": 10644,
+      "proposedAthleteId": 10644,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 19,
+        "identityEvidenceKey": "Alice Alberts"
+      }
+    },
+    {
+      "officialRank": 10,
+      "athleteName": "Penny Slater",
+      "nationality": "AUS",
+      "officialPoints": 12997,
+      "athleteId": 149,
+      "proposedAthleteId": 149,
+      "nationalityNormalized": "AU",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 20,
+        "identityEvidenceKey": "Penny Slater"
+      }
+    }
+  ]
+}

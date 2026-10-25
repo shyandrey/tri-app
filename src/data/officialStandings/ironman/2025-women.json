@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "series": "IRONMAN_PRO_SERIES",
+  "coverage": "TOP_10_ONLY",
+  "seasonYear": 2025,
+  "gender": "W",
+  "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+  "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+  "sourceObservedAt": null,
+  "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+  "sourceVerificationStatus": "OWNER_APPROVED_VALUES_NOT_INDEPENDENTLY_HTML_VERIFIED",
+  "approvalScope": "LOCAL_CANDIDATE_PREPARATION_ONLY",
+  "readyForApplication": false,
+  "provenance": {
+    "path": "/Users/andrey.shubin/Downloads/ironman-pro-series-standings-2024-2026-approved.csv",
+    "sha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+    "bytes": 9524,
+    "encoding": "UTF-8 with BOM",
+    "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+    "ownerApprovedAt": "2026-10-21",
+    "htmlVerified": false,
+    "identityEvidenceFile": "scripts/fixtures/official-standings/ironman-approved-2026-10-21.json"
+  },
+  "rows": [
+    {
+      "officialRank": 1,
+      "athleteName": "Kat Matthews",
+      "nationality": "GBR",
+      "officialPoints": 20845,
+      "athleteId": 108,
+      "proposedAthleteId": 108,
+      "nationalityNormalized": "GB",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 31,
+        "identityEvidenceKey": "Kat Matthews"
+      }
+    },
+    {
+      "officialRank": 2,
+      "athleteName": "Solveig Løvseth",
+      "nationality": "NOR",
+      "officialPoints": 20351,
+      "athleteId": 106,
+      "proposedAthleteId": 106,
+      "nationalityNormalized": "NO",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 32,
+        "identityEvidenceKey": "Solveig Løvseth"
+      }
+    },
+    {
+      "officialRank": 3,
+      "athleteName": "Lisa Perterer",
+      "nationality": "AUT",
+      "officialPoints": 17956,
+      "athleteId": 119,
+      "proposedAthleteId": 119,
+      "nationalityNormalized": "AT",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 33,
+        "identityEvidenceKey": "Lisa Perterer"
+      }
+    },
+    {
+      "officialRank": 4,
+      "athleteName": "Jackie Hering",
+      "nationality": "USA",
+      "officialPoints": 16330,
+      "athleteId": 138,
+      "proposedAthleteId": 138,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 34,
+        "identityEvidenceKey": "Jackie Hering"
+      }
+    },
+    {
+      "officialRank": 5,
+      "athleteName": "Laura Jansen",
+      "nationality": "GER",
+      "officialPoints": 14961,
+      "athleteId": 10808,
+      "proposedAthleteId": 10808,
+      "nationalityNormalized": "DE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 35,
+        "identityEvidenceKey": "Laura Jansen"
+      }
+    },
+    {
+      "officialRank": 6,
+      "athleteName": "Regan Hollioake",
+      "nationality": "AUS",
+      "officialPoints": 14852,
+      "athleteId": 180,
+      "proposedAthleteId": 180,
+      "nationalityNormalized": "AU",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 36,
+        "identityEvidenceKey": "Regan Hollioake"
+      }
+    },
+    {
+      "officialRank": 7,
+      "athleteName": "Anne Reischmann",
+      "nationality": "GER",
+      "officialPoints": 14587,
+      "athleteId": 10668,
+      "proposedAthleteId": 10668,
+      "nationalityNormalized": "DE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 37,
+        "identityEvidenceKey": "Anne Reischmann"
+      }
+    },
+    {
+      "officialRank": 8,
+      "athleteName": "Danielle Lewis",
+      "nationality": "USA",
+      "officialPoints": 12669,
+      "athleteId": 152,
+      "proposedAthleteId": 152,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 38,
+        "identityEvidenceKey": "Danielle Lewis"
+      }
+    },
+    {
+      "officialRank": 9,
+      "athleteName": "Hannah Berry",
+      "nationality": "NZL",
+      "officialPoints": 12157,
+      "athleteId": 113,
+      "proposedAthleteId": 113,
+      "nationalityNormalized": "NZ",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 39,
+        "identityEvidenceKey": "Hannah Berry"
+      }
+    },
+    {
+      "officialRank": 10,
+      "athleteName": "Maja Stage Nielsen",
+      "nationality": "DEN",
+      "officialPoints": 12075,
+      "athleteId": 10840,
+      "proposedAthleteId": 10840,
+      "nationalityNormalized": "DK",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "identityApproval": {
+        "approvedBy": "owner",
+        "approvedAt": "2026-10-22",
+        "athleteName": "Maja Stage Nielsen",
+        "athleteId": 10840,
+        "nationalityNormalized": "DK",
+        "gender": "women",
+        "rows": [
+          {
+            "seasonYear": 2024,
+            "rank": 5
+          },
+          {
+            "seasonYear": 2025,
+            "rank": 10
+          }
+        ],
+        "scope": "IRONMAN_RANKING_IDENTITY_ONLY",
+        "evidenceReportSha256": "8533f06278c9edf637115bf7813fbbee5725089d1c694f19e90cc8b556e29d77"
+      },
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2025",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 40,
+        "identityEvidenceKey": "Maja Stage Nielsen"
+      }
+    }
+  ]
+}

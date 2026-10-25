@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "series": "T100",
+  "coverage": "TOP_10_ONLY",
+  "seasonYear": 2025,
+  "gender": "M",
+  "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+  "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+  "sourceSeasonId": 3,
+  "sourceSeasonIdBasis": "OWNER_SUPPLIED_NOT_HTML_VERIFIED",
+  "sourceObservedAt": null,
+  "verifiedAt": "2026-10-21",
+  "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+  "provenance": {
+    "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+    "candidateSha256": "337cc735e13f740a3c2a750fb85e35c877c411387a54c078236841b0f34d44cd",
+    "localApplicationApproval": {
+      "date": "2026-10-21",
+      "scope": "LOCAL_REGISTRY_ONLY",
+      "sourceDirectory": "/tmp/300w-t100-closeout-2026-10-21",
+      "noUiApproval": true
+    },
+    "screenshot": {
+      "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+      "sha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+      "captureTimestamp": null,
+      "reviewDate": "2026-10-21",
+      "role": "MEN_2025_UNOCCLUDED_REPLACEMENT_EVIDENCE",
+      "archiveStatus": "ALREADY_PRESENT_NO_REWRITE"
+    },
+    "htmlVerified": false,
+    "limitations": [
+      "Historical FINAL status remains pending"
+    ]
+  },
+  "rows": [
+    {
+      "officialRank": 1,
+      "athleteName": "Hayden Wilde",
+      "nationality": "NZL",
+      "nationalityNormalized": "NZ",
+      "officialPoints": 195,
+      "athleteId": 3,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 2,
+      "athleteName": "Mika Noodt",
+      "nationality": "GER",
+      "nationalityNormalized": "DE",
+      "officialPoints": 150,
+      "athleteId": 4,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 3,
+      "athleteName": "Jelle Geens",
+      "nationality": "BEL",
+      "nationalityNormalized": "BE",
+      "officialPoints": 149,
+      "athleteId": 6,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 4,
+      "athleteName": "Morgan Pearson",
+      "nationality": "USA",
+      "nationalityNormalized": "US",
+      "officialPoints": 129,
+      "athleteId": 15,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 5,
+      "athleteName": "Rico Bogen",
+      "nationality": "GER",
+      "nationalityNormalized": "DE",
+      "officialPoints": 123,
+      "athleteId": 5,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 6,
+      "athleteName": "Marten Van Riel",
+      "nationality": "BEL",
+      "nationalityNormalized": "BE",
+      "officialPoints": 122,
+      "athleteId": 2,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 7,
+      "athleteName": "Mathis Margirier",
+      "nationality": "FRA",
+      "nationalityNormalized": "FR",
+      "officialPoints": 115,
+      "athleteId": 13,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 8,
+      "athleteName": "Samuel Dickinson",
+      "nationality": "GBR",
+      "nationalityNormalized": "GB",
+      "officialPoints": 106,
+      "athleteId": 9,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG",
+        "ownerApprovedCorrection": {
+          "sourceUrl": "https://stats.protriathletes.org/t100/standings/men?season=3",
+          "seasonYear": 2025,
+          "gender": "M",
+          "ownerApprovalDate": "2026-10-21",
+          "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men.png",
+          "screenshotSha256": "511c059d60c9e8caaa180b9c721dbe00a4a6d9015e8b8ed175d8d4402138e3e3",
+          "status": "OWNER_APPROVED_SCREENSHOT_CORRECTION",
+          "htmlVerified": false
+        }
+      }
+    },
+    {
+      "officialRank": 9,
+      "athleteName": "Youri Keulen",
+      "nationality": "NED",
+      "nationalityNormalized": "NL",
+      "officialPoints": 99,
+      "athleteId": 12,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 10,
+      "athleteName": "Gregory Barnaby",
+      "nationality": "ITA",
+      "nationalityNormalized": "IT",
+      "officialPoints": 90,
+      "athleteId": 16,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men-final.png",
+        "screenshotSha256": "e113e91f896b2ed457e7dca4bd15b843450c87fa464e9e70ac5fbd04d02d87a9",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG",
+        "ownerApprovedCorrection": {
+          "sourceUrl": "https://stats.protriathletes.org/t100/standings/men?season=3",
+          "seasonYear": 2025,
+          "gender": "M",
+          "ownerApprovalDate": "2026-10-21",
+          "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2025-men.png",
+          "screenshotSha256": "511c059d60c9e8caaa180b9c721dbe00a4a6d9015e8b8ed175d8d4402138e3e3",
+          "status": "OWNER_APPROVED_SCREENSHOT_CORRECTION",
+          "htmlVerified": false
+        }
+      }
+    }
+  ]
+}

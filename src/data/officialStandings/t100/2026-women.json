@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "series": "T100",
+  "coverage": "TOP_10_ONLY",
+  "seasonYear": 2026,
+  "gender": "W",
+  "seasonStatus": "LIVE",
+  "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+  "sourceSeasonId": 4,
+  "sourceSeasonIdBasis": "OWNER_SUPPLIED_NOT_HTML_VERIFIED",
+  "sourceObservedAt": null,
+  "verifiedAt": "2026-10-21",
+  "sourceVerificationStatus": "TOP10_SCREENSHOT_VALUES_VERIFIED",
+  "provenance": {
+    "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+    "candidateSha256": "ced7e17d3ea8cb49331aff8d4a7d423864505f37035574ed6619c0f27ee6288c",
+    "localApplicationApproval": {
+      "date": "2026-10-21",
+      "scope": "LOCAL_REGISTRY_ONLY",
+      "sourceDirectory": "/tmp/300w-t100-closeout-2026-10-21",
+      "noUiApproval": true
+    },
+    "screenshot": {
+      "file": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+      "sha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+      "captureTimestamp": null,
+      "reviewDate": "2026-10-21"
+    },
+    "htmlVerified": false,
+    "limitations": []
+  },
+  "rows": [
+    {
+      "officialRank": 1,
+      "athleteName": "Julie Derron",
+      "nationality": "SUI",
+      "nationalityNormalized": "CH",
+      "officialPoints": 64,
+      "athleteId": 102,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 2,
+      "athleteName": "Imogen Simmonds",
+      "nationality": "SUI",
+      "nationalityNormalized": "CH",
+      "officialPoints": 62,
+      "athleteId": 112,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 3,
+      "athleteName": "Georgia Taylor-Brown",
+      "nationality": "GBR",
+      "nationalityNormalized": "GB",
+      "officialPoints": 61,
+      "athleteId": 105,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 4,
+      "athleteName": "Alanis Siffert",
+      "nationality": "SUI",
+      "nationalityNormalized": "CH",
+      "officialPoints": 47,
+      "athleteId": 111,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 5,
+      "athleteName": "Bianca Bogen",
+      "nationality": "GER",
+      "nationalityNormalized": "DE",
+      "officialPoints": 42,
+      "athleteId": 121,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 6,
+      "athleteName": "Taylor Spivey",
+      "nationality": "USA",
+      "nationalityNormalized": "US",
+      "officialPoints": 40,
+      "athleteId": 118,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 7,
+      "athleteName": "Nicole Van der Kaay",
+      "nationality": "NZL",
+      "nationalityNormalized": "NZ",
+      "officialPoints": 39,
+      "athleteId": 123,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 8,
+      "athleteName": "Taylor Knibb",
+      "nationality": "USA",
+      "nationalityNormalized": "US",
+      "officialPoints": 35,
+      "athleteId": 104,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 9,
+      "athleteName": "Sara Pérez Sala",
+      "nationality": "ESP",
+      "nationalityNormalized": "ES",
+      "officialPoints": 34,
+      "athleteId": 116,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    },
+    {
+      "officialRank": 10,
+      "athleteName": "Kate Waugh",
+      "nationality": "GBR",
+      "nationalityNormalized": "GB",
+      "officialPoints": 29,
+      "athleteId": 101,
+      "identityStatus": "CONFIRMED",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "sourceObservedAt": null,
+      "verifiedAt": "2026-10-21",
+      "sourceVerificationStatus": "SCREENSHOT_VERIFIED",
+      "provenance": {
+        "type": "SCREENSHOT_VISUAL_VERIFICATION_WITH_OWNER_APPROVED_CORRECTIONS",
+        "screenshotPath": "/Users/andrey.shubin/Projects/tri-app-archives/t100-standings-2024-2026/t100-2026-women.png",
+        "screenshotSha256": "4830076b3f81a2cd64cd2147e5e824f296813f3a481af367e957f64a9295d8fd",
+        "verificationMethod": "VISUAL_NO_OCR",
+        "countryRepresentation": "FLAG"
+      }
+    }
+  ]
+}

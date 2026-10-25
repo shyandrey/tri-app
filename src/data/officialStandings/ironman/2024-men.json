@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "series": "IRONMAN_PRO_SERIES",
+  "coverage": "TOP_10_ONLY",
+  "seasonYear": 2024,
+  "gender": "M",
+  "seasonStatus": "HISTORICAL_FINAL_PENDING_CONFIRMATION",
+  "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+  "sourceObservedAt": null,
+  "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+  "sourceVerificationStatus": "OWNER_APPROVED_VALUES_NOT_INDEPENDENTLY_HTML_VERIFIED",
+  "approvalScope": "LOCAL_CANDIDATE_PREPARATION_ONLY",
+  "readyForApplication": false,
+  "provenance": {
+    "path": "/Users/andrey.shubin/Downloads/ironman-pro-series-standings-2024-2026-approved.csv",
+    "sha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+    "bytes": 9524,
+    "encoding": "UTF-8 with BOM",
+    "provenanceType": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+    "ownerApprovedAt": "2026-10-21",
+    "htmlVerified": false,
+    "identityEvidenceFile": "scripts/fixtures/official-standings/ironman-approved-2026-10-21.json"
+  },
+  "rows": [
+    {
+      "officialRank": 1,
+      "athleteName": "Gregory Barnaby",
+      "nationality": "ITA",
+      "officialPoints": 19097,
+      "athleteId": 16,
+      "proposedAthleteId": 16,
+      "nationalityNormalized": "IT",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 1,
+        "identityEvidenceKey": "Gregory Barnaby"
+      }
+    },
+    {
+      "officialRank": 2,
+      "athleteName": "Patrick Lange",
+      "nationality": "GER",
+      "officialPoints": 18623,
+      "athleteId": 24,
+      "proposedAthleteId": 24,
+      "nationalityNormalized": "DE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 2,
+        "identityEvidenceKey": "Patrick Lange"
+      }
+    },
+    {
+      "officialRank": 3,
+      "athleteName": "Kristian Høgenhaug",
+      "nationality": "DEN",
+      "officialPoints": 18528,
+      "athleteId": 35,
+      "proposedAthleteId": 35,
+      "nationalityNormalized": "DK",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 3,
+        "identityEvidenceKey": "Kristian Høgenhaug"
+      }
+    },
+    {
+      "officialRank": 4,
+      "athleteName": "Matthew Marquardt",
+      "nationality": "USA",
+      "officialPoints": 18132,
+      "athleteId": 20,
+      "proposedAthleteId": 20,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 4,
+        "identityEvidenceKey": "Matthew Marquardt"
+      }
+    },
+    {
+      "officialRank": 5,
+      "athleteName": "Matt Hanson",
+      "nationality": "USA",
+      "officialPoints": 17853,
+      "athleteId": 49,
+      "proposedAthleteId": 49,
+      "nationalityNormalized": "US",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 5,
+        "identityEvidenceKey": "Matt Hanson"
+      }
+    },
+    {
+      "officialRank": 6,
+      "athleteName": "Bradley Weiss",
+      "nationality": "RSA",
+      "officialPoints": 17350,
+      "athleteId": 10064,
+      "proposedAthleteId": 10064,
+      "nationalityNormalized": "ZA",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 6,
+        "identityEvidenceKey": "Bradley Weiss"
+      }
+    },
+    {
+      "officialRank": 7,
+      "athleteName": "Robert Kallin",
+      "nationality": "SWE",
+      "officialPoints": 17192,
+      "athleteId": 10502,
+      "proposedAthleteId": 10502,
+      "nationalityNormalized": "SE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 7,
+        "identityEvidenceKey": "Robert Kallin"
+      }
+    },
+    {
+      "officialRank": 8,
+      "athleteName": "Mathias Lyngsø Petersen",
+      "nationality": "DEN",
+      "officialPoints": 16648,
+      "athleteId": 100,
+      "proposedAthleteId": 100,
+      "nationalityNormalized": "DK",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "identityApproval": {
+        "approvedBy": "owner",
+        "approvedAt": "2026-10-22",
+        "athleteName": "Mathias Lyngsø Petersen",
+        "athleteId": 100,
+        "nationalityNormalized": "DK",
+        "gender": "men",
+        "rows": [
+          {
+            "seasonYear": 2024,
+            "rank": 8
+          }
+        ],
+        "scope": "IRONMAN_RANKING_IDENTITY_ONLY",
+        "evidenceReportSha256": "8533f06278c9edf637115bf7813fbbee5725089d1c694f19e90cc8b556e29d77"
+      },
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 8,
+        "identityEvidenceKey": "Mathias Lyngsø Petersen"
+      }
+    },
+    {
+      "officialRank": 9,
+      "athleteName": "Braden Currie",
+      "nationality": "NZL",
+      "officialPoints": 16306,
+      "athleteId": 31,
+      "proposedAthleteId": 31,
+      "nationalityNormalized": "NZ",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 9,
+        "identityEvidenceKey": "Braden Currie"
+      }
+    },
+    {
+      "officialRank": 10,
+      "athleteName": "Jonas Hoffmann",
+      "nationality": "GER",
+      "officialPoints": 16217,
+      "athleteId": 53,
+      "proposedAthleteId": 53,
+      "nationalityNormalized": "DE",
+      "identityStatus": "CONFIRMED",
+      "identityFlags": [],
+      "sourceUrl": "https://www.ironman.com/proseries/standings/2024",
+      "sourceObservedAt": null,
+      "provenance": {
+        "type": "OWNER_APPROVED_SCREENSHOT_TRANSCRIPTION",
+        "ownerApprovedAt": "2026-10-21",
+        "approvedCsvSha256": "0ffab23738c21a0322e5a59b6e7313daf6228b5b2fc09eb5b8adf0aab74b098c",
+        "inputRow": 10,
+        "identityEvidenceKey": "Jonas Hoffmann"
+      }
+    }
+  ]
+}
