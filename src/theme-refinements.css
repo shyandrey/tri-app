@@ -262,21 +262,6 @@
   color: var(--tri-accent);
 }
 
-/* Bottom navigation follows the same restrained charcoal treatment. */
-.bottom-nav {
-  border-color: var(--tri-border);
-  background: rgba(20, 23, 27, 0.94);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.32);
-}
-
-.bottom-nav button {
-  color: var(--tri-muted);
-}
-
-.bottom-nav__active {
-  color: var(--tri-accent) !important;
-}
-
 @media (max-width: 700px) {
   .app:not(.app--race-detail) > .section:first-of-type {
     margin-top: 18px;
@@ -329,12 +314,14 @@ body { background: var(--tri-bg); }
 .app { box-sizing: border-box; padding-inline: var(--tri-page-gutter); }
 .app > .section,
 .app .more-content { width: 100%; max-width: none; margin-inline: 0; box-sizing: border-box; }
-.bottom-nav {
-  left: max(var(--tri-page-gutter), calc((100vw - var(--tri-shell-width)) / 2 + var(--tri-page-gutter)));
-  right: max(var(--tri-page-gutter), calc((100vw - var(--tri-shell-width)) / 2 + var(--tri-page-gutter)));
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+/* Shared Back positioning: unchanged at zero insets, safe in embedded clients. */
+.page-back-button {
+  right: max(var(--tri-page-gutter), env(safe-area-inset-right, 0px), var(--tg-safe-area-inset-right, 0px), var(--tg-content-safe-area-inset-right, 0px));
+  top: max(20px, calc(max(env(safe-area-inset-top, 0px), var(--tg-safe-area-inset-top, 0px)) + var(--tg-content-safe-area-inset-top, 0px) + 12px));
 }
-.page-back-button { right: var(--tri-page-gutter); }
+@media (max-width:640px) {
+  .page-back-button { top: calc(max(env(safe-area-inset-top, 0px), var(--tg-safe-area-inset-top, 0px)) + var(--tg-content-safe-area-inset-top, 0px) + 12px); }
+}
 .race-detail-page__distance-tag { left: var(--tri-page-gutter); }
 .app :is(button, a):focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
 @media (max-width: 640px) { :root { --tri-page-gutter: 12px; } }

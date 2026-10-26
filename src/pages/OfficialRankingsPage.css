@@ -1,0 +1,115 @@
+.app--official-rankings { --rank-bg:#0f1115; --rank-card:#1b1f24; --rank-text:#f4f4f2; --rank-muted:#aeb2b7; --rank-border:#303740; background:var(--rank-bg); color:var(--rank-text); padding-bottom:calc(120px + env(safe-area-inset-bottom)); }
+.app.app--official-rankings { --series-ironman-accent:#ED174B; --series-t100-accent:#43D7D0; --rank-accent:var(--series-ironman-accent); padding:0 0 calc(120px + env(safe-area-inset-bottom)); }
+.app.app--official-rankings[data-series="T100"] { --rank-accent:var(--series-t100-accent); }
+.standings-content { padding-inline:var(--tri-page-gutter,20px); }
+.standings-showcase { --showcase-safe-top:max(env(safe-area-inset-top,0px),var(--tg-safe-area-inset-top,0px)); position:relative; isolation:isolate; height:calc(calc(100vw / 2.35) + var(--showcase-safe-top) + var(--tg-content-safe-area-inset-top,0px)); overflow:hidden; touch-action:pan-y pinch-zoom; }
+.standings-showcase__art { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:var(--portrait-position); user-select:none; }
+.standings-series { display:flex; justify-content:center; min-height:44px; }
+.standings-series button, .standings-gender > div button { width:44px; height:44px; padding:0; flex:0 0 44px; border:0; background:none; display:grid; place-items:center; }
+.standings-series button span { width:7px; height:7px; background:var(--rank-muted); border-radius:50%; }
+.standings-series button[aria-pressed="true"] span { background:var(--rank-accent); }
+.standings-controls { display:grid; grid-template-columns:minmax(0,1fr) 88px minmax(0,1fr); align-items:center; column-gap:4px; margin:0 0 8px; min-height:44px; }
+.standings-gender > span { justify-self:start; font-size:18px; font-weight:700; white-space:nowrap; }
+.standings-gender > div { display:flex; justify-content:center; }
+.standings-season { justify-self:end; display:flex; align-items:center; justify-content:center; gap:4px; min-height:44px; padding:8px; border:1px solid var(--rank-border); border-radius:12px; background:var(--rank-card); color:var(--rank-text); font-size:16px; font-weight:700; }
+.standings-season svg { width:16px; height:16px; flex-shrink:0; }
+.standings-season svg:last-child { width:12px; transform:rotate(90deg); }
+@media (max-width:350px) { .standings-gender > span { font-size:16px; } }
+.standings-swipe { touch-action:pan-y pinch-zoom; overflow:hidden; border:1px solid var(--rank-border); border-radius:16px; background:var(--rank-card); }
+.official-standings { width:100%; border-collapse:collapse; table-layout:fixed; }
+.official-standings caption { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.official-standings th { color:var(--rank-muted); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:1px; padding:12px 0; text-align:left; }
+.official-standings th:first-child { width:32px; text-align:center; }
+.official-standings th:last-child { width:66px; text-align:right; padding-right:12px; }
+.official-standings td { border-top:1px solid var(--rank-border); padding:6px 0; }
+.official-standings td:first-child { text-align:center; font-size:13px; color:var(--rank-muted); font-variant-numeric:tabular-nums; }
+.official-standings tr:nth-child(-n+3) td:first-child { color:var(--rank-accent); font-weight:800; }
+.official-standings td:last-child { font-size:14px; font-weight:750; text-align:right; padding-right:12px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.official-standings a { display:flex; align-items:center; gap:10px; min-height:48px; color:var(--rank-text); text-decoration:none; }
+.standings-avatar { position:relative; flex:0 0 36px; width:36px; height:36px; border-radius:50%; overflow:hidden; background:var(--rank-border); display:grid; place-items:center; font-size:12px; }
+.standings-avatar img { position:absolute; inset:0; width:36px; height:36px; object-fit:cover; z-index:1; }
+.standings-name { text-align:left; min-width:0; overflow-wrap:anywhere; font-size:13px; font-weight:650; line-height:1.3; }
+.standings-flag { display:inline; margin-left:5px; white-space:nowrap; font-weight:400; }
+.app--official-rankings :is(button,a,[tabindex]):not(.page-back-button):focus-visible { outline:2px solid var(--rank-accent); outline-offset:-2px; }
+.standings-sheet { box-sizing:border-box; position:fixed; inset:auto 0 0; margin:0 auto; width:min(100%,480px); max-width:100%; border:1px solid var(--rank-border); border-bottom:0; padding:0; border-radius:24px 24px 0 0; background:var(--rank-card); color:var(--rank-text); overflow:hidden; overscroll-behavior:contain; }
+.standings-sheet::backdrop { background:#0009; }
+.standings-sheet__body { padding:10px 20px calc(24px + env(safe-area-inset-bottom)); }
+.standings-sheet__handle { width:36px; height:4px; background:var(--rank-muted); border-radius:4px; margin:0 auto 8px; }
+.standings-sheet header { display:flex; align-items:center; justify-content:space-between; }
+.standings-sheet h2 { font-size:20px; margin:8px 0; color:inherit; }
+.standings-sheet header .standings-sheet__done { min-height:44px; padding:9px 14px; border:1px solid #ffffff2e; border-radius:999px; background:linear-gradient(180deg,#ffffff18,#ffffff06),#1c1f2385; color:var(--rank-text); font-family:inherit; font-size:15px; font-weight:650; line-height:1; backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); box-shadow:inset 0 1px 0 #ffffff24; }
+@media (hover:hover) { .standings-sheet header .standings-sheet__done:hover { border-color:var(--rank-muted); background-color:#55555555; } }
+@media (prefers-color-scheme:light) { .standings-sheet header .standings-sheet__done { border-color:#00000024; background:linear-gradient(180deg,#ffffffcc,#ffffff66),#e4e6e9aa; box-shadow:inset 0 1px 0 #ffffffcc; } }
+.standings-wheel-frame { position:relative; margin-top:10px; }
+.standings-wheel { height:240px; padding:96px 0; box-sizing:border-box; overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y; scroll-snap-type:y mandatory; scrollbar-width:none; }
+.standings-wheel::-webkit-scrollbar { display:none; }
+.standings-wheel [role="option"] { height:48px; line-height:48px; text-align:center; scroll-snap-align:center; color:var(--rank-muted); font-size:24px; cursor:pointer; }
+.standings-wheel [aria-selected="true"] { color:var(--rank-text); font-weight:750; }
+.standings-wheel__selection { position:absolute; inset:96px 0; pointer-events:none; border:0; border-radius:10px; background:#8888881f; }
+@keyframes standings-enter { from { opacity:.5; transform:translateX(12px); } to { opacity:1; transform:translateX(0); } }
+@media (min-width:768px) { .official-standings a { min-height:56px; } .standings-name { font-size:15px; } .official-standings th:first-child { width:56px; } .official-standings th:last-child { width:110px; } }
+@media (max-width:350px) { .official-standings a { gap:6px; } .standings-name { font-size:12px; } }
+@media (prefers-color-scheme:light) {
+  .app--official-rankings { --rank-bg:#f5f6f8; --rank-card:#fff; --rank-text:#20232a; --rank-muted:#606773; --rank-border:#e2e5eb; }
+}
+@media (prefers-reduced-motion:reduce) { .official-standings { animation:none; } .standings-wheel { scroll-behavior:auto; } }
+
+@media (orientation:landscape) and (max-height:500px) {
+  .standings-sheet__body { padding-bottom:max(8px,env(safe-area-inset-bottom)); }
+  .standings-wheel { height:144px; padding:48px 0; }
+  .standings-wheel__selection { inset:48px 0; }
+  .standings-content { padding-inline:max(var(--tri-page-gutter,20px),env(safe-area-inset-left),env(safe-area-inset-right)); }
+}
+@media (orientation:portrait) and (min-width:1024px) { .standings-showcase { height:320px; } .standings-showcase__art { left:50%; transform:translateX(-50%); width:min(100%,calc(320px * var(--art-aspect))); object-fit:contain; object-position:50% 50%; } }
+
+.standings-page-title { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+/* Expand only the Rankings shell; all other routes keep their existing width. */
+#root:has(.app--official-rankings) { width:100%; }
+.standings-content { box-sizing:border-box; width:100%; max-width:var(--tri-shell-width,1126px); margin-inline:auto; }
+
+
+
+.standings-feedback { display:flex; justify-content:center; }
+
+/* The last decoded image prevents a blank frame while <picture> switches sources.
+   This is a cached, full-frame cover, not the old blurred side backdrop. */
+@media (orientation:landscape) {
+  .standings-showcase { height:calc(100vw / 5.5 + var(--showcase-safe-top) + var(--tg-content-safe-area-inset-top,0px)); }
+  .standings-showcase::before { content:""; position:absolute; inset:0; background-image:var(--loaded-showcase-image); background-size:cover; background-position:var(--landscape-position); }
+  .standings-showcase__art { object-fit:cover; object-position:var(--landscape-position); }
+}
+
+/* Owner-pre-cropped 2078×378 artwork: contain preserves every pixel, including
+   the tiny ratio rounding difference and additional safe-area frame height. */
+@media (orientation:landscape) {
+
+
+}
+
+/* Keep a visible neutral keyboard cue on the selected band, not a bright
+   rectangular outline around the entire automatically focused listbox. */
+.app--official-rankings .standings-sheet .standings-wheel:focus-visible { outline:none; }
+.standings-wheel:focus-visible + .standings-wheel__selection { box-shadow:inset 0 0 0 1px var(--rank-muted); }
+
+/* RANK-05 prototype: compositor-native scroll/snap, same model as Home. */
+.rankings-snap-track { display:flex; width:100%; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; scrollbar-width:none; touch-action:pan-x pan-y pinch-zoom; }
+.rankings-snap-track::-webkit-scrollbar { display:none; }
+.rankings-snap-track > div { flex:0 0 100%; min-width:0; box-sizing:border-box; scroll-snap-align:start; scroll-snap-stop:always; }
+.rankings-snap-track.is-dragging { scroll-snap-type:none; cursor:grabbing; user-select:none; }
+.standings-showcase > .rankings-snap-track { height:100%; }
+.rankings-showcase-panel { position:relative; height:100%; overflow:hidden; }
+.standings-showcase::before { display:none; }
+.standings-swipe { border:0; border-radius:0; background:transparent; touch-action:auto; }
+.rankings-table-panel { border:1px solid var(--rank-border); border-radius:16px; background:var(--rank-card); overflow:hidden; }
+@media (orientation:landscape) {
+ .app--official-rankings .rankings-showcase-panel .standings-showcase__art { object-fit:cover; }
+ .app--official-rankings .rankings-showcase-panel[data-series="T100"][data-scene="bike"] .standings-showcase__art { object-fit:contain; }
+}
+.rankings-snap-track:focus-visible { outline:2px solid var(--rank-accent); outline-offset:-2px; }
+/* Keep each visually-hidden caption inside its own scrolling panel. */
+.rankings-table-panel { position:relative; }
+
+/* Reuse the Home RaceCard text pictograms; keep 44px controls and centered grid. */
+.standings-gender > div button { color:var(--rank-muted); }
+.standings-gender > div button[aria-pressed="true"] { color:var(--rank-accent); }
+.standings-gender-symbol { display:grid; place-items:center; width:24px; height:24px; font-size:20px; }

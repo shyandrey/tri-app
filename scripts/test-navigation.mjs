@@ -54,3 +54,13 @@ test('stale Top URL and persisted Top entry recover to Home without another hist
  s.nav.pop(stale,'#/top');assert.equal(s.nav.current.route.page,'home');assert.equal(s.entries.length,1)
  s.reload();assert.equal(s.nav.current.route.page,'home')
 })
+
+
+test('Rankings route and series/season/gender survive Athlete and Back/Forward',()=>{
+ const s=setup('#/rankings');assert.equal(s.nav.current.route.page,'rankings')
+ const selection={series:'T100',season:2025,gender:'W'}
+ s.nav.saveUI('officialStandings',selection);s.nav.navigate({page:'athlete',id:'1'});s.back()
+ assert.deepEqual(s.nav.current.ui.officialStandings,selection)
+ s.forward();assert.equal(s.nav.current.route.page,'athlete');s.back();s.reload()
+ assert.deepEqual(s.nav.current.ui.officialStandings,selection)
+})

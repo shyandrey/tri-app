@@ -20,12 +20,6 @@
 
 .home-content .race-card:last-child { margin-bottom: 0; }
 
-.app--home-experiment .bottom-nav {
-  box-sizing: border-box;
-  height: var(--home-nav-height);
-  bottom: var(--home-nav-bottom);
-}
-
 .app--home-experiment {
   background:
     radial-gradient(circle at 50% -10%, rgba(243, 183, 43, 0.035), transparent 34%),
@@ -330,7 +324,6 @@
 
 .home-races-section__chevron,
 .race-card__arrow { width: 28px; height: 28px; color: var(--tri-muted); }
-
 
 .app--home-experiment .section__header h2,
 .app--home-experiment .section__header h1 {

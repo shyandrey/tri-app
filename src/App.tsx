@@ -100,7 +100,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
     return <CalendarPage races={races} searchRaces={allRaceEditionViews} onBack={back} onRaceClick={openRace} onNavigate={navigateSection} viewState={calendarViewState} onViewStateChange={setCalendarViewState} />
   }
 
-  if (page === 'athletes' || page === 'athlete' || page === 'race') return <SportsRoute route={route} navigate={navigate} back={back} />
+  if (page === 'athletes' || page === 'athlete' || page === 'race' || page === 'rankings') return <SportsRoute route={route} navigate={navigate} back={back} />
 
   if (page === 'feedback') return <FeedbackPage context={route.feedback ?? genericFeedbackContext} onBack={back} />
   if (page === 'more') return <MorePage onBack={back} onNavigate={navigateSection} onFeedback={() => openFeedback(genericFeedbackContext)} />
@@ -136,7 +136,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
         <section className="features features--compact" aria-label="Разделы приложения">
           <button type="button" className="feature-card feature-card--compact" onClick={() => navigateSection('calendar')}><span className="feature-card__icon"><CalendarIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Календарь и результаты</span></span></button>
           <button type="button" className="feature-card feature-card--compact" onClick={() => navigateSection('athletes')}><span className="feature-card__icon"><AthleteIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Профили атлетов</span></span></button>
-          <div className="feature-card feature-card--compact feature-card--disabled" role="group" aria-disabled="true" aria-label="Таблицы и очки — скоро"><span className="feature-card__icon"><PointsTableIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Таблицы и очки</span><small>Скоро</small></span></div>
+          <button type="button" className="feature-card feature-card--compact" onClick={() => navigateSection('rankings')}><span className="feature-card__icon"><PointsTableIcon /></span><span className="feature-card__copy"><span className="feature-card__title">Рейтинги и очки</span></span></button>
         </section>
 
         <LatestNews />

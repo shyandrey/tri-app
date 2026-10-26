@@ -41,9 +41,9 @@ try {
 
   assert.equal(await js('document.documentElement.scrollWidth'),width)
   assert.equal(await js('document.querySelectorAll(".features > *").length'),3)
-  assert.equal(await js('document.querySelectorAll(".features button").length'),2)
+  assert.equal(await js('document.querySelectorAll(".features button").length'),3)
   assert.equal(await js('document.querySelector(".features").scrollWidth'),await js('document.querySelector(".features").clientWidth'))
-  assert.equal(await js('document.querySelectorAll(".bottom-nav button").length'),4)
+  assert.equal(await js('document.querySelectorAll(".bottom-nav button").length'),5)
   assert.equal(await js('document.querySelector(".home-races-section__header button").textContent.trim()'),'Все')
   assert.ok(await js('Boolean(document.querySelector(".home-races-section__header button svg"))'))
   assert.ok(await js('Math.abs(document.querySelector(".home-races-section__chevron").getBoundingClientRect().right-document.querySelector(".race-card__arrow").getBoundingClientRect().right)<1'))
@@ -51,7 +51,7 @@ try {
   assert.ok(await js('Boolean(document.querySelector(".latest-news__channel svg"))'))
   assert.ok(!(await js('document.querySelector(".latest-news").textContent')).includes('Все новости в Telegram'))
   if(width===390){
-   await js('document.querySelectorAll(".features button")[1].focus()')
+   await js('document.querySelectorAll(".features button")[2].focus()')
    await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9})
    assert.equal(await js('document.activeElement.className'),'latest-news__channel')
    assert.equal(await js('getComputedStyle(document.activeElement).outlineStyle'),'solid')
@@ -60,11 +60,10 @@ try {
    assert.equal(await js('window.channelActivated'),true)
    await js('document.activeElement.blur();window.scrollTo({top:0,behavior:"instant"})')
   }
-  const before=await js('location.hash')
-  await click('.feature-card--disabled')
-  await js('document.querySelector(".feature-card--disabled").dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",bubbles:true}))')
-  assert.equal(await js('location.hash'),before)
-  assert.ok(await js('document.querySelector(".feature-card--disabled").tabIndex<0&&document.querySelector(".feature-card--disabled").getAttribute("aria-disabled")==="true"'))
+  await click('.features button:last-child')
+  assert.equal(await js('location.hash'),'#/rankings')
+  await click('.page-back-button')
+  assert.equal(await js('location.hash'),'#/home')
   if([390,844,1440].includes(width)){
    await shot(`${output}/home-${width}.png`)
    await js('document.querySelector(".latest-news").scrollIntoView({block:"center"})');await wait(150)

@@ -1,3 +1,4 @@
+import OfficialRankingsPage from '../pages/OfficialRankingsPage'
 import AthletesPage from '../pages/AthletesPage'
 import AthleteDetailPage from '../pages/AthleteDetailPage'
 import RaceDetailPage from '../pages/RaceDetailPage'
@@ -13,6 +14,7 @@ export default function SportsArea({ route, navigate, back }: { route: Route; na
   const onNavigate = (page: Page) => navigate({ page })
   const openFeedback = (feedback: FeedbackContext) => navigate({ page: 'feedback', feedback })
   const onAthleteClick = (athlete: typeof athletes[number]) => navigate({ page: 'athlete', id: String(athlete.id) })
+  if (route.page === 'rankings') return <OfficialRankingsPage onFeedback={() => openFeedback(genericFeedbackContext)} athletes={athletes} onBack={back} onNavigate={onNavigate} onAthleteClick={onAthleteClick} />
   if (route.page === 'athletes') return <AthletesPage athletes={rankedAthletes} ranking={athleteRanking} onBack={back} onNavigate={onNavigate} onAthleteClick={onAthleteClick} />
   if (route.page === 'race') {
     const race = allRaceEditionViews.find(r => r.editionId === route.id)!

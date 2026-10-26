@@ -47,9 +47,6 @@
 .feature-card h3 { margin: 0 0 10px; font-size: 18px; text-transform: uppercase; }
 .feature-card p { margin: 0; color: #a8a8a8; line-height: 1.4; }
 .news-card__telegram { width: 44px; height: 44px; border-radius: 50%; background: #229ed9; display: grid; place-items: center; font-size: 22px; }
-.bottom-nav { position: fixed; left: 20px; right: 20px; bottom: 18px; padding: 12px; border: 1px solid #343434; border-radius: 24px; background: rgba(28, 28, 28, 0.94); backdrop-filter: blur(18px); display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-.bottom-nav button { min-height: 50px; border: 0; background: transparent; color: #a8a8a8; font-size: 24px; }
-.bottom-nav__active { color: #f3b72b !important; }
 .calendar-search { width: 100%; box-sizing: border-box; margin-bottom: 14px; padding: 16px 18px; border: 1px solid #343434; border-radius: 16px; outline: none; background: #202020; color: #ffffff; font-size: 16px; }
 .calendar-search::placeholder { color: #777777; }
 .calendar-search:focus { border-color: #f3b72b; }
@@ -118,7 +115,6 @@
   .hero { min-height: 320px; padding: 22px; }
   .features { grid-template-columns: 1fr; }
   .feature-card { min-height: auto; }
-  .bottom-nav { left: 12px; right: 12px; }
   .race-detail-page, .athlete-detail-page { margin-top: 8px; }
   .race-detail h1 { font-size: 28px; }
   .race-detail-distances { gap: 8px; }
