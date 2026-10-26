@@ -11,7 +11,7 @@
 ## GIT-01 / DS-01A — Audit closeout · 2026-10-25
 
 - **GIT-01 — Owner Approved / Audit Complete (GIT-01B instruction).** [Consolidation plan](git01-repository-consolidation-plan.md): complete incoming file inventory, conservative approval classification, atomic Rankings/NAV dependency boundary and archive exclusions. At the GIT-01B checkpoint no commits existed; superseded by GIT-01C.3 below. NAV-03, QA-02B, TECH-01-HOOKS and PERF-01C approvals reconciled by GIT-01B; Athlete Profile remains pending.
-- **DS-01A — Owner Approved / Audit Complete (GIT-01B instruction).** [Design System audit](ds01-design-system-audit.md): palette, typography, component inventory, representative dark/light portrait/landscape evidence and prioritized proposals. Dark-only release policy confirmed; contrast and control-font proposals remain separate UI work; no UI changes in GIT-01B.
+- **DS-01A — Owner Approved / Closed (DS-01C instruction).** [Design System audit](ds01-design-system-audit.md): palette, typography, component inventory, representative dark/light portrait/landscape evidence and prioritized proposals. Dark-only release policy confirmed; DS-01B implements the approved contrast/control-font corrections and is now closed; no UI changes were made in the historical GIT-01B audit.
 - Existing RANK, DS-02, PERF, TECH and Athlete task statuses remain unchanged. Historical audit work made no commit/push/deployment, data or infrastructure changes.
 
 ### GIT-01B — Consolidation preparation
@@ -28,9 +28,9 @@
 
 ### DS-01B — Targeted UI Fixes
 
-- **Status:** PLANNED · **Priority:** P1 · target v1.0.0. Owner-approved policy: **dark-only across the application**, including Rankings regardless of OS preference. Preserve approved dark styling. GIT-01B does not implement this change.
-- Other candidates: small Rankings rank-number contrast; Back/Season system-font inheritance; evaluate legacy race-card accent differences without silently changing brands.
-- **Light Theme:** separate POST-RELEASE design/development task, not part of v1.0.0.
+- **Status: Owner Approved / Closed** · implementation 2026-10-26; approval recorded by DS-01C instruction (no separate approval date supplied) · **Priority:** P1 · target v1.0.0. Rankings follows the existing dark-only palette under either OS preference. Primary-text rank numerals retain top-three bold emphasis; Back/Season inherit the system font. No artwork, gestures, data or unfinished Athlete Profile changes.
+- [Implementation and QA](ds01b-dark-theme-polish.md); [Design System v1.0 reference](design/300w-design-system-v1.0.md). **Design System v1.0 — Owner Approved.** **DS-01B.1 — Verification Complete / Closed:** stale screenshot packaging explained the discrepancy; fresh runtime verification passed and no additional CSS correction was required. Physical iPhone/Telegram QA remains pending where applicable.
+- **Light Theme:** separate POST-RELEASE design/development task, not part of v1.0.0. Legacy race-card accent reconciliation remains separate; no silent brand changes.
 
 ### HOME-UI-01 — Home Slogan Review
 

@@ -11,7 +11,7 @@
 .standings-controls { display:grid; grid-template-columns:minmax(0,1fr) 88px minmax(0,1fr); align-items:center; column-gap:4px; margin:0 0 8px; min-height:44px; }
 .standings-gender > span { justify-self:start; font-size:18px; font-weight:700; white-space:nowrap; }
 .standings-gender > div { display:flex; justify-content:center; }
-.standings-season { justify-self:end; display:flex; align-items:center; justify-content:center; gap:4px; min-height:44px; padding:8px; border:1px solid var(--rank-border); border-radius:12px; background:var(--rank-card); color:var(--rank-text); font-size:16px; font-weight:700; }
+.standings-season { justify-self:end; display:flex; align-items:center; justify-content:center; gap:4px; min-height:44px; padding:8px; border:1px solid var(--rank-border); border-radius:12px; background:var(--rank-card); color:var(--rank-text); font-family:inherit; font-size:16px; font-weight:700; }
 .standings-season svg { width:16px; height:16px; flex-shrink:0; }
 .standings-season svg:last-child { width:12px; transform:rotate(90deg); }
 @media (max-width:350px) { .standings-gender > span { font-size:16px; } }
@@ -22,8 +22,8 @@
 .official-standings th:first-child { width:32px; text-align:center; }
 .official-standings th:last-child { width:66px; text-align:right; padding-right:12px; }
 .official-standings td { border-top:1px solid var(--rank-border); padding:6px 0; }
-.official-standings td:first-child { text-align:center; font-size:13px; color:var(--rank-muted); font-variant-numeric:tabular-nums; }
-.official-standings tr:nth-child(-n+3) td:first-child { color:var(--rank-accent); font-weight:800; }
+.official-standings td:first-child { text-align:center; font-size:13px; color:var(--rank-text); font-variant-numeric:tabular-nums; }
+.official-standings tr:nth-child(-n+3) td:first-child { font-weight:800; }
 .official-standings td:last-child { font-size:14px; font-weight:750; text-align:right; padding-right:12px; font-variant-numeric:tabular-nums; white-space:nowrap; }
 .official-standings a { display:flex; align-items:center; gap:10px; min-height:48px; color:var(--rank-text); text-decoration:none; }
 .standings-avatar { position:relative; flex:0 0 36px; width:36px; height:36px; border-radius:50%; overflow:hidden; background:var(--rank-border); display:grid; place-items:center; font-size:12px; }
@@ -39,7 +39,6 @@
 .standings-sheet h2 { font-size:20px; margin:8px 0; color:inherit; }
 .standings-sheet header .standings-sheet__done { min-height:44px; padding:9px 14px; border:1px solid #ffffff2e; border-radius:999px; background:linear-gradient(180deg,#ffffff18,#ffffff06),#1c1f2385; color:var(--rank-text); font-family:inherit; font-size:15px; font-weight:650; line-height:1; backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); box-shadow:inset 0 1px 0 #ffffff24; }
 @media (hover:hover) { .standings-sheet header .standings-sheet__done:hover { border-color:var(--rank-muted); background-color:#55555555; } }
-@media (prefers-color-scheme:light) { .standings-sheet header .standings-sheet__done { border-color:#00000024; background:linear-gradient(180deg,#ffffffcc,#ffffff66),#e4e6e9aa; box-shadow:inset 0 1px 0 #ffffffcc; } }
 .standings-wheel-frame { position:relative; margin-top:10px; }
 .standings-wheel { height:240px; padding:96px 0; box-sizing:border-box; overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y; scroll-snap-type:y mandatory; scrollbar-width:none; }
 .standings-wheel::-webkit-scrollbar { display:none; }
@@ -49,9 +48,6 @@
 @keyframes standings-enter { from { opacity:.5; transform:translateX(12px); } to { opacity:1; transform:translateX(0); } }
 @media (min-width:768px) { .official-standings a { min-height:56px; } .standings-name { font-size:15px; } .official-standings th:first-child { width:56px; } .official-standings th:last-child { width:110px; } }
 @media (max-width:350px) { .official-standings a { gap:6px; } .standings-name { font-size:12px; } }
-@media (prefers-color-scheme:light) {
-  .app--official-rankings { --rank-bg:#f5f6f8; --rank-card:#fff; --rank-text:#20232a; --rank-muted:#606773; --rank-border:#e2e5eb; }
-}
 @media (prefers-reduced-motion:reduce) { .official-standings { animation:none; } .standings-wheel { scroll-behavior:auto; } }
 
 @media (orientation:landscape) and (max-height:500px) {

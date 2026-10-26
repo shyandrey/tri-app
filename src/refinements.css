@@ -76,6 +76,7 @@
 }
 
 .page-back-button {
+  font-family: inherit;
   position: absolute;
   top: 20px;
   right: 20px;

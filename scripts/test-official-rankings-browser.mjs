@@ -98,8 +98,10 @@ try{
    }
   }
   const bg=await js('getComputedStyle(document.querySelector(".rankings-table-panel:not([inert])")).backgroundColor')
-  assert.equal(bg,theme==='dark'?'rgb(27, 31, 36)':'rgb(255, 255, 255)')
-  for(const color of await js('[...document.querySelectorAll(".official-standings th,.standings-name,.official-standings tbody tr:nth-child(n+4) td:first-child")].map(e=>getComputedStyle(e).color)'))assert.ok(contrast(color,bg)>=4.5,`${theme} text contrast ${color}/${bg}`)
+  assert.equal(bg,'rgb(27, 31, 36)')
+  for(const color of await js('[...document.querySelectorAll(".official-standings th,.standings-name,.official-standings tbody tr td:first-child")].map(e=>getComputedStyle(e).color)'))assert.ok(contrast(color,bg)>=4.5,`${theme} text contrast ${color}/${bg}`)
+  assert.equal(await js('getComputedStyle(document.documentElement).colorScheme'),'dark')
+  assert.ok(await js('[...document.querySelectorAll(".page-back-button,.standings-season")].every(e=>getComputedStyle(e).fontFamily===getComputedStyle(document.documentElement).fontFamily)'))
   // Keyboard wheel, confirmation, Escape, focus restoration, body unlock.
 
   await click('.standings-season');await key('Home');await wait(260);assert.equal(await js('document.querySelector("[role=option][aria-selected=true]").textContent'),'2024')
