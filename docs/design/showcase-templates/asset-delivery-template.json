@@ -1,0 +1,53 @@
+{
+  "status": "DRAFT_TEMPLATE_NOT_AN_ASSET_APPROVAL",
+  "raceOrSeriesId": null,
+  "season": null,
+  "showcaseSurface": null,
+  "orientation": null,
+  "revision": null,
+  "original": {
+    "absolutePath": null,
+    "filename": null,
+    "format": null,
+    "widthPx": null,
+    "heightPx": null,
+    "aspectRatio": null,
+    "sizeBytes": null,
+    "sha256": null
+  },
+  "optimized": {
+    "absolutePath": null,
+    "filename": null,
+    "format": "webp",
+    "widthPx": null,
+    "heightPx": null,
+    "aspectRatio": null,
+    "sizeBytes": null,
+    "sha256": null
+  },
+  "encoding": {
+    "toolVersion": null,
+    "settings": null
+  },
+  "ownerApproval": {
+    "status": "PENDING",
+    "date": null,
+    "approvedHashes": [],
+    "renderedPreviewAbsolutePaths": []
+  },
+  "provenance": {
+    "kind": null,
+    "sourceReferences": [],
+    "rightsOrPermission": null,
+    "generatedIllustration": null
+  },
+  "renderContract": {
+    "viewportAndInsetProfiles": [],
+    "targetDpr": null,
+    "objectFit": null,
+    "objectPosition": null,
+    "criticalSubjectBoxesSourcePixels": [],
+    "logoBoxesSourcePixels": []
+  },
+  "instructions": "Complete nulls with verified values. Absolute local paths required. Do not crop/regenerate/substitute without owner approval."
+}

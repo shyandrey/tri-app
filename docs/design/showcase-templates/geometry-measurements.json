@@ -1,0 +1,1862 @@
+{
+  "date": "2026-10-25",
+  "method": "local Chromium DOM, DPR1; encoded dimensions read from WebP headers; naturalWidth may be srcset density-corrected",
+  "rows": [
+    {
+      "viewport": [
+        320,
+        700
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 296,
+        "height": 230,
+        "radius": "20px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 294,
+            "height": 228
+          },
+          "natural": [
+            410,
+            230
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "encodedPixels": [
+            640,
+            360
+          ],
+          "visibleSourceRect": [
+            87.89473684210525,
+            0,
+            464.2105263157895,
+            360
+          ],
+          "drawScale": 0.6333333333333333,
+          "drawOffset": [
+            -55.66666666666666,
+            0.0
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 17,
+          "y": 50.296875,
+          "width": 210,
+          "height": 162.703125
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 17,
+          "y": 50.296875,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 17,
+          "y": 81.5,
+          "width": 210,
+          "height": 62
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 17,
+          "y": 143.5,
+          "width": 210,
+          "height": 24.5
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 17,
+          "y": 178,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 239,
+          "y": 171,
+          "width": 42,
+          "height": 42
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        320,
+        700
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 320,
+        "height": 136.15625,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 136.15625
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_01_swim.webp",
+          "fit": "cover",
+          "position": "50% 45%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_01_swim.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            59.629446867110325,
+            0,
+            1863.7411062657793,
+            793
+          ],
+          "drawScale": 0.17169766708701134,
+          "drawOffset": [
+            -10.23823691677174,
+            0.0
+          ]
+        },
+        {
+          "box": {
+            "x": 320,
+            "y": 0,
+            "width": 320,
+            "height": 136.15625
+          },
+          "natural": [
+            1671,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_01_swim.webp",
+          "fit": "cover",
+          "position": "50% 44%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_01_swim.webp",
+          "encodedPixels": [
+            1671,
+            941
+          ],
+          "visibleSourceRect": [
+            0,
+            101.20399609374996,
+            1671,
+            710.9909179687501
+          ],
+          "drawScale": 0.19150209455415917,
+          "drawOffset": [
+            0.0,
+            -19.38077722920406
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 222.59375,
+          "y": 12,
+          "width": 85.40625,
+          "height": 34
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        375,
+        812
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 351,
+        "height": 230,
+        "radius": "20px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 349,
+            "height": 228
+          },
+          "natural": [
+            410,
+            230
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "encodedPixels": [
+            640,
+            360
+          ],
+          "visibleSourceRect": [
+            44.4736842105263,
+            0,
+            551.0526315789474,
+            360
+          ],
+          "drawScale": 0.6333333333333333,
+          "drawOffset": [
+            -28.166666666666657,
+            0.0
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 17,
+          "y": 83.8125,
+          "width": 265,
+          "height": 129.1875
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 17,
+          "y": 83.8125,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 17,
+          "y": 115.015625,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 17,
+          "y": 143.015625,
+          "width": 265,
+          "height": 24.984375
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 17,
+          "y": 178,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 294,
+          "y": 171,
+          "width": 42,
+          "height": 42
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        375,
+        812
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 375,
+        "height": 159.5625,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 159.5625
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "fit": "cover",
+          "position": "50% 48%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            59.65511163337255,
+            0,
+            1863.689776733255,
+            793
+          ],
+          "drawScale": 0.20121374527112232,
+          "drawOffset": [
+            -12.00342843631779,
+            0.0
+          ]
+        },
+        {
+          "box": {
+            "x": 375,
+            "y": 0,
+            "width": 375,
+            "height": 159.5625
+          },
+          "natural": [
+            1672,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "fit": "cover",
+          "position": "50% 25%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "encodedPixels": [
+            1672,
+            941
+          ],
+          "visibleSourceRect": [
+            0,
+            57.39099999999999,
+            1672,
+            711.436
+          ],
+          "drawScale": 0.2242822966507177,
+          "drawOffset": [
+            0.0,
+            -12.871785287081337
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 277.59375,
+          "y": 12,
+          "width": 85.40625,
+          "height": 34
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 366,
+        "height": 230,
+        "radius": "20px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 364,
+            "height": 228
+          },
+          "natural": [
+            410,
+            230
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "encodedPixels": [
+            640,
+            360
+          ],
+          "visibleSourceRect": [
+            32.63157894736841,
+            0,
+            574.7368421052632,
+            360
+          ],
+          "drawScale": 0.6333333333333333,
+          "drawOffset": [
+            -20.666666666666657,
+            0.0
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 17,
+          "y": 82.8125,
+          "width": 280,
+          "height": 130.1875
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 17,
+          "y": 82.8125,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 17,
+          "y": 114.015625,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 17,
+          "y": 142.015625,
+          "width": 280,
+          "height": 25.984375
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 17,
+          "y": 178,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 309,
+          "y": 171,
+          "width": 42,
+          "height": 42
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 390,
+        "height": 165.953125,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 165.953125
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_03_run_finish.webp",
+          "fit": "cover",
+          "position": "50% 40%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_03_run_finish.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            59.70073439412489,
+            0,
+            1863.5985312117502,
+            793
+          ],
+          "drawScale": 0.20927254098360656,
+          "drawOffset": [
+            -12.493724385245912,
+            0.0
+          ]
+        },
+        {
+          "box": {
+            "x": 390,
+            "y": 0,
+            "width": 390,
+            "height": 165.953125
+          },
+          "natural": [
+            1672,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_03_run_city.webp",
+          "fit": "cover",
+          "position": "50% 25%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_03_run_city.webp",
+          "encodedPixels": [
+            1672,
+            941
+          ],
+          "visibleSourceRect": [
+            0,
+            57.38229166666666,
+            1672,
+            711.4708333333333
+          ],
+          "drawScale": 0.2332535885167464,
+          "drawOffset": [
+            0.0,
+            -13.384625448564591
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 292.59375,
+          "y": 12,
+          "width": 85.40625,
+          "height": 34
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "route": "rankings",
+      "scenario": "synthetic-24+32-top-insets",
+      "container": {
+        "width": 390,
+        "height": 221.953125,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 221.953125
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_03_run_finish.webp",
+          "fit": "cover",
+          "position": "50% 40%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_03_run_finish.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            294.79883843717005,
+            4.061833430515633e-14,
+            1393.40232312566,
+            792.9999999999999
+          ],
+          "drawScale": 0.27989044766708704,
+          "drawOffset": [
+            -82.5113788619168,
+            -1.1368683772161604e-14
+          ]
+        },
+        {
+          "box": {
+            "x": 390,
+            "y": 0,
+            "width": 390,
+            "height": 221.953125
+          },
+          "natural": [
+            1672,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_03_run_city.webp",
+          "fit": "cover",
+          "position": "50% 25%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_03_run_city.webp",
+          "encodedPixels": [
+            1672,
+            941
+          ],
+          "visibleSourceRect": [
+            9.27138331573383,
+            0,
+            1653.4572333685323,
+            941
+          ],
+          "drawScale": 0.2358694208289054,
+          "drawOffset": [
+            -2.1868358129649152,
+            0.0
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 292.59375,
+          "y": 68,
+          "width": 85.40625,
+          "height": 34
+        }
+      ],
+      "insets": [
+        "24px",
+        "32px"
+      ]
+    },
+    {
+      "viewport": [
+        440,
+        956
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 416,
+        "height": 230,
+        "radius": "20px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 414,
+            "height": 228
+          },
+          "natural": [
+            416,
+            233
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "encodedPixels": [
+            640,
+            360
+          ],
+          "visibleSourceRect": [
+            0,
+            3.768115942028986,
+            640,
+            352.46376811594206
+          ],
+          "drawScale": 0.646875,
+          "drawOffset": [
+            0.0,
+            -2.4375
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 17,
+          "y": 79.484375,
+          "width": 330,
+          "height": 133.515625
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 17,
+          "y": 79.484375,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 17,
+          "y": 110.6875,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 17,
+          "y": 138.6875,
+          "width": 330,
+          "height": 29.3125
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 17,
+          "y": 178,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 359,
+          "y": 171,
+          "width": 42,
+          "height": 42
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        440,
+        956
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 440,
+        "height": 187.21875,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 440,
+            "height": 187.21875
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "fit": "cover",
+          "position": "50% 48%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            59.64889000166918,
+            0,
+            1863.7022199966618,
+            793
+          ],
+          "drawScale": 0.23608921815889028,
+          "drawOffset": [
+            -14.082459804539724,
+            0.0
+          ]
+        },
+        {
+          "box": {
+            "x": 440,
+            "y": 0,
+            "width": 440,
+            "height": 187.21875
+          },
+          "natural": [
+            1672,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "fit": "cover",
+          "position": "50% 25%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "encodedPixels": [
+            1672,
+            941
+          ],
+          "visibleSourceRect": [
+            0,
+            57.39218749999999,
+            1672,
+            711.4312500000001
+          ],
+          "drawScale": 0.2631578947368421,
+          "drawOffset": [
+            0.0,
+            -15.103207236842103
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 342.59375,
+          "y": 12,
+          "width": 85.40625,
+          "height": 34
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 627,
+        "height": 245,
+        "radius": "22px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 625,
+            "height": 243
+          },
+          "natural": [
+            627,
+            352
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-640-BpNMcHqt.webp",
+          "encodedPixels": [
+            640,
+            360
+          ],
+          "visibleSourceRect": [
+            0,
+            55.584,
+            640,
+            248.832
+          ],
+          "drawScale": 0.9765625,
+          "drawOffset": [
+            0.0,
+            -54.28125
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 19,
+          "y": 86.53125,
+          "width": 533,
+          "height": 139.46875
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 19,
+          "y": 86.53125,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 19,
+          "y": 117.734375,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 19,
+          "y": 145.734375,
+          "width": 533,
+          "height": 35.265625
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 19,
+          "y": 191,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 564,
+          "y": 180,
+          "width": 46,
+          "height": 46
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 667,
+        "height": 121.265625,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 667,
+            "height": 121.265625
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_running.webp",
+          "fit": "cover",
+          "position": "50% 52%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_running.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            236.09078054722633,
+            1947,
+            353.9792681784108
+          ],
+          "drawScale": 0.34257832562917306,
+          "drawOffset": [
+            0.0,
+            -80.87958429635334
+          ]
+        },
+        {
+          "box": {
+            "x": 667,
+            "y": 0,
+            "width": 667,
+            "height": 121.265625
+          },
+          "natural": [
+            1950,
+            807
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_running_city.webp",
+          "fit": "cover",
+          "position": "50% 30%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_running_city.webp",
+          "encodedPixels": [
+            1950,
+            807
+          ],
+          "visibleSourceRect": [
+            0,
+            135.74259276611693,
+            1950,
+            354.5246907796102
+          ],
+          "drawScale": 0.34205128205128205,
+          "drawOffset": [
+            0.0,
+            -46.43092788461538
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 553.34375,
+          "y": 20,
+          "width": 93.65625,
+          "height": 35
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 804,
+        "height": 245,
+        "radius": "22px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 802,
+            "height": 243
+          },
+          "natural": [
+            804,
+            452
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+          "encodedPixels": [
+            1280,
+            720
+          ],
+          "visibleSourceRect": [
+            0,
+            166.0847880299252,
+            1280,
+            387.8304239401496
+          ],
+          "drawScale": 0.6265625,
+          "drawOffset": [
+            0.0,
+            -104.0625
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 19,
+          "y": 86.53125,
+          "width": 710,
+          "height": 139.46875
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 19,
+          "y": 86.53125,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 19,
+          "y": 117.734375,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 19,
+          "y": 145.734375,
+          "width": 710,
+          "height": 35.265625
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 19,
+          "y": 191,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 741,
+          "y": 180,
+          "width": 46,
+          "height": 46
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 844,
+        "height": 153.453125,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 153.453125
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_transition.webp",
+          "fit": "cover",
+          "position": "50% 58%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_transition.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            263.32190054798576,
+            1947,
+            353.99672319312793
+          ],
+          "drawScale": 0.433487416538264,
+          "drawOffset": [
+            0.0,
+            -114.14673038649204
+          ]
+        },
+        {
+          "box": {
+            "x": 844,
+            "y": 0,
+            "width": 844,
+            "height": 153.453125
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_transition.webp",
+          "fit": "cover",
+          "position": "50% 62%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_transition.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            281.48203162026067,
+            1947,
+            353.99672319312793
+          ],
+          "drawScale": 0.433487416538264,
+          "drawOffset": [
+            0.0,
+            -122.01891868900873
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 730.34375,
+          "y": 20,
+          "width": 93.65625,
+          "height": 35
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        956,
+        440
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 916,
+        "height": 245,
+        "radius": "22px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 914,
+            "height": 243
+          },
+          "natural": [
+            916,
+            515
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+          "encodedPixels": [
+            1280,
+            720
+          ],
+          "visibleSourceRect": [
+            0,
+            189.8468271334792,
+            1280,
+            340.30634573304155
+          ],
+          "drawScale": 0.7140625,
+          "drawOffset": [
+            0.0,
+            -135.5625
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 19,
+          "y": 86.53125,
+          "width": 822,
+          "height": 139.46875
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 19,
+          "y": 86.53125,
+          "width": 48.09375,
+          "height": 23.203125
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 19,
+          "y": 117.734375,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 19,
+          "y": 145.734375,
+          "width": 822,
+          "height": 35.265625
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 19,
+          "y": 191,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 853,
+          "y": 180,
+          "width": 46,
+          "height": 46
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        956,
+        440
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 956,
+        "height": 173.8125,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 956,
+            "height": 173.8125
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_swimming.webp",
+          "fit": "cover",
+          "position": "50% 60%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_swimming.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            272.40694299163175,
+            1947,
+            353.9884283472803
+          ],
+          "drawScale": 0.49101181304571134,
+          "drawOffset": [
+            0.0,
+            -133.75502696456084
+          ]
+        },
+        {
+          "box": {
+            "x": 956,
+            "y": 0,
+            "width": 956,
+            "height": 173.8125
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_swimming.webp",
+          "fit": "cover",
+          "position": "50% 48%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_swimming.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            217.92555439330542,
+            1947,
+            353.9884283472803
+          ],
+          "drawScale": 0.49101181304571134,
+          "drawOffset": [
+            0.0,
+            -107.00402157164868
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 842.34375,
+          "y": 20,
+          "width": 93.65625,
+          "height": 35
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        956,
+        440
+      ],
+      "route": "rankings",
+      "scenario": "synthetic-24+32-top-insets",
+      "container": {
+        "width": 956,
+        "height": 229.8125,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 956,
+            "height": 229.8125
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_swimming.webp",
+          "fit": "cover",
+          "position": "50% 60%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_swimming.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            203.97681746861923,
+            1947,
+            468.0386375523013
+          ],
+          "drawScale": 0.49101181304571134,
+          "drawOffset": [
+            0.0,
+            -100.15502696456085
+          ]
+        },
+        {
+          "box": {
+            "x": 956,
+            "y": 0,
+            "width": 956,
+            "height": 229.8125
+          },
+          "natural": [
+            1947,
+            808
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_swimming.webp",
+          "fit": "cover",
+          "position": "50% 48%",
+          "sourcePath": "/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_swimming.webp",
+          "encodedPixels": [
+            1947,
+            808
+          ],
+          "visibleSourceRect": [
+            0,
+            163.1814539748954,
+            1947,
+            468.0386375523013
+          ],
+          "drawScale": 0.49101181304571134,
+          "drawOffset": [
+            0.0,
+            -80.12402157164868
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 842.34375,
+          "y": 68,
+          "width": 93.65625,
+          "height": 35
+        }
+      ],
+      "insets": [
+        "24px",
+        "32px"
+      ]
+    },
+    {
+      "viewport": [
+        1200,
+        1600
+      ],
+      "route": "home",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 1086,
+        "height": 245,
+        "radius": "22px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 1,
+            "y": 1,
+            "width": 1084,
+            "height": 243
+          },
+          "natural": [
+            1086,
+            610
+          ],
+          "src": "http://127.0.0.1:5396/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+          "fit": "cover",
+          "position": "50% 50%",
+          "sourcePath": "/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+          "encodedPixels": [
+            1280,
+            720
+          ],
+          "visibleSourceRect": [
+            0,
+            216.5313653136531,
+            1280,
+            286.9372693726937
+          ],
+          "drawScale": 0.846875,
+          "drawOffset": [
+            0.0,
+            -183.375
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "showcase-card__content",
+          "x": 19,
+          "y": 83.640625,
+          "width": 992,
+          "height": 142.359375
+        },
+        {
+          "class": "showcase-card__eyebrow",
+          "x": 19,
+          "y": 83.640625,
+          "width": 48.09375,
+          "height": 26.09375
+        },
+        {
+          "class": "showcase-card__tag-row",
+          "x": 19,
+          "y": 117.734375,
+          "width": 225.421875,
+          "height": 28
+        },
+        {
+          "class": "showcase-card__title",
+          "x": 19,
+          "y": 145.734375,
+          "width": 992,
+          "height": 35.265625
+        },
+        {
+          "class": "showcase-card__meta",
+          "x": 19,
+          "y": 191,
+          "width": 91.65625,
+          "height": 35
+        },
+        {
+          "class": "showcase-card__open",
+          "x": 1023,
+          "y": 180,
+          "width": 46,
+          "height": 46
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        1200,
+        1600
+      ],
+      "route": "rankings",
+      "scenario": "zero-insets",
+      "container": {
+        "width": 1200,
+        "height": 320,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 199.90625,
+            "y": 0,
+            "width": 800.1875,
+            "height": 320
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "fit": "contain",
+          "position": "50% 50%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            0,
+            0,
+            1983,
+            793
+          ],
+          "drawScale": 0.40352370146243066,
+          "drawOffset": [
+            0.0,
+            0.0028523701462290774
+          ]
+        },
+        {
+          "box": {
+            "x": 1515.7109375,
+            "y": 0,
+            "width": 568.578125,
+            "height": 320
+          },
+          "natural": [
+            1672,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "fit": "contain",
+          "position": "50% 50%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "encodedPixels": [
+            1672,
+            941
+          ],
+          "visibleSourceRect": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "drawScale": 0.34005868720095694,
+          "drawOffset": [
+            0.0,
+            0.0023876719497479826
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 1086.34375,
+          "y": 20,
+          "width": 93.65625,
+          "height": 35
+        }
+      ],
+      "insets": [
+        "",
+        ""
+      ]
+    },
+    {
+      "viewport": [
+        1200,
+        1600
+      ],
+      "route": "rankings",
+      "scenario": "synthetic-24+32-top-insets",
+      "container": {
+        "width": 1200,
+        "height": 320,
+        "radius": "0px",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ]
+      },
+      "images": [
+        {
+          "box": {
+            "x": 199.90625,
+            "y": 0,
+            "width": 800.1875,
+            "height": 320
+          },
+          "natural": [
+            1983,
+            793
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "fit": "contain",
+          "position": "50% 50%",
+          "sourcePath": "/images/showcase/rankings/optimized/ironman_02_bike.webp",
+          "encodedPixels": [
+            1983,
+            793
+          ],
+          "visibleSourceRect": [
+            0,
+            0,
+            1983,
+            793
+          ],
+          "drawScale": 0.40352370146243066,
+          "drawOffset": [
+            0.0,
+            0.0028523701462290774
+          ]
+        },
+        {
+          "box": {
+            "x": 1515.7109375,
+            "y": 0,
+            "width": 568.578125,
+            "height": 320
+          },
+          "natural": [
+            1672,
+            941
+          ],
+          "src": "http://127.0.0.1:5396/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "fit": "contain",
+          "position": "50% 50%",
+          "sourcePath": "/images/showcase/rankings/optimized/t100_02_bike.webp",
+          "encodedPixels": [
+            1672,
+            941
+          ],
+          "visibleSourceRect": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "drawScale": 0.34005868720095694,
+          "drawOffset": [
+            0.0,
+            0.0023876719497479826
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "class": "page-back-button",
+          "x": 1086.34375,
+          "y": 68,
+          "width": 93.65625,
+          "height": 35
+        }
+      ],
+      "insets": [
+        "24px",
+        "32px"
+      ]
+    }
+  ]
+}
