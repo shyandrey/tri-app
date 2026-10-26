@@ -14,9 +14,12 @@ jobs:
     name: Portable verification
     runs-on: ubuntu-24.04
     timeout-minutes: 20
-    env:
-      CI_REPORT_DIR: ${{ runner.temp }}/portable-ci
     steps:
+      - name: Initialize CI report directory
+        shell: bash
+        run: |
+          echo "CI_REPORT_DIR=$RUNNER_TEMP/portable-ci" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/portable-ci"
       - name: Checkout exact event SHA (PR merge candidate or dispatch SHA)
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
