@@ -1,14 +1,199 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-20. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-10-25. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-Подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `e8a3dba1de13ab5e75964ce9c2ff9dd3e3a49745` (live verified 18.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 — local importer/dry-run review; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
+Подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `c8f52e02a75e0b413dddbfee77f477232c5301d3` (live verified 20.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 DONE — production closeout 20.10.2026; нерешённые вопросы сохранены в ATH-05; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
+
+## GIT-01 / DS-01A — Audit closeout · 2026-10-25
+
+- **GIT-01 — Owner Approved / Audit Complete (GIT-01B instruction).** [Consolidation plan](git01-repository-consolidation-plan.md): complete incoming file inventory, conservative approval classification, atomic Rankings/NAV dependency boundary and archive exclusions. At the GIT-01B checkpoint no commits existed; superseded by GIT-01C.3 below. NAV-03, QA-02B, TECH-01-HOOKS and PERF-01C approvals reconciled by GIT-01B; Athlete Profile remains pending.
+- **DS-01A — Owner Approved / Audit Complete (GIT-01B instruction).** [Design System audit](ds01-design-system-audit.md): palette, typography, component inventory, representative dark/light portrait/landscape evidence and prioritized proposals. Dark-only release policy confirmed; contrast and control-font proposals remain separate UI work; no UI changes in GIT-01B.
+- Existing RANK, DS-02, PERF, TECH and Athlete task statuses remain unchanged. Historical audit work made no commit/push/deployment, data or infrastructure changes.
+
+### GIT-01B — Consolidation preparation
+
+- **Status:** REHEARSAL PASS / AWAITING OWNER REVIEW. Explicit task approvals reconciled;106 included paths,29 excluded;50 unit tests,7 browser suites, build/release gate and link checks PASS. Test maintenance and isolated rehearsal only. No staging, commits or deployment. [Exact allowlist, exclusions and rehearsal results](git01-repository-consolidation-plan.md).
+
+### GIT-01C.3 — Local consolidation · 2026-10-26
+
+- **Status: LOCAL CONSOLIDATION COMPLETE / OWNER REVIEW BEFORE PUSH.** Six thematic local commits cover exactly106 approved paths (22 registry,52 Rankings/NAV,4 technical fixes,22 DS-02,3 PERF reports,3 project documents). Commit1 `150a0f6`; Commit2 `72b2906`; Commit3 `3bedfc3`; Commit4 `344b28e`; Commit5 `5c9e1e1`; this section belongs to the final project-documentation commit.
+- GIT-01C.2 deterministic season-test bytes explicitly approved by GIT-01C.3 and included in Commit2. Exact staged build/registry/navigation tests and Rankings/NAV browser suites PASS; technical boundary release gate18/18 and Calendar/code-splitting/navigation browser suites PASS. The original intermittent failure cause remains unconfirmed.
+- All29 excluded files remain unchanged, including unfinished Athlete Profile, protected audit artifacts and unused artwork originals/manifests. Excluded files remain local; no deletion, archive relocation or prototype-runtime integration.
+- Final post-commit tests, exact per-commit file lists and Git state are recorded in `/tmp/300w-git01c3/`. Consolidation does not imply all legacy tests pass or authorize release/push. Sports chunk exception remains conditional on physical-device QA; known historical full-regeneration/photo-test failures remain separately documented by the release gate.
+- No push, deployment, version bump, D1, secrets or Cloudflare changes. DS-01B, HOME-UI-01 and Athlete Profile remain separate pending work. Current primary tree intentionally retains excluded changes; use the committed tree for release verification.
+
+### DS-01B — Targeted UI Fixes
+
+- **Status:** PLANNED · **Priority:** P1 · target v1.0.0. Owner-approved policy: **dark-only across the application**, including Rankings regardless of OS preference. Preserve approved dark styling. GIT-01B does not implement this change.
+- Other candidates: small Rankings rank-number contrast; Back/Season system-font inheritance; evaluate legacy race-card accent differences without silently changing brands.
+- **Light Theme:** separate POST-RELEASE design/development task, not part of v1.0.0.
+
+### HOME-UI-01 — Home Slogan Review
+
+- **Status:** SEPARATE PRE-RELEASE REVIEW · owner decision pending. Preserve as independent task; no slogan edits or approval inferred from consolidation.
+
+## Rankings UI closure — RANK-07 · 2026-10-23
+
+**Owner-approved UI:** RANK-01 UI, RANK-02, RANK-03 artwork, RANK-04, RANK-05, RANK-05B, RANK-06. RANK-05 approved on physical iPhone via Preview; RANK-06 approved locally using Safari screenshots. This closes UI review, not Production rollout or all rankings data backlog.
+
+**Local:** all approved UI present. **Preview:** RANK-01–05/B + NAV-03; deployment `e441f5f7-05d9-41dc-bbf9-594acb29fd82`, version `84653431-5134-4216-813a-2b5bb4c573fc`. **RANK-06: NOT Preview-deployed. Production: NOT updated with latest Rankings UI.** Version remains 0.0.0. No deployment in this documentation task.
+
+[Current approval/deployment matrix and UI decisions](official-rankings-ui-2026-10-22.md#current-closure--rank-07-2026-10-23). Previous task notes below are retained historical checkpoints; pending UI-review language there is superseded by this explicit owner approval.
+
+### TECH-01-HOOKS — RaceDetailPage React Hooks Warning
+
+- **Status:** OWNER APPROVED (GIT-01B instruction) · **Priority:** P1 · **Target:** v1.0.0 · implementation checkpoint 2026-10-25; approval date not separately supplied.
+- Owner task TECH-01; board suffix distinguishes this task from the existing OPEN stable-athlete-ID regeneration risk TECH-01 below. That data-integrity risk remains open; this hooks fix is explicitly owner-approved in GIT-01B.
+- Stabilized active-year editions and moved edition-ID Set construction inside the results memo. Selection, filtering, order, URL/navigation and authoritative data preserved; no lint suppression.
+- Component/full lint PASS (original hook warning removed); unit tests 30/30, Calendar browser 4 viewports, code-splitting browser 4 viewports, navigation scenarios and 27 before/after year/gender states PASS. Build and release gate 18/18 PASS; sports chunk warning remains under PERF-01 conditional exception.
+- [Exact warning, fix, regression evidence and limitations](tech01-race-detail-hooks-warning.md). Local only; no commit/push/deployment or version bump.
+
+### PERF-01 — Sports Chunk Size Optimization
+
+- **Status:** PRE-RELEASE DECISION CLOSED / CONDITIONAL PERFORMANCE EXCEPTION · **Priority:** P1 · owner decision 2026-10-25 (PERF-01C).
+- PERF-01A audit ACCEPTED. PERF-01B prototype and PERF-01B.2 A/B REJECTED for v1.0.0. Retain the existing shared sports loading architecture; no experimental code adopted.
+- Accept the existing ~1.295 MB minified sports chunk warning as a pre-release exception **conditional on final physical-device QA**. This is not a release approval, warning suppression, or claim that cold loading is fast. Local Chromium CPU4×/1.6Mbps: cold Rankings ~3.2–3.6s across documented workloads; warm ~19ms. The workloads differ and must not be pooled as one benchmark.
+- Rationale: route splitting halves Rankings cold readiness but shifts ~4–4.6s to immediate Athlete navigation; delayed preload cannot guarantee fast immediate clicks. Preserve baseline behavior for v1.0.0.
+- **Outstanding acceptance:** physical iPhone Safari / Telegram WebView where available, plus required Android QA; cold/warm Rankings, immediate Profile, Calendar/Race, Back and swipe responsiveness on realistic networks. Record device/network and owner acceptance. If unacceptable, reopen this exception before release. No physical-device acceptance performed in PERF-01C.
+- Follow-up implementation is separate **PERF-02**, below. RaceDetailPage hook dependency warning resolved and owner-approved under TECH-01-HOOKS (GIT-01B instruction); it is separate from this performance exception.
+- [Accepted audit and PERF-01C closeout](perf01-sports-chunk-audit.md#perf-01c--owner-decision-and-pre-release-exception).
+
+### PERF-01C — Pre-release Performance Decision & Closure
+
+- **Status:** OWNER APPROVED (GIT-01B instruction) · implementation checkpoint 2026-10-25; approval date not separately supplied.
+- Rankings browser test now waits for the selected T100 state and aligned slide with a bounded failure timeout; no fixed post-swipe sleep or gesture behavior change. Exact standings/identity and other assertions retained.
+- Production build PASS; release gate 18/18 PASS; Rankings browser 14 viewport/theme cases plus Home/Bottom Navigation PASS, including 1440px dark/light; git diff --check and 117 local documentation links PASS. No commit/push/deployment; final physical-device QA remains pending.
+
+### PERF-02 — Sports Data / Runtime Payload Optimization
+
+- **Status:** TODO · **Priority:** P2 · **Target:** POST-RELEASE.
+- Independently design payload and route-boundary optimization using the accepted audit. Preserve authoritative datasets, provenance, identity mappings, formulas and complete profile/results behavior.
+- Compare full cold/warm user journeys, including immediate and delayed Rankings→Athlete and Race transitions; measure total transfer, script work and main-thread impact. Avoid preload that only improves delayed clicks or hides first-profile cost.
+- Any data projection/partitioning architecture requires separate owner approval. Reuse measurements and lessons, not rejected prototype code by default. Require regression tests and physical-device evidence before adoption.
+
+### PERF-01B.2 — Route Loading Optimization & Swipe Investigation
+
+- **Status:** REJECTED BY OWNER FOR v1.0.0 · **Priority:** P1 · 2026-10-25.
+- Swipe failure reproduced in baseline and prototype: native snap + 120ms debounce can complete after the test's fixed 750ms. Six controlled runs settled by 800ms; bounded state-wait preserves the assertion. No swipe/UI code change.
+- Separate A/B copies in `/tmp/300w-perf01b2/`: A deferred cached sports preload; B independent Athlete/results boundary. No application changes adopted.
+- Three-run immediate-click medians: baseline Rankings 3596ms / Athlete 41ms; A 1856 / 4565ms; B 1854 / 4496ms. A delayed-click Athlete 49ms, but immediate navigation still regresses; B adds Race loading latency.
+- Final A/B builds and release gates18/18, unit tests38/38, Calendar/code-splitting browser4 cases each, Rankings14 viewport/theme cases and navigation/NAV-03 PASS. Initial B lint fixed only in isolation; reused-tab navigation failure also reproduced on baseline, fresh-tab runs PASS (harness isolation limitation retained).
+- Recommendation **REJECT current A/B for adoption**. [Experiment, exact scope, performance and validation](perf01b2-route-loading-experiment.md). PERF-01C records the conditional baseline exception; future optimization is PERF-02. No commit/push/deployment or data changes.
+
+### PERF-01B — Rankings Code-Splitting Prototype
+
+- **Status:** REJECTED BY OWNER FOR v1.0.0 · **Priority:** P1 · 2026-10-25.
+- Isolated current-working-tree prototype in `/tmp/300w-perf01b/prototype/`; no application changes adopted into the main tree. Full data/provenance retained; five route-boundary files changed only in the copy.
+- Three-run Chromium CPU4× / 1.6Mbps comparison: cold Home→Rankings median 3197→1647ms; incremental JS transfer 263800→100124 B. First subsequent Athlete navigation 44→4018ms due to deferred sports loading; warm transitions essentially unchanged.
+- Builds and release gates 18/18 each PASS; unit tests38/38 and code-splitting browser4/4 PASS. Rankings browser stopped on touch-series swipe at 1440px dark after12 viewport/theme cases passed; cause subsequently resolved as test synchronization in PERF-01B.2; this line retains the original validation checkpoint.
+- Historical recommendation REVISE; owner decision under PERF-01C: **REJECTED**. [Architecture, metrics, validation and reproduction](perf01b-rankings-code-splitting-prototype.md). Baseline retained under PERF-01C; final physical-device QA still required. No commit/push/deployment.
+
+### QA-02B — Deterministic Calendar Code-Splitting Test
+
+- **Status:** OWNER APPROVED (GIT-01B instruction) · **Priority:** P1 · implementation checkpoint 2026-10-25; approval date not separately supplied.
+- QA-02 confirmed no missing race: Kona moves from Upcoming to Past afterOct10 Moscow; test's unfrozen count4 was stale. Browser test now fixesOct2 and verifies all four exact edition IDs via card navigation, both initial Calendar and invalid-race fallback.
+- Full code-splitting browser4/4, Calendar unit6/6 and browser3/3, build, release gate18/18 and diff check PASS. Original reload/history/error/retry assertions preserved. Initial overlapping-build run had a timeout; stable sequential final run passed.
+- [Investigation and QA-02B implementation/validation](qa02-calendar-card-count-investigation.md). Separate follow-up: unfrozen Home carousel/navigation/layout test fixtures; no unrelated test edits.
+- No production code/data changes. This resolves the historical Calendar expectation only; PERF-01C separately records the performance decision. No commit/push/deployment.
+
+### PERF-01A — Sports Chunk Performance Audit
+
+- **Status:** ACCEPTED BY OWNER · **Priority:** P1 · 2026-10-25.
+- Current sports chunk: 1,295,176 B minified / 263,224 B gzip (offline Node measurement). Main contributors: full results, athlete/enrichment and standings evidence; shared lazy boundary also calculates internal ranking for Rankings navigation.
+- Local Chromium CPU4× / 1.6Mbps: median first Home→Rankings3,195ms, warm19ms. Not physical iPhone or Production measurement. No universal release latency threshold established.
+- [Audit, reproducible metrics, alternatives and risks](perf01-sports-chunk-audit.md). Original prototype recommendation was evaluated in PERF-01B/B.2 and rejected by owner for v1.0.0; no implementation adopted.
+- Release gate18/18 and official standings tests20/20 PASS. Existing code-splitting browser suite FAIL on Calendar fixed count (expected4, actual3); subsequent scenarios not run. Historical audit checkpoint: QA-02/QA-02B below resolves this expectation; full release-wide browser validation remains separate.
+- PERF-01C closes the pre-release architecture decision with a conditional performance exception; physical-device acceptance is still pending. No code/data/configuration changes or deployment.
+
+### DS-02A — Showcase Technical Templates
+
+- **Status:** OWNER APPROVED · **Priority:** P1 · approval recorded 2026-10-25 (DS-02B owner instruction).
+- Fresh DOM audit at all eight requested sizes, plus three synthetic top-inset scenarios. Six SVG templates + PNG previews, crop/overlay evidence, draft production dimensions/DPR and per-surface performance budgets.
+- Home requires a separately authorized art-direction migration for new multi-variant compositions; current runtime remains unchanged. Owner accepted methodology, safe-zone approach and production recommendations as starting values, not universal mandatory limits.
+- [Technical specification](ds02-showcase-technical-templates.md) · [Visual gallery](design/showcase-templates/index.html) · [Validation checklist](design/showcase-templates/validation-checklist.md).
+- No application/artwork/mapping changes, commit/push or deployment. DS-02 v1.0 subsequently owner-approved under DS-02C (2026-10-25).
+
+### DS-02B — Showcase & Artwork Guidelines v1.0 Finalization
+
+- **Status:** OWNER APPROVED · **Priority:** P1 · 2026-10-25, explicit DS-02C owner approval.
+- [Consolidated Guidelines v1.0](design/300w-showcase-artwork-guidelines-v1.0.md) · [Artwork Brief](design/showcase-artwork-brief-template.md) · [Codex Handoff](design/showcase-codex-handoff-template.md).
+- Reference-first cinematic photorealism, component-specific geometry, separate compositions, final-crop-first approval and production-ready delivery consolidated. Historical audits/templates retained unchanged.
+- **Future development task:** Home multi-variant migration — TODO / separately scoped and authorized; three composition groups proposed, no runtime implementation in DS-02B.
+- PERF-01 remains separate and open. No application/artwork/mapping changes or deployment; DS-02B explicitly owner-approved under DS-02C (2026-10-25).
+
+### DS-02 — Showcase & Artwork Guidelines v1.0
+
+- **Status:** Guidelines v1.0 — OWNER APPROVED (DS-02C, 2026-10-25). DS-02A foundation is owner-approved; numerical dimensions, DPR, margins and budgets are accepted recommended starting values, not rigid limits.
+- [Measured architecture audit](ds02-showcase-architecture-audit-2026-10-23.md) · [Requirements draft](ds02-showcase-guidelines-draft.md).
+- Home and Rankings geometry differ. Prepare dual-format, final-crop-first artwork handoffs for 2027; no component/artwork changes in this task.
 
 ## In Progress
+
+### RANK-05B — Portrait Showcase Optimization
+
+**Current UI status: OWNER APPROVED (RANK-07).** Below: historical implementation checkpoint; deployment status is in the closure matrix.
+
+- **Priority:** P1. **Status:** IN PROGRESS — local WebP optimization, awaiting owner review.
+- Eight full-resolution portrait WebP derivatives; PNG originals and landscape artwork preserved. Payload 18.21 → 2.46 MB; existing two-neighbor swipe track unchanged.
+- **Report:** [Asset audit and QA](rank05b-portrait-optimization-2026-10-23.md). No commit/push/deployment.
+
+### RANK-05 — Interactive Swipe & Snap
+
+**Current UI status: OWNER APPROVED (RANK-07).** Below: historical implementation checkpoint; deployment status is in the closure matrix.
+
+- **Priority:** P1. **Status:** IN PROGRESS — local prototype, awaiting owner review.
+- Native Scroll Snap tracks for series artwork and gender tables; pointer-driven mouse support, click suppression, stationary controls. Home behavior and approved artwork/data preserved.
+- No deployment/commit/push. Physical iPhone Safari/Telegram validation remains pending.
+- **Report:** [Architecture, prototype and QA](rank05-interactive-swipe-2026-10-23.md).
+
+### RANK-04 — Rankings Controls & Season Picker Polish
+
+**Current UI status: OWNER APPROVED (RANK-07).** Below: historical implementation checkpoint; deployment status is in the closure matrix.
+
+- **Status:** IN PROGRESS — LOCAL UI PATCH / AWAITING OWNER REVIEW · **Priority:** P1.
+- **Scope:** separate centered series indicator row; gender label / centered circular indicators / season selector grid; neutral wheel selection band with visible keyboard cue and compact glass-like Done button.
+- **Preserved:** owner-approved RANK-03 artwork, rankings/identity data, gestures, wheel semantics, NAV-03 and RANK-02. No commit/push/deploy.
+- **Next action:** owner visual review of portrait/landscape controls and picker in both themes.
+- **Links:** [RANK-04 review and validation](rank04-controls-picker-2026-10-23.md).
+
+### RANK-03G — Final T100 Cycling Integration & Rankings QA
+
+**Current UI status: OWNER APPROVED (RANK-07).** Below: historical implementation checkpoint; deployment status is in the closure matrix.
+
+- **Status:** IN PROGRESS — LOCAL IMPLEMENTATION / AWAITING FINAL OWNER REVIEW · **Priority:** P1.
+- **Scope:** owner-supplied `t100_cycling_final.webp` (2078×378, 211,262 B), entire image preserved via scene-specific contain in the unchanged 5.5:1 frame. Previous cycling assets retained; all other landscape/portrait artwork and data unchanged.
+- **Next action:** final owner review of rendered UI and QA report. Approval of source artwork does not mark the overall Rankings UI approved. No commit/push/deploy.
+- **Links:** [final integration and QA](rank03g-final-qa-2026-10-23.md).
+
+### RANK-03E — Landscape Showcase Final Polish
+
+**Current UI status: OWNER APPROVED (RANK-07).** Below: historical implementation checkpoint; deployment status is in the closure matrix.
+
+- **Status:** IN PROGRESS — LOCAL PATCH / AWAITING OWNER VISUAL REVIEW · **Priority:** P1.
+- **Scope:** sharp Rankings boundary in both orientations; IRONMAN Running focal point 52% proposed; T100 Cycling 60%/40% alternatives prepared, existing 80% retained because skyline and cyclists do not fit together at 5.5:1. Six other compositions and all artwork bytes preserved.
+- **Verification:** first/last row, Feedback and physical mouse/touch nav hit tests pass at all seven sizes in both themes; NAV-03 geometry and RANK-02 z-index 40 unchanged. No final crop approval implied.
+- **Next action:** owner review of IRONMAN crop and T100 dedicated-composition option. No automatic artwork replacement or generation.
+- **Links:** [polish, crop comparison and verification report](rank03e-showcase-polish-2026-10-23.md).
+
+### RANK-03C/D — Landscape Showcase Integration & Performance Audit
+
+**Current UI status: OWNER APPROVED (RANK-07).** Below: historical implementation checkpoint; deployment status is in the closure matrix.
+
+- **Status:** IN PROGRESS — LOCAL IMPLEMENTATION / AWAITING OWNER VISUAL REVIEW · **Priority:** P1.
+- **Scope:** восемь approved landscape WebP, responsive picture sources, общий cover 5.5:1 и индивидуальные focal points; portrait bytes/framing сохранены. Performance audit: PASS WITH NOTES; прежний sports chunk warning остаётся.
+- **Next action:** review 24 landscape screenshots; отдельно решить композиционные ограничения IRONMAN Running (нижний branding) и T100 Cycling (skyline). Не считать финальные crops owner-approved; artwork не изменялся. Без commit/push/deploy.
+- **Links:** [integration/performance/asset report](rank03-landscape-performance-2026-10-23.md).
+
+### NAV-03 — Global Floating Navigation Integration
+
+- **Status:** OWNER APPROVED (GIT-01B instruction) · **Priority:** P1.
+- **Scope:** утверждённый NAV-02 интегрирован как default Bottom Navigation на всех применимых страницах. Query-переключатели удалены; 58/48 px, targets ≥44 px, capsule 210 ms, reduced motion и RANK-02 `z-index: 40` сохранены.
+- **Next action:** подготовить отдельное разрешение на Git consolidation; owner approval получено явно в GIT-01B, а не выведено из тестов. Commit/push/deploy не выполнялись. DS-01 и landscape artwork вне scope.
+- **Links:** [integration report](nav03-integration-2026-10-23.md), [approved prototype history](nav02-prototype-2026-10-23.md).
 
 ### UX-01 — Calendar Empty State
 
@@ -60,11 +245,14 @@
 
 ### RANK-01 — Official Series Rankings Integration
 
-- **Status:** TODO · **Priority:** P1 · **Target:** Before v1.0.0.
+- **Status:** UI OWNER APPROVED; remaining data lifecycle / Production rollout IN PROGRESS · **Priority:** P1 · **Target:** Before v1.0.0.
 - **Описание:** интегрировать официальные standings IRONMAN Pro Series и T100 / Triathlon World Tour, отдельно для мужчин и женщин, за сезоны 2024, 2025 и 2026 там, где применимо.
 - **Acceptance criteria:** официальные места и очки без выдуманных расчётов; сохранить форматы соревнований каждого сезона. Записывать source provenance и даты snapshots; обеспечить stable mapping к 300W athlete IDs и переходы в профили. Нужны import validation, conflict reporting и regression tests. Официальные standings не подменяют внутреннюю ranking formula 300W.
-- **Next action:** read-only discovery официальных источников и доступности исторических сезонов, затем review модели, identity mappings и import plan до реализации.
+- **Historical next action (superseded by RANK-07 approval):** owner review локальной страницы Rankings: IRONMAN/T100 × 2024–2026 × Men/Women, официальный top-10, переходы в профили, wheel picker и swipe. [Отчёт UI](official-rankings-ui-2026-10-22.md). Не отмечать DONE до owner E2E; финальные showcase artwork и полнота standings сверх top-10 остаются отдельными задачами.
+- **Local registries:** T100 — 6 таблиц / 60 verified rows ([отчёт](t100-registry-application-2026-10-21.md)); IRONMAN — 6 таблиц / 60 owner-approved CSV rows, все identity CONFIRMED после owner approval 22.10.2026 ([отчёт](ironman-standings-preparation-2026-10-21.md)). Значения registries при UI integration не изменялись. Исторические 2024/2025 остаются HISTORICAL_FINAL_PENDING_CONFIRMATION; 2026 — LIVE, без обещания автоматического обновления.
 - **Links:** [Data Source Policy](scripts.md#data-source-policy), [season policy](season-transition-2026-2027.md), [внутренний ranking](../src/utils/athleteRanking.ts).
+
+- **Owner decision — 22.10.2026:** отдельный комплект из восьми landscape showcase, ориентировочно 5:1–6:1. Portrait PNG сохраняются; до нового утверждённого комплекта не менять кадрирование, не повышать высоту showcase и не генерировать artwork самостоятельно. Back/Feedback выполняются отдельно в UI v2.2A.
 
 ### FAV-01 — Favorite Athletes
 
@@ -90,19 +278,16 @@
 - **Next action:** после [FAV-01](#fav-01--favorite-athletes) и [RANK-01](#rank-01--official-series-rankings-integration) согласовать критерий значимости, snapshot comparison, deduplication и tests настроек пользователя.
 - **Links:** [Telegram operations](telegram-commands.md), [Data Source Policy](scripts.md#data-source-policy).
 
-### ATH-01 — Verified social media links
+### ATH-05 — PTO enrichment follow-up и evidence maintenance
 
-- **Status:** IN PROGRESS — LOCAL REVIEW · **Priority:** P2.
-- **Описание:** verified Instagram/X/YouTube/Facebook/TikTok/website URLs для 221 photo-cohort athlete с approved PTO mapping. 720 новых полей применены локально; 210 профилей с PTO enrichment, 197 с AGE/BORN. Исходный 20-athlete pilot сохранён. Field-level provenance, без угадывания аккаунтов.
-- **Next action:** ожидаются отдельные owner approvals на commit и затем Preview deployment; локальный full-photo-cohort patch 20.10.2026: 221 approved mappings; применено 720 новых полей (651 + 60 raw AGE/BORN + 9 Jackson/Lisa), без пересечений и замен. Исходный pilot 76 fields неизменён. Shared YouTube Jackson/Lisa, AGE/BORN Lisa и 57 rejected URLs не импортированы; YouTube Kristian сохранён. [Application report](athlete-pto-photo-application-2026-10-20.md). Production unchanged; это не deployment approval.
-- **Links:** [model, workflow, tests, dependencies](pre-release-readiness-2026-10-18.md#ath-01--verified-social-media-links).
-
-### ATH-02 — PTO BORN and competition age
-
-- **Status:** IN PROGRESS — LOCAL REVIEW · **Priority:** P2.
-- **Описание:** раздельные PTO AGE/BORN с provenance; competition age = year − BORN, AGE-only истекает при смене года. DOB не выводится из этих полей.
-- **Next action:** ожидаются commit и Preview deployment по отдельному approval; [full cohort application](athlete-pto-photo-application-2026-10-20.md): AGE/BORN coverage 197/221, raw значения и source timestamps сохранены; competition age вычисляется из BORN. 30 новых расхождений согласованы как сохранение обоих raw полей; точный DOB не выводится. AGE/BORN Lisa остаются HOLD. Исходные Marten/Sam pilot values неизменны; Production unchanged.
-- **Links:** [model, workflow, tests, dependencies](pre-release-readiness-2026-10-18.md#ath-02--birth-date-and-calculated-age).
+- **Status:** TODO · **Priority:** P2.
+- **Описание:** незакрытые вопросы после ATH-01/02; завершение основного scope не означает approval этих полей или исправление tooling/performance limitations.
+- **Field review:** shared YouTube Jackson Laundry / Lisa Becharas и AGE/BORN Lisa остаются HOLD; 57 rejected/unsupported social URLs исключены. Нужна отдельная проверка identity/эквивалентности URL и owner approval перед импортом.
+- **Tooling:** piped Python parser stdin может зависать; успешный workaround — file stdin. Ограничение документировано, parser behavior не исправлялся.
+- **Performance:** build предупреждает о sports chunk ~1,2 MB; доставка полных JS/CSS в Production проверена по SHA-256. Оценить performance отдельно; не закрывать сетевой риск OPS-02.
+- **Evidence:** локальный HTML archive `/Users/andrey.shubin/Projects/tri-app-archives/pto-photo-cohort-2026-10-20/` содержит 221 verified snapshots; integrity PASS. Off-device backup пока не выполнен; копирование/загрузка требуют отдельного approval.
+- **Next action:** отдельно согласовать field review, диагностику parser, измерения chunk performance и защищённый off-device backup; не менять HOLD/SKIP автоматически.
+- **Links:** [field review](athlete-pto-owner-field-review-2026-10-20.md), [archive recovery и parser limitation](athlete-pto-photo-application-2026-10-20.md).
 
 ### ATH-03 — Editorial biographies for top athletes
 
@@ -185,6 +370,23 @@
 - **Links:** [results index](../src/data/results/index.ts), [import safeguards](import-race-results.md), [developer handbook](maintenance-developer.md).
 
 ## Recently Completed
+
+### ATH-01 — Verified social media links
+
+- **Status:** DONE · **Priority:** P2 · **Date:** 20.10.2026.
+- **Описание:** 221 approved PTO profile mappings; 210 enriched athlete profiles. Verified social links и monochrome SVG Facebook/X/Website опубликованы в Production. Full-cohort expansion добавил 720 полей (651 + 60 + 9), без пересечений и замен; исходный 20-athlete pilot и provenance сохранены. YouTube Kristian сохранён; HOLD/SKIP исключены.
+- **Production evidence:** SHA `c8f52e02a75e0b413dddbfee77f477232c5301d3`; Version ID `33a50c35-9dda-4234-afdc-2d05c918d846`; Deployment ID `80ddc247-1881-4a55-a7a3-08a38415d588`. `check:production` и независимая проверка SHA обоих hostnames PASS; версия остаётся 0.0.0.
+- **Validation:** автоматизированные Production E2E/browser checks на 320/390/768 px PASS (профили, возраст, ссылки, SVG); это не новая owner-confirmed проверка iPhone/Android. Registry tests 4/4 PASS; 1167 athlete IDs, 4592 результата и ranking неизменны. News/Feedback operational, очередь без pending/failed/retryable/leases; Preview deployment и D1 не изменились.
+- **Next action:** завершено в согласованном scope; оставшиеся поля и эксплуатационные ограничения — ATH-05. Новые импорты требуют отдельного approval.
+- **Links:** [application report](athlete-pto-photo-application-2026-10-20.md), [field review](athlete-pto-owner-field-review-2026-10-20.md), [model/workflow](pre-release-readiness-2026-10-18.md#ath-01--verified-social-media-links).
+
+### ATH-02 — PTO BORN and competition age
+
+- **Status:** DONE · **Priority:** P2 · **Date:** 20.10.2026.
+- **Описание:** 197 AGE/BORN profiles из 221 photo-cohort athlete. PTO reported AGE и verified BORN хранятся раздельно с raw values, source timestamps и snapshot hashes. Competition age = calendar year − BORN; AGE-only скрывается после года наблюдения. Точный DOB не выводится.
+- **Production evidence:** опубликовано вместе с ATH-01 на SHA `c8f52e02a75e0b413dddbfee77f477232c5301d3`; version/deployment IDs указаны в ATH-01. Production browser checks PASS: Marten Van Riel — 34, Sam Laidlow — 28, Taylor Knibb — 28 в 2026 году. Исходный pilot, athlete IDs, результаты и ranking сохранены.
+- **Next action:** завершено; AGE/BORN Lisa Becharas остаются HOLD в ATH-05. Не обновлять raw AGE или DOB догадками.
+- **Links:** [application report](athlete-pto-photo-application-2026-10-20.md), [age policy](pre-release-readiness-2026-10-18.md#ath-02--birth-date-and-calculated-age).
 
 ### BOT-05 — Branded Mini App Splash Screen
 
