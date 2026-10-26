@@ -24,8 +24,9 @@ export const browserSuites = ['calendar','athlete-disclosure','athlete-search','
 export const browserChecks = browserSuites.map(name => ({name, command:['node',`scripts/test-${name}-browser.mjs`]}))
 export const historicalChecks = [
   'node scripts/test-athlete-localization.mjs — full regeneration into temporary output; known country conflicts FAIL',
-  'node --test scripts/test-athlete-photos.mjs — historical batch counts/ranking/staging snapshots; known FAIL',
-  'node --test scripts/test-athlete-photo-staging.mjs — isolated synthetic staging/publish; Swift/macOS environment dependency',
+  'node --test scripts/test-athlete-photos.mjs scripts/test-athlete-photo-review.mjs — portable photo identity/published-byte/rejection checks; run separately (QA-03B)',
+  'node --test scripts/test-athlete-photo-archive.mjs — local archival replay; requires pinned Git history and original staging evidence',
+  'node --test scripts/test-athlete-photo-staging.mjs — local synthetic staging/publish; requires Swift/macOS, no live downloads',
 ]
 const knownMissing = new Set([
   'GENERATED MISSING COUNTRY: Erik Olsson [10144]',
