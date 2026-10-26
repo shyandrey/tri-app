@@ -32,6 +32,18 @@
 - [Implementation and QA](ds01b-dark-theme-polish.md); [Design System v1.0 reference](design/300w-design-system-v1.0.md). **Design System v1.0 — Owner Approved.** **DS-01B.1 — Verification Complete / Closed:** stale screenshot packaging explained the discrepancy; fresh runtime verification passed and no additional CSS correction was required. Physical iPhone/Telegram QA remains pending where applicable.
 - **Light Theme:** separate POST-RELEASE design/development task, not part of v1.0.0. Legacy race-card accent reconciliation remains separate; no silent brand changes.
 
+### QA-04 — Showcase Network Request Investigation
+
+- **Status: Owner Approved / Investigation complete (DS-01C.2).** Local diagnostics found no DS-01B-specific image-loading regression. The original intermittent request-count failure remains unconfirmed; resize/navigation can emit two old-document and two new-document requests, so a global event counter is not safely isolated. [Evidence, bounded reruns and proposed test-only correction](qa04-showcase-network-investigation.md). The historical investigation made no runtime/test changes; QA-04B correction and local consolidation are now owner-approved.
+
+### QA-04B — Showcase Network Test Isolation
+
+- **Status: Owner Approved / Implemented (DS-01C.2).** Test-only document attribution via CDP loaderId, explicit measurement reset, retained redirect/retry evidence and duplicate-transfer/cache fixtures. [Implementation and validation](qa04-showcase-network-investigation.md#qa-04b--document-scoped-test-correction--2026-10-26). Runtime/artwork/data unchanged. Local commit authorized by DS-01C.2; push/deployment are not authorized. Shared-context Navigation test instability remains open for final UI-QA: fresh-profile rerun passed, exact cause unconfirmed.
+
+### DS-01C.2 — Local thematic consolidation
+
+- **Status: Local commits complete / Owner review before push.** DS-01 Design System and QA-04B test isolation are separated into two thematic commits; this entry accompanies the second commit. No push or deployment. Post-commit verification results and exact file manifests: `/tmp/300w-ds01c2/` and the owner handoff. Athlete Profile and HOME-UI-01 edits remain outside these commits. Sports chunk warning, historical photo-test limitations and shared-context Navigation instability remain open for final UI-QA.
+
 ### HOME-UI-01 — Home Slogan Review
 
 - **Status:** SEPARATE PRE-RELEASE REVIEW · owner decision pending. Preserve as independent task; no slogan edits or approval inferred from consolidation.
