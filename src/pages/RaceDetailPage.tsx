@@ -102,13 +102,15 @@ function RaceDetailPage({ onFeedback, race, raceEditions, allResults, athletes, 
     [editionsByYear]
   )
 
-  const activeYearEditions = editionsByYear.get(currentYear) ?? [activeRace]
-  const activeYearEditionIds = new Set(activeYearEditions.map((edition) => edition.editionId))
-
-  const rawResults = useMemo(
-    () => allResults.filter((result) => result.raceEditionId && activeYearEditionIds.has(result.raceEditionId)),
-    [allResults, activeYearEditionIds]
+  const activeYearEditions = useMemo(
+    () => editionsByYear.get(currentYear) ?? [activeRace],
+    [editionsByYear, currentYear, activeRace]
   )
+
+  const rawResults = useMemo(() => {
+    const activeYearEditionIds = new Set(activeYearEditions.map((edition) => edition.editionId))
+    return allResults.filter((result) => result.raceEditionId && activeYearEditionIds.has(result.raceEditionId))
+  }, [allResults, activeYearEditions])
 
   const results = useMemo(() => {
     if (activeYearEditions.length !== 1 || !activeGender) return rawResults

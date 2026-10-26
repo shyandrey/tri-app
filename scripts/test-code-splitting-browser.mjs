@@ -17,14 +17,35 @@ const until=async expression=>{for(let i=0;i<100;i++){if(await js(expression))re
 const start=async hash=>{requests.length=0;await send('Page.navigate',{url:base+'/?split='+Date.now()+hash});await until('!!document.querySelector(".bottom-nav")')}
 const click=async selector=>{await js(`document.querySelector(${JSON.stringify(selector)}).click()`);await wait(150)}
 const shot=async name=>{const s=await send('Page.captureScreenshot',{format:'png'});await fs.writeFile('/tmp/tri-split-'+name+'.png',Buffer.from(s.data,'base64'))}
+// Calendar defaults to Upcoming using Europe/Moscow. Keep this fixture independent of wall time.
+const fixtureDate = '2026-10-02T09:00:00Z'
+const expectedEditions = ['ironman-world-championship-kona-2026', 't100-dubai-2026', 't100-saudi-arabia-2026', 't100-qatar-2026']
+const assertCalendarEditions = async () => {
+  await until('!!document.querySelector(".calendar-time-filters")')
+  assert.equal(await js('new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/Moscow",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())'), '2026-10-02')
+  assert.equal(await js('document.querySelectorAll(".race-card").length'), expectedEditions.length)
+  const actual = []
+  for (let index = 0; index < expectedEditions.length; index++) {
+    // Check the actual public navigation target, without production data attributes or React internals.
+    await js(`document.querySelectorAll(".race-card")[${index}].click()`)
+    await until('location.hash.startsWith("#/race/")')
+    actual.push(await js('location.hash.slice("#/race/".length)'))
+    await js('history.back()')
+    await until('location.hash === "#/calendar" && !!document.querySelector(".calendar-time-filters")')
+  }
+  assert.deepEqual(actual, expectedEditions)
+}
 const sportsRequests=()=>requests.filter(u=>/sports-entry.*\.js/.test(u))
 await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true})
 await send('Fetch.enable',{patterns:[{urlPattern:'*sports-entry*.js',requestStage:'Request'}]})
+const clock = await send('Page.addScriptToEvaluateOnNewDocument', { source: `(()=>{const RealDate=Date;globalThis.Date=class extends RealDate{constructor(...args){super(...(args.length?args:[${JSON.stringify(fixtureDate)}]))}static now(){return RealDate.parse(${JSON.stringify(fixtureDate)})}}})()` })
 try{
  for(const [width,height]of [[390,844],[440,844],[844,390],[1440,900]]){
   await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<1000})
   mode='hold';await start('#/home');await wait(300);assert.equal(sportsRequests().length,0);if(width===390)await shot('home-390')
-  await start('#/calendar');assert.equal(sportsRequests().length,0);assert.equal(await js('document.querySelectorAll(".race-card").length'),4)
+  await start('#/calendar');assert.equal(sportsRequests().length,0)
+  mode='normal';await assertCalendarEditions()
+  mode='hold'
   await start('#/athletes');await until('!!document.querySelector("[data-route-pending]")');assert.equal(await js('location.hash'),'#/athletes');if(width===390)await shot('loading-390')
   // Leave while requests are blocked. A stale resolution must not navigate back.
   await js("[...document.querySelectorAll('.bottom-nav button')].find(e=>e.getAttribute('aria-label')==='Главная').click()")
@@ -60,7 +81,7 @@ try{
   if(width===390)await shot('athlete-deep-link-390')
   await start('#/race/ironman-70-3-oceanside-2026');await until('!!document.querySelector(".race-detail-page")');if(width===390)await shot('race-390')
   await start('#/athlete/not-real');await until('location.hash==="#/athletes" && document.querySelectorAll(".athlete-card").length===50')
-  await start('#/race/not-real');await until('location.hash==="#/calendar" && document.querySelectorAll(".race-card").length===4')
+  await start('#/race/not-real');await until('location.hash==="#/calendar" && !!document.querySelector(".calendar-time-filters")');await assertCalendarEditions()
   mode='fail';await start('#/athletes');await until('!!document.querySelector(".sports-loading__retry")');if(width===390)await shot('error-390')
   const failedState=await js('history.state.triNavigation.key');mode='normal';await click('.sports-loading__retry')
   await until('document.querySelectorAll(".athlete-card").length===50');assert.equal(await js('history.state.triNavigation.key'),failedState)
@@ -68,4 +89,4 @@ try{
   assert.equal(await js('document.documentElement.scrollWidth>innerWidth'),false)
   console.log(`PASS ${width}: cold shell/calendar, delayed sports, leave while loading, Back/Forward, delayed reload scroll, deep links, unknown ID, failed import + real retry, shared load`)
  }
-}finally{await send('Fetch.disable');socket.close()}
+}finally{try{await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:clock.identifier})}finally{await send('Fetch.disable');socket.close()}}
