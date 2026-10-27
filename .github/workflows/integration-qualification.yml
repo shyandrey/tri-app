@@ -1,0 +1,175 @@
+{
+  "name": "Isolated integration qualification",
+  "on": {
+    "push": {
+      "branches": [
+        "ci/preview-integration-qualification"
+      ]
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "jobs": {
+    "portable": {
+      "if": "github.ref == 'refs/heads/ci/preview-integration-qualification'",
+      "name": "Portable verification",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 20,
+      "steps": [
+        {
+          "name": "Initialize CI report directory",
+          "shell": "bash",
+          "run": "echo \"CI_REPORT_DIR=$RUNNER_TEMP/portable-ci\" >> \"$GITHUB_ENV\"\nmkdir -p \"$RUNNER_TEMP/portable-ci\"\n"
+        },
+        {
+          "name": "Checkout exact event SHA (PR merge candidate or dispatch SHA)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 0
+          }
+        },
+        {
+          "name": "Install pinned Node",
+          "uses": "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "with": {
+            "node-version": "24.19.0"
+          }
+        },
+        {
+          "name": "Verify checkout and toolchain",
+          "shell": "bash",
+          "env": {
+            "EXPECTED_SHA": "${{ github.sha }}"
+          },
+          "run": "test \"$(git rev-parse HEAD)\" = \"$EXPECTED_SHA\"\ntest \"$(node --version)\" = 'v24.19.0'\nnode --version\nnpm --version\npython3 --version\npython3 -c 'import sqlite3; print(\"SQLite\", sqlite3.sqlite_version)'\ngit cat-file -e b511238210cba253bd4b90b6b9fdf8b2b2611a9d:migrations/0001_feedback_news.sql\nmkdir -p \"$CI_REPORT_DIR\"\n"
+        },
+        {
+          "name": "Install locked dependencies",
+          "shell": "bash",
+          "run": "set -o pipefail\nnpm ci --no-audit --no-fund 2>&1 | tee \"$CI_REPORT_DIR/npm-ci.log\"\n"
+        },
+        {
+          "name": "Portable tests, build, lint and unchanged release gate",
+          "run": "node scripts/check-ci-portable.mjs"
+        },
+        {
+          "name": "Record job outcome",
+          "if": "always()",
+          "env": {
+            "JOB_STATUS": "${{ job.status }}",
+            "CHECKED_SHA": "${{ github.sha }}"
+          },
+          "run": "printf '\\nJob status: %s\\n\\nEvent SHA: `%s`\\n' \"$JOB_STATUS\" \"$CHECKED_SHA\" >> \"$GITHUB_STEP_SUMMARY\"\n"
+        },
+        {
+          "name": "Failure diagnostics only",
+          "if": "failure()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "portable-ci-failure-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": "${{ runner.temp }}/portable-ci/",
+            "if-no-files-found": "warn",
+            "retention-days": 7,
+            "include-hidden-files": false
+          }
+        }
+      ]
+    },
+    "failure-artifact": {
+      "name": "Controlled failure artifact",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 5,
+      "steps": [
+        {
+          "name": "Initialize CI report directory",
+          "shell": "bash",
+          "run": "echo \"CI_REPORT_DIR=$RUNNER_TEMP/portable-ci\" >> \"$GITHUB_ENV\"\nmkdir -p \"$RUNNER_TEMP/portable-ci\"\n"
+        },
+        {
+          "name": "Controlled diagnostic failure",
+          "shell": "bash",
+          "run": "printf 'Intentional qualification failure; no credentials or application data.\\n' > \"$CI_REPORT_DIR/controlled.log\"\nprintf '{\"intentional\":true,\"expectedExit\":1}\\n' > \"$CI_REPORT_DIR/summary.json\"\nexit 1"
+        },
+        {
+          "name": "Failure diagnostics only",
+          "if": "failure()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "controlled-failure-${{ github.run_id }}",
+            "path": "${{ runner.temp }}/portable-ci/",
+            "if-no-files-found": "error",
+            "retention-days": 7,
+            "include-hidden-files": false
+          }
+        }
+      ]
+    },
+    "browser": {
+      "name": "Browser first-run qualification",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 35,
+      "steps": [
+        {
+          "name": "Initialize CI report directory",
+          "shell": "bash",
+          "run": "echo \"CI_REPORT_DIR=$RUNNER_TEMP/portable-ci\" >> \"$GITHUB_ENV\"\nmkdir -p \"$RUNNER_TEMP/portable-ci\"\n"
+        },
+        {
+          "name": "Checkout exact event SHA (PR merge candidate or dispatch SHA)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false,
+            "fetch-depth": 0
+          }
+        },
+        {
+          "name": "Install pinned Node",
+          "uses": "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "with": {
+            "node-version": "24.19.0"
+          }
+        },
+        {
+          "name": "Verify checkout and toolchain",
+          "shell": "bash",
+          "env": {
+            "EXPECTED_SHA": "${{ github.sha }}"
+          },
+          "run": "test \"$(git rev-parse HEAD)\" = \"$EXPECTED_SHA\"\ntest \"$(node --version)\" = 'v24.19.0'\nnode --version\nnpm --version\npython3 --version\npython3 -c 'import sqlite3; print(\"SQLite\", sqlite3.sqlite_version)'\ngit cat-file -e b511238210cba253bd4b90b6b9fdf8b2b2611a9d:migrations/0001_feedback_news.sql\nmkdir -p \"$CI_REPORT_DIR\"\n"
+        },
+        {
+          "name": "Install locked dependencies",
+          "shell": "bash",
+          "run": "set -o pipefail\nnpm ci --no-audit --no-fund 2>&1 | tee \"$CI_REPORT_DIR/npm-ci.log\"\n"
+        },
+        {
+          "name": "Build tested application",
+          "run": "npm run build"
+        },
+        {
+          "name": "First-run browser suites (fresh process per suite)",
+          "env": {
+            "BROWSER_REPORT_DIR": "${{ runner.temp }}/browser-qualification"
+          },
+          "run": "node scripts/ci-qualification/browser.mjs"
+        },
+        {
+          "name": "Failure diagnostics only",
+          "if": "always()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "browser-first-run-${{ github.run_id }}",
+            "path": "${{ runner.temp }}/browser-qualification/",
+            "if-no-files-found": "warn",
+            "retention-days": 7,
+            "include-hidden-files": false
+          }
+        }
+      ]
+    }
+  }
+}
