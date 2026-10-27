@@ -236,6 +236,32 @@
 
 ## Needs Attention / Review
 
+### DEVOPS-03B.2A — Preview CI Integration & Branch Protection Preparation
+
+- **Status:** Prepared / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Result:** local CI-only permanent candidate for PRs/pushes to `preview`, restricted optional dispatch and qualified report initialization. No deployment; modified triggers have not run on Linux. [Implementation/protection/promotion plan](devops03b2-preview-implementation-plan.md).
+- **Owner decisions:** initial branch baseline, PR author/reviewer model (owner cannot approve own PR), exact personal-repository protections, dispatch bootstrap, browser qualification and later granular Preview permissions.
+
+### DEVOPS-03B.1Q.1 — Workflow Context Fix & Linux Qualification
+
+- **Status:** Owner Approved / Closed · **Priority:** P1 / Pre-release.
+- **Result:** one workflow-only commit/push `53a1fafb604cb86cee740acc5b6899c677c34640`; [run 40403415627](https://github.com/shyandrey/tri-app/actions/runs/40403415627) SUCCESS, attempt 1. Ubuntu 24.04.5, Node 24.19.0, npm 11.17.0, Python 3.12.3, SQLite 3.45.1. Portable photo/PTO/standings and unchanged release gate (build/lint included) PASS.
+- **Scope:** fix only isolated qualification workflow; primary candidate/runtime/tests and unrelated work preserved. Failure-artifact step correctly skipped on success, upload path not execution-qualified. Browser/native/archive suites remain separate.
+- **Next action:** DEVOPS-03B.2A prepared; separately authorize DEVOPS-03B.2B integration. No automatic deployment authorized. [Exact diff, results and limitations](devops03b1-ci-portability.md#devops-03b1q1--workflow-context-correction-and-linux-pass).
+
+### DEVOPS-03B.1Q — GitHub Actions Linux Qualification
+
+- **Status:** Owner Approved / Closed · **Priority:** P1 / Pre-release.
+- **Result:** isolated `ci/preview-qualification` pushed once at `05b65af0bdb81b4657ca8f0e029c97d193951535`; [run 40401545326](https://github.com/shyandrey/tri-app/actions/runs/40401545326) FAIL before runner execution (0 jobs/artifacts). Linux tests NOT RUN; no application defect established.
+- **Historical failure resolved:** Q.1 moved report initialization into a step and passed Linux qualification. Initial failure retained as evidence; owner approval closes qualification. [Evidence and proposal](devops03b1-ci-portability.md#devops-03b1q--github-actions-qualification-attempt).
+- **Preservation:** primary branch/index, Home/Profile work, QA-03B and artifacts untouched; no Preview/Production deployment, credentials/configuration changes or `preview` branch creation.
+
+### DEVOPS-03B.1 — CI Portability & Preview Pipeline Preparation
+
+- **Status:** Implemented / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Result:** secret-free PR/manual workflow candidate, pinned Node/actions, explicit portable suite and unchanged release gate. Isolated macOS copy + fresh `npm ci`: photo 25/25, PTO 44/44, official standings 20/20, release gate 18/18 PASS (includes build/lint and Calendar/navigation/ranking). Full Git history required by Feedback migration integrity test.
+- **Limitation:** Linux runner/container unavailable; Linux and GitHub execution NOT VERIFIED. Browser qualification remains separate; no automatic retry or deployment. [Command matrix, evidence and DEVOPS-03B.2 plan](devops03b1-ci-portability.md).
+
 ### QA-03B — Photo Test Contract Modernization
 
 - **Status:** Owner Approved · **Priority:** P1 / Pre-release.
@@ -271,6 +297,34 @@
 - **Links:** [scripts](scripts.md), [News operations](latest-news.md), [production runbook](deployment-cloudflare.md), [release policy](../scripts/release-policy.mjs).
 
 ## Backlog
+
+### DEVOPS-03A — Automated Preview Deployment Architecture & Security Audit
+
+- **Status:** Audit Complete / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Result:** proposed protected `preview` promotion, secret-free CI, verified release packaging and Preview-only deployment credentials; current SHA-check gap, permission qualification and QA-03/browser stability remain enablement gates. [Architecture and security audit](devops03-preview-cicd-audit.md).
+- **Scope:** documentation only; no workflow, branch, token, settings or deployment changes. DEVOPS-02 remains a separate Codex Cloud development task.
+
+### DEVOPS-03B — Automated Preview Deployment Implementation
+
+- **Status:** Planned / Pending Architecture Approval · **Priority:** P1 / Pre-release.
+- **Next action:** approve DEVOPS-03A decisions, qualify CI/tests and granular permissions, implement reviewed packaging/guards, then separately authorize setup and a supervised Preview deployment. Production stays manual; no implementation authorized by this entry.
+- **Links:** [Implementation stages and open decisions](devops03-preview-cicd-audit.md#10-complexity-decisions-and-devops-03b-plan).
+
+
+### DEVOPS-03B.2B — Branch & CI Integration
+
+- **Status:** Planned · **Priority:** P1 / Pre-release.
+- **Next action:** separately authorize reviewed commit/push, future `preview` branch and protection/PR setup; qualify permanent PR/push triggers and failure artifacts. CI only, no deployment. [Plan](devops03b2-preview-implementation-plan.md#owner-decisions-and-next-stages).
+
+### DEVOPS-03B.2C — Cloudflare Preview Auto Deploy
+
+- **Status:** Planned · **Priority:** P1 / Pre-release.
+- **Next action:** separately approve verified-artifact publication, scoped Preview permissions/custom-domain compatibility and supervised first deployment; no Production access or D1 migrations. [Isolation and permission requirements](devops03b2-preview-implementation-plan.md#deployment-architecture-for-devops-03b2c--planned).
+
+### Browser CI qualification
+
+- **Status:** Pending.
+- **Scope:** fresh-process Linux Chromium/CDP, navigation stability, Rankings/swipe/network assertions and failure screenshots; no silent retries. Separate from the qualified portable gate; no new task ID allocated. [Qualification plan](devops03b2-preview-implementation-plan.md#browser-ci-qualification--pending-separate-gate).
 
 ### RANK-01 — Official Series Rankings Integration
 
