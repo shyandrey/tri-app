@@ -22,6 +22,7 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
           <div className="more-panel">
             <h3 className="more-brand">300W⚡ APP</h3>
             <p>Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.</p>
+            <p>ТРИАТЛОН — ЭТО МОЩНО!</p>
             <details className="more-release">
               <summary>
                 <span className="more-version">Версия {buildMetadata.version}</span>

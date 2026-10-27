@@ -117,7 +117,6 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
             <GearIcon />
           </button>
         </div>
-        <h2>ТРИАТЛОН — ЭТО <span>МОЩНО!</span></h2>
       </header>
 
       <div className="home-content">

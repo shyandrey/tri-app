@@ -46,7 +46,11 @@
 
 ### HOME-UI-01 — Home Slogan Review
 
-- **Status:** SEPARATE PRE-RELEASE REVIEW · owner decision pending. Preserve as independent task; no slogan edits or approval inferred from consolidation.
+- **Status: Variant C Implemented / Awaiting Final Owner Review.** HOME-UI-01B: owner-approved exact Variant C patch removes the Home slogan and places it as an existing-style paragraph after the More/About description. No CSS, artwork, data or carousel changes. Local implementation only; no commit/push/deployment. [Implementation and QA](home-ui-01-slogan-review.md#home-ui-01b--approved-variant-c-implementation).
+
+### HOME-UI-01A — Home Slogan Review Prototypes
+
+- **Status: Prototype prepared / Awaiting Owner Review.** Three isolated variants (current, minimal Home, minimal Home + More) captured at four portrait/landscape sizes. Recommendation: C, pending owner choice. Primary Home/More unchanged; no prototype commit or deployment. [Review and evidence](home-ui-01-slogan-review.md).
 
 ## Rankings UI closure — RANK-07 · 2026-10-23
 
