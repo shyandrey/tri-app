@@ -1,4 +1,4 @@
-import { assertDocumentWidth, verifyGeometryFixtures } from './browser-geometry-contract.mjs'
+import { assertDocumentWidth, assertEdgeToEdge, verifyGeometryFixtures } from './browser-geometry-contract.mjs'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 verifyGeometryFixtures()
@@ -187,7 +187,9 @@ try{
   assert.equal(await js('document.querySelectorAll(".standings-name small").length'),0)
   assert.equal(await js('document.querySelectorAll(".rankings-table-panel:not([inert]) .standings-flag").length'),10)
   assert.ok(await js('[...document.querySelectorAll(".rankings-table-panel:not([inert]) .standings-flag")].every(e=>e.getBoundingClientRect().right<=e.closest("tr").cells[2].getBoundingClientRect().left)'))
-  assert.ok(await js('(()=>{const r=document.querySelector(".standings-showcase").getBoundingClientRect();return r.left===0&&r.width===innerWidth&&r.top===0})()'))
+  const showcaseGeometry=await js('(()=>{const r=document.querySelector(".standings-showcase").getBoundingClientRect();return {left:r.left,width:r.width,top:r.top,contentWidth:document.documentElement.clientWidth}})()')
+  assertEdgeToEdge(showcaseGeometry,showcaseGeometry.contentWidth)
+  assert.equal(showcaseGeometry.top,0)
   assert.ok(await js('document.querySelector(".page-back-button").getBoundingClientRect().height>=32'))
   console.log(`PASS ${width}px ${theme}: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback`)
  }
