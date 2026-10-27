@@ -119,3 +119,134 @@ Retain the previously successful package digest and Cloudflare version/deploymen
 Local YAML syntax, expression-context/trigger/guard checks, shell syntax, structural equality of every qualified job step, documentation links and `git diff --check` PASS. `actionlint` unavailable; no install. No build/full test rerun: runtime, runner, commands and dependencies are unchanged, and new event/guard behavior needs GitHub qualification rather than another macOS build. No new Linux PASS claimed.
 
 Modified scope: `.github/workflows/preview-ci.yml`, `docs/devops03b1-ci-portability.md`, this new report, `docs/PROJECT_BOARD.md`. Existing modified/untracked files preserved; primary index remains empty. No remote write, branch/PR creation, deployment, settings/secrets/token/version/D1/runtime/data/artwork changes.
+
+## DEVOPS-03B.2B.1 — Approved baseline and isolated qualification (2026-10-27)
+
+This section supersedes the preparation-only execution status above. Owner authorized three local thematic commits and one isolated qualification push; no permanent `preview` branch, deployment or settings changes.
+
+### Approved baseline and exact commit scope
+
+Primary branch: `home-redesign-experiments`. Starting HEAD: `8afd925a2484bb2a4f6b066bd57b32c029efb6a9`. Proposed clean Preview baseline: **`82a4a6b7293c901ab8d89c06948e9736e8777c46`**. Use the committed tree, not the dirty development directory. Shared Project Board updates were separated by task using reviewed index blobs; unrelated DEVOPS-02/OPS-04 backlog text remains unstaged.
+
+**`ff2c980671577da8455c3939ee2ded4fd0b0f4e6` — style(home): relocate slogan to about section**
+
+- `docs/PROJECT_BOARD.md`
+- `docs/home-ui-01-slogan-review.md`
+- `src/App.tsx`
+- `src/pages/MorePage.tsx`
+
+**`267fecbbb4c1ebf141a2a217c1de4070a3d3b430` — test(photos): modernize approved photo contracts**
+
+- `docs/PROJECT_BOARD.md`
+- `docs/qa03-historical-photo-tests.md`
+- `scripts/fixtures/athlete-photo-catalog-approved.json`
+- `scripts/release-policy.mjs`
+- `scripts/test-athlete-photo-archive.mjs`
+- `scripts/test-athlete-photos.mjs`
+
+**`82a4a6b7293c901ab8d89c06948e9736e8777c46` — ci(preview): prepare protected-branch verification**
+
+- `.github/workflows/preview-ci.yml`
+- `docs/PROJECT_BOARD.md`
+- `docs/devops03-preview-cicd-audit.md`
+- `docs/devops03b1-ci-portability.md`
+- `docs/devops03b2-preview-implementation-plan.md`
+- `scripts/check-ci-portable.mjs`
+
+Each exact staged candidate was exported to an isolated copy before testing. A: release gate 18/18 PASS (including production build/lint/navigation). B: photo contracts/native synthetic tests 38/38 PASS; release gate 18/18 PASS. C: portable runner PASS — metadata, portable photos 25/25, PTO 44/44, official standings 20/20, release gate 18/18 including production build/lint. Staged scope/whitespace checks and sanitized secret scan passed before each commit. The staging-dependent archive group was not rerun; no claim of full 41-test photo execution in this task.
+
+### One isolated qualification push
+
+- Branch: `ci/preview-integration-qualification`.
+- Qualification SHA: `33f2acff88d6055b85df80b00670e0140ad1fd44`, parent is proposed baseline above.
+- [GitHub Actions run 40483823503](https://github.com/shyandrey/tri-app/actions/runs/40483823503), attempt 1. No rerun or additional push.
+- Only qualification additions: `.github/workflows/integration-qualification.yml` and `scripts/ci-qualification/browser.mjs`. These files are absent from the development baseline.
+- Branch-only push trigger, `contents: read`, no deployment steps, Cloudflare credentials or repository secret references. Portable job step sequence matches the permanent candidate; target guard is restricted to the qualification branch.
+- Browser harness uses preinstalled headless Chrome with sandbox enabled, loopback Vite/CDP, fresh process/profile per suite, bounded readiness and 300-second per-suite timeout. Existing assertions are unchanged; every suite runs once, independent failures are preserved. Browser profiles/cookies are not uploaded.
+- YAML/shell/context checks and harness syntax/lint passed locally. `actionlint` was unavailable and was not installed.
+
+Permanent PR-to-preview, push-to-preview and manual-preview triggers are statically checked, **not live-event qualified**. Creating the prohibited branch was not used as a workaround. Safe alternative executed here: identical portable steps behind the isolated branch-only trigger. Real-event acceptance remains necessary after separate authorization for permanent branch/protection setup; manual dispatch also requires default-branch workflow registration.
+
+### Linux portable and controlled failure results
+
+**Portable verification: PASS**, first run, Ubuntu 24.04.5 / runner image `20261012.334.1`, Node `v24.19.0`, npm `11.17.0`, Python `3.12.3`, Python SQLite `3.45.1`. Exact checkout and historical migration availability passed; `npm ci` passed. Runner log records metadata, portable photos, PTO identity/registry, official standings and unchanged release gate all PASS. Release gate executes production build and lint. Successful inner TAP logs are not uploaded by the failure-only policy; suite counts above are the separately retained local staged-candidate results.
+
+**Controlled failure diagnostics: PASS.** Dedicated isolated job exited 1 intentionally, then the pinned upload step succeeded. Downloaded artifact `controlled-failure-40483823503` (ID `12724530510`, 360 bytes) contains exactly:
+
+- `controlled.log`: explicit intentional failure message, SHA-256 `accd8f7b81a837e1fcfd1c3bf9cb2907cef238d422659315b1c4471404666d3f`.
+- `summary.json`: `{"intentional":true,"expectedExit":1}`, SHA-256 `bd9afde7ebaca8bff1065b042c706f037ffb1deb550fba4669128182a9452d92`.
+
+Content was inspected: no secrets, profiles, credentials or application data. API creation `2026-10-27T09:50:23Z`, expiration `2026-11-03T09:50:22Z` confirms configured seven-day retention, within one-second server timing. Future deletion was not observed. This deliberately failed job makes the overall run red by design; it must not be mistaken for a failed portable gate. Browser outcome is assessed independently below.
+
+Warnings: known sports chunk size exception remains. GitHub additionally warns that pinned checkout/setup-node actions target deprecated Node 20 and are forced onto Node 24; steps succeeded. Review action-runtime migration separately, without silently changing pinned actions in this task.
+
+### Browser first-run results and diagnosis
+
+Chrome **155.0.8059.39**, Ubuntu headless, seven fresh processes/profiles, no retries. Browser build PASS; browser job **FAIL**. All seven suites executed.
+
+| Suite | Result | Evidence |
+| --- | --- | --- |
+| Official Rankings | FAIL | Eight viewport/theme combinations passed; at 844px desktop `test-official-rankings-browser.mjs:90`, document scrollWidth 829, expected emulated width 844. |
+| Rankings controls / Season Picker | PASS | All 14 viewport/theme combinations. |
+| Rankings swipe / network | PASS | Negative network fixtures, all 14 gesture combinations, reduced motion/boundary/orientation, exactly two current-scene sources and no duplicates. |
+| Rankings showcase | FAIL | 16 WebP byte/hash checks and all eight scenes across 14 mobile viewport/theme combinations passed; desktop snap timeout at `test-rankings-showcase-browser.mjs:191`: series T100, scrollLeft 1425, expected 1440. |
+| Navigation | PASS | List/filter/year state, nested Back, browser history, Calendar/Home restoration, direct race/refresh, stale route and results sorting. |
+| Calendar | PASS | 320/390/844/1440px: filters, archives, search/empty, deterministic order, Back/scroll and overflow. |
+| More | FAIL | 320/390/430px passed; desktop 768px at `test-more-browser.mjs:36`: document scrollWidth 753, expected viewport 768. Later scenarios did not execute. |
+
+Verified test-contract issue: the failing assertions compare layout width/track offset with the configured viewport width. Application `RankingsSwipeTrack.tsx:15` instead uses actual track `clientWidth + gap`, as appropriate for its layout. All three discrepancies are exactly **15px**, only after desktop emulation is selected; evidence strongly indicates Linux classic scrollbar space, unlike macOS overlay scrollbars. Successful T100 state transition is recorded in the timeout. This is not evidence of an incorrect ranking or failed series selection. The exact `clientWidth`/scrollbar measurements were not emitted by these failed assertions, so scrollbar attribution remains a well-supported diagnosis, not a separately measured runtime fact. No runtime fix or passing rerun is claimed.
+
+Proposed minimal separately approved correction: in the three named browser test files, measure layout viewport `document.documentElement.clientWidth` for no-overflow assertions and actual track/panel width for snap and coverage assertions. Log `innerWidth`, root client/scroll widths, track width and scrollLeft. Preserve exact data/state/asset assertions and bounded waits; do not hide scrollbars, disable checks or add retries merely to pass. Qualify once again after owner authorization. No test/runtime changes were made here.
+
+Browser artifact `browser-first-run-40483823503`, ID `12724891030`, 52,755,293 bytes, uploaded successfully with seven-day retention. Full download hit local 30s and 180s transfer timeouts; small diagnostic entries were successfully downloaded via HTTP byte ranges without rerunning CI. ZIP index, all seven test/browser logs, Chrome version and summary are retained under `/tmp/300w-devops03b2b1/browser-evidence/`; GitHub retains screenshots. Complete run logs downloaded as `/tmp/300w-devops03b2b1/run-logs.zip`. Do not mislabel the partial local archive extraction as a full offline screenshot backup. The harness copied named Calendar screenshots into the subsequent More directory too; those are Calendar evidence, not More screenshots. Narrow artifact copying in a future harness revision. No browser profiles or credentials were included.
+
+### Final state, blockers and recommendation
+
+- **Local consolidation complete; portable Linux gate and controlled failure diagnostics qualified. Browser gate not qualified (4/7 suites PASS).** Overall run is FAILURE for both the expected controlled error and three unexpected browser-suite failures. No second qualification push/run.
+- Recommend the proposed baseline SHA for owner review, but defer permanent Preview branch setup until owner resolves browser test portability, PR author/reviewer model and protection policy. Portable verification should be mandatory. Do not enable the currently failing browser aggregate as a reliable mandatory check or silently mark it non-blocking; retain a promotion blocker pending explicit owner decision and corrected qualification. Physical iPhone/WebKit QA remains separate.
+- Real Preview PR/push/manual event paths still require separately authorized acceptance checks; no permanent branch created. No deployment, Cloudflare/secret/D1/settings/version changes.
+- Fresh remote query: development remains `f99c7775b92143eb847d470dd93ff4c3580c5224`, main remains `23c5e52e8c0ccec1dea29cd94d6185568ec4543a`; no `preview` ref. Only isolated qualification branch was pushed. Primary branch is five commits ahead of its unchanged remote (two pre-existing plus three new).
+- Primary index empty; qualification worktree clean. These final report/Board updates remain uncommitted. Existing Board DEVOPS-02/OPS-04 additions, `src/athlete-detail.css`, `src/pages/AthleteDetailPage.tsx`, Profile browser test, audit artifacts, original artwork/manifests and other untracked files are preserved. SHA-256 comparison against the 1,245-file starting inventory permits only the two requested final documentation updates; no original files deleted.
+- Final local documentation file-link checks and `git diff --check`: PASS. No additional commits or pushes after qualification. **STOP for owner review.**
+
+## QA-05 — Linux geometry investigation (2026-10-27)
+
+[QA-05 report](qa05-linux-browser-geometry.md) supersedes the earlier provisional scrollbar diagnosis: measured Linux content widths `829/1425/753` expand to configured `844/1440/768` when the scrollbar is temporarily hidden and return on restoration. T100 track/snap follows `1425 → 1440 → 1425`; no root overflow. macOS reserves zero width and all three unchanged suites PASS.
+
+Qualification commit `a4ae3681c81a10b2f6659a1cbb356de76eb2c5f0`, [run 40486902378](https://github.com/shyandrey/tri-app/actions/runs/40486902378): geometry/portable PASS; four original browser suites PASS, the same three FAIL. Assertions remain unchanged. First-run failure triggers the owner's STOP rule; test-only geometry correction is proposed, not applied. Browser qualification remains incomplete and permanent Preview creation remains deferred pending owner review. Primary baseline unchanged; diagnostic commit exists only on qualification branch (plus disclosed local qualification ref). No deployment.
+
+## QA-05B — Geometry test correction / incomplete qualification
+
+[QA-05B results](qa05-linux-browser-geometry.md#qa-05b-linux-first-run-outcome--incomplete-qualification): four test-only files in isolated commit `674007db6450e4c8c3999fbcd1cf8b1471a581b4`, [run 40496089575](https://github.com/shyandrey/tri-app/actions/runs/40496089575), one push/attempt. Local seven suites, build/lint/release gate and negative fixtures PASS. Linux portable PASS; browser **6/7 PASS**, Official Rankings FAIL at remaining `hero.width === innerWidth` assertion (line 190). Showcase and More now PASS. This missed second assumption requires a minimal follow-up, proposed but not applied after first-run failure. Browser qualification remains incomplete; permanent Preview creation deferred. No development push, runtime changes or deployment.
+
+## DEVOPS-03B.2B.2 — Approved baseline consolidation
+
+Owner authorized consolidation of QA-05B/QA-05B.1 and conditional development/Preview pushes. Starting development HEAD: `82a4a6b7293c901ab8d89c06948e9736e8777c46`, branch `home-redesign-experiments`, empty index. Five existing outgoing commits contain approved DS-01, QA-04B, HOME-UI-01B, QA-03B and CI preparation.
+
+Exact new consolidation scope:
+
+- `scripts/test-official-rankings-browser.mjs`
+- `scripts/test-rankings-showcase-browser.mjs`
+- `scripts/test-more-browser.mjs`
+- `scripts/browser-geometry-contract.mjs`
+- `docs/qa05-linux-browser-geometry.md`
+- This implementation plan.
+- QA-05/DEVOPS-03 status hunks in `docs/PROJECT_BOARD.md`; unrelated DEVOPS-02/OPS-04 backlog additions remain unstaged.
+
+The four test files match the final qualified Linux candidate byte-for-byte. The permanent workflow is unchanged and CI-only; the qualification-only controlled-failure job and harness are absent. Its permanent job runs portable verification, not the seven-suite browser qualification harness. Live PR/manual Preview event paths and branch protection still require their separate acceptance/setup steps.
+
+### Current verification and remote safety
+
+Fresh read-only remote query: development `f99c7775b92143eb847d470dd93ff4c3580c5224`, main `23c5e52e8c0ccec1dea29cd94d6185568ec4543a`, qualification `fdd7918268326d6eeacef407951c8f1f9d69610a`; no `preview` ref. GitHub API: hooks 0, environments 0, deployments 0; two known qualification workflow records, no newly observed deployment run.
+
+Cloudflare read-only `GET /client/v4/accounts` with existing Wrangler OAuth returned **HTTP 403**. The response does not establish current Workers Builds connection state; no permission name is inferred from the HTTP status alone. No credentials were changed. Current Dashboard confirmation was requested from the owner. Until deployment safety is established, **remote writes and permanent Preview creation are BLOCKED** under section 7 of the task. Historical owner confirmation is retained as historical evidence, not relabeled as a fresh API verification.
+
+Isolated current baseline: portable photos 25/25, PTO 44/44, standings 20/20, build/lint and release gate 18/18 PASS. Known sports chunk warning remains. Fresh-profile macOS Chrome 156.0.8078.48 browser reruns: Official Rankings, Rankings Showcase and More **3/3 PASS**, first attempts; seven negative geometry fixtures PASS in affected suites. Other four browser suites were not rerun locally in this task; their prior Linux 7/7 qualification remains separately recorded. Local documentation file links and whitespace checks PASS. Evidence: `/tmp/300w-devops03b2b2/`. No runtime, sports data, artwork, Cloudflare, D1, secrets, version or deployment changes.
+
+### Local outcome and remaining actions
+
+Approved corrections and relevant documentation are consolidated under `test(browser): correct cross-platform viewport geometry`. New commit contains exactly the seven paths listed above. Branch remains `home-redesign-experiments`; index is empty after the commit. Excluded files are checked against the starting 1,247-file SHA-256 inventory; only the three authorized report/Board files changed during this task. The four approved tests already present at entry were not rewritten. Unfinished Profile, original artwork, audit artifacts and DEVOPS-02/OPS-04 working-tree additions remain untouched and outside this commit.
+
+**Remote phase BLOCKED:** no development push, no permanent `preview` creation/push, no new Actions run. Remote development remains the freshly queried `f99c7775b92143eb847d470dd93ff4c3580c5224`; proposed Preview baseline is the resulting local consolidation HEAD, not the qualification branch. No Cloudflare deployment was executed. Because live Cloudflare integration state could not be inspected, no claim of independently verified Cloudflare deployment-history invariance is made.
+
+Next: obtain current owner Dashboard confirmation that both Workers have no connected Git repository (or restore read-only API visibility without this task changing credentials), repeat fresh remote/safety checks, then resume the already authorized conditional pushes. After creation verify Preview CI on its exact SHA. Branch protection/required-check and reviewer settings, live PR/manual-trigger acceptance, and future Auto Deploy require their separate authorized setup; no deployment steps or credentials are added here. **STOP for owner review.**

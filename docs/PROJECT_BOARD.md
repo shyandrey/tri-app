@@ -236,6 +236,45 @@
 
 ## Needs Attention / Review
 
+### DEVOPS-03B.2B.2 — Approved Baseline & Permanent Preview Branch
+
+- **Status:** Approved local consolidation complete / Remote writes BLOCKED pending deployment-safety confirmation · **Priority:** P1 / Pre-release.
+- **Approved scope:** qualified QA-05B/QA-05B.1 browser corrections and relevant reports; no qualification-only workflow, controlled-failure job, runtime or unfinished Athlete Profile changes.
+- **Verification:** isolated portable tests, build/lint and release gate 18/18 PASS; Official Rankings/Showcase/More browser reruns 3/3 PASS, negative fixtures PASS. Prior Linux qualification 7/7 PASS is preserved.
+- **Remote gate:** fresh development HEAD `f99c777`, no `preview` ref; GitHub hooks/deployments 0. Cloudflare accounts API HTTP 403 prevents fresh Workers Builds inspection; current owner Dashboard confirmation requested. No push or permanent branch creation until safety is established.
+- **Details:** [approved scope and actual outcome](devops03b2-preview-implementation-plan.md#devops-03b2b2--approved-baseline-consolidation).
+
+### QA-05B.1 — Final Official Rankings Geometry Fix
+
+- **Status:** Owner Approved / Linux Qualification PASS / Consolidated locally · **Priority:** P1 / Pre-release.
+- **Correction:** remaining hero-width assertion uses existing edge-to-edge helper with root clientWidth; strict top/left and all responsive checks preserved. One test file, no runtime/helper/workflow changes.
+- **Verification:** local Official Rankings/negative fixtures PASS, standings 20/20 and targeted lint PASS; local build/full lint/release gate reused from QA-05B. Linux **7/7 browser suites PASS**, Portable CI PASS including build/lint/gate; first run, no retries.
+- **Evidence:** qualification SHA `fdd7918268326d6eeacef407951c8f1f9d69610a`, [run 40518640960](https://github.com/shyandrey/tri-app/actions/runs/40518640960), [full results](qa05-linux-browser-geometry.md#qa-05b1-final-linux-qualification--pass). Overall run intentionally red only due to inherited controlled-failure artifact job; required jobs PASS.
+- **Next action:** qualified candidate approved and consolidated in DEVOPS-03B.2B.2. Geometry blocker resolved; remote promotion awaits deployment-safety confirmation above.
+
+### QA-05B — Linux Browser Geometry Test Correction
+
+- **Status:** Owner Approved / Consolidated locally · **Priority:** P1 / Pre-release.
+- **Scope:** three browser tests plus shared test-only geometry assertions/negative fixtures. Actual content width and track dimensions replace incorrect viewport assumptions; CSS-vw heights, artwork, data, navigation and responsive behavior preserved.
+- **Local verification:** seven macOS browser suites PASS; seven negative fixtures PASS; standings 20/20; build/lint/release gate 18/18 PASS. No retries.
+- **Qualification:** isolated commit `674007db6450e4c8c3999fbcd1cf8b1471a581b4`, [run 40496089575](https://github.com/shyandrey/tri-app/actions/runs/40496089575): Linux portable PASS, browser **6/7 PASS**; Official Rankings FAIL at remaining `hero.width === innerWidth` assertion, line 190. Showcase/More PASS. [Exact failure and minimal follow-up](qa05-linux-browser-geometry.md#qa-05b-linux-first-run-outcome--incomplete-qualification).
+- **Historical outcome:** first-failure STOP was honored. The remaining assertion and qualification blocker are resolved by separately authorized QA-05B.1 above (Linux 7/7); earlier failed-run evidence retained.
+
+### QA-05 — Linux Browser Geometry
+
+- **Status:** Investigation accepted / Resolved by QA-05B.1 · **Priority:** P1 / Pre-release.
+- **Finding:** confirmed 15px classic desktop scrollbar; root/body/visual and track widths change reversibly when hidden/restored. The three tests incorrectly equate content width with configured viewport width. No runtime regression found in measured geometry/snap.
+- **Verification:** macOS three affected suites PASS; Linux geometry/portable PASS, browser four PASS / same three FAIL. One qualification push/run, no retries; unchanged assertions. [Run 40486902378](https://github.com/shyandrey/tri-app/actions/runs/40486902378), [full comparison and proposed correction](qa05-linux-browser-geometry.md).
+- **Next action:** historical first-failure STOP was honored; separately approved QA-05B.1 resolved the blocker with Linux 7/7 PASS. See current DEVOPS-03B.2B.2 status above.
+
+### DEVOPS-03B.2B.1 — Approved Baseline & Updated CI Qualification
+
+- **Status:** Local consolidation complete / Qualification findings awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Baseline:** `82a4a6b7293c901ab8d89c06948e9736e8777c46`; local Home `ff2c980`, photo contracts `267fecb`, CI preparation `82a4a6b`. Development branch was not pushed; unfinished Athlete Profile and unrelated artifacts preserved.
+- **Linux:** portable verification PASS; controlled failure artifact upload/download/content/7-day retention metadata verified. Browser first runs: Controls, Swipe/Network, Navigation, Calendar PASS; Official Rankings, Showcase and More FAIL. No retries; do not treat the full browser gate as qualified.
+- **Evidence:** [Run 40483823503](https://github.com/shyandrey/tri-app/actions/runs/40483823503), isolated branch `ci/preview-integration-qualification`, qualification SHA `33f2acff88d6055b85df80b00670e0140ad1fd44`. Intentional failure job is separate from unexpected browser failures. [Exact scope, diagnostics and next steps](devops03b2-preview-implementation-plan.md#devops-03b2b1--approved-baseline-and-isolated-qualification-2026-10-27).
+- **Next action:** historical browser failures resolved by QA-05B.1; approved baseline consolidation continues in DEVOPS-03B.2B.2. Live PR/push/manual Preview triggers remain untested; protections and reviewer settings remain separate work.
+
 ### DEVOPS-03B.2A — Preview CI Integration & Branch Protection Preparation
 
 - **Status:** Prepared / Awaiting Owner Review · **Priority:** P1 / Pre-release.

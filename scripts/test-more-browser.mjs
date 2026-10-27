@@ -1,5 +1,7 @@
+import { assertDocumentWidth, verifyGeometryFixtures } from './browser-geometry-contract.mjs'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
+verifyGeometryFixtures()
 const pkg=JSON.parse(await fs.readFile('package.json','utf8'))
 const wait=ms=>new Promise(r=>setTimeout(r,ms)),base=process.env.TRI_APP_URL??'http://localhost:8787'
 const targets=await(await fetch((process.env.TRI_CDP_URL??'http://127.0.0.1:9232')+'/json/list')).json()
@@ -33,7 +35,7 @@ try {
   assert.equal(await js('document.querySelectorAll(".more-release").length'),1)
   await js('document.querySelector(".more-release summary").click()')
   assert.equal(await js('document.querySelector(".more-release").open'),false)
-  assert.equal(await js('document.documentElement.scrollWidth'),width)
+  assertDocumentWidth(await js('({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})'))
   assert.equal(await js('document.querySelector(".more-action[href]").href'),'https://t.me/trista_watt')
   assert.ok(await js('[...document.querySelectorAll(".more-content a")].every(e=>e.target==="_blank"&&e.rel.includes("noopener")&&e.rel.includes("noreferrer")&&e.getBoundingClientRect().height>=44)'))
   const historyBefore=await js('JSON.stringify(history.state)')

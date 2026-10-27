@@ -1,5 +1,7 @@
+import { assertDocumentWidth, assertEdgeToEdge, verifyGeometryFixtures } from './browser-geometry-contract.mjs'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
+verifyGeometryFixtures()
 const base=process.env.TRI_APP_URL??'http://127.0.0.1:5390',cdp=process.env.TRI_CDP_URL??'http://127.0.0.1:9241'
 const wait=ms=>new Promise(r=>setTimeout(r,ms))
 const targets=await(await fetch(cdp+'/json/list')).json()
@@ -87,7 +89,7 @@ try{
      await click(`.standings-gender button:nth-child(${gi+1})`)
      const got=await js('[...document.querySelectorAll(".rankings-table-panel:not([inert]) .official-standings tbody tr")].map(r=>({rank:Number(r.cells[0].textContent),name:r.querySelector(".standings-name").firstChild.textContent,points:Number(r.cells[2].textContent.replace(/\\s/g,"")),id:Number(r.dataset.athleteId),href:r.querySelector("a").getAttribute("href")}))')
      assert.deepEqual(got,expected[`${s}-${y}-${g}`].rows.map(r=>({rank:r.officialRank,name:r.athleteName,points:r.officialPoints,id:r.athleteId,href:`#/athlete/${r.athleteId}`})))
-     assert.equal(await js('document.documentElement.scrollWidth'),width)
+     assertDocumentWidth(await js('({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})'))
      assert.equal(await js('document.querySelector(".official-standings").scrollWidth<=document.querySelector(".standings-swipe").clientWidth'),true)
     }
    }
@@ -185,7 +187,9 @@ try{
   assert.equal(await js('document.querySelectorAll(".standings-name small").length'),0)
   assert.equal(await js('document.querySelectorAll(".rankings-table-panel:not([inert]) .standings-flag").length'),10)
   assert.ok(await js('[...document.querySelectorAll(".rankings-table-panel:not([inert]) .standings-flag")].every(e=>e.getBoundingClientRect().right<=e.closest("tr").cells[2].getBoundingClientRect().left)'))
-  assert.ok(await js('(()=>{const r=document.querySelector(".standings-showcase").getBoundingClientRect();return r.left===0&&r.width===innerWidth&&r.top===0})()'))
+  const showcaseGeometry=await js('(()=>{const r=document.querySelector(".standings-showcase").getBoundingClientRect();return {left:r.left,width:r.width,top:r.top,contentWidth:document.documentElement.clientWidth}})()')
+  assertEdgeToEdge(showcaseGeometry,showcaseGeometry.contentWidth)
+  assert.equal(showcaseGeometry.top,0)
   assert.ok(await js('document.querySelector(".page-back-button").getBoundingClientRect().height>=32'))
   console.log(`PASS ${width}px ${theme}: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback`)
  }
