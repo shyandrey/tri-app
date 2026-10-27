@@ -1,4 +1,4 @@
-# Permanent CI-only candidate; no deployment or Cloudflare credentials.
+# Prepared Preview pipeline. Deployment is disabled until separate owner activation.
 name: Preview CI
 on:
   pull_request:
@@ -17,6 +17,9 @@ jobs:
     name: Portable verification
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    outputs:
+      artifact_id: ${{ steps.package_upload.outputs.artifact-id }}
+      manifest_digest: ${{ steps.package.outputs.manifest_digest }}
     steps:
       - name: Initialize CI report directory
         shell: bash
@@ -54,6 +57,21 @@ jobs:
           npm ci --no-audit --no-fund 2>&1 | tee "$CI_REPORT_DIR/npm-ci.log"
       - name: Portable tests, build, lint and unchanged release gate
         run: node scripts/check-ci-portable.mjs
+      - name: Preview pipeline safety tests
+        run: node --test scripts/test-preview-pipeline.mjs
+      - name: Package the verified build without rebuilding
+        id: package
+        run: node scripts/preview-artifact.mjs prepare "${{ runner.temp }}/preview-package" "$GITHUB_SHA"
+      - name: Retain immutable Preview package
+        id: package_upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preview-package-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/preview-package/
+          if-no-files-found: error
+          retention-days: 30
+          # Only dist/.assetsignore is allowed by the package verifier.
+          include-hidden-files: true
       - name: Record job outcome
         if: always()
         env:
@@ -70,3 +88,85 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
           include-hidden-files: false
+
+  browser:
+    name: Browser verification
+    needs: portable
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.19.0'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.portable.outputs.artifact_id }}
+          path: ${{ runner.temp }}/preview-package
+      - name: Verify artifact and serve its exact static output
+        env:
+          MANIFEST_DIGEST: ${{ needs.portable.outputs.manifest_digest }}
+        run: |
+          node scripts/preview-artifact.mjs verify "$RUNNER_TEMP/preview-package" "$GITHUB_SHA" "$MANIFEST_DIGEST"
+          test ! -e dist
+          cp -R "$RUNNER_TEMP/preview-package/dist" dist
+      - name: Seven qualified suites with fresh browser profiles
+        env:
+          BROWSER_REPORT_DIR: ${{ runner.temp }}/browser-ci
+        run: node scripts/check-preview-browser-ci.mjs
+      - name: Browser diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: browser-ci-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/browser-ci/
+          retention-days: 7
+          if-no-files-found: warn
+
+  deploy:
+    name: Deploy verified Preview
+    needs: [portable, browser]
+    # Owner must separately approve setting this NONSECRET activation variable to true.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/preview' && vars.PREVIEW_AUTO_DEPLOY_ENABLED == 'true'
+    environment: preview
+    concurrency:
+      group: tri-app-preview-publish
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.19.0'
+      - name: Prepare locked tools before exposing deployment credentials
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.portable.outputs.artifact_id }}
+          path: ${{ runner.temp }}/preview-package
+      - name: Deploy exact verified package once
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          PREVIEW_AUTO_DEPLOY_ENABLED: ${{ vars.PREVIEW_AUTO_DEPLOY_ENABLED }}
+          GH_READ_TOKEN: ${{ github.token }}
+          MANIFEST_DIGEST: ${{ needs.portable.outputs.manifest_digest }}
+        run: node scripts/deploy-preview-artifact.mjs "$RUNNER_TEMP/preview-package" "$MANIFEST_DIGEST" "$RUNNER_TEMP/preview-deployment"
+      - name: Read-only published Preview smoke (no Cloudflare credential)
+        run: node scripts/smoke-preview-ci.mjs "$RUNNER_TEMP/preview-package" "$GITHUB_SHA" "$RUNNER_TEMP/preview-deployment"
+      - name: Deployment evidence (including first failure)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preview-deployment-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/preview-deployment/
+          retention-days: 30
+          if-no-files-found: warn
