@@ -236,6 +236,19 @@
 
 ## Needs Attention / Review
 
+### QA-03B — Photo Test Contract Modernization
+
+- **Status:** Owner Approved · **Priority:** P1 / Pre-release.
+- **Result:** pinned approved identity/photo-state contract, preserved Franzi rejection, separate portable/native/archive suites; exact historical replay retained. Full local photo 41/41, portable clean-copy 25/25, complete node:test 284/284; production build/lint and release gate PASS. [Changes, commands and CI limitations](qa03-historical-photo-tests.md#qa-03b--photo-test-contract-modernization).
+- **Next action:** qualify the portable group on Linux for DEVOPS-03B. Native Swift/macOS and full-history/staging archival groups remain explicit local requirements. No runtime/data/artwork changes or deployment.
+
+### QA-03 — Historical Photo Test Failures Investigation
+
+- **Status:** Investigation Complete / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Findings:** exact same six photo assertions fail on current and c8f52e02 (27/33 PASS): stale catalog/coverage assumptions, incomplete historical photo baseline and intentional Franzi photo rejection. No new runtime photo defect found; 73 approved batch images retain identity/hash continuity, 81 profile routes and 221 runtime images pass local browser checks.
+- **Next action:** separately authorize test-maintenance and archive/CI portability work; do not weaken identity checks, restore the rejected photo or claim full suite PASS. [Root causes and release assessment](qa03-historical-photo-tests.md).
+
+
 ### BOT-03 — Retire unused Preview News receiver
 
 - **Status:** NEEDS REVIEW · **Priority:** P2.
