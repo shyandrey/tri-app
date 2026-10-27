@@ -1,5 +1,7 @@
+import { assertDocumentWidth, verifyGeometryFixtures } from './browser-geometry-contract.mjs'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
+verifyGeometryFixtures()
 const base=process.env.TRI_APP_URL??'http://127.0.0.1:5390',cdp=process.env.TRI_CDP_URL??'http://127.0.0.1:9241'
 const wait=ms=>new Promise(r=>setTimeout(r,ms))
 const targets=await(await fetch(cdp+'/json/list')).json()
@@ -87,7 +89,7 @@ try{
      await click(`.standings-gender button:nth-child(${gi+1})`)
      const got=await js('[...document.querySelectorAll(".rankings-table-panel:not([inert]) .official-standings tbody tr")].map(r=>({rank:Number(r.cells[0].textContent),name:r.querySelector(".standings-name").firstChild.textContent,points:Number(r.cells[2].textContent.replace(/\\s/g,"")),id:Number(r.dataset.athleteId),href:r.querySelector("a").getAttribute("href")}))')
      assert.deepEqual(got,expected[`${s}-${y}-${g}`].rows.map(r=>({rank:r.officialRank,name:r.athleteName,points:r.officialPoints,id:r.athleteId,href:`#/athlete/${r.athleteId}`})))
-     assert.equal(await js('document.documentElement.scrollWidth'),width)
+     assertDocumentWidth(await js('({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})'))
      assert.equal(await js('document.querySelector(".official-standings").scrollWidth<=document.querySelector(".standings-swipe").clientWidth'),true)
     }
    }

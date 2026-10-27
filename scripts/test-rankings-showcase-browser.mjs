@@ -1,7 +1,9 @@
+import { assertDocumentWidth, assertEdgeToEdge, assertResponsiveHeight, isSnapAt, verifyGeometryFixtures } from './browser-geometry-contract.mjs'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { rankingsShowcase } from '../src/pages/rankingsShowcase.ts'
+verifyGeometryFixtures()
 // Approved active bytes pinned at GIT-01B review. No archived PNG/manifest dependency.
 const activeAssets = {
   "/images/showcase/rankings/optimized/ironman_01_swim.webp": {
@@ -176,22 +178,22 @@ try {
    assert.deepEqual(decoded.map(x=>x.path),expectedPaths)
    for(const image of decoded){assert.ok(image.complete);assert.deepEqual([image.w,image.h],activeAssets[image.path].dimensions)}
    // Actual pointer drag: decoded neighboring panels must cover the frame continuously.
-   const hero=await js(`(()=>{const r=document.querySelector('.standings-showcase').getBoundingClientRect();return {w:r.width,h:r.height}})()`)
-   const x=width*.8,y=Math.min(hero.h*.65,100)
+   const hero=await js(`(()=>{const r=document.querySelector('.standings-showcase').getBoundingClientRect();return {w:r.width,h:r.height,trackWidth:document.querySelector('.standings-showcase .rankings-snap-track').clientWidth}})()`)
+   const x=hero.w*.8,y=Math.min(hero.h*.65,100)
    await send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button:'left',buttons:1})
    for(let step=1;step<=6;step++){
-    await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:x-width*.6*step/6,y,button:'left',buttons:1});await wait(20)
+    await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:x-hero.w*.6*step/6,y,button:'left',buttons:1});await wait(20)
     const frame=await js(`(()=>{const track=document.querySelector('.standings-showcase .rankings-snap-track'),panels=[...track.children];return {left:track.scrollLeft,ready:panels.every(p=>{const i=p.querySelector('img'),c=getComputedStyle(i);return i.complete&&i.naturalWidth>0&&c.visibility==='visible'&&c.opacity!=='0'}),bounds:panels.map(p=>{const r=p.getBoundingClientRect();return [r.left,r.right]})}})()`)
     assert.ok(frame.ready,'Both decoded images available during drag')
-    assert.ok(frame.bounds[0][0]<=1&&frame.bounds[1][1]>=width-1,'No uncovered frame edge')
+    assert.ok(frame.bounds[0][0]<=1&&frame.bounds[1][1]>=hero.w-1,'No uncovered frame edge')
     assert.ok(Math.abs(frame.bounds[0][1]-frame.bounds[1][0])<1,'No gap between images')
-    if(step===6)assert.ok(frame.left>width*.3,'Track follows pointer')
+    if(step===6)assert.ok(frame.left>hero.w*.3,'Track follows pointer')
    }
-   await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:x-width*.6,y,button:'left',buttons:0})
-   await until(`document.querySelector('main').dataset.series==='T100' && Math.abs(document.querySelector('.standings-showcase .rankings-snap-track').scrollLeft-${width})<1`)
+   await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:x-hero.w*.6,y,button:'left',buttons:0})
+   await until(`document.querySelector('main').dataset.series==='T100' && (${isSnapAt.toString()})(document.querySelector('.standings-showcase .rankings-snap-track').scrollLeft,1,${hero.trackWidth})`)
    for(const [i,series] of ['ironman','t100'].entries()){
     await click(`.standings-series button:nth-child(${i+1})`)
-    await until(`document.querySelector('main').dataset.series===${JSON.stringify(['IRONMAN_PRO_SERIES','T100'][i])} && Math.abs(document.querySelector('.standings-showcase .rankings-snap-track').scrollLeft-${i*width})<1`)
+    await until(`document.querySelector('main').dataset.series===${JSON.stringify(['IRONMAN_PRO_SERIES','T100'][i])} && (${isSnapAt.toString()})(document.querySelector('.standings-showcase .rankings-snap-track').scrollLeft,${i},${hero.trackWidth})`)
     await js('Promise.all([...document.querySelectorAll(".standings-showcase__art")].map(i=>i.decode()))')
     const info=await js(`(()=>{const e=document.querySelector('.rankings-showcase-panel[aria-hidden="false"] .standings-showcase__art'),b=e.getBoundingClientRect(),hero=document.querySelector('.standings-showcase').getBoundingClientRect(),back=document.querySelector('.page-back-button').getBoundingClientRect();return {src:e.currentSrc,w:e.naturalWidth,h:e.naturalHeight,fit:getComputedStyle(e).objectFit,left:hero.left,width:hero.width,heroHeight:hero.height,top:hero.top,backBottom:back.bottom,artTop:b.top,backWidth:back.width,backHeight:back.height}})()`)
     const finalCycling=width>height&&series==='t100'&&scene===1
@@ -210,11 +212,11 @@ try {
     assert.equal(await js("getComputedStyle(document.querySelector('.bottom-nav')).zIndex"),'40')
     assert.equal(await js("document.querySelectorAll('.bottom-nav__capsule').length"),1)
     assert.equal(info.fit,finalCycling||width<=height&&width>=1024?'contain':'cover')
-    assert.ok(Math.abs(info.heroHeight-(width>height?width/5.5:width>=1024?320:width/2.35))<1)
-    assert.equal(info.left,0);assert.equal(info.top,0);assert.equal(info.width,width)
+    assertResponsiveHeight(info.heroHeight,width,height)
+    assert.equal(info.top,0);assertEdgeToEdge(info,await js('document.documentElement.clientWidth'))
     assert.ok(info.backWidth>=44&&info.backWidth<150&&info.backHeight>=32)
     assert.ok(info.backBottom<=60)
-    assert.equal(await js('document.documentElement.scrollWidth'),width)
+    assertDocumentWidth(await js('({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})'))
     const shot=await send('Page.captureScreenshot',{format:'png'})
     await fs.writeFile(`${output}/crop-${series}-${scene+1}-${theme}-${width}x${height}.png`,Buffer.from(shot.data,'base64'))
    }
