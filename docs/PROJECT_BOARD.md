@@ -236,12 +236,74 @@
 
 ## Needs Attention / Review
 
+### DEVOPS-03B.2C.4 — Consolidate Qualified Preview Pipeline
+
+- **Status:** Consolidation / PR preparation authorized; merge and deployment prohibited · **Priority:** P1 / Pre-release.
+- **Scope:** permanent workflow + five scripts identical to qualified `e6275c6`; related DEVOPS documentation only. Qualification-only triggers/jobs excluded; unrelated backlog/Profile/artifacts preserved.
+- **Safety:** activation remains disabled; only Preview push after portable/browser success can deploy. PR and development push cannot publish a Worker.
+- **Next:** publish one approved thematic commit and PR; verify mandatory Portable CI and stop for owner review. [Consolidation and first-deployment plan](devops03b2-preview-implementation-plan.md#devops-03b2c4--qualified-pipeline-consolidation-2026-10-28).
+
+### DEVOPS-03B.2C.3R — Fix Artifact Download Layout
+
+- **Status:** Linux Qualification PASS / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Scope:** three workflow-only `merge-multiple: true` additions in isolated qualification copy; exact same-run artifact ID and SHA/integrity assertions preserved. One commit/push: `e6275c684b36076053bf60a11950dc03236d1e36`.
+- **Results:** [run 40662168379](https://github.com/shyandrey/tri-app/actions/runs/40662168379) SUCCESS; portable/build/lint/release PASS, safety 23/23, browser 7/7, transfer/integrity and artifact-only Wrangler dry-run PASS; live deployment gate SKIPPED.
+- **Safety:** development/Preview HEADs unchanged, development index empty, Athlete Profile/artifacts preserved. No deployment or activation. Correction remains qualification-only, not merged into development.
+- **Next:** owner review, separate integration and first-deployment authorization. Supersedes C.3 failure below; historical logs retained. [Exact outcome](devops03b2-preview-implementation-plan.md#devops-03b2c3r--artifact-download-layout-correction-2026-10-28).
+
+### DEVOPS-03B.2C.3 — Preview Pipeline Linux Qualification
+
+- **Status:** BLOCKED / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Qualification:** one push, `ci/preview-pipeline-qualification` at `027d6eedf14060720eff4476e941cf2bc993ceac`; [run 40588070428](https://github.com/shyandrey/tri-app/actions/runs/40588070428) FAIL.
+- **PASS:** Linux portable CI, build/lint/release gate, safety 23/23, package creation, upload/download and ZIP digest. Deployment gate skipped; activation variable absent; no deployment or credentials access.
+- **Failure:** download by artifact ID created a nested artifact-name directory; verifier expected root `manifest.json` and stopped with `ENOENT`. Seven browser suites and artifact-only replay NOT RUN. Logs and package preserved.
+- **Next:** approve minimal download-directory correction, then new isolated qualification; no automatic fix/retry/push. Development index and unfinished Athlete Profile preserved. [Evidence and proposed correction](devops03b2-preview-implementation-plan.md#devops-03b2c3--linux-pipeline-qualification-2026-10-28).
+
+### DEVOPS-03B.2C.2 — Implement Preview Auto Deploy Pipeline
+
+- **Status:** Implemented locally / Awaiting Owner Review / Deployment disabled · **Priority:** P1 / Pre-release.
+- **Pipeline:** portable gate → immutable Worker/static package → seven blocking browser suites → guarded Preview deploy → SHA/routes/artwork smoke. Artifact reuse, fixed Worker/DB, live binding drift checks, stale-SHA rejection, serialized publication, no automatic retry/rollback.
+- **Activation:** repository `PREVIEW_AUTO_DEPLOY_ENABLED` must remain absent/false pending separate authorization. No push, PR, deployment, settings or secrets changes made. Owner reports Preview protection and scoped Environment token already configured.
+- **Verification:** safety tests 23/23; isolated portable/build/lint/release 18/18 PASS; real package and artifact-only Wrangler dry-run PASS. YAML/shell/syntax checks PASS. Prior Linux browser 7/7 retained, not rerun; new handoff/live smoke still require qualification.
+- **Next:** owner diff review, isolated CI qualification with deploy disabled, observed permanent Browser check integration, then separately authorized first deployment and physical iPhone QA. [Implementation, limitations and rollback](devops03b2-preview-implementation-plan.md#devops-03b2c2--local-auto-deploy-implementation-2026-10-28).
+
+### DEVOPS-03B.2C.1R — Resume Preview Branch Protection
+
+- **Status:** BLOCKED — three bounded GitHub GET attempts timed out; no protection write performed.
+- **Operation:** `GET /repos/shyandrey/tri-app`, `UND_ERR_CONNECT_TIMEOUT` before HTTP response on all three attempts; retry budget exhausted. Approved JSON unchanged.
+- **Preservation:** local branch/HEAD/index unchanged; no PUT, push, merge, deployment or credentials changes. Athlete Profile and unrelated files preserved.
+- **Next:** restore GitHub connectivity, then resume the already authorized preflight/application/readback. [Exact result](devops03b2-preview-implementation-plan.md#devops-03b2c1r--bounded-protection-preflight-resume-2026-10-27).
+
+### DEVOPS-03B.2C.1 — Apply Preview Branch Protection
+
+- **Status:** Owner authorized / BLOCKED by GitHub network preflight; protection NOT applied.
+- **Verified:** Preview HEAD `3ab99c4805bc33c76a5aca67b94251e7488eacd3`, admin capability, branch not protected, zero rulesets. Exact proposal JSON unchanged.
+- **Blocker:** read-only requests twice encountered `UND_ERR_CONNECT_TIMEOUT` before HTTP response; second attempt stopped at collaborators lookup before current CI-check verification. No PUT, code push, direct-push test or deployment.
+- **Next:** resume complete read-only preflight once connectivity is stable, then apply/read back the already authorized policy; credentials and Auto Deploy remain separately gated. [Exact operations and preserved state](devops03b2-preview-implementation-plan.md#devops-03b2c1--protection-application-preflight-2026-10-27).
+
+### DEVOPS-03B.2C — Preview Branch Protection & Auto Deploy
+
+- **Status:** Proposal prepared / Awaiting protection and credentials approvals · **Priority:** P1 / Pre-release.
+- **Findings:** public personal repository, admin access, sole owner collaborator; Preview unprotected, zero rulesets/environments. Actual required check `Portable verification` (GitHub Actions app 15368).
+- **Proposal:** exact Preview PR protection + strict CI + admin enforcement, no force/deletion/bypass; zero independent approvals to avoid impossible owner self-review. Add permanent browser check only after integration/qualification.
+- **Auto Deploy:** immutable verified artifact, Preview-only Environment and Worker scope, serialized publication, exact SHA smoke and owner-authorized rollback. Current workflow remains CI-only.
+- **Checkpoints:** no protection settings, Environment/secrets/token creation, pipeline activation or first deployment without final owner approval. Granular token/custom-domain compatibility and artifact-only execution still require qualification.
+- **Review package:** [exact settings, owner setup, smoke/rollback and validation](devops03b2-preview-implementation-plan.md#devops-03b2c--protection-and-auto-deploy-approval-package-2026-10-27).
+
+### DEVOPS-03B.2B.3 — Safe Push & Permanent Preview Branch
+
+- **Status:** Complete / Preview CI PASS / Awaiting Owner Review · **Priority:** P1 / Pre-release.
+- **Baseline:** development and permanent `preview` remote HEADs both `3ab99c4805bc33c76a5aca67b94251e7488eacd3`; six approved commits published, development 0/0, primary branch unchanged and index empty.
+- **Safety:** owner Dashboard confirmation dated 2026-10-27 resolves Workers Builds blocker for both Workers; no Cloudflare API retry. GitHub workflow remains CI-only; no deployment, secrets, D1 or protection changes.
+- **CI:** [Preview CI 40526401566](https://github.com/shyandrey/tri-app/actions/runs/40526401566), push event on exact approved SHA; **SUCCESS**, first attempt. Portable tests/build/lint/release gate PASS; failure-only artifacts skipped as expected.
+- **Next:** separately authorize branch protection/reviewer settings and future Auto Deploy. [Actual outcome and remaining scope](devops03b2-preview-implementation-plan.md#devops-03b2b3--safe-push-and-permanent-preview-branch-2026-10-27).
+
 ### DEVOPS-03B.2B.2 — Approved Baseline & Permanent Preview Branch
 
-- **Status:** Approved local consolidation complete / Remote writes BLOCKED pending deployment-safety confirmation · **Priority:** P1 / Pre-release.
+- **Status:** Approved local consolidation complete / Remote phase completed by DEVOPS-03B.2B.3 · **Priority:** P1 / Pre-release.
 - **Approved scope:** qualified QA-05B/QA-05B.1 browser corrections and relevant reports; no qualification-only workflow, controlled-failure job, runtime or unfinished Athlete Profile changes.
 - **Verification:** isolated portable tests, build/lint and release gate 18/18 PASS; Official Rankings/Showcase/More browser reruns 3/3 PASS, negative fixtures PASS. Prior Linux qualification 7/7 PASS is preserved.
-- **Remote gate:** fresh development HEAD `f99c777`, no `preview` ref; GitHub hooks/deployments 0. Cloudflare accounts API HTTP 403 prevents fresh Workers Builds inspection; current owner Dashboard confirmation requested. No push or permanent branch creation until safety is established.
+- **Remote gate:** fresh development HEAD `f99c777`, no `preview` ref; GitHub hooks/deployments 0. Historical Cloudflare accounts API HTTP 403 blocked remote writes at this stage. Current owner Dashboard confirmation resolved it in DEVOPS-03B.2B.3; both authorized pushes are now complete.
 - **Details:** [approved scope and actual outcome](devops03b2-preview-implementation-plan.md#devops-03b2b2--approved-baseline-consolidation).
 
 ### QA-05B.1 — Final Official Rankings Geometry Fix
