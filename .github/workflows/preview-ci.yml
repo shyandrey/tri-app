@@ -131,8 +131,8 @@ jobs:
   deploy:
     name: Deploy verified Preview
     needs: [portable, browser]
-    # Owner must separately approve setting this NONSECRET activation variable to true.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/preview' && vars.PREVIEW_AUTO_DEPLOY_ENABLED == 'true'
+    # Event guard only; Environment activation is resolved on the runner.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/preview'
     environment: preview
     concurrency:
       group: tri-app-preview-publish
@@ -140,21 +140,38 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
+      - name: Check Preview Environment activation
+        id: activation
+        shell: bash
+        env:
+          PREVIEW_AUTO_DEPLOY_ENABLED: ${{ vars.PREVIEW_AUTO_DEPLOY_ENABLED }}
+        run: |
+          if [ "$PREVIEW_AUTO_DEPLOY_ENABLED" = 'true' ]; then
+            echo 'enabled=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'enabled=false' >> "$GITHUB_OUTPUT"
+            echo 'Preview publication disabled; no Cloudflare credentials used.' >> "$GITHUB_STEP_SUMMARY"
+          fi
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        if: steps.activation.outputs.enabled == 'true'
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        if: steps.activation.outputs.enabled == 'true'
         with:
           node-version: '24.19.0'
       - name: Prepare locked tools before exposing deployment credentials
+        if: steps.activation.outputs.enabled == 'true'
         run: npm ci --ignore-scripts --no-audit --no-fund
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: steps.activation.outputs.enabled == 'true'
         with:
           artifact-ids: ${{ needs.portable.outputs.artifact_id }}
           merge-multiple: true
           path: ${{ runner.temp }}/preview-package
       - name: Deploy exact verified package once
+        if: steps.activation.outputs.enabled == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
@@ -163,9 +180,10 @@ jobs:
           MANIFEST_DIGEST: ${{ needs.portable.outputs.manifest_digest }}
         run: node scripts/deploy-preview-artifact.mjs "$RUNNER_TEMP/preview-package" "$MANIFEST_DIGEST" "$RUNNER_TEMP/preview-deployment"
       - name: Read-only published Preview smoke (no Cloudflare credential)
+        if: steps.activation.outputs.enabled == 'true'
         run: node scripts/smoke-preview-ci.mjs "$RUNNER_TEMP/preview-package" "$GITHUB_SHA" "$RUNNER_TEMP/preview-deployment"
       - name: Deployment evidence (including first failure)
-        if: always()
+        if: always() && steps.activation.outputs.enabled == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: preview-deployment-${{ github.run_id }}-${{ github.run_attempt }}
