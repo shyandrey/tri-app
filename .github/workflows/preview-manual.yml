@@ -1,0 +1,124 @@
+{
+  "name": "Manual first Preview deployment",
+  "on": {
+    "workflow_dispatch": {
+      "inputs": {
+        "expected_sha": {
+          "description": "Exact current Preview SHA, approved for publication",
+          "required": true,
+          "type": "string"
+        },
+        "ci_run_id": {
+          "description": "Successful push-to-preview CI run ID",
+          "required": true,
+          "type": "string"
+        },
+        "artifact_id": {
+          "description": "Exact immutable package artifact ID",
+          "required": true,
+          "type": "string"
+        },
+        "manifest_digest": {
+          "description": "Trusted manifest SHA-256 from source CI log",
+          "required": true,
+          "type": "string"
+        },
+        "rollback_deployment_id": {
+          "description": "Reviewed current Preview deployment ID",
+          "required": true,
+          "type": "string"
+        },
+        "confirmation": {
+          "description": "Type deploy-preview after owner approval",
+          "required": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "permissions": {
+    "contents": "read",
+    "actions": "read"
+  },
+  "jobs": {
+    "manual": {
+      "name": "Manual verified Preview",
+      "if": "github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/preview' && inputs.confirmation == 'deploy-preview' && vars.PREVIEW_AUTO_DEPLOY_ENABLED != 'true'",
+      "environment": "preview",
+      "concurrency": {
+        "group": "tri-app-preview-publish",
+        "cancel-in-progress": false
+      },
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 15,
+      "steps": [
+        {
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "with": {
+            "node-version": "24.19.0"
+          }
+        },
+        {
+          "name": "Prepare locked tools before exposing deployment credentials",
+          "run": "npm ci --ignore-scripts --no-audit --no-fund"
+        },
+        {
+          "name": "Verify current SHA and successful source CI before download",
+          "run": "node scripts/preview-manual-preflight.mjs"
+        },
+        {
+          "uses": "actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "with": {
+            "artifact-ids": "${{ inputs.artifact_id }}",
+            "merge-multiple": true,
+            "path": "${{ runner.temp }}/preview-package",
+            "run-id": "${{ inputs.ci_run_id }}",
+            "github-token": "${{ github.token }}",
+            "repository": "shyandrey/tri-app"
+          }
+        },
+        {
+          "name": "Publish exact manual candidate once; never retry automatically",
+          "env": {
+            "CLOUDFLARE_API_TOKEN": "${{ secrets.CLOUDFLARE_API_TOKEN }}",
+            "CLOUDFLARE_ACCOUNT_ID": "${{ vars.CLOUDFLARE_ACCOUNT_ID }}"
+          },
+          "run": "node scripts/deploy-preview-artifact.mjs \"$RUNNER_TEMP/preview-package\" \"$MANIFEST_DIGEST\" \"$RUNNER_TEMP/preview-deployment\""
+        },
+        {
+          "name": "Read-only published Preview smoke (no Cloudflare credential)",
+          "run": "node scripts/smoke-preview-ci.mjs \"$RUNNER_TEMP/preview-package\" \"$GITHUB_SHA\" \"$RUNNER_TEMP/preview-deployment\""
+        },
+        {
+          "name": "Deployment evidence (including first failure)",
+          "if": "always()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "manual-preview-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": "${{ runner.temp }}/preview-deployment/",
+            "retention-days": 30,
+            "if-no-files-found": "warn"
+          }
+        }
+      ],
+      "env": {
+        "MANUAL_PREVIEW_MODE": "true",
+        "MANUAL_PREVIEW_CONFIRM": "${{ inputs.confirmation }}",
+        "MANUAL_PREVIEW_SHA": "${{ inputs.expected_sha }}",
+        "MANUAL_CI_RUN_ID": "${{ inputs.ci_run_id }}",
+        "MANUAL_ARTIFACT_ID": "${{ inputs.artifact_id }}",
+        "MANIFEST_DIGEST": "${{ inputs.manifest_digest }}",
+        "MANUAL_ROLLBACK_DEPLOYMENT_ID": "${{ inputs.rollback_deployment_id }}",
+        "PREVIEW_AUTO_DEPLOY_ENABLED": "${{ vars.PREVIEW_AUTO_DEPLOY_ENABLED }}",
+        "GH_READ_TOKEN": "${{ github.token }}"
+      }
+    }
+  }
+}

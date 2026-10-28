@@ -1,0 +1,65 @@
+{
+  "name": "Manual Preview qualification",
+  "on": {
+    "push": {
+      "branches": [
+        "ci/manual-preview-qualification"
+      ]
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "jobs": {
+    "safety": {
+      "name": "Manual safety qualification",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 10,
+      "steps": [
+        {
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "with": {
+            "node-version": "24.19.0"
+          }
+        },
+        {
+          "name": "Validate workflow and shell",
+          "run": "node --input-type=module <<'JS'\nimport fs from 'node:fs';import {spawnSync} from 'node:child_process';import assert from 'node:assert/strict';\nconst w=JSON.parse(fs.readFileSync('.github/workflows/preview-manual.yml'));assert.deepEqual(Object.keys(w.on),['workflow_dispatch']);\nfor(const j of Object.values(w.jobs))for(const s of j.steps)if(s.run)assert.equal(spawnSync('bash',['-n'],{input:s.run}).status,0);\nJS\ngit diff --check"
+        },
+        {
+          "name": "Fixture-only tests (no live fetch)",
+          "shell": "bash",
+          "run": "mkdir -p \"$RUNNER_TEMP/manual-qa\"\nset -o pipefail\nnode --import ./scripts/qualification-no-network.mjs --test scripts/test-preview-pipeline.mjs scripts/test-preview-manual.mjs 2>&1 | tee \"$RUNNER_TEMP/manual-qa/tests.log\""
+        },
+        {
+          "name": "First-run evidence",
+          "if": "always()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "manual-qualification-${{ github.run_id }}",
+            "path": "${{ runner.temp }}/manual-qa",
+            "retention-days": 7,
+            "if-no-files-found": "error"
+          }
+        }
+      ]
+    },
+    "deploy": {
+      "name": "Deployment disabled in qualification",
+      "if": "${{ false }}",
+      "runs-on": "ubuntu-24.04",
+      "steps": [
+        {
+          "run": "exit 1"
+        }
+      ]
+    }
+  }
+}
