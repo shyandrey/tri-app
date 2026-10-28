@@ -635,3 +635,12 @@
 6. ID стабилен навсегда: префиксы DOC/DATA/TECH/OPS/QA, новый номер после максимального ранее использованного в категории. Не перенумеровывать и не переиспользовать ID после закрытия.
 7. У каждой записи сохранять title, status, P0–P3, короткое описание, next action и доступные ссылки. Board entry не разрешает source writes, deploy, remote mutations, сообщения, destructive operations, commit/push: действует отдельный scope/approval владельца.
 8. Держать доску краткой; подробные команды, протоколы, credentials и raw personal data сюда не переносить. Ссылаться на canonical docs, не дублировать их. При росте истории согласовать архивирование с сохранением ID и ссылок.
+
+### DEVOPS-03B.2C.7A — Preview Activation & Preflight Fix
+
+- Priority: P1 / Pre-release.
+- Status: Implemented / Awaiting Linux Qualification and Owner Review.
+- Scope: Environment activation evaluated on runner; all downstream deployment steps gated; mandatory Preview account/Worker, rollback and Custom Domain preflight; bindings/secrets/cron checks preserved.
+- Local validation: 45/45 safety tests, YAML/shell and diff checks PASS. PR qualification pending. Fixture checks do not prove live Cloudflare permissions.
+- No activation, merge, live deployment, D1/Production or runtime changes. Manual-mode candidate and unfinished Athlete Profile excluded.
+- Report: [DEVOPS implementation plan](devops03b2-preview-implementation-plan.md#devops-03b2c7a--preview-activation-and-mandatory-preflight-2026-10-28).
