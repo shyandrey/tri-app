@@ -10,7 +10,7 @@ const checks = [
   {name: 'metadata', command: ['npm', 'run', 'metadata']},
   {name: 'portable photos', command: unit('athlete-photos', 'athlete-photo-review')},
   {name: 'PTO identity and registry', command: unit('pto-profiles', 'pto-profile-mapping', 'pto-profile-registry')},
-  {name: 'official standings', command: unit('t100-standings', 'ironman-standings')},
+  {name: 'official standings', command: unit('t100-standings', 'ironman-standings', 'athlete-display-policy', 'approved-athlete-names')},
   // Retain the real release entrypoint, including build, lint, audits and all 18 checks.
   {name: 'release gate', command: ['npm', 'run', 'check:release']},
 ]
