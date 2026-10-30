@@ -163,10 +163,13 @@
 }
 
 .app--athlete-detail .athlete-results-year__toggle {
-  min-height: 44px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto 26px;
-  gap: 8px;
+  min-height: 54px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 0;
 }
 
 .app--athlete-detail .athlete-results-year__toggle > * {
@@ -271,4 +274,24 @@
   .app--athlete-detail .athlete-detail__identity h1 {
     font-size: 22px;
   }
+}
+
+/* Scoped result-row polish; shared race tables and Rankings are unaffected. */
+.app--athlete-detail .athlete-result-card {
+  padding: 12px 8px;
+  border-radius: 9px;
+  background: transparent;
+  transition: background-color 150ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .app--athlete-detail .athlete-result-card:hover {
+    background: var(--tri-surface-raised);
+  }
+}
+.app--athlete-detail .athlete-result-card:focus-visible {
+  outline: 2px solid var(--tri-accent);
+  outline-offset: -2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .app--athlete-detail .athlete-result-card { transition: none; }
 }
