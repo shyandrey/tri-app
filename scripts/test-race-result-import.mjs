@@ -264,16 +264,24 @@ test('import preserves prior rows/IDs and identity except reviewed country corre
 // display names may project back to their previous Latin fallback; every other
 // field, profile and unapproved display name stays in the historical hash.
 const konaBaseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/kona-baseline-2026.json','utf8'))
-const approvedCsv=await fs.readFile('scripts/fixtures/approved-athlete-names/batch-001.csv')
-assert.equal(createHash('sha256').update(approvedCsv).digest('hex'),'32aa4a10d839a1b53537191d572eaedbba340976ef6ea3b2bbe400d74a5e4a64')
-const approvedText=approvedCsv.toString('utf8').replace(/^\uFEFF/,'')
-assert.equal(approvedText.split(/\r?\n/)[0],'athlete_id,name_en,name_ru,approval')
 const approvedNames=new Map()
-for(const [id,nameEn,nameRu,status] of parseCSV(approvedText.replace(/^athlete_id,name_en,name_ru,approval/,'athlete_id,ranking,name_en,name_ru'))){
- assert.equal(status,'owner_approved');validateRussianName(nameRu,id)
- assert.ok(!approvedNames.has(Number(id)));approvedNames.set(Number(id),{nameEn,nameRu})
+const approvedBatches=[
+ ['001','32aa4a10d839a1b53537191d572eaedbba340976ef6ea3b2bbe400d74a5e4a64'],
+ ['002','66a87f21e92984e9037448052257ec881bd7d68b692b148407d6a83e1ddb72a6'],
+]
+for(const [batch,digest] of approvedBatches){
+ const approvedCsv=await fs.readFile(`scripts/fixtures/approved-athlete-names/batch-${batch}.csv`)
+ assert.equal(createHash('sha256').update(approvedCsv).digest('hex'),digest)
+ const approvedText=approvedCsv.toString('utf8').replace(/^\uFEFF/,'')
+ assert.equal(approvedText.split(/\r?\n/)[0],'athlete_id,name_en,name_ru,approval')
+ const rows=parseCSV(approvedText.replace(/^athlete_id,name_en,name_ru,approval/,'athlete_id,ranking,name_en,name_ru'))
+ assert.equal(rows.length,115)
+ for(const [id,nameEn,nameRu,status] of rows){
+  assert.equal(status,'owner_approved');validateRussianName(nameRu,id)
+  assert.ok(!approvedNames.has(Number(id)));approvedNames.set(Number(id),{nameEn,nameRu})
+ }
 }
-assert.equal(approvedNames.size,115)
+assert.equal(approvedNames.size,230)
 function assertKonaIntegrity(catalog,results){
  const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
  assert.equal(catalog.length,konaBaseline.athletesCount)
