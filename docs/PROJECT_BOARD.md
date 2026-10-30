@@ -662,3 +662,10 @@
 - **Full catalog regeneration is prohibited until TECH-01 is resolved.** Known ID reassignment: Emmett Gross `10140 → 10141`; explicitly accepted as separate from the guarded localization registry importer.
 - No Athlete Profile polish, identities, results, source standings, artwork or Production changes.
 - [Policy and batch evidence](athlete-name-localization-policy.md).
+
+### DATA-ATH-02D — Batch 002 final localization
+
+- **Status:** Owner-authorized registry-only import complete locally / Preview promotion pending. **Priority:** P1 / Pre-release.
+- Added exactly 115 approved missing names: final candidate coverage 1167/1167. All previous names retained. Owner clarified Kacper Stepniak ID 71 remains «Каспер Степаньяк»; the earlier «Каспер Стемпняк» expectation was a task assertion error, not a data defect. Menno Koolhaas remains «Менно Куулхас»; neither is counted as newly localized.
+- Reused the guarded importer and historical display projection; original historical profile hash and identity/results guards unchanged. No full regeneration; TECH-01 remains open.
+- Next: required CI, normal PR merge, Auto Deploy and live smoke. [Policy/evidence](athlete-name-localization-policy.md).

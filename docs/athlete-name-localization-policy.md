@@ -40,3 +40,19 @@ Ten negative fixtures reject changes to athlete ID, Latin name, country, biograp
 Local verification: targeted tests 56/56 PASS; Portable CI PASS; release gate 18/18 PASS including build/lint/audits/source replay. Baseline/candidate snapshots of all non-display profile data, 4592 results, standings and ranking match. Rankings browser results and remote promotion are recorded on completion. The earlier blocker section is retained as history, superseded by this correction.
 
 DATA-ATH-02D.1 final local check: Official Rankings browser 14/14 viewport/theme scenarios PASS, all 12 tables and navigation, zero runtime exceptions; `git diff --check` PASS. Remote PR/CI/deployment pending at this commit.
+
+## Batch 002 — Final approved registry import
+
+Owner clarification: **Kacper Stepniak (ID 71) stays «Каспер Степаньяк»**. Preserve the existing registry entry; do not substitute «Каспер Стемпняк». The prior task assertion was incorrect, not a data-integrity defect. Menno Koolhaas (ID 10) stays «Менно Куулхас». Neither belongs to the 230 newly localized athletes.
+
+Baseline: Batch 001 PR #6, deployed Preview SHA `c5b9bb8766572374964e313e0150836ae1853a0f`, coverage 1052/1167, successful CI and Auto Deploy. Source Batch 002 CSV remains byte-identical to owner input, SHA-256 `66a87f21e92984e9037448052257ec881bd7d68b692b148407d6a83e1ddb72a6`; preserved as [approved fixture](../scripts/fixtures/approved-athlete-names/batch-002.csv).
+
+The existing registry-only importer added exactly 115 missing Russian names, with zero overwrites. Final candidate coverage is **1167/1167**, including all 230 editorially approved names across both batches. All existing registry entries and metadata were retained. Tests explicitly preserve Menno/Kacper and the corrections Nick Thijs 10434 «Ний Тийс», Read Ziegler 10486 «Рид Циглер», Alice Fritzsche 10647 «Элис Фритцше».
+
+The Kona historical hash is unchanged. The existing approved-display projection is extended to the second exact, byte-pinned 115-row CSV, with duplicate-ID rejection across both batches. All other profile fields, all unapproved display names and result integrity remain protected; negative tests are retained. The separate fixture test verifies both runtime display and registry spelling against every approved CSV row. English fallback remains tested for future missing localization.
+
+Before/after snapshots confirm unchanged 1167 IDs, Latin names, countries, photos, biographies, achievements, all 4592 results/linkages, official standings and ranking scores/order. Full catalog regeneration remains prohibited until TECH-01 is resolved (Emmett Gross `10140 → 10141`). No runtime component, importer architecture, artwork, official results or Athlete Profile polish changes.
+
+Targeted tests: 56/56 PASS. Release/CI/deployment outcomes are recorded on completion; no duplicate local full browser run is required because mandatory GitHub CI executes all seven suites. Physical-device review is not implied.
+
+Batch 002 local verification completed: targeted tests 56/56, Portable CI and release gate 18/18 (build/lint included) PASS; diff checks PASS. All previous registry entries compare exactly with the deployed baseline. GitHub PR/CI/Preview verification pending at this commit.
