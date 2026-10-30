@@ -6,6 +6,8 @@
 
 ## Current Focus
 
+ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-authorized PR/CI/Preview promotion, visual review after publication. DATA-ATH-02 — CLOSED / OWNER APPROVED (1167/1167); TECH-01 remains OPEN, no full regeneration.
+
 Подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `c8f52e02a75e0b413dddbfee77f477232c5301d3` (live verified 20.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 DONE — production closeout 20.10.2026; нерешённые вопросы сохранены в ATH-05; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
 
 ## GIT-01 / DS-01A — Audit closeout · 2026-10-25
@@ -669,3 +671,16 @@
 - Added exactly 115 approved missing names: final candidate coverage 1167/1167. All previous names retained. Owner clarified Kacper Stepniak ID 71 remains «Каспер Степаньяк»; the earlier «Каспер Стемпняк» expectation was a task assertion error, not a data defect. Menno Koolhaas remains «Менно Куулхас»; neither is counted as newly localized.
 - Reused the guarded importer and historical display projection; original historical profile hash and identity/results guards unchanged. No full regeneration; TECH-01 remains open.
 - Next: required CI, normal PR merge, Auto Deploy and live smoke. [Policy/evidence](athlete-name-localization-policy.md).
+
+
+### ATH-UI-01 — Athlete Profile Polish finalization
+
+- **Status:** Local verification / authorized Preview promotion in progress. **Priority:** P1 / Pre-release.
+- Reuse the existing two-file season/result-row polish; preserve Russian-first names, photos, data, biographies, navigation, safe areas and dark-only design.
+- [Implementation, exact scope and QA](ath-ui01-data-ath02-review.md#ath-ui-01--finalization-on-localized-preview-baseline). Owner visual QA required after publication.
+
+### DATA-ATH-02 — Localization closure
+
+- **Status: CLOSED / OWNER APPROVED**, per ATH-UI-01 instruction. Both approved batches published through PRs #6/#7; 230/230 names integrated, coverage 1167/1167. Batch 002 Preview SHA `c43182ca3927b4264f9fd560ca02c39776021242`; CI/deploy/smoke passed.
+- ID 71 remains «Каспер Степаньяк». Russian-first resolver and safe English fallback retained. Historical audit/integration checkpoints above remain evidence, not current pending work.
+- TECH-01 remains OPEN: full catalog regeneration prohibited (Emmett Gross `10140 → 10141`).
