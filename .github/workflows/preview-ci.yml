@@ -181,6 +181,9 @@ jobs:
         run: node scripts/deploy-preview-artifact.mjs "$RUNNER_TEMP/preview-package" "$MANIFEST_DIGEST" "$RUNNER_TEMP/preview-deployment"
       - name: Read-only published Preview smoke (no Cloudflare credential)
         if: steps.activation.outputs.enabled == 'true'
+        env:
+          GH_READ_TOKEN: ${{ github.token }}
+          PREVIOUS_PREVIEW_SHA: ${{ github.event.before }}
         run: node scripts/smoke-preview-ci.mjs "$RUNNER_TEMP/preview-package" "$GITHUB_SHA" "$RUNNER_TEMP/preview-deployment"
       - name: Deployment evidence (including first failure)
         if: always() && steps.activation.outputs.enabled == 'true'

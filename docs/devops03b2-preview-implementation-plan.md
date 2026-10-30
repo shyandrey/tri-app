@@ -634,3 +634,42 @@ First deployment procedure after separate owner authorization:
 5. Verify deployment/version IDs, exact SHA and HTTPS smoke. On failure disable further Auto Deploy, preserve logs and determine whether publication occurred; no automatic retry/rollback.
 
 Rollback reference from the failed first attempt (must be refreshed before future publication): deployment `e441f5f7-05d9-41dc-bbf9-594acb29fd82`, version `84653431-5134-4216-813a-2b5bb4c573fc`. Recovery requires separate owner authorization; Production is never a fallback. Permanent activation remains disabled pending owner review.
+
+## DEVOPS-04 — ATH-UI-01 smoke recovery and bounded readiness
+
+Date: **2026-10-31 Europe/Moscow**. Status: **existing published version recovered by full read-only smoke; readiness correction prepared for owner review. Auto Deploy remains disabled.** No redeployment or rollback.
+
+### Verified published identity and artifact
+
+- GitHub `preview` HEAD and repeatedly observed HTTPS `/api/health`: `653273420e2aaff3c49725500a935701d4dfd286`, version `0.0.0`.
+- Original [deployment run 41127262740](https://github.com/shyandrey/tri-app/actions/runs/41127262740), immutable package artifact **13011965445**, name `preview-package-653273420e2aaff3c49725500a935701d4dfd286-41127262740-1` (95,108,831 bytes).
+- ZIP SHA-256 verified against GitHub artifact digest: `c14fd01a35fa26f478aa5bf054ed2e0fe53739ef741e001b592c642ede24f069`.
+- Manifest SHA-256 verified against the original deployment log: `19a667e0f0d4d94642cc8e09336cccc47f128df695dd9a8d3e2b2b19270af6a4`.
+- Existing `preview-artifact.mjs verify` passed exact manifest SHA, source SHA, complete file inventory, lockfile and Preview configuration checks. **No rebuild substituted for this artifact.** First download timed out at 60 seconds; one bounded read-only retry of the same artifact completed with a 180-second download limit.
+- Existing unmodified smoke script from the deployed source passed published HTML SHA-256 equality against `manifest.files['dist/index.html']`, health/version, news API, Home/Calendar/Rankings/Athlete/Race/More, five-tab navigation, athlete/result/Back links, no overflow, responsive WebP artwork and zero browser errors at 390×844 and 844×390.
+- **ATH-UI-01 is ready for Owner Visual QA.** Physical iPhone/Safari QA remains separate. The historical GitHub run remains failed; this is a separately recorded recovery PASS, not a rewritten CI result.
+
+### Observed race and limits of diagnosis
+
+Wrangler publication and Cloudflare post-publication version/configuration checks succeeded. At **2026-10-30 21:09:24.990 UTC (31 October 00:09:24.990 Moscow)**, the immediate first smoke request returned the previous Preview SHA `c43182ca3927b4264f9fd560ca02c39776021242` instead of the expected SHA. Later health checks returned the expected new SHA. Three additional samples at 21:13:47.987, 21:13:50.133 and 21:13:52.231 UTC consistently returned the new SHA/version, with `Cache-Control: no-store`, no `Age`, no `CF-Cache-Status` and AMS Cloudflare ray IDs. Full smoke and a final health check also passed.
+
+This establishes a **transient visibility mismatch between successful publication and the first public health response**, sufficient to justify narrowly bounded waiting for the known previous version. It does **not** prove a precise global propagation time or distinguish Worker edge rollout from another stale-response mechanism: original response headers/POP and intervening health samples were not captured. No evidence establishes a persistent runtime, identity or localization defect. Do not claim that later health alone proved the full smoke; the unchanged complete suite was actually run.
+
+### Minimal correction (review candidate)
+
+- `scripts/smoke-preview-ci.mjs`: before full smoke in GitHub Actions, wait at most **60 seconds** using a monotonic clock, **2-second interval**, at most **5 seconds per HTTP request** within the remaining deadline. Require **two consecutive** exact SHA/version observations; log observed SHA/version and elapsed time to stdout and `readiness.json`.
+- Permit only the exact previous Preview SHA from the push event while waiting. Missing identity, unknown SHA, version/service drift, regression to the old SHA after seeing the target, HTTP/network failure, deadline expiry or a changed GitHub Preview HEAD fail closed. Do not interpret arbitrary deployments as propagation.
+- Recheck GitHub Preview HEAD before and after each health observation and after full smoke. Preserve the existing non-cancelling `tri-app-preview-publish` concurrency lock across deployment and smoke. These guards detect overlapping branch promotion; they do not claim to prevent out-of-band Cloudflare writes. Unknown published SHA fails rather than waits.
+- `.github/workflows/preview-ci.yml`: add only step-scoped read-only `GH_READ_TOKEN: github.token` and `PREVIOUS_PREVIEW_SHA: github.event.before` to the existing smoke step. No Cloudflare credential in smoke, no permission expansion, trigger/activation/environment/concurrency changes.
+- `scripts/test-preview-pipeline.mjs`: deterministic injected-clock tests cover convergence, already-ready stability, never-ready timeout, unknown SHA, wrong version, mixed rollout, changed HEAD before/during requests, network failure, missing identity/token/context and preserved workflow protections.
+- Existing artifact verification, exact HTML comparison, API/browser/navigation/artwork assertions remain unchanged. Local read-only recovery remains possible without GitHub Actions credentials; CI cannot silently omit the required context.
+
+Validation: **65/65 pipeline/readiness tests PASS**, full lint PASS, JS syntax PASS, YAML parsed with installed Ruby Psych, shell syntax PASS for all 14 workflow run steps, `git diff --check` PASS. Actionlint/Python PyYAML/Node js-yaml were unavailable; no tools/dependencies installed. Build and release gate 18/18 from the deployed run remain valid for the recovered application; not rerun locally because no application/build/lockfile change occurred. The focused PR's ordinary Portable CI will run build/lint/release gate, while the existing Browser CI remains unchanged.
+
+### Safety, evidence and next action
+
+Preview Environment `PREVIEW_AUTO_DEPLOY_ENABLED=false` before and after recovery. No activation, merge, deployment, rollback, token/permission/configuration change or D1 operation. Production health remains SHA `c8f52e02a75e0b413dddbfee77f477232c5301d3`, version `0.0.0`. All runtime, data, localization and artwork files are untouched. TECH-01 remains OPEN; full catalog regeneration remains prohibited.
+
+Evidence: `/tmp/300w-devops04/` — original ZIP/package, GitHub artifact metadata, health observations/headers, unchanged full smoke log/screenshots, final health/config readback and targeted test logs. Existing publication IDs remain deployment `e8224ef5-58c8-4a0b-be20-2913162725eb`, version `4d016450-829f-4133-b9fb-14e74f27a709`.
+
+Next: owner review of focused readiness PR and CI results; normal merge only when separately authorized, with activation still disabled. Reactivation requires explicit owner approval after correction validation. No new Preview publication solely to test this fix. Complete physical-device ATH-UI-01 visual QA on the already published version.

@@ -684,3 +684,13 @@ ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-auth
 - **Status: CLOSED / OWNER APPROVED**, per ATH-UI-01 instruction. Both approved batches published through PRs #6/#7; 230/230 names integrated, coverage 1167/1167. Batch 002 Preview SHA `c43182ca3927b4264f9fd560ca02c39776021242`; CI/deploy/smoke passed.
 - ID 71 remains «Каспер Степаньяк». Russian-first resolver and safe English fallback retained. Historical audit/integration checkpoints above remain evidence, not current pending work.
 - TECH-01 remains OPEN: full catalog regeneration prohibited (Emmett Gross `10140 → 10141`).
+
+
+### DEVOPS-04 — Preview Smoke Recovery After ATH-UI-01
+
+- **Status:** Read-only recovery PASS / readiness correction prepared for owner review. **Priority:** P1.
+- Original artifact 13011965445 verified; published SHA `653273420e2aaff3c49725500a935701d4dfd286`, version 0.0.0, exact HTML and full six-route mobile smoke PASS. Historical failed run remains failure evidence.
+- Bounded readiness tolerates only the known previous SHA, requires two expected SHA/version observations and checks Preview HEAD; preserves exact artifact/API/browser assertions and deployment lock. Tests 65/65 and lint PASS.
+- Auto Deploy remains disabled. No deployment/rollback, Production or D1 changes. TECH-01 remains OPEN.
+- **ATH-UI-01: Ready for Owner Visual QA** on existing Preview; no persistent UI defect found.
+- [Evidence, precise diagnosis limitations and review procedure](devops03b2-preview-implementation-plan.md#devops-04--ath-ui-01-smoke-recovery-and-bounded-readiness).

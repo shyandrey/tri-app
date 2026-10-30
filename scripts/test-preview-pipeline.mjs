@@ -96,3 +96,37 @@ test('Automatic deploy has no account Domains request; fixed HTTPS smoke retaine
   assert.ok((await fs.readFile('scripts/smoke-preview-ci.mjs','utf8')).includes('https://preview.300w.app'))
   assertRollbackBaseline(rollback)
 })
+
+// Deterministic readiness clock: no sleeps, network or credentials in these fixtures.
+import {waitForPreviewHealth,assertReadinessContext} from './smoke-preview-ci.mjs'
+const previousSha='b'.repeat(40)
+function readinessFixture(commits,options={}){
+ let time=0,calls=0,heads=0;const observations=[]
+ const run=()=>waitForPreviewHealth({sha,previousSha,version:'0.0.0',timeoutMs:6000,intervalMs:2000,now:()=>time,sleep:async ms=>{time+=ms},log:e=>observations.push(e),readHead:async()=>{heads++;return options.head?.(heads)??sha},readHealth:async()=>{calls++;if(options.error)throw Error(options.error);return {ok:true,service:'tri-app',version:options.version??'0.0.0',commit:commits[Math.min(calls-1,commits.length-1)]}},...options.overrides})
+ return {run,observations,calls:()=>calls,time:()=>time}
+}
+test('Readiness tolerates only previous SHA then requires two expected observations',async()=>{
+ const f=readinessFixture([previousSha,sha,sha]);assert.equal((await f.run()).commit,sha);assert.equal(f.calls(),3);assert.deepEqual(f.observations.map(x=>x.elapsedMs),[0,2000,4000])
+})
+test('Ready immediately still requires two consistent observations',async()=>{const f=readinessFixture([sha]);await f.run();assert.equal(f.calls(),2)})
+test('Previous SHA forever reaches finite timeout',async()=>{const f=readinessFixture([previousSha]);await assert.rejects(f.run(),/readiness timeout/);assert.equal(f.time(),6000);assert.equal(f.calls(),3)})
+for(const [name,commits,opts,pattern] of [
+ ['unknown deployment',['c'.repeat(40)],{},/Unexpected deployed SHA/],
+ ['version drift',[sha],{version:'1.0.0'},/strictly equal/],
+ ['mixed rollout',[sha,previousSha],{},/regressed/],
+ ['stale branch before request',[sha],{head:()=>previousSha},/HEAD changed/],
+ ['branch changes during request',[sha],{head:n=>n>1?previousSha:sha},/HEAD changed/],
+ ['HTTP or network failure',[sha],{error:'HTTP 503'},/HTTP 503/],
+])test('Readiness rejects '+name,async()=>{await assert.rejects(readinessFixture(commits,opts).run(),pattern)})
+test('Readiness rejects missing previous identity and context/token',async()=>{
+ await assert.rejects(readinessFixture([sha],{overrides:{previousSha:undefined}}).run(),/distinct/)
+ const readyEnv={...env,PREVIOUS_PREVIEW_SHA:previousSha};assertReadinessContext(readyEnv,sha)
+ for(const [key,value] of [['GH_READ_TOKEN',''],['PREVIOUS_PREVIEW_SHA',''],['GITHUB_REF','refs/heads/main'],['GITHUB_EVENT_NAME','pull_request'],['GITHUB_SHA',previousSha]])assert.throws(()=>assertReadinessContext({...readyEnv,[key]:value},sha))
+})
+test('Readiness retains deployment lock, read-only token, and original full-smoke assertions',async()=>{
+ const yaml=await fs.readFile('.github/workflows/preview-ci.yml','utf8'),script=await fs.readFile('scripts/smoke-preview-ci.mjs','utf8')
+ assert.ok(yaml.includes('group: tri-app-preview-publish'));assert.ok(yaml.includes('cancel-in-progress: false'))
+ const step=yaml.split('- name: Read-only published Preview smoke')[1].split('- name: Deployment evidence')[0]
+ assert.ok(step.includes('GH_READ_TOKEN: ${{ github.token }}'));assert.ok(step.includes('PREVIOUS_PREVIEW_SHA: ${{ github.event.before }}'));assert.ok(!step.includes('CLOUDFLARE'))
+ assert.ok(script.includes('Published HTML differs from tested artifact'));assert.ok(script.includes('Preview HEAD changed during full smoke'))
+})
