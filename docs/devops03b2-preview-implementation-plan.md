@@ -612,3 +612,25 @@ Fresh GitHub readback: protected Preview remains `558b7ae11f593ce32310b673423d3a
 Qualification uses the ordinary PR pipeline on Ubuntu: Portable verification executes the exact gate shell fixtures and preflight negatives; Browser verification uses the verified artifact. Actual credential-bearing deployment job is skipped for PR events. This qualifies code/shell and workflow acceptance, not live Cloudflare permissions or actual publication. Do not enable activation or merge this PR automatically.
 
 Next controlled-deployment prerequisites: review successful PR CI and exact diff, recheck activation off before any separately authorized merge; approve first publication separately; verify live scoped-token preflight and rollback evidence before upload. No manual-mode workflow or authorization ledger is introduced.
+
+
+## DEVOPS-03B.2C.7D — Scoped-token domain preflight correction (2026-10-30)
+
+Status: implemented; PR qualification pending. No merge or deployment authorized in this task.
+
+Run [41043030960](https://github.com/shyandrey/tri-app/actions/runs/41043030960) stopped before Wrangler upload: account-level Workers Custom Domains GET returned HTTP 403 / code 10000. The automatic deployment script now omits that endpoint before and after publication. It does not catch or suppress unrelated Cloudflare errors. Settings, binding values and secret names, schedules, account/Worker identity, rollback deployment/version, artifact digest/inventory and stale Preview SHA checks remain mandatory.
+
+**Owner-verified domain baseline:** on 30 October 2026 the owner confirmed in Cloudflare Dashboard → `tri-app-preview` → Settings → Domains & Routes that `preview.300w.app` is an existing Custom Domain of that Worker. This satisfies the requested owner check for the next controlled deployment; it is not an API verification or deployment authorization. Deployment evidence records this provenance and date. No permission expansion is required or proposed.
+
+Artifact configuration rejects any `route` or `routes` declaration, including empty/null declarations and `custom_domain: true` route objects. No route/domain configuration, credential, Production target, D1 operation or application behavior is changed. Post-publication HTTPS smoke still verifies Preview availability, exact deployed SHA, navigation and responsive artwork. **HTTPS availability/content does not prove unchanged Cloudflare domain ownership or routing.** Domain invariance is not claimed from those checks; Dashboard evidence and the prohibition on route/domain configuration are separate safeguards.
+
+Local validation: 54/54 pipeline safety tests PASS, including negative route/domain configuration fixtures, settings/schedules/deployments 403 failures, rollback drift, stale SHA, integrity and activation tests. Workflow content is unchanged. Qualification will run through a normal PR with activation disabled, without live Cloudflare calls.
+
+First deployment procedure after separate owner authorization:
+1. Review this PR and its Portable/Browser results; merge only when separately authorized, with activation still disabled.
+2. Identify the resulting Preview SHA and its verified immutable CI artifact; do not reuse an older artifact with changed verification code.
+3. Retain the owner Dashboard domain baseline above. Capture fresh live Preview rollback IDs, bindings/secret names and cron via scoped reads; stop on missing data or any unrelated 403.
+4. Enable only the Preview Environment activation flag under separate approval and promote a controlled PR through required CI. Existing concurrency and stale-SHA checks remain enforced.
+5. Verify deployment/version IDs, exact SHA and HTTPS smoke. On failure disable further Auto Deploy, preserve logs and determine whether publication occurred; no automatic retry/rollback.
+
+Rollback reference from the failed first attempt (must be refreshed before future publication): deployment `e441f5f7-05d9-41dc-bbf9-594acb29fd82`, version `84653431-5134-4216-813a-2b5bb4c573fc`. Recovery requires separate owner authorization; Production is never a fallback. Permanent activation remains disabled pending owner review.

@@ -644,3 +644,13 @@
 - Local validation: 45/45 safety tests, YAML/shell and diff checks PASS. PR qualification pending. Fixture checks do not prove live Cloudflare permissions.
 - No activation, merge, live deployment, D1/Production or runtime changes. Manual-mode candidate and unfinished Athlete Profile excluded.
 - Report: [DEVOPS implementation plan](devops03b2-preview-implementation-plan.md#devops-03b2c7a--preview-activation-and-mandatory-preflight-2026-10-28).
+
+
+### DEVOPS-03B.2C.7D — Scoped-token Custom Domain preflight
+
+- Priority: P1 / Pre-release.
+- Status: Implemented / PR qualification pending / Awaiting Owner Review.
+- Account-level Domains GET removed from automatic deployment prerequisites; all other preflight checks retained. Any route/domain configuration is rejected.
+- Owner Dashboard confirmation dated 2026-10-30: `preview.300w.app` belongs to `tri-app-preview`. HTTPS smoke remains mandatory but does not prove routing/ownership invariance.
+- Local safety tests: 54/54 PASS. Auto Deploy disabled; no merge, deployment or permission expansion. Next: PR CI and owner review before merge/activation.
+- Details: [DEVOPS implementation plan](devops03b2-preview-implementation-plan.md#devops-03b2c7d--scoped-token-domain-preflight-correction-2026-10-30).
