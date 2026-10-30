@@ -36,16 +36,6 @@ export function assertRollbackBaseline(deployment) {
   assert.match(deployment.versions[0].version_id??'',/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/)
   assert.equal(deployment.versions[0].percentage,100,'Rollback must cover 100% traffic')
 }
-export function assertPreviewDomain(domains) {
-  assert.ok(Array.isArray(domains),'Custom Domain response missing')
-  assert.equal(domains.length,1,'Expected exactly one Preview Custom Domain')
-  const domain=domains[0]
-  assert.ok(domain.id,'Custom Domain ID missing')
-  assert.equal(domain.hostname,'preview.300w.app')
-  assert.equal(domain.service,'tri-app-preview')
-  assert.equal(domain.enabled,true,'Custom Domain disabled')
-  return domain
-}
 export async function deploy(directory, digest, reportDirectory, env=process.env, fetcher=fetch) {
   assertDeployContext(env)
   const manifest=await verifyArtifact(directory,env.GITHUB_SHA,digest,JSON.parse(await fs.readFile('wrangler.jsonc','utf8')))
@@ -64,9 +54,10 @@ export async function deploy(directory, digest, reportDirectory, env=process.env
   assertLiveBindings(settings,config,schedules.schedules??schedules)
   const before=await read(cfBase+'/deployments',env.CLOUDFLARE_API_TOKEN,'Preview deployments GET')
   assertRollbackBaseline(before.deployments?.[0])
-  const domainUrl=`https://api.cloudflare.com/client/v4/accounts/${env.CLOUDFLARE_ACCOUNT_ID}/workers/domains?hostname=preview.300w.app&service=tri-app-preview`
-  const domain=assertPreviewDomain(await read(domainUrl,env.CLOUDFLARE_API_TOKEN,'Preview Custom Domain GET'))
-  const record={accountId:env.CLOUDFLARE_ACCOUNT_ID,worker:config.name,customDomain:domain,baseline:{secretNames,bindingNames:settings.bindings.map(b=>b.name).sort(),cron:schedules.schedules??schedules},sha:manifest.sha,manifestDigest:digest,previousDeployment:before.deployments?.[0]??null,startedAt:new Date().toISOString(),status:'preflight'}
+  // Existing Custom Domain verified by owner in Dashboard on 2026-10-30.
+  // Scoped Worker Editor does not require account-level Workers Domains access.
+  // HTTPS smoke verifies availability/content, not ownership or routing invariance.
+  const record={accountId:env.CLOUDFLARE_ACCOUNT_ID,worker:config.name,customDomain:{hostname:'preview.300w.app',worker:'tri-app-preview',verification:'OWNER_DASHBOARD',verifiedOn:'2026-10-30'},baseline:{secretNames,bindingNames:settings.bindings.map(b=>b.name).sort(),cron:schedules.schedules??schedules},sha:manifest.sha,manifestDigest:digest,previousDeployment:before.deployments?.[0]??null,startedAt:new Date().toISOString(),status:'preflight'}
   const save=()=>fs.writeFile(path.join(reportDirectory,'deployment.json'),JSON.stringify(record,null,2)+'\n')
   await save()
   const fresh=await read(cfBase+'/deployments',env.CLOUDFLARE_API_TOKEN,'Rollback baseline recheck GET')
@@ -91,7 +82,6 @@ export async function deploy(directory, digest, reportDirectory, env=process.env
   assert.ok(version&&latest?.id&&latest.versions?.some(v=>v.version_id===version&&v.percentage===100),'Cannot identify exact published version/deployment')
   const afterSchedules=await read(cfBase+'/schedules',env.CLOUDFLARE_API_TOKEN,'Post schedules GET')
   assertLiveBindings(await read(cfBase+'/settings',env.CLOUDFLARE_API_TOKEN,'Post settings GET'),config,afterSchedules.schedules??afterSchedules)
-  assert.deepEqual(assertPreviewDomain(await read(domainUrl,env.CLOUDFLARE_API_TOKEN,'Post Custom Domain GET')),domain,'Custom Domain changed')
   record.status='deployed-awaiting-smoke';await save()
   console.log(`Preview SHA ${manifest.sha}; version ${version}; deployment ${latest.id}`)
 }

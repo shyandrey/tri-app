@@ -14,7 +14,12 @@ export function previewConfig(source) {
   assert.equal(source.env.preview.d1_databases[0].database_id, '4dfe9210-0cc7-484f-8eea-fe5216f5c17a')
   const config = {compatibility_date: source.compatibility_date, ...source.env.preview,
     main: './worker/index.js', assets: {...source.assets, directory: './dist'}, keep_vars: true}
-  assert.ok(!config.build && !config.env && !config.routes && !config.route)
+  assert.ok(!config.build && !config.env)
+  // Even empty/null route declarations can express mutation intent. Custom Domains
+  // are configured through route objects with custom_domain: true in Wrangler.
+  for (const key of ['route', 'routes']) {
+    assert.ok(!Object.hasOwn(source, key) && !Object.hasOwn(config, key), 'Route/Custom Domain mutation forbidden: '+key)
+  }
   return config
 }
 export async function inventory(root, prefix = '') {
