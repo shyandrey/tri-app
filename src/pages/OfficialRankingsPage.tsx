@@ -1,3 +1,4 @@
+import { athleteDisplayName } from '../utils/athleteDisplayName'
 import { useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import type { Athlete } from '../types/Athlete'
@@ -68,9 +69,10 @@ export default function OfficialRankingsPage({ athletes, onBack, onNavigate, onA
         <thead><tr><th scope="col">#</th><th scope="col">ATHLETE</th><th scope="col">POINTS</th></tr></thead>
         <tbody>{panelTable.rows.map(row => {
           const athlete = athletes.find(a => a.id === row.athleteId)
+          const displayName = athleteDisplayName(athlete, row.athleteName)
           return <tr key={row.officialRank} data-athlete-id={row.athleteId}><td>{row.officialRank}</td><td><a href={`#/athlete/${row.athleteId}`} onClick={e => { if (athlete && e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) { e.preventDefault(); onAthleteClick(athlete) } }}>
-            <span className="standings-avatar">{athlete?.image ? <img {...athleteImageDelivery(athlete.image, '36px')} loading="lazy" alt="" onError={e => { e.currentTarget.style.display = 'none' }} /> : null}<span aria-hidden="true">{row.athleteName.split(' ').map(n => n[0]).slice(0,2).join('')}</span></span>
-            <span className="standings-name">{row.athleteName}<span className="standings-flag" role="img" aria-label={row.nationalityNormalized}>{countryCodeToFlag(row.nationalityNormalized)}</span></span>
+            <span className="standings-avatar">{athlete?.image ? <img {...athleteImageDelivery(athlete.image, '36px')} loading="lazy" alt="" onError={e => { e.currentTarget.style.display = 'none' }} /> : null}<span aria-hidden="true">{displayName.split(' ').map(n => n[0]).slice(0,2).join('')}</span></span>
+            <span className="standings-name">{displayName}<span className="standings-flag" role="img" aria-label={row.nationalityNormalized}>{countryCodeToFlag(row.nationalityNormalized)}</span></span>
           </a></td><td>{new Intl.NumberFormat('ru-RU').format(row.officialPoints)}</td></tr>
         })}</tbody>
       </table></div>

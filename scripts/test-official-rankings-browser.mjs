@@ -22,6 +22,10 @@ const click=async selector=>{await js(`document.querySelector(${JSON.stringify(s
 const key=async k=>{await send('Input.dispatchKeyEvent',{type:'keyDown',key:k,code:k,windowsVirtualKeyCode:({Escape:27,Home:36,End:35,ArrowUp:38,ArrowDown:40,ArrowLeft:37,ArrowRight:39})[k],...(k==='Enter'?{text:'\r',windowsVirtualKeyCode:13}:{})});await send('Input.dispatchKeyEvent',{type:'keyUp',key:k,code:k})}
 const luminance=rgb=>rgb.match(/\d+/g).slice(0,3).map(Number).map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0)
 const contrast=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+// Catalog review snapshot supplies approved display names; official fixtures still
+// independently supply IDs, order, points and source names.
+const {loadNameSnapshot}=await import('./audit-athlete-names.mjs')
+const displayNames=new Map((await loadNameSnapshot()).baseline.rows.map(r=>[r.athlete_id,r.name_ru||r.name_en]))
 const expected={}
 for(const s of ['ironman','t100'])for(const y of [2024,2025,2026])for(const g of ['men','women'])expected[`${s}-${y}-${g}`]=JSON.parse(await fs.readFile(`src/data/officialStandings/${s}/${y}-${g}.json`))
 const output=process.env.TRI_ARTIFACT_DIR??'/tmp/300w-rankings-v22a';await fs.mkdir(output,{recursive:true})
@@ -41,7 +45,7 @@ const seasonSnapshot = () => {
 const waitForSeason = async (series,year,gender) => {
  const wanted=expected[`${series}-${year}-${gender==='M'?'men':'women'}`]
  assert.ok(wanted,`Missing approved table ${series}/${year}/${gender}`)
- const rows=wanted.rows.map(r=>({rank:r.officialRank,name:r.athleteName,points:r.officialPoints,id:r.athleteId,href:`#/athlete/${r.athleteId}`,country:r.nationalityNormalized}))
+ const rows=wanted.rows.map(r=>({rank:r.officialRank,name:displayNames.get(r.athleteId)||r.athleteName,points:r.officialPoints,id:r.athleteId,href:`#/athlete/${r.athleteId}`,country:r.nationalityNormalized}))
  const deadline=performance.now()+5000
  let state,lastError,stableSince=null
  while(performance.now()<deadline){
@@ -88,7 +92,7 @@ try{
     for(const [gi,g]of ['men','women'].entries()){
      await click(`.standings-gender button:nth-child(${gi+1})`)
      const got=await js('[...document.querySelectorAll(".rankings-table-panel:not([inert]) .official-standings tbody tr")].map(r=>({rank:Number(r.cells[0].textContent),name:r.querySelector(".standings-name").firstChild.textContent,points:Number(r.cells[2].textContent.replace(/\\s/g,"")),id:Number(r.dataset.athleteId),href:r.querySelector("a").getAttribute("href")}))')
-     assert.deepEqual(got,expected[`${s}-${y}-${g}`].rows.map(r=>({rank:r.officialRank,name:r.athleteName,points:r.officialPoints,id:r.athleteId,href:`#/athlete/${r.athleteId}`})))
+     assert.deepEqual(got,expected[`${s}-${y}-${g}`].rows.map(r=>({rank:r.officialRank,name:displayNames.get(r.athleteId)||r.athleteName,points:r.officialPoints,id:r.athleteId,href:`#/athlete/${r.athleteId}`})))
      assertDocumentWidth(await js('({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})'))
      assert.equal(await js('document.querySelector(".official-standings").scrollWidth<=document.querySelector(".standings-swipe").clientWidth'),true)
     }

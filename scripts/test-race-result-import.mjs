@@ -4,6 +4,7 @@ import fs from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { spawnSync } from 'node:child_process'
 import { createServer } from 'vite'
+import { parseCSV, validateRussianName } from './athlete-name-review.mjs'
 import { parseStatsPtoResults, proposeResults, proposeEditionSof, validateSourceURL } from './import-race-results.mjs'
 
 const fixtures=await Promise.all(['nice-world-championship-2026','french-riviera-2026','kona-2026'].map(async stem=>{
@@ -259,12 +260,61 @@ test('import preserves prior rows/IDs and identity except reviewed country corre
 })
 
 
+// Preserve the original full-profile baseline. Only byte-pinned, owner-approved
+// display names may project back to their previous Latin fallback; every other
+// field, profile and unapproved display name stays in the historical hash.
+const konaBaseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/kona-baseline-2026.json','utf8'))
+const approvedCsv=await fs.readFile('scripts/fixtures/approved-athlete-names/batch-001.csv')
+assert.equal(createHash('sha256').update(approvedCsv).digest('hex'),'32aa4a10d839a1b53537191d572eaedbba340976ef6ea3b2bbe400d74a5e4a64')
+const approvedText=approvedCsv.toString('utf8').replace(/^\uFEFF/,'')
+assert.equal(approvedText.split(/\r?\n/)[0],'athlete_id,name_en,name_ru,approval')
+const approvedNames=new Map()
+for(const [id,nameEn,nameRu,status] of parseCSV(approvedText.replace(/^athlete_id,name_en,name_ru,approval/,'athlete_id,ranking,name_en,name_ru'))){
+ assert.equal(status,'owner_approved');validateRussianName(nameRu,id)
+ assert.ok(!approvedNames.has(Number(id)));approvedNames.set(Number(id),{nameEn,nameRu})
+}
+assert.equal(approvedNames.size,115)
+function assertKonaIntegrity(catalog,results){
+ const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
+ assert.equal(catalog.length,konaBaseline.athletesCount)
+ assert.equal(new Set(catalog.map(a=>a.id)).size,catalog.length)
+ for(const [id,review] of approvedNames){
+  const athlete=catalog.find(a=>a.id===id);assert.ok(athlete,`Approved athlete ${id} missing`)
+  assert.equal(athlete.nameEn,review.nameEn,`Latin identity ${id}`)
+  assert.equal(athlete.name,review.nameRu,`Approved Russian spelling ${id}`)
+ }
+ const historical=catalog.map(a=>approvedNames.has(a.id)?{...a,name:approvedNames.get(a.id).nameEn}:a)
+ assert.equal(hash(historical),konaBaseline.athletesSha256,'Protected profiles and unapproved names must remain unchanged')
+ assert.equal(hash(results.slice(0,konaBaseline.resultsCount)),konaBaseline.resultsSha256,'Historical result records/mappings must remain unchanged')
+ const byName=new Map(catalog.map(a=>[normalizeAthleteIdentityName(a.nameEn),a.id]))
+ for(const row of results){
+  const expected=byName.get(normalizeAthleteIdentityName(row.athleteName))
+  assert.ok(expected,`Result ${row.id} identity unresolved`)
+  assert.equal(resolveAthleteId(row.athleteName),expected)
+  if(row.athleteId!==undefined)assert.equal(row.athleteId,expected,`Result ${row.id} mapping changed`)
+ }
+}
+for(const [label,mutate] of [
+ ['athlete ID',(a)=>{a[0].id=-1}],
+ ['original Latin name',(a)=>{a[0].nameEn+=' changed'}],
+ ['country',(a)=>{a[0].countryCode='XX'}],
+ ['protected biography',(a)=>{a[0].bio='Unexpected biography'}],
+ ['protected photo',(a)=>{a[0].image='/unexpected.webp'}],
+ ['unapproved Russian name',(a)=>{a.find(x=>!approvedNames.has(x.id)).name='Непроверенное имя'}],
+ ['approved Russian spelling',(a)=>{a.find(x=>approvedNames.has(x.id)).name='Неверное имя'}],
+ ['historical result mapping',(_a,r)=>{r[0].athleteId=-1}],
+ ['new Kona result mapping',(_a,r)=>{r.at(-1).athleteId=-1}],
+ ['result time',(_a,r)=>{r[0].totalTime='0:00:01'}],
+])test(`Kona guard rejects ${label}`,()=>{
+ const catalog=structuredClone(athletes),results=structuredClone(raceResults)
+ mutate(catalog,results);assert.throws(()=>assertKonaIntegrity(catalog,results),assert.AssertionError)
+})
+
 test('Kona incremental import preserves every prior row/profile and exact source statuses',async()=>{
  const baseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/kona-baseline-2026.json','utf8'))
  const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
  assert.equal(athletes.length,baseline.athletesCount)
- assert.equal(hash(athletes),baseline.athletesSha256)
- assert.equal(hash(raceResults.slice(0,baseline.resultsCount)),baseline.resultsSha256)
+ assertKonaIntegrity(athletes,raceResults)
  const editionId='ironman-world-championship-kona-2026'
  const oldEditions=allRaceEditionViews.map(e=>{if(e.editionId!==editionId)return e;const {sof,...old}=e;assert.deepEqual(sof,{women:96.82,men:92.79});return old})
  assert.equal(hash(oldEditions),baseline.editionsSha256)

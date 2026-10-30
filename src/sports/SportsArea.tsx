@@ -1,3 +1,4 @@
+import { athleteDisplayName } from '../utils/athleteDisplayName'
 import OfficialRankingsPage from '../pages/OfficialRankingsPage'
 import AthletesPage from '../pages/AthletesPage'
 import AthleteDetailPage from '../pages/AthleteDetailPage'
@@ -21,5 +22,5 @@ export default function SportsArea({ route, navigate, back }: { route: Route; na
     return <RaceDetailPage onFeedback={openFeedback} race={race} raceEditions={allRaceEditionViews} allResults={linkedRaceResults} athletes={athletes} onBack={back} onNavigate={onNavigate} onAthleteClick={onAthleteClick} />
   }
   const athlete = athletes.find(a => String(a.id) === route.id)!
-  return <AthleteDetailPage onFeedback={() => openFeedback({ ...genericFeedbackContext, screen: 'athlete', route: `#/athlete/${athlete.id}`, athleteId: athlete.id, athleteName: [athlete.name, athlete.nameEn].filter((v, i, a) => v && a.indexOf(v) === i).join(' / ') })} athlete={athlete} results={getResultsByAthlete(linkedRaceResults, athlete.id)} races={allRaceEditionViews} onBack={back} onNavigate={onNavigate} onRaceClick={race => navigate({ page: 'race', id: race.editionId })} />
+  return <AthleteDetailPage onFeedback={() => openFeedback({ ...genericFeedbackContext, screen: 'athlete', route: `#/athlete/${athlete.id}`, athleteId: athlete.id, athleteName: [athleteDisplayName(athlete), athlete.nameEn].filter((v, i, a) => v && a.indexOf(v) === i).join(' / ') })} athlete={athlete} results={getResultsByAthlete(linkedRaceResults, athlete.id)} races={allRaceEditionViews} onBack={back} onNavigate={onNavigate} onRaceClick={race => navigate({ page: 'race', id: race.editionId })} />
 }

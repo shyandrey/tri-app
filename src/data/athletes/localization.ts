@@ -1,3 +1,4 @@
+import { athleteDisplayName } from '../../utils/athleteDisplayName'
 import type { Athlete } from '../../types/Athlete'
 import athleteLocalization from './athleteLocalization.json'
 
@@ -38,7 +39,7 @@ export function localizeAthlete(athlete: Athlete): Athlete {
   const nameRu = typeof entry === 'string' ? entry : entry?.nameRu
   return {
     ...athlete,
-    name: nameRu ?? (athlete.name || nameEn),
+    name: athleteDisplayName({ name: nameRu?.trim() ? nameRu : athlete.name, nameEn }),
     countryCode: code ?? athlete.countryCode,
     country: code ? (COUNTRY_NAMES_RU[code] ?? athlete.country) : athlete.country,
     countryEn: code ? (COUNTRY_NAMES_EN[code] ?? athlete.countryEn) : athlete.countryEn,

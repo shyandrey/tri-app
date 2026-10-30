@@ -654,3 +654,11 @@
 - Owner Dashboard confirmation dated 2026-10-30: `preview.300w.app` belongs to `tri-app-preview`. HTTPS smoke remains mandatory but does not prove routing/ownership invariance.
 - Local safety tests: 54/54 PASS. Auto Deploy disabled; no merge, deployment or permission expansion. Next: PR CI and owner review before merge/activation.
 - Details: [DEVOPS implementation plan](devops03b2-preview-implementation-plan.md#devops-03b2c7d--scoped-token-domain-preflight-correction-2026-10-30).
+
+### DATA-ATH-02D — Approved Russian Names
+
+- **Priority:** P1 / Pre-release. **Status:** DATA-ATH-02D.1: Batch 001 local release gate 18/18 PASS; PR and Preview verification pending.
+- Owner approved all 230 spellings and two sequential Preview releases. Batch 001: 115 names, target coverage 1052/1167; Batch 002 waits for successful first CI/deployment/smoke. Shared Russian-first resolver preserves English fallback.
+- **Full catalog regeneration is prohibited until TECH-01 is resolved.** Known ID reassignment: Emmett Gross `10140 → 10141`; explicitly accepted as separate from the guarded localization registry importer.
+- No Athlete Profile polish, identities, results, source standings, artwork or Production changes.
+- [Policy and batch evidence](athlete-name-localization-policy.md).
