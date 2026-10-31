@@ -127,6 +127,51 @@ test('Readiness retains deployment lock, read-only token, and original full-smok
  const yaml=await fs.readFile('.github/workflows/preview-ci.yml','utf8'),script=await fs.readFile('scripts/smoke-preview-ci.mjs','utf8')
  assert.ok(yaml.includes('group: tri-app-preview-publish'));assert.ok(yaml.includes('cancel-in-progress: false'))
  const step=yaml.split('- name: Read-only published Preview smoke')[1].split('- name: Deployment evidence')[0]
- assert.ok(step.includes('GH_READ_TOKEN: ${{ github.token }}'));assert.ok(step.includes('PREVIOUS_PREVIEW_SHA: ${{ github.event.before }}'));assert.ok(!step.includes('CLOUDFLARE'))
+ assert.ok(step.includes('GH_READ_TOKEN: ${{ github.token }}'));assert.ok(step.includes('PREVIOUS_PREVIEW_SHA: ${{ steps.publication.outputs.previous_sha }}'));assert.ok(!step.includes('CLOUDFLARE'))
  assert.ok(script.includes('Published HTML differs from tested artifact'));assert.ok(script.includes('Preview HEAD changed during full smoke'))
+})
+
+
+import {capturePublishedBaseline,assertPublishedAncestor} from './deploy-preview-artifact.mjs'
+function publishedFixture(overrides={}) {
+ const health={ok:true,service:'tri-app',commit:previousSha,version:'0.0.0'}
+ return {sha,version:'0.0.0',rollback,readHealth:async()=>health,readHead:async()=>sha,readDeployment:async()=>rollback,verifyAncestor:async(p,t)=>{assert.equal(p,previousSha);assert.equal(t,sha)},...overrides}
+}
+test('Published baseline can precede event.before after deployment-disabled merges',async()=>{
+ const gitBefore='c'.repeat(40)
+ const baseline=await capturePublishedBaseline(publishedFixture())
+ assert.notEqual(baseline.sha,gitBefore);assert.equal(baseline.sha,previousSha)
+ await readinessFixture([baseline.sha,sha,sha],{overrides:{previousSha:baseline.sha}}).run()
+ await assert.rejects(readinessFixture([gitBefore],{overrides:{previousSha:baseline.sha}}).run(),/Unexpected deployed SHA/)
+})
+for(const [name,overrides] of [
+ ['missing health SHA',{readHealth:async()=>({ok:true,service:'tri-app',version:'0.0.0'})}],
+ ['wrong version',{readHealth:async()=>({ok:true,service:'tri-app',commit:previousSha,version:'1.0.0'})}],
+ ['unknown or divergent commit',{verifyAncestor:async()=>{throw Error('Unknown ancestor')}}],
+ ['changed Git HEAD',{readHead:async()=>previousSha}],
+ ['changed rollback',{readDeployment:async()=>({...rollback,id:'different'})}],
+ ['unavailable health',{readHealth:async()=>{throw Error('HTTP 503')}}],
+])test('Pre-upload published baseline rejects '+name,async()=>{await assert.rejects(capturePublishedBaseline(publishedFixture(overrides)))})
+test('Pre-upload baseline rejects conflicting second observation',async()=>{
+ let n=0;await assert.rejects(capturePublishedBaseline(publishedFixture({readHealth:async()=>({ok:true,service:'tri-app',version:'0.0.0',commit:++n===1?previousSha:'c'.repeat(40)})})),/health changed/)
+})
+test('Pre-upload baseline rechecks rollback and branch after observations',async()=>{
+ for(const key of ['readDeployment','readHead']){
+  let n=0;const stable=key==='readHead'?sha:rollback
+  await assert.rejects(capturePublishedBaseline(publishedFixture({[key]:async()=>++n===1?stable:null})))
+ }
+})
+test('Capture precedes Wrangler and smoke uses only captured output',async()=>{
+ const script=await fs.readFile('scripts/deploy-preview-artifact.mjs','utf8')
+ assert.ok(script.indexOf('record.publishedBaseline=await capturePublishedBaseline')<script.indexOf('const result=spawnSync'))
+ const yaml=await fs.readFile('.github/workflows/preview-ci.yml','utf8')
+ assert.ok(!yaml.includes('github.event.before'))
+ assert.ok(yaml.includes('id: publication'));assert.ok(yaml.includes('steps.publication.outputs.previous_sha'))
+})
+
+test('Published ancestry requires exact ancestor and forward target',()=>{
+ assertPublishedAncestor({status:'ahead',merge_base_commit:{sha:previousSha}},previousSha)
+ for(const status of ['behind','diverged','identical',undefined])assert.throws(()=>assertPublishedAncestor({status,merge_base_commit:{sha:previousSha}},previousSha))
+ assert.throws(()=>assertPublishedAncestor({status:'ahead',merge_base_commit:{sha}},previousSha))
+ assert.throws(()=>assertPublishedAncestor({status:'ahead'},previousSha))
 })
