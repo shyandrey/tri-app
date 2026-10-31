@@ -673,3 +673,28 @@ Preview Environment `PREVIEW_AUTO_DEPLOY_ENABLED=false` before and after recover
 Evidence: `/tmp/300w-devops04/` — original ZIP/package, GitHub artifact metadata, health observations/headers, unchanged full smoke log/screenshots, final health/config readback and targeted test logs. Existing publication IDs remain deployment `e8224ef5-58c8-4a0b-be20-2913162725eb`, version `4d016450-829f-4133-b9fb-14e74f27a709`.
 
 Next: owner review of focused readiness PR and CI results; normal merge only when separately authorized, with activation still disabled. Reactivation requires explicit owner approval after correction validation. No new Preview publication solely to test this fix. Complete physical-device ATH-UI-01 visual QA on the already published version.
+
+
+## DEVOPS-04B — Actual published baseline (2026-10-31)
+
+Focused candidate based on Preview `4ad30fc96eeabe20c2d7e56310c10ba7dff36c78`. No merge/publication or activation change.
+
+- `deploy-preview-artifact.mjs` captures `/api/health` twice before Wrangler with finite request timeouts, redirect rejection and no-store. Requires matching valid previous SHA, expected application version/service, and GitHub compare confirmation that the published commit is a known ancestor of the target. Missing/unknown/divergent/already-published identities fail closed.
+- Rechecks Cloudflare rollback deployment/version and Git Preview HEAD around capture. Saves `publishedBaseline` with SHA/version/time and rollback IDs in deployment evidence. On successful publication exports the captured SHA via the deployment step's GitHub output.
+- Workflow adds publication step ID and supplies that output as `PREVIOUS_PREVIEW_SHA`; no `github.event.before` fallback. No changes to activation, credentials, routes, artifact integrity, full smoke or readiness's two observations/60-second timeout/branch protection.
+- 76/76 pipeline tests PASS, including Git HEAD ahead of live SHA, missing identity, wrong version, unknown ancestry, conflicting health, changed rollback/HEAD, and existing readiness negatives. Targeted ESLint PASS; YAML parsed and 14 shell steps syntax checked; `git diff --check` PASS. No local rebuild or full browser rerun: runtime/dependencies unchanged; ordinary PR CI remains authoritative for those checks.
+- Limits: HTTPS observations establish the public application's identity, not domain ownership. Double observations and stable Cloudflare deployment metadata detect conflicts but cannot prevent a privileged out-of-band Cloudflare write after the last check; existing concurrency and post-publication verification remain. A version-changing release needs a separately reviewed old-version contract; this patch intentionally fails on unexpected versions.
+
+### DEVOPS-02 — Concise Cloud setup proposal (read-only)
+
+Use current [Codex Cloud environments documentation](https://learn.chatgpt.com/docs/environments/cloud-environments), not Legacy integration setup. A published environment can be selected on mobile; create/review it on web or desktop, connect the intended GitHub repository if prompted, review setup results, then publish only with separate authorization. Existing GitHub connector access does not prove this account has a configured Cloud environment. Account entitlement, environment inventory and allowed repository connection remain unverified.
+
+Repository-specific proposed configuration:
+
+1. Connect only `shyandrey/tri-app`; verify selected source branch and SHA explicitly (repository default is `main`, not Preview). Start feature branches from the owner-approved Preview baseline. Never import uncommitted Mac files automatically.
+2. Match Linux CI: Node 24.19.0, npm lockfile, Python 3/stdlib SQLite. Install with `npm ci --no-audit --no-fund`; run `node scripts/check-ci-portable.mjs` (includes build/lint/release gate). Use temporary `CI_REPORT_DIR` when retaining reports.
+3. Browser CI uses installed Chrome/Chromium, built `dist`, fresh profiles and local ports; command `BROWSER_REPORT_DIR=/tmp/tri-browser node scripts/check-preview-browser-ci.mjs`. Actual Cloud compatibility is untested. Official documentation lists computer/browser-use limitations; do not equate built-in interactive browser use with guaranteed availability of this repository's command-line browser harness. Keep GitHub's qualified seven-suite gate mandatory.
+4. No project secrets needed for portable tests/build. Do not add Cloudflare tokens, Production/D1 access or activation variables to Codex Cloud. Keep deployment credentials solely in GitHub Environment `preview`. Permit package downloads and necessary GitHub access, not unrestricted service access by default.
+5. iPhone workflow: select a published Cloud environment, describe a bounded task, inspect diff/test output, then authorize a feature-branch PR to protected Preview. No direct Preview pushes or autonomous merges; Auto Deploy is enabled, so PR merge is a publication decision. Heavy development remains Mac + VS Code.
+
+No environment/account configuration or test PR was performed. This task's real CI correction PR is separate from Cloud assessment. Full catalog regeneration remains prohibited under TECH-01.

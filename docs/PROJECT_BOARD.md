@@ -694,3 +694,11 @@ ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-auth
 - Auto Deploy remains disabled. No deployment/rollback, Production or D1 changes. TECH-01 remains OPEN.
 - **ATH-UI-01: Ready for Owner Visual QA** on existing Preview; no persistent UI defect found.
 - [Evidence, precise diagnosis limitations and review procedure](devops03b2-preview-implementation-plan.md#devops-04--ath-ui-01-smoke-recovery-and-bounded-readiness).
+
+
+### DEVOPS-04B — Published SHA baseline & Codex Cloud assessment
+
+- **Status:** Implemented / Awaiting Owner Review; no merge or deployment authorized. **Priority:** P1.
+- Readiness previous SHA now comes from two stable pre-upload Preview health observations, not Git push `before`. Validate known ancestor, version, stable rollback deployment and current Preview HEAD before Wrangler. Preserve exact artifact/full smoke and bounded two-observation readiness.
+- Targeted safety/readiness tests 76/76 PASS; targeted ESLint, YAML/shell and diff checks PASS. PR CI will provide build/release/browser results separately.
+- DEVOPS-02 read-only setup proposal documented; no Cloud environment, secrets, settings or test PR created. TECH-01 full-regeneration prohibition remains.

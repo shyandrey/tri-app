@@ -36,8 +36,31 @@ export function assertRollbackBaseline(deployment) {
   assert.match(deployment.versions[0].version_id??'',/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/)
   assert.equal(deployment.versions[0].percentage,100,'Rollback must cover 100% traffic')
 }
+export function assertPublishedAncestor(comparison,previous) {
+  assert.equal(comparison.status,'ahead','Published SHA must be a known ancestor of target')
+  assert.equal(comparison.merge_base_commit?.sha,previous,'Unknown/conflicting published SHA')
+}
+// Capture public identity before upload while the Cloudflare rollback and Git baselines stay fixed.
+export async function capturePublishedBaseline({sha,version,readHealth,readHead,readDeployment,rollback,verifyAncestor}) {
+  assert.ok(validSHA(sha));assertRollbackBaseline(rollback)
+  const check=async()=>{
+    assert.equal(await readHead(),sha,'Preview HEAD changed before upload')
+    assert.deepEqual(await readDeployment(),rollback,'Published deployment changed before upload')
+  }
+  await check()
+  const first=await readHealth()
+  assert.equal(first.ok,true);assert.equal(first.service,'tri-app')
+  assert.ok(validSHA(first.commit)&&first.commit!==sha,'Missing/invalid/already-published baseline SHA')
+  assert.equal(first.version,version,'Unexpected published baseline version')
+  await verifyAncestor(first.commit,sha)
+  const second=await readHealth()
+  assert.deepEqual(second,first,'Published health changed before upload')
+  await check()
+  return {sha:first.commit,version:first.version,capturedAt:new Date().toISOString(),deploymentId:rollback.id,versionId:rollback.versions[0].version_id}
+}
 export async function deploy(directory, digest, reportDirectory, env=process.env, fetcher=fetch) {
   assertDeployContext(env)
+  if(env.GITHUB_ACTIONS==='true')assert.ok(env.GITHUB_OUTPUT,'Deployment step output required before upload')
   const manifest=await verifyArtifact(directory,env.GITHUB_SHA,digest,JSON.parse(await fs.readFile('wrangler.jsonc','utf8')))
   const config=JSON.parse(await fs.readFile(path.join(directory,'wrangler.json'),'utf8'))
   assert.equal(config.name,'tri-app-preview','Unexpected target Worker')
@@ -69,6 +92,22 @@ export async function deploy(directory, digest, reportDirectory, env=process.env
   const operationalConfig={...config,main:path.resolve(directory,'worker/index.js'),assets:{...config.assets,directory:path.resolve(directory,'dist')}}
   const configPath=path.resolve(reportDirectory,'deploy-config.json')
   await fs.writeFile(configPath,JSON.stringify(operationalConfig,null,2))
+  record.publishedBaseline=await capturePublishedBaseline({
+    sha:manifest.sha,version:manifest.version,rollback:record.previousDeployment,
+    readHealth:async()=>{
+      const response=await fetcher('https://preview.300w.app/api/health',{redirect:'error',cache:'no-store',signal:AbortSignal.timeout(5000)})
+      assert.equal(response.status,200,'Published baseline health unavailable')
+      const health=await response.json()
+      return {ok:health.ok,service:health.service,commit:health.commit,version:health.version}
+    },
+    readHead:async()=>(await read('https://api.github.com/repos/shyandrey/tri-app/git/ref/heads/preview',env.GH_READ_TOKEN,'Preview Git ref GET')).object.sha,
+    readDeployment:async()=>(await read(cfBase+'/deployments',env.CLOUDFLARE_API_TOKEN,'Published baseline recheck GET')).deployments?.[0],
+    verifyAncestor:async(previous,target)=>{
+      const comparison=await read(`https://api.github.com/repos/shyandrey/tri-app/compare/${previous}...${target}`,env.GH_READ_TOKEN,'Published SHA ancestry GET')
+      assertPublishedAncestor(comparison,previous)
+    },
+  })
+  await save()
   const cli=path.resolve('node_modules/wrangler/bin/wrangler.js')
   const result=spawnSync(process.execPath,[cli,'deploy','--no-bundle','--config',configPath],{cwd:process.cwd(),env:{...env,WRANGLER_SEND_METRICS:'false'},encoding:'utf8',timeout:180000,maxBuffer:8*1024*1024})
   const log=((result.stdout??'')+(result.stderr??'')).split(env.CLOUDFLARE_API_TOKEN).join('[REDACTED]').split(env.GH_READ_TOKEN).join('[REDACTED]')
@@ -83,6 +122,8 @@ export async function deploy(directory, digest, reportDirectory, env=process.env
   const afterSchedules=await read(cfBase+'/schedules',env.CLOUDFLARE_API_TOKEN,'Post schedules GET')
   assertLiveBindings(await read(cfBase+'/settings',env.CLOUDFLARE_API_TOKEN,'Post settings GET'),config,afterSchedules.schedules??afterSchedules)
   record.status='deployed-awaiting-smoke';await save()
+  assert.ok(env.GITHUB_OUTPUT,'Deployment step output required')
+  await fs.appendFile(env.GITHUB_OUTPUT,`previous_sha=${record.publishedBaseline.sha}\n`)
   console.log(`Preview SHA ${manifest.sha}; version ${version}; deployment ${latest.id}`)
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href) await deploy(...process.argv.slice(2))
