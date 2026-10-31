@@ -7,6 +7,37 @@ import {pathToFileURL} from 'node:url'
 import {sha256,validSHA} from './preview-artifact.mjs'
 
 export function assertHealth(health,sha,version){assert.ok(validSHA(sha));assert.equal(health.ok,true);assert.equal(health.service,'tri-app');assert.equal(health.commit,sha);assert.equal(health.version,version)}
+// Wait only for the exact previous Preview SHA to converge to this deployment.
+// Unknown commits, version drift, errors and changed branch HEAD fail immediately.
+export async function waitForPreviewHealth({sha,previousSha,version,readHealth,readHead,log=console.log,now=()=>performance.now(),sleep=ms=>new Promise(r=>setTimeout(r,ms)),timeoutMs=60000,intervalMs=2000}) {
+ assert.ok(validSHA(sha)&&validSHA(previousSha)&&sha!==previousSha,'Exact distinct current/previous SHAs required')
+ assert.ok(typeof version==='string'&&version.length>0)
+ assert.ok(timeoutMs>0&&timeoutMs<=60000&&intervalMs>0&&intervalMs<=timeoutMs)
+ const start=now();let matches=0
+ const budget=()=>{const left=timeoutMs-(now()-start);assert.ok(left>0,'Preview readiness timeout');return Math.min(5000,left)}
+ const head=async()=>assert.equal(await readHead(budget()),sha,'Preview HEAD changed during smoke; overlapping promotion')
+ while(true){
+  await head()
+  const health=await readHealth(budget())
+  log({elapsedMs:now()-start,sha:health.commit,version:health.version})
+  await head();budget()
+  assert.equal(health.ok,true);assert.equal(health.service,'tri-app');assert.equal(health.version,version)
+  if(health.commit===sha){if(++matches===2)return health}
+  else {assert.equal(health.commit,previousSha,'Unexpected deployed SHA; not propagation');assert.equal(matches,0,'Deployment regressed after expected SHA')}
+  await sleep(Math.min(intervalMs,budget()))
+ }
+}
+export function assertReadinessContext(env,sha) {
+ assert.equal(env.GITHUB_REPOSITORY,'shyandrey/tri-app');assert.equal(env.GITHUB_REF,'refs/heads/preview')
+ assert.equal(env.GITHUB_EVENT_NAME,'push');assert.equal(env.GITHUB_SHA,sha)
+ assert.ok(env.GH_READ_TOKEN,'Read-only GitHub token required')
+ assert.ok(validSHA(env.PREVIOUS_PREVIEW_SHA)&&env.PREVIOUS_PREVIEW_SHA!==sha,'Previous Preview SHA required')
+}
+async function previewHead(timeout=5000){
+ const r=await fetch('https://api.github.com/repos/shyandrey/tri-app/git/ref/heads/preview',{headers:{Authorization:`Bearer ${process.env.GH_READ_TOKEN}`,'User-Agent':'300W-preview-smoke'},redirect:'error',signal:AbortSignal.timeout(timeout)})
+ assert.equal(r.status,200,'Preview HEAD lookup failed');return (await r.json()).object.sha
+}
+
 export async function smoke(directory,sha,reports){
  const origin='https://preview.300w.app',manifest=JSON.parse(await fs.readFile(path.join(directory,'manifest.json'),'utf8'))
  const get=async url=>{const r=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(15000)});assert.equal(r.status,200,new URL(url).pathname);return r}
@@ -53,5 +84,15 @@ export async function smoke(directory,sha,reports){
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
  const [directory,sha,reports]=process.argv.slice(2)
- try {await smoke(directory,sha,reports)} catch(error){await fs.mkdir(reports,{recursive:true});await fs.writeFile(path.join(reports,'smoke.json'),JSON.stringify({sha,result:'FAIL',error:error.message,automaticRollback:false},null,2));throw error}
+ try {
+  if(process.env.GITHUB_ACTIONS==='true'){
+   assertReadinessContext(process.env,sha)
+   const manifest=JSON.parse(await fs.readFile(path.join(directory,'manifest.json'),'utf8'));assert.equal(manifest.sha,sha)
+   const observations=[]
+   try {await waitForPreviewHealth({sha,previousSha:process.env.PREVIOUS_PREVIEW_SHA,version:manifest.version,readHead:previewHead,readHealth:async timeout=>{const r=await fetch('https://preview.300w.app/api/health',{redirect:'error',cache:'no-store',signal:AbortSignal.timeout(timeout)});assert.equal(r.status,200);return r.json()},log:entry=>{observations.push(entry);console.log('Preview readiness',JSON.stringify(entry))}})}
+   finally {await fs.mkdir(reports,{recursive:true});await fs.writeFile(path.join(reports,'readiness.json'),JSON.stringify(observations,null,2))}
+  }
+  await smoke(directory,sha,reports)
+  if(process.env.GITHUB_ACTIONS==='true')assert.equal(await previewHead(),sha,'Preview HEAD changed during full smoke')
+ } catch(error){await fs.mkdir(reports,{recursive:true});await fs.writeFile(path.join(reports,'smoke.json'),JSON.stringify({sha,result:'FAIL',error:error.message,automaticRollback:false},null,2));throw error}
 }
