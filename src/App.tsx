@@ -91,7 +91,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
   })
 
   const futureHomeRaces = groupRacesForHome(races)
-    .filter((race) => race.dateISO > getMoscowTodayISO())
+    .filter((race) => race.dateISO >= getMoscowTodayISO())
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const showcaseRaces = futureHomeRaces.slice(0, 5)
   const upcomingRaces = futureHomeRaces.slice(0, 3)
