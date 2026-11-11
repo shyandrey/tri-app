@@ -1,0 +1,9 @@
+# REL-QA-02C — Linux CDP startup qualification
+
+Previous run 43083678576 (commit 25c4c975): 94/94 tests and original artifact integrity PASS; Chrome 156.0.8078.79 remained alive, CDP refused connections through 4453ms, last request exhausted remaining budget near 5001ms. Stderr announced DevTools near the deadline and contained DBus errors. This supports testing a longer bounded initialization window, not a proven DBus cause or proof that more time alone is sufficient. Port probe passed; endpoint matches announced 127.0.0.1:9387. No evidence of endpoint mismatch.
+
+Candidate changes: default/maximum startup deadline 5→15 seconds; per-request cap stays 1s; polling stays 100ms; success exits immediately. No unconditional sleep, restart or application assertion retry. Capture bounded timestamped stderr chunks to correlate DevTools announcement with polling. All API/SHA/HTML/navigation/artwork assertions, cleanup, workflow and artifact pins unchanged. Tests include ready after 6s, refusal/empty-list timeout at 15s, explicit 5s caller budget and invalid bounds.
+
+Local: 100/100 targeted/pipeline tests PASS; syntax/diff check PASS. First lint invocation could not resolve dependencies from the new isolated copy; linked existing node_modules (no install/change), targeted lint then PASS. No runtime/data/biography/version changes.
+
+One additive qualification commit and normal push authorized on ci/rel-qa02-smoke-qualification; no history rewrite, PR, merge or deployment. Original artifact 13865771565 from run 43042244127 remains available, ZIP digest 821a4fa36b0789ec127bdc473ecfa7fdc9c274c93673715e5dc8cd82bc5560cc. Trusted manifest a5304b94f9f6281f5d86b435c56d1d07527f3616b0cec3fa3fd8bf59654f1493. Application SHA 8e4c303093669d325784e41f3760f81c515f0315, Production c8f52e02a75e0b413dddbfee77f477232c5301d3. Actual Linux result to be reported after the single run; no result assumed here.

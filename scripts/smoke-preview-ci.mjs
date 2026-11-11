@@ -50,8 +50,10 @@ export async function smoke(directory,sha,reports){
  assert.ok(chrome,'Chrome required')
  await assertBrowserPortFree()
  const startup={executable:chrome,version:spawnSync(chrome,['--version'],{encoding:'utf8'}).stdout?.trim(),stderr:'',exit:null,spawnError:null,observations:[]}
+ const startupStart=performance.now()
+ startup.stderrEvents=[]
  const browser=spawn(chrome,['--headless=new','--remote-debugging-address=127.0.0.1','--remote-debugging-port=9387','--user-data-dir='+await fs.mkdtemp(path.join(os.tmpdir(),'tri-smoke-')),'--no-first-run','about:blank'],{stdio:['ignore','ignore','pipe']})
- browser.stderr.on('data',chunk=>{startup.stderr=(startup.stderr+chunk.toString()).slice(-16384)})
+ browser.stderr.on('data',chunk=>{startup.stderr=(startup.stderr+chunk.toString()).slice(-16384);startup.stderrEvents.push({elapsedMs:performance.now()-startupStart,text:chunk.toString().slice(-2048)});startup.stderrEvents=startup.stderrEvents.slice(-64)})
  browser.on('error',error=>{startup.spawnError=error.message})
  browser.on('exit',(code,signal)=>{startup.exit={code,signal}})
  const wait=ms=>new Promise(r=>setTimeout(r,ms));let socket;const errors=[]

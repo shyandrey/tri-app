@@ -9,9 +9,11 @@ export async function assertBrowserPortFree(port=9387){
  })
 }
 
-// Keep the original five-second budget; no evidence justifies increasing it.
-export async function waitForBrowserTarget({browser,startup,fetcher=fetch,now=()=>performance.now(),sleep=ms=>new Promise(r=>setTimeout(r,ms)),timeoutMs=5000}) {
- assert.ok(timeoutMs>0&&timeoutMs<=5000)
+// REL-QA-02B: Chrome was alive and announced DevTools near the old 5s deadline.
+// Allow a bounded 15s startup window; return immediately when ready.
+// Per-request timeout remains <=1s and polling remains 100ms.
+export async function waitForBrowserTarget({browser,startup,fetcher=fetch,now=()=>performance.now(),sleep=ms=>new Promise(r=>setTimeout(r,ms)),timeoutMs=15000}) {
+ assert.ok(timeoutMs>0&&timeoutMs<=15000)
  const start=now(),origin='http://127.0.0.1:9387'
  const alive=()=>{
   assert.ok(!startup.spawnError,`Chrome spawn failed: ${startup.spawnError}`)

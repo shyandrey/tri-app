@@ -6,6 +6,10 @@
 
 ## Current Focus
 
+REL-QA-02C — ISOLATED LINUX QUALIFICATION PENDING. Late Chrome initialization observed in run 43083678576; bounded 15s startup candidate, unchanged smoke/security assertions, 100/100 local tests PASS. One qualification push authorized, no deployment/PR/merge. [Evidence and scope](audits/rel-qa02c-linux-startup.md).
+
+Historical checkpoint:
+
 REL-PREP-03A — OWNER-AUTHORIZED RC PUBLICATION / AWAITING CI REVIEW. Dedicated branch `release/rel-prep-03a-v1-rc`, base Preview `4a5f7e3`; one consolidated snapshot commit, no merge/deployment authorization. All 57 biographies and Content Freeze retained; ATH-04 post-release; version 0.0.0. Final local gates 18/18 + 14/14; first image timeout remains documented. [Publication scope and conditions](audits/rel-prep03a-publication.md). PR must not be merged without separate owner approval.
 
 Historical preparation checkpoints:
