@@ -33,7 +33,7 @@ try {
   await send('Runtime.enable'); await send('Page.enable')
   for (const [width, height] of [[390,844], [1440,900]]) {
     await send('Emulation.setDeviceMetricsOverride', {width, height, deviceScaleFactor:1, mobile:width<600})
-    const rows = width === 390 ? approvedBiographies : approvedBiographies.filter(row=>[1,10,28,104,10521,10736].includes(row.id))
+    const rows = width === 390 ? approvedBiographies : approvedBiographies.filter(row=>[1,10,28,101,104,10521,10736].includes(row.id))
     for (const row of rows) {
       await send('Page.navigate', {url:`${process.env.TRI_APP_URL ?? 'http://127.0.0.1:5480'}/#/athlete/${row.id}`})
       await until(`!!document.querySelector('.athlete-detail__bio-list') && document.querySelector('.athlete-detail__meta')?.textContent === ${JSON.stringify(row.nameEn)}`)
@@ -42,7 +42,7 @@ try {
       const paragraphs = await evaluate(`[...document.querySelectorAll('.athlete-detail__bio-list li')].map(p=>p.textContent)`)
       assert.deepEqual(paragraphs, row.bio.split('\n\n'), `${width}px exact paragraphs, ID ${row.id}`)
       assert.ok(await evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth'), `overflow ID ${row.id}`)
-      if ([1,10,28,104,10521,10736].includes(row.id)) {
+      if ([1,10,28,101,104,10521,10736].includes(row.id)) {
         await until(`[...document.querySelectorAll('.athlete-detail__image')].every(i=>i.complete && i.naturalWidth>0)`)
         const image = await send('Page.captureScreenshot', {format:'png', captureBeyondViewport:false})
         await fs.writeFile(`${output}/${width}-${row.id}.png`, Buffer.from(image.data,'base64'))

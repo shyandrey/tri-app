@@ -6,6 +6,16 @@
 
 ## Current Focus
 
+REL-INT-02 — LOCAL CANDIDATE PREPARED / AWAITING OWNER REVIEW · P1. REL-QA-02 qualified harness, REL-QA-03 Moscow date boundary and ATH-03B exact approved biography. Fast gate 18/18, targeted 115/115, browser gate underlying checks 14/14 PASS; outer npm launcher timeout recorded separately. All 58 bios verified, prior57 unchanged, 1167 identities and 4592 result IDs preserved. Next: review [inventory, evidence, limitations and proposed publication/recovery](audits/rel-int02-consolidated-candidate.md); no commit/publication/deployment authorized.
+
+Source candidate checkpoints (preserved):
+
+REL-INT-01 — ISOLATED INTEGRATION CANDIDATE / AWAITING OWNER REVIEW. Baseline Preview `8e4c3030`; exact qualified REL-QA-02 harness from `56f1086c`, qualification workflow excluded. REL-QA-03: Home/Showcase include the full Moscow event date, matching Calendar; next day finished. No ATH-03B work, content changes, commit/push/PR/deployment. [Scope, tests and limitations](audits/rel-int01-integration-candidate.md).
+
+ATH-03B — APPROVED TEXT INTEGRATED LOCALLY / AWAITING OWNER REVIEW. Kate Waugh ID101, seven exact approved paragraphs from source commit `dd711162`; original 57 biographies preserved. Separate candidate on Preview `8e4c3030`, REL-INT-01 untouched. Biography tests 10/10, athlete audit 0 issues, fast release gate 18/18 PASS. No commit/push/PR/deployment. [Source, inventory and validation](audits/ath03b-kate-waugh-integration.md).
+
+Historical publication checkpoint:
+
 REL-PREP-03A — OWNER-AUTHORIZED RC PUBLICATION / AWAITING CI REVIEW. Dedicated branch `release/rel-prep-03a-v1-rc`, base Preview `4a5f7e3`; one consolidated snapshot commit, no merge/deployment authorization. All 57 biographies and Content Freeze retained; ATH-04 post-release; version 0.0.0. Final local gates 18/18 + 14/14; first image timeout remains documented. [Publication scope and conditions](audits/rel-prep03a-publication.md). PR must not be merged without separate owner approval.
 
 Historical preparation checkpoints:
