@@ -1,0 +1,66 @@
+--- a/src/data/athletes/index.ts
++++ b/src/data/athletes/index.ts
+@@ -1,8 +1 @@
+-import type { Athlete } from '../../types/Athlete'
+-import { maleAthletes } from './men'
+-import { femaleAthletes } from './women'
+-import { resultAthletes } from './resultAthletes.generated'
+-import { verifiedResultAthletes } from './verifiedResultAthletes'
+-import { athletePhotosByName } from './athletePhotos.generated'
+-import { localizeAthlete } from './localization'
+-import { reviewedAthletePhoto } from './photoReview'
++import { athletes as identities } from './identities'
+@@ -10,15 +3,2 @@
+-import { enrichPtoProfile } from './ptoProfileEnrichment'
+-
+-const withRegisteredPhoto = (athlete: Athlete): Athlete => ({
+-  ...athlete,
+-  image: reviewedAthletePhoto(athlete.id, athlete.image ?? (athlete.nameEn ? athletePhotosByName[athlete.nameEn] : undefined)),
+-})
+-
+-export const athletes: Athlete[] = [
+-  ...maleAthletes,
+-  ...femaleAthletes,
+-  ...resultAthletes,
+-  ...verifiedResultAthletes,
+-].map(withRegisteredPhoto).map(localizeAthlete).map(enrichPtoProfile).map(withApprovedBiography)
+-
+-export { maleAthletes, femaleAthletes, resultAthletes, verifiedResultAthletes }
++export const athletes = identities.map(withApprovedBiography)
++export { maleAthletes, femaleAthletes, resultAthletes, verifiedResultAthletes } from './identities'
+--- /dev/null
++++ b/src/data/athletes/identities.ts
+@@ -0,0 +1,23 @@
++import type { Athlete } from '../../types/Athlete'
++import { maleAthletes } from './men'
++import { femaleAthletes } from './women'
++import { resultAthletes } from './resultAthletes.generated'
++import { verifiedResultAthletes } from './verifiedResultAthletes'
++import { athletePhotosByName } from './athletePhotos.generated'
++import { localizeAthlete } from './localization'
++import { reviewedAthletePhoto } from './photoReview'
++import { enrichPtoProfile } from './ptoProfileEnrichment'
++
++const withRegisteredPhoto = (athlete: Athlete): Athlete => ({
++  ...athlete,
++  image: reviewedAthletePhoto(athlete.id, athlete.image ?? (athlete.nameEn ? athletePhotosByName[athlete.nameEn] : undefined)),
++})
++
++export const athletes: Athlete[] = [
++  ...maleAthletes,
++  ...femaleAthletes,
++  ...resultAthletes,
++  ...verifiedResultAthletes,
++].map(withRegisteredPhoto).map(localizeAthlete).map(enrichPtoProfile)
++
++export { maleAthletes, femaleAthletes, resultAthletes, verifiedResultAthletes }
+--- a/src/sports/RankingsArea.tsx
++++ b/src/sports/RankingsArea.tsx
+@@ -2 +2 @@
+-import { athletes } from '../data/athletes'
++import { athletes } from '../data/athletes/identities'
+--- a/src/sports/rankings-entry.ts
++++ b/src/sports/rankings-entry.ts
+@@ -1 +1 @@
+-import { athletes } from '../data/athletes'
++import { athletes } from '../data/athletes/identities'

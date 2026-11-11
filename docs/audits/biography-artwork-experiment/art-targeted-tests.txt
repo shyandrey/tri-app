@@ -1,0 +1,19 @@
+✔ 57 exact approved texts, unique identities and unchanged non-biography properties (2.736292ms)
+✔ unmapped or mismatched identities cannot receive a biography (0.047916ms)
+✔ approved biography guard rejects changed id (1.988125ms)
+✔ approved biography guard rejects changed nameEn (1.628584ms)
+✔ approved biography guard rejects changed bio (1.790625ms)
+✔ paragraphs are preserved, including generated profiles and owner whitespace (0.416417ms)
+✔ all generated variants exist, match metadata, preserve alpha/aspect, and never upscale (199.446ms)
+✔ every current athlete source resolves without identity changes; unknown sources fall back (296.515125ms)
+✔ isolated Rankings entry preserves canonical identities and exact existing markup for every selection (607.927208ms)
+✔ concurrent callers share initialization and resolved data; rejection allows a fresh attempt (0.349459ms)
+✔ async sports data retains all catalog/results and exact original ranking order/scores (298.021208ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2287.037666

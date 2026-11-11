@@ -1,0 +1,16 @@
+PASS geometry fixtures: valid overlay/classic/mobile widths; reject overflow, undersizing, inset, wrong snap and wrong responsive heights
+PASS 320px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 320px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 390px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 390px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 440px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 440px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 667px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 667px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 844px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 844px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 956px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 956px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 1440px dark: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS 1440px light: all 12 tables, exact values/links, wheel, touch/keyboard, history, layout, fallback
+PASS home/bottom navigation, zero runtime exceptions

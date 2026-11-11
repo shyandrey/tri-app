@@ -41,6 +41,10 @@ export default function OfficialRankingsPage({ athletes, onBack, onNavigate, onA
             style={{ '--art-aspect': art.aspectRatio, '--portrait-position': art.portraitObjectPosition, '--landscape-position': art.landscapeObjectPosition } as CSSProperties}>
             <picture>
               <source media="(orientation: landscape)" srcSet={art.landscapePath} type="image/webp" />
+              {art.compactPortrait && <>
+                <source media="(orientation: portrait) and (max-width: 440px)" srcSet={art.compactPortrait.avif} type="image/avif" />
+                <source media="(orientation: portrait) and (max-width: 440px)" srcSet={art.compactPortrait.webp} type="image/webp" />
+              </>}
               <source srcSet={art.path} type="image/webp" />
               <img className="standings-showcase__art" alt={seriesTitles[s]} draggable={false} fetchPriority={s === series ? 'high' : 'low'} />
             </picture>

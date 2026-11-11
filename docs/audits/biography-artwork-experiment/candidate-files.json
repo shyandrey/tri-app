@@ -1,0 +1,76 @@
+{
+  "bio": [
+    {
+      "path": "src/sports/rankings-entry.ts",
+      "sha256": "b7a6cea3f71fbcefcbc82b7cf125da77b3da3481f1253f3f0ea8efb5b926e76c",
+      "new": false
+    },
+    {
+      "path": "src/sports/RankingsArea.tsx",
+      "sha256": "d4d2dbbcf97f154b5f231e754ce14e5225db13fad7cf45128f170df05d8cdcbf",
+      "new": false
+    },
+    {
+      "path": "src/data/athletes/identities.ts",
+      "sha256": "9e2626f77817371d1944138c0b8cad8bb4f57a501ee3482bc7403df163a51046",
+      "new": true
+    },
+    {
+      "path": "src/data/athletes/index.ts",
+      "sha256": "2bd52fff127b3b318bd9bd9df059eda3e40a888b41d85871db15d94e2e2f5dab",
+      "new": false
+    }
+  ],
+  "art": [
+    {
+      "path": "src/pages/rankingsShowcase.ts",
+      "sha256": "279355cfccdd821a829b3b7fc1819b75773237d3fe904cdba21a8b12d1c04fb5",
+      "new": false
+    },
+    {
+      "path": "src/pages/OfficialRankingsPage.tsx",
+      "sha256": "a088be73d05c2911b4829728912d4ee499c8a01717503da36ba33591bece9e55",
+      "new": false
+    },
+    {
+      "path": "public/images/showcase/rankings/optimized/ironman_04_transition-1320.webp",
+      "sha256": "9ff75544b25160bfcaf2f403f79ac78676b57c302f5d0670c058592019fb4c77",
+      "new": true
+    },
+    {
+      "path": "public/images/showcase/rankings/optimized/t100_04_transition-1320.avif",
+      "sha256": "3d31205bfb49498ef6afd5c34d221570ec8e30ea5e0f4890f2ec5ee3b2e0f17c",
+      "new": true
+    },
+    {
+      "path": "public/images/showcase/rankings/optimized/t100_04_transition-1320.webp",
+      "sha256": "1e565e42953ba78c459bbc8a3ff477550447910f27015e846c4ddffcf1048d7c",
+      "new": true
+    },
+    {
+      "path": "public/images/showcase/rankings/optimized/ironman_04_transition-1320.avif",
+      "sha256": "7d08af2bfc7575346a8ecea9e5c3963403e4c37db7a22f7bafec85b922e87b6e",
+      "new": true
+    },
+    {
+      "path": "scripts/test-rankings-swipe-browser.mjs",
+      "sha256": "1babd07661fb63a0a593e05bb6ba0da79354c2b44ebb8292d2ab280a27427058",
+      "new": false
+    },
+    {
+      "path": "scripts/test-rankings-showcase-browser.mjs",
+      "sha256": "528e6f492271319500313cef05a83f85451cd9d2acea58dcffa7f2e04d85049f",
+      "new": false
+    },
+    {
+      "path": "scripts/generate-rankings-transition-variants.mjs",
+      "sha256": "47eca09867dd94bc07b02e974c783de3c600cfbbac7fc92aacaa3045e9eaace1",
+      "new": true
+    },
+    {
+      "path": "scripts/fixtures/rankings-compact-artwork.json",
+      "sha256": "4534debf05a6c5e23388501b7e600bd70db137a727a9786487279d2244be227e",
+      "new": true
+    }
+  ]
+}

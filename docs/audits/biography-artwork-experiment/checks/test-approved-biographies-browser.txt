@@ -1,0 +1,2 @@
+PASS 57 biographies at 390×844: exact rendered paragraphs, no horizontal overflow
+PASS 6 biographies at 1440×900: exact rendered paragraphs, no horizontal overflow

@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/images/showcase/rankings/optimized/ironman_04_transition-1320.webp",
+    "format": "webp",
+    "dimensions": [
+      1320,
+      743
+    ],
+    "bytes": 155524,
+    "sha256": "9ff75544b25160bfcaf2f403f79ac78676b57c302f5d0670c058592019fb4c77"
+  },
+  {
+    "path": "/images/showcase/rankings/optimized/ironman_04_transition-1320.avif",
+    "format": "avif",
+    "dimensions": [
+      1320,
+      743
+    ],
+    "bytes": 105152,
+    "sha256": "7d08af2bfc7575346a8ecea9e5c3963403e4c37db7a22f7bafec85b922e87b6e"
+  },
+  {
+    "path": "/images/showcase/rankings/optimized/t100_04_transition-1320.webp",
+    "format": "webp",
+    "dimensions": [
+      1320,
+      743
+    ],
+    "bytes": 207858,
+    "sha256": "1e565e42953ba78c459bbc8a3ff477550447910f27015e846c4ddffcf1048d7c"
+  },
+  {
+    "path": "/images/showcase/rankings/optimized/t100_04_transition-1320.avif",
+    "format": "avif",
+    "dimensions": [
+      1320,
+      743
+    ],
+    "bytes": 146600,
+    "sha256": "3d31205bfb49498ef6afd5c34d221570ec8e30ea5e0f4890f2ec5ee3b2e0f17c"
+  }
+]

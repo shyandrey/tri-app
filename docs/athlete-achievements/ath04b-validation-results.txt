@@ -1,0 +1,22 @@
+PASS: 57 canonical IDs, biography hashes and individual external review records
+PASS: original 24 entries byte-equivalent as JSON; all 44 candidate dispositions retained
+PASS: unique assignments, podium/winner constraints, source mappings, optional scopes
+PASS: protected source/assets/biography files: 997
+PASS: 4 existing Kristian achievement strings protected; runtime/tests unchanged from ATH-04B start
+PASS: historical baseline retained; 2 already-approved Rankings changes match starting commit
+Verified: 168 Local pending: 4 Historical leads: 26
+Verified counts: {1: 15, 2: 36, 3: 34, 4: 6, 5: 4, 6: 4, 7: 3, 8: 13, 9: 7, 10: 40, 11: 6}
+✔ 57 exact approved texts, unique identities and unchanged non-biography properties (2.76575ms)
+✔ unmapped or mismatched identities cannot receive a biography (0.048167ms)
+✔ approved biography guard rejects changed id (2.043833ms)
+✔ approved biography guard rejects changed nameEn (1.645625ms)
+✔ approved biography guard rejects changed bio (1.735917ms)
+✔ paragraphs are preserved, including generated profiles and owner whitespace (0.440375ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 329.157541

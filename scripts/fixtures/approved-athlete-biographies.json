@@ -1,0 +1,401 @@
+[
+  {
+    "file": "001-taylor-knibb.md",
+    "id": 104,
+    "nameEn": "Taylor Knibb",
+    "sha256": "37035a9976b7fc13ae6a362584494c47320b9dd8a93059206e32e02512d62e52",
+    "previousBio": null
+  },
+  {
+    "file": "002-marten-van-riel.md",
+    "id": 2,
+    "nameEn": "Marten Van Riel",
+    "sha256": "6ffc6d8d853bd9b8f2a469574822b11598c5b4f49d115a32eac9f5ed832cc126",
+    "previousBio": null
+  },
+  {
+    "file": "003-hayden-wilde.md",
+    "id": 3,
+    "nameEn": "Hayden Wilde",
+    "sha256": "ed653af80ddf4cda6373e49ad1f66ddce92731965673143e71ed622f2b623b3f",
+    "previousBio": null
+  },
+  {
+    "file": "004-mika-noodt.md",
+    "id": 4,
+    "nameEn": "Mika Noodt",
+    "sha256": "cd29d65fea8e7f5528f92fd1f3e789df32fe4f3d62338999c51a3505fdfa8959",
+    "previousBio": null
+  },
+  {
+    "file": "005-rico-bogen.md",
+    "id": 5,
+    "nameEn": "Rico Bogen",
+    "sha256": "9be9af307ac3d3d604f7eb2a0cbb1a4e3cc1eaa0a7b042f0558b84f8a544fcb1",
+    "previousBio": null
+  },
+  {
+    "file": "006-jelle-geens.md",
+    "id": 6,
+    "nameEn": "Jelle Geens",
+    "sha256": "0983082fc47d81acde8487c299087e0015b0df7a73eff59ee6247607302bf3a2",
+    "previousBio": null
+  },
+  {
+    "file": "007-casper-stornes.md",
+    "id": 7,
+    "nameEn": "Casper Stornes",
+    "sha256": "9341fe81293708a1d9a43246725d0bb8fa7e15914170c8f20c8becf759e078b6",
+    "previousBio": null
+  },
+  {
+    "file": "008-jonas-schomburg.md",
+    "id": 8,
+    "nameEn": "Jonas Schomburg",
+    "sha256": "d2399510e06e1596782693182e7fd943c5929c701fae2e03c051295c335e0414",
+    "previousBio": null
+  },
+  {
+    "file": "009-samuel-dickinson.md",
+    "id": 9,
+    "nameEn": "Samuel Dickinson",
+    "sha256": "8e5cef4eb3dd0968c87ba9e57ef6d954bdd4e38403018be05e7dd5e907b5a9df",
+    "previousBio": null
+  },
+  {
+    "file": "011-lasse-nygaard-priester.md",
+    "id": 11,
+    "nameEn": "Lasse Nygaard Priester",
+    "sha256": "0029d692afd35c6bd3c0e1e9c8943dee34535fe0904a912547f2394c6b8569d1",
+    "previousBio": null
+  },
+  {
+    "file": "012-julie-derron.md",
+    "id": 102,
+    "nameEn": "Julie Derron",
+    "sha256": "0fae7cdb2610dbe4b0b01c3433df07f2a85064ca09faaa02149cc13c093c7f44",
+    "previousBio": null
+  },
+  {
+    "file": "013-kristian-blummenfelt.md",
+    "id": 1,
+    "nameEn": "Kristian Blummenfelt",
+    "sha256": "d651a245893ddfb995e9dac3883ab4fa3a310d9658784303ca6e548ddc60f558",
+    "previousBio": "Кристиан Блюмменфельт — норвежский триатлет, олимпийский чемпион и чемпион мира на короткой, средней и длинной дистанциях. Один из самых универсальных атлетов современного триатлона.\n\nСпортивный путь начинал в плавании, но успел проявить себя и в беге: в 2011 году участвовал в юниорском чемпионате Европы по кроссу. Уже в 2016 году дебютировал на Олимпийских играх в Рио, где занял 13-е место.\n\nКумиром Кристиана в детстве был норвежский пловец Александер Дале Оэн. Жизненное кредо Блюмменфельта — «Go big or go home» («Всё или ничего»). В свободное время он любит готовить и слушать популярную музыку.\n\nВ 2026 году Кристиан сообщил о результате теста VO₂max — 101,1 мл/кг/мин. Это один из самых высоких заявленных показателей в истории спорта, хотя точность измерения остаётся предметом дискуссий."
+  },
+  {
+    "file": "014-laura-philipp.md",
+    "id": 109,
+    "nameEn": "Laura Philipp",
+    "sha256": "2b2f7028008801590a442b27d6ef670b71618696edbd6f68031695b417a148f2",
+    "previousBio": null
+  },
+  {
+    "file": "015-solveig-lovseth.md",
+    "id": 106,
+    "nameEn": "Solveig Løvseth",
+    "sha256": "67ffe9e584b9b7fa2f5cc1a67f3bb54415fdb4ae4a48698d671dfbaca17bc307",
+    "previousBio": null
+  },
+  {
+    "file": "016-lucy-charles-barclay.md",
+    "id": 103,
+    "nameEn": "Lucy Charles-Barclay",
+    "sha256": "3645fc66e857e139f07c5ce8fb0e568dadfce059a7fc207c746ecc5542c86d7e",
+    "previousBio": null
+  },
+  {
+    "file": "017-kat-matthews.md",
+    "id": 108,
+    "nameEn": "Kat Matthews",
+    "sha256": "246234354c1b036f4cf9f798a19a41591c203df076a9ae4565c27f26bf798f3b",
+    "previousBio": null
+  },
+  {
+    "file": "018-ashleigh-gentle.md",
+    "id": 147,
+    "nameEn": "Ashleigh Gentle",
+    "sha256": "a18c793097eba340fccdbfbf7b3f916eb570e796c1d4fe58d8d1cd26fbbd5415",
+    "previousBio": null
+  },
+  {
+    "file": "019-georgia-taylor-brown.md",
+    "id": 105,
+    "nameEn": "Georgia Taylor-Brown",
+    "sha256": "04791f7f2cb75505d4bb4201f4883730072672b435aff7ec7c8801035c7b2a0e",
+    "previousBio": null
+  },
+  {
+    "file": "020-lionel-sanders.md",
+    "id": 23,
+    "nameEn": "Lionel Sanders",
+    "sha256": "62d3a3ad5200d2a2ff03def47f442d04cafbc4fc436deda736902edd8e731fb5",
+    "previousBio": null
+  },
+  {
+    "file": "021-matthew-marquardt.md",
+    "id": 20,
+    "nameEn": "Matthew Marquardt",
+    "sha256": "27523c0a7936f3b44c79e5d4c675da22712dc1fdbae73b6d46ca52044316879e",
+    "previousBio": null
+  },
+  {
+    "file": "022-vincent-luis.md",
+    "id": 41,
+    "nameEn": "Vincent Luis",
+    "sha256": "f5e94dce0356ea5759289613791bf339005af1e2d768899b5ecf77a6528feebc",
+    "previousBio": null
+  },
+  {
+    "file": "023-sam-laidlow.md",
+    "id": 10521,
+    "nameEn": "Sam Laidlow",
+    "sha256": "8956668b7a7beeabc97c7367ebca3ed6623f6356f44eaba7ffd3b3749f228f49",
+    "previousBio": ""
+  },
+  {
+    "file": "024-paula-findlay.md",
+    "id": 114,
+    "nameEn": "Paula Findlay",
+    "sha256": "fb9364b0ad225102f96b7b55c1cc7836d19990621dadfd797d7597d30aa3c933",
+    "previousBio": null
+  },
+  {
+    "file": "025-sam-long.md",
+    "id": 22,
+    "nameEn": "Sam Long",
+    "sha256": "3ba22d2ab8bf7dd49d9ddab60c15b00dfb1c6458c630cc24b03a9c9af9a9b31d",
+    "previousBio": null
+  },
+  {
+    "file": "026-alanis-siffert.md",
+    "id": 111,
+    "nameEn": "Alanis Siffert",
+    "sha256": "623c85b485c896f98889738f1ce6a5341750bb58d41f03ae5762aad5fbee9e01",
+    "previousBio": null
+  },
+  {
+    "file": "027-trevor-foley.md",
+    "id": 39,
+    "nameEn": "Trevor Foley",
+    "sha256": "a039f724c5f714c5d8576ded5cfcfec69cd2b22812c6e7288757a692c67928bb",
+    "previousBio": null
+  },
+  {
+    "file": "028-lisa-perterer.md",
+    "id": 119,
+    "nameEn": "Lisa Perterer",
+    "sha256": "ec51ff2ec8ca9d463a206bc1f80c65446129a47fcb771724a634bf1a54c2cc39",
+    "previousBio": null
+  },
+  {
+    "file": "029-gustav-iden.md",
+    "id": 25,
+    "nameEn": "Gustav Iden",
+    "sha256": "783b1bb82c8089cf36520c67f6fc8da84f0b6a88c569ab8de7ced4979faa7908",
+    "previousBio": null
+  },
+  {
+    "file": "030-magnus-ditlev.md",
+    "id": 21,
+    "nameEn": "Magnus Ditlev",
+    "sha256": "adf79406cea4642be2b0b4ee25c672e7206d649d8718c2225a2d8a4422588529",
+    "previousBio": null
+  },
+  {
+    "file": "031-imogen-simmonds.md",
+    "id": 112,
+    "nameEn": "Imogen Simmonds",
+    "sha256": "16bb29af3e33013a641b0c1b898b700b51ed2eeb2e17a61832adbc10d3771368",
+    "previousBio": null
+  },
+  {
+    "file": "032-hannah-berry.md",
+    "id": 113,
+    "nameEn": "Hannah Berry",
+    "sha256": "679dbefe88987af7d00525f0de73bffb55f0f31898388dbc462090288d10167d",
+    "previousBio": null
+  },
+  {
+    "file": "033-harry-palmer.md",
+    "id": 10185,
+    "nameEn": "Harry Palmer",
+    "sha256": "47141bb7b6d1ba33c94d5fba3381789f42427be8bc37c77993f85e5f7d30f7a1",
+    "previousBio": ""
+  },
+  {
+    "file": "034-jackie-hering.md",
+    "id": 138,
+    "nameEn": "Jackie Hering",
+    "sha256": "8129dacfa06063e6e0ed52722603b6d545537897806100681a9f746ca6f3f274",
+    "previousBio": null
+  },
+  {
+    "file": "035-morgan-pearson.md",
+    "id": 15,
+    "nameEn": "Morgan Pearson",
+    "sha256": "22d5feba5a0b82111e3045e17cde97b7f5b001fed388452803e8b4fd8e1ece67",
+    "previousBio": null
+  },
+  {
+    "file": "036-emma-pallant-browne.md",
+    "id": 10736,
+    "nameEn": "Emma Pallant-Browne",
+    "sha256": "d6c26f5c1a6220cee9bc6ad788bc6e836c7033bc39277e64793db2d61690c6fb",
+    "previousBio": ""
+  },
+  {
+    "file": "037-gregory-barnaby.md",
+    "id": 16,
+    "nameEn": "Gregory Barnaby",
+    "sha256": "832b9497d3caee63bf302dc450fb90c0fb695457c6710ec32f81cbe90c05f28d",
+    "previousBio": null
+  },
+  {
+    "file": "038-panagiotis-bitados.md",
+    "id": 10458,
+    "nameEn": "Panagiotis Bitados",
+    "sha256": "448eaabe38218d63d00af482deea0c44b1bf8981d520537ff8ac285309df4d9e",
+    "previousBio": ""
+  },
+  {
+    "file": "039-marta-sanchez.md",
+    "id": 130,
+    "nameEn": "Marta Sánchez",
+    "sha256": "b8c565d8dde7dd2e95dd82b9b5e0cc93d5607ae52ff6a6b571938895b06d95c6",
+    "previousBio": null
+  },
+  {
+    "file": "040-marjolaine-pierre.md",
+    "id": 120,
+    "nameEn": "Marjolaine Pierré",
+    "sha256": "d36e3501797c8a48c13589c49b31838bc49fcabbc338fbf25bb620bbbfb2c71d",
+    "previousBio": null
+  },
+  {
+    "file": "042-mathis-margirier.md",
+    "id": 13,
+    "nameEn": "Mathis Margirier",
+    "sha256": "5c6c629203f8df7d380e12f70f340d124a21da87f96c6325fbba64e50882c5e6",
+    "previousBio": null
+  },
+  {
+    "file": "043-jessica-learmonth.md",
+    "id": 107,
+    "nameEn": "Jessica Learmonth",
+    "sha256": "131ca78ca7f39ba422e7aa53df2ac03888724edc55152723b37d4b4dc1574624",
+    "previousBio": null
+  },
+  {
+    "file": "044-grace-thek.md",
+    "id": 129,
+    "nameEn": "Grace Thek",
+    "sha256": "ae16f433db9f8516b0e47425ae0f81b4294d5ecaf24565e34520917d65209192",
+    "previousBio": null
+  },
+  {
+    "file": "045-menno-koolhaas.md",
+    "id": 10,
+    "nameEn": "Menno Koolhaas",
+    "sha256": "7c10a3f6b9ea70bd51051f316fcb70e1748a24bea353ce9c7d1b65b4610b8b8e",
+    "previousBio": null
+  },
+  {
+    "file": "046-leo-bergere.md",
+    "id": 42,
+    "nameEn": "Léo Bergère",
+    "sha256": "7da08f3fb619a3e9ff02ee8fa79ca64facb182570320fb1e7718aaace1994d2c",
+    "previousBio": null
+  },
+  {
+    "file": "047-patrick-lange.md",
+    "id": 24,
+    "nameEn": "Patrick Lange",
+    "sha256": "d5dd13aa1c1bc7eaaf6ea56c194565bd568ccd5c9f53ed0afdb0f4aff3701b20",
+    "previousBio": null
+  },
+  {
+    "file": "048-lotte-wilms.md",
+    "id": 122,
+    "nameEn": "Lotte Wilms",
+    "sha256": "957972b2b25bf186285e8768b3aeb306736ceb0adcedf9e789a125a6e70aa022",
+    "previousBio": null
+  },
+  {
+    "file": "049-india-lee.md",
+    "id": 131,
+    "nameEn": "India Lee",
+    "sha256": "a53fa8cd6353aa7d61c8a49de0c7de5d01f43de47926605b8a452181f7b9ffd8",
+    "previousBio": null
+  },
+  {
+    "file": "050-kristian-hogenhaug.md",
+    "id": 35,
+    "nameEn": "Kristian Høgenhaug",
+    "sha256": "e77a496c5a06cb4288a902fe1e4e7e8a6101e3d85e820bf940940d8362da4d4f",
+    "previousBio": null
+  },
+  {
+    "file": "051-jason-west.md",
+    "id": 14,
+    "nameEn": "Jason West",
+    "sha256": "c6354b7bbbf9606a58eb5e89c234cff7f2a05bcde610e6d459745b6c71e5b88b",
+    "previousBio": null
+  },
+  {
+    "file": "052-antonio-benito-lopez.md",
+    "id": 44,
+    "nameEn": "Antonio Benito López",
+    "sha256": "a4cfeccea3f10a22727ead5651f4cda3409aa28ffe6ad7c5c45ba70446abf7a4",
+    "previousBio": null
+  },
+  {
+    "file": "053-matt-hanson.md",
+    "id": 49,
+    "nameEn": "Matt Hanson",
+    "sha256": "65f916833858c8a10d29a2ed5734d249205de171682d682d1a093b8b0bc65658",
+    "previousBio": null
+  },
+  {
+    "file": "054-els-visser.md",
+    "id": 146,
+    "nameEn": "Els Visser",
+    "sha256": "a6ee76f72394b995c8f4b975ee7ff84c797b9641bffb75688fcd94c92066036f",
+    "previousBio": null
+  },
+  {
+    "file": "055-frederic-funk.md",
+    "id": 34,
+    "nameEn": "Frederic Funk",
+    "sha256": "680eeaaff96a7b42ded7186d80bc660a54ccfdeba5c84782427149fcc5bd2dc4",
+    "previousBio": null
+  },
+  {
+    "file": "056-sara-perez.md",
+    "id": 116,
+    "nameEn": "Sara Pérez Sala",
+    "sha256": "925f25fb362e2abb3c32383beb9a7fbcb0f681c13de25742a113192a86141a5a",
+    "previousBio": null
+  },
+  {
+    "file": "057-cameron-wurf.md",
+    "id": 37,
+    "nameEn": "Cameron Wurf",
+    "sha256": "f7b554c980567b247f4e83f316a8e1632a23d7bcc8c2bcebd9b3b1d1755e921c",
+    "previousBio": null
+  },
+  {
+    "file": "058-chelsea-sodaro.md",
+    "id": 10701,
+    "nameEn": "Chelsea Sodaro",
+    "sha256": "f711f5fe402febe238c2ba2f89ffae984da327c76eefde5c0030c1518c7f05b5",
+    "previousBio": ""
+  },
+  {
+    "file": "059-daniel-baekkegaard.md",
+    "id": 28,
+    "nameEn": "Daniel Bækkegård",
+    "sha256": "eea0f79f5b6221f5f6a378da530541c317e5c176c4e45ba62ddfd5d34709b082",
+    "previousBio": null
+  }
+]

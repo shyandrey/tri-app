@@ -1,0 +1,2474 @@
+[
+  {
+    "device": "mobile",
+    "route": "home",
+    "mode": "cold",
+    "readyMs": 919.6000000238419,
+    "lcpMs": 2940,
+    "cls": 0,
+    "totalTransferBytes": 700869,
+    "jsTransferBytes": 83643,
+    "imageRequestEvents": 5,
+    "imageTransferBytes": 604653,
+    "formats": {
+      "webp": {
+        "requests": 3,
+        "wireBytes": 584597
+      },
+      "png": {
+        "requests": 1,
+        "wireBytes": 18338
+      },
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/qatar-lusail-sunset-1280-12UZcnYt.webp",
+        "bytes": 213359,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/saudi-arabia-seaview-1280-BKAQ_JN6.webp",
+        "bytes": 195741,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+        "bytes": 175497,
+        "priority": "High"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "E6BC61CC8971640B7E9E215BA095CFD7",
+        "requestId": "6106.12",
+        "start": 257177.097885,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "E6BC61CC8971640B7E9E215BA095CFD7",
+        "requestId": "6106.12",
+        "start": 257177.097885,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ]
+  },
+  {
+    "device": "mobile",
+    "route": "home",
+    "mode": "warm",
+    "readyMs": 298.09999999403954,
+    "lcpMs": 328,
+    "cls": 0,
+    "totalTransferBytes": 712,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 4,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 3,
+        "wireBytes": 0
+      },
+      "png": {
+        "requests": 1,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+        "bytes": 0,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/saudi-arabia-seaview-1280-BKAQ_JN6.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "AF6E5386681B949846F0CD1793A21BD3",
+        "requestId": "6139.12",
+        "start": 257191.271795,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "AF6E5386681B949846F0CD1793A21BD3",
+        "requestId": "6139.12",
+        "start": 257191.271795,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ]
+  },
+  {
+    "device": "mobile",
+    "route": "athletes",
+    "mode": "cold",
+    "readyMs": 2876.5,
+    "lcpMs": 2884,
+    "cls": 0,
+    "totalTransferBytes": 611442,
+    "jsTransferBytes": 407201,
+    "imageRequestEvents": 21,
+    "imageTransferBytes": 186291,
+    "formats": {
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 20,
+        "wireBytes": 184573
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/kate-waugh-180-C8pKLLNS.webp",
+        "bytes": 11588,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "bytes": 11436,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/paula-findlay-180-B8jh0cJy.webp",
+        "bytes": 10820,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "athletes",
+    "mode": "warm",
+    "readyMs": 440,
+    "lcpMs": 448,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 20,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 20,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hayden-wilde-180-DkbnIi5N.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kate-waugh-180-C8pKLLNS.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "athlete/1",
+    "mode": "cold",
+    "readyMs": 2819.800000011921,
+    "lcpMs": 2832,
+    "cls": 0,
+    "totalTransferBytes": 449663,
+    "jsTransferBytes": 407201,
+    "imageRequestEvents": 4,
+    "imageTransferBytes": 24512,
+    "formats": {
+      "svg": {
+        "requests": 3,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 1,
+        "wireBytes": 22794
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-396-bY4AHRcR.webp",
+        "bytes": 22794,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "bytes": 1718,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "bytes": 0,
+        "priority": "High"
+      }
+    ],
+    "duplicateImageEvents": {
+      "http://127.0.0.1:5490/favicon.svg": 3
+    },
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "athlete/1",
+    "mode": "warm",
+    "readyMs": 397.7000000178814,
+    "lcpMs": 408,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 1,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 1,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-396-bY4AHRcR.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "calendar",
+    "mode": "cold",
+    "readyMs": 871.0999999940395,
+    "lcpMs": 916,
+    "cls": 0,
+    "totalTransferBytes": 116080,
+    "jsTransferBytes": 83643,
+    "imageRequestEvents": 2,
+    "imageTransferBytes": 20056,
+    "formats": {
+      "png": {
+        "requests": 1,
+        "wireBytes": 18338
+      },
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "bytes": 18338,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "bytes": 1718,
+        "priority": "High"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "calendar",
+    "mode": "warm",
+    "readyMs": 283.59999999403954,
+    "lcpMs": 292,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 1,
+    "imageTransferBytes": 0,
+    "formats": {
+      "png": {
+        "requests": 1,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "race/ironman-70-3-oceanside-2026",
+    "mode": "cold",
+    "readyMs": 2820.5,
+    "lcpMs": 2832,
+    "cls": 0,
+    "totalTransferBytes": 611668,
+    "jsTransferBytes": 407201,
+    "imageRequestEvents": 24,
+    "imageTransferBytes": 186517,
+    "formats": {
+      "svg": {
+        "requests": 3,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 21,
+        "wireBytes": 184799
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/cameron-wurf-180-BEkZFM0y.webp",
+        "bytes": 10648,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-hoffmann-180-ChtkaWwg.webp",
+        "bytes": 10246,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jason-west-180-BjmhK8RS.webp",
+        "bytes": 9945,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {
+      "http://127.0.0.1:5490/favicon.svg": 3
+    },
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/casper-stornes-180-Dfo4OKOC.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jason-west-180-BjmhK8RS.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-hoffmann-180-ChtkaWwg.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackson-laundry-180-CWTf6I5D.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/ben-kanute-180-DtcZLFls.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "race/ironman-70-3-oceanside-2026",
+    "mode": "warm",
+    "readyMs": 395.7999999821186,
+    "lcpMs": 400,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 21,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 21,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/casper-stornes-180-Dfo4OKOC.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/casper-stornes-180-Dfo4OKOC.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jason-west-180-BjmhK8RS.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-hoffmann-180-ChtkaWwg.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackson-laundry-180-CWTf6I5D.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/ben-kanute-180-DtcZLFls.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          32,
+          32
+        ],
+        "factorOverDpr": 1.875,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "rankings",
+    "mode": "cold",
+    "readyMs": 1928.6000000238419,
+    "lcpMs": 6328,
+    "cls": 0,
+    "totalTransferBytes": 1256802,
+    "jsTransferBytes": 243205,
+    "imageRequestEvents": 23,
+    "imageTransferBytes": 998485,
+    "formats": {
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 22,
+        "wireBytes": 996767
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "bytes": 490353,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "bytes": 325623,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "bytes": 11436,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "mobile",
+    "route": "rankings",
+    "mode": "warm",
+    "readyMs": 370.59999999403954,
+    "lcpMs": 380,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 22,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 22,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "bytes": 0,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 1.6666666666666667,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "home",
+    "mode": "cold",
+    "readyMs": 880.8999999761581,
+    "lcpMs": 2908,
+    "cls": 0,
+    "totalTransferBytes": 700869,
+    "jsTransferBytes": 83643,
+    "imageRequestEvents": 5,
+    "imageTransferBytes": 604653,
+    "formats": {
+      "webp": {
+        "requests": 3,
+        "wireBytes": 584597
+      },
+      "png": {
+        "requests": 1,
+        "wireBytes": 18338
+      },
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/qatar-lusail-sunset-1280-12UZcnYt.webp",
+        "bytes": 213359,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/saudi-arabia-seaview-1280-BKAQ_JN6.webp",
+        "bytes": 195741,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+        "bytes": 175497,
+        "priority": "High"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "3CAF4B9856E71A822AFA30A7A8BD9CF5",
+        "requestId": "6332.12",
+        "start": 257348.407816,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      }
+    ],
+    "errors": [],
+    "apiRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "3CAF4B9856E71A822AFA30A7A8BD9CF5",
+        "requestId": "6332.12",
+        "start": 257348.407816,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ]
+  },
+  {
+    "device": "desktop",
+    "route": "home",
+    "mode": "warm",
+    "readyMs": 268.2999999821186,
+    "lcpMs": 260,
+    "cls": 0,
+    "totalTransferBytes": 712,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 4,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 3,
+        "wireBytes": 0
+      },
+      "png": {
+        "requests": 1,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/dubai-swim-skyline-1280-CaHAO7TV.webp",
+        "bytes": 0,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/saudi-arabia-seaview-1280-BKAQ_JN6.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "35C8C64BCFE6924547F2F56ED4CE4791",
+        "requestId": "6345.12",
+        "start": 257362.096521,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      }
+    ],
+    "errors": [],
+    "apiRequests": [
+      {
+        "url": "http://127.0.0.1:5490/api/news",
+        "type": "Fetch",
+        "loader": "35C8C64BCFE6924547F2F56ED4CE4791",
+        "requestId": "6345.12",
+        "start": 257362.096521,
+        "priority": "High",
+        "initiator": "script",
+        "status": 503,
+        "disk": false,
+        "mime": "application/json",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 192
+      }
+    ]
+  },
+  {
+    "device": "desktop",
+    "route": "athletes",
+    "mode": "cold",
+    "readyMs": 2756.2000000178814,
+    "lcpMs": 2772,
+    "cls": 0,
+    "totalTransferBytes": 567712,
+    "jsTransferBytes": 407201,
+    "imageRequestEvents": 16,
+    "imageTransferBytes": 142561,
+    "formats": {
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 15,
+        "wireBytes": 140843
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/kate-waugh-180-C8pKLLNS.webp",
+        "bytes": 11588,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "bytes": 11436,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/georgia-taylor-brown-180-DNi51IjA.webp",
+        "bytes": 10752,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hayden-wilde-180-DkbnIi5N.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kate-waugh-180-C8pKLLNS.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/julie-derron-180-D6dV-TFc.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "athletes",
+    "mode": "warm",
+    "readyMs": 270.7999999821186,
+    "lcpMs": 284,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 15,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 15,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hayden-wilde-180-DkbnIi5N.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kate-waugh-180-C8pKLLNS.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hayden-wilde-180-DkbnIi5N.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kate-waugh-180-C8pKLLNS.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/julie-derron-180-D6dV-TFc.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          60,
+          60
+        ],
+        "factorOverDpr": 3.0,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "athlete/1",
+    "mode": "cold",
+    "readyMs": 2736,
+    "lcpMs": 2752,
+    "cls": 0,
+    "totalTransferBytes": 434568,
+    "jsTransferBytes": 407201,
+    "imageRequestEvents": 3,
+    "imageTransferBytes": 9417,
+    "formats": {
+      "svg": {
+        "requests": 2,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 1,
+        "wireBytes": 7699
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "bytes": 7699,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "bytes": 1718,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "bytes": 0,
+        "priority": "High"
+      }
+    ],
+    "duplicateImageEvents": {
+      "http://127.0.0.1:5490/favicon.svg": 2
+    },
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "athlete/1",
+    "mode": "warm",
+    "readyMs": 271.59999999403954,
+    "lcpMs": 280,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 1,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 1,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "calendar",
+    "mode": "cold",
+    "readyMs": 879.7999999821186,
+    "lcpMs": 868,
+    "cls": 0,
+    "totalTransferBytes": 116080,
+    "jsTransferBytes": 83643,
+    "imageRequestEvents": 2,
+    "imageTransferBytes": 20056,
+    "formats": {
+      "png": {
+        "requests": 1,
+        "wireBytes": 18338
+      },
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "bytes": 18338,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "bytes": 1718,
+        "priority": "High"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "calendar",
+    "mode": "warm",
+    "readyMs": 266.80000001192093,
+    "lcpMs": 232,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 1,
+    "imageTransferBytes": 0,
+    "formats": {
+      "png": {
+        "requests": 1,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/t100-worldtour-216-CrYqB7Y1.png",
+        "sourcePixels": [
+          216,
+          216
+        ],
+        "renderedCss": [
+          58,
+          58
+        ],
+        "factorOverDpr": 3.7241379310344827,
+        "loading": "auto"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "race/ironman-70-3-oceanside-2026",
+    "mode": "cold",
+    "readyMs": 2742.300000011921,
+    "lcpMs": 2764,
+    "cls": 0,
+    "totalTransferBytes": 611668,
+    "jsTransferBytes": 407201,
+    "imageRequestEvents": 23,
+    "imageTransferBytes": 186517,
+    "formats": {
+      "svg": {
+        "requests": 2,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 21,
+        "wireBytes": 184799
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/cameron-wurf-180-BEkZFM0y.webp",
+        "bytes": 10648,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-hoffmann-180-ChtkaWwg.webp",
+        "bytes": 10246,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jason-west-180-BjmhK8RS.webp",
+        "bytes": 9945,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {
+      "http://127.0.0.1:5490/favicon.svg": 2
+    },
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/casper-stornes-180-Dfo4OKOC.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jason-west-180-BjmhK8RS.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-hoffmann-180-ChtkaWwg.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackson-laundry-180-CWTf6I5D.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/ben-kanute-180-DtcZLFls.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marc-dubrick-180-FRkHcFgU.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "race/ironman-70-3-oceanside-2026",
+    "mode": "warm",
+    "readyMs": 266.5,
+    "lcpMs": 284,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 21,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 21,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/casper-stornes-180-Dfo4OKOC.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/casper-stornes-180-Dfo4OKOC.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jason-west-180-BjmhK8RS.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-hoffmann-180-ChtkaWwg.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackson-laundry-180-CWTf6I5D.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/ben-kanute-180-DtcZLFls.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marc-dubrick-180-FRkHcFgU.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          34,
+          34
+        ],
+        "factorOverDpr": 5.294117647058823,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "rankings",
+    "mode": "cold",
+    "readyMs": 1919.4000000059605,
+    "lcpMs": 6188,
+    "cls": 0,
+    "totalTransferBytes": 1066406,
+    "jsTransferBytes": 243205,
+    "imageRequestEvents": 23,
+    "imageTransferBytes": 808089,
+    "formats": {
+      "svg": {
+        "requests": 1,
+        "wireBytes": 1718
+      },
+      "webp": {
+        "requests": 22,
+        "wireBytes": 806371
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_transition.webp",
+        "bytes": 355531,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_transition.webp",
+        "bytes": 270049,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "bytes": 11436,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  },
+  {
+    "device": "desktop",
+    "route": "rankings",
+    "mode": "warm",
+    "readyMs": 267,
+    "lcpMs": 292,
+    "cls": 0,
+    "totalTransferBytes": 520,
+    "jsTransferBytes": 0,
+    "imageRequestEvents": 22,
+    "imageTransferBytes": 0,
+    "formats": {
+      "webp": {
+        "requests": 22,
+        "wireBytes": 0
+      }
+    },
+    "largestImages": [
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/ironman_transition.webp",
+        "bytes": 0,
+        "priority": "High"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/t100_transition.webp",
+        "bytes": 0,
+        "priority": "Low"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "bytes": 0,
+        "priority": "Low"
+      }
+    ],
+    "duplicateImageEvents": {},
+    "duplicateImageTransfers": {},
+    "failedRequests": [],
+    "incompleteRequests": [],
+    "oversizedVisible": [
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "sourcePixels": [
+          180,
+          180
+        ],
+        "renderedCss": [
+          36,
+          36
+        ],
+        "factorOverDpr": 5.0,
+        "loading": "lazy"
+      }
+    ],
+    "errors": [],
+    "apiRequests": []
+  }
+]

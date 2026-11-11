@@ -1,0 +1,80 @@
+{
+  "baseline": [
+    {
+      "file": "OfficialRankingsPage-C0g6evcn.js",
+      "raw": 905812,
+      "gzip": 158248,
+      "hasBiographyPrefix": true
+    },
+    {
+      "file": "rankings-entry-B0djbgog.js",
+      "raw": 393,
+      "gzip": 272,
+      "hasBiographyPrefix": false
+    },
+    {
+      "file": "index-D3QUb9oh.js",
+      "raw": 277600,
+      "gzip": 82848,
+      "hasBiographyPrefix": false
+    },
+    {
+      "file": "sports-entry-UvQXCNQG.js",
+      "raw": 623396,
+      "gzip": 162363,
+      "hasBiographyPrefix": false
+    }
+  ],
+  "bio": [
+    {
+      "file": "sports-entry-gd_RCM3Y.js",
+      "raw": 846763,
+      "gzip": 217397,
+      "hasBiographyPrefix": true
+    },
+    {
+      "file": "OfficialRankingsPage-D-6ztCT1.js",
+      "raw": 682451,
+      "gzip": 102859,
+      "hasBiographyPrefix": false
+    },
+    {
+      "file": "index-BIxgYlh2.js",
+      "raw": 277600,
+      "gzip": 82849,
+      "hasBiographyPrefix": false
+    },
+    {
+      "file": "rankings-entry-paCBETFu.js",
+      "raw": 393,
+      "gzip": 276,
+      "hasBiographyPrefix": false
+    }
+  ],
+  "art": [
+    {
+      "file": "rankings-entry-BM0ZB2vC.js",
+      "raw": 393,
+      "gzip": 276,
+      "hasBiographyPrefix": false
+    },
+    {
+      "file": "sports-entry-DEUZff-b.js",
+      "raw": 623396,
+      "gzip": 162363,
+      "hasBiographyPrefix": false
+    },
+    {
+      "file": "OfficialRankingsPage-CV497B2Z.js",
+      "raw": 906275,
+      "gzip": 158357,
+      "hasBiographyPrefix": true
+    },
+    {
+      "file": "index-Br2B_8Xo.js",
+      "raw": 277600,
+      "gzip": 82851,
+      "hasBiographyPrefix": false
+    }
+  ]
+}

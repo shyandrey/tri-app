@@ -1,0 +1,32 @@
+{
+  "total": 1167,
+  "status": {
+    "RUSSIAN_PRESENT": 937,
+    "ENGLISH_PLACEHOLDER": 230
+  },
+  "provenance": {
+    "embedded-no-row-provenance": 195,
+    "registry-string-no-row-provenance": 95,
+    "generated-reviewed": 647,
+    "english-fallback": 230
+  },
+  "rankingRows": 120,
+  "rankingAthletes": 79,
+  "ranking2026Athletes": 39,
+  "rankingMissing": [],
+  "rankingDisplayDifferences": 120,
+  "photoExamples": [
+    {
+      "id": 51,
+      "name": "Энди Крюгер"
+    },
+    {
+      "id": 54,
+      "name": "Мэтт Керр"
+    },
+    {
+      "id": 58,
+      "name": "Брок Хоэл"
+    }
+  ]
+}

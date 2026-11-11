@@ -1,0 +1,16 @@
+--- a/src/pages/rankingsShowcase.ts
++++ b/src/pages/rankingsShowcase.ts
+@@ -7,0 +8 @@
++  compactPortrait?: { avif: string; webp: string }
+@@ -27,0 +29,4 @@
++  compactPortrait: scene === 'transition' ? {
++    avif: `/images/showcase/rankings/optimized/${file}-1320.avif`,
++    webp: `/images/showcase/rankings/optimized/${file}-1320.webp`,
++  } : undefined,
+--- a/src/pages/OfficialRankingsPage.tsx
++++ b/src/pages/OfficialRankingsPage.tsx
+@@ -43,0 +44,4 @@
++              {art.compactPortrait && <>
++                <source media="(orientation: portrait) and (max-width: 440px)" srcSet={art.compactPortrait.avif} type="image/avif" />
++                <source media="(orientation: portrait) and (max-width: 440px)" srcSet={art.compactPortrait.webp} type="image/webp" />
++              </>}

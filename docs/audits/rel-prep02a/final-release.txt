@@ -1,0 +1,34 @@
+
+> tri-app@0.0.0 check:release
+> node scripts/check-release.mjs
+
+Logs: /var/folders/tv/017vd_xs5ddgs1dr8342qw2r0000gn/T/tri-release-NfHbkW
+PASS build (2.7s)
+PASS lint (3.0s)
+PASS diff (0.0s)
+PASS staged diff (0.0s)
+PASS foundation (0.2s)
+PASS versioning (0.1s)
+PASS Calendar (0.4s)
+PASS athlete catalog/search/localization (3.8s)
+PASS athlete audit (2.3s)
+PASS ranking (1.5s)
+PASS navigation (0.7s)
+PASS News (4.9s)
+PASS Feedback (local mocks) (3.2s)
+PASS results integrity (0.5s)
+PASS results source replay/identity (3.2s)
+PASS performance graph/images (1.2s)
+PASS accessibility (0.5s)
+PASS release runner (0.1s)
+V1 RELEASE GATE: PASS
+KNOWN DATA ISSUES: 0
+Failures: none
+Environment errors: none
+Non-gating / not run:
+- node scripts/test-athlete-localization.mjs — full regeneration into temporary output; known country conflicts FAIL
+- node --test scripts/test-athlete-photos.mjs scripts/test-athlete-photo-review.mjs — portable photo identity/published-byte/rejection checks; run separately (QA-03B)
+- node --test scripts/test-athlete-photo-archive.mjs — local archival replay; requires pinned Git history and original staging evidence
+- node --test scripts/test-athlete-photo-staging.mjs — local synthetic staging/publish; requires Swift/macOS, no live downloads
+RC also requires check:release:browser; the fast gate does not include browser or live infrastructure verification.
+Runtime: 28.3s

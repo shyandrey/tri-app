@@ -320,3 +320,7 @@ Sandbox socket/HMR errors are ENVIRONMENT FAILURE. Rerun explicitly in an enviro
 - Full-regeneration validation FAIL из-за ID drift (TECH-01); country conflicts Lara/Jeremy/Nick уже закрыты. Не подавлять FAIL и не расширять allowlists. Historical country labels в release-policy ещё требуют отдельного code maintenance (DOC-02).
 - Export name audit перезаписывает рабочий CSV. Не запускать его, пока ручные правки не импортированы/сохранены отдельно.
 - Не коммитить локальные `athlete-audit.txt`, `docs/product-readiness-audit.md`, `ranking.txt`, `sof.json` или ignored review artifacts.
+
+## Athlete localization editorial completion
+
+[DATA-ATH-02C policy](athlete-name-localization-policy.md) applies to every athlete creation/import workflow. Missing Russian names are non-blocking, but require editorial review and backlog tracking. Race-result proposal evidence includes `localizationReview`; generated-profile output has a `.localization-review.json` sidecar. Unresolved IDs remain null. After manual/enrichment catalog changes, export a fresh read-only inventory with `node scripts/audit-athlete-display-names.mjs <new-directory>`; never overwrite unfinished owner CSVs. Standings import must not create profiles implicitly or overwrite official source names.

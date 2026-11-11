@@ -161,9 +161,16 @@ try {
   assert.equal(createHash('sha256').update(bytes).digest('hex'),expected.sha256,path)
   assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP')
  }
+ const compactAssets=JSON.parse(await fs.readFile('scripts/fixtures/rankings-compact-artwork.json','utf8'));
+ for(const expected of compactAssets){
+  const bytes=await fs.readFile('public'+expected.path);
+  assert.equal(bytes.length,expected.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),expected.sha256);
+  assert.equal(bytes.toString('ascii',expected.format==='avif'?4:8,12),expected.format==='avif'?'ftypavif':'WEBP');
+  activeAssets[expected.path]=expected;
+ }
  await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true})
  await send('Emulation.setTouchEmulationEnabled',{enabled:true})
- console.log('PASS 16 unique active WebP paths, byte sizes and approved SHA-256; no originals required')
+ console.log('PASS 16 original WebP paths plus 4 compact derivatives, exact byte sizes and SHA-256')
  for(const [width,height] of [[320,700],[375,812],[390,844],[440,956],[667,375],[844,390],[956,440],[1440,900]])for(const theme of ['dark','light']){
   await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<1000})
   await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-color-scheme',value:theme}]})
@@ -173,7 +180,7 @@ try {
    await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:seed.identifier})
    await js('Promise.all([...document.querySelectorAll(".standings-showcase__art")].map(i=>i.decode()))')
    const seriesKeys=['IRONMAN_PRO_SERIES','T100']
-   const expectedPaths=seriesKeys.map(key=>rankingsShowcase[key][scene][width>height?'landscapePath':'path'])
+   const expectedPaths=seriesKeys.map(key=>width>height?rankingsShowcase[key][scene].landscapePath:(width<=440&&rankingsShowcase[key][scene].compactPortrait?rankingsShowcase[key][scene].compactPortrait.avif:rankingsShowcase[key][scene].path))
    const decoded=await js(`[...document.querySelectorAll('.standings-showcase__art')].map(i=>({path:new URL(i.currentSrc).pathname,w:i.naturalWidth,h:i.naturalHeight,complete:i.complete}))`)
    assert.deepEqual(decoded.map(x=>x.path),expectedPaths)
    for(const image of decoded){assert.ok(image.complete);assert.deepEqual([image.w,image.h],activeAssets[image.path].dimensions)}
@@ -197,7 +204,7 @@ try {
     await js('Promise.all([...document.querySelectorAll(".standings-showcase__art")].map(i=>i.decode()))')
     const info=await js(`(()=>{const e=document.querySelector('.rankings-showcase-panel[aria-hidden="false"] .standings-showcase__art'),b=e.getBoundingClientRect(),hero=document.querySelector('.standings-showcase').getBoundingClientRect(),back=document.querySelector('.page-back-button').getBoundingClientRect();return {src:e.currentSrc,w:e.naturalWidth,h:e.naturalHeight,fit:getComputedStyle(e).objectFit,left:hero.left,width:hero.width,heroHeight:hero.height,top:hero.top,backBottom:back.bottom,artTop:b.top,backWidth:back.width,backHeight:back.height}})()`)
     const finalCycling=width>height&&series==='t100'&&scene===1
-    if(finalCycling){assert.equal(info.w,2078);assert.equal(info.h,378)}else assert.ok(info.w>1500&&info.h>700)
+    if(finalCycling){assert.equal(info.w,2078);assert.equal(info.h,378)}else if(width<=440&&height>width&&scene===3){assert.equal(info.w,1320);assert.equal(info.h,743)}else assert.ok(info.w>1500&&info.h>700)
     if(width>height){
      const name=series==='ironman'?['swimming','cycling','running','transition'][scene]:['swimming','cycling_final','running_city','transition'][scene]
      assert.ok(info.src.endsWith(`/optimized/${series}_${name}.webp`))

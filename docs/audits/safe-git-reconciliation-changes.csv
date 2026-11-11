@@ -1,0 +1,29 @@
+path,scope
+docs/PROJECT_BOARD.md,historical documentation/evidence and reconciliation report
+docs/ath-ui01-data-ath02-review.md,historical documentation/evidence and reconciliation report
+docs/athlete-name-localization-policy.md,historical documentation/evidence and reconciliation report
+docs/athlete-name-review.md,historical documentation/evidence and reconciliation report
+docs/audits/athlete-biographies-batch1-integration.md,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02-2026-10-30/athlete-name-inventory.csv,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02-2026-10-30/missing-russian-names.csv,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02-2026-10-30/rankings-name-comparison.csv,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02-2026-10-30/summary.json,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02c-batches/batch-001.csv,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02c-batches/batch-002.csv,historical documentation/evidence and reconciliation report
+docs/audits/data-ath02c-batches/manifest.json,historical documentation/evidence and reconciliation report
+docs/audits/reconciliation-history/athlete-ui-local.md,historical documentation/evidence and reconciliation report
+docs/audits/reconciliation-history/devops-plan-local.md,historical documentation/evidence and reconciliation report
+docs/audits/reconciliation-history/initial-files.csv,historical documentation/evidence and reconciliation report
+docs/audits/reconciliation-history/initial-reconciliation.md,historical documentation/evidence and reconciliation report
+docs/audits/reconciliation-history/localization-policy-local.md,historical documentation/evidence and reconciliation report
+docs/audits/reconciliation-history/project-board-local.md,historical documentation/evidence and reconciliation report
+docs/audits/safe-git-reconciliation-changes.csv,historical documentation/evidence and reconciliation report
+docs/audits/safe-git-reconciliation-files.csv,historical documentation/evidence and reconciliation report
+docs/audits/safe-git-reconciliation.md,historical documentation/evidence and reconciliation report
+docs/devops03b2-preview-implementation-plan.md,historical documentation/evidence and reconciliation report
+docs/perf01-sports-chunk-audit.md,historical documentation/evidence and reconciliation report
+docs/scripts.md,historical documentation/evidence and reconciliation report
+scripts/find-next-athletes.mjs,compatible importer/test integration
+scripts/import-race-results.mjs,compatible importer/test integration
+scripts/test-find-next-athletes.mjs,compatible importer/test integration
+scripts/test-race-result-import.mjs,compatible importer/test integration

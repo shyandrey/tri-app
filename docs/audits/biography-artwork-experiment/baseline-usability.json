@@ -1,0 +1,2732 @@
+[
+  {
+    "label": "mobile",
+    "n": 0,
+    "ready": 1950.800000011921,
+    "data": {
+      "cls": [],
+      "lcp": [
+        {
+          "start": 912,
+          "url": "",
+          "element": "<h1 id=\"sports-loading-title\">Официальные рейтинги</h1>"
+        }
+      ],
+      "long": [],
+      "tableVisible": 1941.199999988079,
+      "clickStart": 1953.5,
+      "tableUsable": 2311.4000000059605,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+          "start": 173.30000001192093,
+          "end": 807.1999999880791,
+          "encoded": 83381,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+          "start": 174,
+          "end": 440.59999999403954,
+          "encoded": 11637,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+          "start": 889.6999999880791,
+          "end": 1047.699999988079,
+          "encoded": 271,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+          "start": 890.5,
+          "end": 1880.5999999940395,
+          "encoded": 158831,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+          "start": 891.5,
+          "end": 1086,
+          "encoded": 2508,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/favicon.svg",
+          "start": 892.9000000059605,
+          "end": 1093.300000011921,
+          "encoded": 1490,
+          "initiator": "other"
+        }
+      ],
+      "fonts": 0,
+      "overflow": false
+    },
+    "metrics": [
+      {
+        "name": "Timestamp",
+        "value": 258869.717773
+      },
+      {
+        "name": "AudioHandlers",
+        "value": 0
+      },
+      {
+        "name": "AudioWorkletProcessors",
+        "value": 0
+      },
+      {
+        "name": "Documents",
+        "value": 8
+      },
+      {
+        "name": "Frames",
+        "value": 8
+      },
+      {
+        "name": "JSEventListeners",
+        "value": 276
+      },
+      {
+        "name": "LayoutObjects",
+        "value": 566
+      },
+      {
+        "name": "MediaKeySessions",
+        "value": 0
+      },
+      {
+        "name": "MediaKeys",
+        "value": 0
+      },
+      {
+        "name": "Nodes",
+        "value": 697
+      },
+      {
+        "name": "Resources",
+        "value": 28
+      },
+      {
+        "name": "ContextLifecycleStateObservers",
+        "value": 22
+      },
+      {
+        "name": "V8PerContextDatas",
+        "value": 3
+      },
+      {
+        "name": "WorkerGlobalScopes",
+        "value": 0
+      },
+      {
+        "name": "UACSSResources",
+        "value": 0
+      },
+      {
+        "name": "RTCPeerConnections",
+        "value": 0
+      },
+      {
+        "name": "ResourceFetchers",
+        "value": 8
+      },
+      {
+        "name": "AdSubframes",
+        "value": 0
+      },
+      {
+        "name": "DetachedScriptStates",
+        "value": 2
+      },
+      {
+        "name": "ArrayBufferContents",
+        "value": 0
+      },
+      {
+        "name": "LayoutCount",
+        "value": 7
+      },
+      {
+        "name": "RecalcStyleCount",
+        "value": 9
+      },
+      {
+        "name": "LayoutDuration",
+        "value": 0.045783
+      },
+      {
+        "name": "RecalcStyleDuration",
+        "value": 0.006667
+      },
+      {
+        "name": "DevToolsCommandDuration",
+        "value": 0.007045
+      },
+      {
+        "name": "ScriptDuration",
+        "value": 0.095909
+      },
+      {
+        "name": "V8CompileDuration",
+        "value": 0
+      },
+      {
+        "name": "TaskDuration",
+        "value": 0.25309
+      },
+      {
+        "name": "TaskOtherDuration",
+        "value": 0.097686
+      },
+      {
+        "name": "ThreadTime",
+        "value": 1.676803
+      },
+      {
+        "name": "ProcessTime",
+        "value": 2.02906
+      },
+      {
+        "name": "JSHeapUsedSize",
+        "value": 4307024
+      },
+      {
+        "name": "JSHeapTotalSize",
+        "value": 7340032
+      },
+      {
+        "name": "FirstMeaningfulPaint",
+        "value": 258868.314053
+      },
+      {
+        "name": "DomContentLoaded",
+        "value": 258868.239351
+      },
+      {
+        "name": "NavigationStart",
+        "value": 258867.405028
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:5490/",
+        "type": "Document",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "431938721BC8B9ED95985CFAB0B3A10F",
+        "start": 258867.405787,
+        "priority": "VeryHigh",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "text/html",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 518
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+        "type": "Script",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.2",
+        "start": 258867.578303,
+        "priority": "High",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 83612
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+        "type": "Stylesheet",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.3",
+        "start": 258867.578997,
+        "priority": "VeryHigh",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 11861
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+        "type": "Script",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.6",
+        "start": 258868.294659,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 500
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+        "type": "Script",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.7",
+        "start": 258868.295537,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 159063
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+        "type": "Stylesheet",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.8",
+        "start": 258868.295563,
+        "priority": "VeryHigh",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 2731
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "type": "Other",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.9",
+        "start": 258868.297884,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/svg+xml",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 1718
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.10",
+        "start": 258869.344415,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.11",
+        "start": 258869.344471,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.12",
+        "start": 258869.354352,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.13",
+        "start": 258869.354392,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.14",
+        "start": 258869.354408,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.15",
+        "start": 258869.354421,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.16",
+        "start": 258869.354433,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.17",
+        "start": 258869.354444,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.18",
+        "start": 258869.354454,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.19",
+        "start": 258869.354467,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.20",
+        "start": 258869.354482,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.21",
+        "start": 258869.355189,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.22",
+        "start": 258869.3552,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.23",
+        "start": 258869.355212,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.24",
+        "start": 258869.355224,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.25",
+        "start": 258869.355234,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.26",
+        "start": 258869.355249,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.27",
+        "start": 258869.355261,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.28",
+        "start": 258869.355272,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lotte-wilms-180-2aqtZ8eE.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.29",
+        "start": 258869.355582,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/grace-thek-180-CNIpMTQ0.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.30",
+        "start": 258869.355593,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackie-hering-180-Vfc0jGb4.webp",
+        "type": "Image",
+        "loader": "431938721BC8B9ED95985CFAB0B3A10F",
+        "requestId": "8002.31",
+        "start": 258869.355607,
+        "priority": "Low",
+        "initiator": "other"
+      }
+    ]
+  },
+  {
+    "label": "mobile",
+    "n": 1,
+    "ready": 1930.9000000059605,
+    "data": {
+      "cls": [],
+      "lcp": [
+        {
+          "start": 880,
+          "url": "",
+          "element": "<h1 id=\"sports-loading-title\">Официальные рейтинги</h1>"
+        }
+      ],
+      "long": [],
+      "tableVisible": 1921.5999999940395,
+      "clickStart": 1933,
+      "tableUsable": 2284.699999988079,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+          "start": 159.30000001192093,
+          "end": 425.19999998807907,
+          "encoded": 11637,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+          "start": 159.30000001192093,
+          "end": 792.4000000059605,
+          "encoded": 83381,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+          "start": 874.5999999940395,
+          "end": 1031.199999988079,
+          "encoded": 271,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+          "start": 874.6999999880791,
+          "end": 1864.699999988079,
+          "encoded": 158831,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+          "start": 876.4000000059605,
+          "end": 1069.800000011921,
+          "encoded": 2508,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/favicon.svg",
+          "start": 877.3000000119209,
+          "end": 1076.699999988079,
+          "encoded": 1490,
+          "initiator": "other"
+        }
+      ],
+      "fonts": 0,
+      "overflow": false
+    },
+    "metrics": [
+      {
+        "name": "Timestamp",
+        "value": 258872.122868
+      },
+      {
+        "name": "AudioHandlers",
+        "value": 0
+      },
+      {
+        "name": "AudioWorkletProcessors",
+        "value": 0
+      },
+      {
+        "name": "Documents",
+        "value": 6
+      },
+      {
+        "name": "Frames",
+        "value": 6
+      },
+      {
+        "name": "JSEventListeners",
+        "value": 276
+      },
+      {
+        "name": "LayoutObjects",
+        "value": 562
+      },
+      {
+        "name": "MediaKeySessions",
+        "value": 0
+      },
+      {
+        "name": "MediaKeys",
+        "value": 0
+      },
+      {
+        "name": "Nodes",
+        "value": 689
+      },
+      {
+        "name": "Resources",
+        "value": 28
+      },
+      {
+        "name": "ContextLifecycleStateObservers",
+        "value": 18
+      },
+      {
+        "name": "V8PerContextDatas",
+        "value": 2
+      },
+      {
+        "name": "WorkerGlobalScopes",
+        "value": 0
+      },
+      {
+        "name": "UACSSResources",
+        "value": 0
+      },
+      {
+        "name": "RTCPeerConnections",
+        "value": 0
+      },
+      {
+        "name": "ResourceFetchers",
+        "value": 6
+      },
+      {
+        "name": "AdSubframes",
+        "value": 0
+      },
+      {
+        "name": "DetachedScriptStates",
+        "value": 1
+      },
+      {
+        "name": "ArrayBufferContents",
+        "value": 0
+      },
+      {
+        "name": "LayoutCount",
+        "value": 7
+      },
+      {
+        "name": "RecalcStyleCount",
+        "value": 9
+      },
+      {
+        "name": "LayoutDuration",
+        "value": 0.041743
+      },
+      {
+        "name": "RecalcStyleDuration",
+        "value": 0.00691
+      },
+      {
+        "name": "DevToolsCommandDuration",
+        "value": 0.002657
+      },
+      {
+        "name": "ScriptDuration",
+        "value": 0.09259
+      },
+      {
+        "name": "V8CompileDuration",
+        "value": 0
+      },
+      {
+        "name": "TaskDuration",
+        "value": 0.197301
+      },
+      {
+        "name": "TaskOtherDuration",
+        "value": 0.053401
+      },
+      {
+        "name": "ThreadTime",
+        "value": 1.665172
+      },
+      {
+        "name": "ProcessTime",
+        "value": 1.977208
+      },
+      {
+        "name": "JSHeapUsedSize",
+        "value": 4122572
+      },
+      {
+        "name": "JSHeapTotalSize",
+        "value": 6815744
+      },
+      {
+        "name": "FirstMeaningfulPaint",
+        "value": 258870.713072
+      },
+      {
+        "name": "DomContentLoaded",
+        "value": 258870.655589
+      },
+      {
+        "name": "NavigationStart",
+        "value": 258869.836006
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:5490/",
+        "type": "Document",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "start": 258869.836184,
+        "priority": "VeryHigh",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "text/html",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 518
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+        "type": "Script",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.2",
+        "start": 258869.995235,
+        "priority": "High",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 83612
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+        "type": "Stylesheet",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.3",
+        "start": 258869.995331,
+        "priority": "VeryHigh",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 11861
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+        "type": "Script",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.6",
+        "start": 258870.710604,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 500
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+        "type": "Script",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.7",
+        "start": 258870.710661,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 159063
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+        "type": "Stylesheet",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.8",
+        "start": 258870.710689,
+        "priority": "VeryHigh",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 2731
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "type": "Other",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.9",
+        "start": 258870.713301,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/svg+xml",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 1718
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.10",
+        "start": 258871.756302,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.11",
+        "start": 258871.756621,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.12",
+        "start": 258871.765235,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.13",
+        "start": 258871.765265,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.14",
+        "start": 258871.765578,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.15",
+        "start": 258871.765593,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.16",
+        "start": 258871.765606,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.17",
+        "start": 258871.765619,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.18",
+        "start": 258871.76563,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.19",
+        "start": 258871.765651,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.20",
+        "start": 258871.765665,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.21",
+        "start": 258871.765674,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.22",
+        "start": 258871.765685,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.23",
+        "start": 258871.765696,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.24",
+        "start": 258871.765707,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.25",
+        "start": 258871.765717,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.26",
+        "start": 258871.765729,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.27",
+        "start": 258871.765739,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.28",
+        "start": 258871.765758,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lotte-wilms-180-2aqtZ8eE.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.29",
+        "start": 258871.765768,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/grace-thek-180-CNIpMTQ0.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.30",
+        "start": 258871.765784,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackie-hering-180-Vfc0jGb4.webp",
+        "type": "Image",
+        "loader": "5FA92E7C5EF37D0EB5B99AB5ABD75711",
+        "requestId": "8008.31",
+        "start": 258871.766487,
+        "priority": "Low",
+        "initiator": "other"
+      }
+    ]
+  },
+  {
+    "label": "mobile",
+    "n": 2,
+    "ready": 1932,
+    "data": {
+      "cls": [],
+      "lcp": [
+        {
+          "start": 884,
+          "url": "",
+          "element": "<h1 id=\"sports-loading-title\">Официальные рейтинги</h1>"
+        }
+      ],
+      "long": [],
+      "tableVisible": 1922.7999999821186,
+      "clickStart": 1934.0999999940395,
+      "tableUsable": 2283.5999999940395,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+          "start": 162.39999997615814,
+          "end": 795.6999999880791,
+          "encoded": 83381,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+          "start": 162.5,
+          "end": 427.69999998807907,
+          "encoded": 11637,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+          "start": 878,
+          "end": 1035,
+          "encoded": 271,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+          "start": 878.0999999940395,
+          "end": 1866.5999999940395,
+          "encoded": 158831,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+          "start": 879.2999999821186,
+          "end": 1072.8999999761581,
+          "encoded": 2508,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/favicon.svg",
+          "start": 880,
+          "end": 1080.199999988079,
+          "encoded": 1490,
+          "initiator": "other"
+        }
+      ],
+      "fonts": 0,
+      "overflow": false
+    },
+    "metrics": [
+      {
+        "name": "Timestamp",
+        "value": 258874.526101
+      },
+      {
+        "name": "AudioHandlers",
+        "value": 0
+      },
+      {
+        "name": "AudioWorkletProcessors",
+        "value": 0
+      },
+      {
+        "name": "Documents",
+        "value": 6
+      },
+      {
+        "name": "Frames",
+        "value": 6
+      },
+      {
+        "name": "JSEventListeners",
+        "value": 276
+      },
+      {
+        "name": "LayoutObjects",
+        "value": 562
+      },
+      {
+        "name": "MediaKeySessions",
+        "value": 0
+      },
+      {
+        "name": "MediaKeys",
+        "value": 0
+      },
+      {
+        "name": "Nodes",
+        "value": 689
+      },
+      {
+        "name": "Resources",
+        "value": 28
+      },
+      {
+        "name": "ContextLifecycleStateObservers",
+        "value": 18
+      },
+      {
+        "name": "V8PerContextDatas",
+        "value": 2
+      },
+      {
+        "name": "WorkerGlobalScopes",
+        "value": 0
+      },
+      {
+        "name": "UACSSResources",
+        "value": 0
+      },
+      {
+        "name": "RTCPeerConnections",
+        "value": 0
+      },
+      {
+        "name": "ResourceFetchers",
+        "value": 6
+      },
+      {
+        "name": "AdSubframes",
+        "value": 0
+      },
+      {
+        "name": "DetachedScriptStates",
+        "value": 1
+      },
+      {
+        "name": "ArrayBufferContents",
+        "value": 0
+      },
+      {
+        "name": "LayoutCount",
+        "value": 7
+      },
+      {
+        "name": "RecalcStyleCount",
+        "value": 9
+      },
+      {
+        "name": "LayoutDuration",
+        "value": 0.041689
+      },
+      {
+        "name": "RecalcStyleDuration",
+        "value": 0.007162
+      },
+      {
+        "name": "DevToolsCommandDuration",
+        "value": 0.004225
+      },
+      {
+        "name": "ScriptDuration",
+        "value": 0.096565
+      },
+      {
+        "name": "V8CompileDuration",
+        "value": 0
+      },
+      {
+        "name": "TaskDuration",
+        "value": 0.197601
+      },
+      {
+        "name": "TaskOtherDuration",
+        "value": 0.04796
+      },
+      {
+        "name": "ThreadTime",
+        "value": 1.6623
+      },
+      {
+        "name": "ProcessTime",
+        "value": 1.97668
+      },
+      {
+        "name": "JSHeapUsedSize",
+        "value": 4105264
+      },
+      {
+        "name": "JSHeapTotalSize",
+        "value": 7340032
+      },
+      {
+        "name": "FirstMeaningfulPaint",
+        "value": 258873.120894
+      },
+      {
+        "name": "DomContentLoaded",
+        "value": 258873.063203
+      },
+      {
+        "name": "NavigationStart",
+        "value": 258872.240263
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:5490/",
+        "type": "Document",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "466FC4408C383DCA16FC26843B30C818",
+        "start": 258872.240443,
+        "priority": "VeryHigh",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "text/html",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 518
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+        "type": "Script",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.2",
+        "start": 258872.402682,
+        "priority": "High",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 83612
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+        "type": "Stylesheet",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.3",
+        "start": 258872.40277,
+        "priority": "VeryHigh",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 11861
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+        "type": "Script",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.6",
+        "start": 258873.117612,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 500
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+        "type": "Script",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.7",
+        "start": 258873.118357,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 159063
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+        "type": "Stylesheet",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.8",
+        "start": 258873.118618,
+        "priority": "VeryHigh",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 2731
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "type": "Other",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.9",
+        "start": 258873.120293,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/svg+xml",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 1718
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.10",
+        "start": 258874.161558,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.11",
+        "start": 258874.161602,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.12",
+        "start": 258874.170455,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.13",
+        "start": 258874.171035,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.14",
+        "start": 258874.171052,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.15",
+        "start": 258874.17107,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.16",
+        "start": 258874.171081,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.17",
+        "start": 258874.171094,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.18",
+        "start": 258874.17111,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.19",
+        "start": 258874.171122,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.20",
+        "start": 258874.171131,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.21",
+        "start": 258874.171142,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.22",
+        "start": 258874.171152,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.23",
+        "start": 258874.171162,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.24",
+        "start": 258874.171172,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.25",
+        "start": 258874.171186,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.26",
+        "start": 258874.171197,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.27",
+        "start": 258874.171208,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.28",
+        "start": 258874.171218,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lotte-wilms-180-2aqtZ8eE.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.29",
+        "start": 258874.171231,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/grace-thek-180-CNIpMTQ0.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.30",
+        "start": 258874.171241,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackie-hering-180-Vfc0jGb4.webp",
+        "type": "Image",
+        "loader": "466FC4408C383DCA16FC26843B30C818",
+        "requestId": "8012.31",
+        "start": 258874.171253,
+        "priority": "Low",
+        "initiator": "other"
+      }
+    ]
+  },
+  {
+    "label": "mobile",
+    "n": 3,
+    "ready": 1932.0999999940395,
+    "data": {
+      "cls": [],
+      "lcp": [
+        {
+          "start": 880,
+          "url": "",
+          "element": "<h1 id=\"sports-loading-title\">Официальные рейтинги</h1>"
+        }
+      ],
+      "long": [],
+      "tableVisible": 1923.5999999940395,
+      "clickStart": 1933.199999988079,
+      "tableUsable": 2285.9000000059605,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+          "start": 160.5,
+          "end": 793.5,
+          "encoded": 83381,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+          "start": 161.2999999821186,
+          "end": 432.90000000596046,
+          "encoded": 11637,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+          "start": 874.6999999880791,
+          "end": 1032.7999999821186,
+          "encoded": 271,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+          "start": 874.7999999821186,
+          "end": 1865.199999988079,
+          "encoded": 158831,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+          "start": 876.4000000059605,
+          "end": 1069.7999999821186,
+          "encoded": 2508,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/favicon.svg",
+          "start": 876.5,
+          "end": 1078.5999999940395,
+          "encoded": 1490,
+          "initiator": "other"
+        }
+      ],
+      "fonts": 0,
+      "overflow": false
+    },
+    "metrics": [
+      {
+        "name": "Timestamp",
+        "value": 258876.930096
+      },
+      {
+        "name": "AudioHandlers",
+        "value": 0
+      },
+      {
+        "name": "AudioWorkletProcessors",
+        "value": 0
+      },
+      {
+        "name": "Documents",
+        "value": 6
+      },
+      {
+        "name": "Frames",
+        "value": 6
+      },
+      {
+        "name": "JSEventListeners",
+        "value": 276
+      },
+      {
+        "name": "LayoutObjects",
+        "value": 562
+      },
+      {
+        "name": "MediaKeySessions",
+        "value": 0
+      },
+      {
+        "name": "MediaKeys",
+        "value": 0
+      },
+      {
+        "name": "Nodes",
+        "value": 689
+      },
+      {
+        "name": "Resources",
+        "value": 28
+      },
+      {
+        "name": "ContextLifecycleStateObservers",
+        "value": 18
+      },
+      {
+        "name": "V8PerContextDatas",
+        "value": 2
+      },
+      {
+        "name": "WorkerGlobalScopes",
+        "value": 0
+      },
+      {
+        "name": "UACSSResources",
+        "value": 0
+      },
+      {
+        "name": "RTCPeerConnections",
+        "value": 0
+      },
+      {
+        "name": "ResourceFetchers",
+        "value": 6
+      },
+      {
+        "name": "AdSubframes",
+        "value": 0
+      },
+      {
+        "name": "DetachedScriptStates",
+        "value": 1
+      },
+      {
+        "name": "ArrayBufferContents",
+        "value": 0
+      },
+      {
+        "name": "LayoutCount",
+        "value": 7
+      },
+      {
+        "name": "RecalcStyleCount",
+        "value": 9
+      },
+      {
+        "name": "LayoutDuration",
+        "value": 0.041775
+      },
+      {
+        "name": "RecalcStyleDuration",
+        "value": 0.006521
+      },
+      {
+        "name": "DevToolsCommandDuration",
+        "value": 0.001991
+      },
+      {
+        "name": "ScriptDuration",
+        "value": 0.093053
+      },
+      {
+        "name": "V8CompileDuration",
+        "value": 0
+      },
+      {
+        "name": "TaskDuration",
+        "value": 0.193453
+      },
+      {
+        "name": "TaskOtherDuration",
+        "value": 0.050113
+      },
+      {
+        "name": "ThreadTime",
+        "value": 1.663286
+      },
+      {
+        "name": "ProcessTime",
+        "value": 1.975461
+      },
+      {
+        "name": "JSHeapUsedSize",
+        "value": 4096048
+      },
+      {
+        "name": "JSHeapTotalSize",
+        "value": 7340032
+      },
+      {
+        "name": "FirstMeaningfulPaint",
+        "value": 258875.519815
+      },
+      {
+        "name": "DomContentLoaded",
+        "value": 258875.463387
+      },
+      {
+        "name": "NavigationStart",
+        "value": 258874.642482
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:5490/",
+        "type": "Document",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "start": 258874.642671,
+        "priority": "VeryHigh",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "text/html",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 518
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+        "type": "Script",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.2",
+        "start": 258874.80289,
+        "priority": "High",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 83612
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+        "type": "Stylesheet",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.3",
+        "start": 258874.803746,
+        "priority": "VeryHigh",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 11861
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+        "type": "Script",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.6",
+        "start": 258875.517118,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 500
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+        "type": "Script",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.7",
+        "start": 258875.517177,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 159063
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+        "type": "Stylesheet",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.8",
+        "start": 258875.517201,
+        "priority": "VeryHigh",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 2731
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "type": "Other",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.9",
+        "start": 258875.518921,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/svg+xml",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 1718
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.10",
+        "start": 258876.563604,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.11",
+        "start": 258876.56396,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.12",
+        "start": 258876.572993,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.13",
+        "start": 258876.573027,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.14",
+        "start": 258876.573045,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.15",
+        "start": 258876.573056,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.16",
+        "start": 258876.573067,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.17",
+        "start": 258876.573082,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.18",
+        "start": 258876.573091,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.19",
+        "start": 258876.573104,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.20",
+        "start": 258876.573698,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.21",
+        "start": 258876.573709,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.22",
+        "start": 258876.573718,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.23",
+        "start": 258876.573729,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.24",
+        "start": 258876.573738,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.25",
+        "start": 258876.57375,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.26",
+        "start": 258876.573763,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.27",
+        "start": 258876.573777,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.28",
+        "start": 258876.573788,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lotte-wilms-180-2aqtZ8eE.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.29",
+        "start": 258876.5738,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/grace-thek-180-CNIpMTQ0.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.30",
+        "start": 258876.57381,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackie-hering-180-Vfc0jGb4.webp",
+        "type": "Image",
+        "loader": "B1AC1A0768A8E9D21FC60CF5AA75A596",
+        "requestId": "8017.31",
+        "start": 258876.573826,
+        "priority": "Low",
+        "initiator": "other"
+      }
+    ]
+  },
+  {
+    "label": "mobile",
+    "n": 4,
+    "ready": 1934.7999999821186,
+    "data": {
+      "cls": [],
+      "lcp": [
+        {
+          "start": 880,
+          "url": "",
+          "element": "<h1 id=\"sports-loading-title\">Официальные рейтинги</h1>"
+        }
+      ],
+      "long": [],
+      "tableVisible": 1925.7999999821186,
+      "clickStart": 1935.8999999761581,
+      "tableUsable": 2286.5,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+          "start": 160.69999998807907,
+          "end": 794,
+          "encoded": 83381,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+          "start": 161.39999997615814,
+          "end": 434.19999998807907,
+          "encoded": 11637,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+          "start": 875.8999999761581,
+          "end": 1033.0999999940395,
+          "encoded": 271,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+          "start": 876,
+          "end": 1866.7999999821186,
+          "encoded": 158831,
+          "initiator": "script"
+        },
+        {
+          "name": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+          "start": 877.3999999761581,
+          "end": 1071.7999999821186,
+          "encoded": 2508,
+          "initiator": "link"
+        },
+        {
+          "name": "http://127.0.0.1:5490/favicon.svg",
+          "start": 878.2999999821186,
+          "end": 1079,
+          "encoded": 1490,
+          "initiator": "other"
+        }
+      ],
+      "fonts": 0,
+      "overflow": false
+    },
+    "metrics": [
+      {
+        "name": "Timestamp",
+        "value": 258879.337381
+      },
+      {
+        "name": "AudioHandlers",
+        "value": 0
+      },
+      {
+        "name": "AudioWorkletProcessors",
+        "value": 0
+      },
+      {
+        "name": "Documents",
+        "value": 6
+      },
+      {
+        "name": "Frames",
+        "value": 6
+      },
+      {
+        "name": "JSEventListeners",
+        "value": 276
+      },
+      {
+        "name": "LayoutObjects",
+        "value": 562
+      },
+      {
+        "name": "MediaKeySessions",
+        "value": 0
+      },
+      {
+        "name": "MediaKeys",
+        "value": 0
+      },
+      {
+        "name": "Nodes",
+        "value": 689
+      },
+      {
+        "name": "Resources",
+        "value": 28
+      },
+      {
+        "name": "ContextLifecycleStateObservers",
+        "value": 18
+      },
+      {
+        "name": "V8PerContextDatas",
+        "value": 2
+      },
+      {
+        "name": "WorkerGlobalScopes",
+        "value": 0
+      },
+      {
+        "name": "UACSSResources",
+        "value": 0
+      },
+      {
+        "name": "RTCPeerConnections",
+        "value": 0
+      },
+      {
+        "name": "ResourceFetchers",
+        "value": 6
+      },
+      {
+        "name": "AdSubframes",
+        "value": 0
+      },
+      {
+        "name": "DetachedScriptStates",
+        "value": 1
+      },
+      {
+        "name": "ArrayBufferContents",
+        "value": 0
+      },
+      {
+        "name": "LayoutCount",
+        "value": 7
+      },
+      {
+        "name": "RecalcStyleCount",
+        "value": 9
+      },
+      {
+        "name": "LayoutDuration",
+        "value": 0.041217
+      },
+      {
+        "name": "RecalcStyleDuration",
+        "value": 0.006742
+      },
+      {
+        "name": "DevToolsCommandDuration",
+        "value": 0.00266
+      },
+      {
+        "name": "ScriptDuration",
+        "value": 0.09539
+      },
+      {
+        "name": "V8CompileDuration",
+        "value": 0
+      },
+      {
+        "name": "TaskDuration",
+        "value": 0.195573
+      },
+      {
+        "name": "TaskOtherDuration",
+        "value": 0.049564
+      },
+      {
+        "name": "ThreadTime",
+        "value": 1.664273
+      },
+      {
+        "name": "ProcessTime",
+        "value": 1.980304
+      },
+      {
+        "name": "JSHeapUsedSize",
+        "value": 4102844
+      },
+      {
+        "name": "JSHeapTotalSize",
+        "value": 7077888
+      },
+      {
+        "name": "FirstMeaningfulPaint",
+        "value": 258877.92699
+      },
+      {
+        "name": "DomContentLoaded",
+        "value": 258877.869827
+      },
+      {
+        "name": "NavigationStart",
+        "value": 258877.049386
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:5490/",
+        "type": "Document",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "start": 258877.049572,
+        "priority": "VeryHigh",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "text/html",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 518
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-D3QUb9oh.js",
+        "type": "Script",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.2",
+        "start": 258877.20997,
+        "priority": "High",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 83612
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/index-Cfyt9-Bz.css",
+        "type": "Stylesheet",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.3",
+        "start": 258877.210642,
+        "priority": "VeryHigh",
+        "initiator": "parser",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 11861
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/rankings-entry-B0djbgog.js",
+        "type": "Script",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.6",
+        "start": 258877.924686,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 500
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-C0g6evcn.js",
+        "type": "Script",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.7",
+        "start": 258877.925366,
+        "priority": "High",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/javascript",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 159063
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/OfficialRankingsPage-BT_QP_Y2.css",
+        "type": "Stylesheet",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.8",
+        "start": 258877.925395,
+        "priority": "VeryHigh",
+        "initiator": "script",
+        "status": 200,
+        "disk": false,
+        "mime": "text/css",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 2731
+      },
+      {
+        "url": "http://127.0.0.1:5490/favicon.svg",
+        "type": "Other",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.9",
+        "start": 258877.927589,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/svg+xml",
+        "cache": false,
+        "protocol": "http/1.1",
+        "bytes": 1718
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/ironman_04_transition.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.10",
+        "start": 258878.972724,
+        "priority": "High",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/images/showcase/rankings/optimized/t100_04_transition.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.11",
+        "start": 258878.97277,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/gustav-iden-180-Dyqiq6I-.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.12",
+        "start": 258878.982703,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jonas-schomburg-180-BU0v8ea_.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.13",
+        "start": 258878.982734,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/blummenfelt-180-BWLRBa5m.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.14",
+        "start": 258878.982747,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kacper-stepniak-180-DIsUoun6.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.15",
+        "start": 258878.983098,
+        "priority": "Low",
+        "initiator": "other",
+        "status": 200,
+        "disk": false,
+        "mime": "image/webp",
+        "cache": false,
+        "protocol": "http/1.1"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kieran-lindars-180-Dt0CPzz_.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.16",
+        "start": 258878.983109,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/vincent-luis-180-D391bBOM.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.17",
+        "start": 258878.983121,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marten-van-riel-180-B8kV6WHe.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.18",
+        "start": 258878.983133,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matthew-marquardt-180-Bz8YNqr7.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.19",
+        "start": 258878.983144,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/matt-hanson-180-yePOJAuM.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.20",
+        "start": 258878.983158,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/sam-long-180-APse4g9u.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.21",
+        "start": 258878.983169,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/laura-philipp-180-BVVad3E0.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.22",
+        "start": 258878.983181,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/solveig-l-vseth-180-YOGzBT1n.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.23",
+        "start": 258878.983191,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/kat-matthews-180-EsDuOyvb.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.24",
+        "start": 258878.983201,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lisa-perterer-180-CiZO-2S8.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.25",
+        "start": 258878.983213,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/marta-sanchez-180-CEGz29tl.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.26",
+        "start": 258878.983224,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/hannah-berry-180-BtgKhE5S.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.27",
+        "start": 258878.983234,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/taylor-knibb-180-l50EOrB4.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.28",
+        "start": 258878.983245,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/lotte-wilms-180-2aqtZ8eE.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.29",
+        "start": 258878.983259,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/grace-thek-180-CNIpMTQ0.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.30",
+        "start": 258878.983269,
+        "priority": "Low",
+        "initiator": "other"
+      },
+      {
+        "url": "http://127.0.0.1:5490/assets/jackie-hering-180-Vfc0jGb4.webp",
+        "type": "Image",
+        "loader": "F5AB4D418F3899FDE16D04DC12DFE284",
+        "requestId": "8020.31",
+        "start": 258878.983283,
+        "priority": "Low",
+        "initiator": "other"
+      }
+    ]
+  }
+]

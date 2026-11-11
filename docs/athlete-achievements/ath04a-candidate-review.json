@@ -1,0 +1,438 @@
+[
+  {
+    "achievementKey": "ath-138:ironman-hamburg-2024:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 138,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "hering24"
+    ]
+  },
+  {
+    "achievementKey": "ath-1:ironman-frankfurt-2024:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 1,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "frankfurt24"
+    ]
+  },
+  {
+    "achievementKey": "ath-109:ironman-world-championship-nice-2024-women:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 109,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "usa-nice24"
+    ]
+  },
+  {
+    "achievementKey": "ath-108:ironman-world-championship-nice-2024-women:W:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 108,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "usa-nice24"
+    ]
+  },
+  {
+    "achievementKey": "ath-10701:ironman-world-championship-nice-2024-women:W:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 10701,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "usa-nice24"
+    ]
+  },
+  {
+    "achievementKey": "ath-24:ironman-world-championship-kona-2024-men:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 24,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "dtu-kona24"
+    ]
+  },
+  {
+    "achievementKey": "ath-21:ironman-world-championship-kona-2024-men:M:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 21,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "dtu-kona24"
+    ]
+  },
+  {
+    "achievementKey": "ath-104:ironman-70-3-world-championship-taupo-2024-women:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 104,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "aus-taupo24"
+    ]
+  },
+  {
+    "achievementKey": "ath-108:ironman-70-3-world-championship-taupo-2024-women:W:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 108,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "aus-taupo24"
+    ]
+  },
+  {
+    "achievementKey": "ath-147:ironman-70-3-world-championship-taupo-2024-women:W:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 147,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "aus-taupo24"
+    ]
+  },
+  {
+    "achievementKey": "ath-6:ironman-70-3-world-championship-taupo-2024-men:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 6,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70324m"
+    ]
+  },
+  {
+    "achievementKey": "ath-3:ironman-70-3-world-championship-taupo-2024-men:M:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 3,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70324m"
+    ]
+  },
+  {
+    "achievementKey": "ath-42:ironman-70-3-world-championship-taupo-2024-men:M:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 42,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70324m"
+    ]
+  },
+  {
+    "achievementKey": "ath-109:ironman-hamburg-2025:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 109,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "CORROBORATED_SECONDARY_OFFICIAL_PENDING",
+    "sourceUrl": "https://www.lauraphilipp.de/results/",
+    "reason": "Athlete results and independent race coverage agree on Hamburg 2025 European victory. Direct organizer/federation final report not obtained; retain pending official corroboration."
+  },
+  {
+    "achievementKey": "ath-1:ironman-frankfurt-2025:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 1,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "kristian-series25"
+    ]
+  },
+  {
+    "achievementKey": "ath-7:ironman-world-championship-nice-2025-men:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 7,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "im25m"
+    ]
+  },
+  {
+    "achievementKey": "ath-25:ironman-world-championship-nice-2025-men:M:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 25,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "im25m"
+    ]
+  },
+  {
+    "achievementKey": "ath-1:ironman-world-championship-nice-2025-men:M:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 1,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "im25m"
+    ]
+  },
+  {
+    "achievementKey": "ath-106:ironman-world-championship-kona-2025-women:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 106,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "im25w"
+    ]
+  },
+  {
+    "achievementKey": "ath-108:ironman-world-championship-kona-2025-women:W:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 108,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "im25w"
+    ]
+  },
+  {
+    "achievementKey": "ath-109:ironman-world-championship-kona-2025-women:W:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 109,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "im25w"
+    ]
+  },
+  {
+    "achievementKey": "ath-103:ironman-70-3-world-championship-marbella-2025-women:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 103,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70325w"
+    ]
+  },
+  {
+    "achievementKey": "ath-104:ironman-70-3-world-championship-marbella-2025-women:W:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 104,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70325w"
+    ]
+  },
+  {
+    "achievementKey": "ath-6:ironman-70-3-world-championship-marbella-2025-men:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 6,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70325m"
+    ]
+  },
+  {
+    "achievementKey": "ath-1:ironman-70-3-world-championship-marbella-2025-men:M:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 1,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70325m"
+    ]
+  },
+  {
+    "achievementKey": "ath-7:ironman-70-3-world-championship-marbella-2025-men:M:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 7,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70325m"
+    ]
+  },
+  {
+    "achievementKey": "ath-109:challenge-roth-2025:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 109,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "roth25"
+    ]
+  },
+  {
+    "achievementKey": "ath-10521:challenge-roth-2025:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 10521,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "roth25"
+    ]
+  },
+  {
+    "achievementKey": "ath-106:ironman-hamburg-2026:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 106,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "CORROBORATED_SECONDARY_OFFICIAL_PENDING",
+    "sourceUrl": "https://www.k226.com/news/newsitem.aspx?id=15801",
+    "reason": "K226 race report explicitly calls Lovseth European champion; broadcaster NDR corroborates. Syndicated organizer authorship not established; retain pending official evidence."
+  },
+  {
+    "achievementKey": "ath-7:ironman-frankfurt-2026:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 7,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "CORROBORATED_SECONDARY_OFFICIAL_PENDING",
+    "sourceUrl": "https://www.tri247.com/triathlon-news/elite/ironman-frankfurt-2026-results-report",
+    "reason": "TRI247, Triathlete and Triathlon Magazine agree on 3.8 km swim, 125 km bike, 21.1 km run and European title. Direct organizer format/title notice not obtained; not a full-distance record."
+  },
+  {
+    "achievementKey": "ath-111:challenge-roth-2026:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 111,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "CORROBORATED_SECONDARY_OFFICIAL_PENDING",
+    "sourceUrl": "https://www.sportschau.de/regional/br/br-schweizerin-siffert-ueberrascht-beim-challenge-roth-2026-102.html",
+    "reason": "BR on-site report and PTO results confirm Roth victory. Direct organizer finish evidence not obtained; do not elevate pre-race organizer preview to result evidence."
+  },
+  {
+    "achievementKey": "ath-10521:challenge-roth-2026:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 10521,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "roth26-laidlow"
+    ]
+  },
+  {
+    "achievementKey": "ath-104:ironman-70-3-world-championship-2026-women:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 104,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70326w"
+    ]
+  },
+  {
+    "achievementKey": "ath-102:ironman-70-3-world-championship-2026-women:W:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 102,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70326w"
+    ]
+  },
+  {
+    "achievementKey": "ath-111:ironman-70-3-world-championship-2026-women:W:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 111,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70326w"
+    ]
+  },
+  {
+    "achievementKey": "ath-3:ironman-70-3-world-championship-2026-men:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 3,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70326m"
+    ]
+  },
+  {
+    "achievementKey": "ath-1:ironman-70-3-world-championship-2026-men:M:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 1,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70326m"
+    ]
+  },
+  {
+    "achievementKey": "ath-6:ironman-70-3-world-championship-2026-men:M:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 6,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "70326m"
+    ]
+  },
+  {
+    "achievementKey": "ath-104:ironman-world-championship-kona-2026:W:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 104,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "fftri-kona26"
+    ]
+  },
+  {
+    "achievementKey": "ath-109:ironman-world-championship-kona-2026:W:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 109,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "fftri-kona26"
+    ]
+  },
+  {
+    "achievementKey": "ath-102:ironman-world-championship-kona-2026:W:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 102,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "fftri-kona26"
+    ]
+  },
+  {
+    "achievementKey": "ath-41:ironman-world-championship-kona-2026:M:position-1",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 41,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "fftri-kona26"
+    ]
+  },
+  {
+    "achievementKey": "ath-25:ironman-world-championship-kona-2026:M:position-2",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 25,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "fftri-kona26"
+    ]
+  },
+  {
+    "achievementKey": "ath-20:ironman-world-championship-kona-2026:M:position-3",
+    "reviewedOn": "2026-11-11",
+    "athleteId": 20,
+    "originalEvidencePreservedIn": "ath04a-checkpoint.json",
+    "outcome": "PROMOTED_OFFICIAL",
+    "sourceIds": [
+      "fftri-kona26"
+    ]
+  }
+]

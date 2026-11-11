@@ -1,3 +1,4 @@
+import { localizationReviewQueue } from './athlete-localization-review.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createServer } from 'vite'
@@ -150,13 +151,19 @@ async function appendGeneratedProfiles() {
   const source = await fs.readFile(sourcePath, 'utf8')
   if (!source.endsWith(']\n')) throw new Error('Unexpected generated file format; no output written')
   let nextId = Math.max(9999, ...runtimeAthletes.map(a => a.id)) + 1
+  const createdProfiles = []
   const additions = rows.map(item => {
     const name = preferredName(item), countryCode = topCountry(item)
-    const fields = { id: nextId++, name, nameEn: name, country: countryCode ?? '', countryEn: countryCode ?? '', ...(countryCode ? {countryCode} : {}), flag: '', gender: inferredGender(item), discipline: 'IRONMAN / T100', achievements: [] }
+    const entry = athleteLocalization[name]
+    const nameRu = typeof entry === 'string' ? entry : entry?.nameRu
+    const fields = { id: nextId++, name: nameRu?.trim() ? nameRu : name, nameEn: name, country: countryCode ?? '', countryEn: countryCode ?? '', ...(countryCode ? {countryCode} : {}), flag: '', gender: inferredGender(item), discipline: 'IRONMAN / T100', achievements: [] }
+    createdProfiles.push(fields)
     return `  ${JSON.stringify(fields)},`
   })
   if (!additions.length) { console.log('No unmatched identities to append'); return }
   await fs.writeFile(EXPORT_PATH, source.slice(0, -2) + additions.join('\n') + '\n]\n', 'utf8')
+  // Persist the non-blocking editorial queue alongside this import output.
+  await fs.writeFile(EXPORT_PATH + '.localization-review.json', JSON.stringify(localizationReviewQueue(createdProfiles), null, 2) + '\n')
   console.log(`Appended ${additions.length} profiles with stable new IDs; all existing records preserved`)
 }
 

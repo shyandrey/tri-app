@@ -1,3 +1,4 @@
+import { projectHistoricalBiographies } from './approved-biography-contract.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
@@ -263,6 +264,8 @@ test('import preserves prior rows/IDs and identity except reviewed country corre
 // Preserve the original full-profile baseline. Only byte-pinned, owner-approved
 // display names may project back to their previous Latin fallback; every other
 // field, profile and unapproved display name stays in the historical hash.
+// ATH-BIO-01: exact approved biographies are independently checked and projected
+// to their pinned previous values; the historical hash itself remains unchanged.
 const konaBaseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/kona-baseline-2026.json','utf8'))
 const approvedNames=new Map()
 const approvedBatches=[
@@ -291,7 +294,7 @@ function assertKonaIntegrity(catalog,results){
   assert.equal(athlete.nameEn,review.nameEn,`Latin identity ${id}`)
   assert.equal(athlete.name,review.nameRu,`Approved Russian spelling ${id}`)
  }
- const historical=catalog.map(a=>approvedNames.has(a.id)?{...a,name:approvedNames.get(a.id).nameEn}:a)
+ const historical=projectHistoricalBiographies(catalog).map(a=>approvedNames.has(a.id)?{...a,name:approvedNames.get(a.id).nameEn}:a)
  assert.equal(hash(historical),konaBaseline.athletesSha256,'Protected profiles and unapproved names must remain unchanged')
  assert.equal(hash(results.slice(0,konaBaseline.resultsCount)),konaBaseline.resultsSha256,'Historical result records/mappings must remain unchanged')
  const byName=new Map(catalog.map(a=>[normalizeAthleteIdentityName(a.nameEn),a.id]))
@@ -340,4 +343,16 @@ test('Kona incremental import preserves every prior row/profile and exact source
  assert.equal(proposal.unmatched.length,0)
  assert.equal(proposal.anomalies.length,22)
  assert.ok(proposal.anomalies.every(a=>a.type==='missing-splits' && a.status==='DNF'))
+})
+
+test('Missing localization is reported without blocking verified source rows or IDs',()=>{
+ const {parsed,evidence}=fixtures[1]
+ const editions=evidence.editions.map(e=>allRaceEditionViews.find(x=>x.editionId===e.editionId))
+ const fallbackCatalog=athletes.map(a=>({...a,name:a.nameEn}))
+ const original=proposeResults(parsed,editions,[],athletes,normalizeAthleteIdentityName)
+ const proposed=proposeResults(parsed,editions,[],fallbackCatalog,normalizeAthleteIdentityName)
+ assert.deepEqual(proposed.rows,original.rows)
+ assert.deepEqual(proposed.matches,original.matches)
+ assert.ok(proposed.localizationReview.length>0)
+ assert.ok(proposed.localizationReview.every(r=>r.status==='LOCALIZATION_REVIEW_REQUIRED'&&r.blocking===false))
 })

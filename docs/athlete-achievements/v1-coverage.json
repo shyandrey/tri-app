@@ -1,0 +1,1567 @@
+[
+  {
+    "athleteId": 104,
+    "nameEn": "Taylor Knibb",
+    "nameRu": "Тейлор Книбб",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-104:olympics:2020:mixed-relay",
+      "ath-104:olympics:2024:mixed-relay",
+      "ath-104:t100:2024:overall",
+      "ath-104:ath04b:3:2022:34",
+      "ath-104:ath04b:3:2023:35",
+      "ath-104:ath04b:3:2021:67",
+      "ath-104:ironman-70-3-world-championship-taupo-2024-women:W:position-1",
+      "ath-104:ironman-70-3-world-championship-marbella-2025-women:W:position-2",
+      "ath-104:ironman-70-3-world-championship-2026-women:W:position-1",
+      "ath-104:ironman-world-championship-kona-2026:W:position-1",
+      "ath-104:t100:2024:dubai:final"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-104:olympics:2020:mixed-relay",
+        "ath-104:olympics:2024:mixed-relay"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-104:t100:2024:dubai:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-104:t100:2024:overall"
+      ],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 2,
+    "nameEn": "Marten Van Riel",
+    "nameRu": "Мартен ван Рил",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-2:t100:2024:overall",
+      "ath-2:t100:2024:dubai:final",
+      "ath-2:t100:2025:qatar:final"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-2:t100:2024:dubai:final",
+        "ath-2:t100:2025:qatar:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-2:t100:2024:overall"
+      ],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 3,
+    "nameEn": "Hayden Wilde",
+    "nameRu": "Хайден Уайлд",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-3:olympics:2020:individual",
+      "ath-3:olympics:2024:individual",
+      "ath-3:t100:2025:overall",
+      "ath-3:ironman-70-3-world-championship-taupo-2024-men:M:position-2",
+      "ath-3:ironman-70-3-world-championship-2026-men:M:position-1",
+      "ath-3:t100:2025:qatar:final"
+    ],
+    "pendingKeys": [
+      "ath-3:v1-review:6:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-3:olympics:2020:individual",
+        "ath-3:olympics:2024:individual"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-3:t100:2025:qatar:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-3:t100:2025:overall"
+      ],
+      "pendingKeys": [
+        "ath-3:v1-review:6:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 4,
+    "nameEn": "Mika Noodt",
+    "nameRu": "Мика Нудт",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [
+      "ath-4:v1-review:6:2025:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-4:v1-review:6:2025:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 5,
+    "nameEn": "Rico Bogen",
+    "nameRu": "Рико Боген",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-5:ath04b:3:2023:69",
+      "ath-5:t100:2024:dubai:final",
+      "ath-5:t100:2024:overall"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-5:t100:2024:dubai:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-5:t100:2024:overall"
+      ],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 6,
+    "nameEn": "Jelle Geens",
+    "nameRu": "Йелле Гинс",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-6:ironman-70-3-world-championship-taupo-2024-men:M:position-1",
+      "ath-6:ironman-70-3-world-championship-marbella-2025-men:M:position-1",
+      "ath-6:ironman-70-3-world-championship-2026-men:M:position-3"
+    ],
+    "pendingKeys": [
+      "ath-6:v1-review:6:2025:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-6:v1-review:6:2025:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 7,
+    "nameEn": "Casper Stornes",
+    "nameRu": "Каспер Сторнс",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-7:ironman-world-championship-nice-2025-men:M:position-1",
+      "ath-7:ironman-70-3-world-championship-marbella-2025-men:M:position-3",
+      "ath-7:ironman-pro-series:2025:overall"
+    ],
+    "pendingKeys": [
+      "ath-7:ironman-frankfurt-2026:M:position-1"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-7:ironman-pro-series:2025:overall"
+      ],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 8,
+    "nameEn": "Jonas Schomburg",
+    "nameRu": "Йонас Шомбург",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [
+      "ath-8:v1-review:7:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-8:v1-review:7:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 9,
+    "nameEn": "Samuel Dickinson",
+    "nameRu": "Сэмуэль Дикинсон",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-9:olympics:2024:mixed-relay"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-9:olympics:2024:mixed-relay"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 11,
+    "nameEn": "Lasse Nygaard Priester",
+    "nameRu": "Лассе Пристер",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [
+      "ath-11:v1-review:6:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-11:v1-review:6:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 102,
+    "nameEn": "Julie Derron",
+    "nameRu": "Жюли Деррон",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-102:olympics:2024:individual",
+      "ath-102:ironman-70-3-world-championship-2026-women:W:position-2",
+      "ath-102:ironman-world-championship-kona-2026:W:position-3",
+      "ath-102:t100:2024:dubai:final",
+      "ath-102:t100:2025:qatar:final"
+    ],
+    "pendingKeys": [
+      "ath-102:v1-review:6:2024:overall",
+      "ath-102:v1-review:6:2025:overall",
+      "ath-102:v1-review:6:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-102:olympics:2024:individual"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-102:t100:2024:dubai:final",
+        "ath-102:t100:2025:qatar:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-102:v1-review:6:2024:overall",
+        "ath-102:v1-review:6:2025:overall",
+        "ath-102:v1-review:6:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 1,
+    "nameEn": "Kristian Blummenfelt",
+    "nameRu": "Кристиан Блюмменфельт",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-1:olympics:2020:individual",
+      "ath-1:ath04b:6:2025:46",
+      "ath-1:ath04b:2:2022:56",
+      "ath-1:ath04b:2:2022:61",
+      "ath-1:ath04b:3:2022:86",
+      "ath-1:ironman-frankfurt-2024:M:position-1",
+      "ath-1:ironman-frankfurt-2025:M:position-1",
+      "ath-1:ironman-world-championship-nice-2025-men:M:position-3",
+      "ath-1:ironman-70-3-world-championship-marbella-2025-men:M:position-2",
+      "ath-1:ironman-70-3-world-championship-2026-men:M:position-2"
+    ],
+    "pendingKeys": [
+      "ath-1:v1-review:7:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-1:olympics:2020:individual"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-1:ath04b:6:2025:46"
+      ],
+      "pendingKeys": [
+        "ath-1:v1-review:7:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 109,
+    "nameEn": "Laura Philipp",
+    "nameRu": "Лаура Филипп",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-109:ath04b:2:2023:32",
+      "ath-109:ath04b:5:2022:48",
+      "ath-109:ironman-world-championship-nice-2024-women:W:position-1",
+      "ath-109:ironman-world-championship-kona-2025-women:W:position-3",
+      "ath-109:challenge-roth-2025:W:position-1",
+      "ath-109:ironman-world-championship-kona-2026:W:position-2"
+    ],
+    "pendingKeys": [
+      "ath-109:ironman-hamburg-2025:W:position-1",
+      "ath-109:historical-review:3",
+      "ath-109:historical-review:24"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-109:historical-review:24"
+      ]
+    }
+  },
+  {
+    "athleteId": 106,
+    "nameEn": "Solveig Løvseth",
+    "nameRu": "Сольвейг Ловсет",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-106:ironman-world-championship-kona-2025-women:W:position-1",
+      "ath-106:ironman-pro-series:2025:overall"
+    ],
+    "pendingKeys": [
+      "ath-106:ironman-hamburg-2026:W:position-1",
+      "ath-106:v1-review:7:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-106:ironman-pro-series:2025:overall"
+      ],
+      "pendingKeys": [
+        "ath-106:v1-review:7:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 103,
+    "nameEn": "Lucy Charles-Barclay",
+    "nameRu": "Люси Чарльз",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-103:ath04b:2:2018:29",
+      "ath-103:ath04b:2:2023:31",
+      "ath-103:ath04b:2:2017:52",
+      "ath-103:ath04b:2:2019:53",
+      "ath-103:ath04b:2:2022:54",
+      "ath-103:ath04b:3:2021:66",
+      "ath-103:ironman-70-3-world-championship-marbella-2025-women:W:position-1"
+    ],
+    "pendingKeys": [
+      "ath-103:v1-review:6:2025:overall",
+      "ath-103:roth:2019:review"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-103:v1-review:6:2025:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 108,
+    "nameEn": "Kat Matthews",
+    "nameRu": "Кэт Мэтьюс",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-108:ironman-pro-series:2024:overall",
+      "ath-108:ath04b:6:2025:47",
+      "ath-108:ath04b:2:2022:58",
+      "ath-108:ath04b:3:2023:88",
+      "ath-108:ironman-world-championship-nice-2024-women:W:position-2",
+      "ath-108:ironman-70-3-world-championship-taupo-2024-women:W:position-2",
+      "ath-108:ironman-world-championship-kona-2025-women:W:position-2"
+    ],
+    "pendingKeys": [
+      "ath-108:v1-review:7:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-108:ironman-pro-series:2024:overall",
+        "ath-108:ath04b:6:2025:47"
+      ],
+      "pendingKeys": [
+        "ath-108:v1-review:7:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 147,
+    "nameEn": "Ashleigh Gentle",
+    "nameRu": "Эшли Джентл",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-147:ironman-70-3-world-championship-taupo-2024-women:W:position-3",
+      "ath-147:t100:2024:dubai:final"
+    ],
+    "pendingKeys": [
+      "ath-147:v1-review:6:2024:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-147:t100:2024:dubai:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-147:v1-review:6:2024:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 105,
+    "nameEn": "Georgia Taylor-Brown",
+    "nameRu": "Джорджия Тейлор-Браун",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-105:olympics:2020:individual",
+      "ath-105:olympics:2020:mixed-relay",
+      "ath-105:olympics:2024:mixed-relay",
+      "ath-105:t100:2025:qatar:final"
+    ],
+    "pendingKeys": [
+      "ath-105:v1-review:6:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-105:olympics:2020:individual",
+        "ath-105:olympics:2020:mixed-relay",
+        "ath-105:olympics:2024:mixed-relay"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-105:t100:2025:qatar:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-105:v1-review:6:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 23,
+    "nameEn": "Lionel Sanders",
+    "nameRu": "Лайонел Сандерс",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-23:ath04b:2:2022:57"
+    ],
+    "pendingKeys": [
+      "ath-23:historical-review:1"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 20,
+    "nameEn": "Matthew Marquardt",
+    "nameRu": "Мэттью Марквардт",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-20:ironman-world-championship-kona-2026:M:position-3"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 41,
+    "nameEn": "Vincent Luis",
+    "nameRu": "Венсан Луис",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-41:olympics:2020:mixed-relay",
+      "ath-41:ironman-world-championship-kona-2026:M:position-1"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-41:olympics:2020:mixed-relay"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 10521,
+    "nameEn": "Sam Laidlow",
+    "nameRu": "Сэм Лэйдлоу",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-10521:ath04b:2:2023:55",
+      "ath-10521:ath04b:2:2022:60",
+      "ath-10521:challenge-roth-2025:M:position-1",
+      "ath-10521:challenge-roth-2026:M:position-1"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 114,
+    "nameEn": "Paula Findlay",
+    "nameRu": "Пола Финдли",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-114:ath04b:3:2022:62"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 22,
+    "nameEn": "Sam Long",
+    "nameRu": "Сэм Лонг",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-22:ath04b:3:2021:64"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 111,
+    "nameEn": "Alanis Siffert",
+    "nameRu": "Аланис Сифферт",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-111:ironman-70-3-world-championship-2026-women:W:position-3",
+      "ath-111:challenge-roth-2026:W:position-1"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 39,
+    "nameEn": "Trevor Foley",
+    "nameRu": "Тревор Фоули",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 119,
+    "nameEn": "Lisa Perterer",
+    "nameRu": "Лиза Пертерер",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-119:ironman-pro-series:2025:overall"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-119:ironman-pro-series:2025:overall"
+      ],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 25,
+    "nameEn": "Gustav Iden",
+    "nameRu": "Густав Иден",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-25:ath04b:3:2019:36",
+      "ath-25:ath04b:3:2021:37",
+      "ath-25:ath04b:2:2022:59",
+      "ath-25:ironman-world-championship-nice-2025-men:M:position-2",
+      "ath-25:ironman-world-championship-kona-2026:M:position-2"
+    ],
+    "pendingKeys": [
+      "ath-25:v1-review:7:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-25:v1-review:7:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 21,
+    "nameEn": "Magnus Ditlev",
+    "nameRu": "Магнус Дитлев",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-21:challenge-roth:2022:winner",
+      "ath-21:challenge-roth:2023:winner",
+      "ath-21:challenge-roth:2024:winner",
+      "ath-21:ath04b:2:2023:85",
+      "ath-21:ath04b:3:2022:87",
+      "ath-21:ironman-world-championship-kona-2024-men:M:position-2"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 112,
+    "nameEn": "Imogen Simmonds",
+    "nameRu": "Имоджен Симмондс",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-112:ath04b:3:2023:89"
+    ],
+    "pendingKeys": [
+      "ath-112:historical-review:4",
+      "ath-112:v1-review:6:2026:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-112:v1-review:6:2026:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 113,
+    "nameEn": "Hannah Berry",
+    "nameRu": "Ханна Берри",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 10185,
+    "nameEn": "Harry Palmer",
+    "nameRu": "Гарри Палмер",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 138,
+    "nameEn": "Jackie Hering",
+    "nameRu": "Джеки Херинг",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-138:ironman-hamburg-2024:W:position-1"
+    ],
+    "pendingKeys": [
+      "ath-138:v1-review:7:2024:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-138:v1-review:7:2024:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 15,
+    "nameEn": "Morgan Pearson",
+    "nameRu": "Морган Пирсон",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-15:olympics:2020:mixed-relay",
+      "ath-15:olympics:2024:mixed-relay",
+      "ath-15:t100:2025:qatar:final"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-15:olympics:2020:mixed-relay",
+        "ath-15:olympics:2024:mixed-relay"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [
+        "ath-15:t100:2025:qatar:final"
+      ],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 10736,
+    "nameEn": "Emma Pallant-Browne",
+    "nameRu": "Эмма Паллант-Браун",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-10736:ath04b:3:2022:63",
+      "ath-10736:ath04b:pallant17im:2017"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 16,
+    "nameEn": "Gregory Barnaby",
+    "nameRu": "Грегори Барнаби",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-16:ath04b:6:2024:45"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-16:ath04b:6:2024:45"
+      ],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 10458,
+    "nameEn": "Panagiotis Bitados",
+    "nameRu": "Панайотис Битадос",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 130,
+    "nameEn": "Marta Sánchez",
+    "nameRu": "Марта Санчес",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 120,
+    "nameEn": "Marjolaine Pierré",
+    "nameRu": "Маржолейн Пьер",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 13,
+    "nameEn": "Mathis Margirier",
+    "nameRu": "Матисс Маржирье",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 107,
+    "nameEn": "Jessica Learmonth",
+    "nameRu": "Джессика Лермонт",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-107:olympics:2020:mixed-relay"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-107:olympics:2020:mixed-relay"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 129,
+    "nameEn": "Grace Thek",
+    "nameRu": "Грейс Тек",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 10,
+    "nameEn": "Menno Koolhaas",
+    "nameRu": "Менно Куулхас",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 42,
+    "nameEn": "Léo Bergère",
+    "nameRu": "Лео Берже",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-42:olympics:2024:individual",
+      "ath-42:ironman-70-3-world-championship-taupo-2024-men:M:position-3"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [
+        "ath-42:olympics:2024:individual"
+      ],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 24,
+    "nameEn": "Patrick Lange",
+    "nameRu": "Патрик Ланге",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-24:ath04b:2:2017:24",
+      "ath-24:ath04b:2:2018:25",
+      "ath-24:ath04b:2:2016:27",
+      "ath-24:ath04b:2:2023:84",
+      "ath-24:ironman-world-championship-kona-2024-men:M:position-1"
+    ],
+    "pendingKeys": [
+      "ath-24:v1-review:7:2024:overall",
+      "ath-24:roth:2021:review"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-24:v1-review:7:2024:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 122,
+    "nameEn": "Lotte Wilms",
+    "nameRu": "Лотте Вилмс",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [
+      "ath-122:v1-review:7:2024:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [
+        "ath-122:v1-review:7:2024:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 131,
+    "nameEn": "India Lee",
+    "nameRu": "Индия Ли",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 35,
+    "nameEn": "Kristian Høgenhaug",
+    "nameRu": "Кристиан Хогенхауг",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-35:ironman-pro-series:2025:overall"
+    ],
+    "pendingKeys": [
+      "ath-35:v1-review:7:2024:overall"
+    ],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [
+        "ath-35:ironman-pro-series:2025:overall"
+      ],
+      "pendingKeys": [
+        "ath-35:v1-review:7:2024:overall"
+      ]
+    }
+  },
+  {
+    "athleteId": 14,
+    "nameEn": "Jason West",
+    "nameRu": "Джейсон Уэст",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 44,
+    "nameEn": "Antonio Benito López",
+    "nameRu": "Антонио Бенито Лопес",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 49,
+    "nameEn": "Matt Hanson",
+    "nameRu": "Мэтт Хансон",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 146,
+    "nameEn": "Els Visser",
+    "nameRu": "Элс Виссер",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 34,
+    "nameEn": "Frederic Funk",
+    "nameRu": "Фредерик Функ",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-34:ath04b:3:2023:68"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 116,
+    "nameEn": "Sara Pérez Sala",
+    "nameRu": "Сара Перес",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 37,
+    "nameEn": "Cameron Wurf",
+    "nameRu": "Кэмерон Вурф",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 10701,
+    "nameEn": "Chelsea Sodaro",
+    "nameRu": "Челси Содаро",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-10701:ath04b:2:2022:33",
+      "ath-10701:ironman-world-championship-nice-2024-women:W:position-3"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  },
+  {
+    "athleteId": 28,
+    "nameEn": "Daniel Bækkegård",
+    "nameRu": "Даниэль Беккегард",
+    "reviewStatus": "REVIEWED_WITH_EXPLICIT_EVIDENCE_GAPS",
+    "historicalReview": "batch1-coverage.json",
+    "verifiedAchievementKeys": [
+      "ath-28:ath04b:3:2021:65"
+    ],
+    "pendingKeys": [],
+    "olympicReview": {
+      "verifiedKeys": [],
+      "basis": "ATH-04B individual career review and Olympic evidence; no medal inferred from WT world titles."
+    },
+    "finalRaceReview": {
+      "verifiedKeys": [],
+      "pendingKeys": [],
+      "basis": "Official final designation/city/year and exact-name verified local podiums; Dubai 2025 excluded. No exhaustive-career absence claim."
+    },
+    "seasonReview": {
+      "verifiedKeys": [],
+      "pendingKeys": []
+    }
+  }
+]

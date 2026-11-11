@@ -139,3 +139,7 @@ Evidence directory: `/tmp/300w-athui01-final/`. Owner visual QA should check cen
 ## DEVOPS-04 — Read-only recovery closeout
 
 2026-10-31 Moscow: **ATH-UI-01 ready for Owner Visual QA.** Original deployment-run artifact 13011965445 was verified by ZIP/manifest SHA and complete inventory; the unchanged full live smoke passed exact HTML, SHA/version, API, routes, navigation and responsive artwork at 390×844/844×390, with no browser errors. Published SHA remains `653273420e2aaff3c49725500a935701d4dfd286`, version 0.0.0. Historical run failure is preserved. No new deployment, rollback or Production/D1 changes; Auto Deploy remains disabled pending readiness-fix review and explicit reactivation approval. [Recovery evidence and limitations](devops03b2-preview-implementation-plan.md#devops-04--ath-ui-01-smoke-recovery-and-bounded-readiness).
+
+## Reconciled local historical evidence — 2026-11-10
+
+The remote canonical record above is retained. The [local historical record](audits/reconciliation-history/athlete-ui-local.md) preserves the additional local audit, qualification, publication and closeout evidence without replacing canonical contracts or activating historical manual-mode deployment proposals. Historical statuses describe their dated checkpoints, not a fresh live-state verification. See [reconciliation outcome](audits/safe-git-reconciliation.md).

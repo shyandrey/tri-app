@@ -1,0 +1,247 @@
+[
+  {
+    "key": "t100-wilde-year-label",
+    "athleteIds": [
+      3
+    ],
+    "status": "SOURCE_METADATA_CONFLICT",
+    "sourceUrl": "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/",
+    "observation": "Search-visible title/image says 2026; article body describes perfect score across 2025 and dethroning the 2024 champion. World Triathlon independently identifies the event and overall title as 2025.",
+    "handling": "2025 title supported by the independent World Triathlon page. Do not infer a 2026 title from this mislabeled page. 2026 season title remains unverified.",
+    "ath04bUpdate": {
+      "reviewedOn": "2026-11-11",
+      "finding": "Retain 2025 season supported by article body and separate World Triathlon confirmation. Do not award 2026 overall from misleading title/image or LIVE ranking. No source correction is silently substituted."
+    }
+  },
+  {
+    "key": "frankfurt-2026-format",
+    "athleteIds": [
+      7
+    ],
+    "status": "FORMAT_CONFIRMATION_REQUIRED",
+    "sourceUrl": "https://stats.protriathletes.org/race/im-germany/2026/results",
+    "observation": "Local and PTO result agree on winner and 4:50:23, but PTO labels distance Iron 140.6 while the bike/run splits are 2:43:03 and 1:12:19.",
+    "handling": "Retain race-result candidate. Obtain organizer notice of actual distances and championship status before promotion. Never infer a full-distance record from this time.",
+    "ath04bUpdate": {
+      "reviewedOn": "2026-11-11",
+      "finding": "Three inspected independent reports explicitly agree on European champion Stornes with 3.8/125/21.1 km. Secondary corroboration supports the title, but direct organizer notice remains missing. Retain candidate pending official corroboration; 4:50:23 is not full-distance record evidence."
+    }
+  },
+  {
+    "key": "roth-2026-record",
+    "athleteIds": [
+      10521,
+      5
+    ],
+    "status": "DIRECT_RECORD_CONFIRMATION_PENDING",
+    "sourceUrl": "https://www.challenge-roth.com/en/news-area/challenge-roth-blew-our-minds-media-reactions-to-datev-challenge-roth-2026.html",
+    "observation": "Organizer media roundup points to reporting of a new record. Local results support Laidlow win, but victory alone is not record ratification; Bogen bike-record claim also needs direct scope/time evidence.",
+    "handling": "Hold 2026 overall/split record strings. Seek organizer result/record statement with distance and conditions; no universal world-record claim.",
+    "ath04bUpdate": {
+      "reviewedOn": "2026-11-11",
+      "finding": "Challenge Family 27 July 2026 Samarkand announcement explicitly confirms Laidlow Roth victory and 7:21:04 reported world best. Promoted historical organizer claim; no universal ratification/current record claim. Bogen split-record scope remains pending."
+    }
+  },
+  {
+    "key": "standings-not-final",
+    "athleteIds": [
+      1,
+      16,
+      108,
+      25,
+      109,
+      2,
+      104,
+      3,
+      102
+    ],
+    "status": "LOCAL_REGISTRY_NOT_TITLE_EVIDENCE",
+    "sourcePaths": [
+      "src/data/officialStandings/ironman",
+      "src/data/officialStandings/t100"
+    ],
+    "observation": "2024/2025 registry status HISTORICAL_FINAL_PENDING_CONFIRMATION; 2026 status LIVE.",
+    "handling": "Do not turn rank 1 into season champion. Explicit independently sourced titles in verifiedAchievements stand on those sources, not these statuses.",
+    "ath04bUpdate": {
+      "reviewedOn": "2026-11-11",
+      "finding": "Verified separately: Barnaby 2024 and Blummenfelt/Matthews 2025 overall titles from final organizer releases. No 2026 champion inferred from LIVE registry. T100 2026 still unverified."
+    }
+  },
+  {
+    "key": "historical-career-gaps",
+    "athleteIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      28,
+      34,
+      35,
+      37,
+      39,
+      41,
+      42,
+      44,
+      49,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      111,
+      112,
+      113,
+      114,
+      116,
+      119,
+      120,
+      122,
+      129,
+      130,
+      131,
+      138,
+      146,
+      147,
+      10185,
+      10458,
+      10521,
+      10701,
+      10736
+    ],
+    "status": "INCOMPLETE_EXTERNAL_REVIEW",
+    "observation": "Local results cover 2024–2026. Approved biography paragraphs identify earlier titles, records, junior/U23/relay and other-discipline claims but are not independent official evidence.",
+    "handling": "All 57 screened locally. Resume official historical archives claim by claim; empty verified lists do not establish absence of achievements. No guessed medal years.",
+    "ath04bUpdate": {
+      "reviewedOn": "2026-11-11",
+      "finding": "57 external career discovery reviews recorded; 40 of 44 original candidates promoted; older championships and optional disciplines researched. Remaining local/historical claims enumerated, not silently completed. Search coverage does not establish an exhaustive career inventory."
+    }
+  },
+  {
+    "key": "optional-scope",
+    "athleteIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      28,
+      34,
+      35,
+      37,
+      39,
+      41,
+      42,
+      44,
+      49,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      111,
+      112,
+      113,
+      114,
+      116,
+      119,
+      120,
+      122,
+      129,
+      130,
+      131,
+      138,
+      146,
+      147,
+      10185,
+      10458,
+      10521,
+      10701,
+      10736
+    ],
+    "status": "OWNER_CATEGORY_REVIEW_REQUIRED",
+    "observation": "Categories 9–11 are for separate owner review. Existing text includes U23/junior, relay, aquathlon, duathlon and non-triathlon claims.",
+    "handling": "Keep discipline, age class and team/individual status explicit. A WTCS final race podium is not automatically a season medal. A PTO snapshot is not year-end leadership. National bests and personal bests are not automatically category 8 records."
+  },
+  {
+    "key": "kristian-preserved",
+    "athleteIds": [
+      1
+    ],
+    "status": "EXISTING_UI_PRESERVED_NOT_REVERIFIED_IN_FULL",
+    "observation": "Existing four achievement strings retained byte-for-byte. Tokyo-2020 held in 2021; St George IRONMAN held May 2022 belongs to season 2021.",
+    "handling": "Do not regenerate UI items from the partial dataset. Existing 2022 70.3 and 2025 Pro Series text remains untouched; incomplete new verification does not invalidate or replace it.",
+    "ath04bUpdate": {
+      "reviewedOn": "2026-11-11",
+      "finding": "All four current UI strings remain byte-identical. Independently confirmed 2021-edition IM title held 2022, 2022 70.3 title and 2025 Pro Series overall. No runtime integration."
+    }
+  },
+  {
+    "key": "hogenhaug-biography-title-conflict",
+    "athleteIds": [
+      35
+    ],
+    "status": "OWNER_EDITORIAL_DECISION_REQUIRED",
+    "sourceUrl": "https://triathlon.org/news/denmarks-kristian-hogenhaug-claims-the-long-distance-world-title-in-almere",
+    "observation": "Approved biography calls Almere 2021 European; governing federation reports World Championship gold.",
+    "handling": "Record source-backed WORLD achievement separately; do not edit approved biography in this task."
+  },
+  {
+    "key": "record-conditions-and-currentness",
+    "athleteIds": [
+      1,
+      5,
+      21,
+      24,
+      25,
+      28,
+      37,
+      49,
+      103,
+      104,
+      10521,
+      109
+    ],
+    "status": "EDITORIAL_SCOPE_AND_RECORD_HISTORY_REVIEW",
+    "observation": "Full-course, split, championship-best, branded-distance and assisted-exhibition claims are not interchangeable. Later records can supersede historical ones.",
+    "handling": "Display historical year and scope; never imply universal ratification/current record. Unverified records remain in historical-candidates.json."
+  }
+]

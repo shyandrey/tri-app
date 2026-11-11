@@ -1,0 +1,7 @@
+PASS 320x800: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow
+PASS 390x844: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow
+PASS 430x932: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow
+PASS 768x1024: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow
+PASS 1024x768: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow
+PASS 1440x900: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow
+PASS 844x390: common outer grid, Home shortcuts/Back/News/action, catalog, profile years, race surfaces, More, no overflow

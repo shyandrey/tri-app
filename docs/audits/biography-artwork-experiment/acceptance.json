@@ -1,0 +1,10 @@
+{
+  "priorities": ["table usability", "first Profile navigation", "CLS", "LCP"],
+  "navigationMaterialRegressionMs": 50,
+  "navigationRule": "Reject a >=50 ms median increase in either immediate or delayed navigation; retain ranges and every trial.",
+  "tableRule": "No repeatable rendering/usability regression; report sub-frame measurement scatter explicitly rather than equating exact timestamp equality with invariance.",
+  "clsRule": "Zero mobile and desktop measured non-input CLS in every passive trial.",
+  "qualityRule": "Compare actual cover crop at 390/440 CSS px, DPR3; preserve original fallback for landscape and wider portrait. No composition change, obvious artifacts or loss of readable lettering.",
+  "integrityRule": "Approved biographies, IDs and all sports data byte-identical; canonical catalog comparison for biography candidate.",
+  "qualificationRule": "Build, lint, release gate and relevant tests must pass before adoption. Rejected prototypes remain isolated."
+}

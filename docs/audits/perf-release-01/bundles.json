@@ -1,0 +1,212 @@
+{
+  "before": [
+    {
+      "file": "OfficialRankingsPage-BIr-bfIO.js",
+      "raw": 682451,
+      "gzip": 104059,
+      "brotli": 72883,
+      "sha256": "5ef0ef60a944b8a931e9c507550b720c4e808635e428294120b04a322d465ad9",
+      "imports": [
+        "./index-CXErXn5t.js"
+      ],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "OfficialRankingsPage-BT_QP_Y2.css",
+      "raw": 9228,
+      "gzip": 2508,
+      "brotli": 2189,
+      "sha256": "1ffb7ea98d4ebb8051808b27126def2f53c58fb732f2b7969f50f374eeaef0c6",
+      "imports": [],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "index-CXErXn5t.js",
+      "raw": 277600,
+      "gzip": 83382,
+      "brotli": 71070,
+      "sha256": "61c9f0e836a80cda335ba4a442b1bc8a33dc9a3e370d4590356a6f58da828b72",
+      "imports": [
+        "./rankings-entry-CYH15f2I.js",
+        "./sports-entry-HDfDrLPH.js"
+      ],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "index-Cfyt9-Bz.css",
+      "raw": 58991,
+      "gzip": 11637,
+      "brotli": 10064,
+      "sha256": "801f9dee9fd24c3c4630ccf09bfb75fac1c33b63f53966c01921bbec095e8632",
+      "imports": [],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "rankings-entry-CYH15f2I.js",
+      "raw": 393,
+      "gzip": 272,
+      "brotli": 229,
+      "sha256": "1dc62b816a40b3f8ad859b8c92e3d13ec07256fe02dbf84777433d4a3ab7d664",
+      "imports": [
+        "./OfficialRankingsPage-BIr-bfIO.js",
+        "./index-CXErXn5t.js"
+      ],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "sports-entry-BF-AYuUt.css",
+      "raw": 11578,
+      "gzip": 2615,
+      "brotli": 2233,
+      "sha256": "421b006af93543f7fc46c4d32d9b3fb5d692c6859b4e2e5e271f497c22a4e708",
+      "imports": [],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "sports-entry-HDfDrLPH.js",
+      "raw": 623413,
+      "gzip": 164274,
+      "brotli": 114698,
+      "sha256": "014e1891a59099717279f9a1497c85c18b7603cb988ad411c31b0574c912b90d",
+      "imports": [
+        "./OfficialRankingsPage-BIr-bfIO.js",
+        "./index-CXErXn5t.js"
+      ],
+      "approvedBiographyPrefixes": []
+    }
+  ],
+  "after": [
+    {
+      "file": "OfficialRankingsPage-BT_QP_Y2.css",
+      "raw": 9228,
+      "gzip": 2508,
+      "brotli": 2189,
+      "sha256": "1ffb7ea98d4ebb8051808b27126def2f53c58fb732f2b7969f50f374eeaef0c6",
+      "imports": [],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "OfficialRankingsPage-WjDBoAii.js",
+      "raw": 905812,
+      "gzip": 158831,
+      "brotli": 114763,
+      "sha256": "eddf6e559a0babf624847a46f058f945c297e70985061ae9586944a4844f84e1",
+      "imports": [
+        "./index-QoMYn0jK.js"
+      ],
+      "approvedBiographyPrefixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        28,
+        34,
+        35,
+        37,
+        39,
+        41,
+        42,
+        44,
+        49,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        111,
+        112,
+        113,
+        114,
+        116,
+        119,
+        120,
+        122,
+        129,
+        130,
+        131,
+        138,
+        146,
+        147,
+        10185,
+        10458,
+        10521,
+        10701,
+        10736
+      ]
+    },
+    {
+      "file": "index-Cfyt9-Bz.css",
+      "raw": 58991,
+      "gzip": 11637,
+      "brotli": 10064,
+      "sha256": "801f9dee9fd24c3c4630ccf09bfb75fac1c33b63f53966c01921bbec095e8632",
+      "imports": [],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "index-QoMYn0jK.js",
+      "raw": 277633,
+      "gzip": 83412,
+      "brotli": 71012,
+      "sha256": "e63fa60a28879df09751a81e525a3dba265251b9e32eea4a9970d8a435ad1595",
+      "imports": [
+        "./rankings-entry-R0K2NthT.js",
+        "./sports-entry-DHBV3u9d.js"
+      ],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "rankings-entry-R0K2NthT.js",
+      "raw": 393,
+      "gzip": 270,
+      "brotli": 229,
+      "sha256": "d228df3ae8b5e624f70e726dfa8d174607a2a25c50babdea056d255e20bbdda9",
+      "imports": [
+        "./OfficialRankingsPage-WjDBoAii.js",
+        "./index-QoMYn0jK.js"
+      ],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "sports-entry-BF-AYuUt.css",
+      "raw": 11578,
+      "gzip": 2615,
+      "brotli": 2233,
+      "sha256": "421b006af93543f7fc46c4d32d9b3fb5d692c6859b4e2e5e271f497c22a4e708",
+      "imports": [],
+      "approvedBiographyPrefixes": []
+    },
+    {
+      "file": "sports-entry-DHBV3u9d.js",
+      "raw": 623396,
+      "gzip": 164263,
+      "brotli": 114685,
+      "sha256": "bf54f53d781c1272dcb6fc5039e5998ddc313a9493ed1287205cd9713faf25eb",
+      "imports": [
+        "./OfficialRankingsPage-WjDBoAii.js",
+        "./index-QoMYn0jK.js"
+      ],
+      "approvedBiographyPrefixes": []
+    }
+  ]
+}

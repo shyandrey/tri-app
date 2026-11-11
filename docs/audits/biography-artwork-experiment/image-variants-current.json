@@ -1,0 +1,50 @@
+[
+  {
+    "series": "ironman",
+    "source": "/private/tmp/300w-reconciliation-20261110/public/images/showcase/rankings/optimized/ironman_04_transition.webp",
+    "sourceSha": "e5ea491fc704f476952a1fd2566b126aec5a3a8d5c665bf3657c0d54b8f5cc8a",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "webp",
+    "width": 1320,
+    "quality": 85,
+    "bytes": 155524,
+    "baselineBytes": 325420
+  },
+  {
+    "series": "ironman",
+    "source": "/private/tmp/300w-reconciliation-20261110/public/images/showcase/rankings/optimized/ironman_04_transition.webp",
+    "sourceSha": "e5ea491fc704f476952a1fd2566b126aec5a3a8d5c665bf3657c0d54b8f5cc8a",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "avif",
+    "width": 1320,
+    "quality": 65,
+    "bytes": 105152,
+    "baselineBytes": 325420
+  },
+  {
+    "series": "t100",
+    "source": "/private/tmp/300w-reconciliation-20261110/public/images/showcase/rankings/optimized/t100_04_transition.webp",
+    "sourceSha": "d7085b43b19b4ee8b9865a1dbe1e8621d09e79ec2948485e91bd1dceba947cbc",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "webp",
+    "width": 1320,
+    "quality": 85,
+    "bytes": 207858,
+    "baselineBytes": 490150
+  },
+  {
+    "series": "t100",
+    "source": "/private/tmp/300w-reconciliation-20261110/public/images/showcase/rankings/optimized/t100_04_transition.webp",
+    "sourceSha": "d7085b43b19b4ee8b9865a1dbe1e8621d09e79ec2948485e91bd1dceba947cbc",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "avif",
+    "width": 1320,
+    "quality": 65,
+    "bytes": 146600,
+    "baselineBytes": 490150
+  }
+]

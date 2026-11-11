@@ -1,0 +1,53 @@
+--- before/scripts/test-ui-cleanup-browser.mjs
++++ after/scripts/test-ui-cleanup-browser.mjs
+@@ -20,7 +20,14 @@
+ const bounds=selectors=>js(`Object.fromEntries(${JSON.stringify(selectors)}.map(s=>{const e=document.querySelector(s),r=e?.getBoundingClientRect();return [s,r?{left:r.left,right:r.right,width:r.width}:null]}))`)
+ const align=(rects,width)=>{
+  const gutter=width<=640?12:20,left=Math.max(0,(width-1126)/2)+gutter,right=width-left
+- for(const [selector,r] of Object.entries(rects)){assert.ok(r,selector);assert.ok(Math.abs(r.left-left)<1&&Math.abs(r.right-right)<1,`${selector}: ${JSON.stringify(r)}, expected ${left}..${right}`)}
++ for(const [selector,r] of Object.entries(rects)){
++  assert.ok(r,selector)
++  // NAV-03 caps the short-landscape floating panel; content retains its page grid.
++  const landscapeNav=selector==='.bottom-nav'&&width>500&&sizes.find(s=>s[0]===width)?.[1]<=500
++  const expectedLeft=landscapeNav?Math.max(24,(width-640)/2):left
++  const expectedRight=landscapeNav?width-expectedLeft:right
++  assert.ok(Math.abs(r.left-expectedLeft)<1&&Math.abs(r.right-expectedRight)<1,`${selector}: ${JSON.stringify(r)}, expected ${expectedLeft}..${expectedRight}`)
++ }
+ }
+ try {
+  for(const [width,height] of sizes){
+@@ -30,9 +37,16 @@
+   await js('window.scrollTo({top:document.documentElement.scrollHeight,behavior:"instant"})');await wait(150)
+   const spacing=await js(`(()=>{
+    const rect=s=>document.querySelector(s).getBoundingClientRect(),showcase=rect('.home-showcase'),races=rect('.home-races-section'),lastRace=rect('.home-races-section .race-card:last-child'),shortcuts=rect('.features'),news=rect('.latest-news'),nav=rect('.bottom-nav');
+-   return {showcaseToRaces:races.top-showcase.bottom,raceToShortcuts:shortcuts.top-lastRace.bottom,shortcutsToNews:news.top-shortcuts.bottom,newsToNavigation:nav.top-news.bottom,bottomSpace:innerHeight-news.bottom,navHeight:nav.height,navBottom:innerHeight-nav.bottom}
++   return {showcaseToRaces:races.top-showcase.bottom,raceToShortcuts:shortcuts.top-lastRace.bottom,shortcutsToNews:news.top-shortcuts.bottom,newsToNavigation:nav.top-news.bottom,bottomSpace:innerHeight-news.bottom,navHeight:nav.height,navBottom:innerHeight-nav.bottom,paddingBottom:parseFloat(getComputedStyle(document.querySelector('.app')).paddingBottom),buttons:[...document.querySelectorAll('.bottom-nav button')].map(b=>{const r=b.getBoundingClientRect();return {width:r.width,height:r.height,hit:b.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2))}})}
+   })()`)
+-  for(const key of ['showcaseToRaces','raceToShortcuts','shortcutsToNews','newsToNavigation'])assert.ok(Math.abs(spacing[key]-24)<1,`${width} ${key}: ${spacing[key]}`)
++  for(const key of ['showcaseToRaces','raceToShortcuts','shortcutsToNews'])assert.ok(Math.abs(spacing[key]-24)<1,`${width} ${key}: ${spacing[key]}`)
++  // NAV-03 explicitly retained the pre-existing Home padding while reducing nav height.
++  assert.equal(spacing.navHeight,width>height&&height<=500?48:58)
++  assert.equal(spacing.paddingBottom,76+18+24)
++  assert.ok(Math.abs(spacing.newsToNavigation-(spacing.paddingBottom-spacing.navHeight-spacing.navBottom))<1,'News clearance follows preserved padding and actual floating nav geometry')
++  assert.ok(spacing.newsToNavigation>=24&&spacing.navBottom>=18,'No clipped final content or unsafe bottom inset')
++  assert.equal(spacing.buttons.length,5)
++  assert.ok(spacing.buttons.every(b=>b.width>=44&&b.height>=44&&b.hit),'All navigation targets visible and unobstructed')
+   if([390,844].includes(width)){
+    await shot(`${output}/home-bottom-${width}.png`)
+    if(width===844){await js('document.querySelector(".home-races-section .race-card:last-child").scrollIntoView({block:"start"})');await wait(150);await shot(`${output}/home-transition-${width}.png`)}
+@@ -93,11 +107,10 @@
+   if(width===390){await js('document.querySelector(".athlete-detail__results").scrollIntoView({block:"center"})');await wait(150);await shot(`${output}/profile-year-collapsed.png`)}
+ 
+   const yearGroups=await js(`[...document.querySelectorAll('.athlete-results-year__toggle')].map(e=>{const row=e.getBoundingClientRect(),year=e.querySelector('.athlete-results-year__label').getBoundingClientRect(),chevron=e.querySelector('.athlete-results-year__chevron').getBoundingClientRect();return {right:chevron.right,gap:chevron.left-year.right,height:row.height,width:row.width}})`)
+-  for(const row of yearGroups){assert.equal(row.right,yearGroups[0].right);assert.equal(row.gap,8);assert.ok(row.height>=44);assert.ok(row.width>250)}
+-  // Stress the available left column without introducing new product text or data.
+-  for(const text of ['История','История результатов на длинных и средних дистанциях за сезон']){
+-   assert.ok(await js(`(()=>{const row=document.querySelector('.athlete-results-year__toggle'),left=document.createElement('span');left.textContent=${JSON.stringify(text)};row.prepend(left);const a=left.getBoundingClientRect(),b=row.querySelector('.athlete-results-year__label').getBoundingClientRect(),ok=a.right+8<=b.left&&row.scrollWidth<=row.clientWidth;left.remove();return ok})()`))
+-  }
++  for(const row of yearGroups){assert.equal(row.right,yearGroups[0].right);assert.equal(row.gap,12);assert.ok(row.height>=54);assert.ok(row.width>250)}
++  // ATH-UI-01 replaced the old left column with a vertically centered, right-aligned year/chevron pair.
++  // Verify the actual approved control, without injecting unsupported product text.
++  assert.ok(await js(`([...document.querySelectorAll('.athlete-results-year__toggle')].every(row=>{const r=row.getBoundingClientRect(),year=row.querySelector('.athlete-results-year__label').getBoundingClientRect(),chevron=row.querySelector('.athlete-results-year__chevron').getBoundingClientRect();return Math.abs(year.top+year.height/2-(r.top+r.height/2))<1&&Math.abs(chevron.top+chevron.height/2-(r.top+r.height/2))<1&&Math.abs(chevron.right-r.right)<1&&row.scrollWidth<=row.clientWidth}))`))
+   if(width===390){
+    await js('document.querySelector(".athlete-results-year__toggle").focus()')
+    for(const [key,code,vk] of [['Enter','Enter',13],[' ','Space',32]]){

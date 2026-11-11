@@ -1,0 +1,10 @@
+PASS 390@3: two initial showcase images, auto/rapid carousel, lazy thumbnails, delayed-image geometry, rapid scroll, +50 network bound
+file:///private/tmp/300w-rel-prep02-candidate/scripts/test-image-delivery-browser.mjs:12
+const wait=ms=>new Promise(r=>setTimeout(r,ms)),until=async expression=>{for(let n=0;n<100;n++){if(await js(expression))return;await wait(100)}throw Error('Timeout '+expression)}
+                                                                                                                                                     ^
+
+Error: Timeout (()=>{const i=document.querySelectorAll('.showcase-card')[2].querySelector('img');return i?.complete&&i.naturalWidth>0})()
+    at until (file:///private/tmp/300w-rel-prep02-candidate/scripts/test-image-delivery-browser.mjs:12:150)
+    at async file:///private/tmp/300w-rel-prep02-candidate/scripts/test-image-delivery-browser.mjs:32:4
+
+Node.js v24.19.0
