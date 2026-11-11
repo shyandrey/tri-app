@@ -1,0 +1,77 @@
+{
+  "name": "REL-QA-02 read-only smoke qualification",
+  "on": {
+    "push": {
+      "branches": [
+        "ci/rel-qa02-smoke-qualification"
+      ]
+    }
+  },
+  "permissions": {
+    "contents": "read",
+    "actions": "read"
+  },
+  "jobs": {
+    "smoke": {
+      "if": "github.event_name == 'push' && github.ref == 'refs/heads/ci/rel-qa02-smoke-qualification'",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 15,
+      "steps": [
+        {
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "ref": "${{ github.sha }}",
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "with": {
+            "node-version": "24.19.0"
+          }
+        },
+        {
+          "name": "Initialize evidence",
+          "run": "echo \"REPORT_DIR=$RUNNER_TEMP/smoke-qualification\" >> \"$GITHUB_ENV\"\nmkdir -p \"$RUNNER_TEMP/smoke-qualification\""
+        },
+        {
+          "name": "Locked dependencies and local negative fixtures",
+          "run": "npm ci --ignore-scripts --no-audit --no-fund\nnode --test --test-reporter=tap --test-reporter-destination=\"$REPORT_DIR/tests.tap\" --test-reporter=junit --test-reporter-destination=\"$REPORT_DIR/tests.xml\" scripts/test-preview-browser-readiness.mjs scripts/test-preview-pipeline.mjs"
+        },
+        {
+          "uses": "actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093",
+          "with": {
+            "artifact-ids": "13865771565",
+            "run-id": "43042244127",
+            "github-token": "${{ github.token }}",
+            "repository": "shyandrey/tri-app",
+            "merge-multiple": true,
+            "path": "${{ runner.temp }}/verified-package"
+          }
+        },
+        {
+          "name": "Verify original package without rebuilding",
+          "run": "node scripts/preview-artifact.mjs verify \"$RUNNER_TEMP/verified-package\" 8e4c303093669d325784e41f3760f81c515f0315 a5304b94f9f6281f5d86b435c56d1d07527f3616b0cec3fa3fd8bf59654f1493"
+        },
+        {
+          "name": "Read-only published smoke; never deploy",
+          "env": {
+            "GH_READ_TOKEN": "${{ github.token }}"
+          },
+          "run": "node --input-type=module <<'JS'\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs/promises';\nimport {smoke} from './scripts/smoke-preview-ci.mjs';\nconst sha='8e4c303093669d325784e41f3760f81c515f0315';\nasync function guard(){\n const r=await fetch('https://api.github.com/repos/shyandrey/tri-app/git/ref/heads/preview',{headers:{Authorization:`Bearer ${process.env.GH_READ_TOKEN}`},signal:AbortSignal.timeout(10000)});\n assert.equal(r.status,200);assert.equal((await r.json()).object.sha,sha);\n}\nasync function production(){\n const r=await fetch('https://300w.app/api/health',{signal:AbortSignal.timeout(10000)});assert.equal(r.status,200);\n const h=await r.json();assert.equal(h.commit,'c8f52e02a75e0b413dddbfee77f477232c5301d3');assert.equal(h.version,'0.0.0');return h;\n}\nconst before=await production();\nawait fs.writeFile(process.env.REPORT_DIR+'/qualification.json',JSON.stringify({applicationSHA:sha,workflowSHA:process.env.GITHUB_SHA,node:process.version,platform:process.platform,productionBefore:before}));\nawait guard();\n// Call only the exported read-only smoke; qualification branch is not a deploy context.\ntry {await smoke(process.env.RUNNER_TEMP+'/verified-package',sha,process.env.REPORT_DIR)} catch(error){await fs.writeFile(process.env.REPORT_DIR+'/smoke.json',JSON.stringify({sha,result:'FAIL',error:error.message}));throw error}\nawait guard();\nawait fs.writeFile(process.env.REPORT_DIR+'/production-after.json',JSON.stringify(await production()));\nJS"
+        },
+        {
+          "name": "Retain diagnostic evidence",
+          "if": "always()",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "rel-qa02-smoke-${{ github.run_id }}",
+            "path": "${{ runner.temp }}/smoke-qualification/",
+            "retention-days": 30,
+            "if-no-files-found": "error"
+          }
+        }
+      ]
+    }
+  }
+}

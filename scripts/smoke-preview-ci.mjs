@@ -5,6 +5,7 @@ import path from 'node:path'
 import {spawn,spawnSync} from 'node:child_process'
 import {pathToFileURL} from 'node:url'
 import {sha256,validSHA} from './preview-artifact.mjs'
+import {waitForBrowserTarget,assertBrowserPortFree,stopBrowser} from './preview-browser-readiness.mjs'
 
 export function assertHealth(health,sha,version){assert.ok(validSHA(sha));assert.equal(health.ok,true);assert.equal(health.service,'tri-app');assert.equal(health.commit,sha);assert.equal(health.version,version)}
 // Wait only for the exact previous Preview SHA to converge to this deployment.
@@ -47,11 +48,16 @@ export async function smoke(directory,sha,reports){
  await fs.mkdir(reports,{recursive:true})
  const chrome=['google-chrome','google-chrome-stable','chromium','/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'].find(c=>spawnSync(c,['--version']).status===0)
  assert.ok(chrome,'Chrome required')
- const browser=spawn(chrome,['--headless=new','--remote-debugging-address=127.0.0.1','--remote-debugging-port=9387','--user-data-dir='+await fs.mkdtemp(path.join(os.tmpdir(),'tri-smoke-')),'--no-first-run','about:blank'],{stdio:'ignore'})
+ await assertBrowserPortFree()
+ const startup={executable:chrome,version:spawnSync(chrome,['--version'],{encoding:'utf8'}).stdout?.trim(),stderr:'',exit:null,spawnError:null,observations:[]}
+ const browser=spawn(chrome,['--headless=new','--remote-debugging-address=127.0.0.1','--remote-debugging-port=9387','--user-data-dir='+await fs.mkdtemp(path.join(os.tmpdir(),'tri-smoke-')),'--no-first-run','about:blank'],{stdio:['ignore','ignore','pipe']})
+ browser.stderr.on('data',chunk=>{startup.stderr=(startup.stderr+chunk.toString()).slice(-16384)})
+ browser.on('error',error=>{startup.spawnError=error.message})
+ browser.on('exit',(code,signal)=>{startup.exit={code,signal}})
  const wait=ms=>new Promise(r=>setTimeout(r,ms));let socket;const errors=[]
  try{
-  let targets;for(let i=0;i<50;i++){try{targets=await(await fetch('http://127.0.0.1:9387/json/list')).json();if(targets.some(t=>t.type==='page'))break}catch{}await wait(100)}
-  socket=new WebSocket(targets.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise((resolve,reject)=>{socket.onopen=resolve;socket.onerror=reject})
+  const target=await waitForBrowserTarget({browser,startup})
+  socket=new WebSocket(target.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{socket.onopen=resolve;socket.onerror=reject})
   let seq=0;const pending=new Map()
   socket.onmessage=e=>{const d=JSON.parse(e.data);if(d.id){const p=pending.get(d.id);if(!p)return;pending.delete(d.id);clearTimeout(p.timer);d.error?p.reject(Error(d.error.message)):p.resolve(d.result)}else if(d.method==='Runtime.exceptionThrown')errors.push(d.params.exceptionDetails.text);else if(d.method==='Network.responseReceived'&&d.params.response.status>=400)errors.push('HTTP '+d.params.response.status+' '+new URL(d.params.response.url).pathname)}
   const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;const timer=setTimeout(()=>{pending.delete(id);reject(Error('CDP timeout '+method))},15000);pending.set(id,{resolve,reject,timer});socket.send(JSON.stringify({id,method,params}))})
@@ -79,7 +85,14 @@ export async function smoke(directory,sha,reports){
   }
   assert.deepEqual(errors,[])
   await fs.writeFile(path.join(reports,'smoke.json'),JSON.stringify({sha,result:'PASS',routes:['Home','Calendar','Rankings','Athlete','Race','More'],viewports:['390x844','844x390'],physicalDeviceQA:false},null,2))
- }finally{socket?.close();browser.kill('SIGTERM');await fs.writeFile(path.join(reports,'browser-errors.json'),JSON.stringify(errors))}
+ }finally{
+  try {socket?.close()} finally {
+   try {await stopBrowser(browser)} finally {
+    await fs.writeFile(path.join(reports,'chrome-startup.json'),JSON.stringify(startup,null,2))
+    await fs.writeFile(path.join(reports,'browser-errors.json'),JSON.stringify(errors))
+   }
+  }
+ }
  console.log('Preview SHA/API/routes/navigation/responsive artwork smoke PASS; physical iPhone QA separate')
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
