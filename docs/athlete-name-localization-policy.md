@@ -56,3 +56,8 @@ Before/after snapshots confirm unchanged 1167 IDs, Latin names, countries, photo
 Targeted tests: 56/56 PASS. Release/CI/deployment outcomes are recorded on completion; no duplicate local full browser run is required because mandatory GitHub CI executes all seven suites. Physical-device review is not implied.
 
 Batch 002 local verification completed: targeted tests 56/56, Portable CI and release gate 18/18 (build/lint included) PASS; diff checks PASS. All previous registry entries compare exactly with the deployed baseline. GitHub PR/CI/Preview verification pending at this commit.
+
+
+## Reconciled local historical evidence — 2026-11-10
+
+The remote canonical record above is retained. The [local historical record](audits/reconciliation-history/localization-policy-local.md) preserves the additional local audit, qualification, publication and closeout evidence without replacing canonical contracts or activating historical manual-mode deployment proposals. Historical statuses describe their dated checkpoints, not a fresh live-state verification. See [reconciliation outcome](audits/safe-git-reconciliation.md).

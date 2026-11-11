@@ -698,3 +698,8 @@ Repository-specific proposed configuration:
 5. iPhone workflow: select a published Cloud environment, describe a bounded task, inspect diff/test output, then authorize a feature-branch PR to protected Preview. No direct Preview pushes or autonomous merges; Auto Deploy is enabled, so PR merge is a publication decision. Heavy development remains Mac + VS Code.
 
 No environment/account configuration or test PR was performed. This task's real CI correction PR is separate from Cloud assessment. Full catalog regeneration remains prohibited under TECH-01.
+
+
+## Reconciled local historical evidence — 2026-11-10
+
+The remote canonical record above is retained. The [local historical record](audits/reconciliation-history/devops-plan-local.md) preserves the additional local audit, qualification, publication and closeout evidence without replacing canonical contracts or activating historical manual-mode deployment proposals. Historical statuses describe their dated checkpoints, not a fresh live-state verification. See [reconciliation outcome](audits/safe-git-reconciliation.md).

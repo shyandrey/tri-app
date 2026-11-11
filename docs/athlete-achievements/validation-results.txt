@@ -1,0 +1,23 @@
+ATH-04A checkpoint — 2026-11-10
+Catalog baseline: 92ad43414adc1792fc6048ac4f8509f5eca17967
+Worktree: /private/tmp/300w-reconciliation-20261110
+
+python3 docs/athlete-achievements/validate.py — PASS
+- 57 unique canonical athlete IDs and biography hashes.
+- 68 unique achievement/candidate keys: 24 official-source rows + 44 pending local candidates.
+- Category, gender, podium/winner restrictions and source mappings validated.
+- All 997 protected tracked source/assets/biography files match baseline hashes.
+- Optional categories and incomplete external review are explicit.
+
+node scripts/test-approved-biographies.mjs — PASS, 6/6 tests, 0 skipped
+- 57 approved texts and unique identities.
+- Unchanged non-biography properties.
+- Rejection of unmapped/mismatched identities and changed ID/nameEn/bio.
+- Paragraph preservation.
+
+No production build, release gate or browser suites rerun: docs/research only.
+These checks validate provenance and preservation, not completeness of historical sports research.
+External career verification remains PARTIAL / BLOCKED.
+
+Local Markdown links — PASS, 63 targets exist.
+git diff --check — PASS.

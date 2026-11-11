@@ -1,0 +1,4 @@
+PASS 390@3: two initial showcase images, auto/rapid carousel, lazy thumbnails, delayed-image geometry, rapid scroll, +50 network bound
+PASS 440@3: two initial showcase images, auto/rapid carousel, lazy thumbnails, delayed-image geometry, rapid scroll, +50 network bound
+PASS 844@2: two initial showcase images, auto/rapid carousel, lazy thumbnails, delayed-image geometry, rapid scroll, +50 network bound
+PASS 1440@2: two initial showcase images, auto/rapid carousel, lazy thumbnails, delayed-image geometry, rapid scroll, +50 network bound

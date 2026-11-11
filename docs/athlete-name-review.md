@@ -84,3 +84,7 @@ npm run build
 ```
 
 Первый тест проверяет synthetic writes только в изолированной temporary directory; реальные athlete names не меняет.
+
+## DATA-ATH-02C — Approved display and import policy
+
+See [canonical localization policy](athlete-name-localization-policy.md): Russian-first display, non-blocking original Latin fallback, importer editorial queue and owner-approved batches. Current Batch 001/002 contain 115 names each and are review worksheets only; they cannot be passed directly to the full-catalog importer. No automatic translation or approval is implied. Existing unfinished owner review CSV must be preserved.

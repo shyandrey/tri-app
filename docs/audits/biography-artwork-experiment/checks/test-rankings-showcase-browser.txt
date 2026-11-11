@@ -1,0 +1,18 @@
+PASS geometry fixtures: valid overlay/classic/mobile widths; reject overflow, undersizing, inset, wrong snap and wrong responsive heights
+PASS 16 original WebP paths plus 4 compact derivatives, exact byte sizes and SHA-256
+PASS 8 mapped scenes: 320x700 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 320x700 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 375x812 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 375x812 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 390x844 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 390x844 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 440x956 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 440x956 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 667x375 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 667x375 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 844x390 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 844x390 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 956x440 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 956x440 light, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 1440x900 dark, responsive artwork, edge-to-edge, safe area, compact Back
+PASS 8 mapped scenes: 1440x900 light, responsive artwork, edge-to-edge, safe area, compact Back

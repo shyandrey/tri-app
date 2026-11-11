@@ -1,3 +1,4 @@
+import { localizationReviewQueue } from './athlete-localization-review.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
@@ -69,7 +70,12 @@ export function proposeResults(parsed, editions, existing, athletes, normalize) 
       rows.push(row)
     }
   }
-  return {rows,matches,unmatched,anomalies,editionSof}
+  const matchedIds = new Set(matches.map(m => m.athleteId))
+  const localizationReview = localizationReviewQueue([
+    ...athletes.filter(a => matchedIds.has(a.id)),
+    ...unmatched.map(a => ({nameEn:a.athleteName})),
+  ])
+  return {rows,matches,unmatched,anomalies,editionSof,localizationReview}
 }
 async function main() {
   const args=process.argv.slice(2), options={}, races=[]
@@ -94,7 +100,7 @@ async function main() {
     editions=races.map(id=>{const e=allRaceEditionViews.find(e=>e.editionId===id);if(!e)throw new Error(`Unknown edition: ${id}`);if(e.statsPtoUrl!==url)throw new Error(`Edition/source mismatch: ${id}`);if(e.dateISO>new Date().toISOString().slice(0,10))throw new Error(`Future edition: ${id}`);return e})
     proposal=proposeResults(parsed,editions,raceResults,athletes,normalizeAthleteIdentityName)
   } finally {await server.close()}
-  console.log(JSON.stringify({source:url,title:parsed.title,editions:races,editionSof:proposal.editionSof,counts:editions.map(e=>({edition:e.editionId,count:proposal.rows.filter(r=>r.raceEditionId===e.editionId).length})),unmatched:proposal.unmatched,anomalies:proposal.anomalies},null,2))
+  console.log(JSON.stringify({source:url,title:parsed.title,editions:races,editionSof:proposal.editionSof,counts:editions.map(e=>({edition:e.editionId,count:proposal.rows.filter(r=>r.raceEditionId===e.editionId).length})),unmatched:proposal.unmatched,localizationReview:proposal.localizationReview,anomalies:proposal.anomalies},null,2))
   if(!options.write){console.log('DRY RUN: no files written. Review identities/anomalies, then use --write --out <file.ts> --export <identifier>.');return}
   if(!/^[a-zA-Z_$][\w$]*$/.test(options.export??''))throw new Error('Provide a valid --export identifier')
   const output=path.resolve(options.out??'')

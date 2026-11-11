@@ -1,0 +1,26 @@
+[
+  {
+    "suite": "test-official-rankings-browser.mjs",
+    "exit": 0
+  },
+  {
+    "suite": "test-rankings-swipe-browser.mjs",
+    "exit": 0
+  },
+  {
+    "suite": "test-rankings-showcase-browser.mjs",
+    "exit": 0
+  },
+  {
+    "suite": "test-navigation-browser.mjs",
+    "exit": 0
+  },
+  {
+    "suite": "test-approved-biographies-browser.mjs",
+    "exit": 0
+  },
+  {
+    "suite": "visual.mjs",
+    "exit": 1
+  }
+]

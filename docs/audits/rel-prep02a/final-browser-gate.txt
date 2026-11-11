@@ -1,0 +1,20 @@
+Logs: /var/folders/tv/017vd_xs5ddgs1dr8342qw2r0000gn/T/tri-release-jiMqky
+PASS calendar (30.3s)
+PASS athlete-disclosure (68.7s)
+PASS athlete-search (4.1s)
+PASS ranking (18.2s)
+PASS navigation (15.6s)
+PASS brand (11.0s)
+PASS more (20.0s)
+PASS news (13.1s)
+PASS dark-theme-text (28.9s)
+PASS ui-cleanup (40.9s)
+PASS image-delivery (17.4s)
+PASS code-splitting (15.1s)
+PASS accessibility (68.9s)
+PASS feedback-submission (20.3s)
+V1 RC BROWSER GATE: PASS
+Known data issues: see check:release (not reassessed by browser gate)
+Failures: none
+Environment errors: none
+Runtime: 372.7s

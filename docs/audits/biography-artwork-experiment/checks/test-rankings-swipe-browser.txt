@@ -1,0 +1,16 @@
+PASS network fixtures: old/current documents, duplicate transfer rejection, cache/304, reload/orientation isolation, response loader fallback, missing-loader failure, redirect preservation, failed-request retention
+PASS 320x700 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 320x700 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 375x812 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 375x812 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 390x844 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 390x844 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 440x956 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 440x956 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 667x375 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 667x375 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 844x390 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 844x390 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 956x440 dark: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS 956x440 light: touch/mouse tracking, snap/return, vertical arbitration, links, season, NAV
+PASS reduced motion, boundary return, orientation, exactly two current-scene sources per orientation, no duplicates

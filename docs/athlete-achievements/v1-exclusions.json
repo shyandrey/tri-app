@@ -1,0 +1,667 @@
+{
+  "verifiedATH04BEntries": [
+    {
+      "achievementKey": "ath-21:challenge-roth:2024:historical-world-best",
+      "athleteId": 21,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-3:pto-ranking:2026:singapore-pre-race",
+      "athleteId": 3,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-41:ath04b:10:2015:1",
+      "athleteId": 41,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-1:ath04b:10:2017:2",
+      "athleteId": 1,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-41:ath04b:10:2018:3",
+      "athleteId": 41,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-41:ath04b:10:2019:4",
+      "athleteId": 41,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-41:ath04b:10:2020:5",
+      "athleteId": 41,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-42:ath04b:10:2020:6",
+      "athleteId": 42,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-1:ath04b:10:2021:7",
+      "athleteId": 1,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-2:ath04b:10:2021:8",
+      "athleteId": 2,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-42:ath04b:10:2022:9",
+      "athleteId": 42,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-3:ath04b:10:2022:10",
+      "athleteId": 3,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-3:ath04b:10:2023:11",
+      "athleteId": 3,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-42:ath04b:10:2023:12",
+      "athleteId": 42,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-42:ath04b:10:2024:13",
+      "athleteId": 42,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-3:ath04b:10:2024:14",
+      "athleteId": 3,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-147:ath04b:10:2017:15",
+      "athleteId": 147,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:10:2018:16",
+      "athleteId": 105,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-107:ath04b:10:2019:17",
+      "athleteId": 107,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:10:2019:18",
+      "athleteId": 105,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:10:2020:19",
+      "athleteId": 105,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-104:ath04b:10:2021:20",
+      "athleteId": 104,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:10:2022:21",
+      "athleteId": 105,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-104:ath04b:10:2022:22",
+      "athleteId": 104,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:10:2026:23",
+      "athleteId": 105,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-24:ath04b:8:2024:26",
+      "athleteId": 24,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-24:ath04b:8:2016:28",
+      "athleteId": 24,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-24:ath04b:8:2018:30",
+      "athleteId": 24,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-23:ath04b:10:2017:38",
+      "athleteId": 23,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-35:ath04b:10:2021:39",
+      "athleteId": 35,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-35:ath04b:8:2021:40",
+      "athleteId": 35,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-44:ath04b:10:2025:41",
+      "athleteId": 44,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-120:ath04b:10:2025:42",
+      "athleteId": 120,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-8:ath04b:10:2016:43",
+      "athleteId": 8,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10521:ath04b:8:2026:44",
+      "athleteId": 10521,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-109:ath04b:8:2022:49",
+      "athleteId": 109,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-7:ath04b:8:2025:50",
+      "athleteId": 7,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-108:ath04b:8:2025:51",
+      "athleteId": 108,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-103:ath04b:10:2022:70",
+      "athleteId": 103,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:10:2022:71",
+      "athleteId": 10736,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-34:ath04b:10:2022:72",
+      "athleteId": 34,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:10:2016:73",
+      "athleteId": 10736,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:10:2023:74",
+      "athleteId": 10736,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:10:2017:75",
+      "athleteId": 10736,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:10:2017:76",
+      "athleteId": 10736,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-131:ath04b:11:2016:77",
+      "athleteId": 131,
+      "historicalCategory": 11,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-107:ath04b:11:2017:78",
+      "athleteId": 107,
+      "historicalCategory": 11,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-119:ath04b:11:2020:79",
+      "athleteId": 119,
+      "historicalCategory": 11,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10:ath04b:11:2023:80",
+      "athleteId": 10,
+      "historicalCategory": 11,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10:ath04b:8:2023:81",
+      "athleteId": 10,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-22:ath04b:9:2024:82",
+      "athleteId": 22,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-147:ath04b:9:2024:83",
+      "athleteId": 147,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-120:ath04b:10:2023:90",
+      "athleteId": 120,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-44:ath04b:10:2023:91",
+      "athleteId": 44,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-44:ath04b:10:2024:92",
+      "athleteId": 44,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:10:2015:93",
+      "athleteId": 10736,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-42:ath04b:11:2022:94",
+      "athleteId": 42,
+      "historicalCategory": 11,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-25:ath04b:9:2021:95",
+      "athleteId": 25,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-103:ath04b:9:2021:96",
+      "athleteId": 103,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-1:ath04b:9:2022:97",
+      "athleteId": 1,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-1:ath04b:9:2023:98",
+      "athleteId": 1,
+      "historicalCategory": 9,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-49:ath04b:8:2025:99",
+      "athleteId": 49,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-2:ath04b:8:2026:100",
+      "athleteId": 2,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-20:ath04b:8:2025:101",
+      "athleteId": 20,
+      "historicalCategory": 8,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:gtb-junior:2012",
+      "athleteId": 105,
+      "historicalCategory": 10,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    },
+    {
+      "achievementKey": "ath-105:ath04b:gtb-junior:2017",
+      "athleteId": 105,
+      "historicalCategory": 11,
+      "reason": "Outside owner-approved v1 categories; historical evidence preserved in batch1-achievements.json."
+    }
+  ],
+  "historicalLeadsExcluded": [
+    {
+      "candidateKey": "ath-102:historical-review:5",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "category": 11,
+      "eventYear": 2021,
+      "claimToReview": "Valencia European standard title",
+      "sourceUrl": "https://en.triatlonnoticias.com/noticias-triatlon/julie-derron-campeona-de-europa-de-triatlon-en-valencia/",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-102:historical-review:6",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "category": 11,
+      "eventYear": 2019,
+      "claimToReview": "Kazan European sprint title; distinguish from 2021 Valencia",
+      "sourceUrl": "https://triathlon.org/athletes/84816/julie-derron",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-34:historical-review:7",
+      "athleteId": 34,
+      "athleteNameEn": "Frederic Funk",
+      "category": 11,
+      "eventYear": 2021,
+      "claimToReview": "Walchsee European middle-distance title",
+      "sourceUrl": "https://www.mhw-bike.com/magazine/triathletes-ride-to-two-european-championship-titles/",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-44:historical-review:8",
+      "athleteId": 44,
+      "athleteNameEn": "Antonio Benito López",
+      "category": 11,
+      "eventYear": 2024,
+      "claimToReview": "Coimbra European middle-distance title",
+      "sourceUrl": "https://bianchiprotriathlon.com/athletes",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-9:historical-review:9",
+      "athleteId": 9,
+      "athleteNameEn": "Samuel Dickinson",
+      "category": 10,
+      "eventYear": 2018,
+      "claimToReview": "U23 World silver and separate European relay titles",
+      "sourceUrl": "https://www.220triathlon.com/news/athletes/who-is-sam-dickinson",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-104:historical-review:10",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "category": 10,
+      "eventYear": null,
+      "claimToReview": "Junior/U23 and mixed relay world medals; dates/rosters need separate itemization",
+      "sourceUrl": "https://www.usatriathlon.org/profiles/taylor-knibb",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-3:historical-review:13",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "category": 10,
+      "eventYear": null,
+      "claimToReview": "U23 cross-triathlon and XTERRA U19 world titles; distinguish age class and organizer",
+      "sourceUrl": "https://triathlon.org/athletes/104034/hayden-wilde",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-41:historical-review:14",
+      "athleteId": 41,
+      "athleteNameEn": "Vincent Luis",
+      "category": 10,
+      "eventYear": null,
+      "claimToReview": "Junior and mixed relay world titles; explicit year/team roster needed",
+      "sourceUrl": "https://triathlon.org/athletes/11143/vincent-luis",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-42:historical-review:15",
+      "athleteId": 42,
+      "athleteNameEn": "Léo Bergère",
+      "category": 10,
+      "eventYear": null,
+      "claimToReview": "Junior and mixed relay world podiums; explicit position/team roster needed",
+      "sourceUrl": "https://triathlon.org/athletes/63162/leo-bergere",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-147:historical-review:16",
+      "athleteId": 147,
+      "athleteNameEn": "Ashleigh Gentle",
+      "category": 10,
+      "eventYear": null,
+      "claimToReview": "Junior and mixed relay world medals; exact years and rosters needed",
+      "sourceUrl": "https://www.220triathlon.com/news/athletes/who-is-ashleigh-gentle",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-15:historical-review:17",
+      "athleteId": 15,
+      "athleteNameEn": "Morgan Pearson",
+      "category": 10,
+      "eventYear": null,
+      "claimToReview": "USA mixed relay world podiums; do not substitute Olympic roster",
+      "sourceUrl": "https://www.usatriathlon.org/profiles/morgan-pearson-1108716",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-11:historical-review:18",
+      "athleteId": 11,
+      "athleteNameEn": "Lasse Nygaard Priester",
+      "category": 10,
+      "eventYear": 2021,
+      "claimToReview": "Hamburg relay victory; world-championship designation unconfirmed",
+      "sourceUrl": "https://triathlon.org/athletes/73078/lasse-nygaard-priester",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": true
+    },
+    {
+      "candidateKey": "ath-39:historical-review:19",
+      "athleteId": 39,
+      "athleteNameEn": "Trevor Foley",
+      "category": 8,
+      "eventYear": 2024,
+      "claimToReview": "Lake Placid course record claim; PTO time alone is insufficient",
+      "sourceUrl": "https://stats.protriathletes.org/race/im-lake-placid/2024/results",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-37:historical-review:20",
+      "athleteId": 37,
+      "athleteNameEn": "Cameron Wurf",
+      "category": 8,
+      "eventYear": null,
+      "claimToReview": "Kona bike records and 2019 Australia record; course and current/historical distinction",
+      "sourceUrl": "https://www.ironman.com/sites/default/files/2025-10/1._Pauli_Kiuri.pdf",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-20:historical-review:21",
+      "athleteId": 20,
+      "athleteNameEn": "Matthew Marquardt",
+      "category": 8,
+      "eventYear": 2026,
+      "claimToReview": "South Africa course record; organizer confirmation required",
+      "sourceUrl": "https://racing.trekbikes.com/stories/tfr-triathlon/matthew-marquardt-ironman-south-africa-win-cramps",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-49:historical-review:22",
+      "athleteId": 49,
+      "athleteNameEn": "Matt Hanson",
+      "category": 8,
+      "eventYear": 2018,
+      "claimToReview": "Texas distance-best claim; reported short bike and drafting conditions require review",
+      "sourceUrl": "https://stats.protriathletes.org/athlete/matt-hanson",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-5:historical-review:23",
+      "athleteId": 5,
+      "athleteNameEn": "Rico Bogen",
+      "category": 8,
+      "eventYear": 2026,
+      "claimToReview": "Roth bike record; inconsistent secondary given-name labels, no identity inference",
+      "sourceUrl": "https://www.challenge-roth.com/en/news-area/challenge-roth-blew-our-minds-media-reactions-to-datev-challenge-roth-2026.html",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-103:historical-review:25",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "category": 8,
+      "eventYear": null,
+      "claimToReview": "Kona swim/course and Elsinore records; exact year/scope itemization required",
+      "sourceUrl": "https://www.lucycharles.com/about-lucy",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-22:historical-review:26",
+      "athleteId": 22,
+      "athleteNameEn": "Sam Long",
+      "category": 8,
+      "eventYear": null,
+      "claimToReview": "70.3 bike best and Gdynia course record; exact event and organizer evidence needed",
+      "sourceUrl": "https://enve.com/blogs/journal/2026-ironman-world-championships-preview",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-28:historical-review:27",
+      "athleteId": 28,
+      "athleteNameEn": "Daniel Bækkegård",
+      "category": 8,
+      "eventYear": 2021,
+      "claimToReview": "Dubai course record; dated organizer result/record confirmation needed",
+      "sourceUrl": "https://protriathletes.org/news/race-preview-ironman-70-3-st-george/",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-1:historical-review:28",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "category": 8,
+      "eventYear": null,
+      "claimToReview": "Cozumel and assisted Sub7 claims require conditions/ratification distinctions",
+      "sourceUrl": "https://www.redbull.com/eu-en/athlete/kristian-blummenfelt",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    },
+    {
+      "candidateKey": "ath-10521:historical-review:29",
+      "athleteId": 10521,
+      "athleteNameEn": "Sam Laidlow",
+      "category": 8,
+      "eventYear": 2024,
+      "claimToReview": "Kona bike record 3:57:22; exact organizer record statement required",
+      "sourceUrl": "https://samlaidlow.com/en/pages/results",
+      "verificationStatus": "HOLD_NOT_APPROVED",
+      "reason": "Lead retained; requires claim-level official result/record or age/discipline review before publication.",
+      "ownerCategoryReviewRequired": false
+    }
+  ],
+  "policy": "Records, PTO rankings, World Triathlon titles and other categories are excluded, not disputed or deleted."
+}

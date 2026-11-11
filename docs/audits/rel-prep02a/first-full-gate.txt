@@ -1,0 +1,20 @@
+Logs: /var/folders/tv/017vd_xs5ddgs1dr8342qw2r0000gn/T/tri-release-K2S7Pa
+PASS calendar (30.1s)
+PASS athlete-disclosure (68.7s)
+PASS athlete-search (4.1s)
+PASS ranking (18.1s)
+PASS navigation (15.6s)
+PASS brand (11.4s)
+PASS more (20.0s)
+PASS news (12.8s)
+PASS dark-theme-text (28.8s)
+FAIL ui-cleanup (3.7s)
+PASS image-delivery (17.3s)
+PASS code-splitting (15.2s)
+PASS accessibility (68.3s)
+PASS feedback-submission (20.2s)
+V1 RC BROWSER GATE: FAIL
+Known data issues: see check:release (not reassessed by browser gate)
+Failures: ui-cleanup
+Environment errors: none
+Runtime: 334.5s

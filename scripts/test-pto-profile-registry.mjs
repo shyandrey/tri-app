@@ -1,3 +1,4 @@
+import { projectHistoricalBiographies } from './approved-biography-contract.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
@@ -30,7 +31,7 @@ test('registry overlay preserves identities, existing fields, result links and r
   const {localizeAthlete}=await server.ssrLoadModule('/src/data/athletes/localization.ts')
   const c=await server.ssrLoadModule('/src/data/athletes/index.ts')
   const before=[...c.maleAthletes,...c.femaleAthletes,...c.resultAthletes,...c.verifiedResultAthletes].map(a=>localizeAthlete({...a,image:reviewedAthletePhoto(a.id,a.image??athletePhotosByName[a.nameEn])}))
-  assert.deepEqual(d.athletes.map(a=>{const copy={...a};delete copy.ptoProfile;return copy}),before)
+  assert.deepEqual(projectHistoricalBiographies(d.athletes).map(a=>{const copy={...a};delete copy.ptoProfile;return copy}),before)
   assert.equal(new Set(d.athletes.map(a=>a.id)).size,1167)
   for(const a of before){const snapshot=structuredClone(a);enrichPtoProfile(a);assert.deepEqual(a,snapshot)}
   const {allRaceEditionViews}=await server.ssrLoadModule('/src/data/raceEditions.ts')

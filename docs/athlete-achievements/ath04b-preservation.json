@@ -1,0 +1,17 @@
+{
+  "startingCommit": "6fb4e74f61348ee63e9b2fdb24996ce73649d696",
+  "originalCheckpointCommit": "92ad43414adc1792fc6048ac4f8509f5eca17967",
+  "preExistingChangesSinceAth04A": {
+    "src/pages/OfficialRankingsPage.tsx": {
+      "ath04aSha256": "18867f7db7cc8c13a941be31573735fb008ca42cea7a807890662ebc05e05349",
+      "ath04bStartSha256": "a088be73d05c2911b4829728912d4ee499c8a01717503da36ba33591bece9e55"
+    },
+    "src/pages/rankingsShowcase.ts": {
+      "ath04aSha256": "be56172cc0c8ca48ada438644789dd953214a34f2517ef2239e791cfb8a4d54e",
+      "ath04bStartSha256": "279355cfccdd821a829b3b7fc1819b75773237d3fe904cdba21a8b12d1c04fb5"
+    }
+  },
+  "originalVerifiedCount": 24,
+  "originalCandidateCount": 44,
+  "runtimeIntegrationAuthorized": false
+}

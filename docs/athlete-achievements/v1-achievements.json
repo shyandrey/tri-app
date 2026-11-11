@@ -1,0 +1,3877 @@
+{
+  "schemaVersion": 1,
+  "status": "AWAITING OWNER APPROVAL OF ACHIEVEMENTS MATRIX",
+  "asOf": "2026-11-11",
+  "startingCommit": "1dbc6f3266027fdfc58f6d1801adc331d9a20f17",
+  "integrationAuthorized": false,
+  "exhaustiveCareerCompletenessClaimed": false,
+  "categories": {
+    "1": "Олимпийские медали — личные и эстафета",
+    "2": "IRONMAN World Championship — подиум",
+    "3": "IRONMAN 70.3 World Championship — подиум",
+    "4": "Challenge Roth — победа",
+    "5": "IRONMAN European Championship — победа",
+    "6": "T100 — итоговый подиум сезона",
+    "7": "IRONMAN Pro Series — итоговый подиум сезона",
+    "8": "T100 — подиум официального финала сезона"
+  },
+  "sources": {
+    "tokyo-individual": {
+      "url": "https://triathlon.org/events/2020-tokyo-olympic-games",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "World Triathlon official event medal table; actual event July 2021, edition 2020."
+    },
+    "tokyo-relay": {
+      "url": "https://triathlon.org/news/great-britain-bring-home-historic-olympic-mixed-relay-gold-at-tokyo-2020",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "World Triathlon race report identifies team members and medal order."
+    },
+    "paris-individual": {
+      "url": "https://triathlon.org/events/olympics-history",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "World Triathlon Olympic podium archive, Paris 2024 individual tables."
+    },
+    "paris-relay": {
+      "url": "https://triathlon.org/news/thriller-on-the-seine-as-germany-earn-stunning-olympic-mixed-relay-gold-in-paris",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "World Triathlon identifies relay members; USA silver and GB bronze, not the provisional finish order."
+    },
+    "t100-2024-men": {
+      "url": "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "World Triathlon confirms overall season title, distinct from Dubai race win."
+    },
+    "t100-2024-women": {
+      "url": "https://t100triathlon.com/media-releases/waugh-excited-by-duel-with-knibb-in-san-francisco-t100-triathlon/",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "Organizer explicitly identifies Knibb as 2024 T100 World Champion."
+    },
+    "t100-2025-men": {
+      "url": "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "World Triathlon event is 2025; report explicitly confirms season-long title."
+    },
+    "roth-triple": {
+      "url": "https://www.challenge-roth.com/de/news-area/der-naechste-topstar.html",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "Organizer explicitly lists Ditlev wins 2022–2024; pre-race 2026 article, not evidence of current record after 2026 race."
+    },
+    "im-series-2024-women": {
+      "url": "https://podcast.ironman.com/2360650/episodes",
+      "reviewedOn": "2026-11-10",
+      "publisherScope": "Official IRONMAN Insider episode 38 description explicitly identifies Kat Matthews as 2024 Pro Series winner. No inference from race position."
+    },
+    "dtu-kona24": {
+      "url": "https://www.triathlondeutschland.de/aktuelles/10-2024/patrick-lange-kroent-aufholjagd-mit-title-triple-auf-hawaii",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "German federation reports Lange 2024 champion and 7:35:53 course record, Ditlev second; explicitly identifies Lange 2017/2018 titles."
+    },
+    "dtu-kona16": {
+      "url": "https://www.triathlondeutschland.de/aktuelles/10-2016/triathlondeutschland-unterwegs-hawaii-und-oestringen-rueckblick-8-oktober",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "German federation confirms Lange bronze and 2:39:45 marathon course best in 2016."
+    },
+    "dtu-kona18": {
+      "url": "https://www.triathlondeutschland.de/aktuelles/10-2018/triathlond-unterwegs-lange-siegt-haug-wird-dritte",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "German federation identifies Lange 7:52:39 course record and Lucy Charles second in 2018."
+    },
+    "aus-kona23": {
+      "url": "https://www.triathlon.org.au/news/slater-leads-home-australians-at-the-2023-ironman-world-championship/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Australian federation lists Charles-Barclay first and Philipp third in 2023 professional women final results."
+    },
+    "usa-nice24": {
+      "url": "https://www.usatriathlon.org/news/2024/september/24/women-triathletes-shine-in-nice-at-2024-women-s-ironman-world-championships",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "US federation confirms Philipp/Matthews/Sodaro podium 2024 and Sodaro 2022 world title."
+    },
+    "aus-taupo24": {
+      "url": "https://www.triathlon.org.au/news/gentle-secures-bronze-at-ironman-70-3-world-championship/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Australian federation confirms Knibb, Matthews, Gentle 2024 70.3 podium and Knibb third consecutive title."
+    },
+    "nor-iden21": {
+      "url": "https://kommunikasjon.ntb.no/pressemelding/17916012/regjerende-verdensmester-pa-703-gustav-iden-med-ny-verdensmestertittel-i-triatlon?publisherId=17847164",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Norwegian federation release dated 18 September 2021 explicitly confirms Iden 2021 and 2019 70.3 titles."
+    },
+    "roth25": {
+      "url": "https://challengefamily.com/news/when-world-champions-finally-become-roth-winners/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Organizer report identifies Laura Philipp and Sam Laidlow as 2025 Roth winners. Also explicitly confirms Hanson Roth marathon course record 2:28:03."
+    },
+    "roth26-laidlow": {
+      "url": "https://challengefamily.com/news/world-record-holder-sam-laidlow-confirms-start-at-challenge-samarkand/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Challenge Family dated 27 July 2026 explicitly confirms Laidlow defended Roth title and reported long-distance world best 7:21:04. Historical organizer claim, not universal ratification."
+    },
+    "im25m": {
+      "url": "https://www.endurancesportswire.com/skol-norwegian-podium-sweep-as-casper-stornes-becomes-2025-ironman-world-champion-earning-his-title-on-debut-in-nice-france/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Nice 2025: Stornes, Iden, Blummenfelt in that order; Stornes championship marathon best 2:29:25."
+    },
+    "im25w": {
+      "url": "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022."
+    },
+    "70325w": {
+      "url": "https://www.endurancesportswire.com/redemption-great-britains-lucy-charles-barclay-claims-victory-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-in-marbella-spain/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Marbella 2025: Charles-Barclay first, Knibb second; Matthews overall Pro Series champion, distinct from her DNF in this race."
+    },
+    "70325m": {
+      "url": "https://www.endurancesportswire.com/a-race-for-the-ages-jelle-geens-of-belgium-secures-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-title-in-footrace-to-the-finish/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Marbella 2025 podium: Geens, Blummenfelt, Stornes."
+    },
+    "70324m": {
+      "url": "https://www.endurancesportswire.com/belgium-jelle-geens-takes-crown-at-the-2024-vinfast-ironman-70-3-world-championship-triathlon-in-taupo-new-zealand/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Taupo 2024 podium: Geens, Wilde, Bergere."
+    },
+    "70326w": {
+      "url": "https://www.endurancesportswire.com/taylor-knibb-becomes-a-four-time-ironman-70-3-world-champion-at-the-2026-precision-fuel-hydration-ironman-70-3-world-championship/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Knibb 4:19:24, Derron 4:23:30, Siffert 4:25:10."
+    },
+    "70326m": {
+      "url": "https://www.endurancesportswire.com/new-zealands-hayden-wilde-crowned-2026-precision-fuel-hydration-ironman-70-3-world-champion/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Wilde, Blummenfelt, Geens."
+    },
+    "fftri-kona26": {
+      "url": "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion."
+    },
+    "hering24": {
+      "url": "https://www.endurancesportswire.com/in-her-first-full-distance-triathlon-since-2015-jackie-hering-usa-takes-the-crown-at-the-2024-ironman-european-championship-hamburg/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Jackie Hering wins 2024 IRONMAN European Championship Hamburg."
+    },
+    "frankfurt24": {
+      "url": "https://www.endurancesportswire.com/world-class-start-list-revealed-for-the-2025-mainova-ironman-frankfurt-european-championship-triathlon/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2025 preview explicitly calls Blummenfelt the 2024 European Champion; not a prediction of 2025 result."
+    },
+    "kristian-series25": {
+      "url": "https://www.endurancesportswire.com/norways-kristian-blummenfelt-claims-ironman-pro-series-mens-title-following-series-race-finale-at-the2025-precision-fuel-hydration-ironman-70-3-world-championship-in-marbella-spain/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Final 2025 overall Pro Series championship; retrospectively confirms victory at 2025 Frankfurt European Championship."
+    },
+    "barnaby-series24": {
+      "url": "https://www.endurancesportswire.com/gregory-barnaby-of-italy-wins-inaugural-ironman-pro-series-following-nail-biting-day-of-racing-at-the-2024-vinfast-ironman-70-3-world-championship-in-taupo-new-zealand/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Barnaby wins inaugural overall 2024 series, not the Taupo race."
+    },
+    "philipp22": {
+      "url": "https://www.endurancesportswire.com/laura-philipp-defends-her-european-champion-title-and-sets-a-world-best-at-the-ironman-european-championship-hamburg/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: Philipp 2022 European title and IRONMAN-branded best 8:18:20. Do not generalize to all full-distance races."
+    },
+    "stgeorge21": {
+      "url": "https://www.endurancesportswire.com/striking-gold-in-utah-blummenfelt-nor-and-ryf-che-crowned-world-champions-at-the-2021-intermountain-healthcare-ironman-world-championship-presented-by-utah-sports-commission-in-st-george-utah/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 7 May 2022 event is the postponed 2021 edition. Blummenfelt gold, Sanders silver, Matthews silver women."
+    },
+    "kona22m": {
+      "url": "https://www.endurancesportswire.com/norwegian-gustav-iden-captures-first-ironman-world-championship-at-the-2022-vinfast-ironman-world-championship-in-kailua-kona-hawaii/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2022 Kona podium Iden, Laidlow, Blummenfelt; Iden marathon 2:36:15, total 7:40:24; Laidlow bike 4:04:36 historical course bests."
+    },
+    "70322w": {
+      "url": "https://www.endurancesportswire.com/american-taylor-knibb-dominates-at-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2022 podium Knibb, Findlay, Pallant-Browne; Knibb title already separately represented."
+    },
+    "70321": {
+      "url": "https://www.endurancesportswire.com/gustav-iden-nor-and-lucy-charles-barclay-gbr-utilize-dominant-performances-to-take-the-titles-at-the-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2021 final results: Iden/Long/Baekkegard men; Charles-Barclay/Lawrence/Knibb women."
+    },
+    "funk-roth": {
+      "url": "https://www.challenge-roth.com/en/news-area/frederic-funk-returns-to-roth-after-strong-debut.html",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Organizer athlete preview explicitly identifies Funk as 2023 IRONMAN 70.3 runner-up."
+    },
+    "bogen-club": {
+      "url": "https://www.endurancesportswire.com/rico-bogen-takes-top-step-in-german-sweep-at-the-2023-vinfast-ironman-70-3-world-championship-in-lahti-finland/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group organizer release confirms Bogen 2023 gold, Funk silver and Stratmann bronze."
+    },
+    "nice23m": {
+      "url": "https://www.endurancesportswire.com/frances-sam-laidlow-captures-first-ironman-world-championship-title-on-home-soil-at-2023-vinfast-ironman-world-championship-in-nice-france/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2023 Nice final podium: Laidlow, Lange, Ditlev."
+    },
+    "70322m": {
+      "url": "https://www.endurancesportswire.com/kristian-blummenfelt-captures-victory-at-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2022 final podium: Blummenfelt gold, Kanute silver, Ditlev bronze. Noodt fourth excluded."
+    },
+    "70323w": {
+      "url": "https://www.endurancesportswire.com/back-to-back-united-states-taylor-knibb-defends-her-title-at-the-2023-vinfast-ironman-70-3-world-championship-triathlon-in-lahti-finland/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "The IRONMAN Group distributed organizer release: 2023 Lahti final podium: Knibb, Matthews, Simmonds."
+    },
+    "pallant17im": {
+      "url": "https://www.endurancesportswire.com/pro-start-lists-unveiled-top-triathletes-head-to-st-george-utah-for-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Organizer 2022 start-list release explicitly identifies Pallant-Browne as 2017 world runner-up."
+    },
+    "ath04c-series25-women": {
+      "url": "https://www.endurancesportswire.com/kat-matthews-of-great-britain-is-crowned-2025-ironman-pro-series-winner-for-the-second-straight-year-following-race-finale-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-in-mar/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "IRONMAN organizer release, 9 November 2025: final season standings explicitly list Løvseth second, Perterer third. Reused retained ATH-04B web retrieval; not inferred from race placing."
+    },
+    "ath04c-dubai-final": {
+      "url": "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "World Triathlon official event authority: dated 17 November 2024; associated event is 2024 T100 Triathlon World Tour Grand Final Dubai, 16–17 November. Confirms Van Riel race first, Bogen race second and season third. Other race placings use existing verified local results."
+    },
+    "ath04c-qatar-final": {
+      "url": "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "World Triathlon official report dated 12 December 2025 explicitly identifies Qatar T100 World Championship Final in Lusail and winner Wilde. Other finish positions cross-checked against existing local Qatar results. Distinct from ordinary Dubai 2025 race."
+    },
+    "ath04c-qatar-organizer": {
+      "url": "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Retained organizer search excerpt explicitly identifies Lusail as host of Qatar Championship Final. Metadata says 2026 but independently dated WT report identifies December 2025. Metadata conflict retained in v1-review; no 2026 award inferred."
+    },
+    "ath04c-roth26-local": {
+      "url": "https://stats.protriathletes.org/race/challenge-roth/2026/results",
+      "reviewedOn": "2026-11-11",
+      "publisherScope": "Existing verified local result; PTO cross-check retained from ATH-04B. Not an organizer result claim."
+    }
+  },
+  "verifiedAchievements": [
+    {
+      "achievementKey": "ath-1:olympics:2020:individual",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 1,
+      "competitionName": "Olympic Games — individual triathlon",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 1,
+      "title": "1-е место — Олимпийские игры 2020, индивидуальный триатлон.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — Олимпийские игры 2020, индивидуальный триатлон.",
+      "sourceIds": [
+        "tokyo-individual"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/events/2020-tokyo-olympic-games"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-3:olympics:2020:individual",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "athleteNameRu": "Хайден Уайлд",
+      "category": 1,
+      "competitionName": "Olympic Games — individual triathlon",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 3,
+      "title": "3-е место — Олимпийские игры 2020, индивидуальный триатлон.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — Олимпийские игры 2020, индивидуальный триатлон.",
+      "sourceIds": [
+        "tokyo-individual"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/events/2020-tokyo-olympic-games"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-105:olympics:2020:individual",
+      "athleteId": 105,
+      "athleteNameEn": "Georgia Taylor-Brown",
+      "athleteNameRu": "Джорджия Тейлор-Браун",
+      "category": 1,
+      "competitionName": "Olympic Games — individual triathlon",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2020, индивидуальный триатлон.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2020, индивидуальный триатлон.",
+      "sourceIds": [
+        "tokyo-individual"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/events/2020-tokyo-olympic-games"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-3:olympics:2024:individual",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "athleteNameRu": "Хайден Уайлд",
+      "category": 1,
+      "competitionName": "Olympic Games — individual triathlon",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2024, индивидуальный триатлон.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2024, индивидуальный триатлон.",
+      "sourceIds": [
+        "paris-individual"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/events/olympics-history"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-42:olympics:2024:individual",
+      "athleteId": 42,
+      "athleteNameEn": "Léo Bergère",
+      "athleteNameRu": "Лео Берже",
+      "category": 1,
+      "competitionName": "Olympic Games — individual triathlon",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "title": "3-е место — Олимпийские игры 2024, индивидуальный триатлон.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — Олимпийские игры 2024, индивидуальный триатлон.",
+      "sourceIds": [
+        "paris-individual"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/events/olympics-history"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-102:olympics:2024:individual",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "athleteNameRu": "Жюли Деррон",
+      "category": 1,
+      "competitionName": "Olympic Games — individual triathlon",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2024, индивидуальный триатлон.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2024, индивидуальный триатлон.",
+      "sourceIds": [
+        "paris-individual"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/events/olympics-history"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-107:olympics:2020:mixed-relay",
+      "athleteId": 107,
+      "athleteNameEn": "Jessica Learmonth",
+      "athleteNameRu": "Джессика Лермонт",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 1,
+      "title": "1-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "sourceIds": [
+        "tokyo-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/great-britain-bring-home-historic-olympic-mixed-relay-gold-at-tokyo-2020"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-105:olympics:2020:mixed-relay",
+      "athleteId": 105,
+      "athleteNameEn": "Georgia Taylor-Brown",
+      "athleteNameRu": "Джорджия Тейлор-Браун",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 1,
+      "title": "1-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "sourceIds": [
+        "tokyo-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/great-britain-bring-home-historic-olympic-mixed-relay-gold-at-tokyo-2020"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:olympics:2020:mixed-relay",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "sourceIds": [
+        "tokyo-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/great-britain-bring-home-historic-olympic-mixed-relay-gold-at-tokyo-2020"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-15:olympics:2020:mixed-relay",
+      "athleteId": 15,
+      "athleteNameEn": "Morgan Pearson",
+      "athleteNameRu": "Морган Пирсон",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "sourceIds": [
+        "tokyo-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/great-britain-bring-home-historic-olympic-mixed-relay-gold-at-tokyo-2020"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-41:olympics:2020:mixed-relay",
+      "athleteId": 41,
+      "athleteNameEn": "Vincent Luis",
+      "athleteNameRu": "Венсан Луис",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2021,
+      "season": 2020,
+      "position": 3,
+      "title": "3-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — Олимпийские игры 2020, смешанная эстафета.",
+      "sourceIds": [
+        "tokyo-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/great-britain-bring-home-historic-olympic-mixed-relay-gold-at-tokyo-2020"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:olympics:2024:mixed-relay",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "sourceIds": [
+        "paris-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/thriller-on-the-seine-as-germany-earn-stunning-olympic-mixed-relay-gold-in-paris"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-15:olympics:2024:mixed-relay",
+      "athleteId": 15,
+      "athleteNameEn": "Morgan Pearson",
+      "athleteNameRu": "Морган Пирсон",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "title": "2-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "sourceIds": [
+        "paris-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/thriller-on-the-seine-as-germany-earn-stunning-olympic-mixed-relay-gold-in-paris"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-105:olympics:2024:mixed-relay",
+      "athleteId": 105,
+      "athleteNameEn": "Georgia Taylor-Brown",
+      "athleteNameRu": "Джорджия Тейлор-Браун",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "title": "3-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "sourceIds": [
+        "paris-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/thriller-on-the-seine-as-germany-earn-stunning-olympic-mixed-relay-gold-in-paris"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-9:olympics:2024:mixed-relay",
+      "athleteId": 9,
+      "athleteNameEn": "Samuel Dickinson",
+      "athleteNameRu": "Сэмуэль Дикинсон",
+      "category": 1,
+      "competitionName": "Olympic Games — mixed relay",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "title": "3-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "gender": "MIXED",
+      "kind": "team-medal",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — Олимпийские игры 2024, смешанная эстафета.",
+      "sourceIds": [
+        "paris-relay"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/thriller-on-the-seine-as-germany-earn-stunning-olympic-mixed-relay-gold-in-paris"
+      ],
+      "historicalCategory": 1,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-2:t100:2024:overall",
+      "athleteId": 2,
+      "athleteNameEn": "Marten Van Riel",
+      "athleteNameRu": "Мартен ван Рил",
+      "category": 6,
+      "competitionName": "T100 Triathlon World Tour — overall season",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "title": "Победитель общего зачёта T100 — 2024.",
+      "gender": "M",
+      "kind": "season-champion",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель общего зачёта T100 — 2024.",
+      "sourceIds": [
+        "t100-2024-men"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "historicalCategory": 7,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:t100:2024:overall",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 6,
+      "competitionName": "T100 Triathlon World Tour — overall season",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "title": "Победительница общего зачёта T100 — 2024.",
+      "gender": "W",
+      "kind": "season-champion",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победительница общего зачёта T100 — 2024.",
+      "sourceIds": [
+        "t100-2024-women"
+      ],
+      "officialSourceUrls": [
+        "https://t100triathlon.com/media-releases/waugh-excited-by-duel-with-knibb-in-san-francisco-t100-triathlon/"
+      ],
+      "historicalCategory": 7,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-3:t100:2025:overall",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "athleteNameRu": "Хайден Уайлд",
+      "category": 6,
+      "competitionName": "T100 Triathlon World Tour — overall season",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "title": "Победитель общего зачёта T100 — 2025.",
+      "gender": "M",
+      "kind": "season-champion",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель общего зачёта T100 — 2025.",
+      "sourceIds": [
+        "t100-2025-men"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar"
+      ],
+      "historicalCategory": 7,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-21:challenge-roth:2022:winner",
+      "athleteId": 21,
+      "athleteNameEn": "Magnus Ditlev",
+      "athleteNameRu": "Магнус Дитлев",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 1,
+      "title": "Победитель Challenge Roth — 2022.",
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель Challenge Roth — 2022.",
+      "sourceIds": [
+        "roth-triple"
+      ],
+      "officialSourceUrls": [
+        "https://www.challenge-roth.com/de/news-area/der-naechste-topstar.html"
+      ],
+      "historicalCategory": 4,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-21:challenge-roth:2023:winner",
+      "athleteId": 21,
+      "athleteNameEn": "Magnus Ditlev",
+      "athleteNameRu": "Магнус Дитлев",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 1,
+      "title": "Победитель Challenge Roth — 2023.",
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель Challenge Roth — 2023.",
+      "sourceIds": [
+        "roth-triple"
+      ],
+      "officialSourceUrls": [
+        "https://www.challenge-roth.com/de/news-area/der-naechste-topstar.html"
+      ],
+      "historicalCategory": 4,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-21:challenge-roth:2024:winner",
+      "athleteId": 21,
+      "athleteNameEn": "Magnus Ditlev",
+      "athleteNameRu": "Магнус Дитлев",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "title": "Победитель Challenge Roth — 2024.",
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель Challenge Roth — 2024.",
+      "sourceIds": [
+        "roth-triple"
+      ],
+      "officialSourceUrls": [
+        "https://www.challenge-roth.com/de/news-area/der-naechste-topstar.html"
+      ],
+      "localEvidence": {
+        "editionId": "challenge-roth-2024",
+        "resultId": 1665,
+        "totalTime": "7:23:24",
+        "paths": [
+          "src/data/results/2024/challenge/roth.ts"
+        ]
+      },
+      "historicalCategory": 4,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ironman-pro-series:2024:overall",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall season",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "title": "Победительница общего зачёта IRONMAN Pro Series — 2024.",
+      "gender": "W",
+      "kind": "season-champion",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победительница общего зачёта IRONMAN Pro Series — 2024.",
+      "sourceIds": [
+        "im-series-2024-women"
+      ],
+      "officialSourceUrls": [
+        "https://podcast.ironman.com/2360650/episodes"
+      ],
+      "historicalCategory": 6,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-24:ath04b:2:2017:24",
+      "athleteId": 24,
+      "athleteNameEn": "Patrick Lange",
+      "athleteNameRu": "Патрик Ланге",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2017,
+      "season": 2017,
+      "position": 1,
+      "title": "Чемпион мира IRONMAN — 2017.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпион мира IRONMAN — 2017.",
+      "sourceIds": [
+        "dtu-kona24"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlondeutschland.de/aktuelles/10-2024/patrick-lange-kroent-aufholjagd-mit-title-triple-auf-hawaii"
+      ],
+      "evidenceExplanation": "German federation reports Lange 2024 champion and 7:35:53 course record, Ditlev second; explicitly identifies Lange 2017/2018 titles.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-24:ath04b:2:2018:25",
+      "athleteId": 24,
+      "athleteNameEn": "Patrick Lange",
+      "athleteNameRu": "Патрик Ланге",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2018,
+      "season": 2018,
+      "position": 1,
+      "title": "Чемпион мира IRONMAN — 2018.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпион мира IRONMAN — 2018.",
+      "sourceIds": [
+        "dtu-kona24"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlondeutschland.de/aktuelles/10-2024/patrick-lange-kroent-aufholjagd-mit-title-triple-auf-hawaii"
+      ],
+      "evidenceExplanation": "German federation reports Lange 2024 champion and 7:35:53 course record, Ditlev second; explicitly identifies Lange 2017/2018 titles.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-24:ath04b:2:2016:27",
+      "athleteId": 24,
+      "athleteNameEn": "Patrick Lange",
+      "athleteNameRu": "Патрик Ланге",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2016,
+      "season": 2016,
+      "position": 3,
+      "title": "Бронзовый призёр чемпионата мира IRONMAN — 2016.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Бронзовый призёр чемпионата мира IRONMAN — 2016.",
+      "sourceIds": [
+        "dtu-kona16"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlondeutschland.de/aktuelles/10-2016/triathlondeutschland-unterwegs-hawaii-und-oestringen-rueckblick-8-oktober"
+      ],
+      "evidenceExplanation": "German federation confirms Lange bronze and 2:39:45 marathon course best in 2016.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ath04b:2:2018:29",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2018,
+      "season": 2018,
+      "position": 2,
+      "title": "Серебряный призёр чемпионата мира IRONMAN — 2018.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Серебряный призёр чемпионата мира IRONMAN — 2018.",
+      "sourceIds": [
+        "dtu-kona18"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlondeutschland.de/aktuelles/10-2018/triathlond-unterwegs-lange-siegt-haug-wird-dritte"
+      ],
+      "evidenceExplanation": "German federation identifies Lange 7:52:39 course record and Lucy Charles second in 2018.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ath04b:2:2023:31",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 1,
+      "title": "1-е место — чемпионат мира IRONMAN, 2023.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — чемпионат мира IRONMAN, 2023.",
+      "sourceIds": [
+        "aus-kona23"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/slater-leads-home-australians-at-the-2023-ironman-world-championship/"
+      ],
+      "evidenceExplanation": "Australian federation lists Charles-Barclay first and Philipp third in 2023 professional women final results.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-109:ath04b:2:2023:32",
+      "athleteId": 109,
+      "athleteNameEn": "Laura Philipp",
+      "athleteNameRu": "Лаура Филипп",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN, 2023.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN, 2023.",
+      "sourceIds": [
+        "aus-kona23"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/slater-leads-home-australians-at-the-2023-ironman-world-championship/"
+      ],
+      "evidenceExplanation": "Australian federation lists Charles-Barclay first and Philipp third in 2023 professional women final results.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10701:ath04b:2:2022:33",
+      "athleteId": 10701,
+      "athleteNameEn": "Chelsea Sodaro",
+      "athleteNameRu": "Челси Содаро",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 1,
+      "title": "Чемпионка мира IRONMAN — 2022.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпионка мира IRONMAN — 2022.",
+      "sourceIds": [
+        "usa-nice24"
+      ],
+      "officialSourceUrls": [
+        "https://www.usatriathlon.org/news/2024/september/24/women-triathletes-shine-in-nice-at-2024-women-s-ironman-world-championships"
+      ],
+      "evidenceExplanation": "US federation confirms Philipp/Matthews/Sodaro podium 2024 and Sodaro 2022 world title.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ath04b:3:2022:34",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 1,
+      "title": "Чемпионка мира IRONMAN 70.3 — 2022.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпионка мира IRONMAN 70.3 — 2022.",
+      "sourceIds": [
+        "aus-taupo24"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/gentle-secures-bronze-at-ironman-70-3-world-championship/"
+      ],
+      "evidenceExplanation": "Australian federation confirms Knibb, Matthews, Gentle 2024 70.3 podium and Knibb third consecutive title.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ath04b:3:2023:35",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 1,
+      "title": "Чемпионка мира IRONMAN 70.3 — 2023.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпионка мира IRONMAN 70.3 — 2023.",
+      "sourceIds": [
+        "aus-taupo24"
+      ],
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/gentle-secures-bronze-at-ironman-70-3-world-championship/"
+      ],
+      "evidenceExplanation": "Australian federation confirms Knibb, Matthews, Gentle 2024 70.3 podium and Knibb third consecutive title.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-25:ath04b:3:2019:36",
+      "athleteId": 25,
+      "athleteNameEn": "Gustav Iden",
+      "athleteNameRu": "Густав Иден",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2019,
+      "season": 2019,
+      "position": 1,
+      "title": "Чемпион мира IRONMAN 70.3 — 2019.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпион мира IRONMAN 70.3 — 2019.",
+      "sourceIds": [
+        "nor-iden21"
+      ],
+      "officialSourceUrls": [
+        "https://kommunikasjon.ntb.no/pressemelding/17916012/regjerende-verdensmester-pa-703-gustav-iden-med-ny-verdensmestertittel-i-triatlon?publisherId=17847164"
+      ],
+      "evidenceExplanation": "Norwegian federation release dated 18 September 2021 explicitly confirms Iden 2021 and 2019 70.3 titles.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-25:ath04b:3:2021:37",
+      "athleteId": 25,
+      "athleteNameEn": "Gustav Iden",
+      "athleteNameRu": "Густав Иден",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2021,
+      "season": 2021,
+      "position": 1,
+      "title": "Чемпион мира IRONMAN 70.3 — 2021.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпион мира IRONMAN 70.3 — 2021.",
+      "sourceIds": [
+        "nor-iden21"
+      ],
+      "officialSourceUrls": [
+        "https://kommunikasjon.ntb.no/pressemelding/17916012/regjerende-verdensmester-pa-703-gustav-iden-med-ny-verdensmestertittel-i-triatlon?publisherId=17847164"
+      ],
+      "evidenceExplanation": "Norwegian federation release dated 18 September 2021 explicitly confirms Iden 2021 and 2019 70.3 titles.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-16:ath04b:6:2024:45",
+      "athleteId": 16,
+      "athleteNameEn": "Gregory Barnaby",
+      "athleteNameRu": "Грегори Барнаби",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall champion",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "title": "Победитель общего зачёта IRONMAN Pro Series — 2024.",
+      "gender": "M",
+      "kind": "season-championship",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель общего зачёта IRONMAN Pro Series — 2024.",
+      "sourceIds": [
+        "barnaby-series24"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/gregory-barnaby-of-italy-wins-inaugural-ironman-pro-series-following-nail-biting-day-of-racing-at-the-2024-vinfast-ironman-70-3-world-championship-in-taupo-new-zealand/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Barnaby wins inaugural overall 2024 series, not the Taupo race.",
+      "historicalCategory": 6,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ath04b:6:2025:46",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall champion",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "title": "Победитель общего зачёта IRONMAN Pro Series — 2025.",
+      "gender": "M",
+      "kind": "season-championship",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель общего зачёта IRONMAN Pro Series — 2025.",
+      "sourceIds": [
+        "kristian-series25"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norways-kristian-blummenfelt-claims-ironman-pro-series-mens-title-following-series-race-finale-at-the2025-precision-fuel-hydration-ironman-70-3-world-championship-in-marbella-spain/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Final 2025 overall Pro Series championship; retrospectively confirms victory at 2025 Frankfurt European Championship.",
+      "historicalCategory": 6,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ath04b:6:2025:47",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall champion",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "title": "Победитель общего зачёта IRONMAN Pro Series — 2025.",
+      "gender": "W",
+      "kind": "season-championship",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Победитель общего зачёта IRONMAN Pro Series — 2025.",
+      "sourceIds": [
+        "70325w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/redemption-great-britains-lucy-charles-barclay-claims-victory-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-in-marbella-spain/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Marbella 2025: Charles-Barclay first, Knibb second; Matthews overall Pro Series champion, distinct from her DNF in this race.",
+      "historicalCategory": 6,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-109:ath04b:5:2022:48",
+      "athleteId": 109,
+      "athleteNameEn": "Laura Philipp",
+      "athleteNameRu": "Лаура Филипп",
+      "category": 5,
+      "competitionName": "IRONMAN European Championship Hamburg",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 1,
+      "title": "Чемпионка Европы IRONMAN — 2022.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпионка Европы IRONMAN — 2022.",
+      "sourceIds": [
+        "philipp22"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/laura-philipp-defends-her-european-champion-title-and-sets-a-world-best-at-the-ironman-european-championship-hamburg/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Philipp 2022 European title and IRONMAN-branded best 8:18:20. Do not generalize to all full-distance races.",
+      "historicalCategory": 5,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ath04b:2:2017:52",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2017,
+      "season": 2017,
+      "position": 2,
+      "title": "Серебряный призёр чемпионата мира IRONMAN — 2017.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Серебряный призёр чемпионата мира IRONMAN — 2017.",
+      "sourceIds": [
+        "im25w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ath04b:2:2019:53",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2019,
+      "season": 2019,
+      "position": 2,
+      "title": "Серебряный призёр чемпионата мира IRONMAN — 2019.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Серебряный призёр чемпионата мира IRONMAN — 2019.",
+      "sourceIds": [
+        "im25w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ath04b:2:2022:54",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 2,
+      "title": "Серебряный призёр чемпионата мира IRONMAN — 2022.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Серебряный призёр чемпионата мира IRONMAN — 2022.",
+      "sourceIds": [
+        "im25w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10521:ath04b:2:2023:55",
+      "athleteId": 10521,
+      "athleteNameEn": "Sam Laidlow",
+      "athleteNameRu": "Сэм Лэйдлоу",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 1,
+      "title": "Чемпион мира IRONMAN — 2023.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпион мира IRONMAN — 2023.",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ath04b:2:2022:56",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship — 2021 edition St George",
+      "eventYear": 2022,
+      "season": 2021,
+      "position": 1,
+      "title": "1-е место — чемпионат мира IRONMAN сезона 2021 (проведён в 2022).",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — чемпионат мира IRONMAN сезона 2021 (проведён в 2022).",
+      "sourceIds": [
+        "stgeorge21"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/striking-gold-in-utah-blummenfelt-nor-and-ryf-che-crowned-world-champions-at-the-2021-intermountain-healthcare-ironman-world-championship-presented-by-utah-sports-commission-in-st-george-utah/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 7 May 2022 event is the postponed 2021 edition. Blummenfelt gold, Sanders silver, Matthews silver women.",
+      "editionYear": 2021,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-23:ath04b:2:2022:57",
+      "athleteId": 23,
+      "athleteNameEn": "Lionel Sanders",
+      "athleteNameRu": "Лайонел Сандерс",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship — 2021 edition St George",
+      "eventYear": 2022,
+      "season": 2021,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN сезона 2021 (проведён в 2022).",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN сезона 2021 (проведён в 2022).",
+      "sourceIds": [
+        "stgeorge21"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/striking-gold-in-utah-blummenfelt-nor-and-ryf-che-crowned-world-champions-at-the-2021-intermountain-healthcare-ironman-world-championship-presented-by-utah-sports-commission-in-st-george-utah/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 7 May 2022 event is the postponed 2021 edition. Blummenfelt gold, Sanders silver, Matthews silver women.",
+      "editionYear": 2021,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ath04b:2:2022:58",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship — 2021 edition St George",
+      "eventYear": 2022,
+      "season": 2021,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN сезона 2021 (проведён в 2022).",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN сезона 2021 (проведён в 2022).",
+      "sourceIds": [
+        "stgeorge21"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/striking-gold-in-utah-blummenfelt-nor-and-ryf-che-crowned-world-champions-at-the-2021-intermountain-healthcare-ironman-world-championship-presented-by-utah-sports-commission-in-st-george-utah/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 7 May 2022 event is the postponed 2021 edition. Blummenfelt gold, Sanders silver, Matthews silver women.",
+      "editionYear": 2021,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-25:ath04b:2:2022:59",
+      "athleteId": 25,
+      "athleteNameEn": "Gustav Iden",
+      "athleteNameRu": "Густав Иден",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 1,
+      "title": "1-е место — чемпионат мира IRONMAN, 2022.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — чемпионат мира IRONMAN, 2022.",
+      "sourceIds": [
+        "kona22m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norwegian-gustav-iden-captures-first-ironman-world-championship-at-the-2022-vinfast-ironman-world-championship-in-kailua-kona-hawaii/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 Kona podium Iden, Laidlow, Blummenfelt; Iden marathon 2:36:15, total 7:40:24; Laidlow bike 4:04:36 historical course bests.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10521:ath04b:2:2022:60",
+      "athleteId": 10521,
+      "athleteNameEn": "Sam Laidlow",
+      "athleteNameRu": "Сэм Лэйдлоу",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN, 2022.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN, 2022.",
+      "sourceIds": [
+        "kona22m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norwegian-gustav-iden-captures-first-ironman-world-championship-at-the-2022-vinfast-ironman-world-championship-in-kailua-kona-hawaii/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 Kona podium Iden, Laidlow, Blummenfelt; Iden marathon 2:36:15, total 7:40:24; Laidlow bike 4:04:36 historical course bests.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ath04b:2:2022:61",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN, 2022.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN, 2022.",
+      "sourceIds": [
+        "kona22m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norwegian-gustav-iden-captures-first-ironman-world-championship-at-the-2022-vinfast-ironman-world-championship-in-kailua-kona-hawaii/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 Kona podium Iden, Laidlow, Blummenfelt; Iden marathon 2:36:15, total 7:40:24; Laidlow bike 4:04:36 historical course bests.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-114:ath04b:3:2022:62",
+      "athleteId": 114,
+      "athleteNameEn": "Paula Findlay",
+      "athleteNameRu": "Пола Финдли",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "sourceIds": [
+        "70322w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/american-taylor-knibb-dominates-at-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 podium Knibb, Findlay, Pallant-Browne; Knibb title already separately represented.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:3:2022:63",
+      "athleteId": 10736,
+      "athleteNameEn": "Emma Pallant-Browne",
+      "athleteNameRu": "Эмма Паллант-Браун",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "sourceIds": [
+        "70322w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/american-taylor-knibb-dominates-at-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 podium Knibb, Findlay, Pallant-Browne; Knibb title already separately represented.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-22:ath04b:3:2021:64",
+      "athleteId": 22,
+      "athleteNameEn": "Sam Long",
+      "athleteNameRu": "Сэм Лонг",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2021,
+      "season": 2021,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "sourceIds": [
+        "70321"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/gustav-iden-nor-and-lucy-charles-barclay-gbr-utilize-dominant-performances-to-take-the-titles-at-the-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2021 final results: Iden/Long/Baekkegard men; Charles-Barclay/Lawrence/Knibb women.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-28:ath04b:3:2021:65",
+      "athleteId": 28,
+      "athleteNameEn": "Daniel Bækkegård",
+      "athleteNameRu": "Даниэль Беккегард",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2021,
+      "season": 2021,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "sourceIds": [
+        "70321"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/gustav-iden-nor-and-lucy-charles-barclay-gbr-utilize-dominant-performances-to-take-the-titles-at-the-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2021 final results: Iden/Long/Baekkegard men; Charles-Barclay/Lawrence/Knibb women.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ath04b:3:2021:66",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2021,
+      "season": 2021,
+      "position": 1,
+      "title": "1-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "sourceIds": [
+        "70321"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/gustav-iden-nor-and-lucy-charles-barclay-gbr-utilize-dominant-performances-to-take-the-titles-at-the-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2021 final results: Iden/Long/Baekkegard men; Charles-Barclay/Lawrence/Knibb women.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ath04b:3:2021:67",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2021,
+      "season": 2021,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN 70.3, 2021.",
+      "sourceIds": [
+        "70321"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/gustav-iden-nor-and-lucy-charles-barclay-gbr-utilize-dominant-performances-to-take-the-titles-at-the-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2021 final results: Iden/Long/Baekkegard men; Charles-Barclay/Lawrence/Knibb women.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-34:ath04b:3:2023:68",
+      "athleteId": 34,
+      "athleteNameEn": "Frederic Funk",
+      "athleteNameRu": "Фредерик Функ",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 2,
+      "title": "Серебряный призёр чемпионата мира IRONMAN 70.3 — 2023.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Серебряный призёр чемпионата мира IRONMAN 70.3 — 2023.",
+      "sourceIds": [
+        "funk-roth"
+      ],
+      "officialSourceUrls": [
+        "https://www.challenge-roth.com/en/news-area/frederic-funk-returns-to-roth-after-strong-debut.html"
+      ],
+      "evidenceExplanation": "Organizer athlete preview explicitly identifies Funk as 2023 IRONMAN 70.3 runner-up.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-5:ath04b:3:2023:69",
+      "athleteId": 5,
+      "athleteNameEn": "Rico Bogen",
+      "athleteNameRu": "Рико Боген",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 1,
+      "title": "Чемпион мира IRONMAN 70.3 — 2023.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Чемпион мира IRONMAN 70.3 — 2023.",
+      "sourceIds": [
+        "bogen-club"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/rico-bogen-takes-top-step-in-german-sweep-at-the-2023-vinfast-ironman-70-3-world-championship-in-lahti-finland/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group organizer release confirms Bogen 2023 gold, Funk silver and Stratmann bronze.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-24:ath04b:2:2023:84",
+      "athleteId": 24,
+      "athleteNameEn": "Patrick Lange",
+      "athleteNameRu": "Патрик Ланге",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN, 2023.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN, 2023.",
+      "sourceIds": [
+        "nice23m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/frances-sam-laidlow-captures-first-ironman-world-championship-title-on-home-soil-at-2023-vinfast-ironman-world-championship-in-nice-france/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2023 Nice final podium: Laidlow, Lange, Ditlev.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-21:ath04b:2:2023:85",
+      "athleteId": 21,
+      "athleteNameEn": "Magnus Ditlev",
+      "athleteNameRu": "Магнус Дитлев",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN, 2023.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN, 2023.",
+      "sourceIds": [
+        "nice23m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/frances-sam-laidlow-captures-first-ironman-world-championship-title-on-home-soil-at-2023-vinfast-ironman-world-championship-in-nice-france/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2023 Nice final podium: Laidlow, Lange, Ditlev.",
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ath04b:3:2022:86",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 1,
+      "title": "1-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "sourceIds": [
+        "70322m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/kristian-blummenfelt-captures-victory-at-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 final podium: Blummenfelt gold, Kanute silver, Ditlev bronze. Noodt fourth excluded.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-21:ath04b:3:2022:87",
+      "athleteId": 21,
+      "athleteNameEn": "Magnus Ditlev",
+      "athleteNameRu": "Магнус Дитлев",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2022,
+      "season": 2022,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN 70.3, 2022.",
+      "sourceIds": [
+        "70322m"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/kristian-blummenfelt-captures-victory-at-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2022 final podium: Blummenfelt gold, Kanute silver, Ditlev bronze. Noodt fourth excluded.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ath04b:3:2023:88",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 2,
+      "title": "2-е место — чемпионат мира IRONMAN 70.3, 2023.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место — чемпионат мира IRONMAN 70.3, 2023.",
+      "sourceIds": [
+        "70323w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/back-to-back-united-states-taylor-knibb-defends-her-title-at-the-2023-vinfast-ironman-70-3-world-championship-triathlon-in-lahti-finland/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2023 Lahti final podium: Knibb, Matthews, Simmonds.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-112:ath04b:3:2023:89",
+      "athleteId": 112,
+      "athleteNameEn": "Imogen Simmonds",
+      "athleteNameRu": "Имоджен Симмондс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2023,
+      "season": 2023,
+      "position": 3,
+      "title": "3-е место — чемпионат мира IRONMAN 70.3, 2023.",
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место — чемпионат мира IRONMAN 70.3, 2023.",
+      "sourceIds": [
+        "70323w"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/back-to-back-united-states-taylor-knibb-defends-her-title-at-the-2023-vinfast-ironman-70-3-world-championship-triathlon-in-lahti-finland/"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2023 Lahti final podium: Knibb, Matthews, Simmonds.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-138:ironman-hamburg-2024:W:position-1",
+      "athleteId": 138,
+      "athleteNameEn": "Jackie Hering",
+      "athleteNameRu": "Джеки Херинг",
+      "category": 5,
+      "competitionName": "IRONMAN Hamburg European Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN Hamburg European Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-hamburg-2024",
+        "totalTime": "8:19:14",
+        "paths": [
+          "src/data/results/2024/ironman/hamburg.ts"
+        ],
+        "normalizedRuntimeResultId": 429
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/in-her-first-full-distance-triathlon-since-2015-jackie-hering-usa-takes-the-crown-at-the-2024-ironman-european-championship-hamburg/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hamburg/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "hering24"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Jackie Hering wins 2024 IRONMAN European Championship Hamburg.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 5,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ironman-frankfurt-2024:M:position-1",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 5,
+      "competitionName": "Mainova IRONMAN Frankfurt European Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — Mainova IRONMAN Frankfurt European Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-frankfurt-2024",
+        "totalTime": "7:27:21",
+        "paths": [
+          "src/data/results/2024/ironman/frankfurt.ts"
+        ],
+        "normalizedRuntimeResultId": 891
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/world-class-start-list-revealed-for-the-2025-mainova-ironman-frankfurt-european-championship-triathlon/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-germany/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "frankfurt24"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: 2025 preview explicitly calls Blummenfelt the 2024 European Champion; not a prediction of 2025 result.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 5,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-109:ironman-world-championship-nice-2024-women:W:position-1",
+      "athleteId": 109,
+      "athleteNameEn": "Laura Philipp",
+      "athleteNameRu": "Лаура Филипп",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-nice-2024-women",
+        "totalTime": "8:45:15",
+        "paths": [
+          "src/data/results/2024/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1121
+      },
+      "officialSourceUrls": [
+        "https://www.usatriathlon.org/news/2024/september/24/women-triathletes-shine-in-nice-at-2024-women-s-ironman-world-championships"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "usa-nice24"
+      ],
+      "evidenceExplanation": "US federation confirms Philipp/Matthews/Sodaro podium 2024 and Sodaro 2022 world title.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ironman-world-championship-nice-2024-women:W:position-2",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-nice-2024-women",
+        "totalTime": "8:53:20",
+        "paths": [
+          "src/data/results/2024/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1122
+      },
+      "officialSourceUrls": [
+        "https://www.usatriathlon.org/news/2024/september/24/women-triathletes-shine-in-nice-at-2024-women-s-ironman-world-championships"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "usa-nice24"
+      ],
+      "evidenceExplanation": "US federation confirms Philipp/Matthews/Sodaro podium 2024 and Sodaro 2022 world title.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10701:ironman-world-championship-nice-2024-women:W:position-3",
+      "athleteId": 10701,
+      "athleteNameEn": "Chelsea Sodaro",
+      "athleteNameRu": "Челси Содаро",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-nice-2024-women",
+        "totalTime": "9:04:38",
+        "paths": [
+          "src/data/results/2024/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1123
+      },
+      "officialSourceUrls": [
+        "https://www.usatriathlon.org/news/2024/september/24/women-triathletes-shine-in-nice-at-2024-women-s-ironman-world-championships"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "usa-nice24"
+      ],
+      "evidenceExplanation": "US federation confirms Philipp/Matthews/Sodaro podium 2024 and Sodaro 2022 world title.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-24:ironman-world-championship-kona-2024-men:M:position-1",
+      "athleteId": 24,
+      "athleteNameEn": "Patrick Lange",
+      "athleteNameRu": "Патрик Ланге",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2024-men",
+        "totalTime": "7:35:53",
+        "paths": [
+          "src/data/results/2024/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 1165
+      },
+      "officialSourceUrls": [
+        "https://www.triathlondeutschland.de/aktuelles/10-2024/patrick-lange-kroent-aufholjagd-mit-title-triple-auf-hawaii"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "dtu-kona24"
+      ],
+      "evidenceExplanation": "German federation reports Lange 2024 champion and 7:35:53 course record, Ditlev second; explicitly identifies Lange 2017/2018 titles.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-21:ironman-world-championship-kona-2024-men:M:position-2",
+      "athleteId": 21,
+      "athleteNameEn": "Magnus Ditlev",
+      "athleteNameRu": "Магнус Дитлев",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2024-men",
+        "totalTime": "7:43:39",
+        "paths": [
+          "src/data/results/2024/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 1166
+      },
+      "officialSourceUrls": [
+        "https://www.triathlondeutschland.de/aktuelles/10-2024/patrick-lange-kroent-aufholjagd-mit-title-triple-auf-hawaii"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "dtu-kona24"
+      ],
+      "evidenceExplanation": "German federation reports Lange 2024 champion and 7:35:53 course record, Ditlev second; explicitly identifies Lange 2017/2018 titles.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ironman-70-3-world-championship-taupo-2024-women:W:position-1",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN 70.3 World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-taupo-2024-women",
+        "totalTime": "3:57:34",
+        "paths": [
+          "src/data/results/2024/ironman/taupo-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1280
+      },
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/gentle-secures-bronze-at-ironman-70-3-world-championship/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "aus-taupo24"
+      ],
+      "evidenceExplanation": "Australian federation confirms Knibb, Matthews, Gentle 2024 70.3 podium and Knibb third consecutive title.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ironman-70-3-world-championship-taupo-2024-women:W:position-2",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN 70.3 World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-taupo-2024-women",
+        "totalTime": "3:58:49",
+        "paths": [
+          "src/data/results/2024/ironman/taupo-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1281
+      },
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/gentle-secures-bronze-at-ironman-70-3-world-championship/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "aus-taupo24"
+      ],
+      "evidenceExplanation": "Australian federation confirms Knibb, Matthews, Gentle 2024 70.3 podium and Knibb third consecutive title.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-147:ironman-70-3-world-championship-taupo-2024-women:W:position-3",
+      "athleteId": 147,
+      "athleteNameEn": "Ashleigh Gentle",
+      "athleteNameRu": "Эшли Джентл",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN 70.3 World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-taupo-2024-women",
+        "totalTime": "4:03:01",
+        "paths": [
+          "src/data/results/2024/ironman/taupo-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1282
+      },
+      "officialSourceUrls": [
+        "https://www.triathlon.org.au/news/gentle-secures-bronze-at-ironman-70-3-world-championship/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "aus-taupo24"
+      ],
+      "evidenceExplanation": "Australian federation confirms Knibb, Matthews, Gentle 2024 70.3 podium and Knibb third consecutive title.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-6:ironman-70-3-world-championship-taupo-2024-men:M:position-1",
+      "athleteId": 6,
+      "athleteNameEn": "Jelle Geens",
+      "athleteNameRu": "Йелле Гинс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN 70.3 World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-taupo-2024-men",
+        "totalTime": "3:32:09",
+        "paths": [
+          "src/data/results/2024/ironman/taupo-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1322
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/belgium-jelle-geens-takes-crown-at-the-2024-vinfast-ironman-70-3-world-championship-triathlon-in-taupo-new-zealand/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "70324m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Taupo 2024 podium: Geens, Wilde, Bergere.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-3:ironman-70-3-world-championship-taupo-2024-men:M:position-2",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "athleteNameRu": "Хайден Уайлд",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN 70.3 World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-taupo-2024-men",
+        "totalTime": "3:33:22",
+        "paths": [
+          "src/data/results/2024/ironman/taupo-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1323
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/belgium-jelle-geens-takes-crown-at-the-2024-vinfast-ironman-70-3-world-championship-triathlon-in-taupo-new-zealand/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "70324m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Taupo 2024 podium: Geens, Wilde, Bergere.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-42:ironman-70-3-world-championship-taupo-2024-men:M:position-3",
+      "athleteId": 42,
+      "athleteNameEn": "Léo Bergère",
+      "athleteNameRu": "Лео Берже",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN 70.3 World Championship, 2024.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-taupo-2024-men",
+        "totalTime": "3:35:08",
+        "paths": [
+          "src/data/results/2024/ironman/taupo-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 1324
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/belgium-jelle-geens-takes-crown-at-the-2024-vinfast-ironman-70-3-world-championship-triathlon-in-taupo-new-zealand/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2024/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/2024-ironman-pro-series-how-it-works",
+      "sourceIds": [
+        "70324m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Taupo 2024 podium: Geens, Wilde, Bergere.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ironman-frankfurt-2025:M:position-1",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 5,
+      "competitionName": "Mainova IRONMAN Frankfurt European Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — Mainova IRONMAN Frankfurt European Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-frankfurt-2025",
+        "totalTime": "7:25:57",
+        "paths": [
+          "src/data/results/2025/ironman/frankfurt.ts"
+        ],
+        "normalizedRuntimeResultId": 2399
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norways-kristian-blummenfelt-claims-ironman-pro-series-mens-title-following-series-race-finale-at-the2025-precision-fuel-hydration-ironman-70-3-world-championship-in-marbella-spain/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-germany/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "kristian-series25"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Final 2025 overall Pro Series championship; retrospectively confirms victory at 2025 Frankfurt European Championship.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 5,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-7:ironman-world-championship-nice-2025-men:M:position-1",
+      "athleteId": 7,
+      "athleteNameEn": "Casper Stornes",
+      "athleteNameRu": "Каспер Сторнс",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-nice-2025-men",
+        "totalTime": "7:51:39",
+        "paths": [
+          "src/data/results/2025/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2642
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/skol-norwegian-podium-sweep-as-casper-stornes-becomes-2025-ironman-world-champion-earning-his-title-on-debut-in-nice-france/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "im25m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2025: Stornes, Iden, Blummenfelt in that order; Stornes championship marathon best 2:29:25.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-25:ironman-world-championship-nice-2025-men:M:position-2",
+      "athleteId": 25,
+      "athleteNameEn": "Gustav Iden",
+      "athleteNameRu": "Густав Иден",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-nice-2025-men",
+        "totalTime": "7:54:13",
+        "paths": [
+          "src/data/results/2025/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2643
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/skol-norwegian-podium-sweep-as-casper-stornes-becomes-2025-ironman-world-champion-earning-his-title-on-debut-in-nice-france/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "im25m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2025: Stornes, Iden, Blummenfelt in that order; Stornes championship marathon best 2:29:25.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ironman-world-championship-nice-2025-men:M:position-3",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-nice-2025-men",
+        "totalTime": "7:56:36",
+        "paths": [
+          "src/data/results/2025/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2644
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/skol-norwegian-podium-sweep-as-casper-stornes-becomes-2025-ironman-world-champion-earning-his-title-on-debut-in-nice-france/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/ironman-nice-world-championships/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "im25m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2025: Stornes, Iden, Blummenfelt in that order; Stornes championship marathon best 2:29:25.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-106:ironman-world-championship-kona-2025-women:W:position-1",
+      "athleteId": 106,
+      "athleteNameEn": "Solveig Løvseth",
+      "athleteNameRu": "Сольвейг Ловсет",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2025-women",
+        "totalTime": "8:28:27",
+        "paths": [
+          "src/data/results/2025/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 2686
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "im25w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-108:ironman-world-championship-kona-2025-women:W:position-2",
+      "athleteId": 108,
+      "athleteNameEn": "Kat Matthews",
+      "athleteNameRu": "Кэт Мэтьюс",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2025-women",
+        "totalTime": "8:29:02",
+        "paths": [
+          "src/data/results/2025/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 2687
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "im25w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-109:ironman-world-championship-kona-2025-women:W:position-3",
+      "athleteId": 109,
+      "athleteNameEn": "Laura Philipp",
+      "athleteNameRu": "Лаура Филипп",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2025-women",
+        "totalTime": "8:37:28",
+        "paths": [
+          "src/data/results/2025/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 2688
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norway-strikes-again-solveig-lovseth-nor-is-victorious-on-debut-at-the-2025-ironman-world-championship-in-kona-hawaii/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "im25w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Kona 2025: Lovseth, Matthews, Philipp; Matthews run-course best 2:47:23. Retrospective explicitly lists Charles-Barclay silver in 2017, 2018, 2019, 2022.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-103:ironman-70-3-world-championship-marbella-2025-women:W:position-1",
+      "athleteId": 103,
+      "athleteNameEn": "Lucy Charles-Barclay",
+      "athleteNameRu": "Люси Чарльз",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN 70.3 World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-marbella-2025-women",
+        "totalTime": "4:14:54",
+        "paths": [
+          "src/data/results/2025/ironman/marbella-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2740
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/redemption-great-britains-lucy-charles-barclay-claims-victory-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-in-marbella-spain/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "70325w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Marbella 2025: Charles-Barclay first, Knibb second; Matthews overall Pro Series champion, distinct from her DNF in this race.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ironman-70-3-world-championship-marbella-2025-women:W:position-2",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN 70.3 World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-marbella-2025-women",
+        "totalTime": "4:17:55",
+        "paths": [
+          "src/data/results/2025/ironman/marbella-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2741
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/redemption-great-britains-lucy-charles-barclay-claims-victory-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-in-marbella-spain/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "70325w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Marbella 2025: Charles-Barclay first, Knibb second; Matthews overall Pro Series champion, distinct from her DNF in this race.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-6:ironman-70-3-world-championship-marbella-2025-men:M:position-1",
+      "athleteId": 6,
+      "athleteNameEn": "Jelle Geens",
+      "athleteNameRu": "Йелле Гинс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN 70.3 World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-marbella-2025-men",
+        "totalTime": "3:42:52",
+        "paths": [
+          "src/data/results/2025/ironman/marbella-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2789
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/a-race-for-the-ages-jelle-geens-of-belgium-secures-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-title-in-footrace-to-the-finish/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "70325m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Marbella 2025 podium: Geens, Blummenfelt, Stornes.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ironman-70-3-world-championship-marbella-2025-men:M:position-2",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN 70.3 World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-marbella-2025-men",
+        "totalTime": "3:42:55",
+        "paths": [
+          "src/data/results/2025/ironman/marbella-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2790
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/a-race-for-the-ages-jelle-geens-of-belgium-secures-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-title-in-footrace-to-the-finish/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "70325m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Marbella 2025 podium: Geens, Blummenfelt, Stornes.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-7:ironman-70-3-world-championship-marbella-2025-men:M:position-3",
+      "athleteId": 7,
+      "athleteNameEn": "Casper Stornes",
+      "athleteNameRu": "Каспер Сторнс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN 70.3 World Championship, 2025.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-marbella-2025-men",
+        "totalTime": "3:43:52",
+        "paths": [
+          "src/data/results/2025/ironman/marbella-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 2791
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/a-race-for-the-ages-jelle-geens-of-belgium-secures-2025-precision-fuel-hydration-ironman-70-3-world-championship-triathlon-title-in-footrace-to-the-finish/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2025/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/news/ironman-pro-series-returns-2025-seven-new-host-venues",
+      "sourceIds": [
+        "70325m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Marbella 2025 podium: Geens, Blummenfelt, Stornes.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-109:challenge-roth-2025:W:position-1",
+      "athleteId": 109,
+      "athleteNameEn": "Laura Philipp",
+      "athleteNameRu": "Лаура Филипп",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — Challenge Roth, 2025.",
+      "localEvidence": {
+        "editionId": "challenge-roth-2025",
+        "totalTime": "8:18:18",
+        "paths": [
+          "src/data/results/2025/challenge/roth.ts"
+        ],
+        "normalizedRuntimeResultId": 3204
+      },
+      "officialSourceUrls": [
+        "https://challengefamily.com/news/when-world-champions-finally-become-roth-winners/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/challenge-roth/2025/results",
+      "editionMetadataSourceUrl": "https://stats.protriathletes.org/race/challenge-roth/2025/results",
+      "sourceIds": [
+        "roth25"
+      ],
+      "evidenceExplanation": "Organizer report identifies Laura Philipp and Sam Laidlow as 2025 Roth winners. Also explicitly confirms Hanson Roth marathon course record 2:28:03.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 4,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10521:challenge-roth-2025:M:position-1",
+      "athleteId": 10521,
+      "athleteNameEn": "Sam Laidlow",
+      "athleteNameRu": "Сэм Лэйдлоу",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — Challenge Roth, 2025.",
+      "localEvidence": {
+        "editionId": "challenge-roth-2025",
+        "totalTime": "7:29:35",
+        "paths": [
+          "src/data/results/2025/challenge/roth.ts"
+        ],
+        "normalizedRuntimeResultId": 3226
+      },
+      "officialSourceUrls": [
+        "https://challengefamily.com/news/when-world-champions-finally-become-roth-winners/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/challenge-roth/2025/results",
+      "editionMetadataSourceUrl": "https://stats.protriathletes.org/race/challenge-roth/2025/results",
+      "sourceIds": [
+        "roth25"
+      ],
+      "evidenceExplanation": "Organizer report identifies Laura Philipp and Sam Laidlow as 2025 Roth winners. Also explicitly confirms Hanson Roth marathon course record 2:28:03.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 4,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10521:challenge-roth-2026:M:position-1",
+      "athleteId": 10521,
+      "athleteNameEn": "Sam Laidlow",
+      "athleteNameRu": "Сэм Лэйдлоу",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — Challenge Roth, 2026.",
+      "localEvidence": {
+        "editionId": "challenge-roth-2026",
+        "totalTime": "7:21:04",
+        "paths": [
+          "src/data/results/2026/challenge/roth.ts"
+        ],
+        "normalizedRuntimeResultId": 4332
+      },
+      "officialSourceUrls": [
+        "https://challengefamily.com/news/world-record-holder-sam-laidlow-confirms-start-at-challenge-samarkand/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/challenge-roth/2026/results",
+      "editionMetadataSourceUrl": "https://stats.protriathletes.org/race/challenge-roth/2026/results",
+      "sourceIds": [
+        "roth26-laidlow"
+      ],
+      "evidenceExplanation": "Challenge Family dated 27 July 2026 explicitly confirms Laidlow defended Roth title and reported long-distance world best 7:21:04. Historical organizer claim, not universal ratification.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 4,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ironman-70-3-world-championship-2026-women:W:position-1",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN 70.3 World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-2026-women",
+        "totalTime": "4:19:24",
+        "paths": [
+          "src/data/results/2026/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 4368
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/taylor-knibb-becomes-a-four-time-ironman-70-3-world-champion-at-the-2026-precision-fuel-hydration-ironman-70-3-world-championship/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im703-world-championship-women",
+      "sourceIds": [
+        "70326w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Knibb 4:19:24, Derron 4:23:30, Siffert 4:25:10.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-102:ironman-70-3-world-championship-2026-women:W:position-2",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "athleteNameRu": "Жюли Деррон",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN 70.3 World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-2026-women",
+        "totalTime": "4:23:30",
+        "paths": [
+          "src/data/results/2026/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 4369
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/taylor-knibb-becomes-a-four-time-ironman-70-3-world-champion-at-the-2026-precision-fuel-hydration-ironman-70-3-world-championship/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im703-world-championship-women",
+      "sourceIds": [
+        "70326w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Knibb 4:19:24, Derron 4:23:30, Siffert 4:25:10.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-111:ironman-70-3-world-championship-2026-women:W:position-3",
+      "athleteId": 111,
+      "athleteNameEn": "Alanis Siffert",
+      "athleteNameRu": "Аланис Сифферт",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 3,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN 70.3 World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-2026-women",
+        "totalTime": "4:25:10",
+        "paths": [
+          "src/data/results/2026/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 4370
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/taylor-knibb-becomes-a-four-time-ironman-70-3-world-champion-at-the-2026-precision-fuel-hydration-ironman-70-3-world-championship/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im703-world-championship-women",
+      "sourceIds": [
+        "70326w"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Knibb 4:19:24, Derron 4:23:30, Siffert 4:25:10.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-3:ironman-70-3-world-championship-2026-men:M:position-1",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "athleteNameRu": "Хайден Уайлд",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN 70.3 World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-2026-men",
+        "totalTime": "3:50:51",
+        "paths": [
+          "src/data/results/2026/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 4418
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/new-zealands-hayden-wilde-crowned-2026-precision-fuel-hydration-ironman-70-3-world-champion/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im703-world-championship-women",
+      "sourceIds": [
+        "70326m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Wilde, Blummenfelt, Geens.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation.",
+        "Local sourceUrl points to women; event-wide PTO date and local men date have different scope. Do not copy a gender-specific date without checking."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-1:ironman-70-3-world-championship-2026-men:M:position-2",
+      "athleteId": 1,
+      "athleteNameEn": "Kristian Blummenfelt",
+      "athleteNameRu": "Кристиан Блюмменфельт",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 2,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN 70.3 World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-2026-men",
+        "totalTime": "3:51:09",
+        "paths": [
+          "src/data/results/2026/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 4419
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/new-zealands-hayden-wilde-crowned-2026-precision-fuel-hydration-ironman-70-3-world-champion/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im703-world-championship-women",
+      "sourceIds": [
+        "70326m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Wilde, Blummenfelt, Geens.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation.",
+        "Local sourceUrl points to women; event-wide PTO date and local men date have different scope. Do not copy a gender-specific date without checking."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-6:ironman-70-3-world-championship-2026-men:M:position-3",
+      "athleteId": 6,
+      "athleteNameEn": "Jelle Geens",
+      "athleteNameRu": "Йелле Гинс",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 3,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN 70.3 World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-70-3-world-championship-2026-men",
+        "totalTime": "3:52:40",
+        "paths": [
+          "src/data/results/2026/ironman/nice-world-championship.ts"
+        ],
+        "normalizedRuntimeResultId": 4420
+      },
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/new-zealands-hayden-wilde-crowned-2026-precision-fuel-hydration-ironman-70-3-world-champion/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-703-world-championship/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im703-world-championship-women",
+      "sourceIds": [
+        "70326m"
+      ],
+      "evidenceExplanation": "The IRONMAN Group distributed organizer release: Nice 2026 podium: Wilde, Blummenfelt, Geens.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation.",
+        "Local sourceUrl points to women; event-wide PTO date and local men date have different scope. Do not copy a gender-specific date without checking."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-104:ironman-world-championship-kona-2026:W:position-1",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2026",
+        "totalTime": "8:36:29",
+        "paths": [
+          "src/data/results/2026/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 4494
+      },
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im-world-championship-kona",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-109:ironman-world-championship-kona-2026:W:position-2",
+      "athleteId": 109,
+      "athleteNameEn": "Laura Philipp",
+      "athleteNameRu": "Лаура Филипп",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2026",
+        "totalTime": "8:39:34",
+        "paths": [
+          "src/data/results/2026/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 4495
+      },
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im-world-championship-kona",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-102:ironman-world-championship-kona-2026:W:position-3",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "athleteNameRu": "Жюли Деррон",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 3,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2026",
+        "totalTime": "8:46:25",
+        "paths": [
+          "src/data/results/2026/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 4496
+      },
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im-world-championship-kona",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-41:ironman-world-championship-kona-2026:M:position-1",
+      "athleteId": 41,
+      "athleteNameEn": "Vincent Luis",
+      "athleteNameRu": "Венсан Луис",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 1,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "1-е место — IRONMAN World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2026",
+        "totalTime": "7:47:27",
+        "paths": [
+          "src/data/results/2026/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 4541
+      },
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im-world-championship-kona",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-25:ironman-world-championship-kona-2026:M:position-2",
+      "athleteId": 25,
+      "athleteNameEn": "Gustav Iden",
+      "athleteNameRu": "Густав Иден",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 2,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "2-е место — IRONMAN World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2026",
+        "totalTime": "7:49:03",
+        "paths": [
+          "src/data/results/2026/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 4542
+      },
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im-world-championship-kona",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-20:ironman-world-championship-kona-2026:M:position-3",
+      "athleteId": 20,
+      "athleteNameEn": "Matthew Marquardt",
+      "athleteNameRu": "Мэттью Марквардт",
+      "category": 2,
+      "competitionName": "IRONMAN World Championship",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 3,
+      "gender": "M",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "suggestedDisplayRu": "3-е место — IRONMAN World Championship, 2026.",
+      "localEvidence": {
+        "editionId": "ironman-world-championship-kona-2026",
+        "totalTime": "7:49:59",
+        "paths": [
+          "src/data/results/2026/ironman/kona.ts"
+        ],
+        "normalizedRuntimeResultId": 4543
+      },
+      "officialSourceUrls": [
+        "https://www.fftri.com/actualite/championnat-du-monde-ironman-kona-vincent-luis-est-vraiment-phenomenal/"
+      ],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/im-hawaii/2026/results",
+      "editionMetadataSourceUrl": "https://www.ironman.com/proseries/races/im-world-championship-kona",
+      "sourceIds": [
+        "fftri-kona26"
+      ],
+      "evidenceExplanation": "French federation final results: men Luis, Iden, Marquardt; women Knibb, Philipp, Derron. Also identifies Laidlow as 2023 champion.",
+      "ath04aLimitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ownerCategoryReviewRequired": false,
+      "historicalCategory": 2,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-10736:ath04b:pallant17im:2017",
+      "athleteId": 10736,
+      "athleteNameEn": "Emma Pallant-Browne",
+      "athleteNameRu": "Эмма Паллант-Браун",
+      "category": 3,
+      "competitionName": "IRONMAN 70.3 World Championship",
+      "eventYear": 2017,
+      "season": 2017,
+      "position": 2,
+      "gender": "W",
+      "kind": "race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "Серебряный призёр чемпионата мира IRONMAN 70.3 — 2017.",
+      "sourceIds": [
+        "pallant17im"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/pro-start-lists-unveiled-top-triathletes-head-to-st-george-utah-for-the-2022-intermountain-healthcare-ironman-70-3-world-championship-presented-by-utah-sports-commission/"
+      ],
+      "evidenceExplanation": "Organizer 2022 start-list release explicitly identifies Pallant-Browne as 2017 world runner-up.",
+      "historicalCategory": 3,
+      "evidenceOrigin": "ATH-04B"
+    },
+    {
+      "achievementKey": "ath-7:ironman-pro-series:2025:overall",
+      "athleteId": 7,
+      "athleteNameEn": "Casper Stornes",
+      "athleteNameRu": "Каспер Сторнс",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall season",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "M",
+      "kind": "season-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место в общем зачёте IRONMAN Pro Series — 2025.",
+      "sourceIds": [
+        "kristian-series25"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norways-kristian-blummenfelt-claims-ironman-pro-series-mens-title-following-series-race-finale-at-the2025-precision-fuel-hydration-ironman-70-3-world-championship-in-marbella-spain/"
+      ],
+      "evidenceExplanation": "Organizer final-season release explicitly identifies this overall placing; not a finish in the Marbella race.",
+      "evidenceOrigin": "ATH-04C retained official release review"
+    },
+    {
+      "achievementKey": "ath-35:ironman-pro-series:2025:overall",
+      "athleteId": 35,
+      "athleteNameEn": "Kristian Høgenhaug",
+      "athleteNameRu": "Кристиан Хогенхауг",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall season",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "M",
+      "kind": "season-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место в общем зачёте IRONMAN Pro Series — 2025.",
+      "sourceIds": [
+        "kristian-series25"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/norways-kristian-blummenfelt-claims-ironman-pro-series-mens-title-following-series-race-finale-at-the2025-precision-fuel-hydration-ironman-70-3-world-championship-in-marbella-spain/"
+      ],
+      "evidenceExplanation": "Organizer final-season release explicitly identifies this overall placing; not a finish in the Marbella race.",
+      "evidenceOrigin": "ATH-04C retained official release review"
+    },
+    {
+      "achievementKey": "ath-106:ironman-pro-series:2025:overall",
+      "athleteId": 106,
+      "athleteNameEn": "Solveig Løvseth",
+      "athleteNameRu": "Сольвейг Ловсет",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall season",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "W",
+      "kind": "season-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место в общем зачёте IRONMAN Pro Series — 2025.",
+      "sourceIds": [
+        "ath04c-series25-women"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/kat-matthews-of-great-britain-is-crowned-2025-ironman-pro-series-winner-for-the-second-straight-year-following-race-finale-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-in-mar/"
+      ],
+      "evidenceExplanation": "Organizer final-season release explicitly identifies this overall placing; not a finish in the Marbella race.",
+      "evidenceOrigin": "ATH-04C retained official release review"
+    },
+    {
+      "achievementKey": "ath-119:ironman-pro-series:2025:overall",
+      "athleteId": 119,
+      "athleteNameEn": "Lisa Perterer",
+      "athleteNameRu": "Лиза Пертерер",
+      "category": 7,
+      "competitionName": "IRONMAN Pro Series — overall season",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "W",
+      "kind": "season-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место в общем зачёте IRONMAN Pro Series — 2025.",
+      "sourceIds": [
+        "ath04c-series25-women"
+      ],
+      "officialSourceUrls": [
+        "https://www.endurancesportswire.com/kat-matthews-of-great-britain-is-crowned-2025-ironman-pro-series-winner-for-the-second-straight-year-following-race-finale-at-the-2025-precision-fuel-hydration-ironman-70-3-world-championship-in-mar/"
+      ],
+      "evidenceExplanation": "Organizer final-season release explicitly identifies this overall placing; not a finish in the Marbella race.",
+      "evidenceOrigin": "ATH-04C retained official release review"
+    },
+    {
+      "achievementKey": "ath-104:t100:2024:dubai:final",
+      "athleteId": 104,
+      "athleteNameEn": "Taylor Knibb",
+      "athleteNameRu": "Тейлор Книбб",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Dubai",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "W",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место в финале T100 — Дубай, 2024.",
+      "sourceIds": [
+        "ath04c-dubai-final"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2024/t100/dubai.ts",
+        "sha256": "17f3d76b67b95cb432e8931688480904a84c51d85ec65abc69f1a85673f06a48",
+        "gender": "W",
+        "position": 1,
+        "season": 2024
+      },
+      "hostCity": "Dubai",
+      "finalDesignationEvidence": "ath04c-dubai-final",
+      "evidenceExplanation": "Official event designation/year/city combined with exact canonical-name local result podium. Race placing is not inferred from season standing.",
+      "evidenceOrigin": "ATH-04C official report and verified repository results"
+    },
+    {
+      "achievementKey": "ath-102:t100:2024:dubai:final",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "athleteNameRu": "Жюли Деррон",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Dubai",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "gender": "W",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место в финале T100 — Дубай, 2024.",
+      "sourceIds": [
+        "ath04c-dubai-final"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2024/t100/dubai.ts",
+        "sha256": "17f3d76b67b95cb432e8931688480904a84c51d85ec65abc69f1a85673f06a48",
+        "gender": "W",
+        "position": 2,
+        "season": 2024
+      },
+      "hostCity": "Dubai",
+      "finalDesignationEvidence": "ath04c-dubai-final",
+      "evidenceExplanation": "Official event designation/year/city combined with exact canonical-name local result podium. Race placing is not inferred from season standing.",
+      "evidenceOrigin": "ATH-04C official report and verified repository results"
+    },
+    {
+      "achievementKey": "ath-147:t100:2024:dubai:final",
+      "athleteId": 147,
+      "athleteNameEn": "Ashleigh Gentle",
+      "athleteNameRu": "Эшли Джентл",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Dubai",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "gender": "W",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место в финале T100 — Дубай, 2024.",
+      "sourceIds": [
+        "ath04c-dubai-final"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2024/t100/dubai.ts",
+        "sha256": "17f3d76b67b95cb432e8931688480904a84c51d85ec65abc69f1a85673f06a48",
+        "gender": "W",
+        "position": 3,
+        "season": 2024
+      },
+      "hostCity": "Dubai",
+      "finalDesignationEvidence": "ath04c-dubai-final",
+      "evidenceExplanation": "Official event designation/year/city combined with exact canonical-name local result podium. Race placing is not inferred from season standing.",
+      "evidenceOrigin": "ATH-04C official report and verified repository results"
+    },
+    {
+      "achievementKey": "ath-2:t100:2024:dubai:final",
+      "athleteId": 2,
+      "athleteNameEn": "Marten Van Riel",
+      "athleteNameRu": "Мартен ван Рил",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Dubai",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 1,
+      "gender": "M",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место в финале T100 — Дубай, 2024.",
+      "sourceIds": [
+        "ath04c-dubai-final"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2024/t100/dubai.ts",
+        "sha256": "17f3d76b67b95cb432e8931688480904a84c51d85ec65abc69f1a85673f06a48",
+        "gender": "M",
+        "position": 1,
+        "season": 2024
+      },
+      "hostCity": "Dubai",
+      "finalDesignationEvidence": "ath04c-dubai-final",
+      "evidenceExplanation": "Official event designation/year/city combined with exact canonical-name local result podium. Race placing is not inferred from season standing.",
+      "evidenceOrigin": "ATH-04C official report and verified repository results"
+    },
+    {
+      "achievementKey": "ath-5:t100:2024:dubai:final",
+      "athleteId": 5,
+      "athleteNameEn": "Rico Bogen",
+      "athleteNameRu": "Рико Боген",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Dubai",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 2,
+      "gender": "M",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место в финале T100 — Дубай, 2024.",
+      "sourceIds": [
+        "ath04c-dubai-final"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2024/t100/dubai.ts",
+        "sha256": "17f3d76b67b95cb432e8931688480904a84c51d85ec65abc69f1a85673f06a48",
+        "gender": "M",
+        "position": 2,
+        "season": 2024
+      },
+      "hostCity": "Dubai",
+      "finalDesignationEvidence": "ath04c-dubai-final",
+      "evidenceExplanation": "Official event designation/year/city combined with exact canonical-name local result podium. Race placing is not inferred from season standing.",
+      "evidenceOrigin": "ATH-04C official report and verified repository results"
+    },
+    {
+      "achievementKey": "ath-5:t100:2024:overall",
+      "athleteId": 5,
+      "athleteNameEn": "Rico Bogen",
+      "athleteNameRu": "Рико Боген",
+      "category": 6,
+      "competitionName": "T100 Triathlon World Tour — overall season",
+      "eventYear": 2024,
+      "season": 2024,
+      "position": 3,
+      "gender": "M",
+      "kind": "season-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место в общем зачёте T100 — 2024.",
+      "sourceIds": [
+        "ath04c-dubai-final"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/news/van-riel-supreme-in-dubai-to-win-first-t100-triathlon-world-championship-crown"
+      ],
+      "evidenceExplanation": "Official report explicitly says third overall, versus second in Dubai race."
+    },
+    {
+      "achievementKey": "ath-105:t100:2025:qatar:final",
+      "athleteId": 105,
+      "athleteNameEn": "Georgia Taylor-Brown",
+      "athleteNameRu": "Джорджия Тейлор-Браун",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Lusail",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "W",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место в финале T100 — Лусаил, Катар, 2025.",
+      "sourceIds": [
+        "ath04c-qatar-final",
+        "ath04c-qatar-organizer"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+        "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2025/t100/qatar.ts",
+        "sha256": "3eb3825f30d15080f666004099fe9fe17642a7cba3c792ec81113f61f92fbfa4",
+        "gender": "W",
+        "position": 2,
+        "season": 2025
+      },
+      "hostCity": "Lusail",
+      "finalDesignationEvidence": "ath04c-qatar-final",
+      "evidenceExplanation": "Official dated event report establishes final/year/city; local canonical-name finish rows establish podium, distinct from overall standings. Organizer metadata conflict retained."
+    },
+    {
+      "achievementKey": "ath-102:t100:2025:qatar:final",
+      "athleteId": 102,
+      "athleteNameEn": "Julie Derron",
+      "athleteNameRu": "Жюли Деррон",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Lusail",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "W",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место в финале T100 — Лусаил, Катар, 2025.",
+      "sourceIds": [
+        "ath04c-qatar-final",
+        "ath04c-qatar-organizer"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+        "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2025/t100/qatar.ts",
+        "sha256": "3eb3825f30d15080f666004099fe9fe17642a7cba3c792ec81113f61f92fbfa4",
+        "gender": "W",
+        "position": 3,
+        "season": 2025
+      },
+      "hostCity": "Lusail",
+      "finalDesignationEvidence": "ath04c-qatar-final",
+      "evidenceExplanation": "Official dated event report establishes final/year/city; local canonical-name finish rows establish podium, distinct from overall standings. Organizer metadata conflict retained."
+    },
+    {
+      "achievementKey": "ath-3:t100:2025:qatar:final",
+      "athleteId": 3,
+      "athleteNameEn": "Hayden Wilde",
+      "athleteNameRu": "Хайден Уайлд",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Lusail",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 1,
+      "gender": "M",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "1-е место в финале T100 — Лусаил, Катар, 2025.",
+      "sourceIds": [
+        "ath04c-qatar-final",
+        "ath04c-qatar-organizer"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+        "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2025/t100/qatar.ts",
+        "sha256": "3eb3825f30d15080f666004099fe9fe17642a7cba3c792ec81113f61f92fbfa4",
+        "gender": "M",
+        "position": 1,
+        "season": 2025
+      },
+      "hostCity": "Lusail",
+      "finalDesignationEvidence": "ath04c-qatar-final",
+      "evidenceExplanation": "Official dated event report establishes final/year/city; local canonical-name finish rows establish podium, distinct from overall standings. Organizer metadata conflict retained."
+    },
+    {
+      "achievementKey": "ath-15:t100:2025:qatar:final",
+      "athleteId": 15,
+      "athleteNameEn": "Morgan Pearson",
+      "athleteNameRu": "Морган Пирсон",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Lusail",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 2,
+      "gender": "M",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "2-е место в финале T100 — Лусаил, Катар, 2025.",
+      "sourceIds": [
+        "ath04c-qatar-final",
+        "ath04c-qatar-organizer"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+        "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2025/t100/qatar.ts",
+        "sha256": "3eb3825f30d15080f666004099fe9fe17642a7cba3c792ec81113f61f92fbfa4",
+        "gender": "M",
+        "position": 2,
+        "season": 2025
+      },
+      "hostCity": "Lusail",
+      "finalDesignationEvidence": "ath04c-qatar-final",
+      "evidenceExplanation": "Official dated event report establishes final/year/city; local canonical-name finish rows establish podium, distinct from overall standings. Organizer metadata conflict retained."
+    },
+    {
+      "achievementKey": "ath-2:t100:2025:qatar:final",
+      "athleteId": 2,
+      "athleteNameEn": "Marten Van Riel",
+      "athleteNameRu": "Мартен ван Рил",
+      "category": 8,
+      "competitionName": "T100 Triathlon World Championship Final — Lusail",
+      "eventYear": 2025,
+      "season": 2025,
+      "position": 3,
+      "gender": "M",
+      "kind": "season-final-race-podium",
+      "verificationStatus": "VERIFIED_OFFICIAL",
+      "ownerCategoryReviewRequired": false,
+      "suggestedDisplayRu": "3-е место в финале T100 — Лусаил, Катар, 2025.",
+      "sourceIds": [
+        "ath04c-qatar-final",
+        "ath04c-qatar-organizer"
+      ],
+      "officialSourceUrls": [
+        "https://triathlon.org/es/news/dominant-hayden-wilde-scores-first-world-title-with-t100-win-in-qatar",
+        "https://t100triathlon.com/media-releases/wilde-wins-big-in-qatar-securing-the-t100-triathlon-world-title-by-winning-the-qatar-championship-final/"
+      ],
+      "localResultEvidence": {
+        "path": "src/data/results/2025/t100/qatar.ts",
+        "sha256": "3eb3825f30d15080f666004099fe9fe17642a7cba3c792ec81113f61f92fbfa4",
+        "gender": "M",
+        "position": 3,
+        "season": 2025
+      },
+      "hostCity": "Lusail",
+      "finalDesignationEvidence": "ath04c-qatar-final",
+      "evidenceExplanation": "Official dated event report establishes final/year/city; local canonical-name finish rows establish podium, distinct from overall standings. Organizer metadata conflict retained."
+    },
+    {
+      "achievementKey": "ath-111:challenge-roth-2026:W:position-1",
+      "athleteId": 111,
+      "athleteNameEn": "Alanis Siffert",
+      "athleteNameRu": "Аланис Сифферт",
+      "category": 4,
+      "competitionName": "Challenge Roth",
+      "eventYear": 2026,
+      "season": 2026,
+      "position": 1,
+      "gender": "W",
+      "kind": "race-win",
+      "verificationStatus": "VERIFIED_EXISTING_RESULT",
+      "suggestedDisplayRu": "1-е место — Challenge Roth, 2026.",
+      "localEvidence": {
+        "editionId": "challenge-roth-2026",
+        "totalTime": "8:09:09",
+        "paths": [
+          "src/data/results/2026/challenge/roth.ts"
+        ],
+        "normalizedRuntimeResultId": 4312
+      },
+      "officialSourceUrls": [],
+      "crossCheckUrl": "https://stats.protriathletes.org/race/challenge-roth/2026/results",
+      "editionMetadataSourceUrl": "https://stats.protriathletes.org/race/challenge-roth/2026/results",
+      "limitations": [
+        "Edition metadata source URL is not assumed to prove the finish or championship designation."
+      ],
+      "ath04bReview": {
+        "url": "https://www.sportschau.de/regional/br/br-schweizerin-siffert-ueberrascht-beim-challenge-roth-2026-102.html",
+        "finding": "BR on-site report and PTO results confirm Roth victory. Direct organizer finish evidence not obtained; do not elevate pre-race organizer preview to result evidence."
+      },
+      "ownerCategoryReviewRequired": false,
+      "sourceIds": [
+        "ath04c-roth26-local"
+      ],
+      "sourceUrls": [
+        "https://stats.protriathletes.org/race/challenge-roth/2026/results"
+      ],
+      "evidenceExplanation": "Final v1 explicitly permits existing verified TRI App results for race finishes. Exact Siffert canonical name, W, position 1, Roth edition 2026; no championship or record inference. Organizer corroboration not claimed.",
+      "localResultEvidence": {
+        "path": "src/data/results/2026/challenge/roth.ts",
+        "sha256": "792d9b3149faf46501ec15660ba9cb94580fa0311de93fec79a04e718b187267",
+        "gender": "W",
+        "position": 1,
+        "season": 2026
+      }
+    }
+  ]
+}

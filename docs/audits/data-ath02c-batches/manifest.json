@@ -1,0 +1,11 @@
+{
+  "policy": "DATA-ATH-02C",
+  "source_sha256": "ab95f80cd4af9fa3ce0dae971c6563acb15f7b672ef0c9104631263021f47eea",
+  "ordering": "athlete_id ascending",
+  "batches": {
+    "batch-001.csv": 115,
+    "batch-002.csv": 115
+  },
+  "approval": "PENDING_OWNER_REVIEW",
+  "translations_generated": false
+}

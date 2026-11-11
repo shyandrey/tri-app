@@ -1,0 +1,46 @@
+[
+  {
+    "suite": "official-rankings",
+    "code": 0
+  },
+  {
+    "suite": "rankings-controls",
+    "code": 0
+  },
+  {
+    "suite": "rankings-swipe",
+    "code": 0
+  },
+  {
+    "suite": "rankings-showcase",
+    "code": 0
+  },
+  {
+    "suite": "navigation",
+    "code": 0
+  },
+  {
+    "suite": "calendar",
+    "code": 0
+  },
+  {
+    "suite": "more",
+    "code": 0
+  },
+  {
+    "suite": "rankings-startup",
+    "code": 0
+  },
+  {
+    "suite": "athlete-results-polish",
+    "code": 0
+  },
+  {
+    "suite": "approved-biographies",
+    "code": 0
+  },
+  {
+    "suite": "release-browser-gate",
+    "code": 1
+  }
+]

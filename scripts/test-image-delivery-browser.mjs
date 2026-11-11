@@ -14,17 +14,20 @@ const start=async hash=>{images.length=0;await send('Page.navigate',{url:base+'/
 const geometry=()=>js(`({height:document.documentElement.scrollHeight,cards:[...document.querySelectorAll('.athlete-card')].map(e=>{const r=e.getBoundingClientRect();return [r.width,r.height,r.top]})})`)
 await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true})
 await send('Fetch.enable',{patterns:[{urlPattern:'*-180-*.webp'},{urlPattern:'*-396-*.webp'}]})
-const fixture=await send('Page.addScriptToEvaluateOnNewDocument',{source:`Math.random=()=>0.99;const interval=window.setInterval;window.setInterval=(fn,ms,...a)=>ms===4000?(window.carouselTick=fn,0):interval(fn,ms,...a)`})
+const fixture=await send('Page.addScriptToEvaluateOnNewDocument',{source:`(()=>{const RealDate=Date;globalThis.Date=class extends RealDate{constructor(...args){super(...(args.length?args:["2026-10-02T09:00:00Z"]))}static now(){return RealDate.parse("2026-10-02T09:00:00Z")}}})();Math.random=()=>0.99;const interval=window.setInterval;window.setInterval=(fn,ms,...a)=>ms===4000?(window.carouselTick=fn,0):interval(fn,ms,...a)`})
 try{
  for(const [width,height,dpr]of [[390,844,3],[440,844,3],[844,390,2],[1440,900,2]]){
   await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:dpr,mobile:width<1000})
   await start('#/home');await wait(900)
+  assert.equal(await js('new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Moscow",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())'),'2026-10-02')
+  const cardCount=await js('document.querySelectorAll(".showcase-card").length')
+  assert.ok(cardCount>=4,'Pinned existing-season fixture must retain at least four carousel cards')
   assert.equal(await js('document.querySelectorAll(".showcase-card__image").length'),2)
   assert.equal(images.filter(u=>/-(640|1280|1672)-.*\.webp/.test(u)).length,2)
   assert.ok(await js('[...document.querySelectorAll(".showcase-card__image")].every(i=>i.complete&&i.naturalWidth>0)'))
   await js('window.carouselTick()');await wait(800)
   assert.equal(await js('document.querySelectorAll(".home-showcase__hint span")[1].className'),'is-active')
-  for(const index of [3,0,2,1]){
+  for(const index of [3,0,2,1,...Array.from({length:cardCount-4},(_,i)=>i+4)]){
    await js(`(()=>{const t=document.querySelector('.home-showcase__track'),c=document.querySelectorAll('.showcase-card')[${index}];t.scrollTo({left:c.offsetLeft-(t.clientWidth-c.clientWidth)/2,behavior:'instant'})})()`)
    await until(`(()=>{const i=document.querySelectorAll('.showcase-card')[${index}].querySelector('img');return i?.complete&&i.naturalWidth>0})()`)
   }

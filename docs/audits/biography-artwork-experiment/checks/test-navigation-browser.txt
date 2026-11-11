@@ -1,0 +1,9 @@
+PASS A: list scroll
+PASS B/C/D: filters, expanded years, nested Back, scroll
+PASS H: browser Back/Forward
+calendar toggles [ '2025›', '2024›' ]
+PASS E: calendar archive/filter/scroll
+PASS F: home scroll and browser Back
+PASS G: direct race and refresh fallback
+PASS stale Top route falls back to Home
+PASS race results sort and scroll

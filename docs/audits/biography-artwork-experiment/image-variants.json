@@ -1,0 +1,50 @@
+[
+  {
+    "series": "ironman",
+    "source": "/Users/andrey.shubin/Projects/tri-app/public/images/showcase/rankings/ironman_04_transition.png",
+    "sourceSha": "2c6ebbcb745eeef4945d6bd02739f7216448efd745e660021ada3d9969ad90cc",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "webp",
+    "width": 1320,
+    "quality": 85,
+    "bytes": 175008,
+    "baselineBytes": 325420
+  },
+  {
+    "series": "ironman",
+    "source": "/Users/andrey.shubin/Projects/tri-app/public/images/showcase/rankings/ironman_04_transition.png",
+    "sourceSha": "2c6ebbcb745eeef4945d6bd02739f7216448efd745e660021ada3d9969ad90cc",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "avif",
+    "width": 1320,
+    "quality": 65,
+    "bytes": 114047,
+    "baselineBytes": 325420
+  },
+  {
+    "series": "t100",
+    "source": "/Users/andrey.shubin/Projects/tri-app/public/images/showcase/rankings/t100_04_transition.png",
+    "sourceSha": "878432af226e9d95ef2b0e9cc07e27083627cde5e4fcbacdf886369a4da9444c",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "webp",
+    "width": 1320,
+    "quality": 85,
+    "bytes": 235816,
+    "baselineBytes": 490150
+  },
+  {
+    "series": "t100",
+    "source": "/Users/andrey.shubin/Projects/tri-app/public/images/showcase/rankings/t100_04_transition.png",
+    "sourceSha": "878432af226e9d95ef2b0e9cc07e27083627cde5e4fcbacdf886369a4da9444c",
+    "sourceWidth": 1671,
+    "sourceHeight": 941,
+    "format": "avif",
+    "width": 1320,
+    "quality": 65,
+    "bytes": 163777,
+    "baselineBytes": 490150
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "task": "PERF-RELEASE-01",
+  "currentSource": "91e31f78c7a068d0138447aee528601768112352",
+  "baselineSource": "00a0488aa9b7c5af0719fcf50a87d9d72f9b681c",
+  "baselineBuildMetadata": "unknown (git archive; source SHA verified separately)",
+  "node": "24.19.0",
+  "chrome": "157.0.8103.50",
+  "sharp": "0.35.4",
+  "network": {
+    "latencyMs": 150,
+    "downBytesPerSecond": 200000,
+    "upBytesPerSecond": 93750
+  },
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "dpr": 3,
+    "cpuRate": 4
+  },
+  "desktop": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "cpuRate": 1
+  },
+  "packageLockSha256": "2ec672abc7ccb70de9e987059be57544f968775a07d81c3297fd435a18267268",
+  "liveNetwork": "none; localhost only; API stub 503",
+  "autoRotation": "Home unchanged",
+  "scene": "Math.random returns 0.99 in browser harness only",
+  "lcpWindowSeconds": 12,
+  "routeWindowSeconds": 14
+}

@@ -1,0 +1,234 @@
+{
+  "before": {
+    "mobile": {
+      "lcpMs": {
+        "median": 6052,
+        "min": 6040,
+        "max": 6076,
+        "n": 5
+      },
+      "tableVisibleMs": {
+        "median": 1658.199999988079,
+        "min": 1644.7999999821186,
+        "max": 1661.2000000178814,
+        "n": 5
+      },
+      "initialJsTransferBytes": {
+        "median": 188405,
+        "min": 188405,
+        "max": 188405,
+        "n": 5
+      },
+      "initialJsBodyBytes": {
+        "median": 187713,
+        "min": 187713,
+        "max": 187713,
+        "n": 5
+      },
+      "cls": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 5
+      },
+      "scriptDurationMs": {
+        "median": 88.316,
+        "min": 85.91600000000001,
+        "max": 89.685,
+        "n": 5
+      },
+      "longTaskExcessMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 5
+      }
+    },
+    "desktop": {
+      "lcpMs": {
+        "median": 5880,
+        "min": 5872,
+        "max": 5880,
+        "n": 3
+      },
+      "tableVisibleMs": {
+        "median": 1593.5999999940395,
+        "min": 1580.2999999821186,
+        "max": 1594.300000011921,
+        "n": 3
+      },
+      "initialJsTransferBytes": {
+        "median": 188405,
+        "min": 188405,
+        "max": 188405,
+        "n": 3
+      },
+      "initialJsBodyBytes": {
+        "median": 187713,
+        "min": 187713,
+        "max": 187713,
+        "n": 3
+      },
+      "cls": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 3
+      },
+      "scriptDurationMs": {
+        "median": 51.163,
+        "min": 41.378,
+        "max": 53.19,
+        "n": 3
+      },
+      "longTaskExcessMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 3
+      }
+    },
+    "tableUsableMs": {
+      "median": 2024.9000000059605,
+      "min": 2015.5,
+      "max": 2045.5,
+      "n": 5
+    },
+    "genderResponseMs": {
+      "median": 334.7999999821186,
+      "min": 324.09999999403954,
+      "max": 350.09999999403954,
+      "n": 5
+    },
+    "profile": {
+      "immediate": {
+        "median": 3919.5,
+        "min": 3910.9000000059605,
+        "max": 3926.5999999940395,
+        "n": 5
+      },
+      "delayed": {
+        "median": 1085.9000000059605,
+        "min": 1083.199999988079,
+        "max": 1109.0999999940395,
+        "n": 5
+      }
+    }
+  },
+  "after": {
+    "mobile": {
+      "lcpMs": {
+        "median": 6328,
+        "min": 6328,
+        "max": 6332,
+        "n": 5
+      },
+      "tableVisibleMs": {
+        "median": 1929.800000011921,
+        "min": 1925.9000000059605,
+        "max": 1936.199999988079,
+        "n": 5
+      },
+      "initialJsTransferBytes": {
+        "median": 243205,
+        "min": 243205,
+        "max": 243205,
+        "n": 5
+      },
+      "initialJsBodyBytes": {
+        "median": 242513,
+        "min": 242513,
+        "max": 242513,
+        "n": 5
+      },
+      "cls": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 5
+      },
+      "scriptDurationMs": {
+        "median": 87.525,
+        "min": 85.645,
+        "max": 90.751,
+        "n": 5
+      },
+      "longTaskExcessMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 5
+      }
+    },
+    "desktop": {
+      "lcpMs": {
+        "median": 6168,
+        "min": 6156,
+        "max": 6180,
+        "n": 3
+      },
+      "tableVisibleMs": {
+        "median": 1874.9000000059605,
+        "min": 1874.2999999821186,
+        "max": 1884.0999999940395,
+        "n": 3
+      },
+      "initialJsTransferBytes": {
+        "median": 243205,
+        "min": 243205,
+        "max": 243205,
+        "n": 3
+      },
+      "initialJsBodyBytes": {
+        "median": 242513,
+        "min": 242513,
+        "max": 242513,
+        "n": 3
+      },
+      "cls": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 3
+      },
+      "scriptDurationMs": {
+        "median": 52.706999999999994,
+        "min": 52.352000000000004,
+        "max": 52.738,
+        "n": 3
+      },
+      "longTaskExcessMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "n": 3
+      }
+    },
+    "tableUsableMs": {
+      "median": 2286.0999999940395,
+      "min": 2279.7000000178814,
+      "max": 2291.800000011921,
+      "n": 5
+    },
+    "genderResponseMs": {
+      "median": 350.30000001192093,
+      "min": 348.5,
+      "max": 352.80000001192093,
+      "n": 5
+    },
+    "profile": {
+      "immediate": {
+        "median": 3912.800000011921,
+        "min": 3911.0999999940395,
+        "max": 3918.699999988079,
+        "n": 5
+      },
+      "delayed": {
+        "median": 1087.300000011921,
+        "min": 1084.5999999940395,
+        "max": 1094.699999988079,
+        "n": 5
+      }
+    }
+  }
+}

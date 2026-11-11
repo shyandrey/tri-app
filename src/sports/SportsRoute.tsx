@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { sportsArea } from './loader'
+import { rankingsArea, sportsArea } from './loader'
 import type { Route } from '../navigation/history'
 import { fallback } from '../navigation/history'
 import { NavigationContext } from '../navigation/usePageState'
@@ -9,13 +9,14 @@ import './sports-loading.css'
 
 export default function SportsRoute({ route, navigate, back }: { route: Route; navigate: (route: Route) => void; back: () => void }) {
   const navigation = useContext(NavigationContext)
-  const [area, setArea] = useState(() => sportsArea.peek())
+  const resource = route.page === 'rankings' ? rankingsArea : sportsArea
+  const [area, setArea] = useState(() => resource.peek())
   const [failed, setFailed] = useState(false)
   useEffect(() => {
     let active = true
-    sportsArea.load().then(module => { if (active) setArea(module) }, () => { if (active) setFailed(true) })
+    resource.load().then(module => { if (active) setArea(module) }, () => { if (active) setFailed(true) })
     return () => { active = false }
-  }, [])
+  }, [resource])
   const invalid = area && ((route.page === 'athlete' && !area.hasAthlete(route.id))
     || (route.page === 'race' && !allRaceEditionViews.some(r => r.editionId === route.id)))
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function SportsRoute({ route, navigate, back }: { route: Route; n
     }
   }, [invalid, navigation, route])
   if (area && !invalid) return <area.default route={route} navigate={navigate} back={back} />
-  return <main className="app" data-route-pending="true">
+  return <main className="app" data-route-pending="true" data-rankings-pending={route.page === 'rankings' || undefined}>
     <button className="page-back-button" onClick={back}>← Назад</button>
     <section className="sports-loading" aria-labelledby="sports-loading-title">
       <h1 id="sports-loading-title">{route.page === 'rankings' ? 'Официальные рейтинги' : route.page === 'athletes' || route.page === 'athlete' ? 'Профили атлетов' : 'Результаты гонки'}</h1>

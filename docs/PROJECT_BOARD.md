@@ -1,14 +1,40 @@
 # 300W — Project Board
 
-Обновлено: 2026-10-25. Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-11-11 (REL-PREP-01 content freeze; older dated checkpoints retained). Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
 
 ## Current Focus
 
-ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-authorized PR/CI/Preview promotion, visual review after publication. DATA-ATH-02 — CLOSED / OWNER APPROVED (1167/1167); TECH-01 remains OPEN, no full regeneration.
+REL-PREP-03A — OWNER-AUTHORIZED RC PUBLICATION / AWAITING CI REVIEW. Dedicated branch `release/rel-prep-03a-v1-rc`, base Preview `4a5f7e3`; one consolidated snapshot commit, no merge/deployment authorization. All 57 biographies and Content Freeze retained; ATH-04 post-release; version 0.0.0. Final local gates 18/18 + 14/14; first image timeout remains documented. [Publication scope and conditions](audits/rel-prep03a-publication.md). PR must not be merged without separate owner approval.
 
-Подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `c8f52e02a75e0b413dddbfee77f477232c5301d3` (live verified 20.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 DONE — production closeout 20.10.2026; нерешённые вопросы сохранены в ATH-05; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
+Historical preparation checkpoints:
+
+
+REL-PREP-02A — IMPLEMENTED / AWAITING OWNER REVIEW. Final full browser gate 14/14 PASS. Test-only corrections in isolated candidate: approved Home slogan relocation, deterministic image fixture date, approved NAV-03 clearance/landscape geometry and ATH-UI-01 12px/54px season row. Runtime/content/safeguards unchanged. First image-readiness timeout retained as an unresolved stability observation; subsequent diagnostic and full-gate image checks PASS, not proof of a resolved intermittent cause. Original REL-PREP-02 browser blockers are superseded by the final test-contract corrections below. [Diagnosis, screenshots and exact diffs](audits/rel-prep02a-browser-gate.md). No commit/push/PR/merge/deployment.
+
+Historical REL-PREP-02 checkpoint:
+
+
+REL-PREP-02 — CANDIDATE PREPARED / BLOCKED BY FULL BROWSER GATE (11/14 PASS; brand, ui-cleanup, image-delivery FAIL). Content freeze approved. Candidate based on remote Preview `4a5f7e3` retains all five Preview-specific commits and exact active readiness/deployment safeguards, plus frozen reconciliation content `b3f7f49`. Full public v1.0.0 completion requires separately authorized Production deployment, smoke/E2E, tag `v1.0.0` and announcement; none is authorized here. [Candidate, provenance and REL-PREP-03 plan](audits/rel-prep02-consolidation.md). No commit/push/PR/merge/deployment in this task.
+
+REL-PREP-02 verification: release gate 18/18; targeted safety/content 88/88; portable photos/Rankings route 26/26; seven Preview browser suites and three additional profile/startup/biography suites PASS. Full gate failures preserved, not suppressed. Next: separately authorized focused investigation/test-contract maintenance; no runtime/content fixes, commits or publication here. Source worktrees preserved.
+
+Historical REL-PREP-01 checkpoint:
+
+
+REL-PREP-01 — CONTENT FROZEN / Git publication preparation and technical verification. Owner decision: v1.0.0 content development complete. Include all 57 approved, locally integrated biographies with stable IDs, exact paragraphs and approved Høgenhaug corrections. Preserve approved names, results, rankings, photos, artwork and race data. No new races, athletes, biographies, achievements or 2027 season data. ATH-04 research/integration deferred post-release; existing four Kristian achievements unchanged. DATA-ATH-02 remains CLOSED / OWNER APPROVED; TECH-01 OPEN, full regeneration prohibited. No commit/push/PR/merge/deployment authorized in this preparation task.
+
+Исторический checkpoint 20.10.2026 (не текущие remote/deployment pointers; ATH-03/04 superseded by REL-PREP-01 above/below): подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `c8f52e02a75e0b413dddbfee77f477232c5301d3` (live verified 20.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 DONE — production closeout 20.10.2026; нерешённые вопросы сохранены в ATH-05; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
+
+## REL-PREP-01 — Content Freeze & Git Publication Preparation · 2026-11-11
+
+- **Status:** CONTENT FREEZE RECORDED / PREPARATION COMPLETE / AWAITING OWNER REVIEW · **Priority:** P1.
+- **Owner release scope:** all 57 approved biographies are required in the intended v1.0.0 candidate and their Athlete Profiles; reuse existing integration, never recreate or rewrite. Actual Preview publication and owner visual acceptance belong to the next separately authorized stage.
+- **ATH-04:** 118 VERIFIED + 29 HOLD remain archived research, not an approved runtime dataset. ATH-04C/D research and integration are postponed until post-release. Future work uses a historical cutoff through season 2023 inclusive, subject to final editorial approval; do not refilter/rewrite historical evidence now. Preserve Kristian's four existing runtime items.
+- **Publication boundary:** use clean reconciliation baseline `b3f7f49`; original dirty development worktree is protected. Remote development `c649ad4d` and Preview `4a5f7e3` have distinct histories; retain Preview-only CI/readiness safeguards. No automatic conflict resolution or overwrite publication.
+- **Verification:** local release gate 18/18, targeted integrity/localization 12/12, six selected browser suites PASS (57 mobile biography profiles + 6 desktop). Original 1282 file hashes/status/index unchanged. Fresh remote compare found five Preview-only commits with readiness safeguards absent from reconciliation: preserve them in a new isolated candidate before publication; no automatic resolution. TECH-01 remains open.
+- **Next action:** owner reviews [content freeze, exact publication inventory, checks and plan](rel-prep01-content-freeze-publication-plan.md), then separately authorizes isolated Git preparation/publication. No release approval follows from tests alone.
 
 ## GIT-01 / DS-01A — Audit closeout · 2026-10-25
 
@@ -92,6 +118,13 @@ ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-auth
 - Independently design payload and route-boundary optimization using the accepted audit. Preserve authoritative datasets, provenance, identity mappings, formulas and complete profile/results behavior.
 - Compare full cold/warm user journeys, including immediate and delayed Rankings→Athlete and Race transitions; measure total transfer, script work and main-thread impact. Avoid preload that only improves delayed clicks or hides first-profile cost.
 - Any data projection/partitioning architecture requires separate owner approval. Reuse measurements and lessons, not rejected prototype code by default. Require regression tests and physical-device evidence before adoption.
+
+#### Authorized biography / artwork experiment · 2026-11-10
+
+- **Status:** ARTWORK ACCEPTED LOCALLY / BIOGRAPHY CANDIDATE REJECTED / AWAITING OWNER REVIEW · **Priority:** P1.
+- **Scope:** remove approved biography payload from initial Rankings graph and evaluate two transition portrait derivatives. Preserve exact biographies, table usability, first Profile navigation and zero CLS; compare against `92ad434` with five cold mobile trials per candidate.
+- **Result:** portrait transition AVIF pair 815570 → 251752 bytes; mobile median LCP 6328 → 4136 ms, CLS 0; no repeatable table regression. Biography split rejected for first-Profile latency regression; original biography loading retained. Release gate 18/18 and relevant browser/unit checks PASS. [Report and evidence](audits/biography-artwork-performance-experiment.md).
+- **Next action:** owner physical iPhone/Safari/Telegram visual review before promotion. No push/PR/deployment.
 
 ### PERF-01B.2 — Route Loading Optimization & Swipe Investigation
 
@@ -477,17 +510,21 @@ ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-auth
 
 ### ATH-03 — Editorial biographies for top athletes
 
-- **Status:** TODO — PROPOSED · **Priority:** P3.
-- **Описание:** reviewed Russian biographies top cohort, claim-level evidence; сейчас 1/1167. Детализация DATA-02, не замена/закрытие задачи.
-- **Next action:** факт-лист и owner-approved текст, затем persistent editorial registry и общий paragraph rendering review. Scope M + editorial work; mobile/accessibility/invariant tests.
+- **Status:** IMPLEMENTED LOCALLY / FROZEN v1.0.0 SCOPE — 57 approved biographies; publication and Preview visual QA pending (supersedes historical TODO) · **Priority:** P3.
+- **Описание:** reviewed Russian biographies top cohort, claim-level evidence; historical checkpoint was 1/1167, superseded by ATH-BIO-01: 57 exact approved integrations. Детализация DATA-02, не замена/закрытие задачи.
+- **Next action:** preserve the existing 57 integrations and paragraph formatting in the publication candidate; separately authorize Preview publication and visual QA. Historical fact-list/editorial expansion step is superseded by content freeze.
 - **Links:** [model, sources, workflow](pre-release-readiness-2026-10-18.md#ath-03--editorial-biographies-for-top-athletes), DATA-02.
 
 ### ATH-04 — Verified key achievements
 
-- **Status:** TODO — PROPOSED · **Priority:** P3.
+- **Status:** POST-RELEASE / ARCHIVED RESEARCH — owner content freeze 2026-11-11; no runtime integration · **Priority:** P3.
+- **ATH-04A checkpoint:** 57/57 local cohort reviews; 24 official-source entries/observations, 44 local candidates pending corroboration. Historical career review incomplete; T100 year metadata, Frankfurt format and record claims explicitly held. [Dataset, coverage and blockers](athlete-achievements/README.md). Existing Kristian items and all profiles remain unchanged. Resume with direct official evidence; do not infer titles from LIVE standings.
+- **ATH-04B:** 57/57 external career reviews; 168 verified records, including all 24 ATH-04A entries unchanged. 40/44 initial candidates officially corroborated; 4 still await official evidence, plus 26 historical leads held. Categories 9–11 and historical record wording require separate owner review. Høgenhaug Almere-2021 WORLD/European biography discrepancy flagged; biography untouched. Validator and biography integrity 6/6 PASS. No exhaustive-career completion claim or runtime import. [Current review and full coverage](athlete-achievements/README.md).
 - **Описание:** verified structured achievements с competition/season/evidence; сейчас 1 профиль, 4 пункта. Сохранить approved Kristian text/icons.
 - **Next action:** source/identity/season review и owner approval до schema/icon adapter changes; scope M, зависимости provenance и DATA-02, tests порядка/уникальности/иконок/ID/ranking.
 - **Links:** [model, sources, workflow](pre-release-readiness-2026-10-18.md#ath-04--verified-key-achievements), DATA-02.
+- **ATH-04C (2026-11-11):** final eight-category matrix covers 57/57 athletes; 118 verified entries, 66 historical entries excluded by scope, 29 held candidates. ID35 Høgenhaug: both owner-approved world-title corrections applied to Markdown and integrated text; all 57 biographies match, other data unchanged. Validator + biography 6/6, athlete audit (0 issues), build and lint PASS. Localization test reproduces known TECH-01 ID reassignment; no generated output imported. [Matrix, sources and verification](athlete-achievements/v1-matrix.md). Next: owner editorial review; no runtime achievements import.
+
 
 ### DATA-05 — Переход сезона 2026 → 2027
 
@@ -702,3 +739,40 @@ ATH-UI-01 — Finalization in progress on localized Preview baseline; owner-auth
 - Readiness previous SHA now comes from two stable pre-upload Preview health observations, not Git push `before`. Validate known ancestor, version, stable rollback deployment and current Preview HEAD before Wrangler. Preserve exact artifact/full smoke and bounded two-observation readiness.
 - Targeted safety/readiness tests 76/76 PASS; targeted ESLint, YAML/shell and diff checks PASS. PR CI will provide build/release/browser results separately.
 - DEVOPS-02 read-only setup proposal documented; no Cloud environment, secrets, settings or test PR created. TECH-01 full-regeneration prohibition remains.
+
+### Pre-release Image & Performance Audit — 2026-11-10
+
+- **Status:** AUDIT COMPLETE / AWAITING OWNER REVIEW. Phase 2 image optimization retained; image unit tests 27/27, browser image scenarios 4/4 and release gate 18/18 PASS. Rankings slow-network cold LCP and desktop loading-shell CLS remain review items. Documentation-only local commit; no runtime changes, push, PR or deployment.
+- [Measurements, inventory and recommendations](audits/pre-release-performance-audit.md).
+
+### Rankings Performance & Layout Stability — 2026-11-10
+
+- **Status:** IMPLEMENTED / AWAITING OWNER REVIEW · **Priority:** P1. Desktop cold CLS 0.109 → 0 in three comparable runs; mobile CLS stays 0. Rankings loading shell now reserves the final root width. LCP remains open (~6.92 s mobile); early preload experiment discarded because it delayed the table. No sports data, artwork or business-logic changes. Local commit only; no push, PR or deployment.
+- [Root cause, before/after measurements and verification](audits/rankings-performance-layout-stability.md).
+
+### Rankings Cold-Load Optimization — 2026-11-10
+
+- **Status:** IMPLEMENTED / AWAITING OWNER REVIEW · **Priority:** P1. Separate lazy Rankings entry preserves canonical data/page. Five-run mobile medians: LCP 6.912 → 6.032 s; table usable 2.865 → 1.988 s; initial JS 347143 → 183791 B; desktop/mobile CLS 0. First Profile navigation now loads deferred sports code (one slow-profile diagnostic: 54 → 1084 ms); review this explicit tradeoff before promotion. Local commit only; no push, PR or deployment.
+- [Evidence, checks and limitations](audits/rankings-cold-load-optimization.md).
+
+
+### Rankings → Athlete Profile Prefetch — 2026-11-10
+
+- **Status:** INVESTIGATION COMPLETE / PREFETCH NOT ADOPTED · **Priority:** P1. Five-run mobile cold LCP stays 6.032 s and CLS stays 0. Delayed first profile transition improves 1083 → 45 ms, but earliest DOM-trigger navigation worsens 3510 → 3919 ms; fixed-2s control is unchanged (3743 → 3748 ms). Exact early discrepancy remains unresolved; do not discard the unfavorable cohort. Keep baseline lazy loading and avoid shipping the experimental prefetch.
+- Documentation-only local commit; no UI, data, biography or navigation changes, push, PR or deployment. [Measurements, experimental safeguards, tests and next steps](audits/rankings-profile-prefetch.md).
+
+
+### Safe Git Reconciliation — 2026-11-10
+
+- **Status:** COMPLETE / READY FOR SEPARATE BIOGRAPHY INTEGRATION · **Priority:** P1. Isolated branch `reconcile/performance-20261110` preserves remote `32eee711` plus all four local performance commits. Original worktree/index/branch and all local artifacts remain unchanged; full verified backup retained.
+- Owner-approved conflict resolution: retain remote deployment safeguards and modern CI/test coverage; integrate only compatible append/import editorial reporting and additive tests. Legacy regeneration edits and active manual-mode code excluded. Both documentation histories preserved through canonical links and labeled archives.
+- Verification: independent localization test 1/1, relevant unit suites 69/69, deployment safety fixtures 54/54, build/lint and release gate 18/18, six browser suites PASS. All 57 biography source files remain exact; no biography import, prefetch runtime, push, PR or deployment. TECH-01 prohibition on real full catalog regeneration remains. [Complete file-level report and limits](audits/safe-git-reconciliation.md).
+
+
+### Reconciled local task history — 2026-11-10
+
+The [preserved local Board history](audits/reconciliation-history/project-board-local.md) retains substantive updates omitted from the remote snapshot: DEVOPS-03B.2C.6A/B/C manual-mode experiments and their limitations; DEVOPS-03B.2C.7E/F publication evidence; DEVOPS-04/04B smoke recovery and closeout; DATA-ATH-02C/D/D.1 localization policy, batches and protected spellings; ATH-UI-01 publication/QA; DEVOPS-02 suspension and OPS-04 backlog. Remote historical records above and all four local performance entries remain intact. These dated records do not authorize deployment or replace current source checks. Manual-mode code is intentionally excluded from the reconciled pipeline.
+
+### ATH-BIO-01 — Approved biography integration · 2026-11-10
+
+- **Status: INTEGRATED / VERIFIED LOCALLY — REQUIRED IN FROZEN v1.0.0 CANDIDATE; PREVIEW PUBLICATION/QA PENDING.** 57/57 exact approved Russian texts, 57 unique stable IDs; curated biography registry preserves generated sources. Build/lint PASS, release gate 18/18, targeted integrity 31/31 and relevant units 65/65 PASS; mobile 57/57 and desktop 6/6 rendered-text checks, Navigation, Athlete Results and PTO profile browser suites PASS. Historical non-gating temporary-regeneration test still fails on known TECH-01 (Emmett Gross ID shift); no real catalog regeneration. All 1167 non-biography profile records and 4592 results preserved. Daniel birth-date discrepancy stays flagged. Local-only commit authorized; no push or deployment. [Mapping and verification](audits/athlete-biographies-batch1-integration.md).

@@ -1,0 +1,33 @@
+PASS: 57 unique identities; exact coverage, pending and exclusion mappings
+PASS: v1 scope, podium/winner rules, source references; 5 negative fixtures
+PASS: ATH-04A/B evidence preserved; exactly two ID35 text substitutions; 56 other biographies byte-identical
+PASS: only expected integrity pins updated; all four Kristian runtime achievements unchanged
+Verified: 118 Excluded historical: 66 Pending: 29
+Categories: {1: 15, 2: 36, 3: 34, 4: 7, 5: 4, 6: 4, 7: 8, 8: 10}
+✔ 57 exact approved texts, unique identities and unchanged non-biography properties (2.811292ms)
+✔ unmapped or mismatched identities cannot receive a biography (0.050625ms)
+✔ approved biography guard rejects changed id (2.063ms)
+✔ approved biography guard rejects changed nameEn (2.2855ms)
+✔ approved biography guard rejects changed bio (1.734833ms)
+✔ paragraphs are preserved, including generated profiles and owner whitespace (0.452792ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 269.578083
+
+Additional checks (2026-11-11):
+npm run audit:athletes — PASS, 0 issues; missing photos remain INFO.
+npm run build — PASS; existing chunk warning >500 kB (sports-entry 623.39 kB, OfficialRankingsPage 906.29 kB raw).
+npm run lint — PASS.
+node --test scripts/test-approved-biographies.mjs scripts/test-athlete-localization.mjs — 6 PASS / 1 FAIL.
+The localization script's temporary-output full-regeneration probe reproduced the known TECH-01 ID reassignment: Emmett Gross 10140 -> 10141 (Emmanuel Lejeune inserted at 10140). No catalog output was imported, replaced, or committed. The test was not weakened or rerun to hide the failure. It is outside the two-sentence biography correction; the test and generator are unchanged from starting HEAD.
+Current catalog regeneration remains prohibited. Do not use this failed diagnostic output as data.
+No browser/release-gate rerun: no UI/runtime logic or results changes; targeted biography and read-only catalog checks used.
+
+PASS: relative links in v1-matrix.md resolve locally.
+PASS: git diff --check.
+Additional official-source retrievals failed with connection errors; held candidates remain unverified.

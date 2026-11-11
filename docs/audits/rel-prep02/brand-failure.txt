@@ -1,0 +1,10 @@
+file:///private/tmp/300w-rel-prep02-candidate/scripts/test-brand-browser.mjs:9
+const js=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description);return r.result.value};
+                                                                                                                                                 ^
+
+Error: TypeError: Cannot read properties of null (reading 'textContent')
+    at <anonymous>:1:42
+    at js (file:///private/tmp/300w-rel-prep02-candidate/scripts/test-brand-browser.mjs:9:146)
+    at async file:///private/tmp/300w-rel-prep02-candidate/scripts/test-brand-browser.mjs:33:16
+
+Node.js v24.19.0

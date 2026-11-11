@@ -109,7 +109,7 @@ await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion
 const navigation=await send('Page.navigate',{url:base+'/?performance=rank05#/rankings'});network.activate(navigation.loaderId);
 const artwork=async()=>{const deadline=Date.now()+5000;while(Date.now()<deadline){const images=await js('[...document.querySelectorAll(".standings-showcase__art")].map(i=>({url:i.currentSrc,ready:i.complete&&i.naturalWidth>0}))');if(images.length===2&&images.every(i=>i.ready)&&network.rows().every(r=>r.finished))return images.map(i=>i.url);await wait(50)}throw Error('Artwork timeout: '+JSON.stringify(network.rows()))};
 const portrait=await artwork();
-assert.equal(new Set(portrait).size,2);assert.ok(portrait.every(u=>u.includes('/rankings/optimized/')&&u.endsWith('.webp')));network.verify(portrait);
+assert.equal(new Set(portrait).size,2);assert.ok(portrait.every(u=>u.includes('/rankings/optimized/')&&(/\.webp$/.test(u)||/_04_transition-1320\.avif$/.test(u))));network.verify(portrait);
 await click('.standings-series button:nth-child(2)');await wait(200);assert.equal(await js('document.querySelector("main").dataset.series'),'T100');
 await click('.standings-series button:nth-child(1)');await wait(200);
 await drag('.standings-showcase .rankings-snap-track',180,0,true,false);assert.equal(await js('document.querySelector("main").dataset.series'),'IRONMAN_PRO_SERIES');

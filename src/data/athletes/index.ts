@@ -6,6 +6,7 @@ import { verifiedResultAthletes } from './verifiedResultAthletes'
 import { athletePhotosByName } from './athletePhotos.generated'
 import { localizeAthlete } from './localization'
 import { reviewedAthletePhoto } from './photoReview'
+import { withApprovedBiography } from './biographies'
 import { enrichPtoProfile } from './ptoProfileEnrichment'
 
 const withRegisteredPhoto = (athlete: Athlete): Athlete => ({
@@ -18,6 +19,6 @@ export const athletes: Athlete[] = [
   ...femaleAthletes,
   ...resultAthletes,
   ...verifiedResultAthletes,
-].map(withRegisteredPhoto).map(localizeAthlete).map(enrichPtoProfile)
+].map(withRegisteredPhoto).map(localizeAthlete).map(enrichPtoProfile).map(withApprovedBiography)
 
 export { maleAthletes, femaleAthletes, resultAthletes, verifiedResultAthletes }

@@ -177,3 +177,113 @@ Validation evidence: `/tmp/300w-perf01c/` (local temporary logs/screenshots, not
 - File-hash comparison confirms only the test and four documentation files changed in this task; application source/data/artwork preserved. Experimental copies and previous evidence untouched. No commit/push/deployment/version or infrastructure changes.
 
 PERF-01C local documentation/test maintenance is complete and awaits owner review. The pre-release architecture decision is closed; the physical-device condition is **not** closed by these automated tests.
+
+## PERF-01A — Fresh initial-load audit, 2026-11-01
+
+**Audit complete / awaiting owner review. No optimization implemented.** This new measurement does not approve the previously rejected PERF-01B/B.2 prototypes or supersede their rejection. The historical performance exception remains conditional; proposed new acceptance metrics below require owner approval.
+
+### Baseline and method
+
+Primary worktree: `home-redesign-experiments`, HEAD `10e115b4249b3c9eef03dd95e4aaf3619b1a5386`, with accumulated unrelated changes. It is not the deployed application. Measured a fresh isolated checkout of approved Preview **`4a5f7e313809ab6bcacb907b7e85fae97e5a87db`** in `/tmp/300w-perf01a-20261101`; source/configuration remained clean. No full catalog regeneration, dependency installation, runtime/data changes, deployment or Cloud connectivity experiments.
+
+`npm run build` PASS. A second programmatic Vite analysis build adds a read-only `generateBundle` observer, without changing splitting; all four JS/CSS files match the ordinary build byte-for-byte. Node 24.19.0, Vite 8.2.1, Chrome 156.0.8078.76, macOS 26.6.2. Existing dependencies reused. Historical `/tmp/300w-perf01a/` raw evidence was unavailable; historical report retained.
+
+Browser conditions: 390×844, DPR 3, mobile emulation, CPU 4× slowdown, 150 ms added latency, 200,000 B/s download (1.6 Mbps), 93,750 B/s upload. Three cold/warm pairs per route on local gzip server (24 navigations), then one pair per route on live Preview (8 navigations). Cold clears browser cache/origin storage; warm is a **new document with HTTP cache**, not a retained SPA/module instance. Same Rankings scene fixed through browser-only `Math.random` injection, IRONMAN/2026/Men, Athlete ID 1. Random-scene pilot kept separately and excluded. No user interactions or scroll during measurement. Host OS/background activity is not laboratory-isolated; live sample size is exploratory, not p75 evidence or device certification.
+
+Record route DOM readiness via MutationObserver, paint/LCP, Long Tasks, CDP Performance metrics, request IDs/loader IDs/initiators/status/cache/encoded lengths, and cold trace per route. Observation ends five seconds after DOM readiness. LCP is the latest observed candidate, not a field Web Vital. Long-task excess is sum(max(duration−50ms,0)) in that window, **not Lighthouse TBT or INP**. CPU tracing adds instrumentation overhead. Main-thread parse/compile and module-evaluation times below are unions of relevant trace intervals, not a sum of nested events, and are not additive to total ScriptDuration.
+
+Local `/api/news` uses a captured read-only Preview response with synthetic local network timing. Thus local API timings are not backend measurements. Live requests use the actual endpoint. All measurements are read-only. No browser tests/release gate were rerun: this task changes documentation only; build and diagnostic navigations are the executed validation.
+
+### Build bytes and dependency graph
+
+Bytes; gzip/Brotli are offline Node zlib measurements, not actual Cloudflare wire sizes. Compression totals sum independently compressed files.
+
+| Output | Minified bytes | gzip | Brotli |
+|---|---:|---:|---:|
+| index-D1DulZlg.js | 277346 | 83312 | 71078 |
+| sports-entry-Df4xHMzW.js | 1305869 | 267894 | 180311 |
+| **All JS** | **1583215** | **351206** | **251389** |
+| index-BxD3s5JX.css | 58945 | 11611 | 10037 |
+| sports-entry-mE9t-upk.css | 20805 | 4604 | 4035 |
+| **All CSS** | **79750** | **16215** | **14072** |
+
+Sports grew 10,693 minified bytes (+0.83%) versus historical 1,295,176 B; gzip grew 4,670 B (+1.77%). Historical/local workloads differ, so timing differences are not a regression attribution. The >500 kB sports warning remains; no threshold adjustment.
+
+- Entry: 105 emitted module IDs; Home, Calendar, More/Feedback, navigation/race metadata, React/ReactDOM/scheduler. Runtime dependencies are React/react-dom, not an animation/analytics SDK. Entry statically includes More (~7.3 kB transformed) and Feedback (~11.7 kB); lower-priority opportunities than data/assets.
+- Entry dynamically imports only sports-entry through [sports loader](../src/sports/loader.ts). Sports: 578 module IDs, imports shared entry bindings, **no further dynamic imports**. No duplicate module IDs between chunks. No embedded `data:image/` bodies in sports.
+- [SportsArea](../src/sports/SportsArea.tsx) statically imports Rankings, Athlete list/detail and Race Detail. [sports/data](../src/sports/data.ts) links all results and calculates/sorts the internal ranking at module evaluation even when opening official Rankings. Home/Calendar do not fetch sports in observed cold runs.
+
+Sports transformed module total **1,651,173 B**, measured before final chunk minification (not network bytes):
+
+| Contributor | Transformed bytes | Share |
+|---|---:|---:|
+| All race results, 78 modules | 741686 | 44.92% |
+| Athlete-data directory, 12 modules | 607032 | 36.76% |
+| Official standings, 13 modules | 105593 | 6.40% |
+| Page modules, 6 entries | 47327 | 2.87% |
+| Athlete image URL/variant registry | 38610 | 2.34% |
+
+Within athlete data: PTO enrichment 284,252 B, generated profiles 210,974 B, localization 71,325 B. These overlap the directory row and must not be added again. Generated athletes and approved Russian names are required data, not removable filler.
+
+[Official standings](../src/data/officialStandings/index.ts) imports twelve evidence registries then projects presentation rows at runtime. [PTO enrichment](../src/data/athletes/ptoProfileEnrichment.ts) imports provenance into every loaded athlete catalog. Its JSON repeats 796 source URLs / snapshot hashes / verification timestamps with only 210 unique values per category; this is semantic repetition, not duplicated JS modules. Compression already removes much repetition. [Profile consumers](../src/utils/athleteProfileData.ts) need value plus selected age timestamps; removal/projection requires explicit contract tests. Do not equate raw provenance byte totals with achievable transfer savings or delete source evidence.
+
+### Controlled local measurements
+
+Median of three samples. Cold DOM ranges: Home 897–907 ms, Rankings 2518–2527 ms, Calendar 851–865 ms, Profile 2484–2497 ms.
+
+| Route | Cold / warm DOM ms | Cold / warm observed LCP ms | Cold / warm completed transfer B | Cold / warm script ms | Cold / warm long-task excess ms |
+|---|---:|---:|---:|---:|---:|
+| Home | 902 / 275 | 2980 / 304 | ≥493833 / ≥7023 | 83.9 / 79.9 | 25 / 23 |
+| Rankings | 2522 / 386 | 6552 / 420 | 1126758 / 543 | 134.2 / 130.4 | 4 / 3 |
+| Calendar | 863 / 247 | 908 / 292 | 116069 / 543 | 65.7 / 67.6 | 0 / 0 |
+| Athlete Profile #1 | 2492 / 356 | 2564 / 408 | 393524 / 543 | 127.5 / 130.1 | 3 / 4 |
+
+Cold request counts: Home 9, Rankings 28, Calendar 5, Profile 9 (includes favicon/Other events). Completed bytes are CDP `loadingFinished.encodedDataLength`, including protocol overhead; cached bodies are not counted as fresh transfers. Home has one autoplay-triggered image still in flight at cutoff, so its totals are lower bounds; do not present them as a complete session payload. No failed requests or runtime exceptions in the 24 local navigations.
+
+Cold main-thread TaskDuration medians: 197.6 / 265.2 / 132.6 / 235.1 ms respectively. Median longest long task: Home 75 ms, Rankings 54 ms, Calendar no ≥50ms task, Profile 53 ms. Cold first-run trace parse/compile unions: Home 36.10 ms, Rankings 47.90 ms, Calendar 33.70 ms, Profile 39.91 ms. Module-evaluation unions: 26.44 / 80.69 / 25.57 / 78.19 ms. Off-main-thread V8 compilation also exists; these are not all-process compilation totals. The coarse module has measurable CPU work, but no sustained blocking bottleneck was demonstrated under this desktop-emulated CPU profile. Actual low-end/mobile CPUs may differ materially.
+
+### Images, APIs and live Preview
+
+- Home: initial completed images ~389,645 B, including Dubai 175,520 B and Saudi 195,764 B transferred; primary LCP is showcase. Existing autoplay later requests Qatar; ongoing carousel bytes must be separated from first-render budget.
+- Rankings: 22 image requests, ~756,051 B completed. Two approved neighboring portrait artworks alone total **574,800 B transfer** (296,368 + 278,432). They are intentional for finger-following swipe. No landscape request or duplicate URL in the observed portrait document. Remaining ~181 kB is athlete imagery. Do not remove neighbor availability or introduce blank frames to improve a chart.
+- Profile #1: one responsive photo ~22,817 B; its cold delay is primarily shared JS delivery, not photo size. Calendar images ~18,361 B.
+- Home/Calendar JS transfer ~83,566 B; sports routes ~351,715 B. A ~1.306 MB minified chunk is **not** 1.306 MB compressed transfer.
+- Home news is asynchronous with verified bundled seed fallback, five-second timeout. No sports-data API dependency observed on the other three routes. API content is not required to render the initial Home shell.
+
+Live Preview returned **zstd** for JS/CSS. Actual sports script CDP transfer was 248,517–248,542 B, entry ~86.4–86.6 kB; offline Brotli/gzip are not the deployed transport. Asset filenames match the audited build. One cold/warm pair per route, same emulation:
+
+| Route | Cold / warm DOM ms | Cold / warm LCP ms | Cold / warm completed transfer B |
+|---|---:|---:|---:|
+| Home | 2274 / 1271 | 4124 / 1636 | ≥496226 / ≥2012 |
+| Rankings | 5025 / 3656 | 9704 / 3936 | ≥836784 / 286607 |
+| Calendar | 1828 / 429 | 1880 / 468 | 121365 / 1503 |
+| Profile #1 | 6032 / 697 | 6220 / 748 | 380347 / 1989 |
+
+Home Qatar was still in flight (cold additional 73,546 encoded body bytes observed; warm 16,384). Cold Rankings neighboring T100 was still in flight (24,339 observed body bytes); next warm navigation needed its uncached remainder/full request, explaining substantial warm image bytes. This is **partial-cache warm**, not a duplicate-transfer regression. All raw request/cache/partial-length evidence retained. No runtime exceptions in these eight navigations.
+
+Live Home news: HTTP 200, 3,084 transferred bytes, ~3,542 ms; warm served from disk cache with zero body transfer. It did not block initial seeded UI. Live document response timing itself varied (Rankings cold ~1,771 ms, warm ~2,977 ms; Calendar ~207/158 ms). Similar script CPU across local/live while wall-clock timing grows supports network/queue/delivery as the dominant cost in this sample. It does **not** identify Cloudflare, ISP, proxy, DNS or backend as the root of that variance, nor establish sustained CDN degradation. No proxy investigation/workaround was performed. Repeat on real devices/networks before a release performance decision.
+
+### Ranked opportunities and tradeoffs
+
+1. **Runtime data projection before broad route splitting.** Separate deterministic presentation/age/social fields from audit-only provenance in a disposable build experiment, preserving all source registries, approved names, IDs, dates, standings and result mappings. The 284 kB enrichment/106 kB standings contributors justify investigation, not a promised compressed saving. Tradeoff: new generated contract/build freshness checks. Do not use full athlete regeneration or experimental old code.
+2. **Artwork delivery budget, separately approved.** Rankings images dominate post-DOM time; compare quality-preserving responsive derivatives/quality settings and active-vs-neighbor scheduling. Preserve approved composition, both orientations and immediate neighbor readiness. Tradeoff: image quality and swipe latency; requires owner visual approval. No artwork altered in this audit.
+3. **Defer unrelated sports work only after projection measurement.** Official Rankings should not need full internal ranking calculation/results for its values; evaluate a narrow boundary only if meaningful residual cost remains. Tradeoff: first Profile/Race click becomes cold. Historical splitting improved Rankings while delaying immediate Profile 4–4.6s and was rejected; do not resurrect that behavior or hide it with timed prefetch.
+4. **Home/entry refinements.** Measure autoplay's expanding image budget and optional More/Feedback splitting. Lower expected byte benefit; preserve Home carousel and navigation. No evidence that changing React or adding an animation library helps.
+5. **Investigate real delivery variance with repeated read-only device/network samples.** Live latency is material but attribution unresolved. Do not change caching/Cloudflare or add API retry infrastructure on this evidence alone.
+
+### Minimal proposed PERF-01B plan and acceptance metrics
+
+This is a proposal for separate authorization, not approval to replace the previously rejected prototype.
+
+1. Preserve this exact baseline and a durable measurement summary; begin with one deterministic runtime-projection experiment in an isolated copy. Keep canonical evidence untouched and prove field-by-field identity/results/localization/photo/profile equivalence. No full regeneration.
+2. Rebuild and compare minified plus actual gzip/zstd delivery, not only warning disappearance. If compressed gain is trivial, stop rather than expanding architecture. Do not add `manualChunks` guesses, heavy dependencies or speculative preload.
+3. Benchmark paired baseline/candidate with fixed scene/season/gender, at least five cold/warm samples, fresh profiles, separate local and real-device cohorts. Include Home→Rankings→immediate Profile, Calendar→Race, Back/Forward, scrolling and swipes, plus cold deep links. This audit's warm reloads do not substitute for those journey tests.
+4. Suggested measurable success: ≥15% sports compressed-byte reduction **or** ≥10% cold sports DOM improvement, with no >100 ms or >10% regression on immediate Profile/Race and warm routes (use the larger allowance, inspect distribution); no increase in initial Home/Calendar JS requests. Require repeatable results rather than one favorable run. For a separate image experiment, target ≥20% Rankings observed LCP improvement at the same network/quality and zero blank neighbor frames.
+5. Preserve two-variant responsive loading (no inactive-orientation transfer), no unexpected duplicate identical asset transfers, stable IDs/results/official positions/all approved Russian names, and all CI/navigation/gesture tests. Keep controlled long-task excess below 50 ms and avoid new ≥100 ms tasks in the same harness; this is a proposed laboratory regression budget, not field CWV certification.
+6. Physical iPhone Safari/Telegram and representative Android checks remain required. Set field-style LCP/INP targets only with the owner's device/network population and adequate sampling. Existing conditional release exception is not automatically closed by this audit.
+
+### Evidence and checks
+
+`/tmp/300w-perf-audit-evidence/`: `sizes.json`, `chunks.json`, ordinary/analysis build logs, `probe.mjs`, `live-probe.mjs`, `server.mjs`, `local.json` (24 rows), `live.json` (8 rows), cold trace JSON, `medians.json`, `summary.txt`, browser version and captured news fixture. Traces/request JSON include initiators, cache flags and per-request sizes. Pilot files retain discarded random-scene measurements; no pilot values pooled into the tables. Temporary artifacts are not durable release evidence; all decision-critical numbers are copied into this report.
+
+Build PASS; identical analysis output PASS; 32 diagnostic navigations completed, zero runtime exceptions; no runtime regression suite/release gate execution claimed. Documentation links and `git diff --check` checked at closeout. Only this report and Project Board changed in the primary tree; source/data/artwork and unrelated work preserved. No commit/push/deployment. **STOP for owner review.**

@@ -1,0 +1,20 @@
+✔ Owner-approved localization batches exactly match stable catalog identities and Russian spellings (491.597542ms)
+✔ 57 exact approved texts, unique identities and unchanged non-biography properties (3.667083ms)
+✔ unmapped or mismatched identities cannot receive a biography (0.067042ms)
+✔ approved biography guard rejects changed id (2.774166ms)
+✔ approved biography guard rejects changed nameEn (2.416042ms)
+✔ approved biography guard rejects changed bio (2.560334ms)
+✔ paragraphs are preserved, including generated profiles and owner whitespace (0.572ms)
+✔ Russian-first canonical resolver and non-blocking English/source fallbacks (249.715334ms)
+✔ Editorial queue does not mutate identities or block missing names (0.479667ms)
+✔ current localization preserves identity, linkage and ranking; current photo registry binds reviewed bytes (608.815666ms)
+✔ Wave C verified countries preserve four identities, historical countries and ranking (333.675ms)
+✔ Lara verified country preserves identity, historical results and ranking (293.555959ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3108.737542

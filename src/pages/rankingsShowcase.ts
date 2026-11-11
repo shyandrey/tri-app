@@ -5,6 +5,7 @@ import type { OfficialSeries } from '../data/officialStandings'
 // Landscape selects approved WebP via <picture>; originals stay untouched.
 export type RankingsShowcase = {
   path: string
+  compactPortrait?: { avif: string; webp: string }
   landscapePath: string
   series: OfficialSeries
   scene: string
@@ -25,6 +26,10 @@ const landscapeAssets: Record<string, readonly [string, string]> = {
 }
 const asset = (series: OfficialSeries, file: string, scene: string, focalPoint: readonly [number, number], portraitObjectPosition: string): RankingsShowcase => ({
   path: `/images/showcase/rankings/optimized/${file}.webp`, series, scene, focalPoint,
+  compactPortrait: scene === 'transition' ? {
+    avif: `/images/showcase/rankings/optimized/${file}-1320.avif`,
+    webp: `/images/showcase/rankings/optimized/${file}-1320.webp`,
+  } : undefined,
   landscapePath: `/images/showcase/rankings_landscape/300w_rank03_landscape_assets/optimized/${landscapeAssets[file][0]}.webp`,
   aspectRatio: series === 'IRONMAN_PRO_SERIES' && scene !== 'transition' ? 1983 / 793 : (file === 't100_02_bike' || file === 't100_03_run_city' ? 1672 : 1671) / 941,
   portraitObjectPosition, landscapeObjectPosition: landscapeAssets[file][1],

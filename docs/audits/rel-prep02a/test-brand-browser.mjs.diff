@@ -1,0 +1,21 @@
+--- before/scripts/test-brand-browser.mjs
++++ after/scripts/test-brand-browser.mjs
+@@ -30,7 +30,9 @@
+   assert.equal(await js('document.querySelector(".home-wordmark__text").textContent'),'300W')
+   assert.equal(await js('document.querySelector(".home-wordmark").getAttribute("aria-label")'),'300W⚡')
+   assert.equal(await js('document.querySelector(".home-wordmark").querySelectorAll("button, a, [role=button], [tabindex]").length'),0)
+-  assert.equal(await js('document.querySelector(".home-header h2").textContent'),'ТРИАТЛОН — ЭТО МОЩНО!')
++  assert.equal(await js('document.querySelector(".home-header h2")'),null)
++  assert.equal(await js('document.querySelector(".app").textContent.includes("ТРИАТЛОН — ЭТО МОЩНО!")'),false)
++  assert.ok(await js(`(()=>{const h=document.querySelector('.home-header'),row=h.querySelector('.home-header__top-row'),c=getComputedStyle(h);return Math.abs(h.getBoundingClientRect().height-row.getBoundingClientRect().height-parseFloat(c.paddingTop)-parseFloat(c.paddingBottom)-parseFloat(c.borderTopWidth)-parseFloat(c.borderBottomWidth))<1&&Math.abs(document.querySelector('.home-showcase').getBoundingClientRect().top-h.getBoundingClientRect().bottom-8)<1&&document.querySelectorAll('.bottom-nav button').length===5})()`),'Home has no reserved slogan slot; showcase and navigation remain')
+   const metrics=await js(`(()=>{const e=document.querySelector('.home-wordmark'),r=e.getBoundingClientRect(),mark=document.querySelector('.home-wordmark__mark'),m=mark.getBoundingClientRect(),t=document.querySelector('.home-wordmark__text').getBoundingClientRect(),button=document.querySelector('.home-header__settings').getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,height:r.height,font:getComputedStyle(e).fontSize,settingsLeft:button.left,markWidth:m.width,markHeight:m.height,gap:t.left-m.right,centerDelta:(t.top+t.height/2)-(m.top+m.height/2),cursor:getComputedStyle(mark).cursor,ring:getComputedStyle(mark).boxShadow,radius:getComputedStyle(mark).borderRadius,weight:getComputedStyle(e).fontWeight,gearCenterDelta:button.top+button.height/2-(m.top+m.height/2),iconCenterDelta:(()=>{const i=mark.querySelector('svg').getBoundingClientRect();return {x:i.left+i.width/2-(m.left+m.width/2),y:i.top+i.height/2-(m.top+m.height/2)}})()}})()`)
+   assert.ok(metrics.right+16<=metrics.settingsLeft)
+   assert.equal(metrics.markWidth,36);assert.equal(metrics.markWidth,metrics.markHeight)
+@@ -51,6 +53,7 @@
+   assert.equal(await js('document.querySelector(".more-brand").textContent'),'300W⚡ APP')
+   const about=await js('document.querySelector(".more-panel").textContent')
+   assert.ok(about.includes('Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.'))
++  assert.ok(await js(`(()=>{const p=[...document.querySelectorAll('.more-panel p')].find(e=>e.textContent==='ТРИАТЛОН — ЭТО МОЩНО!');return !!p&&p.previousElementSibling?.textContent==='Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.'})()`),'Exact slogan paragraph immediately follows About description')
+   assert.ok(!/tri[ -]?app|TRI Ranking/i.test(await js('document.body.innerText')))
+   assert.equal(await js('document.title'),'300W⚡ APP')
+   assert.equal(await js('document.documentElement.scrollWidth'),width)
