@@ -6,6 +6,20 @@
 
 ## Current Focus
 
+REL-01A FINAL UI POLISH — QUALIFIED / AWAITING OWNER REVIEW. User-facing rankings note corrected, Home calendar tile explicit line break, shared loading text standardized. Fast18/18, browser14/14 exit0, targeted40/40, Home/loading browser and58 mobile/7 desktop biographies PASS. REL-01A/CAL-01 changes preserved; no data/ranking/config changes. [Scope, loading audit and before/after evidence](rel01a-final-ui-polish.md). No Git publication/deployment authorized.
+
+REL-01A/CAL-01 — FINAL REVIEW PACKAGE / AWAITING OWNER APPROVAL. Verified T100 correction included in draft CHANGELOG;17-file candidate remains uncommitted, base dc2beb424aeaf62831e56da6c849f7ce66ba216b. Notes-only follow-up does not replace earlier gate evidence or authorize Git publication/deployment.
+
+CAL-01 — LOCAL QUALIFICATION PASS / AWAITING OWNER REVIEW. Dubai14November2026 both PRO genders; Saudi postponed to16–17April2027 per official T100/PTO and World Triathlon. Preserve edition IDs/results, exclude obsolete Saudi calendar card, no2027 creation. REL-01A version/docs retained; CAL-01 final gates18/18 fast and14/14 browser (exit0),35/35 targeted and30/30 importer PASS;58 mobile/7 desktop biographies preserved. Initial hash/fixture failures documented, not suppressed. [Evidence, implementation and tests](cal01-t100-calendar.md). No commit/push/deploy authorized.
+
+REL-01A — LOCAL v1.0.0 CANDIDATE / QUALIFICATION PASS / AWAITING OWNER REVIEW (2026-11-12). Isolated from approved Preview source `dc2beb424aeaf62831e56da6c849f7ce66ba216b`; version/lock/changelog and documentation only. No commit, push, PR, deployment or tag authorized. [Release candidate scope, evidence and remaining gates](rel-01a-v1-release-candidate.md).
+
+Current verified checkpoint supersedes publication-pending wording below: REL-INT-02/03 and ATH-03B are deployed in Preview via DEVOPS-05D, version 0.0.0; deployment `9746cf1d-6977-4005-b143-2adcab005dc2`, version `7e7fb434-be26-4178-963d-c63973889a92`. All 58 biographies verified live; original57 unchanged. Production remains `c8f52e02a75e0b413dddbfee77f477232c5301d3` / 0.0.0. These IDs are DEVOPS-05D evidence, not a new infrastructure inspection.
+
+Owner-reported Safari/iPhone QA: 43/44 PASS, 0 FAIL, no-VPN availability unverified; Firefox/iPhone unreported. Android E2E deferred post-release by owner. OPS-02 remains open; OPS-03 restore drill pending. Manual deployment is the current approved model; Auto Deploy suspended (`false`), run43095376835 remains unresolved QUEUED/zero jobs at REL-GATE-01. No automatic retry, rollback or activation. ATH-04 post-release; preserve four existing Kristian achievements. TECH-01 full regeneration prohibited. Content freeze includes the separately approved Kate Waugh addition (58 total).
+
+Historical source checkpoints (retained, not current deployment status):
+
 REL-INT-02 — LOCAL CANDIDATE PREPARED / AWAITING OWNER REVIEW · P1. REL-QA-02 qualified harness, REL-QA-03 Moscow date boundary and ATH-03B exact approved biography. Fast gate 18/18, targeted 115/115, browser gate underlying checks 14/14 PASS; outer npm launcher timeout recorded separately. All 58 bios verified, prior57 unchanged, 1167 identities and 4592 result IDs preserved. Next: review [inventory, evidence, limitations and proposed publication/recovery](audits/rel-int02-consolidated-candidate.md); no commit/publication/deployment authorized.
 
 Source candidate checkpoints (preserved):
@@ -266,10 +280,10 @@ REL-PREP-01 — CONTENT FROZEN / Git publication preparation and technical verif
 
 ### REL-01 — Application Versioning
 
-- **Status:** IN PROGRESS · **Priority:** P1.
-- **Описание:** подготовить версию 1.0.0 для первого публичного релиза и отображение «Версия 1.0.0» в More. Определить единый источник версии, предпочтительно package.json, и простую release versioning policy. Фактическую версию не менять до отдельного release approval.
+- **Status:** REL-01A LOCAL CANDIDATE / QUALIFIED / AWAITING OWNER REVIEW · **Priority:** P1.
+- **Описание:** owner-authorized REL-01A готовит локальную версию 1.0.0 из единого package.json/build metadata. Публикация и release tag не разрешены; Preview/Production пока 0.0.0.
 - **Acceptance criteria:** UI и `/api/health` получают согласованную версию из единого источника; проверить существующую цепочку build metadata и добавить version consistency tests. Описать порядок изменения версии и её проверки при релизе, без независимых hardcoded значений в UI/Worker.
-- **Next action:** подготовить отдельно approved v1.0.0 release notes/version/tag; implementation уже deployed в Preview/Production e8a3dba1, package version остаётся 0.0.0; CHANGELOG.md хранит историю, build генерирует только current notes, More использует collapsed disclosure. Проверить тесты и согласовать notes/процедуру выпуска; не публиковать 1.0.0 без отдельного approval.
+- **Next action:** локальная квалификация REL-01A PASS (18/18 fast,14/14 browser exit0,59/59 targeted,58 mobile/7 desktop biographies); согласовать draft notes и отдельно разрешить commit/PR. Исторический versioning implementation checkpoint e8a3dba1 сохранён как provenance, не текущий deployed SHA. CHANGELOG/build metadata/More используют существующий механизм; tag и Production acceptance остаются отдельными этапами.
 - **Links:** [version policy](versioning.md), [changelog](../CHANGELOG.md), [package.json](../package.json), [More](../src/pages/MorePage.tsx), [health handler](../worker/index.ts), [deployment procedure](deployment-cloudflare.md).
 
 ### DATA-01 — Русские имена атлетов

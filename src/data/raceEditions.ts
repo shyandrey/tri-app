@@ -160,3 +160,9 @@ export const allRaceEditionViews: RaceEditionView[] = [
   ...archiveRaceEditionViews,
   ...currentRaceEditions,
 ]
+
+// CAL-01: retain the original edition/IDs for lookup and data integrity, but do not
+// advertise the superseded 2026 date. Official rescheduling evidence: docs/cal01-t100-calendar.md.
+// No 2027 edition is created by this presentation-only exclusion.
+export const isRaceInCalendar = (race: RaceEditionView): boolean =>
+  race.editionId !== 't100-saudi-arabia-2026'

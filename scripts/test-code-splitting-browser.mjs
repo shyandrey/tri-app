@@ -19,7 +19,7 @@ const click=async selector=>{await js(`document.querySelector(${JSON.stringify(s
 const shot=async name=>{const s=await send('Page.captureScreenshot',{format:'png'});await fs.writeFile('/tmp/tri-split-'+name+'.png',Buffer.from(s.data,'base64'))}
 // Calendar defaults to Upcoming using Europe/Moscow. Keep this fixture independent of wall time.
 const fixtureDate = '2026-10-02T09:00:00Z'
-const expectedEditions = ['ironman-world-championship-kona-2026', 't100-dubai-2026', 't100-saudi-arabia-2026', 't100-qatar-2026']
+const expectedEditions = ['ironman-world-championship-kona-2026', 't100-dubai-2026', 't100-qatar-2026']
 const assertCalendarEditions = async () => {
   await until('!!document.querySelector(".calendar-time-filters")')
   assert.equal(await js('new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/Moscow",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())'), '2026-10-02')

@@ -2,7 +2,7 @@
 
 ## Источники истины
 
-- [package.json](../package.json): единственное редактируемое значение текущей версии. Сейчас `0.0.0`; повышение до `1.0.0` требует отдельного approval.
+- [package.json](../package.json): единственное редактируемое значение текущей версии. В локальном REL-01A candidate — `1.0.0` по owner approval; опубликованные окружения остаются `0.0.0`. Publication/deployment/tag требуют отдельных разрешений.
 - [CHANGELOG.md](../CHANGELOG.md): полная история подтверждённых **нумерованных релизов**, newest first, и pending changes в `Unreleased`. Существовавшие deployment SHA не превращаются задним числом в придуманные версии. В проверенном локальном Git release tags отсутствуют; подтверждённой истории нумерованных публикаций не предоставлено.
 - [build-metadata.mjs](../scripts/build-metadata.mjs) читает package и changelog при `npm run metadata`, автоматически перед dev/build. `.generated/build-metadata.ts` используется UI и Worker `/api/health`; `.generated/current-release.ts` содержит только текущие notes. Generated-файлы не редактировать и не коммитить.
 - [MorePage.tsx](../src/pages/MorePage.tsx) показывает версию, заголовок и native details/summary, закрытый по умолчанию. История в приложение не включается; Markdown не исполняется как HTML.
@@ -23,7 +23,7 @@ Commit — снимок исходников. Deployment — установле�
 ## Release checklist и SHA/tag traceability
 
 1. Согласовать scope, версию и release notes; прочитать [Project Board](PROJECT_BOARD.md), зафиксировать Production baseline. Выбрать плановую дату публикации; до Production acceptance это план, не утверждение о состоявшемся релизе.
-2. Обновить `package.json.version`, `package-lock.json.version` и `package-lock.json.packages[""].version` одинаково, без изменения зависимостей. Сейчас все три значения остаются `0.0.0`; повышение требует отдельного approval.
+2. Обновить `package.json.version`, `package-lock.json.version` и `package-lock.json.packages[""].version` одинаково, без изменения зависимостей. В REL-01A все три значения согласованно подготовлены как `1.0.0`; это ещё не опубликованный релиз.
 3. Подготовить окончательные пользовательские notes в `CHANGELOG.md`, раздел версии с плановой датой, `Tag: vX.Y.Z` и `SHA: tag:vX.Y.Z`. Оставить Unreleased для следующих изменений. Символическая ссылка решает невозможность записать SHA commit внутрь самого себя; она не означает, что tag уже существует или релиз опубликован.
 4. Выполнить metadata generation, versioning/Foundation tests, build, release gate и browser checks. Сверить версии package/lock/UI/API, notes и diff. Все тестовые будущие релизы — независимые fixtures; реальная история не дополняется синтетическими записями.
 5. После review и отдельного разрешения commit/push зафиксировать release changes. Полученный SHA назвать **R** и записать в deployment approval. Никаких новых code/config commits поверх R между Preview и Production.
@@ -60,8 +60,12 @@ npm run deploy:production
 npm run check:production -- --expected-sha <R>
 ```
 
-Это не разрешение выполнить deployment. Следовать [production runbook](deployment-cloudflare.md): окружения изолированы, не менять News/Feedback secrets, D1 или webhook ради версии. Сверить More и GET `/api/health` с package.json в R; проверить полный asset download. Проверить `git rev-parse vX.Y.Z^{commit}` = R и окончательный SHA в changelog. Проверить обе темы/мобильные устройства отдельно; Desktop browser PASS не означает Telegram device PASS.
+Это не разрешение выполнить deployment. Следовать [production runbook](deployment-cloudflare.md): окружения изолированы, не менять News/Feedback secrets, D1 или webhook ради версии. Сверить More и GET `/api/health` с package.json в R; проверить полный asset download. Проверить `git rev-parse vX.Y.Z^{commit}` = R и окончательный SHA в changelog. Проверить утверждённую dark-only тему и мобильные устройства отдельно; Desktop browser PASS не означает Telegram device PASS.
 
 ## Rollback и hotfix
 
 Worker rollback — отдельная одобренная операция по [runbook](deployment-cloudflare.md), с проверкой известных-good bindings/secrets. Возвращается весь согласованный build, включая старую версию UI/API; не исправлять одну строку версии поверх чужих assets. Не переписывать tags и не удалять прошлые release notes. Откат Worker не откатывает D1: recovery данных требует отдельного плана/approval. После отката записать инцидент в Unreleased, подготовить новый PATCH с новыми SHA/tag и пройти Preview/Production checks. При несовпадении версии, notes, health SHA, tag или bindings — STOP до выяснения.
+
+## REL-01A — текущий кандидат
+
+[Локальный release report](rel-01a-v1-release-candidate.md) фиксирует scope и ограничения. Дата 2026-11-12 в changelog — предварительная, не дата уже состоявшегося выпуска. Старые команды deploy выше являются историческим runbook, а не разрешением на повторную сборку или публикацию: текущая политика — отдельно квалифицированный immutable artifact и operational config для конкретного окружения, manual Wrangler publication после approval. Preview config/package нельзя переименовать в Production без отдельной проверки target/bindings. Auto Deploy остаётся выключенным. Для uncommitted candidate build SHA остаётся базовым Git HEAD и не является новым release SHA; после разрешённого commit требуется новая квалификация metadata/artifact с точным R.

@@ -648,3 +648,6 @@
   .home-races-section__header button { margin-right: 9px; }
   .home-races-section__chevron, .race-card__arrow { width: 20px; height: 24px; }
 }
+
+/* Keep the explicit Home calendar label break at narrow mobile widths. */
+.feature-card--compact .feature-card__title--calendar { white-space: nowrap; }

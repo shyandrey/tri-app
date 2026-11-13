@@ -43,11 +43,11 @@ try {
   for (const [width, height] of [[320, 740], [390, 844], [844, 390], [1440, 900]]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width < 1000 })
     await send('Page.navigate', { url: (process.env.TRI_APP_URL ?? 'http://127.0.0.1:5197') + '/?calendarTest=' + Date.now() + '#/calendar' })
-    await wait(900); await count(4)
-    assert.deepEqual((await cards()).map(c => c[0]), ['IRONMAN World Championship', 'Dubai T100', 'Saudi Arabia T100', 'Qatar T100 Final'])
+    await wait(900); await count(3)
+    assert.deepEqual((await cards()).map(c => c[0]), ['IRONMAN World Championship', 'Dubai T100', 'Qatar T100 Final'])
     await snapshot(width, 'default')
     const filters = ['Все', 'IRONMAN Pro Series', 'Triathlon World Tour']
-    for (const [index, counts] of [[1, [4, 1, 3]], [2, [21, 15, 6]], [3, [25, 16, 9]]]) {
+    for (const [index, counts] of [[1, [3, 1, 2]], [2, [21, 15, 6]], [3, [24, 16, 8]]]) {
       await click(`.calendar-time-filters button:nth-child(${index})`)
       for (const [i, series] of filters.entries()) {
         await click(`.calendar-filters button[aria-label="${series}"]`); await count(counts[i])
@@ -73,7 +73,7 @@ try {
     assert.ok(Math.abs(await js('scrollY') - 650) < 3); await count(73)
     await click('.calendar-time-filters button:nth-child(1)')
     await click('.calendar-filters button[aria-label="IRONMAN Pro Series"]'); await count(1)
-    await query('T100'); await count(25)
+    await query('T100'); await count(24)
     assert.equal(await js(`document.querySelector('.calendar-search-notice').textContent`), 'Поиск по всем гонкам — фильтры временно не применяются')
     assert.ok((await cards()).some(c => c[1].endsWith('2024')))
     await snapshot(width, 'search')
@@ -102,7 +102,7 @@ try {
     assert.equal(await js('document.documentElement.scrollWidth>innerWidth'),false)
     await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13})
     await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13})
-    await wait(150); await count(77)
+    await wait(150); await count(76)
     assert.deepEqual(await js('history.state.triNavigation.ui.calendar'),{search:'',filter:'Все',timeFilter:'all',openArchiveYears:archiveState})
     assert.equal(await js('document.querySelector(".calendar-empty")'),null)
     const seasonClock = await send('Page.addScriptToEvaluateOnNewDocument', {source: `(()=>{const RealDate=Date;globalThis.Date=class extends RealDate{constructor(...args){super(...(args.length?args:['2026-10-18T09:00:00Z']))}static now(){return RealDate.parse('2026-10-18T09:00:00Z')}}})()`})

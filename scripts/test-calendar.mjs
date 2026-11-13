@@ -31,21 +31,21 @@ const freeze = t => t.mock.timers.enable({ apis: ['Date'], now: new Date('2026-1
 const ids = rows => rows.map(r => r.editionId)
 const series = ['Все', 'IRONMAN Pro Series', 'Triathlon World Tour']
 
-test('default Moscow 2026-10-02: exact four upcoming editions in order', t => {
+test('default Moscow 2026-10-02: exact three upcoming editions in order', t => {
   freeze(t)
-  assert.deepEqual(ids(render().cards), ['ironman-world-championship-kona-2026', 't100-dubai-2026', 't100-saudi-arabia-2026', 't100-qatar-2026'])
+  assert.deepEqual(ids(render().cards), ['ironman-world-championship-kona-2026', 't100-dubai-2026', 't100-qatar-2026'])
 })
 test('time × series × archives: season scopes, unique cards, exact sets and ordering', t => {
   freeze(t)
   const before = JSON.stringify(allRaceEditionViews)
-  const counts = { upcoming: [4, 1, 3], finished: [21, 15, 6], all: [25, 16, 9] }
+  const counts = { upcoming: [3, 1, 2], finished: [21, 15, 6], all: [24, 16, 8] }
   for (const timeFilter of Object.keys(counts)) for (const [i, filter] of series.entries()) {
     const state = { timeFilter, filter, openArchiveYears: [2025, 2024] }
     const rows = render(state).cards, main = rows.filter(r => r.archive === null)
     assert.equal(main.length, counts[timeFilter][i])
     assert.ok(main.every(r => r.year === 2026 && r.series !== 'Challenge'))
     assert.equal(new Set(ids(rows)).size, rows.length)
-    const raw = currentRaceEditions.filter(r => r.series !== 'Challenge' && (filter === 'Все' || r.series === filter)
+    const raw = currentRaceEditions.filter(r => r.editionId !== 't100-saudi-arabia-2026' && r.series !== 'Challenge' && (filter === 'Все' || r.series === filter)
       && (timeFilter === 'all' || (timeFilter === 'finished' ? r.dateISO < '2026-10-02' : r.dateISO >= '2026-10-02')))
     // The only current-season grouped pair is Nice W/M. Both editions are represented by the women-first card.
     const expected = raw.filter(r => r.editionId !== 'ironman-70-3-world-championship-2026-men')
@@ -67,7 +67,7 @@ test('global search ignores preserved filters, shows years/notice; clearing rest
   const filters = { timeFilter: 'upcoming', filter: 'IRONMAN Pro Series', openArchiveYears: [2025, 2024] }
   const before = render(filters)
   const search = render({ ...filters, search: 'T100' })
-  assert.equal(search.cards.length, 25)
+  assert.equal(search.cards.length, 24)
   assert.ok(search.cards.every(r => r.series === 'Triathlon World Tour' && r.archive === null))
   assert.deepEqual([...new Set(search.cards.map(r => r.year))], [2026, 2025, 2024])
   assert.ok(search.cards.every(r => r.displayedDate.endsWith(String(r.year))))
@@ -157,4 +157,17 @@ test('confirmed season completion is scoped by date, series, search and catalog 
     assert.equal(inspect({},future).heading,'Гонки не найдены')
     assert.equal(inspect().heading,'Гонки не найдены')
   }
+})
+
+
+test('CAL-01: Dubai both genders share stable edition; postponed Saudi remains identifiable but hidden', t => {
+ freeze(t)
+ const dubai=currentRaceEditions.find(r=>r.editionId==='t100-dubai-2026')
+ assert.equal(dubai.id,24);assert.equal(dubai.raceId,'t100-dubai');assert.equal(dubai.gender,'WPRO+MPRO');assert.equal(dubai.dateISO,'2026-11-14')
+ const saudi=allRaceEditionViews.find(r=>r.editionId==='t100-saudi-arabia-2026')
+ assert.equal(saudi.id,25);assert.equal(saudi.raceId,'t100-saudi-arabia');assert.equal(saudi.dateISO,'2026-11-27')
+ for(const timeFilter of ['upcoming','finished','all'])assert.ok(!render({timeFilter,openArchiveYears:[2025,2024]}).cards.some(r=>r.id===25))
+ assert.equal(render({search:'Saudi'}).cards.length,0)
+ assert.equal(allRaceEditionViews.filter(r=>r.raceId==='t100-saudi-arabia'&&r.year===2027).length,0)
+ assert.deepEqual(allRaceEditionViews.filter(r=>r.raceId==='t100-dubai'&&r.year<2026).map(r=>r.editionId),['t100-dubai-2024-women','t100-dubai-2024-men','t100-dubai-2025'])
 })

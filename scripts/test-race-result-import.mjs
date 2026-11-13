@@ -321,13 +321,33 @@ for(const [label,mutate] of [
  mutate(catalog,results);assert.throws(()=>assertKonaIntegrity(catalog,results),assert.AssertionError)
 })
 
+// CAL-01: verify the two source-confirmed Dubai fields before projecting only
+// those fields back into the unchanged historical edition hash.
+function historicalCalendarEditions(editions) {
+ assert.equal(editions.filter(e=>e.editionId==='t100-dubai-2026').length,1)
+ return editions.map(e=>{
+  if(e.editionId!=='t100-dubai-2026')return e
+  assert.equal(e.gender,'WPRO+MPRO')
+  assert.equal(e.description,'Мужской и женский этап T100 Triathlon World Tour 2026 в Дубае.')
+  return {...e,gender:'WPRO',description:'Женский этап T100 Triathlon World Tour 2026 в Дубае.'}
+ })
+}
+for(const field of ['id','raceId','dateISO','gender','description'])test(`CAL-01 historical edition guard rejects unexpected ${field}`,()=>{
+ const editions=structuredClone(allRaceEditionViews)
+ editions.find(e=>e.editionId==='t100-dubai-2026')[field]=field==='id'?-1:'Unexpected'
+ assert.throws(()=>{
+  const old=historicalCalendarEditions(editions).map(e=>{if(e.editionId!=='ironman-world-championship-kona-2026')return e;const {sof,...rest}=e;assert.deepEqual(sof,{women:96.82,men:92.79});return rest})
+  assert.equal(createHash('sha256').update(JSON.stringify(old)).digest('hex'),konaBaseline.editionsSha256)
+ },assert.AssertionError)
+})
+
 test('Kona incremental import preserves every prior row/profile and exact source statuses',async()=>{
  const baseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/kona-baseline-2026.json','utf8'))
  const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
  assert.equal(athletes.length,baseline.athletesCount)
  assertKonaIntegrity(athletes,raceResults)
  const editionId='ironman-world-championship-kona-2026'
- const oldEditions=allRaceEditionViews.map(e=>{if(e.editionId!==editionId)return e;const {sof,...old}=e;assert.deepEqual(sof,{women:96.82,men:92.79});return old})
+ const oldEditions=historicalCalendarEditions(allRaceEditionViews).map(e=>{if(e.editionId!==editionId)return e;const {sof,...old}=e;assert.deepEqual(sof,{women:96.82,men:92.79});return old})
  assert.equal(hash(oldEditions),baseline.editionsSha256)
  const rows=raceResults.slice(baseline.resultsCount)
  assert.equal(rows.length,99)
