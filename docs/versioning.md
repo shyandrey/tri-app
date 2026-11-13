@@ -5,7 +5,7 @@
 - [package.json](../package.json): единственное редактируемое значение текущей версии. В локальном REL-01A candidate — `1.0.0` по owner approval; опубликованные окружения остаются `0.0.0`. Publication/deployment/tag требуют отдельных разрешений.
 - [CHANGELOG.md](../CHANGELOG.md): полная история подтверждённых **нумерованных релизов**, newest first, и pending changes в `Unreleased`. Существовавшие deployment SHA не превращаются задним числом в придуманные версии. В проверенном локальном Git release tags отсутствуют; подтверждённой истории нумерованных публикаций не предоставлено.
 - [build-metadata.mjs](../scripts/build-metadata.mjs) читает package и changelog при `npm run metadata`, автоматически перед dev/build. `.generated/build-metadata.ts` используется UI и Worker `/api/health`; `.generated/current-release.ts` содержит только текущие notes. Generated-файлы не редактировать и не коммитить.
-- [MorePage.tsx](../src/pages/MorePage.tsx) показывает версию, заголовок и native details/summary, закрытый по умолчанию. История в приложение не включается; Markdown не исполняется как HTML.
+- [MorePage.tsx](../src/pages/MorePage.tsx) показывает только версию и короткий заголовок текущего релиза, без раскрываемых подробностей (REL-06). История в приложение не включается; Markdown не исполняется как HTML.
 - `0.0.0` использует `Unreleased` с явной пометкой предварительной версии. Любая другая версия требует соответствующего раздела changelog; при его отсутствии metadata/build завершается ошибкой.
 
 ## Политика SemVer
@@ -16,7 +16,7 @@ Commit — снимок исходников. Deployment — установле�
 
 ## Формат changelog и подготовка notes
 
-Сначала `## [Unreleased]`, затем `## [X.Y.Z] — YYYY-MM-DD` в обратном порядке дат. Каждый раздел содержит ровно один `Title: ...` (короткая русская аннотация), затем нужные `### Added`, `### Changed`, `### Fixed`, `### Technical` и plain-text строки `- ...`. Не использовать вложенные списки, Markdown/HTML в notes или произвольные подразделы. Не дублировать тексты notes в UI. Для опубликованных разделов обязательны `SHA: <40 lowercase hex>` и `Tag: vX.Y.Z`; при подготовке release commit разрешена символическая ссылка `SHA: tag:vX.Y.Z` (разрешается через Git tag, не случайный/предыдущий SHA); в Unreleased этих полей нет. Названия секций переводятся UI, текст пунктов выводится буквально.
+Сначала `## [Unreleased]`, затем `## [X.Y.Z] — YYYY-MM-DD` в обратном порядке дат. Каждый раздел содержит ровно один `Title: ...` (короткая русская аннотация), затем нужные `### Added`, `### Changed`, `### Fixed`, `### Technical` и plain-text строки `- ...`. Не использовать вложенные списки, Markdown/HTML в notes или произвольные подразделы. Не дублировать тексты notes в UI. Для опубликованных разделов обязательны `SHA: <40 lowercase hex>` и `Tag: vX.Y.Z`; при подготовке release commit разрешена символическая ссылка `SHA: tag:vX.Y.Z` (разрешается через Git tag, не случайный/предыдущий SHA); в Unreleased этих полей нет. Полные секции остаются в репозитории и metadata; About не отображает их.
 
 Вносить только проверенные изменения, не секреты и не личные данные. Текущий Unreleased описывает подготовку первой публичной версии; он не свидетельство её публикации. При выпуске переносить согласованные notes в раздел версии, а Unreleased оставлять для дальнейшей подготовки (например Technical: «Новые изменения пока не запланированы»). Исторические разделы сохранять; исправления ошибочных notes проводить отдельным документированным commit.
 
@@ -49,7 +49,7 @@ npm run check:release
 npm run check:release:browser
 ```
 
-Release gate включает build, ESLint и versioning tests. Browser gate требует заранее запущенные локальный build preview и Chrome CDP; процедура в [scripts.md](scripts.md). More browser suite проверяет default collapsed, keyboard Enter, click toggle и адаптивные размеры. В репозитории нет `npm run check`; не подменять отсутствующую команду молча.
+Release gate включает build, ESLint и versioning tests. Browser gate требует заранее запущенные локальный build preview и Chrome CDP; процедура в [scripts.md](scripts.md). More browser suite проверяет статические version/title, отсутствие раскрываемых подробностей, keyboard navigation и адаптивные размеры. В репозитории нет `npm run check`; не подменять отсутствующую команду молча.
 
 После отдельного deployment approval используются существующие команды:
 
