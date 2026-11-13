@@ -23,7 +23,9 @@ test('package, generated UI metadata, release notes and actual health agree', as
   assert.equal((await response.json()).version,currentRelease.version)
   const ui = await fs.readFile('src/pages/MorePage.tsx','utf8')
   assert.match(ui,/Версия \{buildMetadata.version\}/)
-  assert.match(ui,/currentRelease.sections.map/)
+  assert.match(ui,/currentRelease.title/)
+  assert.doesNotMatch(ui,/currentRelease.sections|<details|<summary/)
+  assert.equal(currentRelease.title,'Первый релиз 300W')
 })
 test('0.0.0 selects Unreleased, even when published history exists', () => {
   for (const fixture of [unreleased,published]) {

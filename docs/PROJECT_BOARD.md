@@ -6,6 +6,9 @@
 
 ## Current Focus
 
+REL-06 / REL-06B — LOCALLY QUALIFIED / AUTHORIZED FOR PATCH PR. Base v1.0.0 commit `c926e93aa6bdfa1a4dd387c2a3d0c1d31b19d42e`; version 1.0.1, static About version/title, full repository changelog retained. Owner permits skipping Preview for this narrow patch only after local qualification and separate Production approval. Fast18/18 and browser14/14 exit0; targeted20/20, About browser and athlete/result audits PASS. REL-06B authorizes one patch commit, release-branch push and PR into preview. Merge, deployment and tag remain unauthorized. [Qualification](rel06-about-patch.md).
+
+
 REL-01A FINAL UI POLISH — QUALIFIED / AWAITING OWNER REVIEW. User-facing rankings note corrected, Home calendar tile explicit line break, shared loading text standardized. Fast18/18, browser14/14 exit0, targeted40/40, Home/loading browser and58 mobile/7 desktop biographies PASS. REL-01A/CAL-01 changes preserved; no data/ranking/config changes. [Scope, loading audit and before/after evidence](rel01a-final-ui-polish.md). No Git publication/deployment authorized.
 
 REL-01A/CAL-01 — FINAL REVIEW PACKAGE / AWAITING OWNER APPROVAL. Verified T100 correction included in draft CHANGELOG;17-file candidate remains uncommitted, base dc2beb424aeaf62831e56da6c849f7ce66ba216b. Notes-only follow-up does not replace earlier gate evidence or authorize Git publication/deployment.
