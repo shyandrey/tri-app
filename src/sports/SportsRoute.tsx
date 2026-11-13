@@ -29,10 +29,10 @@ export default function SportsRoute({ route, navigate, back }: { route: Route; n
   return <main className="app" data-route-pending="true" data-rankings-pending={route.page === 'rankings' || undefined}>
     <button className="page-back-button" onClick={back}>← Назад</button>
     <section className="sports-loading" aria-labelledby="sports-loading-title">
-      <h1 id="sports-loading-title">{route.page === 'rankings' ? 'Официальные рейтинги' : route.page === 'athletes' || route.page === 'athlete' ? 'Профили атлетов' : 'Результаты гонки'}</h1>
+      <h1 id="sports-loading-title" role={failed ? undefined : 'status'}>{!failed ? 'Загрузка...' : route.page === 'rankings' ? 'Официальные рейтинги' : route.page === 'athletes' || route.page === 'athlete' ? 'Профили атлетов' : 'Результаты гонки'}</h1>
       {failed ? <div role="alert"><p>Не удалось загрузить данные. Проверьте соединение и повторите попытку.</p>
         <button className="sports-loading__retry" onClick={() => window.location.reload()}>Повторить</button>
-      </div> : <p role="status">Загрузка…</p>}
+      </div> : null}
     </section>
     <BottomNav currentPage={route.page === 'rankings' ? 'rankings' : route.page === 'race' ? 'calendar' : 'athletes'} onNavigate={page => navigate({ page })} />
   </main>

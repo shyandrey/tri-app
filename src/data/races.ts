@@ -428,8 +428,8 @@ export const races: Race[] = [
     bike: '80 км',
     run: '18 км',
     description:
-      'Женский этап T100 Triathlon World Tour 2026 в Дубае.',
-    gender: 'WPRO',
+      'Мужской и женский этап T100 Triathlon World Tour 2026 в Дубае.',
+    gender: 'WPRO+MPRO',
     sourceUrl:
       'https://t100triathlon.com/pro-racing/',
   },

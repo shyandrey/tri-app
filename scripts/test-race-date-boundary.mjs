@@ -30,3 +30,17 @@ for(const [instant,present] of [
  }
  assert.equal(JSON.stringify(allRaceEditionViews),before,'No race data mutation')
 })
+
+
+for(const [instant,present] of [['2026-11-13T21:00:00.000Z',true],['2026-11-14T20:59:59.999Z',true],['2026-11-14T21:00:00.000Z',false]])test(`CAL-01 Dubai both genders / Saudi hidden at ${instant}`,t=>{
+ t.mock.timers.enable({apis:['Date'],now:new Date(instant)})
+ const home=renderToStaticMarkup(createElement(AppScreen,{route:{page:'home'},navigate(){},back(){}}))
+ assert.equal(home.includes('aria-label="Открыть Dubai T100"'),present)
+ assert.equal(home.includes('aria-label="Открыть гонку: Dubai T100,'),present)
+ assert.equal(home.includes('Saudi Arabia T100'),false)
+ for(const timeFilter of ['upcoming','finished']){
+  const html=renderToStaticMarkup(createElement(Calendar,{races:currentRaceEditions,searchRaces:allRaceEditionViews,onBack(){},onRaceClick(){},onNavigate(){},onViewStateChange(){},viewState:{search:'',filter:'Все',timeFilter,openArchiveYears:[]}}))
+  assert.equal(html.includes('aria-label="Открыть гонку: Dubai T100,'),timeFilter==='upcoming'?present:!present)
+  assert.equal(html.includes('Saudi Arabia T100'),false)
+ }
+})

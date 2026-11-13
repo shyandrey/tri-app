@@ -1,3 +1,4 @@
+import { isRaceInCalendar } from '../data/raceEditions'
 import { isCalendarSeasonCompleted } from '../data/calendarSeasons'
 import { CalendarIcon } from '../components/AppIcons'
 import './CalendarPage.css'
@@ -143,7 +144,7 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
 
   const isSearching = search.trim().length > 0
   const normalizedSearch = search.trim().toLowerCase()
-  const visibleRaces = (isSearching ? searchRaces : races).filter((race) => race.series !== 'Challenge')
+  const visibleRaces = (isSearching ? searchRaces : races).filter(isRaceInCalendar).filter((race) => race.series !== 'Challenge')
 
   const filteredRaces = visibleRaces
     .filter((race) => {
@@ -177,7 +178,7 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
     year,
     races: groupRaceEventCards(
       searchRaces
-        .filter((race) => race.series !== 'Challenge')
+        .filter(isRaceInCalendar).filter((race) => race.series !== 'Challenge')
         .filter((race) => race.year === year)
         .filter((race) => filter === 'Все' || race.series === filter)
     ).sort((a, b) => new Date(a.race.dateISO).getTime() - new Date(b.race.dateISO).getTime()),
@@ -251,7 +252,7 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
           ))}
         </div>
         {isSearching && <p className="calendar-search-notice">Поиск по всем гонкам — фильтры временно не применяются</p>}
-        {dataStatus === 'loading' && <p role="status">Загружаем гонки…</p>}
+        {dataStatus === 'loading' && <p role="status">Загрузка...</p>}
         {dataStatus === 'error' && <p role="alert">Не удалось загрузить гонки. Попробуйте открыть календарь позже.</p>}
         {showEmpty && (
           <div className="calendar-empty">
