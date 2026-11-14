@@ -1,10 +1,6 @@
 # Prepared Preview pipeline. Deployment is disabled until separate owner activation.
 name: Preview CI
 on:
-  pull_request:
-    branches: [preview]
-  push:
-    branches: [preview]
   workflow_dispatch:
 
 permissions:
