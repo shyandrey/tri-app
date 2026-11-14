@@ -1,58 +1,57 @@
 # 300W — Project Board
 
-Обновлено: 2026-11-11 (REL-PREP-01 content freeze; older dated checkpoints retained). Краткая рабочая доска; код и evidence определяют фактическое состояние реализации. Это не разрешение выполнять перечисленные действия.
+Обновлено: 2026-11-14. Текущий post-release план; исторические checkpoints ниже сохранены без изменений и не отражают текущий статус Production. Запись задачи не означает разрешение на Git-операции, deployment, удаление файлов или инфраструктурные изменения.
 
-Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности. Приоритет не означает разрешения на выполнение.
+Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности.
 
-## Current Focus
+## Current Focus — Post-release Stage 1
 
-REL-06 / REL-06B — LOCALLY QUALIFIED / AUTHORIZED FOR PATCH PR. Base v1.0.0 commit `c926e93aa6bdfa1a4dd387c2a3d0c1d31b19d42e`; version 1.0.1, static About version/title, full repository changelog retained. Owner permits skipping Preview for this narrow patch only after local qualification and separate Production approval. Fast18/18 and browser14/14 exit0; targeted20/20, About browser and athlete/result audits PASS. REL-06B authorizes one patch commit, release-branch push and PR into preview. Merge, deployment and tag remain unauthorized. [Qualification](rel06-about-patch.md).
+**Публичный запуск 300W: 13.11.2026.** Production **v1.0.1**, SHA `87592c92b8eed878a58d21c1b5105a8d2e174b11`, deployment `b9e2ed8a-9d57-45dd-9515-deed7a7e0040`, Cloudflare version `dd1b75d0-5235-4c5d-b1d5-ce4cd9d5daac`, 100% traffic; owner-reported live smoke и About PASS. Preview **v1.0.0**, SHA `c926e93aa6bdfa1a4dd387c2a3d0c1d31b19d42e`. Auto Deploy отключён (`PREVIEW_AUTO_DEPLOY_ENABLED=false`). Annotated tag `v1.0.0` создан 13.11.2026; `v1.0.1` ещё не оформлен. Публичный Telegram-анонс опубликован; Mini App и ссылки проверены владельцем. OPS-02/OPS-03 — принятые, но не устранённые риски.
 
+**Current Focus: DEVOPS-01.** В этом PR предлагается перевести GitHub Actions workflow на ручной `workflow_dispatch` (без автоматических push/PR CI). Владелец сообщил, что снял обязательный status check в защите ветки `preview`; проверить результат после merge. PR не является разрешением на merge. Auto Deploy остаётся выключенным.
 
-REL-01A FINAL UI POLISH — QUALIFIED / AWAITING OWNER REVIEW. User-facing rankings note corrected, Home calendar tile explicit line break, shared loading text standardized. Fast18/18, browser14/14 exit0, targeted40/40, Home/loading browser and58 mobile/7 desktop biographies PASS. REL-01A/CAL-01 changes preserved; no data/ranking/config changes. [Scope, loading audit and before/after evidence](rel01a-final-ui-polish.md). No Git publication/deployment authorized.
+### Stage 1 — Stabilization & Cleanup
 
-REL-01A/CAL-01 — FINAL REVIEW PACKAGE / AWAITING OWNER APPROVAL. Verified T100 correction included in draft CHANGELOG;17-file candidate remains uncommitted, base dc2beb424aeaf62831e56da6c849f7ce66ba216b. Notes-only follow-up does not replace earlier gate evidence or authorize Git publication/deployment.
+| ID | Priority | Status | Scope / next action |
+| --- | --- | --- | --- |
+| DEVOPS-01 (post-release) | P1 | PR PREPARED | GitHub CI только вручную; после отдельно разрешённого merge проверить отсутствие автоматического CI и актуальные branch rules. |
+| DEVOPS-03 (post-release workstream; ID уточнить) | P1 | PLANNED | Упростить ручной deployment/release tooling, сохранив rollback/readiness safeguards; проверить коллизию с историческим DEVOPS-03B перед назначением постоянного ID. |
+| REL-06F | P1 | PLANNED | Annotated tag `v1.0.1` на опубликованном SHA после отдельного approval; без deployment. |
+| POST-03 | P2 | PLANNED | Инвентаризация и список кандидатов на очистку репозитория; никакого удаления без owner review. |
+| POST-01 | P2 | PLANNED | Аудит актуальности документации и исторических checkpoints. |
+| POST-02 | P2 | PLANNED | Обновить README, Project Board, runbooks, versioning; закрепить облегчённый workflow. |
+| UI-07 | P2 | PLANNED | Home Showcase: «Сегодня!» до конца дня гонки, «Завтра» за день, иначе «Скоро»; дата по Москве, сохранить M/W, навигацию и правило показа до конца дня гонки. |
+| UI-08 | P2 | PLANNED | Вернуть стрелку и свёрнутые по умолчанию подробные release notes; версия и короткое описание видны всегда. |
+| UI-10 | P2 | PLANNED | Стандартизировать вид/позицию кнопки «Назад» в Feedback, сохранив навигацию. |
 
-CAL-01 — LOCAL QUALIFICATION PASS / AWAITING OWNER REVIEW. Dubai14November2026 both PRO genders; Saudi postponed to16–17April2027 per official T100/PTO and World Triathlon. Preserve edition IDs/results, exclude obsolete Saudi calendar card, no2027 creation. REL-01A version/docs retained; CAL-01 final gates18/18 fast and14/14 browser (exit0),35/35 targeted and30/30 importer PASS;58 mobile/7 desktop biographies preserved. Initial hash/fixture failures documented, not suppressed. [Evidence, implementation and tests](cal01-t100-calendar.md). No commit/push/deploy authorized.
+**Ближайший UI patch:** UI-07 + UI-08 + UI-10. UI-09 исключён.
 
-REL-01A — LOCAL v1.0.0 CANDIDATE / QUALIFICATION PASS / AWAITING OWNER REVIEW (2026-11-12). Isolated from approved Preview source `dc2beb424aeaf62831e56da6c849f7ce66ba216b`; version/lock/changelog and documentation only. No commit, push, PR, deployment or tag authorized. [Release candidate scope, evidence and remaining gates](rel-01a-v1-release-candidate.md).
+### Stage 2 — Product Development
 
-Current verified checkpoint supersedes publication-pending wording below: REL-INT-02/03 and ATH-03B are deployed in Preview via DEVOPS-05D, version 0.0.0; deployment `9746cf1d-6977-4005-b143-2adcab005dc2`, version `7e7fb434-be26-4178-963d-c63973889a92`. All 58 biographies verified live; original57 unchanged. Production remains `c8f52e02a75e0b413dddbfee77f477232c5301d3` / 0.0.0. These IDs are DEVOPS-05D evidence, not a new infrastructure inspection.
+| ID | Priority | Status | Scope / next action |
+| --- | --- | --- | --- |
+| CAL-02 | P1 | PLANNED | Проверить официальные даты, локации и M/W профессиональных гонок 2027 (IRONMAN, 70.3, T100, Challenge и представленные серии); добавить сезон и Showcase, сохранив IDs/results. |
+| ATH-04 | P2 | DEFERRED | Проверенные достижения спортсменов; отдельное редакционное согласование до импорта. |
+| UI-09 | P3 | SUSPENDED | Выбор сезона Rankings: барабан vs нативный select; решение только на Stage 2. |
+| POST-04 | P2 | PLANNED | Проверка целостности данных/связей после календарных изменений. |
 
-Owner-reported Safari/iPhone QA: 43/44 PASS, 0 FAIL, no-VPN availability unverified; Firefox/iPhone unreported. Android E2E deferred post-release by owner. OPS-02 remains open; OPS-03 restore drill pending. Manual deployment is the current approved model; Auto Deploy suspended (`false`), run43095376835 remains unresolved QUEUED/zero jobs at REL-GATE-01. No automatic retry, rollback or activation. ATH-04 post-release; preserve four existing Kristian achievements. TECH-01 full regeneration prohibited. Content freeze includes the separately approved Kate Waugh addition (58 total).
+### Stage 3 — Infrastructure & Maintenance
 
-Historical source checkpoints (retained, not current deployment status):
+| ID | Priority | Status | Scope / next action |
+| --- | --- | --- | --- |
+| OPS-02 | P1 | OPEN / ACCEPTED RISK | Доступность Cloudflare из РФ, альтернативы включая Yandex Cloud. |
+| OPS-03 | P1 | OPEN / ACCEPTED RISK | D1 Time Travel restore drill по согласованной безопасной процедуре; Worker rollback не восстанавливает D1. |
+| DEVOPS-02 (post-release; ID уточнить) | P2 | OPEN | GitHub Actions run `43095376835` (QUEUED, zero jobs), Support #4993071; проверить конфликт с историческими DEVOPS-02 ID. |
+| Technical debt | P2 | BACKLOG | Сохранить прочие подтверждённые технические задачи из истории; не закрывать молча. |
 
-REL-INT-02 — LOCAL CANDIDATE PREPARED / AWAITING OWNER REVIEW · P1. REL-QA-02 qualified harness, REL-QA-03 Moscow date boundary and ATH-03B exact approved biography. Fast gate 18/18, targeted 115/115, browser gate underlying checks 14/14 PASS; outer npm launcher timeout recorded separately. All 58 bios verified, prior57 unchanged, 1167 identities and 4592 result IDs preserved. Next: review [inventory, evidence, limitations and proposed publication/recovery](audits/rel-int02-consolidated-candidate.md); no commit/publication/deployment authorized.
+### Lightweight workflow — owner decision
 
-Source candidate checkpoints (preserved):
+- Minor UI/content: build + целевые тесты, commit после approval, один ручной Production deployment после отдельного approval, короткий live smoke; без обязательного полного browser gate, повторного CI и Preview.
+- Feature: целевые и регрессионные проверки; Preview/CI по риску.
+- Infrastructure/data: расширенная квалификация, recovery/rollback readiness и отдельные approvals.
+- Не дублировать тесты неизменённого дерева; не менять существующие release tags; Auto Deploy выключен до отдельного решения.
 
-REL-INT-01 — ISOLATED INTEGRATION CANDIDATE / AWAITING OWNER REVIEW. Baseline Preview `8e4c3030`; exact qualified REL-QA-02 harness from `56f1086c`, qualification workflow excluded. REL-QA-03: Home/Showcase include the full Moscow event date, matching Calendar; next day finished. No ATH-03B work, content changes, commit/push/PR/deployment. [Scope, tests and limitations](audits/rel-int01-integration-candidate.md).
-
-ATH-03B — APPROVED TEXT INTEGRATED LOCALLY / AWAITING OWNER REVIEW. Kate Waugh ID101, seven exact approved paragraphs from source commit `dd711162`; original 57 biographies preserved. Separate candidate on Preview `8e4c3030`, REL-INT-01 untouched. Biography tests 10/10, athlete audit 0 issues, fast release gate 18/18 PASS. No commit/push/PR/deployment. [Source, inventory and validation](audits/ath03b-kate-waugh-integration.md).
-
-Historical publication checkpoint:
-
-REL-PREP-03A — OWNER-AUTHORIZED RC PUBLICATION / AWAITING CI REVIEW. Dedicated branch `release/rel-prep-03a-v1-rc`, base Preview `4a5f7e3`; one consolidated snapshot commit, no merge/deployment authorization. All 57 biographies and Content Freeze retained; ATH-04 post-release; version 0.0.0. Final local gates 18/18 + 14/14; first image timeout remains documented. [Publication scope and conditions](audits/rel-prep03a-publication.md). PR must not be merged without separate owner approval.
-
-Historical preparation checkpoints:
-
-
-REL-PREP-02A — IMPLEMENTED / AWAITING OWNER REVIEW. Final full browser gate 14/14 PASS. Test-only corrections in isolated candidate: approved Home slogan relocation, deterministic image fixture date, approved NAV-03 clearance/landscape geometry and ATH-UI-01 12px/54px season row. Runtime/content/safeguards unchanged. First image-readiness timeout retained as an unresolved stability observation; subsequent diagnostic and full-gate image checks PASS, not proof of a resolved intermittent cause. Original REL-PREP-02 browser blockers are superseded by the final test-contract corrections below. [Diagnosis, screenshots and exact diffs](audits/rel-prep02a-browser-gate.md). No commit/push/PR/merge/deployment.
-
-Historical REL-PREP-02 checkpoint:
-
-
-REL-PREP-02 — CANDIDATE PREPARED / BLOCKED BY FULL BROWSER GATE (11/14 PASS; brand, ui-cleanup, image-delivery FAIL). Content freeze approved. Candidate based on remote Preview `4a5f7e3` retains all five Preview-specific commits and exact active readiness/deployment safeguards, plus frozen reconciliation content `b3f7f49`. Full public v1.0.0 completion requires separately authorized Production deployment, smoke/E2E, tag `v1.0.0` and announcement; none is authorized here. [Candidate, provenance and REL-PREP-03 plan](audits/rel-prep02-consolidation.md). No commit/push/PR/merge/deployment in this task.
-
-REL-PREP-02 verification: release gate 18/18; targeted safety/content 88/88; portable photos/Rankings route 26/26; seven Preview browser suites and three additional profile/startup/biography suites PASS. Full gate failures preserved, not suppressed. Next: separately authorized focused investigation/test-contract maintenance; no runtime/content fixes, commits or publication here. Source worktrees preserved.
-
-Historical REL-PREP-01 checkpoint:
-
-
-REL-PREP-01 — CONTENT FROZEN / Git publication preparation and technical verification. Owner decision: v1.0.0 content development complete. Include all 57 approved, locally integrated biographies with stable IDs, exact paragraphs and approved Høgenhaug corrections. Preserve approved names, results, rankings, photos, artwork and race data. No new races, athletes, biographies, achievements or 2027 season data. ATH-04 research/integration deferred post-release; existing four Kristian achievements unchanged. DATA-ATH-02 remains CLOSED / OWNER APPROVED; TECH-01 OPEN, full regeneration prohibited. No commit/push/PR/merge/deployment authorized in this preparation task.
-
-Исторический checkpoint 20.10.2026 (не текущие remote/deployment pointers; ATH-03/04 superseded by REL-PREP-01 above/below): подготовка v1.0.0 — **CONDITIONAL GO / release candidate preparation**, не объявленный релиз. [Readiness audit и athlete roadmap](pre-release-readiness-2026-10-18.md): gate PASS, но версия остаётся 0.0.0; нужны release approval/notes/tag, Android E2E и решение по сетевому риску. Production и Preview работают на `c8f52e02a75e0b413dddbfee77f477232c5301d3` (live verified 20.10.2026). REL-01 и UX-01 не закрываются автоматически по tests/deployment PASS. BOT-01/BOT-02/BOT-05 DONE; BOT-03/BOT-04 и все technical/data tasks сохраняются. ATH-01/02 DONE — production closeout 20.10.2026; нерешённые вопросы сохранены в ATH-05; ATH-03/04 — proposed editorial enrichment, не разрешение на импорт.
+## Historical checkpoints (retained; not current status)
 
 ## REL-PREP-01 — Content Freeze & Git Publication Preparation · 2026-11-11
 
