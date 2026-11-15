@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-15T19:10:57.558438+00:00",
+  "tables": [
+    {
+      "file": "2026-men.json",
+      "gender": "M",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/men",
+      "snapshot": "scripts/fixtures/official-standings/t100-2026-post-dubai-men.html",
+      "snapshotSha256": "43231b10702f2ca173b9349086a56a17c359838ab97a06fdd7ebf15f26eb677b",
+      "rows": [
+        {
+          "officialRank": 1,
+          "athleteName": "Hayden Wilde",
+          "nationality": "NZ",
+          "nationalityNormalized": "NZ",
+          "officialPoints": 105,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/hayden-wilde",
+          "athleteId": 3
+        },
+        {
+          "officialRank": 2,
+          "athleteName": "Kyle Smith",
+          "nationality": "NZ",
+          "nationalityNormalized": "NZ",
+          "officialPoints": 63,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/kyle-smith",
+          "athleteId": 32
+        },
+        {
+          "officialRank": 3,
+          "athleteName": "Jake Birtwhistle",
+          "nationality": "AU",
+          "nationalityNormalized": "AU",
+          "officialPoints": 59,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/jake-birtwhistle",
+          "athleteId": 17
+        },
+        {
+          "officialRank": 4,
+          "athleteName": "Menno Koolhaas",
+          "nationality": "NL",
+          "nationalityNormalized": "NL",
+          "officialPoints": 57,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/menno-koolhaas",
+          "athleteId": 10
+        },
+        {
+          "officialRank": 5,
+          "athleteName": "Rico Bogen",
+          "nationality": "DE",
+          "nationalityNormalized": "DE",
+          "officialPoints": 55,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/rico-bogen",
+          "athleteId": 5
+        },
+        {
+          "officialRank": 6,
+          "athleteName": "Mika Noodt",
+          "nationality": "DE",
+          "nationalityNormalized": "DE",
+          "officialPoints": 52,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/mika-noodt",
+          "athleteId": 4
+        },
+        {
+          "officialRank": 7,
+          "athleteName": "Lasse Nygaard Priester",
+          "nationality": "DE",
+          "nationalityNormalized": "DE",
+          "officialPoints": 49,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/lasse-nygaard-priester",
+          "athleteId": 11
+        },
+        {
+          "officialRank": 8,
+          "athleteName": "Samuel Dickinson",
+          "nationality": "GB",
+          "nationalityNormalized": "GB",
+          "officialPoints": 47,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/samuel-dickinson",
+          "athleteId": 9
+        },
+        {
+          "officialRank": 9,
+          "athleteName": "Gregor Payet",
+          "nationality": "LU",
+          "nationalityNormalized": "LU",
+          "officialPoints": 44,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/gregor-payet",
+          "athleteId": 19
+        },
+        {
+          "officialRank": 10,
+          "athleteName": "Henry Räppo",
+          "nationality": "EE",
+          "nationalityNormalized": "EE",
+          "officialPoints": 42,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/henry-raeppo",
+          "athleteId": 93
+        }
+      ]
+    },
+    {
+      "file": "2026-women.json",
+      "gender": "W",
+      "sourceUrl": "https://stats.protriathletes.org/t100/standings/women",
+      "snapshot": "scripts/fixtures/official-standings/t100-2026-post-dubai-women.html",
+      "snapshotSha256": "e51d7ae23e468c62d420d1fe4d2d4dc2a231807f9e4a85a66aab561cc4bfc839",
+      "rows": [
+        {
+          "officialRank": 1,
+          "athleteName": "Georgia Taylor-Brown",
+          "nationality": "GB",
+          "nationalityNormalized": "GB",
+          "officialPoints": 96,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/georgia-taylor-brown",
+          "athleteId": 105
+        },
+        {
+          "officialRank": 2,
+          "athleteName": "Julie Derron",
+          "nationality": "CH",
+          "nationalityNormalized": "CH",
+          "officialPoints": 90,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/julie-derron",
+          "athleteId": 102
+        },
+        {
+          "officialRank": 3,
+          "athleteName": "Nicole Van der Kaay",
+          "nationality": "NZ",
+          "nationalityNormalized": "NZ",
+          "officialPoints": 63,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/nicole-van-der-kaay",
+          "athleteId": 123
+        },
+        {
+          "officialRank": 4,
+          "athleteName": "Imogen Simmonds",
+          "nationality": "CH",
+          "nationalityNormalized": "CH",
+          "officialPoints": 62,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/imogen-simmonds",
+          "athleteId": 112
+        },
+        {
+          "officialRank": 5,
+          "athleteName": "Bianca Bogen",
+          "nationality": "DE",
+          "nationalityNormalized": "DE",
+          "officialPoints": 54,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/bianca-bogen",
+          "athleteId": 121
+        },
+        {
+          "officialRank": 6,
+          "athleteName": "Sara Pérez Sala",
+          "nationality": "ES",
+          "nationalityNormalized": "ES",
+          "officialPoints": 48,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/sara-perez-sala",
+          "athleteId": 116
+        },
+        {
+          "officialRank": 7,
+          "athleteName": "Alanis Siffert",
+          "nationality": "CH",
+          "nationalityNormalized": "CH",
+          "officialPoints": 47,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/alanis-siffert",
+          "athleteId": 111
+        },
+        {
+          "officialRank": 8,
+          "athleteName": "Kate Waugh",
+          "nationality": "GB",
+          "nationalityNormalized": "GB",
+          "officialPoints": 41,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/kate-waugh",
+          "athleteId": 101
+        },
+        {
+          "officialRank": 9,
+          "athleteName": "Audrey Merle",
+          "nationality": "FR",
+          "nationalityNormalized": "FR",
+          "officialPoints": 41,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/audrey-merle",
+          "athleteId": 127
+        },
+        {
+          "officialRank": 10,
+          "athleteName": "Taylor Spivey",
+          "nationality": "US",
+          "nationalityNormalized": "US",
+          "officialPoints": 40,
+          "athleteSourceUrl": "https://stats.protriathletes.org/athlete/taylor-spivey",
+          "athleteId": 118
+        }
+      ]
+    }
+  ]
+}

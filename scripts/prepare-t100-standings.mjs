@@ -3,10 +3,11 @@ import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 
 export const fixtureUrl = new URL('./fixtures/official-standings/t100-approved-2026-10-21.json', import.meta.url)
+export const liveFixtureUrl = new URL('./fixtures/official-standings/t100-post-dubai-2026.json', import.meta.url)
 export const serialize = value => JSON.stringify(value, null, 2) + '\n'
 
 // Offline replay only. The pinned input records owner-approved values, not live PTO data.
-export function buildStandings(input) {
+export function buildStandings(input, live = null) {
   if (input.schemaVersion !== 1 || input.tables.length !== 6) throw Error('Expected six approved tables')
   const output = {}, identities = new Map()
   for (const t of input.tables) {
@@ -49,13 +50,31 @@ export function buildStandings(input) {
       rows,
     }
   }
+  if (live) {
+    if (live.schemaVersion !== 1 || live.tables.length !== 2 || !Number.isFinite(Date.parse(live.observedAt))) throw Error('Invalid live evidence')
+    const seen = new Set()
+    for (const t of live.tables) {
+      const gender = {M:'men', W:'women'}[t.gender]
+      if (!gender || t.file !== `2026-${gender}.json` || seen.has(t.file) || t.rows.length !== 10 || t.sourceUrl !== `https://stats.protriathletes.org/t100/standings/${gender}` || !/^[a-f0-9]{64}$/.test(t.snapshotSha256)) throw Error('Invalid live table')
+      seen.add(t.file)
+      const ids = new Set()
+      for (const [i,r] of t.rows.entries()) {
+        if (r.officialRank !== i+1 || !Number.isInteger(r.officialPoints) || r.officialPoints<0 || !Number.isInteger(r.athleteId) || r.athleteId<=0 || ids.has(r.athleteId) || !r.athleteName || !/^[A-Z]{2}$/.test(r.nationalityNormalized) || !/^https:\/\/stats\.protriathletes\.org\/athlete\/[a-z0-9-]+$/.test(r.athleteSourceUrl)) throw Error('Invalid live row')
+        ids.add(r.athleteId)
+      }
+      const provenance = {type:'OFFICIAL_HTML_SNAPSHOT', htmlVerified:true, snapshot:t.snapshot, snapshotSha256:t.snapshotSha256,
+        localApplicationApproval:{date:live.observedAt.slice(0,10),scope:'OWNER_AUTHORIZED_TOP10_LOCAL_CANDIDATE_ONLY'}}
+      output[t.file] = {schemaVersion:1,series:'T100',coverage:'TOP_10_ONLY',seasonYear:2026,gender:t.gender,seasonStatus:'LIVE',sourceUrl:t.sourceUrl,sourceObservedAt:live.observedAt,verifiedAt:live.observedAt.slice(0,10),sourceVerificationStatus:'OFFICIAL_HTML_VERIFIED',provenance,
+        rows:t.rows.map(r=>({...r,identityStatus:'CONFIRMED',sourceUrl:t.sourceUrl,sourceObservedAt:live.observedAt,verifiedAt:live.observedAt.slice(0,10),sourceVerificationStatus:'OFFICIAL_HTML_VERIFIED',provenance:{type:'OFFICIAL_HTML_SNAPSHOT',snapshot:t.snapshot,snapshotSha256:t.snapshotSha256}}))}
+    }
+  }
   return output
 }
 
 async function main() {
   const args = process.argv.slice(2)
   if (args.length && (args.length !== 2 || args[0] !== '--out-dir')) throw Error('Usage: node scripts/prepare-t100-standings.mjs [--out-dir directory]')
-  const result = buildStandings(JSON.parse(await fs.readFile(fixtureUrl, 'utf8')))
+  const result = buildStandings(JSON.parse(await fs.readFile(fixtureUrl, 'utf8')), JSON.parse(await fs.readFile(liveFixtureUrl, 'utf8')))
   if (!args.length) {process.stdout.write(serialize(result)); return}
   await fs.mkdir(args[1], {recursive: true})
   for (const [file, table] of Object.entries(result)) await fs.writeFile(path.join(args[1], file), serialize(table))
