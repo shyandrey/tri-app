@@ -1,3 +1,4 @@
+import { dubai2026Results } from './2026/t100/dubai'
 import type { RaceResult } from '../../types/RaceResult'
 import { athleteCountryCodes } from '../athleteCountries'
 import { getRaceEditionId } from '../raceIdentity'
@@ -154,6 +155,7 @@ const allResults = [
   ...niceWorldChampionship2026Results,
   ...frenchRiviera2026Results,
   ...kona2026Results,
+  ...dubai2026Results,
 ]
 
 // Result IDs are internal row identifiers, not source data. Assign them once after

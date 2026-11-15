@@ -10754,6 +10754,9 @@
       "fieldReviewFlags": [],
       "identityReviewFlags": [],
       "approvalCondition": "Owner authorized APPROVE only after live identity, historical results and uniqueness checks PASS; fulfilled 2026-10-19."
-    }
+    },
+    {"id": 20016, "name": "Brooke Gillies", "url": "https://stats.protriathletes.org/athlete/brooke-gillies", "approvedBy": "owner (DATA-05B); PTO identity/country verified", "approvedAt": "2026-11-15", "approvalScope": "URL_IDENTITY_ONLY", "approvalSource": "docs/audits/data05-dubai-t100-2026.md", "fieldApproval": "COUNTRY_ONLY", "countryCode": "GB", "fieldReviewFlags": []},
+    {"id": 20017, "name": "Enzo Bourdon", "url": "https://stats.protriathletes.org/athlete/enzo-bourdon", "approvedBy": "owner (DATA-05B); PTO identity/country verified", "approvedAt": "2026-11-15", "approvalScope": "URL_IDENTITY_ONLY", "approvalSource": "docs/audits/data05-dubai-t100-2026.md", "fieldApproval": "COUNTRY_ONLY", "countryCode": "FR", "fieldReviewFlags": []},
+    {"id": 20018, "name": "Sara Sandrini", "url": "https://stats.protriathletes.org/athlete/sara-sandrini", "approvedBy": "owner (DATA-05B); PTO identity/country verified", "approvedAt": "2026-11-15", "approvalScope": "URL_IDENTITY_ONLY", "approvalSource": "docs/audits/data05-dubai-t100-2026.md", "fieldApproval": "COUNTRY_ONLY", "countryCode": "IT", "fieldReviewFlags": []}
   ]
 }

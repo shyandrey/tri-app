@@ -37,12 +37,29 @@ test('URLs require explicit primary-source race/year/results without query or re
  for(const url of ['https://example.com/race/test/2026/results',fixtures[0].evidence.sourceUrl+'?tracking=1','https://stats.protriathletes.org/athlete/test'])assert.throws(()=>validateSourceURL(url))
 })
 const server=await createServer({server:{middlewareMode:true,hmr:false},appType:'custom',logLevel:'silent'})
-const {athletes}=await server.ssrLoadModule('/src/data/athletes/index.ts')
-const {raceResults}=await server.ssrLoadModule('/src/data/results/index.ts')
-const {allRaceEditionViews}=await server.ssrLoadModule('/src/data/raceEditions.ts')
+const {athletes:currentAthletes}=await server.ssrLoadModule('/src/data/athletes/index.ts')
+const {raceResults:currentResults}=await server.ssrLoadModule('/src/data/results/index.ts')
+const {allRaceEditionViews:currentEditions}=await server.ssrLoadModule('/src/data/raceEditions.ts')
 const {normalizeAthleteIdentityName,resolveAthleteId}=await server.ssrLoadModule('/src/data/athleteIdentity.ts')
 const {calculateAthleteRanking}=await server.ssrLoadModule('/src/utils/athleteRanking.ts')
 await server.close()
+// DATA-05B: earlier import fixtures describe the pre-Dubai dataset. Verify the
+// complete historical boundary before replaying those unchanged contracts.
+// Full Dubai rows and all three additions are tested in test-dubai-2026-import.
+const dubaiBaseline=JSON.parse(await fs.readFile('scripts/fixtures/result-imports/dubai-baseline-2026.json','utf8'))
+const athletes=currentAthletes.filter(a=>a.id<=dubaiBaseline.maxAthleteId)
+const raceResults=currentResults.slice(0,dubaiBaseline.resultsCount)
+const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex')
+assert.equal(currentAthletes.length,1170)
+assert.equal(currentResults.length,4633)
+assert.equal(digest(athletes),dubaiBaseline.athletesSha256)
+assert.equal(digest(raceResults),dubaiBaseline.resultsSha256)
+const allRaceEditionViews=currentEditions.map(e=>{
+ if(e.editionId!=='t100-dubai-2026')return e
+ assert.deepEqual(e.sof,{women:92.11,men:91.03})
+ return {...e,sof:undefined}
+})
+
 test('SOF is bound to explicit gender panels and existing production editions',()=>{
  assert.deepEqual(fixtures[0].parsed.groups.map(g=>[g.gender,g.sof]),[['W',96.18],['M',96.35]])
  assert.deepEqual(fixtures[1].parsed.groups.map(g=>[g.gender,g.sof]),[['M',96.12]])
