@@ -364,3 +364,44 @@ local files and does not change normal assets. See
 ## BOT-01 operations
 
 Core commands and public webhook migration are complete by owner confirmation; current deployment/config evidence is recorded above. Commands are enabled in both environments with distinct PUBLIC credentials. Production News/Feedback routing remains separate. Follow [Telegram commands](telegram-commands.md) and [Project Board](PROJECT_BOARD.md) for open BotFather setup, legacy Preview News receiver retirement and Observability follow-ups. Closing BOT-01 does not authorize those mutations.
+
+## Universal manual release CLI (POST-DEVOPS-01)
+
+Local candidate, awaiting owner acceptance. Supersedes release-specific temporary SHA edits once reviewed and published; historical runbooks/artifacts remain recovery evidence. No activation or deployment is implied by a package or by this documentation. Never use a dirty checkout or bypass Git protection. Both Codex and the owner use the same commands and STOP rules.
+
+Prerequisites: clean checkout at the explicitly approved full SHA, locked dependencies (`npm ci`), Node **24.19.0**, local Wrangler **4.142.0**, existing Cloudflare authentication and read-only `GH_READ_TOKEN` (Environment variables, repository variables and Actions run visibility). Do not put credentials in commands, evidence or source. The CLI uses the supported [Wrangler auth token command](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-token), captures credentials only in memory, and performs GET-only Cloudflare preflight. The pinned Wrangler does not expose public read commands covering all required settings/schedules, so REST still needs a bearer token. For the credential subprocess, `WRANGLER_WRITE_LOGS=false` and `WRANGLER_SEND_METRICS=false` are forced regardless of inherited values; stdout/stderr are captured, and subprocess/parser errors are replaced with a constant credential-free message. No internal Wrangler APIs or credential-file parsing is used. Synthetic regression tests exercise the installed Wrangler logger, not just a mock. Legacy global API keys are deliberately unsupported. Missing permissions/authentication are STOP conditions; never broaden them automatically. OAuth refresh is handled by Wrangler; no automatic login is implemented.
+
+Run from the exact clean source checkout after Git publication/approval. Choose new absolute external paths for package and evidence. Substitute the owner-approved SHA; no SHA defaults exist:
+
+```bash
+RELEASE_SHA='<approved full 40-character SHA>'
+PACKAGE='/private/tmp/300w-approved-production-package'
+EVIDENCE='/private/tmp/300w-approved-production-evidence'
+npm run release:prepare -- --sha "$RELEASE_SHA" --env production --package "$PACKAGE" --evidence "$EVIDENCE"
+# Save printed manifest SHA256 in the owner-reviewed release record.
+DIGEST='<printed 64-character manifest SHA256>'
+npm run release:preflight -- --sha "$RELEASE_SHA" --env production --package "$PACKAGE" --digest "$DIGEST" --evidence "$EVIDENCE"
+# Only after explicit owner authorization covering this exact SHA/environment:
+npm run release:deploy -- --sha "$RELEASE_SHA" --env production --package "$PACKAGE" --digest "$DIGEST" --evidence "$EVIDENCE" --authorize "production:$RELEASE_SHA"
+npm run release:smoke -- --sha "$RELEASE_SHA" --env production --package "$PACKAGE" --digest "$DIGEST" --evidence "$EVIDENCE"
+```
+
+For read-only qualification of an already published artifact, use:
+
+```bash
+npm run release:qualify -- --sha "$RELEASE_SHA" --env production --package "$PACKAGE" --digest "$DIGEST" --evidence "$EVIDENCE"
+```
+
+This requires the exact current health SHA/version, a clean matching checkout and valid artifact, and performs the same identity/configuration/rollback reads. It rejects authorization and task-hook flags. It writes only `qualification.json` with `purpose: read-only-qualification` and `deploymentAuthorized: false`, never `preflight.json` or an upload attempt. It cannot serve as release evidence. `release:preflight` and `release:deploy` still reject already-published SHAs; deploy performs fresh live checks rather than accepting saved qualification/preflight results. Use a separate evidence directory for qualification.
+
+Preview uses the same commands with **every** `--env preview` and `--authorize "preview:$RELEASE_SHA"`, plus separate paths. There is no fallback target. Production/Preview account, Worker, origin, DB UUID and limiter are pinned independently; configuration derives from the reviewed environment in `wrangler.jsonc`. Operational `wrangler.json` lives in evidence, outside the package. It has no build command or route/domain declarations. Unchanged bindings/vars/cron are compared before upload, then after publication/smoke; secrets are never supplied or changed. Existing domain ownership/routing must remain owner-confirmed: HTTPS alone cannot prove it, and no account-level Custom Domains API is called.
+
+`prepare` runs one application build, then credential-free Wrangler **dry-run** bundling. It refuses existing package/attempt paths, ignores no source dirtiness, and rejects metadata/Vite overrides and local dotenv files (the inert tracked `.dev.vars.example` is allowed). The manifest records SHA/version/environment/Worker/toolchain/lock hash and every file hash. Its externally recorded digest authenticates the manifest; it is not self-signed. `deploy` verifies all files again and performs no build. A persistent exclusive upload-attempt record prevents repeating the command in the same evidence directory, including after timeout. Do not erase it or switch directories to retry: this is an operator safety guard, not a global single-use authorization system.
+
+`preflight` and `deploy` independently read health, settings, schedules, active deployment and rollback version, verify 100% traffic and compatible bindings, require Auto Deploy explicitly false, reject observable active GitHub runs/local Wrangler publishers, and obtain the Production [D1 Time Travel bookmark](https://developers.cloudflare.com/api/resources/d1/subresources/database/subresources/time_travel/methods/get_bookmark/). No query, migration, backup, restore or Feedback submission occurs. Deployment performs a second baseline comparison immediately before its one upload. External publishers on other machines cannot be locked by this local CLI; coordinate an exclusive release window. Even a known stuck workflow requires separate risk handling; this CLI has no bypass.
+
+Standard smoke allows only the captured previous SHA/version and the exact target pair, requires two consecutive target observations within 60 seconds, and validates health, News GET, exact HTML and its initial JS/CSS asset hashes. It rechecks configuration and the other environment. It is **not** a browser gate or proof of task-specific UI behavior. An optional reviewed, tracked read-only Node script can be supplied with `--task-smoke scripts/<file>.mjs`; it receives `--origin` and `--expected-sha`, must exit 0 within 120 seconds and must perform no writes/Feedback submissions. Without it, report task smoke NOT RUN and complete the approved short browser/owner checks separately.
+
+Routine static results/standings: targeted source/identity tests and one final-SHA build, optional Preview based on risk, then short affected-page smoke. Runtime/infrastructure changes require the appropriate broader gates, compatibility review and Preview before owner Production approval. No full catalog regeneration (TECH-01).
+
+On any error: STOP, preserve package, manifest digest, build/preflight/deploy/readiness logs, upload-attempt record and actual public health. Never rebuild a published artifact, retry upload or roll back automatically. Confirm actual Cloudflare deployment/version IDs read-only if publication outcome is uncertain. The recorded previous version is only a candidate for separately authorized Worker rollback; it does not restore D1. Restore uses the captured bookmark only under a separate recovery authorization (OPS-03 drill remains open). If authentication prevents reads, report UNKNOWN rather than inferring success.

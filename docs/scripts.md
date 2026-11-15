@@ -366,3 +366,7 @@ git diff --check
 Короткий live smoke: нужные сезон/пол,10 строк, официальные очки/порядок, русские имена/флаги, ссылки на профили и отсутствие runtime errors. Deployment выполняется установленной artifact-based процедурой; этот раздел не создаёт нового CLI wrapper и не разрешает публикацию сам по себе.
 
 Предпочтительно включать результаты гонки и standings в **один релиз**, если оба официальных набора доступны, проверены и входят в owner-approved diff. Если standings запаздывают, не задерживать согласованные результаты из-за попытки вычислить недостающие очки: отложенный standings update требует своего утверждённого scope.
+
+## Manual release tooling
+
+POST-DEVOPS-01 candidate: `release:prepare`, `release:preflight`, `release:deploy`, `release:smoke` share an explicit SHA/environment/package contract. See the [canonical manual release CLI](deployment-cloudflare.md#universal-manual-release-cli-post-devops-01) for prerequisites, exact Production/Preview commands, approval boundaries and recovery. `release:qualify` performs read-only validation of an already deployed SHA and cannot authorize a release. `npm run test:manual-release` runs mocked safety tests plus installed-Wrangler credential logging checks with synthetic credentials only. Existing direct deployment commands and historical runbooks remain preserved; do not mix their build-and-upload flow with an already qualified immutable package. Owner acceptance/Git publication of this tooling is pending.

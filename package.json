@@ -35,7 +35,13 @@
     "test:foundation": "node --test scripts/test-cloudflare-foundation.mjs",
     "test:feedback": "npm run metadata && node --test scripts/test-feedback.mjs",
     "check:release": "node scripts/check-release.mjs",
-    "check:release:browser": "node scripts/check-release.mjs --browser"
+    "check:release:browser": "node scripts/check-release.mjs --browser",
+    "release:prepare": "node scripts/manual-release.mjs prepare",
+    "release:preflight": "node scripts/manual-release.mjs preflight",
+    "release:deploy": "node scripts/manual-release.mjs deploy",
+    "release:smoke": "node scripts/manual-release.mjs smoke",
+    "test:manual-release": "node --test scripts/test-manual-release.mjs",
+    "release:qualify": "node scripts/manual-release.mjs qualify"
   },
   "dependencies": {
     "react": "^19.2.8",
