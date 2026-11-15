@@ -960,4 +960,7 @@ export const resultAthletes: Athlete[] = [
   {"id":20013,"name":"Matheus Menezes","nameEn":"Matheus Menezes","country":"BR","countryEn":"BR","countryCode":"BR","flag":"","gender":"M","discipline":"IRONMAN / T100","achievements":[]},
   {"id":20014,"name":"Yago Rodrigues Santos Alves","nameEn":"Yago Rodrigues Santos Alves","country":"BR","countryEn":"BR","countryCode":"BR","flag":"","gender":"M","discipline":"IRONMAN / T100","achievements":[]},
   {"id":20015,"name":"Yoann Colin","nameEn":"Yoann Colin","country":"AU","countryEn":"AU","countryCode":"AU","flag":"","gender":"M","discipline":"IRONMAN / T100","achievements":[]},
+  {"id":20016,"name":"Брук Гиллис","nameEn":"Brooke Gillies","country":"GB","countryEn":"GB","countryCode":"GB","flag":"","gender":"W","discipline":"IRONMAN / T100","achievements":[]},
+  {"id":20017,"name":"Энцо Бурдон","nameEn":"Enzo Bourdon","country":"FR","countryEn":"FR","countryCode":"FR","flag":"","gender":"M","discipline":"IRONMAN / T100","achievements":[]},
+  {"id":20018,"name":"Сара Сандрини","nameEn":"Sara Sandrini","country":"IT","countryEn":"IT","countryCode":"IT","flag":"","gender":"W","discipline":"IRONMAN / T100","achievements":[]},
 ]

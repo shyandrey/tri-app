@@ -10,6 +10,7 @@ import { getStatsPtoUrl } from './statsPtoRaceUrls'
 const CURRENT_SEASON = 2026
 
 const currentSeasonSofByRaceId: Record<string, { women?: number; men?: number }> = {
+  't100-dubai': { women: 92.11, men: 91.03 },
   'ironman-new-zealand': {"women":88.05,"men":83.63},
   'ironman-70-3-geelong': {"women":81.01,"men":92.19},
   'ironman-70-3-oceanside': {"women":92.75,"men":92.74},
