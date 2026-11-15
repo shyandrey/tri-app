@@ -324,3 +324,45 @@ Sandbox socket/HMR errors are ENVIRONMENT FAILURE. Rerun explicitly in an enviro
 ## Athlete localization editorial completion
 
 [DATA-ATH-02C policy](athlete-name-localization-policy.md) applies to every athlete creation/import workflow. Missing Russian names are non-blocking, but require editorial review and backlog tracking. Race-result proposal evidence includes `localizationReview`; generated-profile output has a `.localization-review.json` sidecar. Unresolved IDs remain null. After manual/enrichment catalog changes, export a fresh read-only inventory with `node scripts/audit-athlete-display-names.mjs <new-directory>`; never overwrite unfinished owner CSVs. Standings import must not create profiles implicitly or overwrite official source names.
+
+
+## After-Race Standings Update
+
+Канонический workflow официального T100 TOP 10 после гонки (DATA-07A.2, 2026-11-15). Для routine results/standings применяется облегчённый порядок ниже; исторические release checkpoints и расширенные gates выше сохранены, но не требуют повторного полного gate для каждого такого обновления.
+
+### Разные наборы данных
+
+| Набор | Что обновляем |
+| --- | --- |
+| Race Results | Полные официальные профессиональные результаты гонки, включая DNF/DNS/DSQ и отсутствующие splits |
+| T100 Standings Page | Официальный сезонный TOP 10 MPRO и TOP 10 WPRO |
+| TRI Ranking | Собственный рейтинг 300W; формулу не менять при импорте официальных standings |
+| PTO World Ranking | Отдельный внешний рейтинг; не источник очков T100 Tour |
+
+### Итерация 1 — данные и owner review
+
+1. Получить свежие официальные [Men's Standings](https://stats.protriathletes.org/t100/standings/men) и [Women's Standings](https://stats.protriathletes.org/t100/standings/women). Проверить сезон и обновление после нужной гонки; сохранить дату проверки и source evidence. Заголовок сезона сам по себе не доказывает учёт последней гонки: при необходимости сверить официальный race-by-race Points breakdown. Не вычислять сезонную сумму самостоятельно.
+2. Перенести **ровно первые 10 официальных строк каждого пола**, сохранив позиции, порядок и очки. Равные очки не означают автоматически одинаковые места: сохранить официальное разрешение ties, не пересортировывать.
+3. Сопоставить все20 строк с существующими стабильными Athlete IDs, официальной идентичностью и country codes. Использовать существующие одобренные русские имена и флаги, сохраняя исходные имена в evidence. Отсутствующая/неоднозначная TOP10 identity или конфликт страны — STOP для owner review; не создавать профиль неявно. Спортсменов вне TOP10 не создавать только из-за их присутствия в полном источнике.
+4. Изменить только таблицы соответствующего сезона в `src/data/officialStandings/t100/`, их source fixture и необходимые replay/tests. Исторические сезоны, IRONMAN, результаты, IDs, UI/navigation и TRI Ranking сохранить. Не запускать полную регенерацию каталога (TECH-01).
+5. Сравнить все20 строк с источником, проверить профильные ссылки, русские имена/страны, ties и неизменность истории. Запустить целевые standings-тесты, **один build** и diff check:
+
+```sh
+node --test scripts/test-t100-standings.mjs
+npm run build
+git diff --check
+```
+
+`prepare-t100-standings.mjs` — offline replay сохранённых evidence, не live downloader. Без аргументов он печатает JSON; `--out-dir <new-directory>` записывает все шесть таблиц в указанную папку. Сначала обновить и проверить evidence; не направлять replay вслепую в runtime registry и не заменять исторические файлы. Текущий live override — `scripts/fixtures/official-standings/t100-post-dubai-2026.json`; следующий импорт требует нового проверенного snapshot и явного обновления replay, а не повторного использования старых значений.
+
+6. Предоставить один краткий отчёт: сезон/гонка, источник/дата, TOP10 M/W,20 сопоставлений, diff, проверки и исключения. Owner утверждает точный кандидат и ограниченный scope Git/Production следующей итерации. Если официальные standings ещё не обновлены или очки неясны — отложить standings, не оценивать значения и не подставлять нули.
+
+### Итерация 2 — Git и Production
+
+После явного approval кандидата и всей ограниченной последовательности: проверить неизменность diff/base → scoped commit и push → PR/обычный merge согласно действующей branch protection → чистый checkout точного опубликованного SHA → одна Production-сборка и immutable artifact → минимальный preflight → один ручной deployment → короткий read-only live smoke → отчёт SHA/version/deployment IDs. Уже пройденные тесты неизменённых файлов не повторять; финальная сборка нужна для точного commit metadata. Новый конфликт, изменившийся scope или failed check означает STOP и новое решение владельца.
+
+Обязательные safeguards: правильные account/Worker, SHA/version и artifact digest, совместимый rollback baseline, unchanged bindings/secrets/cron, Auto Deploy off и отсутствие конкурирующего publisher. Никаких D1 migrations/writes для статических standings, автоматических retries или rollback. Не запускать GitHub Actions без отдельного разрешения. Preview опционален для routine data-only update; нужен по риску при изменении importer/runtime/UI/infrastructure. Полный browser gate и unrelated suites для обычного TOP10 обновления не обязательны.
+
+Короткий live smoke: нужные сезон/пол,10 строк, официальные очки/порядок, русские имена/флаги, ссылки на профили и отсутствие runtime errors. Deployment выполняется установленной artifact-based процедурой; этот раздел не создаёт нового CLI wrapper и не разрешает публикацию сам по себе.
+
+Предпочтительно включать результаты гонки и standings в **один релиз**, если оба официальных набора доступны, проверены и входят в owner-approved diff. Если standings запаздывают, не задерживать согласованные результаты из-за попытки вычислить недостающие очки: отложенный standings update требует своего утверждённого scope.
