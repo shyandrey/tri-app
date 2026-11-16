@@ -1,4 +1,5 @@
 // Iteration 1 only: write a new external review bundle, never runtime registries.
+import {sealBundle} from './sports-candidate.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
@@ -89,12 +90,12 @@ async function main(){
   report.counts={MPRO:{top10:10},WPRO:{top10:10}};report.existingAthleteMatches=20;report.runtimeTargets=tables.map(t=>`src/data/officialStandings/t100/${t.seasonYear}-${t.gender==='M'?'men':'women'}.json`)
   report.changes=await Promise.all(tables.map(async(t,i)=>{let previous=null;try{previous=JSON.parse(await fs.readFile(report.runtimeTargets[i]))}catch(e){if(e.code!=='ENOENT')throw e}return {gender:t.gender,before:previous?.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints])??null,after:t.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints])}}))
   if(!o.freshness)report.blockers.push('Post-race freshness not proven: review both snapshot hashes against official post-race evidence and rerun with --freshness; no fallback to old snapshots')
-  else verifyFreshness(JSON.parse(await fs.readFile(o.freshness)),tables,o['after-race'])
+  else { const freshness=JSON.parse(await fs.readFile(o.freshness)); verifyFreshness(freshness,tables,o['after-race']); await save('freshness.json',freshness) }
  }
  report.validation.source='PASS (strict parsing; identity/freshness blockers remain explicit)'
  }catch(e){report.blockers.push(e.message)}
  assert.deepEqual(await protectedFiles(),before,'Protected source files changed')
  report.validation.stableIDs='PASS: runtime sources unchanged';await save('integrity.json',{base,athletes:data.athletes.length,results:data.results.length,athleteIDs:data.athletes.map(a=>a.id),resultIDs:data.results.map(r=>r.id),athletesHash:hash(data.athletes),resultsHash:hash(data.results),protectedFiles:before})
- report.status=report.blockers.length?'BLOCKED':'READY_FOR_OWNER_REVIEW';report.files.push('review.json','review.md');await fs.writeFile(path.join(out,'review.json'),serialize(report),{flag:'wx'});await fs.writeFile(path.join(out,'review.md'),reviewMarkdown(report),{flag:'wx'});console.log(report.status,out);if(report.blockers.length)process.exitCode=1
+ report.status=report.blockers.length?'BLOCKED':'READY_FOR_OWNER_REVIEW';report.files.push('review.json','review.md');await fs.writeFile(path.join(out,'review.json'),serialize(report),{flag:'wx'});await fs.writeFile(path.join(out,'review.md'),reviewMarkdown(report),{flag:'wx'});await sealBundle(out,report.files);console.log(report.status,out);if(report.blockers.length)process.exitCode=1
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)main().catch(e=>{console.error('STOP:',e.message);process.exitCode=1})
