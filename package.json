@@ -41,7 +41,10 @@
     "release:deploy": "node scripts/manual-release.mjs deploy",
     "release:smoke": "node scripts/manual-release.mjs smoke",
     "test:manual-release": "node --test scripts/test-manual-release.mjs",
-    "release:qualify": "node scripts/manual-release.mjs qualify"
+    "release:qualify": "node scripts/manual-release.mjs qualify",
+    "results:prepare": "node scripts/prepare-sports-update.mjs results",
+    "standings:prepare:t100": "node scripts/prepare-sports-update.mjs t100",
+    "test:sports-prepare": "node --test scripts/test-sports-prepare.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
