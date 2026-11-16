@@ -294,3 +294,11 @@ npm run check:production -- --expected-sha '<approved-40-character-SHA>'
 Перед запуском подставьте approved SHA. Не запускать обе среды без их отдельных разрешений. Не импортировать гонку повторно «в production»: static results уже внутри сборки. Не запускать migration/seed вместе с обычным релизом. Сравните bindings/secrets names и preview isolation по runbook, полные JS/CSS downloads, News и protected Feedback config. Секреты никогда не копировать в Git/скриншоты.
 
 Ошибка проверки — остановка и report, не повторный deploy и не автоматический rollback. Worker rollback не восстанавливает D1. Известную хорошую версию с шестью secrets нужно проверить перед каждым rollback; восстановление D1 — отдельная согласованная операция, сначала безопасная recovery DB. Restore drill ещё не подтверждён (OPS-03). Сетевые partial downloads (OPS-02) и Android validation (QA-01) остаются открытыми; успешный localhost не закрывает их.
+
+## Подготовка результатов и standings без Codex
+
+См. [единый Iteration 1 workflow](scripts.md#unified-iteration-1-preparation-post-devops-02a). Из checkout с установленными зависимостями выполните `npm run results:prepare -- --url <официальный-PTO-URL> --race <существующий-edition-id> --out /private/tmp/<новая-папка>`; для T100 — `npm run standings:prepare:t100 -- --season <год> --after-race <PTO-results-URL> --out /private/tmp/<новая-папка>`.
+
+Получите snapshots, proposal, integrity и краткий `review.md`. BLOCKED/exit 1 означает необходимость разобраться, не разрешение игнорировать ошибку. Новые спортсмены не создаются автоматически: проверьте identity/страну и впишите русское имя для согласования. T100 обновляется только после подтверждения post-race freshness, привязанного к обоим snapshot hashes; template и повторный запуск описаны в canonical workflow. Без подтверждения нельзя считать standings обновлёнными.
+
+Подключение proposal в runtime, append-only ID-проверки, целевые тесты/аудиты и одна сборка финального кандидата остаются явными шагами. Codex может выполнить их по заданному scope; без Codex владелец следует тем же инструкциям. После проверки дайте отдельное разрешение на точный кандидат и Iteration 2 (Git → Production → короткий smoke). Эти команды ничего не публикуют и не заменяют `release:*`. Полная регенерация каталога запрещена.

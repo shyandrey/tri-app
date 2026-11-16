@@ -80,3 +80,27 @@ async function main() {
   for (const [file, table] of Object.entries(result)) await fs.writeFile(path.join(args[1], file), serialize(table))
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main()
+
+// Fresh-source preparation is separate from historical approved snapshot replay.
+// Fail closed on markup changes; never fall back to liveFixtureUrl.
+export function parseFreshTop10(html, gender, seasonYear) {
+  const sex={M:'men',W:'women'}[gender]
+  if(!sex||!Number.isInteger(seasonYear))throw Error('Invalid season/gender')
+  const sourceUrl=`https://stats.protriathletes.org/t100/standings/${sex}`
+  if(!html.includes(`rel="canonical" href="${sourceUrl}"`)||!html.includes(`<h1>${seasonYear} Standings</h1>`))throw Error('Standings source/season mismatch')
+  const cards=html.split('<div class="trow">').slice(1,11)
+  if(cards.length!==10)throw Error('Incomplete TOP 10')
+  const text=s=>s.replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&#39;|&apos;/g,"'").replace(/&nbsp;|\u00a0/g,' ').replace(/\s+/g,' ').trim()
+  const rows=cards.map(card=>{
+    const rank=card.match(/class="ranking-number">(\d+)</),points=card.match(/class="points">(\d+(?:\.\d+)?)</)
+    const name=card.match(/<div class="name">([\s\S]*?)<\/a>/)?.[1]
+    const url=name?.match(/href="(\/athlete\/[a-z0-9-]+)"/),country=name?.match(/flag-icon-([a-z]{2})/)
+    if(!rank||!points||!name||!url||!country)throw Error('Unsupported/missing TOP10 fields')
+    const athleteName=text(name.slice(name.indexOf('<a ')))
+    if(!athleteName||/&(?:#\w+|\w+);/.test(athleteName))throw Error('Unsupported name entity')
+    return {officialRank:Number(rank[1]),officialPoints:Number(points[1]),athleteName,nationality:country[1].toUpperCase(),nationalityNormalized:country[1].toUpperCase(),athleteSourceUrl:'https://stats.protriathletes.org'+url[1]}
+  })
+  if(new Set(rows.map(r=>r.athleteSourceUrl)).size!==10)throw Error('Duplicate TOP10 identity')
+  for(const [i,r]of rows.entries())if(r.officialRank<1||r.officialRank>10||(i&&(r.officialRank<rows[i-1].officialRank||r.officialPoints>rows[i-1].officialPoints)))throw Error('Invalid official ordering')
+  return {series:'T100',seasonYear,gender,sourceUrl,rows}
+}
