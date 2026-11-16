@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import {testContext} from './sports-test-context.mjs'
 import path from 'node:path'
 import os from 'node:os'
 import assert from 'node:assert/strict'
@@ -86,23 +87,23 @@ export function assertHistory(before, after, newProfiles, newRows) {
   assert.equal(after.athletes.length,before.athletes.length+newProfiles)
   assert.equal(new Set(after.results.map(r=>r.id)).size,after.results.length,'Duplicate result IDs')
 }
-function checkBundle(bundle, base, hashes) {
+function checkBundle(bundle, base, hashes, context) {
   verifyBundle(bundle)
   const integrity=parse(bundle,'integrity.json')
   assert.equal(integrity.base,base,'Prepared bundle has stale Git base')
   for(const [f,h]of Object.entries(integrity.protectedFiles))assert.equal(hashes[f],h,'Prepared runtime baseline changed: '+f)
-  return parse(bundle,'review.json')
+  const report=parse(bundle,'review.json');assert.deepEqual(report.testOnly??null,context,'Fixture bundle cannot leave its test repository');return report
 }
 // Deterministic staging: only existing importer and append-only generator write here.
 export async function generate(root, inputs, {verifyBaseline=baseline, captureSnapshot=snapshot, createStage=sandbox} = {}) {
-  const base=inputs.base; await verifyBaseline(root,base)
+  const base=inputs.base; await verifyBaseline(root,base);const context=await testContext(root)
   const hashes=await captureSnapshot(root), before=await loadRuntime(root)
   const stage=await createStage(root), changed=new Set(), evidence='scripts/fixtures/sports-updates/'+digest(json(inputs)).slice(0,20)
   const put=async(f,text)=>{await write(stage,f,text);changed.add(f)}
   let newRows=0,newProfiles=0, raceSummary=null,standingsSummary=null
   try {
     if(inputs.race){
-      const {bundle,decisions:d}=inputs.race,report=checkBundle(bundle,base,hashes), proposal=parse(bundle,'proposal.json')
+      const {bundle,decisions:d}=inputs.race,report=checkBundle(bundle,base,hashes,context), proposal=parse(bundle,'proposal.json')
       assert.equal(report.kind,'results');assert.ok(Number.isFinite(Date.parse(d.reviewedAt)),'Editorial review date required');const url=validateSourceURL(proposal.sourceUrl),html=bundle.files['source.html']
       assert.equal(digest(html),proposal.sourceSha256);assert.ok(html.includes(`rel="canonical" href="${url}"`),'Source canonical mismatch')
       const parsed=parseStatsPtoResults(html), editions=selectEditions(proposal.editions.map(e=>e.editionId),url,before.editions,parsed)
@@ -156,8 +157,8 @@ export async function generate(root, inputs, {verifyBaseline=baseline, captureSn
       raceSummary={editions:editions.map(e=>e.editionId),counts:p.counts,newAthletes:after.athletes.filter(a=>!before.athletes.some(b=>b.id===a.id)).map(a=>({id:a.id,nameEn:a.nameEn,name:a.name,countryCode:a.countryCode})),matches:verified.matches,anomalies:p.anomalies}
     }
     if(inputs.standings){
-      const {bundle}=inputs.standings, report=checkBundle(bundle,base,hashes)
-      assert.equal(report.kind,'t100');assert.equal(report.status,'READY_FOR_OWNER_REVIEW','Standings freshness unresolved')
+      const {bundle}=inputs.standings, report=checkBundle(bundle,base,hashes,context)
+      assert.equal(report.kind,'t100');assert.equal(report.status,context&&bundle.files['fixture-provenance.json']?'READY_FOR_TEST_REVIEW':'READY_FOR_OWNER_REVIEW','Standings freshness unresolved')
       const previous=parse(bundle,'standings-proposal.json'),runtime=await loadRuntime(stage),maps=JSON.parse(await read(stage,mappingsPath)),tables=[]
       assert.equal(previous.tables.length,2)
       for(const [gender,sex]of [['M','men'],['W','women']]){
@@ -166,13 +167,18 @@ export async function generate(root, inputs, {verifyBaseline=baseline, captureSn
         const t=matchStandings(parseFreshTop10(html,gender,report.year),runtime.athletes,maps.mappings,runtime.normalize)
         t.source=old.source;validateStandingsReview(t);assert.deepEqual(t.rows,old.rows,'Standings proposal/source mismatch');tables.push(t)
       }
-      const freshness=parse(bundle,'freshness.json');assert.equal(Number(new URL(validateSourceURL(freshness.afterRace)).pathname.split('/')[3]),report.year,'Freshness season mismatch');verifyFreshness(freshness,tables,freshness.afterRace)
+      let freshness
+      if(bundle.files['fixture-provenance.json']){
+        assert.ok(context,'Offline standings require test repository');const fixture=parse(bundle,'fixture-provenance.json')
+        for(const t of tables){const f=fixture.tables.find(r=>r.gender===t.gender);assert.ok(f&&f.sourceUrl===t.sourceUrl&&f.snapshotSha256===t.source.sha256);assert.equal(t.source.observedAt,fixture.observedAt);assert.deepEqual(t.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints,r.athleteName,r.nationalityNormalized]),f.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints,r.athleteName,r.nationalityNormalized]))}
+        freshness={reviewedAt:fixture.observedAt,testOnly:context,freshness:'NOT_ASSERTED'}
+      }else{freshness=parse(bundle,'freshness.json');assert.equal(Number(new URL(validateSourceURL(freshness.afterRace)).pathname.split('/')[3]),report.year,'Freshness season mismatch');verifyFreshness(freshness,tables,freshness.afterRace)}
       for(const t of tables){
         const sex=t.gender==='M'?'men':'women',target=`src/data/officialStandings/t100/${t.seasonYear}-${sex}.json`
         const old=JSON.parse(await read(root,target));assert.equal(old.seasonStatus,'LIVE','Historical/new season needs separate review')
         const snap=evidence+'/'+sex+'.html';await put(snap,bundle.files[sex+'.html'])
         const provenance={type:'OFFICIAL_HTML_SNAPSHOT',htmlVerified:true,snapshot:snap,snapshotSha256:t.source.sha256,localApplicationApproval:{date:freshness.reviewedAt.slice(0,10),scope:'OWNER_AUTHORIZED_TOP10_LOCAL_CANDIDATE_ONLY'}}
-        await put(target,json({schemaVersion:1,series:'T100',coverage:'TOP_10_ONLY',seasonYear:t.seasonYear,gender:t.gender,seasonStatus:'LIVE',sourceUrl:t.sourceUrl,sourceObservedAt:t.source.observedAt,verifiedAt:freshness.reviewedAt.slice(0,10),sourceVerificationStatus:'OFFICIAL_HTML_VERIFIED',provenance,rows:t.rows.map(({displayNameRu: _displayNameRu,...r})=>({...r,sourceUrl:t.sourceUrl,sourceObservedAt:t.source.observedAt,verifiedAt:freshness.reviewedAt.slice(0,10),sourceVerificationStatus:'OFFICIAL_HTML_VERIFIED',provenance:{type:'OFFICIAL_HTML_SNAPSHOT',snapshot:snap,snapshotSha256:t.source.sha256}}))}))
+        await put(target,json({schemaVersion:1,...(context?{testOnly:context}:{}),series:'T100',coverage:'TOP_10_ONLY',seasonYear:t.seasonYear,gender:t.gender,seasonStatus:'LIVE',sourceUrl:t.sourceUrl,sourceObservedAt:t.source.observedAt,verifiedAt:freshness.reviewedAt.slice(0,10),sourceVerificationStatus:'OFFICIAL_HTML_VERIFIED',provenance,rows:t.rows.map(({displayNameRu: _displayNameRu,...r})=>({...r,sourceUrl:t.sourceUrl,sourceObservedAt:t.source.observedAt,verifiedAt:freshness.reviewedAt.slice(0,10),sourceVerificationStatus:'OFFICIAL_HTML_VERIFIED',provenance:{type:'OFFICIAL_HTML_SNAPSHOT',snapshot:snap,snapshotSha256:t.source.sha256}}))}))
       }
       await put(evidence+'/freshness.json',json(freshness));standingsSummary=tables.map(t=>({gender:t.gender,year:t.seasonYear,rows:t.rows}))
     }
@@ -185,13 +191,14 @@ export async function generate(root, inputs, {verifyBaseline=baseline, captureSn
     }
     assert.ok(files.length,'No changes')
     assert.deepEqual(await captureSnapshot(root),hashes,'Runtime changed during planning')
-    return {schemaVersion:1,base,baseline:hashes,inputs,files,summary:{athletesBefore:before.athletes.length,athletesAfter:after.athletes.length,resultsBefore:before.results.length,resultsAfter:after.results.length,race:raceSummary,standings:standingsSummary}}
+    return {schemaVersion:1,...(context?{testOnly:context}:{}),base,baseline:hashes,inputs,files,summary:{athletesBefore:before.athletes.length,athletesAfter:after.athletes.length,resultsBefore:before.results.length,resultsAfter:after.results.length,race:raceSummary,standings:standingsSummary}}
   } finally { await fs.rm(stage,{recursive:true,force:true}) }
 }
 
 export function verifyApproval(candidate,text,approval) {
   assert.equal(approval.schemaVersion,1)
-  assert.equal(approval.action,'APPLY_LOCAL_ONLY','Approval is not local integration approval')
+  assert.deepEqual(approval.testOnly??null,candidate.testOnly??null,'Approval fixture scope mismatch')
+  assert.equal(approval.action,candidate.testOnly?'APPLY_TEST_FIXTURE_ONLY':'APPLY_LOCAL_ONLY','Approval is not local integration approval')
   assert.ok(typeof approval.approvedBy==='string'&&approval.approvedBy.trim(),'Owner identity required')
   assert.ok(Number.isFinite(Date.parse(approval.approvedAt)),'Approval date required')
   assert.equal(approval.candidateSha256,digest(text),'Approval/candidate digest mismatch')
@@ -240,13 +247,13 @@ async function main(){
     const candidate=await generate(root,inputs),text=json(candidate)
     assert.ok(!out.startsWith(root+path.sep)&&out!==root,'External output required');await fs.mkdir(out)
     await fs.writeFile(path.join(out,'candidate.json'),text,{flag:'wx'})
-    await fs.writeFile(path.join(out,'approval-template.json'),json({schemaVersion:1,action:'APPLY_LOCAL_ONLY',candidateSha256:digest(text),approvedBy:null,approvedAt:null,files:candidate.files.map(({path,before,after})=>({path,before,after}))}),{flag:'wx'})
+    await fs.writeFile(path.join(out,'approval-template.json'),json({schemaVersion:1,...(candidate.testOnly?{testOnly:candidate.testOnly}:{}),action:candidate.testOnly?'APPLY_TEST_FIXTURE_ONLY':'APPLY_LOCAL_ONLY',candidateSha256:digest(text),approvedBy:null,approvedAt:null,files:candidate.files.map(({path,before,after})=>({path,before,after}))}),{flag:'wx'})
     await fs.writeFile(path.join(out,'review.json'),json(candidate.summary),{flag:'wx'})
     console.log(json({status:'AWAITING_OWNER_REVIEW',candidateSha256:digest(text),files:candidate.files.map(f=>f.path),summary:candidate.summary}))
   }else if(mode==='apply'){
     assert.deepEqual(Object.keys(o).sort(),['--approval','--candidate'])
     const text=await fs.readFile(o['--candidate'],'utf8'),candidate=JSON.parse(text),approval=JSON.parse(await fs.readFile(o['--approval'],'utf8'))
-    verifyApproval(candidate,text,approval);await baseline(root,candidate.base)
+    assert.deepEqual(candidate.testOnly??null,await testContext(root),'Fixture approval cannot authorize another repository');verifyApproval(candidate,text,approval);await baseline(root,candidate.base)
     assert.deepEqual(await snapshot(root),candidate.baseline,'Historical baseline changed')
     const lock=path.join(root,'.sports-apply.lock');const handle=await fs.open(lock,'wx')
     try{

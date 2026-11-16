@@ -463,3 +463,31 @@ All operations and generated records are validated before runtime replacement. A
 Multi-file replacement is **not** an OS-level atomic transaction: termination/power loss can leave a partial set and the lock. Stop other edits, preserve the journal/lock, inspect each destination against the journal's before/after hashes, and obtain a recovery decision before restoring originals/removing newly added paths. Do not rerun apply or clear a stale lock blindly. No automatic recovery across process crashes, Git mutation, publication, D1, network fetch or deployment occurs in apply.
 
 The same commands and review obligations apply with and without Codex. Iteration 1 ends with a locally applied, validated candidate and owner review report. `release:*` operates on an already approved **Git revision** in Iteration 2; `sports:apply` approval never authorizes commit, push, merge or deployment.
+
+## Test-only offline E2E (POST-DEVOPS-02F)
+
+The full CLI rehearsal is now reproducible, without bypassing the production clean-tree guard:
+
+```bash
+node scripts/test-sports-e2e.mjs --out /absolute/new-external-evidence-directory
+```
+
+Requires the normal dependencies/toolchain and a clean source runtime/evidence tree. The runner archives the current Git HEAD into a **new independent repository**, copies the tooling under review, and reconstructs the pre-Dubai fixture state only there: unhooks the 41 Dubai rows, removes the three known append-only profiles/localizations/mappings and the verified Dubai SOF entry. Original HTML/provenance is retained. It creates one local TEST ONLY baseline commit with a tracked `.sports-test-only.json` (unique ID, real absolute path, source SHA), no remotes and a rejecting pre-push hook. Never add a remote or publish this repository. No original worktree or live data changes.
+
+The real prepare/plan/apply CLI is run, not substituted by a mock. Expected preparation exit1 reports three unmatched identities; test decisions use their already approved names/countries. Local fixtures validate exact counts, append-only IDs, SOF and T100 TOP10. Test approval binds candidate digest/file scope plus repository identity/path and uses `APPLY_TEST_FIXTURE_ONLY`. It cannot apply in a regular or different checkout. Standard HEAD/clean runtime/source digest guards still run. `release:*` refuses a repository containing the marker before build/auth/network operations.
+
+Offline T100 input is available **only inside this committed test repository**, with all explicit arguments:
+
+```bash
+npm run sports:prepare -- t100 --season 2026 \
+  --after-race https://stats.protriathletes.org/race/dubai-t100/2026/results \
+  --test-only true \
+  --men-html scripts/fixtures/official-standings/t100-2026-post-dubai-men.html \
+  --women-html scripts/fixtures/official-standings/t100-2026-post-dubai-women.html \
+  --fixture-provenance scripts/fixtures/official-standings/t100-post-dubai-2026.json \
+  --out /absolute/new-test-standings
+```
+
+Original snapshot hashes, canonical source URLs, season, TOP10 rows/IDs/points/order and observedAt are checked against preserved evidence. No live fetch or fabricated freshness review occurs. Output is `READY_FOR_TEST_REVIEW`, `TEST_ONLY_OFFLINE`, freshness `NOT_ASSERTED`; live preparation still requires the unchanged 24-hour hash-bound freshness check. Test datasets carry the marker/context; these are accidental-publication guards, not protection against an operator deliberately removing controls. The marker, hook and test-only outputs must never be promoted as a release candidate.
+
+The runner retains logs, test approval, candidate, local commit, build output and machine-readable `report.json`; no cleanup of recovery evidence. It creates local commits solely in the fixture repository, never in the tooling candidate. Actual operating instructions for data updates are in [HOWTO-UPDATE-SPORTS-DATA.md](HOWTO-UPDATE-SPORTS-DATA.md).
