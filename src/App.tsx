@@ -77,8 +77,8 @@ function resolveRoute(route: Route): Route {
   return route
 }
 
-function App() {
-  return <NavigationRoot resolve={resolveRoute}>{(route, navigate, back) => <AppScreen route={route} navigate={navigate} back={back} />}</NavigationRoot>
+function App({ initialHash }: { initialHash?: string }) {
+  return <NavigationRoot resolve={resolveRoute} initialHash={initialHash}>{(route, navigate, back) => <AppScreen route={route} navigate={navigate} back={back} />}</NavigationRoot>
 }
 
 function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: Route) => void; back: () => void }) {

@@ -5,8 +5,8 @@ import type { Route } from './history'
 import { NavigationContext } from './usePageState'
 
 const scrollElements = () => [...document.querySelectorAll<HTMLElement>('[data-navigation-scroll]')]
-export function NavigationRoot({ resolve, children }: { resolve: (route: Route) => Route; children: (route: Route, navigate: (route: Route) => void, back: () => void) => ReactNode }) {
-  const [navigation] = useState(() => new NavigationHistory(window.history, window.location.hash, resolve))
+export function NavigationRoot({ resolve, children, initialHash }: { initialHash?: string; resolve: (route: Route) => Route; children: (route: Route, navigate: (route: Route) => void, back: () => void) => ReactNode }) {
+  const [navigation] = useState(() => new NavigationHistory(window.history, initialHash ?? window.location.hash, resolve))
   const [entry, setEntry] = useState(navigation.current)
   const rootRef = useRef<HTMLDivElement>(null)
   const readyKey = useRef<string | null>(null)

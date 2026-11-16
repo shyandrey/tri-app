@@ -71,3 +71,68 @@ Any further deployment or narrow log inspection requires separate approval. Obse
 The owner observed `SEND_NETWORK_OR_RUNTIME_ERROR` on Preview version `d9c03a1d-a0df-47ee-9796-8d12a9797128`. Local workerd reproduces rejection of `redirect: 'error'` with TypeError before outbound delivery. The deployed fix uses `redirect: 'manual'`: redirects are not followed and non-2xx responses still return HTTP 503 through existing error handling. The fix is included in the Production and Preview SHAs above; owner-confirmed command E2E passed. No further deployment is required by this closeout.
 
 `node --test scripts/test-telegram-commands.mjs` includes the actual handler running in installed Miniflare/workerd with a fully local outbound stub. It checks successful sending, redirect rejection without a second request, and upstream HTTP failures. It uses synthetic credentials only, makes no Telegram requests, and requires permission to open local runtime sockets. Node emits an experimental warning for `stripTypeScriptTypes`; Miniflare is supplied by the existing Wrangler installation.
+
+## TG-DEEPLINK-01 — Main Mini App navigation
+
+Local candidate (2026-11-16), not deployed. Official Telegram documentation confirms the [Main Mini App direct-link format](https://core.telegram.org/bots/webapps#launching-the-main-mini-app): `https://t.me/<botusername>?startapp=<payload>`. A named Mini App uses a different `/appname` format; `/app` must not be guessed. The repository Project Board BOT-04/BOT-05 records owner-confirmed Main Mini App enabled for `@tri_app_bot`, URL `https://300w.app/`. This is historical owner evidence, not a fresh BotFather/API settings inspection. No short name is required for this Main Mini App contract. Existing `/app` bot command is unrelated and unchanged.
+
+Supported payloads (case-sensitive ASCII, maximum **128 characters**, a local application limit):
+
+- `race_<raceEditionId>`: ID matches `[a-z0-9]+(?:-[a-z0-9]+)*` and an existing `allRaceEditionViews` entry. This is an edition ID, not permanent race ID.
+- `athlete_<stableAthleteId>`: canonical positive decimal safe integer, no leading zeroes, matching an existing profile.
+
+Unknown/malformed values, arbitrary URLs, encoded separators, whitespace and oversized inputs do not navigate. Launch input is untrusted public navigation data, never authentication, an external destination or HTML. No D1/server authorization is based on `initDataUnsafe`.
+
+### Links for TRI TG posts
+
+For the Dubai recap, copy:
+
+`https://t.me/tri_app_bot?startapp=race_t100-dubai-2026`
+
+For Kate Waugh (existing Athlete ID 101):
+
+`https://t.me/tri_app_bot?startapp=athlete_101`
+
+Reusable frontend helpers validate against the real catalog before returning a URL:
+
+```ts
+import { raceTelegramLink, athleteTelegramLink } from '../navigation/telegramLinks'
+import { telegramTargetExists } from '../navigation/telegramLaunch'
+const raceLink = await raceTelegramLink('t100-dubai-2026', telegramTargetExists)
+const athleteLink = await athleteTelegramLink(101, telegramTargetExists)
+```
+
+Use the existing profile ID or edition ID from its browser route. Do not translate, regenerate or infer IDs. The generated links always target the public Production bot; they do not select Preview.
+
+Preview device QA links (TG-DEEPLINK-01B):
+
+- `https://t.me/tri_app_preview_bot?startapp=race_t100-dubai-2026`
+- `https://t.me/tri_app_preview_bot?startapp=athlete_101`
+
+The public Preview bot landing page returned an Open App action preserving `startapp` on 2026-11-16. This does not verify native Telegram launch or the configured Mini App destination; owner iPhone QA must confirm it opens Preview. No BotFather changes are included.
+
+### Launch, browser and history behavior
+
+Telegram passes `startapp` through `Telegram.WebApp.initDataUnsafe.start_param`. The official [WebApp SDK initialization](https://core.telegram.org/bots/webapps#initializing-mini-apps) is loaded from `https://telegram.org/js/telegram-web-app.js` only when Telegram launch metadata is present, unless `window.Telegram.WebApp` already exists. Query/hash metadata is only a loading hint; raw `startapp` or `tgWebAppStartParam` query values are never used as routing authority. SDK loading has a 3-second budget; failure falls back to ordinary app routing. Late SDK arrival does not cause a second redirect.
+
+Initialization runs once before React mounting, outside StrictMode. It validates target existence and passes an initial route to the existing `NavigationHistory`, which seeds Calendar before Race and Athletes before Athlete. Back/Forward, BottomNav and saved page state use the existing navigation mechanism. Athlete validation loads the existing lazy sports module only for a valid athlete payload; no catalog import is added to normal browser Home initialization.
+
+**Precedence:** any recognized application hash route (including explicit `#/home`) wins over start payload. Recognized detail hashes retain the existing invalid-ID fallback behavior. A hash navigation that appears while the target catalog loads also wins. Refresh/back to an explicit hash does not reapply the payload. With no recognized hash, a valid existing launch target wins; otherwise Home remains the fallback.
+
+Normal browser routes remain `https://300w.app/#/race/t100-dubai-2026` and `https://300w.app/#/athlete/101`. Preview equivalents use `https://preview.300w.app`. Adding `?startapp=` to these web origins is not a Telegram launch and does not open a target.
+
+### Qualification and limitations
+
+Targeted commands:
+
+```bash
+node --test scripts/test-telegram-deeplinks.mjs scripts/test-navigation.mjs
+node scripts/test-telegram-deeplinks-browser.mjs
+npm run build
+```
+
+The browser script uses local Vite, real development React StrictMode and a mocked Telegram WebApp interface, with bounded Chrome/CDP readiness. Default Chrome path is macOS; set `CHROME_BIN` where needed. It uses localhost5198/CDP9387 and writes evidence outside the repository (`TRI_TG_EVIDENCE`, default `/private/tmp/300w-tg-deeplink01-browser`). It does not send bot commands or test Telegram's native link transport.
+
+Local qualification (2026-11-16): unit/navigation 18/18 PASS, one build/typecheck PASS with existing large-chunk warnings, targeted lint/diff PASS, targeted Chrome smoke PASS. Final browser evidence: `/private/tmp/300w-tg-deeplink01-browser-qualified-final/result.json` and `dubai.png`. Earlier runner failures were test synchronization issues (stale document after reload and same-document hash navigation), corrected without changing application assertions; their logs remain outside the repository.
+
+Owner Telegram/device QA is still required after separately approved publication: open both links from a real TRI TG post/client, check launch target and Back/BottomNav on iPhone/Android where available. Network blocking of the SDK or catalog can prevent deep-link launch; existing hash URLs remain the browser alternative. A slow athlete-module request can delay initial rendering. Current Main Mini App settings must still match the recorded owner configuration. No new bot commands, webhook subscriptions or BotFather settings are required or changed by this patch.
