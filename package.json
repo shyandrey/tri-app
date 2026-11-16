@@ -44,7 +44,11 @@
     "release:qualify": "node scripts/manual-release.mjs qualify",
     "results:prepare": "node scripts/prepare-sports-update.mjs results",
     "standings:prepare:t100": "node scripts/prepare-sports-update.mjs t100",
-    "test:sports-prepare": "node --test scripts/test-sports-prepare.mjs"
+    "test:sports-prepare": "node --test scripts/test-sports-prepare.mjs",
+    "sports:prepare": "node scripts/prepare-sports-update.mjs",
+    "sports:plan": "node scripts/apply-sports-update.mjs plan",
+    "sports:apply": "node scripts/apply-sports-update.mjs apply",
+    "test:sports-apply": "node --test scripts/test-sports-apply.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

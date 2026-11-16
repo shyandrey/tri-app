@@ -302,3 +302,15 @@ npm run check:production -- --expected-sha '<approved-40-character-SHA>'
 Получите snapshots, proposal, integrity и краткий `review.md`. BLOCKED/exit 1 означает необходимость разобраться, не разрешение игнорировать ошибку. Новые спортсмены не создаются автоматически: проверьте identity/страну и впишите русское имя для согласования. T100 обновляется только после подтверждения post-race freshness, привязанного к обоим snapshot hashes; template и повторный запуск описаны в canonical workflow. Без подтверждения нельзя считать standings обновлёнными.
 
 Подключение proposal в runtime, append-only ID-проверки, целевые тесты/аудиты и одна сборка финального кандидата остаются явными шагами. Codex может выполнить их по заданному scope; без Codex владелец следует тем же инструкциям. После проверки дайте отдельное разрешение на точный кандидат и Iteration 2 (Git → Production → короткий smoke). Эти команды ничего не публикуют и не заменяют `release:*`. Полная регенерация каталога запрещена.
+
+### Применение одобренного спортивного кандидата
+
+Для подготовленного bundle теперь доступен [безопасный локальный apply](scripts.md#approved-local-runtime-integration-post-devops-02c):
+
+1. `sports:prepare` (`results` или `t100`) получает snapshot/proposal; `results:prepare` и `standings:prepare:t100` остаются доступны.
+2. Создайте внешний request по canonical runbook. Для новых спортсменов подтвердите точную identity, страну и русское имя; отсутствующие editions/конфликты требуют отдельного решения.
+3. `npm run sports:plan -- --request /absolute/request.json --out /absolute/new-candidate` создаёт полный diff, ID mapping и шаблон approval без записи в runtime.
+4. После проверки владельцем заполните отдельный approval JSON, сохранив candidate digest и весь список hashes. `npm run sports:apply -- --candidate /absolute/new-candidate/candidate.json --approval /absolute/approval.json` применяет только этот точный кандидат локально.
+5. Выполните целевые проверки/аудиты, одну сборку и diff review. Отдельное разрешение на Iteration 2 по-прежнему необходимо; `release:*` ничего не запускает автоматически.
+
+Codex выполняет те же команды с теми же ограничениями. Approval JSON — запись принятого решения, не цифровая подпись. Истёкшая freshness T100, изменённая база или повторный импорт останавливают apply. При прерывании процесса сохраните `.sports-apply.lock` и внешний журнал `300w-sports-apply-*`; не повторяйте apply и не удаляйте lock до анализа/согласованного восстановления. Частично изменённый набор файлов нельзя публиковать.

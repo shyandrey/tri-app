@@ -399,3 +399,67 @@ After reviewing the proposal, explicitly integrate the new result module using t
 Run the relevant importer/standings tests, `audit:athletes`/`audit:results` after runtime integration, stable-ID before/after checks and **one build of that final candidate**. The preparation report marks build NOT RUN; CLI parsing success does not imply tests/build success. Add the actual command results and exact final changed-file inventory to owner review. Prefer one combined results+standings release when both sources are complete/fresh; preserve both bundles and review together. Race Results = full professional fields; T100 Standings = seasonal TOP10 M/W; TRI Ranking = internal formula; PTO World Ranking = separate external dataset.
 
 Iteration 2 starts only after explicit owner approval of exact data, new names/countries and publication scope: protected Git publication → clean exact merged SHA → `release:prepare/preflight/deploy/smoke` (POST-DEVOPS-01). This preparation CLI never calls release commands, Actions, D1 or Git mutations. Any new discrepancy requires STOP and owner decision.
+
+## Approved local runtime integration (POST-DEVOPS-02C)
+
+This extends, rather than replaces, [Iteration 1 preparation](#unified-iteration-1-preparation-post-devops-02a). The earlier paragraph describing manual runtime wiring is the historical 02A limitation; the commands below now provide reviewed automatic wiring for supported existing editions. Nothing here grants Git/deployment approval.
+
+- `npm run sports:prepare -- results ...` is the unified alias of `results:prepare`; `npm run sports:prepare -- t100 ...` is the alias of `standings:prepare:t100`.
+- Preparation now seals source snapshots, proposals, integrity and review files in `bundle.json`. Older unsealed bundles are not accepted by the apply workflow; prepare a fresh bundle. T100 bundles additionally retain the hash-bound freshness review, not just its empty template.
+- `sports:plan` creates the complete **self-contained local candidate** without changing runtime: it copies the sealed bundles and editorial decisions into `candidate.json`, replays the existing parser/importer in a disposable staging directory, invokes the existing `find-next-athletes --write --append` only there, validates every historical profile/result and generates exact file bytes, before/after hashes, assigned IDs, counts and source warnings.
+- `sports:apply` consumes a separately reviewed candidate and approval. It validates digests/scope, exact Git HEAD and a clean runtime/evidence tree, then repeats deterministic staging and compares the whole candidate. No arbitrary supplied TypeScript is executed or copied as an accepted plan. Only reproduced, approved output is installed.
+
+### Plan the exact files for review
+
+After the existing results preparation command, make an **external request JSON**, for example:
+
+```json
+{
+  "race": {
+    "bundle": "/absolute/path/results-review",
+    "decisions": {
+      "module": "src/data/results/2026/t100/reviewed-race.ts",
+      "export": "reviewedRace2026Results",
+      "reviewedAt": "2026-11-16",
+      "applySof": false,
+      "newAthletes": []
+    }
+  },
+  "standings": {"bundle": "/absolute/path/fresh-standings-review"}
+}
+```
+
+These are placeholders, not an instruction to import any particular race. Include `race`, `standings`, or both; omit absent sections. `module` must be a new result module in the source season and must not collide with existing importer evidence filenames. No new editions are created. Separate M/W editions must already have been included in the preparation bundle.
+
+For each genuinely new source identity, `newAthletes` must include exactly `{nameEn, nameRu, countryCode, profileUrl, identityConfirmed:true}`. The English name/profile URL and explicit two-letter country must match the official snapshot. The owner supplies/reviews the Russian name; no generated transliteration, no approximate identity merge. Unknown, missing-country or conflicting records stop the plan for separate evidence review. Existing approved localization and mapping entries cannot be overwritten. ID allocation uses the existing append-only generator; **full regeneration is never invoked**. All preexisting complete runtime profiles and result records must compare equal, not merely have matching IDs.
+
+`applySof:true` permits source-verified SOF only in the existing current-season SOF map. It does not change dates, gender, status or edition identity. Historical SOF, partial/conflicting existing entries or unsupported TypeScript shapes stop for separate review. New result rows are appended at the end of `allResults` to preserve all historical global Result IDs. No historical season is reordered.
+
+```bash
+npm run sports:plan -- --request /absolute/request.json --out /absolute/new-candidate-directory
+```
+
+Review `candidate.json` (source snapshots, exact planned bytes/hashes, stable-ID mappings, anomalies and counts), `review.json` and `approval-template.json`. Planning may proceed with explicitly reviewed new identities even when the original preparation report was BLOCKED solely for unmatched athletes; actual source/identity/country conflicts cannot be overridden. Missing source splits remain missing and remain visible as anomalies. Verify official field completeness yourself.
+
+T100 plan re-parses both source HTML files, requires exact TOP 10 agreement, verifies existing IDs, countries and URLs, and accepts only the existing LIVE season. The freshness review must still match both source hashes and be within 24 hours at **apply** time. Stale data requires a new preparation/review, never silent reuse. Historical seasons and TRI Ranking stay unchanged. IRONMAN standings remain review-interface-only; no apply adapter is claimed.
+
+### Owner approval and application
+
+Copy the template to a separate approval file. Fill `approvedBy` and ISO `approvedAt` **only after owner approval of all exact changes**, retaining `action: "APPLY_LOCAL_ONLY"`, `candidateSha256`, and the exact ordered `files` list of paths/before/after hashes. A flag such as `--approved` is not accepted. The local JSON records owner approval; it is not a cryptographic identity signature or an access-control system. Protect both files from unauthorized editing.
+
+```bash
+npm run sports:apply -- --candidate /absolute/new-candidate-directory/candidate.json --approval /absolute/owner-approval.json
+npm run test:sports-apply
+# After actual runtime integration: relevant importer/standings tests,
+# audit:athletes, audit:results, one final build and git diff --check.
+```
+
+Any change to the candidate, sources, approved file list, Git HEAD or historical runtime baseline invalidates application. Already-imported editions fail; rerunning apply after success fails the clean-tree/baseline guard. Unrelated local runtime/evidence edits are not silently merged. Tooling/documentation work may be uncommitted during qualification; production data work should start from the intended reviewed Git revision.
+
+### Transaction and recovery boundary
+
+All operations and generated records are validated before runtime replacement. An exclusive `.sports-apply.lock` prevents another instance. Files are staged beside their destinations and replaced with atomic per-file renames. A unique external `300w-sports-apply-*` journal holds originals, the exact plan and the outcome. On a caught failure, replaced files are restored and newly added files removed; concurrent unexpected edits are never overwritten during recovery. Empty newly created directories may remain.
+
+Multi-file replacement is **not** an OS-level atomic transaction: termination/power loss can leave a partial set and the lock. Stop other edits, preserve the journal/lock, inspect each destination against the journal's before/after hashes, and obtain a recovery decision before restoring originals/removing newly added paths. Do not rerun apply or clear a stale lock blindly. No automatic recovery across process crashes, Git mutation, publication, D1, network fetch or deployment occurs in apply.
+
+The same commands and review obligations apply with and without Codex. Iteration 1 ends with a locally applied, validated candidate and owner review report. `release:*` operates on an already approved **Git revision** in Iteration 2; `sports:apply` approval never authorizes commit, push, merge or deployment.
