@@ -1,4 +1,5 @@
 // Iteration 1 only: write a new external review bundle, never runtime registries.
+import {testContext} from './sports-test-context.mjs'
 import {sealBundle} from './sports-candidate.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -12,10 +13,12 @@ import {parseFreshTop10,serialize} from './prepare-t100-standings.mjs'
 export const hash=x=>createHash('sha256').update(typeof x==='string'?x:JSON.stringify(x)).digest('hex')
 export function parseArgs(args){
  const o={mode:args[0],race:[]};assert.ok(['results','t100'].includes(o.mode),'Mode results or t100 required')
- for(let i=1;i<args.length;i+=2){const k=args[i]?.slice(2),v=args[i+1];assert.ok(args[i]?.startsWith('--')&&['url','race','out','season','after-race','freshness','review','html'].includes(k)&&v&&!v.startsWith('--'),'Invalid argument');if(k==='race')o.race.push(v);else{assert.ok(!Object.hasOwn(o,k),'Duplicate option');o[k]=v}}
+ for(let i=1;i<args.length;i+=2){const k=args[i]?.slice(2),v=args[i+1];assert.ok(args[i]?.startsWith('--')&&['url','race','out','season','after-race','freshness','review','html','test-only','men-html','women-html','fixture-provenance'].includes(k)&&v&&!v.startsWith('--'),'Invalid argument');if(k==='race')o.race.push(v);else{assert.ok(!Object.hasOwn(o,k),'Duplicate option');o[k]=v}}
  assert.ok(o.out&&path.isAbsolute(o.out),'New absolute external --out directory required')
  if(o.mode==='results'){o.url=validateSourceURL(o.url);assert.ok(o.race.length&&new Set(o.race).size===o.race.length,'Unique edition IDs required')}
  else{assert.match(o.season??'',/^20\d{2}$/);o.season=Number(o.season);o['after-race']=validateSourceURL(o['after-race']);assert.equal(Number(new URL(o['after-race']).pathname.split('/')[3]),o.season)}
+ if(o['men-html']||o['women-html']||o['fixture-provenance'])assert.ok(o.mode==='t100'&&o['test-only']==='true'&&o['men-html']&&o['women-html']&&o['fixture-provenance'],'Offline T100 requires explicit --test-only true and both HTML/provenance inputs')
+ if(o['test-only'])assert.equal(o['test-only'],'true')
  return o
 }
 export async function fetchSource(url,fetcher=fetch){
@@ -69,9 +72,9 @@ async function runtime(){const server=await createServer({server:{middlewareMode
 async function protectedFiles(){const names=execFileSync('git',['ls-files','src/data','src/utils/athleteRanking.ts'],{encoding:'utf8'}).trim().split('\n');return Object.fromEntries(await Promise.all(names.map(async f=>[f,hash(await fs.readFile(f,'utf8'))])))}
 export function reviewMarkdown(r){return `# Sports update — Iteration 1\n\nStatus: ${r.status}. Owner approval required before Git/publication/deployment.\n\nSource: ${r.source}\nYear: ${r.year}\nBase: ${r.base}\n\nCounts: ${JSON.stringify(r.counts??{})}\nMatched athletes: ${r.existingAthleteMatches??0}\nNew confirmed profiles: 0 (no automatic creation).\n\nProposed profiles/localizations:\n\n${JSON.stringify(r.proposals??[],null,2)}\n\nStandings changes:\n\n${JSON.stringify(r.changes??[],null,2)}\n\nValidation: ${JSON.stringify(r.validation)}\nWarnings: ${JSON.stringify(r.warnings)}\nBlockers: ${JSON.stringify(r.blockers)}\n\nBundle files: ${r.files.join(', ')}\nRuntime files changed: none. Candidate runtime targets: ${JSON.stringify(r.runtimeTargets)}\n\nManual review: completeness of published fields, identities/countries, editorial Russian names, edition/SOF/status, append-only wiring and stable-ID audit. Build/browser validation not implied by this report.\n`}
 async function main(){
- const o=parseArgs(process.argv.slice(2));const root=await fs.realpath('.'),out=path.resolve(o.out);const parent=await fs.realpath(path.dirname(out));assert.ok(parent!==root&&!parent.startsWith(root+path.sep),'Review output must be outside repository');await fs.mkdir(out) // refuse overwrite
+ const o=parseArgs(process.argv.slice(2));const context=await testContext();if(o['test-only'])assert.ok(context,'Test-only mode requires committed isolated fixture context');const offline=Boolean(o['men-html']);const fixture=offline?JSON.parse(await fs.readFile(o['fixture-provenance'],'utf8')):null;if(offline)assert.ok(!o.freshness,'Offline fixture cannot claim live freshness');const root=await fs.realpath('.'),out=path.resolve(o.out);const parent=await fs.realpath(path.dirname(out));assert.ok(parent!==root&&!parent.startsWith(root+path.sep),'Review output must be outside repository');await fs.mkdir(out) // refuse overwrite
  const base=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),before=await protectedFiles(),data=await runtime(),mappings=JSON.parse(await fs.readFile('src/data/athletes/ptoProfileMappings.json')).mappings
- const report={schemaVersion:1,kind:o.mode,base,source:o.url??'https://stats.protriathletes.org/t100/standings/{men,women}',year:o.season??Number(new URL(o.url).pathname.split('/')[3]),status:'BLOCKED',blockers:[],warnings:[],validation:{build:'NOT RUN',source:'PENDING',stableIDs:'PENDING'},files:[],runtimeTargets:[]}
+ const report={schemaVersion:1,...(context?{testOnly:context}:{}),kind:o.mode,base,source:o.url??'https://stats.protriathletes.org/t100/standings/{men,women}',year:o.season??Number(new URL(o.url).pathname.split('/')[3]),status:'BLOCKED',blockers:[],warnings:[],validation:{build:'NOT RUN',source:'PENDING',stableIDs:'PENDING'},files:[],runtimeTargets:[]}
  const save=async(name,value)=>{await fs.writeFile(path.join(out,name),typeof value==='string'?value:serialize(value),{flag:'wx'});report.files.push(name)}
  try{
  if(o.mode==='results'){
@@ -84,18 +87,19 @@ async function main(){
   if(o.html)report.warnings.push('Offline snapshot: current official availability not verified')
  }else{
   const tables=[]
-  for(const [gender,sex]of [['M','men'],['W','women']]){const url=`https://stats.protriathletes.org/t100/standings/${sex}`,html=await fetchSource(url);await save(sex+'.html',html);let t=matchStandings(parseFreshTop10(html,gender,o.season),data.athletes,mappings,data.normalize);t.source={method:'OFFICIAL_HTML',url,sha256:hash(html),observedAt:new Date().toISOString()};validateStandingsReview(t);tables.push(t)}
+  for(const [gender,sex]of [['M','men'],['W','women']]){const url=`https://stats.protriathletes.org/t100/standings/${sex}`,html=offline?await fs.readFile(o[sex+'-html'],'utf8'):await fetchSource(url);if(offline){const f=fixture.tables.find(t=>t.gender===gender);assert.ok(f&&f.sourceUrl===url&&f.snapshotSha256===hash(html)&&Number.isFinite(Date.parse(fixture.observedAt)),'Fixture provenance mismatch')}await save(sex+'.html',html);let t=matchStandings(parseFreshTop10(html,gender,o.season),data.athletes,mappings,data.normalize);t.source={method:'OFFICIAL_HTML',url,sha256:hash(html),observedAt:offline?fixture.observedAt:new Date().toISOString(),...(offline?{mode:'TEST_ONLY_OFFLINE',freshness:'NOT_ASSERTED'}:{})};validateStandingsReview(t);if(offline){const f=fixture.tables.find(r=>r.gender===gender);assert.deepEqual(t.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints,r.athleteName,r.nationalityNormalized]),f.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints,r.athleteName,r.nationalityNormalized]),'Fixture rows differ from provenance')}tables.push(t)}
   await save('standings-proposal.json',{schemaVersion:1,approval:'PENDING',tables})
   await save('freshness-template.json',{afterRace:o['after-race'],reviewedBy:null,reviewedAt:null,statement:null,tables:tables.map(t=>({sourceUrl:t.sourceUrl,sha256:t.source.sha256,evidenceUrl:null,explanation:null}))})
   report.counts={MPRO:{top10:10},WPRO:{top10:10}};report.existingAthleteMatches=20;report.runtimeTargets=tables.map(t=>`src/data/officialStandings/t100/${t.seasonYear}-${t.gender==='M'?'men':'women'}.json`)
   report.changes=await Promise.all(tables.map(async(t,i)=>{let previous=null;try{previous=JSON.parse(await fs.readFile(report.runtimeTargets[i]))}catch(e){if(e.code!=='ENOENT')throw e}return {gender:t.gender,before:previous?.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints])??null,after:t.rows.map(r=>[r.athleteId,r.officialRank,r.officialPoints])}}))
-  if(!o.freshness)report.blockers.push('Post-race freshness not proven: review both snapshot hashes against official post-race evidence and rerun with --freshness; no fallback to old snapshots')
+  if(offline){await save('fixture-provenance.json',fixture);report.warnings.push('TEST ONLY: historical snapshot, current freshness NOT asserted')}
+  else if(!o.freshness)report.blockers.push('Post-race freshness not proven: review both snapshot hashes against official post-race evidence and rerun with --freshness; no fallback to old snapshots')
   else { const freshness=JSON.parse(await fs.readFile(o.freshness)); verifyFreshness(freshness,tables,o['after-race']); await save('freshness.json',freshness) }
  }
  report.validation.source='PASS (strict parsing; identity/freshness blockers remain explicit)'
  }catch(e){report.blockers.push(e.message)}
  assert.deepEqual(await protectedFiles(),before,'Protected source files changed')
  report.validation.stableIDs='PASS: runtime sources unchanged';await save('integrity.json',{base,athletes:data.athletes.length,results:data.results.length,athleteIDs:data.athletes.map(a=>a.id),resultIDs:data.results.map(r=>r.id),athletesHash:hash(data.athletes),resultsHash:hash(data.results),protectedFiles:before})
- report.status=report.blockers.length?'BLOCKED':'READY_FOR_OWNER_REVIEW';report.files.push('review.json','review.md');await fs.writeFile(path.join(out,'review.json'),serialize(report),{flag:'wx'});await fs.writeFile(path.join(out,'review.md'),reviewMarkdown(report),{flag:'wx'});await sealBundle(out,report.files);console.log(report.status,out);if(report.blockers.length)process.exitCode=1
+ report.status=report.blockers.length?'BLOCKED':offline?'READY_FOR_TEST_REVIEW':'READY_FOR_OWNER_REVIEW';report.files.push('review.json','review.md');await fs.writeFile(path.join(out,'review.json'),serialize(report),{flag:'wx'});await fs.writeFile(path.join(out,'review.md'),reviewMarkdown(report),{flag:'wx'});await sealBundle(out,report.files);console.log(report.status,out);if(report.blockers.length)process.exitCode=1
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)main().catch(e=>{console.error('STOP:',e.message);process.exitCode=1})

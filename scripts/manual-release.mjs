@@ -1,6 +1,7 @@
 // Manual release orchestration. Network reads are GET-only; the sole write is Wrangler deploy.
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
+import {rejectTestRelease} from './sports-test-context.mjs'
 import path from 'node:path'
 import {spawnSync} from 'node:child_process'
 import {pathToFileURL} from 'node:url'
@@ -38,6 +39,7 @@ export function assertSource(sha,head,status,env=process.env) {
   for(const key of Object.keys(env))assert.ok(!/^(BUILD_COMMIT|CF_WORKERS_BUILD_COMMIT|CF_PAGES_COMMIT_SHA|GITHUB_SHA|VITE_.*)$/.test(key),'Metadata/build override forbidden: '+key)
 }
 async function source(o) {
+  await rejectTestRelease()
   assertSource(o.sha,git('rev-parse','HEAD'),git('status','--porcelain','--untracked-files=all'))
   assert.equal(process.versions.node,'24.19.0','Pinned Node required')
   const wr=JSON.parse(await fs.readFile('node_modules/wrangler/package.json'));assert.equal(wr.version,'4.142.0')
