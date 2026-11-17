@@ -23,10 +23,19 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
             <h3 className="more-brand">300W⚡ APP</h3>
             <p>Профессиональный триатлон: календарь, результаты, профили атлетов и многое другое.</p>
             <p>ТРИАТЛОН — ЭТО МОЩНО!</p>
-            <div className="more-release">
+            <details className="more-release">
+              <summary>
+              <span>
               <span className="more-version">Версия {buildMetadata.version}</span>
               <span className="more-release-title">{currentRelease.title}</span>
-            </div>
+              </span><span className="more-release-arrow" aria-hidden="true">›</span>
+              </summary>
+              <p>При выпуске версии {currentRelease.version}:</p>
+              {currentRelease.sections.map(section => <div className="more-release-notes" key={section.heading}>
+                <h4>{({ Added: 'Добавлено', Changed: 'Изменено', Fixed: 'Исправлено', Technical: 'Техническое' })[section.heading]}</h4>
+                <ul>{section.items.map(item => <li key={item}>{item}</li>)}</ul>
+              </div>)}
+            </details>
           </div>
         </section>
         <section className="more-block" aria-labelledby="more-feedback">

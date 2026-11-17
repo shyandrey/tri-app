@@ -1,3 +1,4 @@
+import { getRaceDayLabel, getMoscowDateISO } from '../utils/raceDate'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { usePageState } from '../navigation/usePageState'
 import type { RaceEditionView } from '../types/Race'
@@ -7,6 +8,7 @@ import { getRaceGenderLabel } from '../utils/raceGender'
 import './HomeShowcase.css'
 
 type HomeShowcaseProps = {
+  today?: string
   races: RaceEditionView[]
   onRaceClick: (race: RaceEditionView) => void
   getRaceName: (name: string) => string
@@ -31,7 +33,7 @@ function splitShowcaseName(name: string) {
   return ['', name]
 }
 
-export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeShowcaseProps) {
+export default function HomeShowcase({ today = getMoscowDateISO(), races, onRaceClick, getRaceName }: HomeShowcaseProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLElement | null>>([])
   const activeIndexRef = useRef(0)
@@ -158,7 +160,7 @@ export default function HomeShowcase({ races, onRaceClick, getRaceName }: HomeSh
               />}
               <div className="showcase-card__shade" aria-hidden="true" />
               <div className="showcase-card__content">
-                <span className="showcase-card__eyebrow">Скоро</span>
+                <span className="showcase-card__eyebrow">{getRaceDayLabel(race.dateISO, today)}</span>
                 <div className="showcase-card__tag-row">
                   <span className="showcase-card__tag">{race.series}</span>
                   {genderLabel && <span className="showcase-card__tag">{genderLabel}</span>}

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { getMoscowDateISO } from './utils/raceDate'
 import LatestNews from './components/LatestNews'
 import FeedbackPage from './pages/FeedbackPage'
 import { genericFeedbackContext } from '../shared/feedback'
@@ -29,15 +31,6 @@ import SportsRoute from './sports/SportsRoute'
 import { sportsArea } from './sports/loader'
 
 const regionalChampionship = '(?:North American|European|Asia-Pacific|African|Latin American|Oceania)'
-
-function getMoscowTodayISO() {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Europe/Moscow',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date())
-}
 
 function getShowcaseRaceName(name: string) {
   const cleanName = name.replace(/\s+/g, ' ').trim()
@@ -82,6 +75,21 @@ function App({ initialHash }: { initialHash?: string }) {
 }
 
 function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: Route) => void; back: () => void }) {
+  const [today, setToday] = useState(getMoscowDateISO)
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>
+    const refresh = () => {
+      clearTimeout(timer)
+      const day = getMoscowDateISO()
+      setToday(day)
+      const nextMidnight = Date.parse(`${day}T00:00:00+03:00`) + 86400000
+      timer = setTimeout(refresh, Math.max(1, nextMidnight - Date.now()))
+    }
+    refresh()
+    window.addEventListener('focus', refresh)
+    document.addEventListener('visibilitychange', refresh)
+    return () => { clearTimeout(timer); window.removeEventListener('focus', refresh); document.removeEventListener('visibilitychange', refresh) }
+  }, [])
   const openFeedback = (feedback: FeedbackContext) => navigate({ page: 'feedback', feedback })
   const page = route.page
   const navigateSection = (page: Page) => navigate({ page })
@@ -91,7 +99,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
   })
 
   const futureHomeRaces = groupRacesForHome(races.filter(isRaceInCalendar))
-    .filter((race) => race.dateISO >= getMoscowTodayISO())
+    .filter((race) => race.dateISO >= today)
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const showcaseRaces = futureHomeRaces.slice(0, 5)
   const upcomingRaces = futureHomeRaces.slice(0, 3)
@@ -120,7 +128,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
       </header>
 
       <div className="home-content">
-        <HomeShowcase races={showcaseRaces} onRaceClick={openRace} getRaceName={getShowcaseRaceName} />
+        <HomeShowcase today={today} races={showcaseRaces} onRaceClick={openRace} getRaceName={getShowcaseRaceName} />
 
         <section className="section home-races-section">
           <div className="section__header home-races-section__header">

@@ -18,3 +18,10 @@ export function isRaceFinished(race: Race) {
 export function isRaceUpcoming(race: Race) {
   return !isRaceFinished(race)
 }
+
+export function getRaceDayLabel(dateISO: string, today = getMoscowDateISO()) {
+  if (dateISO === today) return 'Сегодня!'
+  const tomorrow = new Date(`${today}T00:00:00Z`)
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1)
+  return dateISO === tomorrow.toISOString().slice(0, 10) ? 'Завтра' : 'Скоро'
+}
