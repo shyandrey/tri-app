@@ -93,9 +93,11 @@ export default function FeedbackPage({ context, onBack }: { context: FeedbackCon
     } finally { busy.current = false; waiting.current = null }
   }
   return <main className="app feedback-page">
-    <button className="page-back-button" type="button" onClick={onBack}>← Назад</button>
     <section className="section">
-      <h1 ref={heading} tabIndex={-1}>Сообщить об ошибке</h1>
+      <header className="feedback-header">
+        <h1 ref={heading} tabIndex={-1}>Сообщить об ошибке</h1>
+        <button className="page-back-button" type="button" onClick={onBack}>← Назад</button>
+      </header>
       <p className="feedback-context">{contextLabel}</p>
       {state === 'success' ? <div role="status" className="feedback-success">
         <h2>Спасибо за сообщение</h2><p>Мы получили и сохранили ваше обращение.</p>

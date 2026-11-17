@@ -6,7 +6,7 @@
 .feedback-page input, .feedback-page select, .feedback-page textarea { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 12px; border-radius: 10px; border: 1px solid var(--tri-border-strong); background: var(--tri-surface); color: var(--tri-text); font: inherit; font-size: 16px; }
 .feedback-page textarea { resize: vertical; }
 .feedback-page button, .feedback-entry { min-height: 44px; }
-.feedback-page button { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--tri-border-strong); background: var(--tri-surface); color: var(--tri-text); font: inherit; cursor: pointer; }
+.feedback-page button:not(.page-back-button) { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--tri-border-strong); background: var(--tri-surface); color: var(--tri-text); font: inherit; cursor: pointer; }
 .feedback-page .feedback-submit { background: var(--tri-accent); color: var(--tri-bg); font-weight: 600; }
 .feedback-page :focus-visible, .feedback-entry:focus-visible { outline: 2px solid var(--tri-accent); outline-offset: 3px; }
 .feedback-page :disabled { opacity: .65; cursor: wait; }
@@ -19,11 +19,13 @@
 button.more-card.feedback-entry { width: 100%; text-align: left; margin: 0; padding: 20px 50px 20px 20px; color: var(--tri-text); }
 .more-card.feedback-entry strong { display: block; font-size: 18px; margin-bottom: 7px; }
 .more-card.feedback-entry small { color: var(--tri-muted); font-size: 13px; }
-/* Keep the global floating Back button out of the form heading on narrow screens. */
+/* Shared Back styling, positioned beside the heading without overlapping it. */
 .app.feedback-page { text-align: left; }
-.feedback-page .page-back-button { position: static; display: inline-flex; align-items: center; margin-bottom: 8px; }
+.feedback-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.feedback-header h1 { margin: 0; min-width: 0; }
+.feedback-header .page-back-button { position: static; flex-shrink: 0; display: inline-flex; align-items: center; }
 .app.feedback-page > .section:first-of-type { margin-top: 12px; }
-.feedback-page h1 { margin: 0 0 14px; }
+.feedback-page h1 { margin: 0; }
 .feedback-page h1:focus { outline: none; }
 
 .feedback-page form { display: grid; gap: 10px; }
