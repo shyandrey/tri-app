@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import { parseChangelog } from './release-notes.mjs'
 import { buildMetadata } from '../src/utils/buildMetadata.ts'
+import { publicRelease } from '../.generated/public-release.ts'
 import { currentRelease } from '../.generated/current-release.ts'
 import worker from '../worker/index.ts'
 const pkg = JSON.parse(await fs.readFile('package.json','utf8'))
@@ -23,8 +24,9 @@ test('package, generated UI metadata, release notes and actual health agree', as
   assert.equal((await response.json()).version,currentRelease.version)
   const ui = await fs.readFile('src/pages/MorePage.tsx','utf8')
   assert.match(ui,/Версия \{buildMetadata.version\}/)
-  assert.match(ui,/currentRelease.title/)
-  assert.doesNotMatch(ui,/currentRelease.sections|<details|<summary/)
+  assert.match(ui,/publicRelease.description/)
+  assert.equal(publicRelease.version,pkg.version)
+  assert.doesNotMatch(ui,/currentRelease|current-release|CHANGELOG/)
   assert.equal(currentRelease.title,'Первый релиз 300W')
 })
 test('0.0.0 selects Unreleased, even when published history exists', () => {

@@ -39,7 +39,7 @@ try{
  assert.ok(await js("document.querySelector('.more-release summary').innerText.includes('Версия 1.0.1')"))
  await js("document.querySelector('.more-release summary').click()")
  assert.equal(await js("document.querySelector('details.more-release').open"),true)
- assert.ok(await js("document.querySelector('.more-release-notes').getBoundingClientRect().height>0"))
+ assert.ok(await js("document.querySelector('.more-release-title').getBoundingClientRect().height>0"))
  await js("document.querySelector('.more-release summary').focus()")
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',unmodifiedText:'\r',windowsVirtualKeyCode:13})
  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13})
