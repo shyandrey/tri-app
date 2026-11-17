@@ -1,4 +1,4 @@
-import { currentRelease } from '../../.generated/current-release'
+import { publicRelease } from '../../.generated/public-release'
 import BottomNav from '../components/BottomNav'
 import type { Page } from '../types/Page'
 import { buildMetadata } from '../utils/buildMetadata'
@@ -25,16 +25,10 @@ function MorePage({ onNavigate, onFeedback, onBack }: MorePageProps) {
             <p>ТРИАТЛОН — ЭТО МОЩНО!</p>
             <details className="more-release">
               <summary>
-              <span>
-              <span className="more-version">Версия {buildMetadata.version}</span>
-              <span className="more-release-title">{currentRelease.title}</span>
-              </span><span className="more-release-arrow" aria-hidden="true">›</span>
+                <span className="more-version">Версия {buildMetadata.version}</span>
+                <span className="more-release-arrow" aria-hidden="true">›</span>
               </summary>
-              <p>При выпуске версии {currentRelease.version}:</p>
-              {currentRelease.sections.map(section => <div className="more-release-notes" key={section.heading}>
-                <h4>{({ Added: 'Добавлено', Changed: 'Изменено', Fixed: 'Исправлено', Technical: 'Техническое' })[section.heading]}</h4>
-                <ul>{section.items.map(item => <li key={item}>{item}</li>)}</ul>
-              </div>)}
+              <p className="more-release-title">{publicRelease.description}</p>
             </details>
           </div>
         </section>

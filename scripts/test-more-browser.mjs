@@ -28,7 +28,7 @@ try {
   assert.deepEqual(await js('[...document.querySelectorAll(".more-information a")].map(a=>a.href)'), ['https://stats.protriathletes.org/', 'https://triathlon.org/'])
   assert.equal(await js('document.querySelector("details.more-release").open'),false)
   assert.ok(await js('document.querySelector(".more-release summary").textContent.includes("Версия '+pkg.version+'")'))
-  assert.ok(await js('document.querySelector(".more-release summary").textContent.includes("Первый релиз 300W")'))
+  assert.equal(await js('document.querySelector(".more-release summary").textContent.includes("Первый релиз 300W")'),false)
   await js('document.querySelector(".more-release summary").click()');assert.equal(await js('document.querySelector("details.more-release").open'),true)
   await js('document.querySelector(".more-release summary").click()');assert.equal(await js('document.querySelector("details.more-release").open'),false)
   assertDocumentWidth(await js('({clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth})'))
