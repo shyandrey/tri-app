@@ -1,10 +1,55 @@
 # 300W — Project Board
 
-Обновлено: 2026-11-14. Текущий post-release план; исторические checkpoints ниже сохранены без изменений и не отражают текущий статус Production. Запись задачи не означает разрешение на Git-операции, deployment, удаление файлов или инфраструктурные изменения.
+Обновлено: 2026-11-18. Текущий post-release план; исторические checkpoints ниже сохранены без изменений и не отражают текущий статус Production. Запись задачи не означает разрешение на Git-операции, deployment, удаление файлов или инфраструктурные изменения.
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности.
 
-## Current Focus — Post-release Stage 1
+## Текущий статус — 2026-11-17
+
+Этот раздел заменяет старые current-status statements ниже. DONE означает завершение указанного scope, не разрешение на новые операции.
+
+| Окружение | SHA | Версия | Состояние |
+| --- | --- | --- | --- |
+| Production, `tri-app` | `a0dc39d09abcfa817df6b2887f21ad13f7d2b09a` | 1.0.1 | UI-08D deployment/readiness/browser smoke PASS; health повторно подтверждён POST-03B |
+| Preview, `tri-app-preview` | `60344fc996ab1153cc6326a07227facccae41d14` | 1.0.1 | Без изменений при Production-only releases; health подтверждён POST-03B |
+
+GitHub `preview` на старте POST-03C: `a0dc39d09abcfa817df6b2887f21ad13f7d2b09a` (PR #25 merged). Git branch и deployed Preview различаются намеренно. CI manual-only; Auto Deploy отключён. Публичное описание 1.0.1: «Первый релиз 300W», скрыто до раскрытия версии.
+
+| Task | Status | Завершённый scope / следующий шаг |
+| --- | --- | --- |
+| DATA-05 | DONE | Dubai T100 2026: 41 результат, три новых профиля; опубликовано в Production. |
+| DATA-07 | DONE | Официальный T100 TOP10 M/W после Dubai; 20 existing IDs; Production smoke PASS. |
+| POST-DEVOPS-01 | DONE | Универсальный `release:*`, security qualification, Git merge; без отдельного инфраструктурного изменения. |
+| POST-DEVOPS-02 | DONE | Prepare/plan/approved apply, offline test-only guards, E2E/build PASS; tooling merged. |
+| TG-DEEPLINK-01 | DONE | Race/athlete launch routing опубликован; Preview owner iPhone QA PASS, Production browser simulation PASS. |
+| UI-07 | DONE | Moscow race-day labels и Showcase eligibility; Production smoke PASS. |
+| UI-08 / UI-08B | DONE | Public/internal separation, version-only disclosure, approval/digest guards; UI-08D Production smoke PASS. |
+| UI-10 | DONE | Feedback title/Back alignment и navigation; Production smoke без отправки feedback PASS. |
+| POST-03A | DONE | Read-only workspace/repository inventory; Git store и symlink risks установлены. |
+| POST-03B | DONE | 4/4 durable local packages verified; шесть dist удалены; три Chrome profiles пропущены из-за symlink. |
+| POST-03C | IN PROGRESS | Documentation-only candidate проверен; DONE только после успешной разрешённой публикации и проверки merge в `preview`. |
+| POST-03D | IN PROGRESS | Финальная подготовка документации к commit/PR; публикация пока не разрешена. |
+| OPS-BACKUP-01 | BACKLOG / DEFERRED | Independent Recovery Backup; после завершения pipeline подготовки сезона 2027, включая CAL-02 и связанные задачи. |
+
+Recovery: [локальные копии, permissions и ограничения](recovery-storage.md). Незакрытые риски: TECH-01 full-regeneration ID drift; OPS-02 network accessibility; OPS-03 restore drill; Android E2E deferred. ATH-04 enrichment остаётся post-release. Browser simulation не доказывает Telegram device QA.
+
+### OPS-BACKUP-01 — Independent Recovery Backup
+
+- **Status:** BACKLOG / DEFERRED.
+- **Trigger:** после завершения pipeline подготовки сезона 2027, включая CAL-02 и связанные задачи; не запускать backup work сейчас.
+- **Scope:** независимая зашифрованная копия `~/300W-Recovery/`; стратегия Production D1 backup и retention; проверка целостности и restore rehearsal; периодичность обновления backup и обязанности владельца.
+- Локальные копии на том же компьютере не заменяют independent backup. Отложенный статус не закрывает OPS-03 и не подтверждает восстановление. Будущие операции требуют отдельного согласованного scope.
+- **Reference:** [проверенные локальные пакеты и ограничения](recovery-storage.md).
+
+### Documentation follow-up — P3
+
+Вводная фраза [CHANGELOG.md](../CHANGELOG.md) всё ещё называет 1.0.1 локальным кандидатом. Исправить отдельной согласованной documentation-задачей; в POST-03C/D CHANGELOG и техническая история остаются неизменными.
+
+## Исторические checkpoints — сохранены без переписывания
+
+Статусы «LOCAL», «PLANNED», «PUBLICATION IN PROGRESS» и прежние SHA ниже относятся к датам соответствующих задач. Актуальные completion/operating states указаны выше.
+
+## Current Focus — Post-release Stage 1 (исторический снимок)
 
 UI-08B / UI-08C — OWNER APPROVED / PUBLICATION IN PROGRESS (2026-11-17). From Preview `7b642c56b7c65ff97f862a3b52282cd657b2b003`. Public About metadata separated from internal CHANGELOG; version-only collapsed disclosure, owner-approved description on expand; version/approval/digest build guard. Targeted tests 23/23 PASS; one build/typecheck PASS (existing large-chunk warning), targeted lint/diff PASS. Browser disclosure/keyboard/AX smoke PASS at 320/390/1024 (exit 0); technical text absent from UI and built JS. First harness used incorrect zero-height assumption for native hidden details; corrected to checkVisibility plus AX checks, original evidence retained. Evidence: `/private/tmp/300w-ui08b-browser-final/`. Approval comes from this UI-08B owner request; digest detects accidental edits, not a cryptographic owner signature. UI-08C authorizes commit → PR → merge and one manual Production deployment (2026-11-17); completion evidence pending. No version/data changes or Preview deployment. See [release approval policy](versioning.md#ui-08b--действующая-политика-публичного-описания-2026-11-17).
 

@@ -2,9 +2,15 @@
 
 Feedback implementation extends this baseline; see [Feedback setup and privacy](feedback.md). Named deploy environments use the protected worker; the top-level target is now the loopback-only local mock entry.
 
-Current deployment is manual via Wrangler: local checkout → Vite `dist/` + Worker bundle → Workers Static Assets → `/api/*` → D1. GitHub automatic builds are not connected.
+## Current operating model (2026-11-17)
 
-For static professional results, follow the [canonical results import workflow](scripts.md#canonical-workflow): Stats PTO URL/discovery → owner review → approved incremental import → validation → preview review → explicitly approved production deployment of the same Git revision. The [Data Source Policy V2](scripts.md#data-source-policy) governs results and athlete provenance: Stats PTO first, World Triathlon for verified missing fields; conflicting values require review. Do not reimport results into production or run D1 migrations/seeds for a static results update.
+Use the [universal manual release CLI](#universal-manual-release-cli-post-devops-01): approved exact SHA → `release:prepare` (one build/immutable package) → `release:preflight` → one authorized `release:deploy` → `release:smoke`. `release:qualify` inspects an already published SHA read-only and cannot authorize deployment. No automatic retry/rollback. GitHub Actions are manual-only (`workflow_dispatch`); Auto Deploy remains disabled. Never dispatch CI or enable deployment as an incidental maintenance step.
+
+Production is `tri-app` at `https://300w.app`; Preview is `tri-app-preview` at `https://preview.300w.app`, with separate bindings/D1. Current verified SHA/version and completion evidence: [Project Board](PROJECT_BOARD.md#текущий-статус--2026-11-17). Recovery packages: [private storage and limitations](recovery-storage.md).
+
+Older direct `deploy:*` examples and environment snapshots below are historical procedures, not the default release path. Preserve them for evidence; do not combine a rebuild with an already qualified immutable artifact.
+
+For static professional results, follow the [canonical results import workflow](scripts.md#canonical-workflow): `sports:prepare → sports:plan → owner approval → sports:apply` → targeted validation → separately authorized Git publication and Production release of the exact revision. Preview is risk-based for routine static data updates, not mandatory for every import. The [Data Source Policy V2](scripts.md#data-source-policy) governs results and athlete provenance: Stats PTO first, World Triathlon for verified missing fields; conflicting values require review. Do not reimport results into production or run D1 migrations/seeds for a static results update.
 
 React remains client-side. Hash routes (including direct `/#/athlete/…` links) are unchanged. Existing static files bypass Worker execution; `/api` and `/api/*` always reach the Worker, including HTML navigation requests. Other paths use the ASSETS binding / SPA fallback. Unknown API paths return JSON 404, never index.html.
 
@@ -101,6 +107,8 @@ local HEAD. Health is not a D1 connectivity check; News may be cached for 900 se
 The check does not inspect secrets or perform migrations or writes.
 
 ## Live production and manual deployment
+
+**Historical snapshot and direct-deploy procedure (2026-10-17).** For new releases use the universal manual CLI below; old branch/status/secret-count statements do not describe the current baseline.
 
 Snapshot, 2026-10-17: BOT-01 Production E2E closeout. Deployment metadata, bindings, workers.dev health/News/Feedback config and aggregate Production Feedback queue were verified read-only. Public webhook migration and real command/Mini App/Feedback E2E are owner-confirmed, not a fresh Telegram API inspection:
 

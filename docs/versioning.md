@@ -1,5 +1,9 @@
 # Версии и история релизов 300W
 
+Текущая версия — **1.0.1**; Production и deployed Preview имеют разные SHA, указанные в [Project Board](PROJECT_BOARD.md#текущий-статус--2026-11-17). UI-08D завершён: public disclosure опубликован и проверен. Git tags `v1.0.0` / `v1.0.1` фиксируют исходные version releases и не перемещаются на последующие data/UI deployments той же версии.
+
+Текущий release path: согласование version/description → синхронизация package/lock и approved public metadata → checks по scope → разрешённая Git publication → exact-SHA `release:prepare/preflight/deploy/smoke` по [runbook](deployment-cloudflare.md#universal-manual-release-cli-post-devops-01). `release:qualify` — read-only, не разрешение publish. Technical CHANGELOG сохраняется отдельно. CI manual-only; теги и release announcements требуют собственного разрешения.
+
 ## UI-08B — действующая политика публичного описания (2026-11-17)
 
 - `package.json` задаёт версию; `release/public-release.json` содержит только публичные version/description и запись согласования. Для текущей `1.0.1` текст «Первый релиз 300W» прямо задан владельцем в задаче UI-08B. Это основание текущего согласования, не реконструкция прошлых approvals.
@@ -35,7 +39,7 @@ Commit — снимок исходников. Deployment — установле�
 
 Вносить только проверенные изменения, не секреты и не личные данные. Текущий Unreleased описывает подготовку первой публичной версии; он не свидетельство её публикации. При выпуске переносить согласованные notes в раздел версии, а Unreleased оставлять для дальнейшей подготовки (например Technical: «Новые изменения пока не запланированы»). Исторические разделы сохранять; исправления ошибочных notes проводить отдельным документированным commit.
 
-## Release checklist и SHA/tag traceability
+## Исторический REL-01A checklist и SHA/tag traceability
 
 1. Согласовать scope, версию и release notes; прочитать [Project Board](PROJECT_BOARD.md), зафиксировать Production baseline. Выбрать плановую дату публикации; до Production acceptance это план, не утверждение о состоявшемся релизе.
 2. Обновить `package.json.version`, `package-lock.json.version` и `package-lock.json.packages[""].version` одинаково, без изменения зависимостей. В REL-01A все три значения согласованно подготовлены как `1.0.0`; это ещё не опубликованный релиз.
@@ -52,7 +56,7 @@ Commit — снимок исходников. Deployment — установле�
 
 До завершения шага 11 запись версии — release candidate, не evidence публикации. Build parser проверяет формат, но не существование tag, истинность даты или согласование публикации. После шага 12 репозиторий содержит точный исторический SHA и фактическую дату. Изменение только SHA/date metadata не меняет сгенерированные пользовательские notes; build commit identity при сборке D всё равно стал бы D, поэтому D не развёртывается под видом R. Rollback ограничения ниже остаются обязательными.
 
-## Команды и проверка
+## Исторические команды и проверка REL-01A / REL-06
 
 Из корня репозитория:
 
@@ -81,6 +85,6 @@ npm run check:production -- --expected-sha <R>
 
 Worker rollback — отдельная одобренная операция по [runbook](deployment-cloudflare.md), с проверкой известных-good bindings/secrets. Возвращается весь согласованный build, включая старую версию UI/API; не исправлять одну строку версии поверх чужих assets. Не переписывать tags и не удалять прошлые release notes. Откат Worker не откатывает D1: recovery данных требует отдельного плана/approval. После отката записать инцидент в Unreleased, подготовить новый PATCH с новыми SHA/tag и пройти Preview/Production checks. При несовпадении версии, notes, health SHA, tag или bindings — STOP до выяснения.
 
-## REL-01A — текущий кандидат
+## REL-01A — исторический кандидат
 
 [Локальный release report](rel-01a-v1-release-candidate.md) фиксирует scope и ограничения. Дата 2026-11-12 в changelog — предварительная, не дата уже состоявшегося выпуска. Старые команды deploy выше являются историческим runbook, а не разрешением на повторную сборку или публикацию: текущая политика — отдельно квалифицированный immutable artifact и operational config для конкретного окружения, manual Wrangler publication после approval. Preview config/package нельзя переименовать в Production без отдельной проверки target/bindings. Auto Deploy остаётся выключенным. Для uncommitted candidate build SHA остаётся базовым Git HEAD и не является новым release SHA; после разрешённого commit требуется новая квалификация metadata/artifact с точным R.

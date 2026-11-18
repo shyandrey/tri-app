@@ -21,11 +21,17 @@
 - **Итерация2:** Git publication с соблюдением защиты ветки, одна сборка финального SHA, preflight/rollback baseline, один ручной Production deployment и короткий read-only smoke. Новые блокеры — STOP; автоматических retries/rollback и D1 writes нет. Дополнительные промежуточные approvals не нужны, если вся последовательность уже явно разрешена.
 - По возможности объединяйте результаты и standings в один согласованный релиз. Если официальные standings не обновлены — отложите их; не оценивайте очки. Preview выбирается по риску, а не обязателен для каждого data-only обновления. История сезонов и TECH-01 запрет полной регенерации сохраняются.
 
+## Действующий порядок публикации
+
+Для sports data используйте [HOW-TO](HOWTO-UPDATE-SPORTS-DATA.md): `sports:prepare → sports:plan → approval точного candidate digest/scope → sports:apply`. До approval runtime не меняется. После targeted validation требуется отдельное разрешение Git/publication; local apply approval его не заменяет.
+
+Для согласованной Git revision: `release:prepare → release:preflight → release:deploy → release:smoke`; точные параметры в [runbook](deployment-cloudflare.md#universal-manual-release-cli-post-devops-01). `release:qualify` только читает live environment и не разрешает deployment. CI manual-only, Auto Deploy отключён. При смене версии обязательно [owner approval публичного текста](versioning.md); technical CHANGELOG не является публичным описанием. [Recovery storage](recovery-storage.md) хранится отдельно от Git.
+
 ## Общий порядок ручной правки
 
 Этот порядок — часть каждой операции ниже; разделы указывают дополнительные проверки и файлы для commit.
 
-1. В Terminal из папки проекта выполните `git branch --show-current` и `git status --short`. Рабочая ветка — `home-redesign-experiments`. Не трогайте чужие modified/untracked файлы.
+1. В Terminal из папки проекта выполните `git branch --show-current` и `git status --short`. Начните с чистого изолированного checkout от актуального `preview` и отдельной task branch; старый dirty `home-redesign-experiments` не используйте как release baseline. Не трогайте чужие modified/untracked файлы.
 2. В VS Code откройте точный файл через Cmd+P; Cmd+F найдите указанный ниже ключ. Редактируйте только свойство нужной записи, сохраняя кавычки, запятые и скобки. Cmd+S сохраняет файл.
 3. Запустите `npm run dev`, проверьте страницу локально. Для code/data patch выполните проверки из соответствующего раздела, `npm run build`, `npm run lint`, `git diff --check`. Release gate `npm run check:release` уже включает build/lint: после него без новых изменений повторять их не нужно.
 4. Просмотрите `git diff -- <путь>` и Source Control. Если значения/ID за пределами задания изменились — остановитесь. Не обновляйте snapshot лишь ради PASS.
@@ -36,7 +42,7 @@ git add src/data/athletes/men.ts
 git diff --cached
 git diff --cached --check
 git commit -m "Update reviewed athlete biography"
-git push origin home-redesign-experiments
+git push origin <approved-task-branch>
 ```
 
 Для другой операции замените путь и сообщение на соответствующие **просмотренному diff**. Не используйте `git add .`. Не включайте `athlete-audit.txt`, `docs/product-readiness-audit.md`, `ranking.txt`, `sof.json` или личные CSV/backup.
@@ -101,7 +107,7 @@ git add src/data/races.ts
 git diff --cached
 git diff --cached --check
 git commit -m "Correct verified race date"
-git push origin home-redesign-experiments
+git push origin <approved-task-branch>
 ```
 
 6. После отдельного разрешения выполните Preview-последовательность из раздела 9. На `preview.300w.app` повторите Calendar → Detail → Back и проверьте health SHA; изменения в localhost не означают, что Preview обновлён.
@@ -173,7 +179,7 @@ git add src/data/athletes/athleteLocalization.json
 git diff --cached
 git diff --cached --check
 git commit -m "Correct reviewed Russian athlete name"
-git push origin home-redesign-experiments
+git push origin <approved-task-branch>
 ```
 
 `.generated` не stage. После отдельного Preview approval используйте раздел 9; на Preview повторите поиск, Detail и связанное имя в Results с проверкой deployed SHA.
@@ -267,9 +273,9 @@ Cmd+Shift+F ищет текущую фразу. Например `Основны
 
 **Проверка:** accessibility test, build/lint, локально и Preview desktop/mobile, клавиатура, dark headings, длинные строки. Commit только нужный page/component. Save/отмена/push — общий порядок.
 
-## 9. Публикация, проверка и восстановление
+## 9. Историческая прямая публикация и восстановление
 
-Полный [production/preview runbook](deployment-cloudflare.md) — authority для targets, bindings, secrets, rollback и D1 recovery. Ниже только последовательность владельца после отдельного approval.
+Полный [production/preview runbook](deployment-cloudflare.md) — authority для targets, bindings, secrets, rollback и D1 recovery. Ниже сохранена прежняя последовательность. Для новых releases используйте `release:*` выше, а не эти прямые deploy-команды; прежний six-secret rollback нельзя считать совместимым с текущими восемью secret names.
 
 ```sh
 git status --short

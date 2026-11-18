@@ -1,75 +1,42 @@
-# React + TypeScript + Vite
+# 300W
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+300W — Telegram Mini App и веб-приложение с результатами профессионального триатлона, календарём, профилями спортсменов и рейтингами. Официальные T100/IRONMAN standings и внутренний TRI Ranking — разные наборы данных.
 
-Currently, two official plugins are available:
+Стек: React 19, TypeScript, Vite; Cloudflare Worker и Static Assets; D1 для серверных функций News/Feedback. Спортивные результаты и профили хранятся в репозитории.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Локальная разработка
 
-## React Compiler
+Работайте в чистом изолированном checkout от актуального `preview`; сохраняйте чужие локальные изменения. Проверенный toolchain: Node 24.19.0, Wrangler 4.142.0 из locked dependencies.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm ci
+npm run dev
+# Проверки по scope задачи:
+npm run build
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+`npm run preview` запускает локальный просмотр сборки, а не Cloudflare deployment. Metadata генерируются перед dev/build; `.generated/` не редактируется вручную. Секреты не хранить в Git. Правила работы: [AGENTS.md](AGENTS.md).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Структура
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `src/` — UI, навигация, sports data и ranking logic.
+- `public/` — локальные фотографии и artwork; `src/assets/` — исходные и оптимизированные assets.
+- `worker/`, `migrations/` — серверные функции и история D1 migrations.
+- `scripts/`, `scripts/fixtures/` — import/release tooling, тесты и source evidence.
+- `release/public-release.json` — согласованное публичное описание версии; [CHANGELOG.md](CHANGELOG.md) — отдельная техническая история.
+- `docs/` — инструкции, решения и исторические audits.
 
-```
+## Спортивные данные
+
+`sports:prepare → sports:plan → owner approval → sports:apply` подготавливает и применяет точный локальный кандидат. Approval привязан к digest и scope. Сохраняйте Athlete/Result IDs, проверяйте официальный источник, страны и русские имена. Полная регенерация athlete catalog запрещена. Затем — целевые проверки, одна сборка и review; разрешение на local apply не разрешает Git publication/deployment.
+
+[Практический HOW-TO](docs/HOWTO-UPDATE-SPORTS-DATA.md) · [Команды и source policy](docs/scripts.md) · [Инструкция владельца](docs/maintenance-owner.md).
+
+## Ручной release
+
+После явного разрешения на точный Git SHA и окружение: `release:prepare → release:preflight → release:deploy → release:smoke`. Один immutable artifact, одна загрузка, без автоматического retry/rollback. `release:qualify` — read-only проверка уже опубликованного SHA, не deployment authorization.
+
+Production: `https://300w.app`, Worker `tri-app`; Preview: `https://preview.300w.app`, Worker `tri-app-preview`. GitHub CI запускается только вручную; Auto Deploy отключён. Git merge сам по себе не публикует приложение.
+
+[Deployment runbook](docs/deployment-cloudflare.md) · [Версии и обязательное согласование публичного текста](docs/versioning.md) · [Recovery](docs/recovery-storage.md) · [Текущий статус проекта](docs/PROJECT_BOARD.md).
