@@ -1,3 +1,4 @@
+import { calendar2027Entities } from './calendar2027'
 import type { RaceEntity } from '../types/Race'
 import { currentRaceEditions } from './raceEditions'
 import { archiveIronmanRaceEntities } from './archiveIronmanProSeries'
@@ -12,6 +13,6 @@ const currentRaceEntities: RaceEntity[] = currentRaceEditions.map((edition) => (
 
 export const raceEntities: RaceEntity[] = Array.from(
   new Map(
-    [...archiveIronmanRaceEntities, ...currentRaceEntities].map((race) => [race.id, race])
+    [...archiveIronmanRaceEntities, ...currentRaceEntities, ...calendar2027Entities].map((race) => [race.id, race])
   ).values()
 )

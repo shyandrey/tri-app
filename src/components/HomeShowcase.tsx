@@ -57,11 +57,11 @@ export default function HomeShowcase({ today = getMoscowDateISO(), races, onRace
     return () => observer.disconnect()
   }, [races.length])
 
-  const imageByRaceId = useMemo(() => {
+  const imageByEditionId = useMemo(() => {
     const selected = new Map<string, ReturnType<typeof pickShowcaseImage>>()
     races.forEach((race) => {
-      if (!selected.has(race.raceId)) {
-        selected.set(race.raceId, pickShowcaseImage(race.raceId))
+      if (!selected.has(race.editionId)) {
+        selected.set(race.editionId, pickShowcaseImage(race))
       }
     })
     return selected
@@ -139,7 +139,7 @@ export default function HomeShowcase({ today = getMoscowDateISO(), races, onRace
         {races.map((race, index) => {
           const showcaseName = getRaceName(race.name)
           const [seriesName, locationName] = splitShowcaseName(showcaseName)
-          const showcaseImage = imageByRaceId.get(race.raceId)
+          const showcaseImage = imageByEditionId.get(race.editionId)
           const genderLabel = getRaceGenderLabel(race.gender)
 
           return (
@@ -160,7 +160,7 @@ export default function HomeShowcase({ today = getMoscowDateISO(), races, onRace
               />}
               <div className="showcase-card__shade" aria-hidden="true" />
               <div className="showcase-card__content">
-                <span className="showcase-card__eyebrow">{getRaceDayLabel(race.dateISO, today)}</span>
+                <span className="showcase-card__eyebrow">{race.dateKind?.startsWith('event_weekend') ? 'Даты мероприятия' : getRaceDayLabel(race.dateISO, today)}</span>
                 <div className="showcase-card__tag-row">
                   <span className="showcase-card__tag">{race.series}</span>
                   {genderLabel && <span className="showcase-card__tag">{genderLabel}</span>}

@@ -164,7 +164,9 @@ function RaceDetailPage({ onFeedback, race, raceEditions, allResults, athletes, 
       <section className={`section race-detail-page ${hasResults ? 'race-detail-page--table' : ''}`}>
         <div className="race-detail">
           <h1>{activeRace.name}</h1>
-          <p className="race-detail-meta">{activeRace.date} {currentYear} · {location}</p>
+          <p className="race-detail-meta">{activeRace.date} {currentYear} · {location || 'Место уточняется'}</p>
+          {activeRace.dateEndISO && activeRace.dateEndISO !== activeRace.dateISO && <p>Даты мероприятия. День профессионального старта уточняется.</p>}
+          {activeRace.gender === 'UNKNOWN' && <p>Категории PRO уточняются.</p>}
 
           {years.length > 1 && (
             <div className="race-season-switcher" aria-label="Сезон гонки">
@@ -207,7 +209,7 @@ function RaceDetailPage({ onFeedback, race, raceEditions, allResults, athletes, 
 
           {isFutureRace ? (
             <div className="race-detail-countdown" role="status">
-              До гонки осталось {daysUntilRace} {getDaysLabel(daysUntilRace)}
+              {activeRace.dateEndISO && activeRace.dateEndISO !== activeRace.dateISO ? 'До начала мероприятия осталось' : 'До гонки осталось'} {daysUntilRace} {getDaysLabel(daysUntilRace)}
             </div>
           ) : hasResults ? (
             <RaceResultsTable

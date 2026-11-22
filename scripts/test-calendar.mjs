@@ -3,10 +3,12 @@ import assert from 'node:assert/strict'
 import { createServer } from 'vite'
 
 const server = await createServer({ server: { middlewareMode: true, watch: null }, appType: 'custom', logLevel: 'silent' })
-const [{ default: Calendar }, { currentRaceEditions, allRaceEditionViews }] = await Promise.all([
+const [{ default: Calendar }, { currentRaceEditions, allRaceEditionViews: completeCatalog }] = await Promise.all([
   server.ssrLoadModule('/src/pages/CalendarPage.tsx'), server.ssrLoadModule('/src/data/raceEditions.ts'),
 ])
 await server.close()
+// Historical 2024–2026 fixture: future-calendar assertions live in test-cal02.mjs.
+const allRaceEditionViews = completeCatalog.filter(r => r.year <= 2026)
 const initial = { search: '', filter: 'Все', timeFilter: 'upcoming', openArchiveYears: [] }
 function render(patch = {}) {
   let clicked
@@ -38,14 +40,14 @@ test('default Moscow 2026-10-02: exact three upcoming editions in order', t => {
 test('time × series × archives: season scopes, unique cards, exact sets and ordering', t => {
   freeze(t)
   const before = JSON.stringify(allRaceEditionViews)
-  const counts = { upcoming: [3, 1, 2], finished: [21, 15, 6], all: [24, 16, 8] }
+  const counts = { upcoming: [3, 1, 2], finished: [22, 15, 6], all: [25, 16, 8] }
   for (const timeFilter of Object.keys(counts)) for (const [i, filter] of series.entries()) {
     const state = { timeFilter, filter, openArchiveYears: [2025, 2024] }
     const rows = render(state).cards, main = rows.filter(r => r.archive === null)
     assert.equal(main.length, counts[timeFilter][i])
-    assert.ok(main.every(r => r.year === 2026 && r.series !== 'Challenge'))
+    assert.ok(main.every(r => r.year === 2026))
     assert.equal(new Set(ids(rows)).size, rows.length)
-    const raw = currentRaceEditions.filter(r => r.editionId !== 't100-saudi-arabia-2026' && r.series !== 'Challenge' && (filter === 'Все' || r.series === filter)
+    const raw = currentRaceEditions.filter(r => r.editionId !== 't100-saudi-arabia-2026' && (filter === 'Все' || r.series === filter)
       && (timeFilter === 'all' || (timeFilter === 'finished' ? r.dateISO < '2026-10-02' : r.dateISO >= '2026-10-02')))
     // The only current-season grouped pair is Nice W/M. Both editions are represented by the women-first card.
     const expected = raw.filter(r => r.editionId !== 'ironman-70-3-world-championship-2026-men')
@@ -53,7 +55,7 @@ test('time × series × archives: season scopes, unique cards, exact sets and or
     assert.deepEqual(ids(main), ids(expected))
     for (const year of [2025, 2024]) {
       const archive = rows.filter(r => r.archive === year)
-      assert.equal(archive.length, timeFilter === 'upcoming' ? 0 : (year === 2025 ? [26, 17, 9] : [26, 19, 7])[i])
+      assert.equal(archive.length, timeFilter === 'upcoming' ? 0 : (year === 2025 ? [27, 17, 9] : [27, 19, 7])[i])
       assert.ok(archive.every(r => r.year === year && (filter === 'Все' || r.series === filter)))
       assert.deepEqual(archive.map(r => r.dateISO), archive.map(r => r.dateISO).sort())
     }

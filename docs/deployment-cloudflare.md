@@ -16,6 +16,38 @@ React remains client-side. Hash routes (including direct `/#/athlete/…` links)
 
 Implemented: health, News ingestion/read API, Feedback handlers/UI, build metadata and local tooling. News reads and protected Feedback are active in production and preview. Production live News ingestion awaits a naturally occurring eligible post. Turnstile, the rate limiter and retry cron are configured; D1 save and Telegram delivery have been operator-verified (see [Feedback](feedback.md)). The health endpoint is process/build liveness, not a D1 connectivity check. Unsupported health methods return 405 with Allow: GET. API responses are JSON without permissive CORS; health/errors use no-store, while successful News reads use public max-age=900.
 
+## Explicit build-time season profiles — CAL-03A
+
+`season.config.json` is the reviewed source of truth: `production: 2026`, `preview2027: 2027`. Vite injects the primary season from an explicitly selected build mode. Date, hostname, `APP_ENV`, Git merge, race completion and QA do not select it. Default `npm run build` and `release:prepare --env production` use Production season2026; the CAL-03B2 Preview release path explicitly selects2027 as described below. Default Calendar and Home use this same primary season; users may explicitly browse other catalog seasons and historical deep links. This is a primary-season control, not an authorization to publish future data.
+
+Local Preview-candidate qualification only:
+
+```sh
+npm run dev -- --mode season2027-preview
+npm run build -- --mode season2027-preview
+node --input-type=module -e "import fs from 'node:fs'; import assert from 'node:assert/strict'; assert.deepEqual(JSON.parse(fs.readFileSync('dist/season.json')), {profile:'preview2027',primarySeason:2027})"
+```
+
+The build emits `season.json` with profile/primarySeason. Preserve it inside the immutable package and compare it to the separately approved Deployment Request before upload. A Preview-profile package must not be substituted for a Production-profile package. Standard Production builds must report `profile: production, primarySeason: 2026` until an owner-approved source/configuration change and separately authorized deployment switches it. No runtime Cloudflare toggle is introduced.
+
+**CAL-03B2 local resolution:** `release:prepare` accepts `--season-profile preview2027` for Preview and `--season-profile production` for Production. Omitting it selects the fixed profile for the explicit environment; cross-environment values fail closed. Preview uses the existing mode above; Production defaults2026. Preparation records `evidence/season.json`; the package retains `dist/season.json` and `manifest.season`, verified against environment and reviewed configuration before use. Example after separately authorized clean-SHA preparation:
+
+```sh
+npm run release:prepare -- --sha <EXACT_SHA> --env preview --season-profile preview2027 --package /absolute/new-package --evidence /absolute/new-evidence
+```
+
+Local two-profile builds and synthetic artifact verification passed; no immutable release package or deployment was performed in this dirty candidate. CAL-04 must qualify the actual clean revision/package. Old recovery packages lacking this marker require their preserved original qualified tooling; do not modify old manifests. [Qualification and limitations](audits/cal03b2-preview-readiness.md).
+
+## SEASON-2027 — mandatory manual Production release gate
+
+Production season switch 2026 → 2027 выполняется **только вручную**, после отдельного **Deployment Request** и явного **Owner Approval**. Preview QA PASS, завершение T100 Qatar 2026, наступление даты, Git merge и успешные CI checks не являются разрешением на Production deployment.
+
+Deployment Request обязан содержать: exact Git SHA и версию; target environment и Worker; состав изменений; Preview QA evidence; статус закрытия T100 2026; fresh preflight requirements; риски и rollback candidate. Только после отдельного явного Owner Approval допускаются fresh preflight и **один** manual Production deployment в утверждённом scope. Никаких автоматических deployment, retries, rollback или season switch. Правило действует на весь SEASON-2027 pipeline. CAL-03A реализует локальное build-time управление основным сезоном; это не разрешение на deployment.
+
+Before preparing the release request, inspect CAL-03 season visibility: the CAL-02 candidate originally had date-driven default-season selection and mixed 2026/2027 Home eligibility. This was the CAL-02C finding; CAL-03A now pins the default primary season through the reviewed build configuration. Do not publish it to Production as an implicitly authorized season switch. Default primary-season pinning is implemented locally; future catalog discoverability through explicit year selection/search/deep links remains available and requires review in the Production release scope. Keep normal race-day expiry separate from authorization to expose the next season.
+
+Use the existing exact-SHA/artifact digest, account/Worker, configuration, rollback, D1 recovery-bookmark and competing-publisher checks. Reuse the qualified immutable artifact; never treat successful CI or Preview deployment as authorization. Preserve historical runbooks below. [Pipeline and audit](audits/cal02c-dataset-readiness.md).
+
 ## Historical environment snapshot (2026-10-09)
 
 Historical setup only. BOT-01 subsequently moved @tri_app_bot to Production commands; use the current snapshot below and [command operations](telegram-commands.md) for bot roles.

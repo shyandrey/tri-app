@@ -1,10 +1,12 @@
-import type { RaceDistance, RaceGender, RaceSeries } from '../types/Race'
+import { pickShowcaseImage } from '../data/showcaseImages'
+import type { RaceDistance, RaceGender, RaceSeries, RaceEditionView } from '../types/Race'
 import { ChevronRightIcon } from './AppIcons'
 import { getRaceGenderLabel } from '../utils/raceGender'
 import ironmanProImage from '../assets/optimized/series/ironman-pro-216.png'
 import t100WorldTourImage from '../assets/optimized/series/t100-worldtour-216.png'
 
 type RaceCardProps = {
+  edition?: Pick<RaceEditionView, 'editionId' | 'raceId'>
   distance: RaceDistance
   series: RaceSeries
   name: string
@@ -34,6 +36,7 @@ function LocationIcon() {
 }
 
 function RaceCard({
+  edition,
   distance,
   series,
   name,
@@ -43,6 +46,7 @@ function RaceCard({
   gender,
   onClick,
 }: RaceCardProps) {
+  const rothArtwork = series === 'Challenge' && edition ? pickShowcaseImage(edition) : undefined
   const genderLabel = gender ? getRaceGenderLabel(gender) : null
   const genderSymbol = gender === 'WPRO' ? '♀︎' : gender === 'MPRO' ? '♂︎' : null
 
@@ -67,6 +71,8 @@ function RaceCard({
       <div className="race-card__series-mark" aria-hidden="true">
         {seriesImage ? (
           <img className="race-card__series-image" src={seriesImage} alt="" />
+        ) : rothArtwork ? (
+          <img className="race-card__series-image" src={rothArtwork[0].src} alt="" />
         ) : (
           <span>R</span>
         )}
@@ -82,7 +88,7 @@ function RaceCard({
         <span className="race-card__info-divider" aria-hidden="true" />
         <span className="race-card__info-item race-card__location">
           <LocationIcon />
-          <span>{city ? `${city}, ${country}` : country}</span>
+          <span>{city ? `${city}${country ? `, ${country}` : ''}` : country || 'Место уточняется'}</span>
         </span>
       </div>
 
@@ -90,7 +96,7 @@ function RaceCard({
 
       <div className="race-card__meta-row">
         <p className="race-card__series">{series}</p>
-        {genderLabel && genderSymbol && (
+        {genderLabel && (
           <span className="race-card__gender">
             <span className="race-card__gender-symbol" aria-hidden="true">{genderSymbol}</span>
             {genderLabel}

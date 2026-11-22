@@ -35,7 +35,11 @@ test('every current athlete source resolves without identity changes; unknown so
    assert.equal(registry.imageVariants[a.image].length,2)
   }
   assert.deepEqual(athleteImageDelivery('/future/photo.png','60px'),{src:'/future/photo.png'})
-  for(const race of ['ironman-world-championship-kona','ironman-70-3-world-championship','t100-french-riviera','t100-dubai','t100-saudi-arabia','t100-qatar'])assert.deepEqual(pickShowcaseImage(race).map(r=>r.width),[640,1280,1672])
-  assert.equal(pickShowcaseImage('unknown'),undefined)
+  for(const [raceId,editionId] of [
+    ['ironman-world-championship-kona','ironman-world-championship-kona-2026'],
+    ['ironman-70-3-world-championship','ironman-70-3-world-championship-2026-men'],
+    ...['t100-french-riviera','t100-dubai','t100-saudi-arabia','t100-qatar'].map(id=>[id,`${id}-2026`]),
+  ])assert.deepEqual(pickShowcaseImage({raceId,editionId}).map(r=>r.width),[640,1280,1672])
+  assert.equal(pickShowcaseImage({raceId:'unknown',editionId:'unknown-2027'}),undefined)
  }finally{await server.close()}
 })

@@ -1,10 +1,11 @@
+import { selectPrimarySeason } from './config/season'
 import { useEffect, useState } from 'react'
 import { getMoscowDateISO } from './utils/raceDate'
 import LatestNews from './components/LatestNews'
 import FeedbackPage from './pages/FeedbackPage'
 import { genericFeedbackContext } from '../shared/feedback'
 import type { FeedbackContext } from '../shared/feedback'
-import { allRaceEditionViews, isRaceInCalendar, currentRaceEditions as races } from './data/raceEditions'
+import { allRaceEditionViews, isRaceInCalendar, calendarRaceEditions as races } from './data/raceEditions'
 import type { Race } from './types/Race'
 import type { Page } from './types/Page'
 import CalendarPage, { type CalendarViewState } from './pages/CalendarPage'
@@ -98,8 +99,8 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
     search: '', filter: 'Все', timeFilter: 'upcoming', openArchiveYears: [],
   })
 
-  const futureHomeRaces = groupRacesForHome(races.filter(isRaceInCalendar))
-    .filter((race) => race.dateISO >= today)
+  const futureHomeRaces = groupRacesForHome(selectPrimarySeason(races).filter(isRaceInCalendar))
+    .filter((race) => (race.dateEndISO ?? race.dateISO) >= today)
     .sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime())
   const showcaseRaces = futureHomeRaces.slice(0, 5)
   const upcomingRaces = futureHomeRaces.slice(0, 3)
@@ -136,7 +137,7 @@ function AppScreen({ route, navigate, back }: { route: Route; navigate: (route: 
             <button onClick={() => navigateSection('calendar')}>Все <ChevronRightIcon className="home-races-section__chevron" /></button>
           </div>
           {upcomingRaces.map((race) => (
-            <RaceCard key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />
+            <RaceCard edition={race} key={race.editionId} distance={race.distance} series={race.series} name={race.name} date={race.date} city={race.city} country={race.country} gender={race.gender} onClick={() => openRace(race)} />
           ))}
         </section>
 

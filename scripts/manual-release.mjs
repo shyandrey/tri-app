@@ -1,3 +1,4 @@
+import {releaseSeason,releaseBuildArgs,assertReleaseSeason} from './release-season.mjs'
 // Manual release orchestration. Network reads are GET-only; the sole write is Wrangler deploy.
 import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
@@ -14,10 +15,11 @@ export function options(args) {
   assert.ok(['prepare','qualify','preflight','deploy','smoke'].includes(action),'Expected prepare/preflight/deploy/smoke')
   for(let i=0;i<rest.length;i+=2){
     const k=rest[i]?.replace(/^--/,'')
-    assert.ok(['sha','env','package','digest','evidence','authorize','task-smoke'].includes(k)&&!Object.hasOwn(o,k)&&rest[i+1]&&!rest[i+1].startsWith('--'),'Invalid/duplicate option')
+    assert.ok(['sha','env','package','digest','evidence','authorize','task-smoke','season-profile'].includes(k)&&!Object.hasOwn(o,k)&&rest[i+1]&&!rest[i+1].startsWith('--'),'Invalid/duplicate option')
     o[k]=rest[i+1]
   }
   assert.ok(validSHA(o.sha),'Full lowercase Git SHA required');target(o.env)
+  o['season-profile']=releaseSeason(o.env,o['season-profile']).profile
   assert.ok(o.package&&path.isAbsolute(o.package),'Absolute package path required')
   assert.ok(o.evidence&&path.isAbsolute(o.evidence),'Absolute evidence directory required')
   if(action!=='prepare')assert.match(o.digest??'',/^[a-f0-9]{64}$/,'Trusted manifest digest required')
@@ -148,7 +150,9 @@ export async function main(args) {
     await fs.access(o.package).then(()=>{throw Error('Package already exists')},e=>{if(e.code!=='ENOENT')throw e})
     await fs.writeFile(path.join(o.evidence,'prepare-attempt.json'),JSON.stringify(o),{flag:'wx'})
     await fs.rm('dist',{recursive:true,force:true}) // ignored build output only, in clean checkout
-    const build=command('npm',['run','build'],{timeout:180000});await fs.writeFile(path.join(o.evidence,'build.log'),build)
+    const build=command('npm',releaseBuildArgs(o.env,o['season-profile']),{timeout:180000});await fs.writeFile(path.join(o.evidence,'build.log'),build)
+    const season=assertReleaseSeason(JSON.parse(await fs.readFile('dist/season.json','utf8')),o.env,o['season-profile'])
+    await write(o,'season.json',season)
     await source(o);await prepareArtifact(o.package,o.sha,o.env)
     await write(o,'wrangler.json',{...config,main:path.join(o.package,'worker/index.js'),assets:{...config.assets,directory:path.join(o.package,'dist')}})
     console.log('Manifest SHA256:',sha256(await fs.readFile(path.join(o.package,'manifest.json'))));return
