@@ -110,6 +110,8 @@ function toEdition(race: ArchiveRace, year: 2024 | 2025, sourceUrl: string): Rac
     id: `${race.raceId}-${year}${race.suffix ? `-${race.suffix}` : ''}`,
     raceId: race.raceId,
     year,
+    ...(race.name === 'IRONMAN World Championship' || race.name === 'IRONMAN 70.3 World Championship' ? { city: race.city, country: race.country } : {}),
+    ...(/(?:European|North American|Asia-Pacific|African) Championship/.test(race.name) ? { designation: 'continental_championship' as const } : {}),
     series: 'IRONMAN Pro Series',
     date: race.date,
     dateISO: race.dateISO,

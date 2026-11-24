@@ -12,7 +12,7 @@ export function getMoscowDateISO() {
 export function isRaceFinished(race: Race) {
   const today = getMoscowDateISO()
 
-  return race.dateISO < today
+  return (race.dateEndISO ?? race.dateISO) < today
 }
 
 export function isRaceUpcoming(race: Race) {

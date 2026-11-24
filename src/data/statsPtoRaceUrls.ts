@@ -1,3 +1,5 @@
+import type { RaceEdition } from '../types/Race'
+
 const statsPtoSlugByRaceId: Record<string, string> = {
   'ironman-new-zealand': 'im-new-zealand',
   'ironman-70-3-geelong': 'im-703-geelong',
@@ -49,6 +51,21 @@ const statsPtoSlugByRaceId: Record<string, string> = {
 }
 
 export function getStatsPtoUrl(raceId: string, year: number) {
+  // The working 2027 calendar does not establish official results-page URLs.
+  if (year === 2027) return undefined
   const slug = statsPtoSlugByRaceId[raceId]
   return slug ? `https://stats.protriathletes.org/race/${slug}/${year}/results` : undefined
+}
+
+// A supplied string alone is not verification. The review reference must be
+// checked by the owner/import reviewer; this guard cannot certify its contents.
+export function resolveEditionStatsPtoUrl(edition: Pick<RaceEdition, 'raceId' | 'year' | 'statsPtoUrl' | 'statsPtoVerification'>) {
+  if (edition.year !== 2027) return edition.statsPtoUrl ?? getStatsPtoUrl(edition.raceId, edition.year)
+  const { statsPtoUrl: url, statsPtoVerification: review } = edition
+  if (!url || review?.url !== url || typeof review.evidenceRef !== 'string' || !review.evidenceRef.trim()) return undefined
+  try {
+    const parsed = new URL(url)
+    if (parsed.protocol !== 'https:' || parsed.hostname !== 'stats.protriathletes.org' || parsed.port || parsed.username || parsed.password || parsed.search || parsed.hash || !/^\/race\/[^/]+\/2027\/results\/?$/.test(parsed.pathname)) return undefined
+    return url
+  } catch { return undefined }
 }

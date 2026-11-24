@@ -7,5 +7,6 @@ export function normalizeRaceGender(gender?: RaceGender): RaceGender {
 export function getRaceGenderLabel(gender: RaceGender) {
   if (gender === 'WPRO') return 'WOMEN'
   if (gender === 'MPRO') return 'MEN'
+  if (gender === 'UNKNOWN') return 'Категории уточняются'
   return null
 }

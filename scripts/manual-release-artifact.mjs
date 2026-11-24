@@ -1,3 +1,4 @@
+import {assertReleaseSeason} from './release-season.mjs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import os from 'node:os'
@@ -44,6 +45,8 @@ export async function verifyArtifact(directory, expectedSHA, expectedDigest, sou
   assert.deepEqual(JSON.parse(await fs.readFile(path.join(directory, 'wrangler.json'), 'utf8')), releaseConfig(source, environment), 'Release config drift')
   assert.equal(manifest.lockHash, sha256(await fs.readFile('package-lock.json')))
   assert.equal(manifest.version, JSON.parse(await fs.readFile('package.json', 'utf8')).version)
+  const season=assertReleaseSeason(JSON.parse(await fs.readFile(path.join(directory,'dist/season.json'),'utf8')),environment)
+  assert.deepEqual(manifest.season,season,'Manifest season evidence mismatch')
   assert.ok(manifest.files['worker/index.js'] && manifest.files['dist/index.html'])
   return manifest
 }
@@ -52,6 +55,7 @@ export async function prepareArtifact(directory, sha, environment) {
   assert.equal(spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim(),sha)
   const metadata = await fs.readFile('.generated/build-metadata.ts','utf8')
   assert.ok(metadata.includes(sha), 'Build metadata must match source commit')
+  const season=assertReleaseSeason(JSON.parse(await fs.readFile('dist/season.json','utf8')),environment)
   await fs.mkdir(directory) // Refuse to overwrite a prior package.
   const source = JSON.parse(await fs.readFile('wrangler.jsonc','utf8'))
   const config = releaseConfig(source, environment)
@@ -60,7 +64,7 @@ export async function prepareArtifact(directory, sha, environment) {
   await fs.cp('dist',path.join(directory,'dist'),{recursive:true,filter: async file=>{
     if ((await fs.lstat(file)).isDirectory()) return true
     const relative = path.relative('dist',file).split(path.sep).join('/')
-    return relative==='index.html'||relative.startsWith('assets/')||tracked.has(relative)
+    return relative==='index.html'||relative==='season.json'||relative.startsWith('assets/')||tracked.has(relative)
   }})
   const bundleConfig = {...config, main:path.resolve(source.env[environment].main), assets:{...config.assets,directory:path.resolve(directory,'dist')}}
   const temp = path.join(await fs.mkdtemp(path.join(os.tmpdir(),'tri-preview-bundle-')),'bundle-config.json')
@@ -73,7 +77,7 @@ export async function prepareArtifact(directory, sha, environment) {
   assert.ok((await fs.readFile(path.join(directory,'worker/index.js'),'utf8')).includes(sha),'Bundled Worker metadata must match tested SHA')
   // Wrangler output is prebundled; no custom build command is present in either config.
   await fs.writeFile(path.join(directory,'wrangler.json'),JSON.stringify(config,null,2)+'\n')
-  const manifest={schemaVersion:1,toolchain:{node:process.versions.node,wrangler:JSON.parse(await fs.readFile('node_modules/wrangler/package.json')).version},sha,environment,worker:target(environment).worker,version:JSON.parse(await fs.readFile('package.json','utf8')).version,
+  const manifest={schemaVersion:1,season,toolchain:{node:process.versions.node,wrangler:JSON.parse(await fs.readFile('node_modules/wrangler/package.json')).version},sha,environment,worker:target(environment).worker,version:JSON.parse(await fs.readFile('package.json','utf8')).version,
     lockHash:sha256(await fs.readFile('package-lock.json')),files:await inventory(directory)}
   const bytes=JSON.stringify(manifest,null,2)+'\n'
   await fs.writeFile(path.join(directory,'manifest.json'),bytes)

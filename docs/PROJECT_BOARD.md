@@ -4,6 +4,62 @@
 
 Приоритеты: **P0** — критический инцидент; **P1** — ближайший приоритет; **P2** — плановая работа; **P3** — улучшение без срочности.
 
+## SEASON-2027 — Preparation & Release Pipeline
+
+Актуальный локальный checkpoint: 2026-11-21. Не означает публикацию или Production readiness.
+
+| Task | Status | Scope / условия |
+| --- | --- | --- |
+| CAL-02A/B | DONE (LOCAL) | 25 гонок: 16 IRONMAN Pro Series, 8 T100, 1 Challenge Roth; 19 reused competition identities / 6 new (плюс canonical IRONMAN Worlds entity record без миграции исторических IDs). Исторические редакции сохранены. Предыдущая квалификация: 52 targeted tests PASS, build/typecheck и browser smoke PASS. Не опубликовано. |
+| CAL-02C | IN PROGRESS | Completeness audit; official source verification, рабочие даты/gender, недостающие поля и presentation readiness. [Локальный аудит](audits/cal02c-dataset-readiness.md) подготовлен; проверка официальных данных ещё не завершена. |
+| CAL-03 | PLANNED | Карточки всех 25 событий, изображения/artwork, Home Showcase 2027, навигация сезонов и visual consistency; явное управление сезонной видимостью. |
+| CAL-04 | PLANNED | Git publication после Owner Approval; один manual Preview deployment; browser smoke и owner Telegram Mini App QA. |
+| T100-2026-FINAL | PLANNED | Официальные Qatar 2026 results, T100 standings и итоговая integrity verification сезона 2026. |
+| CAL-05 | PLANNED | Production season switch после Qatar 2026 final: полные данные 2026, approved Preview QA, отдельный Deployment Request и явное Owner Approval. Завершение гонки не запускает deployment. |
+| OPS-BACKUP-01 | DEFERRED | Вернуться после завершения pipeline подготовки сезона 2027; никаких backup operations сейчас. |
+
+### CAL-03A — DONE (LOCAL), 2026-11-21
+
+Explicit Production default 2026 / opt-in Preview profile 2027, shared Calendar/Home configuration; neutral master-based edition titles and safe edition artwork lookup. No date-driven primary-season promotion. 33 targeted tests plus image-resolution regression PASS; build/typecheck, targeted ESLint, diff check and 390/1024 browser smoke PASS. [Implementation and qualification](audits/cal03a-season-card-integrity.md). CAL-03 overall remains PLANNED/in preparation: CAL-03B artwork approval and CAL-04 package-profile qualification remain. No Git publication/deployment.
+
+### CAL-03B1 — DONE (LOCAL AUDIT), 2026-11-22
+
+[25-race artwork inventory and reuse plan](audits/cal03b-artwork-inventory.md): 0 REUSE SAFE / 4 REVIEW / 21 NEW candidates; all25 retain neutral fallback pending owner content/provenance/crop approval. Ten local race originals inspected, no image or runtime mapping changes. CAL-03B2 artwork implementation requires separate scope approval; no publication/deployment.
+
+### CAL-03B2 — DONE (LOCAL), 2026-11-22
+
+Owner decision supersedes B1 classifications: 15 USE APPROVED / 10 NEW / 0 owner-level pending. Four suitable local reuse sets found, 11 approved uses lack local assets. Exact-edition mappings, first-class Roth calendar/history/ranking checks and explicit Preview release-profile qualification implemented. 65 targeted tests PASS, two necessary profile builds PASS, Chrome390/1024 functional smoke PASS; mobile Qatar title clipping remains a visual follow-up. [Report and remaining artwork gaps](audits/cal03b2-preview-readiness.md). No artwork generation/download, Git publication or deployment authorized.
+
+### CAL-03B2 — artwork contract addendum (LOCAL), 2026-11-22
+
+[10 NEW briefs](design/2027-artwork-briefs/README.md) prepared using owner-approved Guidelines v1.0/template/checklist. Roth included in Home and Card crop review. Final rendered portrait/landscape/tablet crops and exact revisions require owner approval; none supplied or approved yet. Current Home remains one source with resolution variants. If a composition cannot preserve anatomy/geography outside UI overlays in every crop, STOP and request a separate Home art-direction decision. No image generation, mapping/code changes, Git publication or deployment in this addendum.
+
+### CAL-03C — DONE (LOCAL), 2026-11-22
+
+Qatar Final clipping fixed with ordinary inline title flow and word wrapping; full title retained. Qatar +70.3 Worlds regression at320/375/390/440/1024 PASS; card heights230/245 unchanged. Build/typecheck, targeted ESLint and diff check PASS. Artwork/season settings preserved. This supersedes the mobile-title follow-up in the CAL-03B2 historical checkpoint. [Root cause and evidence](audits/cal03b2-preview-readiness.md#cal-03c--qatar-title-follow-up-2026-11-22). Local only; no publication/deployment.
+
+### CAL-04A — QUALIFIED WITH BLOCKER (LOCAL), 2026-11-22
+
+68 targeted tests, two profile builds,32-file ESLint and consolidated390/1024 Chrome smoke PASS. Exact55-file proposed scope and master/runtime/artwork matrices recorded. **NO-GO publication unchanged:**18 unverified2027 Stats PTO URLs synthesized in normalized editions; explicit provenance guard/review required. Artwork gaps alone are not technical blockers. [CAL-04A report](audits/cal04a-release-candidate-qualification.md). No Git publication/deployment.
+
+### CAL-04B — DONE (LOCAL), 2026-11-22
+
+2027 inferred URL guard implemented:18→0, all87 historical URLs unchanged. Explicit2027 URL requires matching evidence reference; no verification records invented.7 targeted tests incl.25 Card/Detail SSR renders, one Preview build/typecheck, lint/diff PASS. [CAL-04B correction](audits/cal04a-release-candidate-qualification.md#cal-04b-correction--2026-11-22) supersedes original CAL-04A NO-GO. GO for separately authorized Git publication;57-file scope. Source/artwork limitations and clean immutable-package requirement remain. No publication/deployment.
+
+### CAL-04C — DONE (LOCAL PREFLIGHT), 2026-11-22
+
+Live GitHub preview equals candidate HEAD/base `b97aad29e0468b6ea4a98449ebb7d97e9de12239` (0/0 divergence); master exact-commit bytes verified. [58-file allowlist, categories and controlled publication plan](audits/cal04c-git-publication-preflight.md). Git/scope/diff and secret/artifact review PASS; prior CAL-04A/B QA retained, no builds/browser/tests repeated. GO for separately authorized publication; commit/push/PR/merge and deployment are NOT authorized. Source/artwork limitations remain.
+
+### Strict manual Production season switch — owner directive
+
+Production season switch 2026 → 2027 выполняется **только вручную**, после отдельного **Deployment Request** и явного **Owner Approval**. Preview QA PASS, завершение T100 Qatar 2026, наступление даты, Git merge и успешные CI checks не являются разрешением на Production deployment.
+
+Deployment Request обязан содержать: exact Git SHA и версию; target environment и Worker; состав изменений; Preview QA evidence; статус закрытия T100 2026; fresh preflight requirements; риски и rollback candidate. Только после отдельного явного Owner Approval допускаются fresh preflight и **один** manual Production deployment в утверждённом scope. Никаких автоматических deployment, retries, rollback или season switch. Правило действует на весь SEASON-2027 pipeline. CAL-03A реализует локальный build-time primary-season gate; deployment по-прежнему не разрешён.
+
+## CAL-02A/B — LOCAL IMPLEMENTATION / OWNER REVIEW (2026-11-21)
+
+25 owner-approved 2027 events integrated locally: 16 IM / 8 T100 / 1 Roth. 19 existing competition identities, 6 new; canonical Worlds grouping preserves historical IDs/results. Owner decisions resolve Spain and Chattanooga; edition geography and championship/final designation supported. Calendar 2024–2027, unknown gender and date ranges preserved. 52 targeted tests, build/typecheck, lint and 390/1024 px Chrome smoke PASS. [Complete mapping, evidence and retained uncertainties](audits/cal02-2027-mapping.md). Per-race source URLs, PRO dates for weekends and nine genders remain pending; no guessed values. No Git publication or deployment.
+
 ## Текущий статус — 2026-11-17
 
 Этот раздел заменяет старые current-status statements ниже. DONE означает завершение указанного scope, не разрешение на новые операции.

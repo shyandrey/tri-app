@@ -1,3 +1,4 @@
+import { primarySeason } from '../config/season'
 import { isRaceInCalendar } from '../data/raceEditions'
 import { isCalendarSeasonCompleted } from '../data/calendarSeasons'
 import { CalendarIcon } from '../components/AppIcons'
@@ -7,13 +8,14 @@ import type { RaceEditionView, RaceGender } from '../types/Race'
 import type { Page } from '../types/Page'
 import BottomNav from '../components/BottomNav'
 import { isRaceFinished, isRaceUpcoming } from '../utils/raceDate'
-import { getChampionshipNavigationGroup } from '../utils/raceChampionshipGroup'
+import { getRaceDesignation, getChampionshipNavigationGroup } from '../utils/raceChampionshipGroup'
 
 export type CalendarViewState = {
   search: string
   filter: string
   timeFilter: 'upcoming' | 'finished' | 'all'
   openArchiveYears: number[]
+  season?: number
 }
 
 type CalendarPageProps = {
@@ -39,7 +41,6 @@ const seriesFilters = [
   { value: 'Triathlon World Tour', short: 'T', label: 'TRIATHLON\nWORLD TOUR', desktopLabel: 'Triathlon World Tour' },
 ] as const
 
-const archiveYears = [2025, 2024] as const
 const DAY_MS = 86_400_000
 const russianMonthsGenitive = [
   'января',
@@ -78,12 +79,7 @@ const getRaceSearchTags = (race: RaceEditionView) => {
     tags.push('чемпионат', 'чемпионат мира', 'финал', 'финал серии', 'world championship')
   }
 
-  const raceYear = race.year
-  const isT100Final = race.series === 'Triathlon World Tour' && (
-    (race.raceId === 't100-dubai' && raceYear === 2024)
-    || race.raceId === 't100-qatar'
-    || race.name.toLowerCase().includes('final')
-  )
+  const isT100Final = getRaceDesignation(race) === 'series_final'
 
   if (isT100Final) {
     tags.push('финал', 'финал серии', 'гранд финал', 'чемпионат', 'чемпионат мира', 'grand final', 'world championship')
@@ -142,9 +138,12 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
     onViewStateChange({ ...viewState, ...patch })
   }
 
+  const seasons = [...new Set(searchRaces.map(r => r.year))].sort((a, b) => b - a)
+  const season = viewState.season ?? primarySeason
+  const archiveYears = seasons.filter(y => y < season)
   const isSearching = search.trim().length > 0
   const normalizedSearch = search.trim().toLowerCase()
-  const visibleRaces = (isSearching ? searchRaces : races).filter(isRaceInCalendar).filter((race) => race.series !== 'Challenge')
+  const visibleRaces = (isSearching ? searchRaces : (viewState.season === undefined ? races : searchRaces).filter(r => r.year === season)).filter(isRaceInCalendar)
 
   const filteredRaces = visibleRaces
     .filter((race) => {
@@ -178,7 +177,7 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
     year,
     races: groupRaceEventCards(
       searchRaces
-        .filter(isRaceInCalendar).filter((race) => race.series !== 'Challenge')
+        .filter(isRaceInCalendar)
         .filter((race) => race.year === year)
         .filter((race) => filter === 'Все' || race.series === filter)
     ).sort((a, b) => new Date(a.race.dateISO).getTime() - new Date(b.race.dateISO).getTime()),
@@ -187,11 +186,11 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
   const showArchive = dataStatus === 'ready' && !isSearching && timeFilter !== 'upcoming'
   const hasArchiveResults = showArchive && archiveRacesByYear.some(({ races }) => races.length > 0)
   const showEmpty = dataStatus === 'ready' && groupedFilteredRaces.length === 0 && !hasArchiveResults
-  const seriesYears = [...new Set(races.filter(race => race.series === filter).map(race => race.year))]
+  const seriesYears = [...new Set(races.filter(race => race.year === season && race.series === filter).map(race => race.year))]
   const showCompletedSeason = showEmpty && !isSearching && timeFilter === 'upcoming'
     && filter === 'IRONMAN Pro Series' && seriesYears.length === 1
     && isCalendarSeasonCompleted(filter, seriesYears[0])
-  const hasCatalogRaces = searchRaces.some(race => race.series !== 'Challenge') || races.some(race => race.series !== 'Challenge')
+  const hasCatalogRaces = searchRaces.length > 0 || races.length > 0
 
   const toggleArchiveYear = (year: number) => {
     updateViewState({
@@ -214,6 +213,7 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
     return (
       <RaceCard
         key={`${race.raceId}-${race.year}-${displayDate}`}
+        edition={race}
         distance={race.distance}
         series={race.series}
         name={race.name}
@@ -236,6 +236,9 @@ function CalendarPage({ races, dataStatus = 'ready', searchRaces = races, viewSt
           {search && (
             <button type="button" className="calendar-search-clear" aria-label="Очистить поиск" onClick={() => updateViewState({ search: '' })}>×</button>
           )}
+        </div>
+        <div className="calendar-time-filters" aria-label="Сезон">
+          {seasons.map(year => <button key={year} aria-pressed={season === year} className={season === year ? 'filter-active' : ''} onClick={() => updateViewState({ season: year })}>{year}</button>)}
         </div>
         <div className="calendar-time-filters">
           <button className={timeFilter === 'upcoming' ? 'filter-active' : ''} onClick={() => updateViewState({ timeFilter: 'upcoming' })}>Предстоящие</button>

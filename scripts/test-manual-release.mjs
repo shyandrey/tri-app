@@ -22,7 +22,8 @@ for(const change of [b=>b.account='wrong',b=>b.worker='tri-app-preview',b=>b.set
 test('artifact bytes, environment and file inventory guarded',async()=>{
  const root=await fs.mkdtemp(path.join(os.tmpdir(),'manual-artifact-test-'))
  try{await fs.mkdir(path.join(root,'worker'));await fs.mkdir(path.join(root,'dist'));await fs.writeFile(path.join(root,'worker/index.js'),'worker');await fs.writeFile(path.join(root,'dist/index.html'),'html');await fs.writeFile(path.join(root,'wrangler.json'),JSON.stringify(config))
- const m={sha,worker:'tri-app',environment:'production',version:JSON.parse(await fs.readFile('package.json')).version,lockHash:sha256(await fs.readFile('package-lock.json')),files:await inventory(root)}
+ await fs.writeFile(path.join(root,'dist/season.json'),JSON.stringify({profile:'production',primarySeason:2026}))
+ const m={season:{profile:'production',primarySeason:2026},sha,worker:'tri-app',environment:'production',version:JSON.parse(await fs.readFile('package.json')).version,lockHash:sha256(await fs.readFile('package-lock.json')),files:await inventory(root)}
  const bytes=JSON.stringify(m);await fs.writeFile(path.join(root,'manifest.json'),bytes);const d=sha256(bytes)
  await verifyArtifact(root,sha,d,source,'production')
  await assert.rejects(verifyArtifact(root,sha,digest,source,'production'))

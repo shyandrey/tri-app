@@ -67,6 +67,7 @@ const toEdition = (race: T100ArchiveRace, year: 2024 | 2025, sourceUrl: string):
   id: `${race.raceId}-${year}${race.suffix ? `-${race.suffix}` : ''}`,
   raceId: race.raceId,
   year,
+  ...(race.raceId === 't100-spain' ? { city: race.city, country: race.country } : {}),
   series: 'Triathlon World Tour',
   date: race.date,
   dateISO: race.dateISO,

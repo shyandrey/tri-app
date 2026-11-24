@@ -1,3 +1,6 @@
+import { calendar2027Editions, calendar2027Entities } from './calendar2027'
+import { getRaceDesignation } from '../utils/raceChampionshipGroup'
+import { resolveRaceLocation } from '../utils/raceLocation'
 import { races as legacyRaces } from './races'
 import type { RaceEdition, RaceEditionView } from '../types/Race'
 import { getRaceEditionId, getRaceId } from './raceIdentity'
@@ -5,7 +8,7 @@ import { archiveIronmanRaceEntities, ironmanProSeries2024Editions, ironmanProSer
 import { archiveT100RaceEntities, t1002024Editions, t1002025Editions } from './archiveT100'
 import { challengeRothEditions, challengeRothRaceEntity } from './archiveChallengeRoth'
 import { normalizeRaceGender } from '../utils/raceGender'
-import { getStatsPtoUrl } from './statsPtoRaceUrls'
+import { getStatsPtoUrl, resolveEditionStatsPtoUrl } from './statsPtoRaceUrls'
 
 const CURRENT_SEASON = 2026
 
@@ -38,7 +41,8 @@ const currentSeasonSofByRaceId: Record<string, { women?: number; men?: number }>
 const normalizeEdition = (edition: RaceEdition): RaceEdition => ({
   ...edition,
   gender: normalizeRaceGender(edition.gender),
-  statsPtoUrl: edition.statsPtoUrl ?? getStatsPtoUrl(edition.raceId, edition.year),
+  designation: getRaceDesignation(edition),
+  statsPtoUrl: resolveEditionStatsPtoUrl(edition),
 })
 
 const currentSeasonEditions: RaceEdition[] = legacyRaces.map((race) => ({
@@ -49,6 +53,7 @@ const currentSeasonEditions: RaceEdition[] = legacyRaces.map((race) => ({
   series: race.series,
   date: race.date,
   dateISO: race.dateISO,
+  ...((getRaceId(race.id) === 't100-spain' || getRaceId(race.id).includes('world-championship')) ? { city: race.city, country: race.country } : {}),
   swim: race.swim,
   bike: race.bike,
   run: race.run,
@@ -102,10 +107,12 @@ export const raceEditions: RaceEdition[] = [
   ...t1002025Editions,
   ...challengeRothEditions,
   ...currentSeasonEditions,
+  ...calendar2027Editions,
 ].map(normalizeEdition)
 
 const raceEntityById = new Map(
   [
+    ...calendar2027Entities,
     ...archiveIronmanRaceEntities,
     ...archiveT100RaceEntities,
     challengeRothRaceEntity,
@@ -128,20 +135,22 @@ function editionToView(edition: RaceEdition, index: number): RaceEditionView {
 
   return {
     id: edition.legacyId ?? -(index + 1),
-    name: entity.name,
+    name: edition.displayName ?? entity.name,
     series: edition.series,
     distance: entity.distance,
     date: edition.date,
     dateISO: edition.dateISO,
-    country: entity.country,
-    city: entity.city,
+    dateEndISO: edition.dateEndISO,
+    dateKind: edition.dateKind,
+    designation: getRaceDesignation(edition),
+    ...resolveRaceLocation(edition, entity),
     swim: edition.swim,
     bike: edition.bike,
     run: edition.run,
     description: edition.description,
     gender: normalizeRaceGender(edition.gender),
     sourceUrl: edition.sourceUrl,
-    statsPtoUrl: edition.statsPtoUrl,
+    statsPtoUrl: edition.year === 2027 ? resolveEditionStatsPtoUrl(edition) : edition.statsPtoUrl,
     sof: edition.sof,
     raceId: edition.raceId,
     editionId: edition.id,
@@ -157,9 +166,13 @@ const archiveRaceEditionViews = [
   ...challengeRothEditions.filter((edition) => edition.year !== CURRENT_SEASON),
 ].map(normalizeEdition).map(editionToView)
 
+export const calendar2027Views = calendar2027Editions.map(editionToView)
+export const calendarRaceEditions = [...currentRaceEditions, ...calendar2027Views]
+
 export const allRaceEditionViews: RaceEditionView[] = [
   ...archiveRaceEditionViews,
   ...currentRaceEditions,
+  ...calendar2027Views,
 ]
 
 // CAL-01: retain the original edition/IDs for lookup and data integrity, but do not

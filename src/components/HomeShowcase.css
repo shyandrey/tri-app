@@ -17,14 +17,15 @@
 }
 
 .showcase-card__title {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.22em;
+  display: block;
 }
 
 .showcase-card__title-part {
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.showcase-card__title-part + .showcase-card__title-part::before {
+  content: " ";
 }
 
 /* Same cover/center crop and two overlays as the former CSS background. */
